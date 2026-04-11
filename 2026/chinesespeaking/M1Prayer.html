@@ -1,264 +1,275 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 국제중국어 1주 기도문</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: #0c1220;
+      color: #e8e0d4;
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+      padding: 0 0 60px 0;
+    }
+    
+    .header {
+      background: linear-gradient(165deg, #1a2744 0%, #0f1a2e 40%, #162038 100%);
+      padding: 48px 24px 40px;
+      text-align: center;
+      border-bottom: 1px solid rgba(196,170,128,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(196,170,128,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 150px; height: 150px;
+      background: radial-gradient(circle, rgba(196,170,128,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .year-badge {
+      display: inline-block;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c4aa80;
+      border: 1px solid rgba(196,170,128,0.3);
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 900;
+      font-size: 26px;
+      line-height: 1.4;
+      color: #f0e6d6;
+      margin-bottom: 8px;
+    }
+    .header .sub {
+      font-size: 13px;
+      color: #8a9ab5;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    .divider-icon {
+      text-align: center;
+      padding: 24px 0 8px;
+      color: #c4aa80;
+      font-size: 18px;
+      opacity: 0.5;
+    }
+    .prayers-container {
+      padding: 0 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .prayer-card {
+      background: linear-gradient(170deg, rgba(26,39,68,0.7) 0%, rgba(15,26,46,0.9) 100%);
+      border: 1px solid rgba(196,170,128,0.1);
+      border-radius: 16px;
+      padding: 28px 22px;
+      margin: 16px 0;
+      position: relative;
+    }
+    .prayer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 24px;
+      width: 2px; height: 100%;
+      background: linear-gradient(to bottom, rgba(196,170,128,0.25), transparent);
+    }
+    .prayer-num {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #c4aa80;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      padding-left: 18px;
+    }
+    .prayer-text {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 16px;
+      line-height: 1.85;
+      color: #e0d8cc;
+      font-weight: 400;
+      padding-left: 18px;
+      word-break: keep-all;
+    }
+    .prayer-text em {
+      font-style: normal;
+      color: #c4aa80;
+      font-weight: 700;
+    }
+    .section-label {
+      text-align: center;
+      margin: 32px 0 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #7a8eaa;
+      letter-spacing: 2px;
+    }
+    .context-note {
+      font-size: 12px;
+      color: #6a7a94;
+      font-weight: 300;
+      margin-top: 10px;
+      padding-left: 18px;
+      line-height: 1.6;
+      border-top: 1px solid rgba(196,170,128,0.08);
+      padding-top: 10px;
+    }
+    .footer {
+      text-align: center;
+      padding: 40px 24px 20px;
+      font-size: 11px;
+      color: #4a5a74;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
 
-export default function App() {
-  return (
-    <div style={{ background: '#0c1220', color: '#e8e0d4', fontFamily: "'Noto Sans KR', sans-serif", minHeight: '100vh', padding: '0 0 60px 0' }}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        .header {
-          background: linear-gradient(165deg, #1a2744 0%, #0f1a2e 40%, #162038 100%);
-          padding: 48px 24px 40px;
-          text-align: center;
-          border-bottom: 1px solid rgba(196,170,128,0.15);
-          position: relative;
-          overflow: hidden;
-        }
-        .header::before {
-          content: '';
-          position: absolute;
-          top: -60px; right: -60px;
-          width: 200px; height: 200px;
-          background: radial-gradient(circle, rgba(196,170,128,0.08) 0%, transparent 70%);
-          border-radius: 50%;
-        }
-        .header::after {
-          content: '';
-          position: absolute;
-          bottom: -40px; left: -40px;
-          width: 150px; height: 150px;
-          background: radial-gradient(circle, rgba(196,170,128,0.06) 0%, transparent 70%);
-          border-radius: 50%;
-        }
-        .year-badge {
-          display: inline-block;
-          font-family: 'Noto Sans KR', sans-serif;
-          font-weight: 500;
-          font-size: 11px;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: #c4aa80;
-          border: 1px solid rgba(196,170,128,0.3);
-          padding: 4px 16px;
-          border-radius: 20px;
-          margin-bottom: 16px;
-        }
-        .header h1 {
-          font-family: 'Noto Serif KR', serif;
-          font-weight: 900;
-          font-size: 26px;
-          line-height: 1.4;
-          color: #f0e6d6;
-          margin-bottom: 8px;
-        }
-        .header .sub {
-          font-size: 13px;
-          color: #8a9ab5;
-          font-weight: 300;
-          letter-spacing: 1px;
-        }
-        .divider-icon {
-          text-align: center;
-          padding: 24px 0 8px;
-          color: #c4aa80;
-          font-size: 18px;
-          opacity: 0.5;
-        }
-        .prayers-container {
-          padding: 0 16px;
-          max-width: 600px;
-          margin: 0 auto;
-        }
-        .prayer-card {
-          background: linear-gradient(170deg, rgba(26,39,68,0.7) 0%, rgba(15,26,46,0.9) 100%);
-          border: 1px solid rgba(196,170,128,0.1);
-          border-radius: 16px;
-          padding: 28px 22px;
-          margin: 16px 0;
-          position: relative;
-        }
-        .prayer-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 24px;
-          width: 2px; height: 100%;
-          background: linear-gradient(to bottom, rgba(196,170,128,0.25), transparent);
-        }
-        .prayer-num {
-          font-family: 'Noto Serif KR', serif;
-          font-size: 11px;
-          font-weight: 700;
-          color: #c4aa80;
-          letter-spacing: 2px;
-          margin-bottom: 14px;
-          padding-left: 18px;
-        }
-        .prayer-text {
-          font-family: 'Noto Serif KR', serif;
-          font-size: 16px;
-          line-height: 1.85;
-          color: #e0d8cc;
-          font-weight: 400;
-          padding-left: 18px;
-          word-break: keep-all;
-        }
-        .prayer-text em {
-          font-style: normal;
-          color: #c4aa80;
-          font-weight: 700;
-        }
-        .section-label {
-          text-align: center;
-          margin: 32px 0 8px;
-          font-size: 12px;
-          font-weight: 500;
-          color: #7a8eaa;
-          letter-spacing: 2px;
-        }
-        .context-note {
-          font-size: 12px;
-          color: #6a7a94;
-          font-weight: 300;
-          margin-top: 10px;
-          padding-left: 18px;
-          line-height: 1.6;
-          border-top: 1px solid rgba(196,170,128,0.08);
-          padding-top: 10px;
-        }
-        .footer {
-          text-align: center;
-          padding: 40px 24px 20px;
-          font-size: 11px;
-          color: #4a5a74;
-          letter-spacing: 1px;
-        }
-      `}</style>
+  <div class="header">
+    <div class="year-badge">2026 INTERNATIONAL CHINESE SPEAKING CONFERENCE</div>
+    <h1>국제중국어<br>1주 기도문</h1>
+    <div class="sub">시대를 바꾸도록 시대의 이상에 따라 생활하고 일함</div>
+  </div>
 
-      <div className="header">
-        <div className="year-badge">2026 INTERNATIONAL CHINESE SPEAKING CONFERENCE</div>
-        <h1>국제중국어<br/>1주 기도문</h1>
-        <div className="sub">시대를 바꾸도록 시대의 이상에 따라 생활하고 일함</div>
-      </div>
+  <div class="divider-icon">✦</div>
 
-      <div className="divider-icon">✦</div>
+  <div class="prayers-container">
+    <div class="section-label">— 집회 시작 기도 —</div>
 
-      <div className="prayers-container">
-        <div className="section-label">— 집회 시작 기도 —</div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 01</div>
-          <div className="prayer-text">
-            주 예수님, 우리가 얼마나 당신께 감사한지요. 우리가 얼마나 기쁜지요, 당신께서 우리를 함께 이곳에 모으셨습니다. 당신의 발 앞에 앉아서 당신의 말씀을 듣게 하심을 감사합니다.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 02</div>
-          <div className="prayer-text">
-            우리가 믿습니다. 당신의 말씀하심이 여기에 있음을 믿습니다. 신선하고 때에 맞는 말씀임을 믿습니다. 주님, 우리는 비우고 또 영 안에서 가난합니다.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 03</div>
-          <div className="prayer-text">
-            우리의 마음을 온전히 당신께 돌이킵니다. 우리가 다른 모든 사람들과 일과 사물에서 당신께 돌이킵니다. 그리하여 이 다섯 번의 집회에서 우리가 <em>당신을 더 보고, 당신을 더 얻기</em> 원합니다.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 04</div>
-          <div className="prayer-text">
-            주 예수님, 하늘을 우리에게 열어주십시오. 당신 자신을 우리 안에 분배하여 주십시오. 그리하여 우리 모두가 비워지고 열린 그릇들이 되기 원합니다.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 05</div>
-          <div className="prayer-text">
-            주님, 모든 너울들을 우리의 마음에서 제하십시오. 그리하여 이 하늘에 속한 말씀이 우리 모두에게 주입되게 하십시오. 그리하여 당신의 말씀이 우리 안에서 입지를 찾고 <em>우리의 존재 전체를 차지하기</em> 원합니다.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 06</div>
-          <div className="prayer-text">
-            우리 자신을 당신께 다시 드립니다.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 07</div>
-          <div className="prayer-text">
-            당신의 피로 우리를 덮어주십시오. 이 장소를 거룩히 분별하십시오. 그리하여 당신의 피가 어디에 있든지 여기에 기름 발음이 있고, 우리의 말에 기름 발라주시고, 우리의 듣는 것에 기름 발라 주십시오.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 08</div>
-          <div className="prayer-text">
-            그리하여 여기에 어떤 방해도 없고, 당신의 말씀하심에 어떤 방해도 없이 <em>당신께서 자유롭게 움직이시기</em> 원합니다.
-          </div>
-        </div>
-
-        <div className="divider-icon">✦</div>
-        <div className="section-label">— 메시지 중 기도 —</div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 09</div>
-          <div className="prayer-text">
-            주님께서 이 메시지를 해방하셔서 우리에게 밝혀주시기 원합니다. 주님의 영원한 경륜을 밝혀주시기 원합니다. 어떻게 그분께서 그분 자신을 우리 안에 분배하시는지입니다.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 10</div>
-          <div className="prayer-text">
-            주님, 어떤 우상도 저의 속에서 제하십시오. 어떤 사람이나 일과 사물이 당신을 막아서 저와 당신의 연결 교통을 방해하지 못하게 하십시오.
-          </div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 11</div>
-          <div className="prayer-text">
-            주님, 저는 당신께서 제 안에 들어오시기 원하시고, 어떤 장애도 없이 들어오시기 원합니다. 그리하여 어떤 장벽도 당신과 저 사이에 없기 원합니다. 그리하여 <em>당신께서 저의 존재를 점유하시기</em> 원합니다.
-          </div>
-        </div>
-
-        <div className="divider-icon">✦</div>
-        <div className="section-label">— 개요 본문 속 기도 —</div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 12</div>
-          <div className="prayer-text">
-            주님, 당신께서 개입하셔야 합니다. 저를 당신의 돌보심 안에 지켜 주십시오. 당신은 저를 영의 영역 안에 지켜 주셔야 합니다. 그러지 않으신다면 저는 조금만 부주의해도 육체 안에 있게 될 것입니다.
-          </div>
-          <div className="context-note">위트니스 리 형제님의 기도 — 육체에서 영으로 돌이킴</div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 13</div>
-          <div className="prayer-text">
-            주님, 당신은 은혜이신 당신 자신을 제게서 보류하실 수 없습니다. 왜냐하면 저는 의롭게 됨이라는 입지 위에 서 있기 때문입니다. 당신께서 제게 주신 그리스도는 선물로서 제 의가 되셨고 저는 이 위치에 서 있습니다. <em>주님, 제가 누릴 수 있도록 당신 자신을 은혜로 제게 주십시오.</em>
-          </div>
-          <div className="context-note">은혜를 누림에 관한 기도 — 롬 5:17, 21</div>
-        </div>
-
-        <div className="prayer-card">
-          <div className="prayer-num">기도 14</div>
-          <div className="prayer-text">
-            주님, 당신은 이 와이셔츠가 마음에 드십니까? 이 신발이 마음에 드십니까?
-          </div>
-          <div className="context-note">첫째가는 사랑의 회복 — 일상의 사소한 일에서 주님께 으뜸의 위치를 드리는 기도</div>
-        </div>
-
-      </div>
-
-      <div className="footer">
-        2026 국제중국어 특별집회 · 1주
+    <div class="prayer-card">
+      <div class="prayer-num">기도 01</div>
+      <div class="prayer-text">
+        주 예수님, 우리가 얼마나 당신께 감사한지요. 우리가 얼마나 기쁜지요, 당신께서 우리를 함께 이곳에 모으셨습니다. 당신의 발 앞에 앉아서 당신의 말씀을 듣게 하심을 감사합니다.
       </div>
     </div>
-  );
-}
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 02</div>
+      <div class="prayer-text">
+        우리가 믿습니다. 당신의 말씀하심이 여기에 있음을 믿습니다. 신선하고 때에 맞는 말씀임을 믿습니다. 주님, 우리는 비우고 또 영 안에서 가난합니다.
+      </div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 03</div>
+      <div class="prayer-text">
+        우리의 마음을 온전히 당신께 돌이킵니다. 우리가 다른 모든 사람들과 일과 사물에서 당신께 돌이킵니다. 그리하여 이 다섯 번의 집회에서 우리가 <em>당신을 더 보고, 당신을 더 얻기</em> 원합니다.
+      </div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 04</div>
+      <div class="prayer-text">
+        주 예수님, 하늘을 우리에게 열어주십시오. 당신 자신을 우리 안에 분배하여 주십시오. 그리하여 우리 모두가 비워지고 열린 그릇들이 되기 원합니다.
+      </div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 05</div>
+      <div class="prayer-text">
+        주님, 모든 너울들을 우리의 마음에서 제하십시오. 그리하여 이 하늘에 속한 말씀이 우리 모두에게 주입되게 하십시오. 그리하여 당신의 말씀이 우리 안에서 입지를 찾고 <em>우리의 존재 전체를 차지하기</em> 원합니다.
+      </div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 06</div>
+      <div class="prayer-text">
+        우리 자신을 당신께 다시 드립니다.
+      </div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 07</div>
+      <div class="prayer-text">
+        당신의 피로 우리를 덮어주십시오. 이 장소를 거룩히 분별하십시오. 그리하여 당신의 피가 어디에 있든지 여기에 기름 발음이 있고, 우리의 말에 기름 발라주시고, 우리의 듣는 것에 기름 발라 주십시오.
+      </div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 08</div>
+      <div class="prayer-text">
+        그리하여 여기에 어떤 방해도 없고, 당신의 말씀하심에 어떤 방해도 없이 <em>당신께서 자유롭게 움직이시기</em> 원합니다.
+      </div>
+    </div>
+
+    <div class="divider-icon">✦</div>
+    <div class="section-label">— 메시지 중 기도 —</div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 09</div>
+      <div class="prayer-text">
+        주님께서 이 메시지를 해방하셔서 우리에게 밝혀주시기 원합니다. 주님의 영원한 경륜을 밝혀주시기 원합니다. 어떻게 그분께서 그분 자신을 우리 안에 분배하시는지입니다.
+      </div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 10</div>
+      <div class="prayer-text">
+        주님, 어떤 우상도 저의 속에서 제하십시오. 어떤 사람이나 일과 사물이 당신을 막아서 저와 당신의 연결 교통을 방해하지 못하게 하십시오.
+      </div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 11</div>
+      <div class="prayer-text">
+        주님, 저는 당신께서 제 안에 들어오시기 원하시고, 어떤 장애도 없이 들어오시기 원합니다. 그리하여 어떤 장벽도 당신과 저 사이에 없기 원합니다. 그리하여 <em>당신께서 저의 존재를 점유하시기</em> 원합니다.
+      </div>
+    </div>
+
+    <div class="divider-icon">✦</div>
+    <div class="section-label">— 개요 본문 속 기도 —</div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 12</div>
+      <div class="prayer-text">
+        주님, 당신께서 개입하셔야 합니다. 저를 당신의 돌보심 안에 지켜 주십시오. 당신은 저를 영의 영역 안에 지켜 주셔야 합니다. 그러지 않으신다면 저는 조금만 부주의해도 육체 안에 있게 될 것입니다.
+      </div>
+      <div class="context-note">위트니스 리 형제님의 기도 — 육체에서 영으로 돌이킴</div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 13</div>
+      <div class="prayer-text">
+        주님, 당신은 은혜이신 당신 자신을 제게서 보류하실 수 없습니다. 왜냐하면 저는 의롭게 됨이라는 입지 위에 서 있기 때문입니다. 당신께서 제게 주신 그리스도는 선물로서 제 의가 되셨고 저는 이 위치에 서 있습니다. <em>주님, 제가 누릴 수 있도록 당신 자신을 은혜로 제게 주십시오.</em>
+      </div>
+      <div class="context-note">은혜를 누림에 관한 기도 — 롬 5:17, 21</div>
+    </div>
+
+    <div class="prayer-card">
+      <div class="prayer-num">기도 14</div>
+      <div class="prayer-text">
+        주님, 당신은 이 와이셔츠가 마음에 드십니까? 이 신발이 마음에 드십니까?
+      </div>
+      <div class="context-note">첫째가는 사랑의 회복 — 일상의 사소한 일에서 주님께 으뜸의 위치를 드리는 기도</div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    2026 국제중국어 특별집회 · 1주
+  </div>
+
+</body>
+</html>
