@@ -46,8 +46,11 @@
         .roman-num {
             font-weight: 700;
             color: var(--primary);
-            min-width: 2.5rem;
+            min-width: 2rem;
             display: inline-block;
+        }
+        @media (min-width: 768px) {
+            .roman-num { min-width: 2.5rem; }
         }
 
         .content-inner { border-top: 1px solid #f1f5f9; }
@@ -57,13 +60,19 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.4rem 0.9rem;
+            padding: 0.5rem 0.85rem;
             border-radius: 0.5rem;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 600;
             transition: all 0.2s;
             text-decoration: none;
             border: 1px solid #e2e8f0;
+        }
+        @media (min-width: 768px) {
+            .day-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
         }
 
         .day-active {
@@ -129,85 +138,85 @@
     <!-- Navigation -->
     <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center space-x-3">
-                    <span class="font-bold text-lg md:text-xl tracking-tight text-slate-900 serif-font">2026 국제 중국어 특별 집회</span>
+            <div class="flex justify-between h-14 md:h-16 items-center">
+                <div class="flex items-center space-x-2 md:space-x-3 truncate">
+                    <span class="font-bold text-base sm:text-lg md:text-xl tracking-tight text-slate-900 serif-font truncate">2026 국제 중국어 특별 집회</span>
                 </div>
                 <div class="hidden lg:flex space-x-8 font-medium text-sm">
                     <a href="#motto" class="hover:text-blue-700 transition">집회 표어</a>
                     <a href="#index" class="hover:text-blue-700 transition">메시지 개요</a>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <span class="text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-bold uppercase tracking-wider">노아와 다니엘과 욥</span>
+                <div class="flex items-center space-x-2 md:space-x-4 shrink-0 pl-2">
+                    <span class="text-[0.65rem] md:text-xs bg-blue-100 text-blue-800 px-2 py-1 md:px-3 rounded-full font-bold uppercase tracking-wider whitespace-nowrap">노아와 다니엘과 욥</span>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-bg text-white py-28 px-4 text-center">
+    <header class="hero-bg text-white py-20 md:py-28 px-4 text-center">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-accent font-medium tracking-widest mb-4 uppercase text-sm">Noah, Daniel, and Job</h2>
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 serif-font leading-tight">
+            <h2 class="text-accent font-medium tracking-widest mb-3 md:mb-4 uppercase text-xs md:text-sm">Noah, Daniel, and Job</h2>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 md:mb-6 serif-font leading-tight">
                 노아와 다니엘과 욥
             </h1>
-            <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
-            <p class="text-lg md:text-xl text-slate-200 serif-font italic font-light">
-                "하나님의 경륜을 이루도록<br>생명의 노선에서 이기는 생활을 하는 본들"
+            <div class="w-16 md:w-24 h-1 bg-accent mx-auto mb-5 md:mb-6"></div>
+            <p class="text-base sm:text-lg md:text-xl text-slate-200 serif-font italic font-light leading-relaxed">
+                "하나님의 경륜을 이루도록<br class="md:hidden">생명의 노선에서 이기는 생활을 하는 본들"
             </p>
         </div>
     </header>
 
-    <!-- Motto Section (개선된 디자인) -->
-    <section id="motto" class="max-w-4xl mx-auto px-4 py-24">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">집회 표어</h2>
-            <div class="w-10 h-1 bg-slate-300 mx-auto"></div>
+    <!-- Motto Section (개선된 디자인 & 모바일 최적화) -->
+    <section id="motto" class="max-w-4xl mx-auto px-4 py-16 md:py-24">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3 md:mb-4 tracking-tight">집회 표어</h2>
+            <div class="w-8 md:w-10 h-1 bg-slate-300 mx-auto"></div>
         </div>
         
-        <div class="space-y-12">
+        <div class="space-y-10 md:space-y-12">
             <!-- 표어 1 -->
-            <div class="text-center px-2">
-                <p class="text-lg md:text-xl leading-loose text-slate-800 serif-font break-keep">
-                    욥기는 육십육 권으로 된 성경이 오직 한 가지를 위해 있음을 계시하는데,<br>
-                    이것은 하나님께서 그리스도 안에서 그 영에 의해<br>
-                    그분 자신을 우리 안에 분배하심으로<br>
-                    우리의 생명과 본성과 모든 것이 되심으로써<br>
-                    우리가 그리스도를 살고 표현하는 것이다.<br>
+            <div class="text-center px-1 md:px-2">
+                <p class="text-[0.95rem] sm:text-lg md:text-xl leading-[2.2] sm:leading-loose text-slate-800 serif-font break-keep">
+                    욥기는 육십육 권으로 된 성경이 오직 한 가지를 위해 있음을 계시하는데,<br class="hidden sm:block">
+                    이것은 하나님께서 그리스도 안에서 그 영에 의해<br class="hidden sm:block">
+                    그분 자신을 우리 안에 분배하심으로<br class="hidden sm:block">
+                    우리의 생명과 본성과 모든 것이 되심으로써<br class="hidden sm:block">
+                    우리가 그리스도를 살고 표현하는 것이다.<br class="hidden sm:block">
                     이것이 우리의 생활을 지배하는 원칙이 되어야 한다.
                 </p>
             </div>
             
-            <div class="w-12 mx-auto border-t border-slate-200"></div>
+            <div class="w-10 md:w-12 mx-auto border-t border-slate-200"></div>
 
             <!-- 표어 2 -->
-            <div class="text-center px-2">
-                <p class="text-lg md:text-xl leading-loose text-slate-800 serif-font break-keep">
-                    노아는 하나님을 믿었고, 하나님과 동행했으며,<br>
+            <div class="text-center px-1 md:px-2">
+                <p class="text-[0.95rem] sm:text-lg md:text-xl leading-[2.2] sm:leading-loose text-slate-800 serif-font break-keep">
+                    노아는 하나님을 믿었고, 하나님과 동행했으며,<br class="hidden sm:block">
                     하나님을 기쁘시게 했고, 하나님의 온 존재를 누렸다.
                 </p>
             </div>
 
-            <div class="w-12 mx-auto border-t border-slate-200"></div>
+            <div class="w-10 md:w-12 mx-auto border-t border-slate-200"></div>
                         
             <!-- 표어 3 -->
-            <div class="text-center px-2">
-                <p class="text-lg md:text-xl leading-loose text-slate-800 serif-font break-keep">
-                    돌과 산인 단체적인 그리스도, 신랑과 신부,<br>
-                    하나님의 호흡을 가진 하나님의 단체적인 사람은<br>
-                    그분의 입에서 나오는 호흡, 곧 칼로<br>
+            <div class="text-center px-1 md:px-2">
+                <p class="text-[0.95rem] sm:text-lg md:text-xl leading-[2.2] sm:leading-loose text-slate-800 serif-font break-keep">
+                    돌과 산인 단체적인 그리스도, 신랑과 신부,<br class="hidden sm:block">
+                    하나님의 호흡을 가진 하나님의 단체적인 사람은<br class="hidden sm:block">
+                    그분의 입에서 나오는 호흡, 곧 칼로<br class="hidden sm:block">
                     적그리스도와 그의 군대를 산산이 부수고 멸절할 것이다.
                 </p>
             </div>
 
-            <div class="w-12 mx-auto border-t border-slate-200"></div>
+            <div class="w-10 md:w-12 mx-auto border-t border-slate-200"></div>
 
             <!-- 표어 4 -->
-            <div class="text-center px-2">
-                <p class="text-lg md:text-xl leading-loose text-slate-800 serif-font break-keep">
-                    그리스도 안에서 하나님은 사람 안으로 조성되시고<br>
-                    사람은 하나님 안으로 조성되었으며,<br>
-                    하나님과 사람은 함께 연합되어<br>
+            <div class="text-center px-1 md:px-2">
+                <p class="text-[0.95rem] sm:text-lg md:text-xl leading-[2.2] sm:leading-loose text-slate-800 serif-font break-keep">
+                    그리스도 안에서 하나님은 사람 안으로 조성되시고<br class="hidden sm:block">
+                    사람은 하나님 안으로 조성되었으며,<br class="hidden sm:block">
+                    하나님과 사람은 함께 연합되어<br class="hidden sm:block">
                     하나님-사람이라 불리는 한 실체가 되었다.
                 </p>
             </div>
@@ -215,25 +224,25 @@
     </section>
 
     <!-- Message Accordion Section -->
-    <section id="index" class="bg-slate-100 py-20 px-4">
+    <section id="index" class="bg-slate-100 py-16 md:py-20 px-4">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-3">메시지 개요</h2>
-                <p class="text-slate-500 mb-4">제목을 클릭하여 주차별 개요를 확인하세요.</p>
+            <div class="text-center mb-10 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">메시지 개요</h2>
+                <p class="text-sm md:text-base text-slate-500 mb-4">제목을 클릭하여 주차별 개요를 확인하세요.</p>
                 <div class="flex justify-center items-center space-x-4 text-xs">
                     <div class="flex items-center"><span class="w-3 h-3 bg-blue-800 rounded-sm mr-1"></span> 활성 (열림)</div>
                     <div class="flex items-center"><span class="w-3 h-3 bg-slate-300 rounded-sm mr-1"></span> 비활성 (안열림)</div>
                 </div>
             </div>
             
-            <div id="accordion-container" class="space-y-4">
+            <div id="accordion-container" class="space-y-3 md:space-y-4">
                 <!-- JavaScript generated content -->
             </div>
         </div>
     </section>
 
     <!-- Audio Player Icon Button -->
-    <button id="play-pause-btn" class="fixed bottom-5 left-5 md:bottom-8 md:left-auto md:right-[5.5rem] bg-blue-800 text-white w-10 h-10 md:w-12 md:h-12 text-sm md:text-base rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition z-40">
+    <button id="play-pause-btn" class="fixed bottom-5 left-5 md:bottom-8 md:left-auto md:right-[5.5rem] bg-blue-800 text-white w-12 h-12 md:w-14 md:h-14 text-base md:text-lg rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition z-40">
         <i class="fas fa-play pl-1" id="play-icon"></i>
         <audio id="bg-music" loop crossorigin="anonymous">
             <!-- 임시 BGM 링크 (기존과 동일하게 유지) -->
@@ -242,22 +251,22 @@
     </button>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-16 px-4 border-t border-slate-800">
+    <footer class="bg-slate-900 text-slate-400 py-12 md:py-16 px-4 border-t border-slate-800">
         <div class="max-w-6xl mx-auto text-center">
-            <div class="flex justify-center mb-6">
+            <div class="flex justify-center mb-5 md:mb-6">
                 <div class="text-center">
-                    <p class="text-white font-bold text-xl italic serif-font">2026 International Chinese-speaking Conference</p>
-                    <p class="text-sm">Living Stream Ministry</p>
+                    <p class="text-white font-bold text-lg md:text-xl italic serif-font">2026 International Chinese-speaking Conference</p>
+                    <p class="text-xs md:text-sm mt-1">Living Stream Ministry</p>
                 </div>
             </div>
-            <p class="text-sm italic mb-4">"아멘. 주 예수님, 오십시오!" (계 22:20)</p>
-            <div class="w-16 h-px bg-slate-700 mx-auto mb-6"></div>
-            <p class="text-xs">모든 내용은 국제 중국어 특별 집회 (2026.2.13-15) 자료를 바탕으로 작성되었습니다.</p>
+            <p class="text-xs md:text-sm italic mb-4">"아멘. 주 예수님, 오십시오!" (계 22:20)</p>
+            <div class="w-12 md:w-16 h-px bg-slate-700 mx-auto mb-5 md:mb-6"></div>
+            <p class="text-[0.65rem] md:text-xs">모든 내용은 국제 중국어 특별 집회 (2026.2.13-15) 자료를 바탕으로 작성되었습니다.</p>
         </div>
     </footer>
 
     <!-- Back to top button -->
-    <a href="#" id="backToTop" class="fixed bottom-5 right-5 md:bottom-8 md:right-8 bg-blue-800 text-white w-10 h-10 md:w-12 md:h-12 text-sm md:text-base rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition z-40 opacity-0 pointer-events-none">
+    <a href="#" id="backToTop" class="fixed bottom-5 right-5 md:bottom-8 md:right-8 bg-blue-800 text-white w-12 h-12 md:w-14 md:h-14 text-base md:text-lg rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition z-40 opacity-0 pointer-events-none">
         <i class="fas fa-arrow-up"></i>
     </a>
 
@@ -358,25 +367,25 @@
                 const dayButtons = Array.from({length: 6}, (_, i) => `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/2026/chinesespeaking/M${msg.id}D${i+1}.html">Day ${i+1}</span>`).join('');
 
                 details.innerHTML = `
-                    <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-slate-50 transition">
-                        <div class="flex items-center space-x-4 text-left">
-                            <span class="bg-blue-800 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0">${msg.id}</span>
-                            <span class="font-bold text-slate-900 md:text-lg">${msg.title}</span>
+                    <summary class="flex items-center justify-between p-4 md:p-5 cursor-pointer hover:bg-slate-50 transition">
+                        <div class="flex items-center space-x-3 md:space-x-4 text-left">
+                            <span class="bg-blue-800 text-white w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-xs md:text-sm shrink-0">${msg.id}</span>
+                            <span class="font-bold text-slate-900 text-[0.95rem] sm:text-base md:text-lg leading-snug break-keep pr-2">${msg.title}</span>
                         </div>
-                        <i class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        <i class="fas fa-chevron-down text-slate-400 text-sm transition-transform duration-300 ml-1"></i>
                     </summary>
-                    <div class="p-6 content-inner">
-                        <div class="flex flex-wrap gap-2 mb-8 pb-6 border-b border-slate-100">
+                    <div class="p-4 md:p-6 content-inner">
+                        <div class="flex flex-wrap gap-2 mb-6 md:mb-8 pb-5 md:pb-6 border-b border-slate-100">
                             ${prayerButton}
                             ${dayButtons}
                         </div>
-                        <div class="space-y-5 text-slate-700 leading-relaxed text-left">
+                        <div class="space-y-4 md:space-y-5 text-slate-700 leading-relaxed text-left text-[0.9rem] sm:text-base">
                             ${msg.outlines.map(line => {
                                 const numMatch = line.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪ]+/);
                                 const num = numMatch ? numMatch[0] : "";
                                 let text = line.replace(num, "").trim().replace(/^[.\s]+/, "");
                                 text = linkifyBible(text);
-                                return `<div class="flex items-start"><span class="roman-num">${num}</span><p>${text}</p></div>`;
+                                return `<div class="flex items-start"><span class="roman-num">${num}</span><p class="flex-1">${text}</p></div>`;
                             }).join('')}
                         </div>
                     </div>
