@@ -1,533 +1,1232 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.png" type="image/png">
-    <title>2026 국제 중국어 특별 집회</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-        
-        :root {
-            --primary: #1e3a8a;
-            --accent: #d4af37;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7차 집회 추구 자료</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A0;
+    --gold-dark: #8B6914;
+    --cream: #FAF6EE;
+    --parchment: #F2EBDA;
+    --ink: #2A1F14;
+    --ink-light: #5C4B3A;
+    --ink-muted: #8B7D6B;
+    --wine: #6B2D3E;
+    --wine-light: #8E4558;
+    --olive: #5A6B3C;
+    --olive-light: #7A8F56;
+    --shadow: rgba(42, 31, 20, 0.08);
+    --border: rgba(201, 168, 76, 0.25);
+  }
 
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f3f4f6;
-            scroll-behavior: smooth;
-        }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .serif-font {
-            font-family: 'Noto Serif KR', serif;
-        }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-        .hero-bg {
-            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(15, 23, 42, 0.9)), 
-                        url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            background-position: center;
-        }
+  /* === HERO === */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(107,45,62,0.06) 0%, transparent 50%),
+      var(--cream);
+    overflow: hidden;
+  }
 
-        /* Accordion Styles */
-        details summary::-webkit-details-marker { display: none; }
-        details[open] summary i { transform: rotate(180deg); }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25Z' fill='none' stroke='%23C9A84C' stroke-width='0.3' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
 
-        .accordion-item { transition: all 0.3s ease; }
-        .accordion-item[open] {
-            background-color: white;
-            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid var(--primary);
-        }
+  .hero-subtitle {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
 
-        .roman-num {
-            font-weight: 700;
-            color: var(--primary);
-            min-width: 2rem;
-            display: inline-block;
-        }
-        @media (min-width: 768px) {
-            .roman-num { min-width: 2.5rem; }
-        }
+  .hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: clamp(38px, 8vw, 80px);
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
 
-        .content-inner { border-top: 1px solid #f1f5f9; }
+  .hero-title .accent {
+    color: var(--gold-dark);
+    display: block;
+    font-size: 0.55em;
+    font-weight: 600;
+    margin-top: 8px;
+  }
 
-        /* Day Buttons */
-        .day-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 0.85rem;
-            border-radius: 0.5rem;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            text-decoration: none;
-            border: 1px solid #e2e8f0;
-        }
-        @media (min-width: 768px) {
-            .day-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
-            }
-        }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-muted);
+    max-width: 560px;
+    margin: 16px auto 40px;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
 
-        .day-active {
-            background-color: #ebf2ff;
-            border-color: #bfdbfe;
-            color: #1e3a8a;
-            cursor: pointer;
-        }
+  .hero-feasts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
 
-        .day-active:hover {
-            background-color: #1e3a8a;
-            color: white;
-            border-color: #1e3a8a;
-            transform: translateY(-2px);
-        }
+  .feast-badge {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-light);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s;
+  }
 
-        .day-disabled {
-            background-color: #f1f5f9;
-            color: #94a3b8;
-            cursor: default;
-            opacity: 0.6;
-        }
+  .feast-badge .num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
 
-        .checking { position: relative; overflow: hidden; }
-        .checking::after {
-            content: "";
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-            animation: skeleton-loading 1.5s infinite;
-        }
-        @keyframes skeleton-loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+    animation: float 3s ease-in-out infinite;
+  }
 
-        /* 음악 재생 중 애니메이션 */
-        @keyframes play-ripple {
-            0% { box-shadow: 0 0 0 0 rgba(30, 58, 138, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(30, 58, 138, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(30, 58, 138, 0); }
-        }
-        .is-playing {
-            animation: play-ripple 2s infinite;
-        }
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
 
-        /* Bible Link Style */
-        .bible-link {
-            color: #2563eb;
-            text-decoration: underline;
-            text-decoration-color: #bfdbfe;
-            text-underline-offset: 4px;
-            transition: all 0.2s;
-        }
-        .bible-link:hover {
-            color: #1e3a8a;
-            background-color: #eff6ff;
-        }
+  .scroll-hint svg { opacity: 0.4; }
 
-        /* Scrollbar hiding for top bar navigation */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+  /* === NAV === */
+  .year-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 246, 238, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .year-nav::-webkit-scrollbar { display: none; }
+
+  .year-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 0;
+  }
+
+  .year-nav a {
+    padding: 6px 16px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    transition: all 0.25s;
+  }
+
+  .year-nav a:hover, .year-nav a.active {
+    background: var(--gold);
+    color: white;
+  }
+
+  /* === YEAR SECTION === */
+  .year-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px 40px;
+  }
+
+  .year-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .year-number {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .year-label {
+    font-size: 14px;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  /* === FEAST CARDS === */
+  .feasts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .feast-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid rgba(201,168,76,0.15);
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .feast-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px var(--shadow), 0 4px 16px rgba(201,168,76,0.08);
+    border-color: var(--gold);
+  }
+
+  .feast-card-head {
+    padding: 20px 24px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .feast-order {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .feast-order.c1 { background: linear-gradient(135deg, #B8423A, #D4574F); }
+  .feast-order.c2 { background: linear-gradient(135deg, #4A8B5C, #5DA06F); }
+  .feast-order.c3 { background: linear-gradient(135deg, #3D6B99, #4E82B5); }
+  .feast-order.c4 { background: linear-gradient(135deg, #C9A84C, #D4B860); }
+  .feast-order.c5 { background: linear-gradient(135deg, #8B5E3C, #A5734E); }
+  .feast-order.c6 { background: linear-gradient(135deg, #6B2D3E, #8E4558); }
+  .feast-order.c7 { background: linear-gradient(135deg, #3A5A7C, #4D7199); }
+
+  .feast-type {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .feast-card-head .feast-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .feast-card-body {
+    padding: 0 24px 20px;
+    flex: 1;
+  }
+
+  .feast-topic {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .feast-card-foot {
+    padding: 14px 24px;
+    border-top: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .feast-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold-dark);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .feast-link:hover {
+    color: var(--wine);
+    gap: 10px;
+  }
+
+  .feast-link svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .feast-link:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* === OUTLINE LIST === */
+  .outline-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 0;
+    margin-top: 10px;
+    transition: color 0.2s;
+  }
+
+  .outline-toggle:hover { color: var(--ink); }
+
+  .outline-toggle svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s;
+  }
+
+  .outline-toggle.open svg {
+    transform: rotate(180deg);
+  }
+
+  .outline-list {
+    display: none;
+    margin-top: 8px;
+    padding-left: 4px;
+    border-left: 2px solid var(--border);
+  }
+
+  .outline-list.show { display: block; }
+
+  .outline-item {
+    font-size: 13px;
+    color: var(--ink-muted);
+    padding: 4px 0 4px 12px;
+    line-height: 1.65;
+  }
+
+  .outline-item .oi-num {
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-right: 4px;
+  }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 60px 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  footer a {
+    color: var(--gold-dark);
+    text-decoration: none;
+  }
+
+  /* === RESPONSIVE (모바일 최적화) === */
+  @media (max-width: 680px) {
+    .hero {
+      padding: 40px 20px;
+    }
+    .hero-title {
+      font-size: clamp(34px, 10vw, 48px);
+    }
+    .hero-desc {
+      font-size: 15px;
+      margin: 16px auto 32px;
+    }
+    .hero-feasts {
+      grid-template-columns: 1fr; /* 모바일에서 1열로 좌측 정렬 */
+      max-width: 300px;
+    }
+    .feast-badge {
+      font-size: 13px;
+      padding: 8px 14px;
+    }
+    .feasts-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .year-section {
+      padding: 60px 16px 24px;
+    }
+    .feast-card-head {
+      padding: 18px 20px 14px;
+    }
+    .feast-card-body {
+      padding: 0 20px 18px;
+    }
+    .feast-card-foot {
+      padding: 12px 20px;
+    }
+  }
+
+  /* === ANIMATION === */
+  .feast-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .feast-card:nth-child(1) { animation-delay: 0.05s; }
+  .feast-card:nth-child(2) { animation-delay: 0.1s; }
+  .feast-card:nth-child(3) { animation-delay: 0.15s; }
+  .feast-card:nth-child(4) { animation-delay: 0.2s; }
+  .feast-card:nth-child(5) { animation-delay: 0.25s; }
+  .feast-card:nth-child(6) { animation-delay: 0.3s; }
+  .feast-card:nth-child(7) { animation-delay: 0.35s; }
+</style>
 </head>
-<body class="text-slate-800 pt-[40px]">
+<body>
 
-    <!-- System Top Bar -->
-    <div id="system-bar" class="fixed top-0 left-0 w-full bg-slate-900 text-slate-300 z-[60] flex items-center h-[40px] px-[5px] shadow-sm">
-        
-        <!-- 2. 네비게이션 (제목, 표어, 개요 순서 - 가로 스크롤 가능) -->
-        <div class="flex items-center h-full flex-1 overflow-x-auto no-scrollbar whitespace-nowrap px-1">
-            <a href="https://tk-korea.github.io/seven_feasts/" class="flex items-center justify-center w-[36px] h-[40px] hover:text-white transition relative after:content-[''] after:absolute after:right-0 after:top-[10px] after:bottom-[10px] after:w-[1px] after:bg-slate-700" aria-label="홈으로">
-                <i class="fas fa-home text-[14px]"></i>             
-            </a>
-            <a href="#" class="font-bold text-[13px] tracking-wide hover:text-white transition mr-4">
-                2026 국제 중국어 특별 집회
-            </a>
-            <a href="#motto" class="text-[13px] hover:text-white transition mr-4">
-                표어
-            </a>
-            <a href="#index" class="text-[13px] hover:text-white transition pr-2">
-                개요
-            </a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-subtitle">1년 내내 누리는 신성한 잔치</div>
+  <h1 class="hero-title">
+    1년 7차 집회 추구 자료
+    <span class="accent">Seven Feasts</span>
+  </h1>
+  <p class="hero-desc">
+    해마다 일곱 차례의 집회와 훈련을 통해 주님의 풍성을 누리고,
+    그리스도의 몸을 건축하는 여정에 함께합니다.
+  </p>
+  <div class="hero-feasts">
+    <div class="feast-badge"><span class="num">1</span>국제 중국어 특별 집회</div>
+    <div class="feast-badge"><span class="num">2</span>봄 국제 장로 훈련</div>
+    <div class="feast-badge"><span class="num">3</span>현충일 특별 집회</div>
+    <div class="feast-badge"><span class="num">4</span>여름 훈련</div>
+    <div class="feast-badge"><span class="num">5</span>가을 국제 장로 훈련</div>
+    <div class="feast-badge"><span class="num">6</span>추수 감사절 특별 집회</div>
+    <div class="feast-badge"><span class="num">7</span>겨울 훈련</div>
+  </div>
+  <div class="scroll-hint">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- YEAR NAV -->
+<nav class="year-nav" id="yearNav">
+  <div class="year-nav-inner">
+    <a href="#y2026">2026</a>
+    <a href="#y2025">2025</a>
+    <a href="#y2024">2024</a>
+    <a href="#y2023">2023</a>
+    <a href="#y2022">2022</a>
+    <a href="#y2021">2021</a>
+    <a href="#y2020">2020</a>
+    <a href="#y2019">2019</a>
+    <a href="#y2018">2018</a>
+  </div>
+</nav>
+
+<!-- ============ 2026 ============ -->
+<section class="year-section" id="y2026">
+  <div class="year-header">
+    <div class="year-number">2026</div>
+  </div>
+  <div class="feasts-grid">
+
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c1">1</div>
+        <div>
+          <div class="feast-type">국제 중국어 특별 집회</div>
+          <div class="feast-name">노아와 다니엘과 욥</div>
         </div>
-
-        <!-- 3. 홈버튼 & 폰트 사이즈 조정 버튼 -->
-        <div class="flex items-center h-[40px] flex-shrink-0">
-
-            
-            <!-- 폰트 사이즈 컨트롤 -->
-            <button onclick="changeFontSize(-1)" class="w-[30px] h-[40px] flex items-center justify-center hover:text-white transition text-[13px] ml-1" aria-label="글꼴 축소">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button onclick="changeFontSize(0)" class="w-[28px] h-[40px] flex items-center justify-center hover:text-white transition font-bold text-[12px]" aria-label="글꼴 초기화">
-                가
-            </button>
-            <button onclick="changeFontSize(1)" class="w-[30px] h-[40px] flex items-center justify-center hover:text-white transition text-[13px]" aria-label="글꼴 확대">
-                <i class="fas fa-plus"></i>
-            </button>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic">하나님의 경륜을 이루도록 생명의 노선에서 이기는 생활을 하는 본들</div>
+        <button class="outline-toggle" onclick="toggleOutline(this)">
+          개요 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="outline-list">
+          <div class="outline-item"><span class="oi-num">1</span>시대를 바꾸도록 시대의 이상에 따라 생활하고 일함</div>
+          <div class="outline-item"><span class="oi-num">2</span>노아가 따른 생명의 노선 — 시대를 바꾸는 생활과 일</div>
+          <div class="outline-item"><span class="oi-num">3</span>다니엘과 그의 동반자들에게서 볼 수 있는 이기는 이들의 승리</div>
+          <div class="outline-item"><span class="oi-num">4</span>욥과 두 나무</div>
+          <div class="outline-item"><span class="oi-num">5</span>욥에 대한 하나님의 의도 — 선한 사람이 하나님-사람이 됨</div>
         </div>
+      </div>
+      <div class="feast-card-foot">
+        <a class="feast-link" href="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/">
+          집회 페이지
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
 
-    <!-- TOC Dropdown Menu (픽셀 고정 크기) -->
-    <div id="toc-menu" class="fixed top-[40px] left-[5px] bg-slate-800 text-slate-200 rounded-b-md shadow-xl z-[55] w-[180px] overflow-hidden hidden font-sans text-[13px]">
-        <a href="#" class="block px-[16px] py-[12px] hover:bg-slate-700 transition border-b border-slate-700" onclick="toggleMenu()">제목으로 가기</a>
-        <a href="#motto" class="block px-[16px] py-[12px] hover:bg-slate-700 transition border-b border-slate-700" onclick="toggleMenu()">집회 표어</a>
-        <a href="#index" class="block px-[16px] py-[12px] hover:bg-slate-700 transition" onclick="toggleMenu()">메시지 개요</a>
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c2">2</div>
+        <div>
+          <div class="feast-type">봄 국제 장로 훈련</div>
+          <div class="feast-name">추후 공개</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic" style="color:var(--ink-muted); font-style:italic;">집회 주제가 공개되면 업데이트됩니다.</div>
+      </div>
+      <div class="feast-card-foot">
+        <span style="font-size: 13px; font-weight: 500; color: var(--ink-muted);">준비 중</span>
+      </div>
     </div>
 
-    <!-- Hero Section -->
-    <header class="hero-bg text-white py-20 md:py-28 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-accent font-medium tracking-widest mb-3 md:mb-4 uppercase text-xs md:text-sm">Noah, Daniel, and Job</h2>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 md:mb-6 serif-font leading-tight">
-                노아와 다니엘과 욥
-            </h1>
-            <div class="w-16 md:w-24 h-1 bg-accent mx-auto mb-5 md:mb-6"></div>
-            <p class="text-base sm:text-lg md:text-xl text-slate-200 serif-font italic font-light leading-relaxed">
-                "하나님의 경륜을 이루도록<br class="md:hidden">생명의 노선에서 이기는 생활을 하는 본들"
-            </p>
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c3">3</div>
+        <div>
+          <div class="feast-type">현충일 특별 집회</div>
+          <div class="feast-name">추후 공개</div>
         </div>
-    </header>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic" style="color:var(--ink-muted); font-style:italic;">집회 주제가 공개되면 업데이트됩니다.</div>
+      </div>
+      <div class="feast-card-foot">
+        <span style="font-size: 13px; font-weight: 500; color: var(--ink-muted);">준비 중</span>
+      </div>
+    </div>
 
-    <!-- Motto Section (개선된 디자인 & 모바일 최적화) -->
-    <section id="motto" class="max-w-4xl mx-auto px-4 py-16 md:py-24 scroll-mt-[60px]">
-        <div class="text-center mb-12 md:mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3 md:mb-4 tracking-tight">집회 표어</h2>
-            <div class="w-8 md:w-10 h-1 bg-slate-300 mx-auto"></div>
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c4">4</div>
+        <div>
+          <div class="feast-type">여름 훈련</div>
+          <div class="feast-name">추후 공개</div>
         </div>
-        
-        <div class="space-y-10 md:space-y-12">
-            <!-- 표어 1 -->
-            <div class="text-center px-1 md:px-2">
-                <p class="text-[0.95rem] sm:text-lg md:text-xl leading-[2.2] sm:leading-loose text-slate-800 serif-font break-keep">
-                    욥기는 육십육 권으로 된 성경이 오직 한 가지를 위해 있음을 계시하는데,<br class="hidden sm:block">
-                    이것은 하나님께서 그리스도 안에서 그 영에 의해<br class="hidden sm:block">
-                    그분 자신을 우리 안에 분배하심으로<br class="hidden sm:block">
-                    우리의 생명과 본성과 모든 것이 되심으로써<br class="hidden sm:block">
-                    우리가 그리스도를 살고 표현하는 것이다.<br class="hidden sm:block">
-                    이것이 우리의 생활을 지배하는 원칙이 되어야 한다.
-                </p>
-            </div>
-            
-            <div class="w-10 md:w-12 mx-auto border-t border-slate-200"></div>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic" style="color:var(--ink-muted); font-style:italic;">집회 주제가 공개되면 업데이트됩니다.</div>
+      </div>
+      <div class="feast-card-foot">
+        <span style="font-size: 13px; font-weight: 500; color: var(--ink-muted);">준비 중</span>
+      </div>
+    </div>
 
-            <!-- 표어 2 -->
-            <div class="text-center px-1 md:px-2">
-                <p class="text-[0.95rem] sm:text-lg md:text-xl leading-[2.2] sm:leading-loose text-slate-800 serif-font break-keep">
-                    노아는 하나님을 믿었고, 하나님과 동행했으며,<br class="hidden sm:block">
-                    하나님을 기쁘시게 했고, 하나님의 온 존재를 누렸다.
-                </p>
-            </div>
-
-            <div class="w-10 md:w-12 mx-auto border-t border-slate-200"></div>
-                        
-            <!-- 표어 3 -->
-            <div class="text-center px-1 md:px-2">
-                <p class="text-[0.95rem] sm:text-lg md:text-xl leading-[2.2] sm:leading-loose text-slate-800 serif-font break-keep">
-                    돌과 산인 단체적인 그리스도, 신랑과 신부,<br class="hidden sm:block">
-                    하나님의 호흡을 가진 하나님의 단체적인 사람은<br class="hidden sm:block">
-                    그분의 입에서 나오는 호흡, 곧 칼로<br class="hidden sm:block">
-                    적그리스도와 그의 군대를 산산이 부수고 멸절할 것이다.
-                </p>
-            </div>
-
-            <div class="w-10 md:w-12 mx-auto border-t border-slate-200"></div>
-
-            <!-- 표어 4 -->
-            <div class="text-center px-1 md:px-2">
-                <p class="text-[0.95rem] sm:text-lg md:text-xl leading-[2.2] sm:leading-loose text-slate-800 serif-font break-keep">
-                    그리스도 안에서 하나님은 사람 안으로 조성되시고<br class="hidden sm:block">
-                    사람은 하나님 안으로 조성되었으며,<br class="hidden sm:block">
-                    하나님과 사람은 함께 연합되어<br class="hidden sm:block">
-                    하나님-사람이라 불리는 한 실체가 되었다.
-                </p>
-            </div>
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c5">5</div>
+        <div>
+          <div class="feast-type">가을 국제 장로 훈련</div>
+          <div class="feast-name">추후 공개</div>
         </div>
-    </section>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic" style="color:var(--ink-muted); font-style:italic;">집회 주제가 공개되면 업데이트됩니다.</div>
+      </div>
+      <div class="feast-card-foot">
+        <span style="font-size: 13px; font-weight: 500; color: var(--ink-muted);">준비 중</span>
+      </div>
+    </div>
 
-    <!-- Message Accordion Section -->
-    <section id="index" class="bg-slate-100 py-16 md:py-20 px-4 scroll-mt-[60px]">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-10 md:mb-12">
-                <h2 class="text-2xl md:text-3xl font-bold mb-3">메시지 개요</h2>
-                <p class="text-sm md:text-base text-slate-500 mb-4">제목을 클릭하여 주차별 개요를 확인하세요.</p>
-                <div class="flex justify-center items-center space-x-4 text-xs">
-                    <div class="flex items-center"><span class="w-3 h-3 bg-blue-800 rounded-sm mr-1"></span> 활성 (열림)</div>
-                    <div class="flex items-center"><span class="w-3 h-3 bg-slate-300 rounded-sm mr-1"></span> 비활성 (안열림)</div>
-                </div>
-            </div>
-            
-            <div id="accordion-container" class="space-y-3 md:space-y-4">
-                <!-- JavaScript generated content -->
-            </div>
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c6">6</div>
+        <div>
+          <div class="feast-type">추수 감사절 특별 집회</div>
+          <div class="feast-name">추후 공개</div>
         </div>
-    </section>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic" style="color:var(--ink-muted); font-style:italic;">집회 주제가 공개되면 업데이트됩니다.</div>
+      </div>
+      <div class="feast-card-foot">
+        <span style="font-size: 13px; font-weight: 500; color: var(--ink-muted);">준비 중</span>
+      </div>
+    </div>
 
-    <!-- Audio Player Icon Button -->
-    <button id="play-pause-btn" class="fixed bottom-5 left-5 md:bottom-8 md:left-auto md:right-[5.5rem] bg-blue-800 text-white w-12 h-12 md:w-14 md:h-14 text-base md:text-lg rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition z-40">
-        <i class="fas fa-play pl-1" id="play-icon"></i>
-        <audio id="bg-music" loop crossorigin="anonymous">
-            <!-- 임시 BGM 링크 (기존과 동일하게 유지) -->
-            <source id="audio-source" src="https://tk-korea.github.io/2025wintertraining/O%20the%20Joy%20of%20having%20nothing.mp3" type="audio/mpeg">
-        </audio>
-    </button>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 md:py-16 px-4 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto text-center">
-            <div class="flex justify-center mb-5 md:mb-6">
-                <div class="text-center">
-                    <p class="text-white font-bold text-lg md:text-xl italic serif-font">2026 International Chinese-speaking Conference</p>
-                    <p class="text-xs md:text-sm mt-1">Living Stream Ministry</p>
-                </div>
-            </div>
-            <p class="text-xs md:text-sm italic mb-4">"아멘. 주 예수님, 오십시오!" (계 22:20)</p>
-            <div class="w-12 md:w-16 h-px bg-slate-700 mx-auto mb-5 md:mb-6"></div>
-            <p class="text-[0.65rem] md:text-xs">모든 내용은 국제 중국어 특별 집회 (2026.2.13-15) 자료를 바탕으로 작성되었습니다.</p>
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c7">7</div>
+        <div>
+          <div class="feast-type">겨울 훈련</div>
+          <div class="feast-name">추후 공개</div>
         </div>
-    </footer>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic" style="color:var(--ink-muted); font-style:italic;">집회 주제가 공개되면 업데이트됩니다.</div>
+      </div>
+      <div class="feast-card-foot">
+        <span style="font-size: 13px; font-weight: 500; color: var(--ink-muted);">준비 중</span>
+      </div>
+    </div>
 
-    <!-- Back to top button -->
-    <a href="#" id="backToTop" class="fixed bottom-5 right-5 md:bottom-8 md:right-8 bg-blue-800 text-white w-12 h-12 md:w-14 md:h-14 text-base md:text-lg rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition z-40 opacity-0 pointer-events-none">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+  </div>
+</section>
 
-    <script>
-        // 성경 권수 매핑 ( bibleVer: 0=구약, 1=신약 )
-        const bibleMap = {
-            // 구약 (0)
-            "창": [0, 1], "출": [0, 2], "레": [0, 3], "민": [0, 4], "신": [0, 5], "수": [0, 6], "삿": [0, 7], "룻": [0, 8],
-            "삼상": [0, 9], "삼하": [0, 10], "왕상": [0, 11], "왕하": [0, 12], "대상": [0, 13], "대하": [0, 14], "스": [0, 15], "느": [0, 16], "에": [0, 17], "욥": [0, 18], "시": [0, 19], "잠": [0, 20], "전": [0, 21], "아": [0, 22], "사": [0, 23], "렘": [0, 24], "애": [0, 25], "겔": [0, 26], "단": [0, 27], "호": [0, 28], "욜": [0, 29], "암": [0, 30], "옵": [0, 31], "욘": [0, 32], "미": [0, 33], "나": [0, 34], "합": [0, 35], "습": [0, 36], "학": [0, 37], "슥": [0, 38], "말": [0, 39],
-            // 신약 (1)
-            "마": [1, 1], "막": [1, 2], "눅": [1, 3], "요": [1, 4], "행": [1, 5], "롬": [1, 6], "고전": [1, 7], "고후": [1, 8], "갈": [1, 9], "엡": [1, 10], "빌": [1, 11], "골": [1, 12], "살전": [1, 13], "살후": [1, 14], "딤전": [1, 15], "딤후": [1, 16], "딛": [1, 17], "몬": [1, 18], "히": [1, 19], "약": [1, 20], "벧전": [1, 21], "벧후": [1, 22], "요일": [1, 23], "요이": [1, 24], "요삼": [1, 25], "유": [1, 26], "계": [1, 27]
-        };
+<!-- ============ 2025 ============ -->
+<section class="year-section" id="y2025">
+  <div class="year-header">
+    <div class="year-number">2025</div>
+  </div>
+  <div class="feasts-grid">
 
-        // 2026 국제 중국어 특별 집회 메시지 데이터
-        const messages = [
-            { id: 1, title: "메시지 1: 시대를 바꾸도록 시대의 이상에 따라 생활하고 일함", outlines: [
-                "Ⅰ. 노아와 다니엘과 욥은 우리가 어떻게 하나님의 경륜을 이루도록 생명의 노선에서 이기는 생활을 할 수 있는지를 계시하는 본들이다. 그 길은 시대를 바꾸도록 시대의 이상에 따라 생활하고 일하는 것이다 — 겔 14:14, 20, 창 2:9, 계 2:7, 22:1-2, 마 24:37-39, 45-51, 단 2:34-35, 행 26:19, 딤후 4:8.",
-                "Ⅱ. 노아와 다니엘과 욥의 생활은 삼일 하나님께서 그분의 영원한 경륜을 이루시도록 그분 자신을 그분께 선택받고 구속받은 사람들 안으로 분배하시고 일해 넣으시는 것을 계시한다. 성경 전체는 통제하는 원칙에 따라 기록되었는데, 그 원칙은 바로 우리가 삼일 하나님을 체험하고 누리고 표현함으로 그분의 신성한 경륜을 이루도록, 삼일 하나님께서 그분 자신을 우리 안으로 분배하시는 것이다 — 비교 딤전 1:3-4, 엡 3:2, 벧전 4:10, 시 36:8-9, 고후 13:14, 엡 3:16-19.",
-                "Ⅲ. “그러나 노아는 여호와 앞에 은총을 입었다.” — 창 6:8.",
-                "Ⅳ. 다니엘은 우리가 반드시 시간을 아껴 하나님의 최고의 보배이신 그리스도를 누려야 함을 우리에게 보여 준다. 이렇게 그리스도를 누릴 때, 우리는 그분으로 조성되어 하나님의 개인적인 보물인 보배로운 사람들, 심지어 보배 자체가 된다 — 단 9:23, 10:11, 19, 벧전 2:7, 출 19:4-6.",
-                "Ⅴ. “그때 여호와께서… 욥에게 응답하여 말씀하셨다.”(욥 38:1), “그러자 욥이 여호와께 응답하여 말하였다.”(42:1), “여호와께서 욥을 사로잡혔던 데서 돌아오게 하시고”(10상절)."
-            ]},
-            { id: 2, title: "메시지 2: 노아가 따른 생명의 노선 - 시대를 바꾸는 생활과 일", outlines: [
-                "Ⅰ. 노아는 하나님을 믿었고, 하나님과 동행했으며, 하나님을 기쁘시게 했고, 하나님의 온 존재를 누렸다.",
-                "Ⅱ. 노아의 생활은 시대를 바꾸는 생활이었다 — 비교 빌 1:19-21상.",
-                "Ⅲ. 노아의 일은 시대를 바꾸는 일이었다 — 고전 3:9, 고후 6:1, 마 16:18, 고전 3:12."
-            ]},
-            { id: 3, title: "메시지 3: 다니엘과 그의 동반자들에게서 볼 수 있는 이기는 이들의 승리", outlines: [
-                "Ⅰ. 우리는 주님의 회복의 원칙을 ‘다니엘과 그의 동반자들(하나냐와 미사엘과 아사랴)’에게서 볼 수 있다. 그들은 하나님과 절대적으로 하나 되어 사탄의 책략에 맞서 승리한 이기는 이들이었다 — 단 2:13, 17, 비교 계 17:14, 마 22:14.",
-                "Ⅱ. 다니엘과 그의 동반자들은 귀신적인 음식에 맞서 승리했다 — 단 1장.",
-                "Ⅲ. 다니엘과 그의 동반자들은 사람들이 거대한 인간 형상을 보지 못하게 하고 인간 역사 속에 있는 신성한 역사인 산산이 부수는 돌을 보지 못하게 하는 마귀적인 눈멀게 함에 맞서 승리했다 — 단 2장.",
-                "Ⅳ. 다니엘과 그의 동반자들은 우상숭배에 대한 회유에 맞서 승리했다 — 단 3장, 비교 마 4:9-10.",
-                "Ⅴ. 다니엘과 그의 동반자들은 사람들이 하늘들의 하나님에 의한 하늘들의 통치를 못 보게 가로막는 덮개에 맞서 승리했다 — 단 4장.",
-                "Ⅵ. 다니엘과 그의 동반자들은 하나님 앞에서 방탕하게 행하며 그분의 거룩함을 모독한 결과에 대한 무지함에 맞서 승리했다 — 단 5장.",
-                "Ⅶ. 다니엘과 그의 동반자들은 이기는 이들이 신실하게 하나님께 경배하는 것을 금지하는 간교함에 맞서 승리했다 — 단 6장."
-            ]},
-            { id: 4, title: "메시지 4: 욥과 두 나무", outlines: [
-                "Ⅰ. 신성한 계시에는 두 나무, 두 근원, 두 길, 두 원칙, 두 완결이 있다.",
-                "Ⅱ. 하나님의 의도는 선과 악의 지식나무의 노선 안에 머무는 욥이 아닌, 생명나무의 노선 안에 머무는 욥을 얻으시려는 것이었다.",
-                "Ⅲ. 우리는 생명나무에 대한 이상, 곧 그리스도 안에서 우리의 음식이 되시는 하나님에 대한 이상이 필요하다 — 창 2:9, 계 22:1-2, 14.",
-                "Ⅳ. 우리가 거듭났을 때, 그리스도는 그분 자신을 생명나무로서 우리 안에 심으셨다 — 요 1:12-13, 3:3, 5-6, 15, 11:25, 15:1, 5."
-            ]},
-            { id: 5, title: "메시지 5: 욥에 대한 하나님의 의도 - 선한 사람이 하나님-사람이 됨", outlines: [
-                "Ⅰ. 성경 육십육 권은 오직 한 가지를 위해 있는데, 그것은 하나님께서 그리스도 안에서 그 영으로서 그분 자신을 우리의 생명과 본성과 모든 것으로 우리 안에 분배하심으로써 우리가 그리스도를 살고 그리스도를 표현하도록 하는 것이다 — 엡 3:16-17상, 빌 1:21상.",
-                "Ⅱ. 욥은 온전하고 올곧고 순전한 자기 자신을 표현하는 선한 사람이었다 — 욥 27:5, 31:6, 32:1.",
-                "Ⅲ. 하나님의 의도는 욥이 하나님-사람이 되어 하나님 자신의 속성들을 표현하는 것이었다 — 욥 22:24-25, 38:1-3.",
-                "Ⅳ. 그리스도 안에서 하나님은 사람 안으로 조성되시고 사람은 하나님 안으로 조성되었으며, 하나님과 사람은 함께 연합되어 하나님-사람이라 불리는 한 실체가 되었다 — 마 1:21, 23, 눅 1:35, 딛 2:13, 딤전 2:5."
-            ]}
-        ];
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c1">1</div>
+        <div>
+          <div class="feast-type">국제 중국어 특별 집회</div>
+          <div class="feast-name">로마서 5장부터 8장까지 (성경의 핵심)</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <button class="outline-toggle" onclick="toggleOutline(this)">
+          개요 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="outline-list">
+          <div class="outline-item"><span class="oi-num">1</span>로마서 5장부터 8장까지에 나오는 생명의 노선과 죽음의 노선</div>
+          <div class="outline-item"><span class="oi-num">2</span>우리가 의롭다 함을 받은 결과 — 우리의 생명이신 그리스도 안에 계신 하나님을 온전히 누림</div>
+          <div class="outline-item"><span class="oi-num">3</span>그리스도의 죽음과 부활과 같은 모양</div>
+          <div class="outline-item"><span class="oi-num">4</span>새 남편</div>
+          <div class="outline-item"><span class="oi-num">5</span>내주하시는 그리스도</div>
+        </div>
+      </div>
+      <div class="feast-card-foot">
+        <a class="feast-link" href="https://tk-korea.github.io/seven_feasts/2025/chinesespeaking/">집회 페이지 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
 
-        // 성경 구절 하이퍼링크 생성 함수
-        function linkifyBible(text) {
-            const keys = Object.keys(bibleMap).sort((a, b) => b.length - a.length);
-            const pattern = new RegExp(`(${keys.join('|')})\\s+(\\d+):(\\d+)(?:-(\\d+))?|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?|(?:,\\s*)(\\d+)(?:-(\\d+))?`, 'g');
-            
-            let lastBook = null;
-            let lastChapter = null;
-            
-            return text.replace(pattern, (match, book, chap, verse, endVerse, c2, v2, ev2, v3, ev3) => {
-                let b, c, v, display;
-                
-                if (book) {
-                    lastBook = book;
-                    lastChapter = chap;
-                    b = book; c = chap; v = verse;
-                    display = match;
-                } else if (v2) {
-                    b = lastBook;
-                    lastChapter = c2;
-                    c = c2; v = v2;
-                    display = match.replace(/^,\s*/, "");
-                } else if (v3) {
-                    b = lastBook;
-                    c = lastChapter;
-                    v = v3;
-                    display = match.replace(/^,\s*/, "");
-                }
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c2">2</div>
+        <div>
+          <div class="feast-type">봄 국제 장로 훈련</div>
+          <div class="feast-name">한마음 한뜻과 사도행전의 중대한 방면들</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <button class="outline-toggle" onclick="toggleOutline(this)">
+          개요 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="outline-list">
+          <div class="outline-item"><span class="oi-num">1</span>사도행전의 계속 — 그리스도의 단체적인 연장</div>
+          <div class="outline-item"><span class="oi-num">2</span>한마음 한뜻</div>
+          <div class="outline-item"><span class="oi-num">3</span>주님의 회복 안의 능력의 세 실질인 기도와 그 영과 말씀으로 한마음 한뜻을 유지함</div>
+          <div class="outline-item"><span class="oi-num">4</span>부활하시고 승천하시고 모든 것을 포함하신 그리스도</div>
+          <div class="outline-item"><span class="oi-num">5</span>교회의 확산을 위해 우리 자신을 주님의 일의 한 흐름 안에 지킴</div>
+          <div class="outline-item"><span class="oi-num">6</span>사도행전에 나타난 은혜</div>
+          <div class="outline-item"><span class="oi-num">7</span>사도행전의 계속 안에서 인간 역사 속에 있는 신성한 역사 안에 계속 삶</div>
+          <div class="outline-item"><span class="oi-num">8</span>신성한 삼일성과 하나님의 왕국</div>
+        </div>
+      </div>
+      <div class="feast-card-foot">
+        <a class="feast-link" href="https://tk-korea.github.io/seven_feasts/2025/springelders/">집회 페이지 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
 
-                if (bibleMap[b]) {
-                    const [ver, op] = bibleMap[b];
-                    const url = `http://rv.or.kr/read_recovery.php?bibleVer=${ver}&bibOutline=&bibleSelOp=${op}&bibChapt=${c}&bibVerse=${v}`;
-                    const link = `<a href="${url}" target="_blank" class="bible-link">${display}</a>`;
-                    return match.startsWith(',') ? `, ${link}` : link;
-                }
-                return match;
-            });
-        }
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c3">3</div>
+        <div>
+          <div class="feast-type">현충일 특별 집회</div>
+          <div class="feast-name">신부를 준비함</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <button class="outline-toggle" onclick="toggleOutline(this)">
+          개요 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="outline-list">
+          <div class="outline-item"><span class="oi-num">1</span>신부 — 주님의 회복의 목표</div>
+          <div class="outline-item"><span class="oi-num">2</span>신부의 건축</div>
+          <div class="outline-item"><span class="oi-num">3</span>신부의 성숙</div>
+          <div class="outline-item"><span class="oi-num">4</span>신부의 아름다움</div>
+          <div class="outline-item"><span class="oi-num">5</span>신부의 의</div>
+          <div class="outline-item"><span class="oi-num">6</span>단체적인 전투원인 신부</div>
+        </div>
+      </div>
+      <div class="feast-card-foot">
+        <a class="feast-link" href="https://tk-korea.github.io/seven_feasts/2025/memorial/">집회 페이지 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
 
-        // 아코디언 생성 함수
-        function renderAccordion() {
-            const container = document.getElementById('accordion-container');
-            messages.forEach(msg => {
-                const details = document.createElement('details');
-                details.className = "accordion-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm";
-                
-                // 추후 자료를 링크할 임시 버튼 구조 (필요시 데이터 url 변경)
-                const prayerButton = `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/M${msg.id}Prayer.html">기도문</span>`;
-                const dayButtons = Array.from({length: 6}, (_, i) => `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/2026/chinesespeaking/M${msg.id}D${i+1}.html">Day ${i+1}</span>`).join('');
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c4">4</div>
+        <div>
+          <div class="feast-type">여름 훈련</div>
+          <div class="feast-name">그리스도를 체험하고 누리고 표현함(3)</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <button class="outline-toggle" onclick="toggleOutline(this)">
+          개요 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="outline-list">
+          <div class="outline-item"><span class="oi-num">25</span>우리의 미덕들과 하나님의 평안과 우리의 비결과 우리에게 능력 주시는 분이신 그리스도</div>
+          <div class="outline-item"><span class="oi-num">26</span>그리스도를 우리의 본으로 알고 취함</div>
+          <div class="outline-item"><span class="oi-num">27</span>모든 것을 포함하신 그리스도를 좋은 땅 곧 우리에게 할당된 몫으로 누림</div>
+          <div class="outline-item"><span class="oi-num">28</span>하나님의 비밀 — 그리스도</div>
+          <div class="outline-item"><span class="oi-num">29</span>거룩함에 있어서 우리를 나무랄 데 없게 해 주는 것</div>
+          <div class="outline-item"><span class="oi-num">30</span>삼일 하나님 안에 있는 교회</div>
+          <div class="outline-item"><span class="oi-num">31</span>많은 아들들을 영광 안으로 이끄시는 구원의 창시자와 선구자</div>
+          <div class="outline-item"><span class="oi-num">32</span>우리 믿음의 창시자이시자 완성자이신 예수님을 주목함</div>
+          <div class="outline-item"><span class="oi-num">33</span>진정한 교회생활을 위해 필요한 최고로 보배로우신 그리스도에 대한 이상</div>
+          <div class="outline-item"><span class="oi-num">34</span>하나님을 따라 목양함</div>
+          <div class="outline-item"><span class="oi-num">35</span>영원한 생명의 교통</div>
+          <div class="outline-item"><span class="oi-num">36</span>참되신 분</div>
+        </div>
+      </div>
+      <div class="feast-card-foot">
+        <a class="feast-link" href="https://tk-korea.github.io/seven_feasts/2025/summertraining/">집회 페이지 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
 
-                details.innerHTML = `
-                    <summary class="flex items-center justify-between p-4 md:p-5 cursor-pointer hover:bg-slate-50 transition">
-                        <div class="flex items-center space-x-3 md:space-x-4 text-left">
-                            <span class="bg-blue-800 text-white w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-xs md:text-sm shrink-0">${msg.id}</span>
-                            <span class="font-bold text-slate-900 text-[0.95rem] sm:text-base md:text-lg leading-snug break-keep pr-2">${msg.title}</span>
-                        </div>
-                        <i class="fas fa-chevron-down text-slate-400 text-sm transition-transform duration-300 ml-1"></i>
-                    </summary>
-                    <div class="p-4 md:p-6 content-inner">
-                        <div class="flex flex-wrap gap-2 mb-6 md:mb-8 pb-5 md:pb-6 border-b border-slate-100">
-                            ${prayerButton}
-                            ${dayButtons}
-                        </div>
-                        <div class="space-y-4 md:space-y-5 text-slate-700 leading-relaxed text-left text-[0.9rem] sm:text-base">
-                            ${msg.outlines.map(line => {
-                                const numMatch = line.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪ]+/);
-                                const num = numMatch ? numMatch[0] : "";
-                                let text = line.replace(num, "").trim().replace(/^[.\s]+/, "");
-                                text = linkifyBible(text);
-                                return `<div class="flex items-start"><span class="roman-num">${num}</span><p class="flex-1">${text}</p></div>`;
-                            }).join('')}
-                        </div>
-                    </div>
-                `;
-                container.appendChild(details);
-            });
-        }
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c5">5</div>
+        <div>
+          <div class="feast-type">가을 국제 장로 훈련</div>
+          <div class="feast-name">마태복음 5장부터 7장까지의 중대한 방면들</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <button class="outline-toggle" onclick="toggleOutline(this)">
+          개요 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="outline-list">
+          <div class="outline-item"><span class="oi-num">1</span>영 안에서 가난하고 마음이 순수할 때 복이 있음</div>
+          <div class="outline-item"><span class="oi-num">2</span>애통하는 사람들과 온유한 사람들과 화평하게 하는 사람들은 복이 있음</div>
+          <div class="outline-item"><span class="oi-num">3</span>왕국 생활에 필수적인 기도</div>
+          <div class="outline-item"><span class="oi-num">4</span>긍휼히 여기는 사람들은 복이 있음</div>
+          <div class="outline-item"><span class="oi-num">5</span>왕국 백성이 홀로 기도하는 체험</div>
+          <div class="outline-item"><span class="oi-num">6</span>우리의 하늘의 아버지께서 온전하신 것같이 온전하게 됨</div>
+          <div class="outline-item"><span class="oi-num">7</span>좁은 문을 통해 들어가고 비좁은 길을 감</div>
+          <div class="outline-item"><span class="oi-num">8</span>하나님의 왕국과 그분의 의를 먼저 추구함</div>
+          <div class="outline-item"><span class="oi-num">9</span>아버지의 뜻을 행함으로 그분의 왕국 안으로 들어감</div>
+        </div>
+      </div>
+      <div class="feast-card-foot">
+        <a class="feast-link" href="https://tk-korea.github.io/seven_feasts/2025/fallelders/">집회 페이지 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
 
-        // 링크 유효성 실시간 확인 함수
-        async function checkLinks() {
-            const buttons = document.querySelectorAll('.day-btn');
-            const checks = Array.from(buttons).map(async (btn) => {
-                const url = btn.getAttribute('data-url');
-                try {
-                    const response = await fetch(url, { method: 'HEAD', mode: 'cors' });
-                    btn.classList.remove('checking');
-                    if (response.ok) {
-                        btn.classList.remove('day-disabled');
-                        btn.classList.add('day-active');
-                        btn.onclick = () => window.open(url, '_blank');
-                    }
-                } catch (error) {
-                    btn.classList.remove('checking');
-                }
-            });
-            await Promise.allSettled(checks);
-        }
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c6">6</div>
+        <div>
+          <div class="feast-type">추수 감사절 특별 집회</div>
+          <div class="feast-name">마태복음에 계시되신 모든 것을 포함하신 그리스도</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <button class="outline-toggle" onclick="toggleOutline(this)">
+          개요 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="outline-list">
+          <div class="outline-item"><span class="oi-num">1</span>살아 있는 별이신 하늘에 속한 그리스도에 대한 최신의, 즉각적인, 살아 있는 이상</div>
+          <div class="outline-item"><span class="oi-num">2</span>의사와 신랑이신 그리스도</div>
+          <div class="outline-item"><span class="oi-num">3</span>하나님께서 주신 왕-구주의 이름인 예수와 임마누엘</div>
+          <div class="outline-item"><span class="oi-num">4</span>과정을 거치신 삼일 하나님의 중심이신 그리스도</div>
+          <div class="outline-item"><span class="oi-num">5</span>우리에게 안식을 주시는 분이신 그리스도</div>
+          <div class="outline-item"><span class="oi-num">6</span>하늘과 땅의 모든 권위를 가진 분이신 그리스도</div>
+        </div>
+      </div>
+      <div class="feast-card-foot">
+        <a class="feast-link" href="https://tk-korea.github.io/seven_feasts/2025/thanksgiving/">집회 페이지 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
 
-        // 오디오 플레이어 로직
-        function initAudioPlayer() {
-            const music = document.getElementById('bg-music');
-            const playPauseBtn = document.getElementById('play-pause-btn');
-            const playIcon = document.getElementById('play-icon');
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c7">7</div>
+        <div>
+          <div class="feast-type">겨울 훈련</div>
+          <div class="feast-name">그리스도를 체험하고 누리고 표현함(4)</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <button class="outline-toggle" onclick="toggleOutline(this)">
+          개요 보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="outline-list">
+          <div class="outline-item"><span class="oi-num">37</span>예수님의 증거를 위한 하나님의 신실한 증인</div>
+          <div class="outline-item"><span class="oi-num">38</span>죽음과 음부의 열쇠를 가지신 그리스도</div>
+          <div class="outline-item"><span class="oi-num">39</span>금등잔대들 가운데를 거니시는 사람의 아들이신 그리스도</div>
+          <div class="outline-item"><span class="oi-num">40</span>사자-어린양</div>
+          <div class="outline-item"><span class="oi-num">41</span>생명나무</div>
+          <div class="outline-item"><span class="oi-num">42</span>영원한 왕이신 그리스도께서 땅을 소유하러 오심</div>
+          <div class="outline-item"><span class="oi-num">43</span>교회들에게 말씀하시는 그 영과 다윗의 열쇠를 가지신 분</div>
+          <div class="outline-item"><span class="oi-num">44</span>사내아이, 하늘에서의 전쟁, 이기는 성도들</div>
+          <div class="outline-item"><span class="oi-num">45</span>이기는 첫 열매들이 따르는 어린양</div>
+          <div class="outline-item"><span class="oi-num">46</span>왕국을 세우시는 분이신 그리스도</div>
+          <div class="outline-item"><span class="oi-num">47</span>어린양-하나님께서 성안에 있는 보좌에 계심</div>
+          <div class="outline-item"><span class="oi-num">48</span>상과 벌을 가지고 오시는 그리스도, 샛별로서 이기는 이들에게 나타나심</div>
+        </div>
+      </div>
+      <div class="feast-card-foot">
+        <a class="feast-link" href="https://tk-korea.github.io/seven_feasts/2025/wintertraining/">집회 페이지 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
 
-            let playPromise = null;
+  </div>
+</section>
 
-            async function playMusic() {
-                try {
-                    playPromise = music.play();
-                    if (playPromise !== undefined) {
-                        await playPromise;
-                        playIcon.className = 'fas fa-pause';
-                        playPauseBtn.classList.add('is-playing');
-                    }
-                } catch (err) {
-                    console.error("재생 오류:", err);
-                    playIcon.className = 'fas fa-play pl-1';
-                    playPauseBtn.classList.remove('is-playing');
-                }
-            }
+<!-- ============ 2024 ============ -->
+<section class="year-section" id="y2024">
+  <div class="year-header">
+    <div class="year-number">2024</div>
+  </div>
+  <div class="feasts-grid">
 
-            playPauseBtn.addEventListener('click', () => {
-                if (music.paused) {
-                    playMusic();
-                } else {
-                    music.pause();
-                    playIcon.className = 'fas fa-play pl-1';
-                    playPauseBtn.classList.remove('is-playing');
-                }
-            });
-        }
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c1">1</div>
+        <div>
+          <div class="feast-type">국제 중국어 특별 집회</div>
+          <div class="feast-name">선한 싸움을 싸우고, 달려야 할 길을 다 달리며, 믿음을 지킴</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic">그리스도에게서 의의 면류관인 보상을 받음</div>
+      </div>
+    </div>
 
-        window.onload = () => {
-            renderAccordion();
-            checkLinks();
-            initAudioPlayer();
-        };
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c2">2</div>
+        <div>
+          <div class="feast-type">봄 국제 장로 훈련</div>
+          <div class="feast-name">그리스도 예수님 안에 있는 은혜로 강해짐</div>
+        </div>
+      </div>
+      <div class="feast-card-body">
+        <div class="feast-topic">귀한 그릇 곧 충분히 준비된 하나님의 사람이 되어 하나님의 경륜의 유일한 사역 안에서 우리의 사역을 완수함</div>
+      </div>
+    </div>
 
-        const backToTopBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            const show = window.pageYOffset > 400;
-            backToTopBtn.style.opacity = show ? '1' : '0';
-            backToTopBtn.style.pointerEvents = show ? 'auto' : 'none';
-        });
-        backToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c3">3</div>
+        <div>
+          <div class="feast-type">현충일 특별 집회</div>
+          <div class="feast-name">그리스도인의 생활</div>
+        </div>
+      </div>
+      <div class="feast-card-body"></div>
+    </div>
 
-        // 폰트 사이즈 조정 로직
-        let currentFontScale = 1.0;
-        function changeFontSize(direction) {
-            if (direction === 0) {
-                currentFontScale = 1.0;
-            } else if (direction === 1 && currentFontScale < 1.5) {
-                currentFontScale += 0.1;
-            } else if (direction === -1 && currentFontScale > 0.7) {
-                currentFontScale -= 0.1;
-            }
-            // 루트 폰트 사이즈를 변경하여 rem 단위를 사용하는 전체 인포그래픽 요소의 크기를 조절합니다.
-            // (top-[40px], text-[14px] 등 픽셀(px) 기반으로 고정된 상단 바는 영향을 받지 않습니다.)
-            document.documentElement.style.fontSize = (16 * currentFontScale) + 'px';
-        }
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c4">4</div>
+        <div>
+          <div class="feast-type">여름 훈련</div>
+          <div class="feast-name">그리스도를 체험하고 누리고 표현함(1)</div>
+        </div>
+      </div>
+      <div class="feast-card-body"></div>
+    </div>
 
-        // 목차 메뉴 토글
-        function toggleMenu() {
-            const menu = document.getElementById('toc-menu');
-            menu.classList.toggle('hidden');
-        }
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c5">5</div>
+        <div>
+          <div class="feast-type">가을 국제 장로 훈련</div>
+          <div class="feast-name">하나님의 왕국의 실재 안에서 삶</div>
+        </div>
+      </div>
+      <div class="feast-card-body"></div>
+    </div>
 
-        // 외부 클릭 시 목차 메뉴 닫기
-        document.addEventListener('click', (e) => {
-            const menu = document.getElementById('toc-menu');
-            const tocBtn = document.querySelector('button[aria-label="목차"]');
-            if (menu && !menu.classList.contains('hidden') && !menu.contains(e.target) && !tocBtn.contains(e.target)) {
-                menu.classList.add('hidden');
-            }
-        });
-    </script>
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c6">6</div>
+        <div>
+          <div class="feast-type">추수 감사절 특별 집회</div>
+          <div class="feast-name">하나님의 경륜을 위해 하나님의 통치 아래서 그리스도인의 생활과 교회생활을 함</div>
+        </div>
+      </div>
+      <div class="feast-card-body"></div>
+    </div>
+
+    <div class="feast-card">
+      <div class="feast-card-head">
+        <div class="feast-order c7">7</div>
+        <div>
+          <div class="feast-type">겨울 훈련</div>
+          <div class="feast-name">그리스도를 체험하고 누리고 표현함(2)</div>
+        </div>
+      </div>
+      <div class="feast-card-body"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 2023 ============ -->
+<section class="year-section" id="y2023">
+  <div class="year-header">
+    <div class="year-number">2023</div>
+  </div>
+  <div class="feasts-grid">
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c1">1</div><div><div class="feast-type">국제 중국어 특별 집회</div><div class="feast-name">주님의 오심을 위해 우리 자신을 준비함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c2">2</div><div><div class="feast-type">봄 국제 장로 훈련</div><div class="feast-name">참다운 교회생활을 위해 모든 것을 포함하신 그리스도를 알고 체험하고 삶</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c3">3</div><div><div class="feast-type">현충일 특별 집회</div><div class="feast-name">빌립보서에 계시된 대로 그리스도를 알고 체험하고 누림</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c4">4</div><div><div class="feast-type">여름 훈련</div><div class="feast-name">주님께서 나타나실 때까지의 주님의 회복의 중심 부담과 현재의 진리에 대한 개관</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c5">5</div><div><div class="feast-type">가을 국제 장로 훈련</div><div class="feast-name">교회에 관한 하나님의 경륜에 따라 생활하고 봉사함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c6">6</div><div><div class="feast-type">추수 감사절 특별 집회</div><div class="feast-name">그리스도를 누리며 성숙에 이르도록 생명이 자람</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c7">7</div><div><div class="feast-type">겨울 훈련</div><div class="feast-name">좋은 땅으로 예표되신 모든 것을 포함하신 그리스도에 대해 수고함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2022 ============ -->
+<section class="year-section" id="y2022">
+  <div class="year-header">
+    <div class="year-number">2022</div>
+  </div>
+  <div class="feasts-grid">
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c1">1</div><div><div class="feast-type">국제 중국어 특별 집회</div><div class="feast-name">하나님의 경륜 안에 있는 하나님의 은혜</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c2">2</div><div><div class="feast-type">봄 국제 장로 훈련</div><div class="feast-name">믿음 안에 있는 하나님의 경륜</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c3">3</div><div><div class="feast-type">현충일 특별 집회</div><div class="feast-name">생명나무이신 그리스도를 누리는 길을 취함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c4">4</div><div><div class="feast-type">여름 훈련</div><div class="feast-name">열왕기상하 결정 연구</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c5">5</div><div><div class="feast-type">가을 국제 장로 훈련</div><div class="feast-name">그리스도의 몸인 교회의 유기적인 건축을 위하여 주님을 사랑하고 서로를 사랑함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c6">6</div><div><div class="feast-type">추수 감사절 특별 집회</div><div class="feast-name">신성한 경륜을 위한 신성한 삼일성의 신성한 분배</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c7">7</div><div><div class="feast-type">겨울 훈련</div><div class="feast-name">역대기상하, 에스라기, 느헤미야기, 에스더기 결정 연구</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2021 ============ -->
+<section class="year-section" id="y2021">
+  <div class="year-header">
+    <div class="year-number">2021</div>
+  </div>
+  <div class="feasts-grid">
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c1">1</div><div><div class="feast-type">국제 중국어 특별 집회</div><div class="feast-name">그리스도의 몸인 교회의 내재적이고도 유기적인 건축</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c2">2</div><div><div class="feast-type">봄 국제 장로 훈련</div><div class="feast-name">교회생활의 회복을 위한 핵심 요인들</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c3">3</div><div><div class="feast-type">현충일 특별 집회</div><div class="feast-name">진리를 알고, 진리에 대해 절대적이며, 악한 이 시대에서 진리를 선포함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c4">4</div><div><div class="feast-type">여름 훈련</div><div class="feast-name">여호수아기, 사사기, 룻기 결정 연구</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c5">5</div><div><div class="feast-type">가을 국제 장로 훈련</div><div class="feast-name">하나님의 필요와 주님의 회복 안의 현재의 필요들을 충족함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c6">6</div><div><div class="feast-type">추수 감사절 특별 집회</div><div class="feast-name">신성한 삼일성 안에서 신성한 삼일성과 함께 삶</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c7">7</div><div><div class="feast-type">겨울 훈련</div><div class="feast-name">사무엘기상하 결정 연구</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2020 ============ -->
+<section class="year-section" id="y2020">
+  <div class="year-header">
+    <div class="year-number">2020</div>
+  </div>
+  <div class="feasts-grid">
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c1">1</div><div><div class="feast-type">국제 중국어 특별 집회</div><div class="feast-name">아가</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c2">2</div><div><div class="feast-type">봄 국제 장로 훈련</div><div class="feast-name">하나님의 뜻</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c3">3</div><div><div class="feast-type">현충일 특별 집회</div><div class="feast-name">세계정세와 주님의 회복에 관한 적시의 말씀</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c4">4</div><div><div class="feast-type">여름 훈련</div><div class="feast-name">예레미야서, 예레미야애가 결정 연구</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c5">5</div><div><div class="feast-type">가을 국제 장로 훈련</div><div class="feast-name">그리스도인의 생활과 교회생활과 이 시대의 종결과 주님의 오심</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c6">6</div><div><div class="feast-type">추수 감사절 특별 집회</div><div class="feast-name">모든 것을 포함한 광대하신 그리스도께서 한 새사람을 위해 문화를 대치하심</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c7">7</div><div><div class="feast-type">겨울 훈련</div><div class="feast-name">욥기, 잠언, 전도서 결정 연구</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2019 ============ -->
+<section class="year-section" id="y2019">
+  <div class="year-header">
+    <div class="year-number">2019</div>
+  </div>
+  <div class="feasts-grid">
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c1">1</div><div><div class="feast-type">국제 중국어 특별 집회</div><div class="feast-name">몸의 원칙들을 지킴으로써 그리스도의 몸의 실재 안에서 삶</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c2">2</div><div><div class="feast-type">봄 국제 장로 훈련</div><div class="feast-name">그리스도인의 생활과 교회생활에서의 하나님의 왕국의 발전</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c3">3</div><div><div class="feast-type">현충일 특별 집회</div><div class="feast-name">그리스도를 체험함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c4">4</div><div><div class="feast-type">여름 훈련</div><div class="feast-name">민수기 결정 연구 (2)</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c5">5</div><div><div class="feast-type">가을 국제 장로 훈련</div><div class="feast-name">사람을 창조하신 하나님의 목적을 성취하는 한 새사람</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c6">6</div><div><div class="feast-type">추수 감사절 특별 집회</div><div class="feast-name">모든 것을 포함하신 광대하신 그리스도를 체험함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c7">7</div><div><div class="feast-type">겨울 훈련</div><div class="feast-name">신명기 결정 연구</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2018 ============ -->
+<section class="year-section" id="y2018">
+  <div class="year-header">
+    <div class="year-number">2018</div>
+  </div>
+  <div class="feasts-grid">
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c1">1</div><div><div class="feast-type">국제 중국어 특별 집회</div><div class="feast-name">주님의 회복의 목표 — 한 새사람을 산출함</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c2">2</div><div><div class="feast-type">봄 국제 장로 훈련</div><div class="feast-name">교회생활 안에서 교회생활을 위해 그리스도를 우리의 인격으로 취하고 그리스도를 삶</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c3">3</div><div><div class="feast-type">현충일 특별 집회</div><div class="feast-name">새사람인 교회의 영적 전쟁</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c4">4</div><div><div class="feast-type">여름 훈련</div><div class="feast-name">레위기 결정 연구 (2)</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c5">5</div><div><div class="feast-type">가을 국제 장로 훈련</div><div class="feast-name">부활하시고 승천하시고 모든 것을 포함하신 그리스도를 하나님의 왕국의 발전으로서 번식시킴</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c6">6</div><div><div class="feast-type">추수 감사절 특별 집회</div><div class="feast-name">그리스도의 몸의 실재</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+    <div class="feast-card">
+      <div class="feast-card-head"><div class="feast-order c7">7</div><div><div class="feast-type">겨울 훈련</div><div class="feast-name">민수기 결정 연구 (1)</div></div></div>
+      <div class="feast-card-body"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>7차 집회를 풍성히 누리기 위한 페이지 &middot; <a href="https://www.kgbr.co.kr/members/views/search_book_mr_list.php" target="_blank">한국복음서원 개요 보기</a></p>
+</footer>
+
+<script>
+function toggleOutline(btn) {
+  const list = btn.nextElementSibling;
+  list.classList.toggle('show');
+  btn.classList.toggle('open');
+  btn.textContent = list.classList.contains('show') ? '개요 닫기' : '개요 보기';
+  // re-add SVG
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '2');
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', 'M6 9l6 6 6-6');
+  svg.appendChild(path);
+  btn.appendChild(svg);
+}
+
+// Year nav active state
+const sections = document.querySelectorAll('.year-section');
+const navLinks = document.querySelectorAll('.year-nav a');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const id = entry.target.id;
+      const link = document.querySelector(`.year-nav a[href="#${id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+// Smooth scroll
+document.querySelectorAll('.year-nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
 </body>
 </html>
