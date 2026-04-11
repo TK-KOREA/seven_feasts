@@ -32,17 +32,6 @@
             background-position: center;
         }
 
-        .motto-card {
-            border-left: 4px solid var(--accent);
-            background: white;
-            transition: all 0.3s ease;
-        }
-
-        .motto-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
         /* Accordion Styles */
         details summary::-webkit-details-marker { display: none; }
         details[open] summary i { transform: rotate(180deg); }
@@ -145,7 +134,7 @@
                     <span class="font-bold text-lg md:text-xl tracking-tight text-slate-900 serif-font">2026 국제 중국어 특별 집회</span>
                 </div>
                 <div class="hidden lg:flex space-x-8 font-medium text-sm">
-                    <a href="#motto" class="hover:text-blue-700 transition">훈련 표어</a>
+                    <a href="#motto" class="hover:text-blue-700 transition">집회 표어</a>
                     <a href="#index" class="hover:text-blue-700 transition">메시지 개요</a>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -169,16 +158,17 @@
         </div>
     </header>
 
-    <!-- Motto Section -->
-    <section id="motto" class="max-w-5xl mx-auto px-4 py-20">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-slate-900 mb-2">집회 표어</h2>
-            <p class="text-slate-500">이번 집회의 핵심 누림을 담은 표어</p>
+    <!-- Motto Section (개선된 디자인) -->
+    <section id="motto" class="max-w-4xl mx-auto px-4 py-24">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">집회 표어</h2>
+            <div class="w-10 h-1 bg-slate-300 mx-auto"></div>
         </div>
         
-        <div class="space-y-6">
-            <div class="motto-card p-8 rounded-r-xl shadow-sm border border-slate-100">
-                <p class="text-lg leading-relaxed serif-font">
+        <div class="space-y-12">
+            <!-- 표어 1 -->
+            <div class="text-center px-2">
+                <p class="text-lg md:text-xl leading-loose text-slate-800 serif-font break-keep">
                     욥기는 육십육 권으로 된 성경이 오직 한 가지를 위해 있음을 계시하는데,<br>
                     이것은 하나님께서 그리스도 안에서 그 영에 의해<br>
                     그분 자신을 우리 안에 분배하심으로<br>
@@ -187,22 +177,34 @@
                     이것이 우리의 생활을 지배하는 원칙이 되어야 한다.
                 </p>
             </div>
-            <div class="motto-card p-8 rounded-r-xl shadow-sm border border-slate-100">
-                <p class="text-lg leading-relaxed serif-font">
+            
+            <div class="w-12 mx-auto border-t border-slate-200"></div>
+
+            <!-- 표어 2 -->
+            <div class="text-center px-2">
+                <p class="text-lg md:text-xl leading-loose text-slate-800 serif-font break-keep">
                     노아는 하나님을 믿었고, 하나님과 동행했으며,<br>
                     하나님을 기쁘시게 했고, 하나님의 온 존재를 누렸다.
                 </p>
             </div>
-                        <div class="motto-card p-8 rounded-r-xl shadow-sm border border-slate-100">
-                <p class="text-lg leading-relaxed serif-font">
+
+            <div class="w-12 mx-auto border-t border-slate-200"></div>
+                        
+            <!-- 표어 3 -->
+            <div class="text-center px-2">
+                <p class="text-lg md:text-xl leading-loose text-slate-800 serif-font break-keep">
                     돌과 산인 단체적인 그리스도, 신랑과 신부,<br>
                     하나님의 호흡을 가진 하나님의 단체적인 사람은<br>
                     그분의 입에서 나오는 호흡, 곧 칼로<br>
                     적그리스도와 그의 군대를 산산이 부수고 멸절할 것이다.
                 </p>
             </div>
-            <div class="motto-card p-8 rounded-r-xl shadow-sm border border-slate-100">
-                <p class="text-lg leading-relaxed serif-font">
+
+            <div class="w-12 mx-auto border-t border-slate-200"></div>
+
+            <!-- 표어 4 -->
+            <div class="text-center px-2">
+                <p class="text-lg md:text-xl leading-loose text-slate-800 serif-font break-keep">
                     그리스도 안에서 하나님은 사람 안으로 조성되시고<br>
                     사람은 하나님 안으로 조성되었으며,<br>
                     하나님과 사람은 함께 연합되어<br>
@@ -352,8 +354,8 @@
                 details.className = "accordion-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm";
                 
                 // 추후 자료를 링크할 임시 버튼 구조 (필요시 데이터 url 변경)
-                const prayerButton = `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/2026conference/W${msg.id}Prayer.html">기도문</span>`;
-                const dayButtons = Array.from({length: 6}, (_, i) => `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/2026conference/W${msg.id}D${i+1}.html">Day ${i+1}</span>`).join('');
+                const prayerButton = `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/M${msg.id}Prayer.html">기도문</span>`;
+                const dayButtons = Array.from({length: 6}, (_, i) => `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/2026/chinesespeaking/M${msg.id}D${i+1}.html">Day ${i+1}</span>`).join('');
 
                 details.innerHTML = `
                     <summary class="flex items-center justify-between p-5 cursor-pointer hover:bg-slate-50 transition">
@@ -372,7 +374,7 @@
                             ${msg.outlines.map(line => {
                                 const numMatch = line.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪ]+/);
                                 const num = numMatch ? numMatch[0] : "";
-                                let text = line.replace(num, "").trim().replace(/^[\.\s]+/, "");
+                                let text = line.replace(num, "").trim().replace(/^[.\s]+/, "");
                                 text = linkifyBible(text);
                                 return `<div class="flex items-start"><span class="roman-num">${num}</span><p>${text}</p></div>`;
                             }).join('')}
@@ -383,7 +385,7 @@
             });
         }
 
-        // 링크 유효성 실시간 확인 함수 (임시 주소이므로 현재는 전부 비활성 처리될 것입니다)
+        // 링크 유효성 실시간 확인 함수
         async function checkLinks() {
             const buttons = document.querySelectorAll('.day-btn');
             const checks = Array.from(buttons).map(async (btn) => {
