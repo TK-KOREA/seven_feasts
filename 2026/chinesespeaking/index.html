@@ -398,7 +398,7 @@
                 
                 // 추후 자료를 링크할 임시 버튼 구조 (필요시 데이터 url 변경)
                 const prayerButton = `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/M${msg.id}Prayer.html">기도문</span>`;
-                const dayButtons = Array.from({length: 6}, (_, i) => `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/2026/chinesespeaking/M${msg.id}D${i+1}.html">Day ${i+1}</span>`).join('');
+                const dayButtons = Array.from({length: 6}, (_, i) => `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/M${msg.id}D${i+1}.html">Day ${i+1}</span>`).join('');
 
                 details.innerHTML = `
                     <summary class="flex items-center justify-between p-4 md:p-5 cursor-pointer hover:bg-slate-50 transition">
