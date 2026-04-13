@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노아, 다니엘, 욥 — 생명의 노선에서 이기는 생활</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --base-font-size: 17px;
+  --font-scale: 1;
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #333333;
+  --border: #e0e0e0;
+  --highlight: #fff176;
+  --highlight-strong: #ffee58;
+  --accent-noah: #1565C0;
+  --accent-noah-light: #e3f2fd;
+  --accent-daniel: #c62828;
+  --accent-daniel-light: #ffebee;
+  --accent-job: #2e7d32;
+  --accent-job-light: #e8f5e9;
+  --accent-idol: #5d4037;
+  --accent-idol-light: #efebe9;
+  --accent-life: #00695c;
+  --accent-life-light: #e0f2f1;
+  --accent-triune: #4a148c;
+  --accent-triune-light: #f3e5f5;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  --topbar-h: 42px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 52px; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: calc(var(--base-font-size) * var(--font-scale));
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── TOP BAR ─── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--topbar-h);
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  z-index: 1000;
+  padding: 0;
+  font-size: 14px !important;
+}
+.topbar * { font-size: 14px !important; }
+.topbar-left {
+  display: flex; align-items: center; flex-shrink: 0;
+  gap: 2px; padding-left: 6px;
+}
+.topbar-btn {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: none; cursor: pointer;
+  color: var(--text); border-radius: 6px;
+  flex-shrink: 0;
+}
+.topbar-btn:hover { background: #f5f5f5; }
+.topbar-btn svg { width: 18px; height: 18px; }
+.topbar-title-wrap {
+  flex: 1; min-width: 0;
+  overflow-x: auto; white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 8px;
+}
+.topbar-title-wrap::-webkit-scrollbar { display: none; }
+.topbar-title-text {
+  font-weight: 600; color: var(--text);
+  font-size: 13px !important;
+}
+.topbar-right {
+  display: flex; align-items: center; flex-shrink: 0;
+  padding-right: 6px; gap: 1px;
+}
+.font-btn {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  background: #f9f9f9; border: 1px solid var(--border);
+  cursor: pointer; color: var(--text); border-radius: 5px;
+  font-weight: 600; font-size: 13px !important;
+  line-height: 1;
+}
+.font-btn:hover { background: #eee; }
+
+/* ─── SIDE NAV ─── */
+.overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3); z-index: 1100;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s;
+}
+.overlay.active { opacity: 1; pointer-events: auto; }
+.sidenav {
+  position: fixed; top: 0; left: -300px; bottom: 0;
+  width: 280px; max-width: 80vw;
+  background: #fff; z-index: 1200;
+  transition: left .3s ease;
+  overflow-y: auto; padding: 16px 0;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+}
+.sidenav.active { left: 0; }
+.sidenav-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 16px 16px; border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.sidenav-header h3 { font-size: 15px; font-weight: 700; }
+.sidenav-close {
+  width: 30px; height: 30px; background: none; border: none;
+  cursor: pointer; font-size: 18px; color: #666; border-radius: 6px;
+}
+.sidenav-close:hover { background: #f5f5f5; }
+.nav-item {
+  display: block; padding: 10px 20px;
+  color: var(--text); text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all .15s;
+}
+.nav-item:hover { background: #f9f9f9; border-left-color: #1565C0; }
+.nav-sub {
+  padding: 7px 20px 7px 36px;
+  font-size: 13px; font-weight: 400;
+  color: var(--text-secondary);
+}
+.nav-divider { height: 1px; background: var(--border); margin: 8px 16px; }
+
+/* Keyword tooltip */
+.kw-wrap { position: relative; display: inline-block; }
+.kw-link {
+  display: inline-block; padding: 6px 14px;
+  background: #f5f5f5; border: 1px solid var(--border);
+  border-radius: 20px; font-size: 13px; font-weight: 500;
+  color: var(--text); cursor: pointer; text-decoration: none;
+  margin: 3px 2px; transition: all .15s;
+}
+.kw-link:hover { background: #e8e8e8; }
+.kw-tooltip {
+  display: none; position: absolute; bottom: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%);
+  background: #333; color: #fff; padding: 10px 14px;
+  border-radius: 8px; font-size: 13px; line-height: 1.5;
+  width: 240px; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: left;
+}
+.kw-tooltip::after {
+  content: ''; position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent; border-top-color: #333;
+}
+.kw-wrap.show-tip .kw-tooltip { display: block; }
+
+/* ─── MAIN CONTENT ─── */
+.main-content {
+  max-width: 720px; margin: 0 auto;
+  padding: calc(var(--topbar-h) + 16px) 16px 40px;
+}
+
+/* Hero */
+.hero {
+  text-align: center; padding: 32px 0 24px;
+}
+.hero-badge {
+  display: inline-block; padding: 4px 14px;
+  background: #f0f0f0; border-radius: 20px;
+  font-size: 12px; font-weight: 600; color: #555;
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: calc(24px * var(--font-scale));
+  font-weight: 800; line-height: 1.35;
+  color: var(--text); margin-bottom: 8px;
+}
+.hero-sub {
+  font-size: calc(14px * var(--font-scale));
+  color: var(--text-secondary); font-weight: 400;
+  line-height: 1.6;
+}
+.hero-ref {
+  font-size: calc(12px * var(--font-scale));
+  color: #888; margin-top: 8px;
+}
+
+/* Dashboard */
+.dashboard {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; margin: 20px 0 28px;
+}
+.dash-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 12px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  position: relative; overflow: hidden;
+}
+.dash-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.dash-card.noah::before { background: var(--accent-noah); }
+.dash-card.daniel::before { background: var(--accent-daniel); }
+.dash-card.job::before { background: var(--accent-job); }
+.dash-icon { font-size: 28px; margin-bottom: 6px; }
+.dash-name {
+  font-size: calc(14px * var(--font-scale));
+  font-weight: 700; margin-bottom: 2px;
+}
+.dash-role {
+  font-size: calc(11px * var(--font-scale));
+  color: var(--text-secondary); line-height: 1.4;
+}
+
+/* Flow connector */
+.flow-section { margin: 0 0 28px; }
+.flow-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; padding: 14px 16px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+  border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+.flow-step {
+  display: flex; align-items: center; gap: 6px;
+  font-size: calc(12px * var(--font-scale));
+  font-weight: 600; color: var(--text-secondary);
+}
+.flow-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.flow-arrow { color: #bbb; font-size: 14px; flex-shrink: 0; }
+
+/* Section */
+.section { margin-bottom: 16px; }
+.section-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow .2s;
+}
+.section-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+/* Accordion header */
+.acc-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px; cursor: pointer;
+  user-select: none; transition: background .15s;
+}
+.acc-header:hover { background: #fafafa; }
+.acc-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0; color: #fff;
+}
+.acc-title-wrap { flex: 1; min-width: 0; }
+.acc-num {
+  font-size: calc(11px * var(--font-scale));
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.acc-title {
+  font-size: calc(16px * var(--font-scale));
+  font-weight: 700; color: var(--text);
+  line-height: 1.4;
+}
+.acc-chevron {
+  width: 24px; height: 24px; flex-shrink: 0;
+  transition: transform .3s; color: #999;
+}
+.acc-header.open .acc-chevron { transform: rotate(180deg); }
+
+/* Accordion body */
+.acc-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease;
+}
+.acc-body-inner {
+  padding: 0 16px 20px;
+}
+
+/* Bible verse box */
+.verse-box {
+  background: #fafafa; border: 1px solid #eee;
+  border-radius: 10px; padding: 14px 14px 14px 40px;
+  margin-bottom: 16px; position: relative;
+  font-size: calc(14px * var(--font-scale));
+  line-height: 1.8; color: var(--text);
+}
+.verse-box .bk-icon {
+  position: absolute; left: 12px; top: 14px;
+  font-size: 16px; color: #888;
+}
+.verse-ref {
+  font-weight: 700; color: var(--text);
+  display: block; margin-bottom: 2px;
+  font-size: calc(13px * var(--font-scale));
+}
+.verse-text {
+  display: block; margin-bottom: 8px;
+}
+.verse-text:last-child { margin-bottom: 0; }
+
+/* Content */
+.content-block {
+  font-size: calc(var(--base-font-size) * var(--font-scale));
+  line-height: 1.85; color: var(--text);
+}
+.content-block p { margin-bottom: 12px; }
+.content-block p:last-child { margin-bottom: 0; }
+
+.hl {
+  background: var(--highlight);
+  padding: 1px 3px; border-radius: 3px;
+  font-weight: 600;
+}
+
+.sub-heading {
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 700; margin: 16px 0 8px;
+  padding-left: 10px;
+  border-left: 3px solid currentColor;
+}
+
+/* Connector line between sections */
+.connector {
+  display: flex; justify-content: center;
+  padding: 4px 0;
+}
+.connector-line {
+  width: 2px; height: 20px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+}
+
+/* ─── KEYWORDS section ─── */
+.keywords-section {
+  margin: 0 0 24px;
+}
+.keywords-wrap {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  justify-content: center; padding: 8px 0;
+}
+
+/* ─── QUIZ ─── */
+.quiz-section {
+  margin: 32px 0;
+}
+.quiz-title-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.quiz-title-bar h2 {
+  font-size: calc(20px * var(--font-scale));
+  font-weight: 800;
+}
+.quiz-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 16px;
+  margin-bottom: 12px; box-shadow: var(--card-shadow);
+}
+.quiz-q-header {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 12px;
+}
+.quiz-badge {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #1565C0; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; flex-shrink: 0;
+}
+.quiz-q-text {
+  font-size: 1rem; font-weight: 600;
+  color: var(--text); line-height: 1.6;
+  flex: 1;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border: 1px solid var(--border);
+  border-radius: 10px; cursor: pointer;
+  transition: all .15s; font-size: 1rem;
+  line-height: 1.5;
+}
+.quiz-opt:hover { background: #f9f9f9; border-color: #ccc; }
+.quiz-opt.selected { border-color: #1565C0; background: #e3f2fd; }
+.quiz-opt.correct { border-color: #2e7d32; background: #e8f5e9; }
+.quiz-opt.wrong { border-color: #c62828; background: #ffebee; }
+.quiz-radio {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid #ccc; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.quiz-opt.selected .quiz-radio { border-color: #1565C0; }
+.quiz-opt.selected .quiz-radio::after {
+  content: ''; width: 10px; height: 10px;
+  background: #1565C0; border-radius: 50%;
+}
+.quiz-opt.correct .quiz-radio { border-color: #2e7d32; }
+.quiz-opt.correct .quiz-radio::after {
+  content: '✓'; font-size: 12px; color: #2e7d32; font-weight: 700;
+}
+.quiz-opt.wrong .quiz-radio { border-color: #c62828; }
+.quiz-opt.wrong .quiz-radio::after {
+  content: '✗'; font-size: 12px; color: #c62828; font-weight: 700;
+}
+.quiz-hint-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: none; border: 1px solid #ddd;
+  padding: 5px 12px; border-radius: 6px;
+  font-size: 0.85rem; color: #666; cursor: pointer;
+  margin-top: 8px; transition: all .15s;
+}
+.quiz-hint-btn:hover { background: #f9f9f9; }
+.quiz-hint {
+  display: none; margin-top: 8px;
+  padding: 10px 14px; background: #fffde7;
+  border: 1px solid #fff9c4; border-radius: 8px;
+  font-size: 0.9rem; color: #555; line-height: 1.6;
+}
+.quiz-hint.show { display: block; }
+.quiz-explanation {
+  display: none; margin-top: 10px;
+  padding: 10px 14px; background: #f1f8e9;
+  border: 1px solid #dcedc8; border-radius: 8px;
+  font-size: 0.9rem; color: #333; line-height: 1.6;
+}
+.quiz-explanation.show { display: block; }
+
+.quiz-submit {
+  display: block; width: 100%;
+  padding: 14px; margin-top: 16px;
+  background: #1565C0; color: #fff;
+  border: none; border-radius: 12px;
+  font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: background .15s;
+}
+.quiz-submit:hover { background: #0d47a1; }
+.quiz-submit:disabled { background: #bbb; cursor: default; }
+.quiz-result {
+  display: none; text-align: center;
+  padding: 24px 16px; background: #e3f2fd;
+  border-radius: 14px; margin-top: 16px;
+}
+.quiz-score {
+  font-size: calc(36px * var(--font-scale));
+  font-weight: 900; color: #1565C0;
+}
+.quiz-feedback {
+  font-size: 1rem; color: var(--text-secondary);
+  margin-top: 6px; line-height: 1.5;
+}
+
+/* ─── CALL TO ACTION (대체된 기도 섹션) ─── */
+.cta-section {
+  margin: 40px 0;
+}
+.cta-card {
+  background: #151e2e;
+  border-radius: 16px;
+  padding: 32px 24px;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+.cta-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 30px 30px; opacity: 0.3; pointer-events: none;
+}
+.cta-title {
+  font-size: calc(22px * var(--font-scale));
+  font-weight: 800; text-align: center;
+  margin-bottom: 30px; position: relative; z-index: 1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  letter-spacing: -0.5px;
+}
+.cta-step {
+  display: flex; align-items: center; gap: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px; border-radius: 12px;
+  margin-bottom: 16px; position: relative; z-index: 1;
+  backdrop-filter: blur(8px);
+  border-left: 4px solid transparent;
+  transition: transform 0.2s;
+}
+.cta-step:hover { transform: translateY(-2px); }
+.cta-step.step-1 { border-left-color: #60a5fa; }
+.cta-step.step-2 { border-left-color: #fbbf24; }
+.cta-step.step-3 { border-left-color: #ef4444; }
+
+.cta-num {
+  font-size: calc(38px * var(--font-scale));
+  font-weight: 900; line-height: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.cta-step.step-1 .cta-num { color: #60a5fa; }
+.cta-step.step-2 .cta-num { color: #fbbf24; }
+.cta-step.step-3 .cta-num { color: #ef4444; }
+
+.cta-text-wrap { flex: 1; }
+.cta-head {
+  font-size: calc(18px * var(--font-scale));
+  font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px;
+}
+.cta-desc {
+  font-size: calc(14px * var(--font-scale));
+  color: #cbd5e1; line-height: 1.5; word-break: keep-all;
+}
+.cta-verse {
+  margin-top: 30px; padding: 18px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px; background: rgba(0,0,0,0.3);
+  font-size: calc(13px * var(--font-scale));
+  color: #94a3b8; text-align: center;
+  line-height: 1.6; word-break: keep-all;
+  position: relative; z-index: 1;
+}
+
+/* ─── ICEBERG INFOGRAPHIC ─── */
+.iceberg-ui {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 32px 24px;
+  margin: 24px 0;
+  position: relative;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+.iceberg-ui * { box-sizing: border-box; }
+.iceberg-title {
+  text-align: center; color: #fff;
+  font-size: calc(17px * var(--font-scale));
+  font-weight: 800; margin-bottom: 32px;
+}
+.ice-levels {
+  position: relative;
+}
+.iceberg-line {
+  position: absolute; left: 9px; top: 20px; bottom: 20px;
+  width: 4px; border-radius: 2px;
+  background: linear-gradient(to bottom, #60a5fa 0%, #fbbf24 50%, #ef4444 100%);
+  z-index: 1;
+}
+.ice-level {
+  position: relative; padding-left: 44px; margin-bottom: 28px; z-index: 2;
+}
+.ice-level:last-child { margin-bottom: 0; }
+.ice-dot {
+  position: absolute; left: 0; top: 18px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #1e293b; border: 4px solid;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+}
+.level-1 .ice-dot { border-color: #60a5fa; box-shadow: 0 0 12px #60a5fa; }
+.level-2 .ice-dot { border-color: #fbbf24; box-shadow: 0 0 12px #fbbf24; }
+.level-3 .ice-dot { border-color: #ef4444; box-shadow: 0 0 12px #ef4444; }
+
+.ice-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 20px;
+  backdrop-filter: blur(8px);
+  transition: transform .2s;
+}
+.ice-card:hover { transform: translateX(4px); }
+.level-1 .ice-card { border-left: 4px solid #60a5fa; }
+.level-2 .ice-card { border-left: 4px solid #fbbf24; }
+.level-3 .ice-card { border-left: 4px solid #ef4444; }
+
+.ice-badge {
+  display: inline-block; padding: 4px 12px; border-radius: 20px;
+  font-size: calc(12px * var(--font-scale)); font-weight: 700;
+  margin-bottom: 10px;
+}
+.level-1 .ice-badge { background: rgba(96,165,250,0.2); color: #93c5fd; }
+.level-2 .ice-badge { background: rgba(251,191,36,0.2); color: #fde68a; }
+.level-3 .ice-badge { background: rgba(239,68,68,0.2); color: #fca5a5; }
+
+.ice-head {
+  font-size: calc(16px * var(--font-scale));
+  color: #fff; font-weight: 800; margin-bottom: 6px;
+}
+.ice-key {
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 700; margin-bottom: 12px;
+}
+.level-1 .ice-key { color: #60a5fa; }
+.level-2 .ice-key { color: #fbbf24; }
+.level-3 .ice-key { color: #ef4444; }
+
+.ice-desc {
+  font-size: calc(14px * var(--font-scale));
+  color: #cbd5e1; line-height: 1.6; margin-bottom: 0 !important; word-break: keep-all;
+}
+
+.waterline-ui {
+  position: relative;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(96,165,250,0.5), rgba(96,165,250,0.5) 12px, transparent 12px, transparent 24px);
+  margin: 4px -24px 28px -24px;
+  z-index: 0;
+}
+.waterline-label {
+  position: absolute; right: 24px; top: -10px;
+  background: #1e293b; color: #60a5fa; padding: 0 10px;
+  font-size: calc(12px * var(--font-scale)); font-weight: 700;
+  letter-spacing: 1px; z-index: 1;
+}
+
+/* Section label colors */
+.theme-idol .acc-icon { background: var(--accent-idol); }
+.theme-idol .acc-num { color: var(--accent-idol); }
+.theme-idol .sub-heading { color: var(--accent-idol); }
+.theme-life .acc-icon { background: var(--accent-life); }
+.theme-life .acc-num { color: var(--accent-life); }
+.theme-life .sub-heading { color: var(--accent-life); }
+.theme-triune .acc-icon { background: var(--accent-triune); }
+.theme-triune .acc-num { color: var(--accent-triune); }
+.theme-triune .sub-heading { color: var(--accent-triune); }
+.theme-noah .acc-icon { background: var(--accent-noah); }
+.theme-noah .acc-num { color: var(--accent-noah); }
+.theme-noah .sub-heading { color: var(--accent-noah); }
+.theme-daniel .acc-icon { background: var(--accent-daniel); }
+.theme-daniel .acc-num { color: var(--accent-daniel); }
+.theme-daniel .sub-heading { color: var(--accent-daniel); }
+.theme-job .acc-icon { background: var(--accent-job); }
+.theme-job .acc-num { color: var(--accent-job); }
+.theme-job .sub-heading { color: var(--accent-job); }
+
+/* Mobile */
+@media (max-width: 480px) {
+  .main-content { padding-left: 10px; padding-right: 10px; }
+  .dashboard { grid-template-columns: 1fr; gap: 8px; }
+  .flow-bar { flex-direction: column; gap: 4px; padding: 12px; }
+  .flow-arrow { transform: rotate(90deg); }
+  .hero h1 { font-size: calc(20px * var(--font-scale)); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <button class="topbar-btn" onclick="toggleNav()" aria-label="목차">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <a href="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/" class="topbar-btn" aria-label="홈">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h3v-5h6v5h3a1 1 0 001-1V10"/></svg>
+    </a>
+  </div>
+  <div class="topbar-title-wrap">
+    <span class="topbar-title-text">노아, 다니엘, 욥 — 생명의 노선에서 이기는 생활</span>
+  </div>
+  <div class="topbar-right">
+    <button class="font-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-btn" onclick="adjustFont(0)">가</button>
+    <button class="font-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="toggleNav()"></div>
+
+<!-- SIDE NAV -->
+<nav class="sidenav" id="sidenav">
+  <div class="sidenav-header">
+    <h3>📑 목차</h3>
+    <button class="sidenav-close" onclick="toggleNav()">✕</button>
+  </div>
+  <a class="nav-item" href="#hero" onclick="toggleNav()">📌 제목</a>
+  <a class="nav-item" href="#dashboard" onclick="toggleNav()">📊 대시보드</a>
+  <a class="nav-item" href="#keywords" onclick="toggleNav()">🔑 키워드</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:700;" href="#sec-idol" onclick="toggleNav()">핵심요점</a>
+  <a class="nav-item nav-sub" href="#sec-idol" onclick="toggleNav()">① 마음속 우상 — 하나님과 멀어지는 원인</a>
+  <a class="nav-item nav-sub" href="#sec-life" onclick="toggleNav()">② 생명의 노선 — 하나님 자신이 생명</a>
+  <a class="nav-item nav-sub" href="#sec-triune" onclick="toggleNav()">③ 삼일 하나님의 분배 — 통제하는 원칙</a>
+  <a class="nav-item nav-sub" href="#sec-noah" onclick="toggleNav()">④ 노아 → 아버지 — 신실하신 언약의 하나님</a>
+  <a class="nav-item nav-sub" href="#sec-daniel" onclick="toggleNav()">⑤ 다니엘 → 아들 — 산산이 부수는 돌</a>
+  <a class="nav-item nav-sub" href="#sec-job" onclick="toggleNav()">⑥ 욥 → 그 영 — 하나님을 봄으로 변화됨</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" href="#quiz" onclick="toggleNav()">📝 퀴즈</a>
+  <a class="nav-item" href="#call-to-action" onclick="toggleNav()">📣 부름에 응답하기</a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main-content" id="mainContent">
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-badge">2026 국제중국어 1주 1,2일</div>
+  <h1>노아, 다니엘, 욥<br><span style="font-weight:400;font-size:0.75em;">생명의 노선에서 이기는 생활</span></h1>
+  <p class="hero-sub">삼일 하나님께서 선택받고 구속받은 사람들 안으로<br>그분 자신을 분배하시어 시대를 전환하는 이기는 이들의 본</p>
+  <p class="hero-ref">겔 14:14, 20 | 시 36:8-9 | 단 2:34-35 | 욥 42:5-6</p>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+  <div class="dashboard">
+    <div class="dash-card noah">
+      <div class="dash-icon">🌈</div>
+      <div class="dash-name" style="color:var(--accent-noah);">노아</div>
+      <div class="dash-role"><b>아버지</b> 하나님<br>신실하신 언약</div>
+    </div>
+    <div class="dash-card daniel">
+      <div class="dash-icon">🪨</div>
+      <div class="dash-name" style="color:var(--accent-daniel);">다니엘</div>
+      <div class="dash-role"><b>아들</b> 그리스도<br>산산이 부수는 돌</div>
+    </div>
+    <div class="dash-card job">
+      <div class="dash-icon">👁️</div>
+      <div class="dash-name" style="color:var(--accent-job);">욥</div>
+      <div class="dash-role"><b>영</b> 하나님<br>봄으로 변화됨</div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow-section">
+  <div class="flow-bar">
+    <div class="flow-step"><div class="flow-dot" style="background:var(--accent-idol)"></div>우상 제거</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-dot" style="background:var(--accent-life)"></div>생명의 길</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-dot" style="background:var(--accent-triune)"></div>삼일 하나님 분배</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-dot" style="background:#f57c00"></div>시대 전환</div>
+  </div>
+</section>
+
+<!-- KEYWORDS -->
+<section class="keywords-section" id="keywords">
+  <div class="keywords-wrap">
+    <div class="kw-wrap">
+      <span class="kw-link" onclick="toggleKw(this)">우상</span>
+      <div class="kw-tooltip">하나님 외에 우리의 마음을 차지하는 모든 것. 세상의 쾌락, 종교적 미신, 자기 의와 자만심 등 하나님과 우리 사이에 거리를 두게 하는 것.</div>
+    </div>
+    <div class="kw-wrap">
+      <span class="kw-link" onclick="toggleKw(this)">생명나무</span>
+      <div class="kw-tooltip">에덴동산에서 시작하여 계시록까지 이어지는 하나님의 상징. 하나님은 한 그루의 나무로서 사람이 와서 받아들이고 누릴 수 있게 하심.</div>
+    </div>
+    <div class="kw-wrap">
+      <span class="kw-link" onclick="toggleKw(this)">삼일 하나님</span>
+      <div class="kw-tooltip">아버지(근원·계획), 아들(통로·성취), 영(분배·적용). 한 분 하나님이시며, 사람 안에 들어오시기 위해 삼일이 되심.</div>
+    </div>
+    <div class="kw-wrap">
+      <span class="kw-link" onclick="toggleKw(this)">분배</span>
+      <div class="kw-tooltip">삼일 하나님께서 그분 자신을 선택받고 구속받은 사람들 안으로 일해 넣으시는 것. 성경 전체의 통제하는 원칙.</div>
+    </div>
+    <div class="kw-wrap">
+      <span class="kw-link" onclick="toggleKw(this)">무지개</span>
+      <div class="kw-tooltip">하나님의 신실하심의 상징. 삼원색(파랑·빨강·노랑)은 하나님의 의·거룩함·영광을 상징함.</div>
+    </div>
+    <div class="kw-wrap">
+      <span class="kw-link" onclick="toggleKw(this)">돌</span>
+      <div class="kw-tooltip">사람의 손을 대지 않고 떠내어진 돌. 그리스도 자신을 가리킴. 인간 정부의 총체를 산산이 부수고 큰 산(하나님의 왕국)이 됨.</div>
+    </div>
+    <div class="kw-wrap">
+      <span class="kw-link" onclick="toggleKw(this)">변화</span>
+      <div class="kw-tooltip">하나님을 뵘으로써 새로운 요소가 우리 안으로 들어오고 옛 요소가 배출되는 신진대사의 과정. 하나님-사람이신 그리스도의 형상으로 변화됨.</div>
+    </div>
+    <div class="kw-wrap">
+      <span class="kw-link" onclick="toggleKw(this)">이기는 이</span>
+      <div class="kw-tooltip">시대의 모든 우상들을 이기고 생명의 노선 위를 걸어가는 사람들. 하나님의 경륜을 이루어 시대를 전환하는 자.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SECTION 1: 우상 ══════ -->
+<section class="section theme-idol" id="sec-idol">
+  <div class="section-card">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon">⚠️</div>
+      <div class="acc-title-wrap">
+        <div class="acc-num">요점 1</div>
+        <div class="acc-title">마음속 우상 — 하나님과 멀어지는 원인</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="acc-body">
+      <div class="acc-body-inner">
+
+        <div class="verse-box">
+          <span class="bk-icon">🔖</span>
+          <span class="verse-ref">겔 14:3-5</span>
+          <span class="verse-text">"사람의 아들아, 이 사람들은 자기들 <b>마음에 우상들</b>을 두고, 자기들을 죄악에 빠지게 하는 <b>걸림돌</b>을 제 얼굴 앞에 두었다. 그런데도 내가 그들의 요청을 받아들여야만 하겠느냐?"</span>
+          <span class="verse-ref">겔 14:14</span>
+          <span class="verse-text">"노아와 다니엘과 욥, 이 세 사람이 그 가운데 있다 하더라도, 그들은 <b>자기 의로 말미암아 오직 자기 혼만 건져 낼 것</b>이다. 주 여호와의 선포이다."</span>
+        </div>
+
+        <div class="content-block">
+          <p>이스라엘 사람들은 우상을 겉으로만 숭배하는 데 그치지 않았습니다. 이 우상들을 <span class="hl">그들의 마음속에</span> 품었습니다. 이러한 우상 때문에 그들은 하나님과의 관계가 멀어졌습니다.</p>
+
+          <p class="sub-heading">빙산 모델로 본 세 시대, 세 종류의 우상</p>
+          <p>이 세 사람은 <span class="hl">서로 다른 시대</span>에 살았으며, 우상이라는 빙산(Iceberg)의 각기 다른 층위에 있는 우상들과 맞서야 했습니다.</p>
+          
+          <div class="iceberg-ui">
+            <div class="iceberg-title">진단: 우리 마음을 차지하는 우상의 재정의</div>
+            
+            <div class="ice-levels">
+              <div class="iceberg-line"></div>
+  
+              <div class="ice-level level-1">
+                <div class="ice-dot"></div>
+                <div class="ice-card">
+                  <div class="ice-badge">노아의 시대</div>
+                  <div class="ice-head">수면 위 (표면적 우상)</div>
+                  <div class="ice-key">세상의 쾌락, 물질주의, 육체의 정욕</div>
+                  <p class="ice-desc">눈에 띄게 드러나는 행위적·물질적 타락으로, 사람들이 먹고 마시며 세상의 유흥과 죄악에 완전히 취해 있던 상태입니다.</p>
+                </div>
+              </div>
+  
+              <div class="waterline-ui"><div class="waterline-label">수면 (Waterline)</div></div>
+  
+              <div class="ice-level level-2">
+                <div class="ice-dot"></div>
+                <div class="ice-card">
+                  <div class="ice-badge">다니엘의 시대</div>
+                  <div class="ice-head">수면 바로 아래 (종교적 우상)</div>
+                  <div class="ice-key">다신교, 종교적 미신, 거짓 신의 숭배</div>
+                  <p class="ice-desc">문화와 환경을 통해 정신을 지배하는 미혹으로, 바빌론 제국처럼 하나님 자리를 거짓 신과 종교로 대체한 상태입니다.</p>
+                </div>
+              </div>
+  
+              <div class="ice-level level-3">
+                <div class="ice-dot"></div>
+                <div class="ice-card">
+                  <div class="ice-badge">욥의 시대</div>
+                  <div class="ice-head">심연 (내면적 우상)</div>
+                  <div class="ice-key">자기 의, 자만심, 스스로의 순전함</div>
+                  <p class="ice-desc">가장 깊은 곳에 숨겨져 있어 깨닫기 어려운 치명적인 우상입니다. 스스로의 의로움과 도덕성에 만족하며 이를 숭배하는 마음의 태도입니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="sub-heading">우상의 본질</p>
+          <p>하나님 외에 <span class="hl">우리의 마음을 차지하고, 하나님과 우리 사이를 멀어지게 하는 모든 것</span>이 곧 우상입니다. 세상의 오락이나 죄악이든, 종교적인 미혹이나 미신이든, 아니면 사람 마음속의 자기 의와 자만심이든지 간에, 만약 그러한 것들이 우리를 하나님에게서 떠나게 한다면 그것들은 모두 우상입니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="connector"><div class="connector-line"></div></div>
+
+<!-- ══════ SECTION 2: 생명의 노선 ══════ -->
+<section class="section theme-life" id="sec-life">
+  <div class="section-card">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon">🌿</div>
+      <div class="acc-title-wrap">
+        <div class="acc-num">요점 2</div>
+        <div class="acc-title">생명의 노선 — 하나님 자신이 생명</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="acc-body">
+      <div class="acc-body-inner">
+
+        <div class="verse-box">
+          <span class="bk-icon">🔖</span>
+          <span class="verse-ref">시 16:11</span>
+          <span class="verse-text">"주님께서 <b>생명의 길</b>을 저에게 알려 주시리니 / 주님의 임재 안에는 <b>충만한 기쁨</b>이 있고 / 주님의 오른편에는 영원한 즐거움이 있습니다."</span>
+          <span class="verse-ref">시 36:8-9</span>
+          <span class="verse-text">"그들은 주님의 집에 있는 <b>기름진 것</b>으로 적셔지며 주님은 그들에게 주님의 <b>기쁨의 강</b>을 마시게 하십니다. <b>생명의 원천</b>이 주님께 있으니 주님의 <b>빛 안에서</b> 우리는 빛을 봅니다."</span>
+          <span class="verse-ref">창 2:9</span>
+          <span class="verse-text">"여호와 하나님은 그 땅에 보기 즐겁고 먹기 좋은 온갖 나무를 자라게 하셨고, 동산 한가운데 있는 <b>생명나무</b>와, 선과 악의 지식나무도 자라게 하셨다."</span>
+        </div>
+
+        <div class="content-block">
+          <p>이 세 사람의 생활과 일은 그들이 살던 시대의 한 무리의 사람들과는 완전히 달랐습니다. 그들은 그 시대의 <span class="hl">이기는 이들</span>이라고 할 수 있습니다. 그 시대의 모든 우상들을 이긴 이들, <span class="hl">생명의 노선</span> 위를 걸어간 사람들입니다.</p>
+
+          <p class="sub-heading">생명의 길이란?</p>
+          <p>하나님의 영원한 경륜 안에서 우리는 한 길을 걸어가야 합니다. <span class="hl">율법의 길이 아닙니다. 윤리 도덕의 길이 아닙니다. 종교의 길이 아니라 생명의 길</span>입니다. 생명이란 무엇입니까? 생명은 곧 하나님 자신입니다.</p>
+          <p>성경 전체를 통해 깨닫게 되는 것은 하나님의 영원한 경륜이 한 생명의 길이며 생명의 노선이라는 것입니다. 여기서 중요한 것은 <span class="hl">행위의 문제가 아니요, 윤리 도덕의 문제가 아니라 생명의 문제</span>입니다. 이 생명은 곧 하나님 자신입니다.</p>
+
+          <p class="sub-heading">하나님의 원하심</p>
+          <p>하나님은 한 무리의 사람들이 그분과 가까워지기를 원하시며, 그들 안에 하나님을 받아들이고, 하나님이 그들을 충만하게 하시며, 차지하시고, 스며들게 하여 <span class="hl">그들의 모든 것이 되게 하기를 원하십니다</span>. 생명의 길, 생명의 노선은 바로 하나님 앞에 나아가 그분과 생명의 관계, 유기적인 관계를 맺는 것입니다.</p>
+          <p>합당한 교회는 그리스도의 기름진 것으로 사람들이 적셔지고, 그 영께서 하나님의 기쁨의 강으로 흐르시며, 생명과 빛의 원천을 발견할 수 있는 집입니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="connector"><div class="connector-line"></div></div>
+
+<!-- ══════ SECTION 3: 삼일 하나님 ══════ -->
+<section class="section theme-triune" id="sec-triune">
+  <div class="section-card">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon">🌊</div>
+      <div class="acc-title-wrap">
+        <div class="acc-num">요점 3</div>
+        <div class="acc-title">삼일 하나님의 분배 — 성경의 통제하는 원칙</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="acc-body">
+      <div class="acc-body-inner">
+
+        <div class="verse-box">
+          <span class="bk-icon">🔖</span>
+          <span class="verse-ref">고후 13:14</span>
+          <span class="verse-text">"주 예수 그리스도의 <b>은혜</b>와 하나님의 <b>사랑</b>과 성령의 <b>교통</b>이 여러분 모두와 함께하기를 바랍니다."</span>
+          <span class="verse-ref">엡 3:16-17</span>
+          <span class="verse-text">"<b>아버지</b>께서 그분의 영광의 풍성을 따라 그분의 <b>영</b>을 통하여 능력으로 여러분을 속사람에 이르도록 강하게 해 주시고, 믿음을 통하여 <b>그리스도</b>께서 여러분의 마음에 거처를 정하시게 하시며"</span>
+        </div>
+
+        <div class="content-block">
+          <p>에스겔은 우리에게 세 인물을 말합니다. 왜 세 사람입니까? 우리의 하나님이 <span class="hl">삼일 하나님</span>이시기 때문입니다!</p>
+
+          <p class="sub-heading">삼일 하나님의 세 방면</p>
+          <p>그분은 <b>아버지</b>이시며, <b>아들</b>이시며, <b>영</b>이십니다. 아버지로서 그분은 <span class="hl">근원</span>이시고, 아들로서 그분은 <span class="hl">통로</span>이시며, 영으로서 그분은 <span class="hl">분배하시는 분</span>이십니다. 아버지 하나님은 계획하시고, 아들 하나님은 성취하시며, 영 하나님은 적용하시고 분배하십니다.</p>
+
+          <p class="sub-heading">통제하는 원칙</p>
+          <p>성경 전체는 <span class="hl">통제하는 원칙</span>에 따라 기록되었는데, 그 원칙은 바로 우리가 삼일 하나님을 체험하고 누리고 표현함으로 그분의 신성한 경륜을 이루도록, 삼일 하나님께서 그분 자신을 우리 안으로 분배하시는 것입니다.</p>
+          <p>삼일 하나님께서 그분의 신성한 삼일성 안에서 자신을 우리 안에 분배하시어 우리의 누림이 되게 하시고, 우리의 <span class="hl">생명과 모든 것</span>이 되게 하신 것입니다. 삼일성은 오로지 하나님께서 사람 안에 들어오실 수 있도록 하기 위한 것입니다.</p>
+
+          <p class="sub-heading">주관적인 하나님</p>
+          <p>오늘날 이 삼일 하나님은 여러 과정을 거치시어 결국 완결되셔서, <span class="hl">완결되신 영</span>이 되셨습니다. 이러한 영은 마치 공기처럼, 호흡처럼 편리하신 분이십니다. 언제 어디서나 우리가 받아들이고 누릴 수 있습니다. 하나님은 한 그루의 나무, 생명나무로서 사람이 와서 그를 받아들이고 누릴 수 있게 하셨습니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="connector"><div class="connector-line"></div></div>
+
+<!-- ══════ SECTION 4: 노아 → 아버지 ══════ -->
+<section class="section theme-noah" id="sec-noah">
+  <div class="section-card">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon">🌈</div>
+      <div class="acc-title-wrap">
+        <div class="acc-num">요점 4</div>
+        <div class="acc-title">노아 → 아버지 하나님: 신실하신 영원한 언약</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="acc-body">
+      <div class="acc-body-inner">
+
+        <div class="verse-box">
+          <span class="bk-icon">🔖</span>
+          <span class="verse-ref">창 9:13, 16</span>
+          <span class="verse-text">"내가 구름 속에 나의 <b>무지개</b>를 둘 것이니, 이것이 나와 땅 사이에 세우는 <b>언약의 표시</b>가 될 것이다. … 나 하나님과 … 온갖 살아 있는 동물 사이에 세워진 <b>영원한 언약</b>을 기억하겠다."</span>
+          <span class="verse-ref">고전 1:9</span>
+          <span class="verse-text">"<b>하나님은 신실하십니다</b>. 여러분은 그분을 통하여 그분의 아들 우리 주 예수 그리스도의 교통 안으로 부름받았습니다."</span>
+          <span class="verse-ref">고전 1:30</span>
+          <span class="verse-text">"그리스도 예수님은 하나님에게서 나오셔서 우리에게 <b>지혜</b>, 곧 <b>의</b>와 <b>거룩하게 함</b>과 <b>구속</b>이 되셨습니다."</span>
+        </div>
+
+        <div class="content-block">
+          <p>노아에게서 우리는 <span class="hl">무지개로 상징된 영원한 언약을 지키시는 신실하신 아버지 하나님</span>을 봅니다.</p>
+
+          <p class="sub-heading">노아의 시대 상황</p>
+          <p>노아 시대에 인류가 극도로 타락하고 범죄했습니다. 영원하신 하나님께서조차 사람을 지으신 것을 후회하셨습니다. 사람은 육체가 되었고, 타락하고 부패한 육체가 되었기에 하나님은 그것을 혐오하셨습니다. 그러나 이런 상황 가운데에서 노아라는 한 사람이 하나님 앞에서 은혜를 입었고, 하나님의 마음을 만졌습니다.</p>
+
+          <p class="sub-heading">무지개의 의미 — 삼원색과 하나님의 속성</p>
+          <p>무지개의 기본색은 세 가지 곧 <b>파란색</b>, <b>빨간색</b>, <b>노란색</b>뿐입니다.</p>
+          <p>• <b style="color:var(--accent-noah)">파란색</b>은 하나님의 <span class="hl">의</span>를 상징합니다 (시 89:14 — "의와 정의가 주님의 보좌의 기초라").</p>
+          <p>• <b style="color:var(--accent-daniel)">빨간색</b>은 하나님의 <span class="hl">거룩함</span>을 상징합니다 — 거룩하게 하고 분별시키며 태워 버리는 불.</p>
+          <p>• <b style="color:#f9a825">노란색</b>은 하나님의 <span class="hl">영광</span>을 상징합니다 — 달아오르는 호박금 속의 하나님의 영광.</p>
+
+          <p class="sub-heading">그리스도의 성취</p>
+          <p>주 예수님은 오셔서 십자가에서 죽으심으로 하나님의 의와 거룩함과 영광의 요구를 만족시키셨습니다. 그리스도께서 우리의 의가 되셨고, 우리의 거룩함이 되셨으며, 우리의 구속이 되셨습니다. 모든 것을 포함하신 그리스도를 의와 거룩함과 영광으로 그분께 선택받은 사람들 안으로 분배하여, 그들을 통해 <span class="hl">그리스도의 온 존재가 지혜롭게 전시</span>되게 하는 것입니다.</p>
+
+          <p class="sub-heading">하나님의 신실하심과 적용</p>
+          <p>하나님은 자신을 부정하실 수 없습니다(딤후 2:13). 일단 말씀하시면 하나님은 그분의 말씀을 지키십니다. 하나님 자신이 신실함이십니다. 구름이 몰려올 때, 우리는 하나님의 신실하심도 오기를 요청해야 합니다. 자신이 연약하다고 느낄 때마다 우리는 하나님의 신실하심을 요청하며 이렇게 말씀드려야 합니다. <span class="hl">"오, 하나님, 당신은 신실하십니다. 저는 연약하지만 당신은 저를 당신의 말씀에 따라 강하게 하셔야 합니다."</span></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="connector"><div class="connector-line"></div></div>
+
+<!-- ══════ SECTION 5: 다니엘 → 아들 ══════ -->
+<section class="section theme-daniel" id="sec-daniel">
+  <div class="section-card">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon">🪨</div>
+      <div class="acc-title-wrap">
+        <div class="acc-num">요점 5</div>
+        <div class="acc-title">다니엘 → 아들 그리스도: 산산이 부수는 돌, 큰 산</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="acc-body">
+      <div class="acc-body-inner">
+
+        <div class="verse-box">
+          <span class="bk-icon">🔖</span>
+          <span class="verse-ref">단 2:34-35</span>
+          <span class="verse-text">"왕께서 보고 계실 때, <b>손을 대지 않고 떠 내어진 돌 하나</b>가 그 형상의 쇠와 진흙으로 된 발을 쳐서 산산이 부수었습니다. … 그 형상을 친 돌은 <b>큰 산</b>이 되어 <b>온 땅을 채웠습니다</b>."</span>
+          <span class="verse-ref">단 7:13-14</span>
+          <span class="verse-text">"하늘의 구름을 타고 <b>사람의 아들과 같은 분</b>께서 오시는데 … 그분께 <b>통치권과 영광과 왕국</b>이 주어져 … 그분의 왕국은 멸망하지 않을 왕국이다."</span>
+        </div>
+
+        <div class="content-block">
+          <p>다니엘에게서 우리는 <span class="hl">아들 그리스도께서 하나님의 움직임의 중심과 전부</span>이시라는 것을 봅니다.</p>
+
+          <p class="sub-heading">거대한 인간 형상 — 인간 정부의 총체</p>
+          <p>느부갓네살 왕의 꿈에 나타난 거대한 형상은 인간 역사 전체에 걸친 인간 정부의 총체를 상징합니다. 금으로 된 머리(바빌론), 은으로 된 가슴과 팔(메도 페르시아), 놋으로 된 배와 넓적다리(헬라), 쇠로 된 다리와 일부는 진흙으로 된 발(로마)로 이루어진 형상이었습니다.</p>
+
+          <p class="sub-heading">돌 — 그리스도</p>
+          <p>손을 대지 않고 떠 내어진 이 돌은 <span class="hl">그리스도</span>입니다. 그리스도는 십자가에 못 박히심으로 죽음에 넘겨지시어 쪼개지셨고, 부활 안에서 떠 내어지시어 먼저 <span class="hl">교회 건축을 위한 모퉁이 돌</span>이 되셨으며, 그다음 인간 정부 총체를 멸하는 <span class="hl">산산이 부수는 돌</span>이 되셨습니다.</p>
+
+          <p class="sub-heading">큰 산 — 하나님의 영원한 왕국</p>
+          <p>거대한 인간 형상은 큰 산으로 대치될 것이며, 이 큰 산은 <span class="hl">온 땅을 채울 하나님의 영원한 왕국</span>을 상징합니다. 그리스도께서 오셔서 인간 정부의 총체를 산산이 부수신 후에, 이 땅에 하나님의 영원한 왕국을 이끌어 오실 것입니다.</p>
+
+          <p class="sub-heading">그리스도와 이기는 이들</p>
+          <p>그리스도께서 산산이 부수는 돌로 나타나실 때, 홀로 오지 않으실 것입니다. 그분은 <span class="hl">그분의 신부와 함께</span> 오실 것입니다. 하나님의 영원한 경륜의 목표는 <span class="hl">단체적인 그리스도, 곧 이기는 이들과 함께하시는 그리스도</span>를 얻는 것입니다. 단체적인 그리스도는 하나님의 시대적인 도구인 산산이 부수는 돌로서 이 시대를 종결하고 온 땅을 채우는 큰 산이 되어, 온 땅을 하나님의 왕국이 되게 합니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="connector"><div class="connector-line"></div></div>
+
+<!-- ══════ SECTION 6: 욥 → 그 영 ══════ -->
+<section class="section theme-job" id="sec-job">
+  <div class="section-card">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-icon">👁️</div>
+      <div class="acc-title-wrap">
+        <div class="acc-num">요점 6</div>
+        <div class="acc-title">욥 → 영 하나님: 하나님을 봄으로 변화됨</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="acc-body">
+      <div class="acc-body-inner">
+
+        <div class="verse-box">
+          <span class="bk-icon">🔖</span>
+          <span class="verse-ref">욥 42:5-6</span>
+          <span class="verse-text">"제가 주님에 대해 <b>귀로만 들어 왔으나</b> / 이제는 제 <b>눈으로 주님을 뵈었습니다</b>. / 그러기에 제 자신을 혐오하며 / 티끌과 재 가운데서 회개합니다."</span>
+          <span class="verse-ref">고후 3:18</span>
+          <span class="verse-text">"우리 모두는 너울을 벗은 얼굴로 거울처럼 주님의 영광을 <b>바라보고 반사함으로써</b> 그분과 <b>동일한 형상으로 변화</b>되어 영광에서 영광에 이릅니다. 이것은 <b>주 영에게서</b> 비롯됩니다."</span>
+          <span class="verse-ref">딛 3:5</span>
+          <span class="verse-text">"우리를 구원하셨습니다. 그것은 우리가 행한 의로운 행위로 말미암은 것이 아니라, 그분의 긍휼에 따라 <b>새로 남의 씻음과 성령의 새롭게 함</b>으로 말미암은 것이었습니다."</span>
+        </div>
+
+        <div class="content-block">
+          <p>욥에게서 우리는 <span class="hl">영 하나님께서 그분의 연인들을 성령의 새롭게 하심에 의해 변화의 과정을 거치도록 이끄시는 것</span>을 봅니다.</p>
+
+          <p class="sub-heading">귀로 들음에서 눈으로 봄으로</p>
+          <p>욥은 하나님을 경외하는 사람, 매우 경건하고 정직한 사람이었습니다. 그러나 많은 고난을 겪은 후, 하나님이 38장에서 나타나셔서 말씀하시기 시작하셨습니다. 욥이 빛비춤을 받아 깨달으니, 말했습니다: "제가 주님에 대해 귀로만 들어왔으나 이제는 제 눈으로 주님을 뵈었습니다." 이것은 욥이 전통에 따라 공허한 지식으로 하나님을 아는 것에 머무는 것이 아니라 <span class="hl">개인적인 체험에서 하나님을 얻었고</span>, 자신을 미워했음을 가리킵니다.</p>
+
+          <p class="sub-heading">봄 = 얻음 = 변화</p>
+          <p>하나님을 뵙는 것은 <span class="hl">하나님을 얻는 것과 동일</span>합니다(마 5:8). 하나님을 얻는 것은 하나님의 요소와 생명과 본성을 받아들이는 것입니다. 우리가 하나님을 뵐 때 그분의 요소를 우리 안으로 받아들이게 됩니다. 우리가 하나님을 받아들일수록, 새로운 요소가 우리 안으로 들어오고 우리의 옛 요소는 배출됩니다. 이 <span class="hl">신진대사의 과정이 변화</span>입니다.</p>
+
+          <p class="sub-heading">최종 목표</p>
+          <p>하나님에 의해 구속받고 거듭나고 거룩하게 되고 변화되고 같은 형상을 이루고 영광스럽게 된 그분의 모든 백성은 하나님의 얼굴을 뵐 것입니다(계 22:4). 하나님을 뵙는 것은 <span class="hl">하나님-사람이신 그리스도의 영광스러운 형상으로 변화</span>되는 것입니다. 이렇게 하여 우리는 하나님의 생명으로 하나님을 표현하고 하나님의 권위로 하나님을 대표하게 됩니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ QUIZ ══════ -->
+<section class="quiz-section" id="quiz">
+  <div class="quiz-title-bar">
+    <span style="font-size:24px;">📝</span>
+    <h2>이해도 퀴즈</h2>
+  </div>
+
+  <div class="quiz-card" id="q1">
+    <div class="quiz-q-header">
+      <div class="quiz-badge">1</div>
+      <div class="quiz-q-text">에스겔 14장에서 하나님께서 특별히 언급하신 세 사람은 누구입니까?</div>
+    </div>
+    <div class="quiz-options" data-correct="1">
+      <div class="quiz-opt" onclick="selectOpt(this,0)"><div class="quiz-radio"></div>아브라함, 모세, 다윗</div>
+      <div class="quiz-opt" onclick="selectOpt(this,1)"><div class="quiz-radio"></div>노아, 다니엘, 욥</div>
+      <div class="quiz-opt" onclick="selectOpt(this,2)"><div class="quiz-radio"></div>이사야, 예레미야, 에스겔</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="showHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint">에스겔 14:14에 직접 이름이 언급된 세 사람입니다.</div>
+    <div class="quiz-explanation">겔 14:14 — "노아와 다니엘과 욥, 이 세 사람이 그 가운데 있다 하더라도…"</div>
+  </div>
+
+  <div class="quiz-card" id="q2">
+    <div class="quiz-q-header">
+      <div class="quiz-badge">2</div>
+      <div class="quiz-q-text">무지개의 삼원색(파랑, 빨강, 노랑)은 각각 하나님의 어떤 속성을 상징합니까?</div>
+    </div>
+    <div class="quiz-options" data-correct="2">
+      <div class="quiz-opt" onclick="selectOpt(this,0)"><div class="quiz-radio"></div>사랑, 지혜, 능력</div>
+      <div class="quiz-opt" onclick="selectOpt(this,1)"><div class="quiz-radio"></div>긍휼, 은혜, 평강</div>
+      <div class="quiz-opt" onclick="selectOpt(this,2)"><div class="quiz-radio"></div>의, 거룩함, 영광</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="showHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint">고전 1:30에서 그리스도께서 우리에게 되신 것과 관련됩니다.</div>
+    <div class="quiz-explanation">파란색은 하나님의 의, 빨간색은 하나님의 거룩함, 노란색은 하나님의 영광을 상징합니다.</div>
+  </div>
+
+  <div class="quiz-card" id="q3">
+    <div class="quiz-q-header">
+      <div class="quiz-badge">3</div>
+      <div class="quiz-q-text">다니엘서 2장에서 '손을 대지 않고 떠 내어진 돌'은 무엇을 가리킵니까?</div>
+    </div>
+    <div class="quiz-options" data-correct="1">
+      <div class="quiz-opt" onclick="selectOpt(this,0)"><div class="quiz-radio"></div>이스라엘 나라</div>
+      <div class="quiz-opt" onclick="selectOpt(this,1)"><div class="quiz-radio"></div>그리스도</div>
+      <div class="quiz-opt" onclick="selectOpt(this,2)"><div class="quiz-radio"></div>교회</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="showHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint">인간 정부의 총체를 산산이 부수고 큰 산이 되시는 분입니다.</div>
+    <div class="quiz-explanation">손을 대지 않고 떠 내어진 돌은 그리스도 자신이십니다. 그분은 교회 건축을 위한 모퉁이 돌이 되시고, 인간 정부를 멸하는 산산이 부수는 돌이 되셨습니다.</div>
+  </div>
+
+  <div class="quiz-card" id="q4">
+    <div class="quiz-q-header">
+      <div class="quiz-badge">4</div>
+      <div class="quiz-q-text">욥이 "제 눈으로 주님을 뵈었습니다"라고 말한 것의 의미는 무엇입니까?</div>
+    </div>
+    <div class="quiz-options" data-correct="0">
+      <div class="quiz-opt" onclick="selectOpt(this,0)"><div class="quiz-radio"></div>개인적 체험으로 하나님을 얻음으로써 변화됨</div>
+      <div class="quiz-opt" onclick="selectOpt(this,1)"><div class="quiz-radio"></div>물리적으로 하나님의 얼굴을 봄</div>
+      <div class="quiz-opt" onclick="selectOpt(this,2)"><div class="quiz-radio"></div>꿈에서 계시를 받음</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="showHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint">"하나님을 뵙는 것은 하나님을 얻는 것과 동일하다"는 원칙을 기억하세요.</div>
+    <div class="quiz-explanation">하나님을 뵙는 것은 하나님을 얻는 것과 동일합니다. 하나님의 요소와 생명과 본성을 받아들여, 신진대사의 과정인 변화를 거치는 것입니다.</div>
+  </div>
+
+  <div class="quiz-card" id="q5">
+    <div class="quiz-q-header">
+      <div class="quiz-badge">5</div>
+      <div class="quiz-q-text">성경 전체를 관통하는 '통제하는 원칙'이란 무엇입니까?</div>
+    </div>
+    <div class="quiz-options" data-correct="2">
+      <div class="quiz-opt" onclick="selectOpt(this,0)"><div class="quiz-radio"></div>율법을 지키고 선행을 행하는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this,1)"><div class="quiz-radio"></div>종교적 의식과 예배를 드리는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this,2)"><div class="quiz-radio"></div>삼일 하나님이 그분 자신을 우리 안으로 분배하시는 것</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="showHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint">행위나 종교가 아닌, 하나님이 우리 안에 들어오시는 것과 관련됩니다.</div>
+    <div class="quiz-explanation">성경 전체는 통제하는 원칙에 따라 기록되었는데, 그것은 삼일 하나님께서 그분 자신을 우리 안으로 분배하시어 우리의 누림이 되게 하시고, 생명과 모든 것이 되게 하신 것입니다.</div>
+  </div>
+
+  <button class="quiz-submit" id="quizSubmit" onclick="submitQuiz()">채점하기</button>
+  <div class="quiz-result" id="quizResult">
+    <div class="quiz-score" id="quizScore"></div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+  </div>
+</section>
+
+<!-- ══════ CALL TO ACTION (부름에 응답하기) ══════ -->
+<section class="cta-section" id="call-to-action">
+  <div class="cta-card">
+    <div class="cta-title">시대를 전환하는 부름에 응답하십시오</div>
+    
+    <div class="cta-step step-1">
+      <div class="cta-num">1</div>
+      <div class="cta-text-wrap">
+        <div class="cta-head">우상을 제거하십시오</div>
+        <div class="cta-desc">세상의 쾌락, 종교적 형식, 심지어 가장 깊은 자기 의마저 내려놓고 하나님과 우리 사이의 간격을 없애십시오.</div>
+      </div>
+    </div>
+    
+    <div class="cta-step step-2">
+      <div class="cta-num">2</div>
+      <div class="cta-text-wrap">
+        <div class="cta-head">생명의 노선을 걸으십시오</div>
+        <div class="cta-desc">도덕적 완성이 아니라, 삼일 하나님을 우리의 생명과 공급으로 매일 마시고 누리십시오.</div>
+      </div>
+    </div>
+    
+    <div class="cta-step step-3">
+      <div class="cta-num">3</div>
+      <div class="cta-text-wrap">
+        <div class="cta-head">시대의 이기는 이가 되십시오</div>
+        <div class="cta-desc">노아, 다니엘, 욥이 그랬듯 하나님의 분배를 허락하여, 주님의 재림을 가져오는 단체적인 신부로 준비되십시오.</div>
+      </div>
+    </div>
+    
+    <div class="cta-verse">
+      주님께서 생명의 길을 저에게 알려 주시리니 주님의 임재 안에는 충만한 기쁨이 있고 주님의 오른편에는 영원한 즐거움이 있습니다. (시 16:11)
+    </div>
+  </div>
+</section>
+
+</div><!-- /main-content -->
+
+<script>
+// ─── NAV ───
+function toggleNav() {
+  document.getElementById('sidenav').classList.toggle('active');
+  document.getElementById('overlay').classList.toggle('active');
+}
+
+// ─── ACCORDION ───
+function toggleAcc(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  if (isOpen) {
+    header.classList.remove('open');
+    body.style.maxHeight = '0';
+  } else {
+    header.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+// Recalc on resize
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.acc-header.open').forEach(h => {
+    h.nextElementSibling.style.maxHeight = h.nextElementSibling.scrollHeight + 'px';
+  });
+});
+
+// ─── FONT SIZE ───
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else fontScale = Math.max(0.75, Math.min(1.5, fontScale + dir * 0.05));
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+  // Recalc open accordions
+  document.querySelectorAll('.acc-header.open').forEach(h => {
+    h.nextElementSibling.style.maxHeight = h.nextElementSibling.scrollHeight + 'px';
+  });
+}
+
+// ─── KEYWORDS ───
+function toggleKw(el) {
+  const wrap = el.parentElement;
+  document.querySelectorAll('.kw-wrap.show-tip').forEach(w => {
+    if (w !== wrap) w.classList.remove('show-tip');
+  });
+  wrap.classList.toggle('show-tip');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.kw-wrap')) {
+    document.querySelectorAll('.kw-wrap.show-tip').forEach(w => w.classList.remove('show-tip'));
+  }
+});
+
+// ─── QUIZ ───
+const answers = {};
+function selectOpt(el, idx) {
+  const card = el.closest('.quiz-card');
+  if (card.classList.contains('answered')) return;
+  card.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[card.id] = idx;
+}
+function showHint(btn) {
+  const hint = btn.nextElementSibling;
+  hint.classList.toggle('show');
+  btn.textContent = hint.classList.contains('show') ? '💡 힌트 숨기기' : '💡 힌트 보기';
+}
+function submitQuiz() {
+  const totalQ = 5;
+  let correct = 0;
+  for (let i = 1; i <= totalQ; i++) {
+    const card = document.getElementById('q' + i);
+    const opts = card.querySelector('.quiz-options');
+    const correctIdx = parseInt(opts.dataset.correct);
+    const selected = answers['q' + i];
+    card.classList.add('answered');
+    if (selected === undefined) continue;
+    const allOpts = opts.querySelectorAll('.quiz-opt');
+    allOpts.forEach(o => o.classList.remove('selected'));
+    allOpts[correctIdx].classList.add('correct');
+    if (selected === correctIdx) {
+      correct++;
+    } else {
+      allOpts[selected].classList.add('wrong');
+    }
+    card.querySelector('.quiz-explanation').classList.add('show');
+  }
+  const result = document.getElementById('quizResult');
+  result.style.display = 'block';
+  document.getElementById('quizScore').textContent = correct + ' / ' + totalQ;
+  const pct = correct / totalQ;
+  let fb = '';
+  if (pct === 1) fb = '완벽합니다! 메시지의 핵심을 정확히 이해하셨습니다. 🎉';
+  else if (pct >= 0.8) fb = '잘 하셨습니다! 대부분의 핵심을 파악하셨습니다.';
+  else if (pct >= 0.6) fb = '좋은 시작입니다. 틀린 부분의 해설을 다시 확인해 보세요.';
+  else fb = '메시지의 핵심 요점들을 다시 한번 살펴보시길 권합니다.';
+  document.getElementById('quizFeedback').textContent = fb;
+  document.getElementById('quizSubmit').disabled = true;
+  result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+</body>
+</html>
