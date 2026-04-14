@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>보배이신 그리스도를 누리고, 철저히 소모되어 하나님을 얻는 삶</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --base-font-size: 17px;
+  --font-scale: 1;
+  --bg: #f4f6f9;
+  --text: #1a1a1a;
+  --text-light: #444444;
+  --accent-yellow: #ffe066;
+  --highlight-yellow: rgba(255, 213, 79, 0.4);
+  --highlight-text: #b78103;
+  --border: #e2e8f0;
+  --card-bg: #ffffff;
+  
+  --step1: #2563eb; /* Blue */
+  --step2: #dc2626; /* Red */
+  --step3: #059669; /* Green */
+  --step4: #7c3aed; /* Purple */
+  
+  --quiz-color: #6366f1;
+  --prayer-color: #be185d;
+  --bar-bg: #ffffff;
+  --bar-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: calc(var(--base-font-size) * var(--font-scale));
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.75;
+  padding-top: 44px;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center;
+  height: 44px; padding: 0;
+  background: var(--bar-bg);
+  box-shadow: var(--bar-shadow);
+  border-bottom: 1px solid var(--border);
+}
+.bar-left {
+  display: flex; align-items: center; flex-shrink: 0;
+  gap: 2px; padding-left: 6px;
+}
+.bar-btn {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: none; cursor: pointer;
+  color: var(--text); border-radius: 6px;
+  flex-shrink: 0;
+}
+.bar-btn:hover { background: #f0f0f0; }
+.bar-btn svg { width: 20px; height: 20px; }
+.bar-title-wrap {
+  flex: 1; min-width: 0; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; padding: 0 8px;
+  white-space: nowrap;
+}
+.bar-title-wrap::-webkit-scrollbar { display: none; }
+.bar-title-text {
+  font-weight: 700; color: var(--text);
+  font-size: 14px;
+}
+.bar-right {
+  display: flex; align-items: center; flex-shrink: 0;
+  padding-right: 6px; gap: 1px;
+}
+.font-btn {
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  background: #f5f5f5; border: 1px solid var(--border);
+  cursor: pointer; color: var(--text);
+  font-weight: 700; font-size: 14px;
+  border-radius: 5px; flex-shrink: 0;
+}
+.font-btn:hover { background: #e8e8e8; }
+.font-btn:active { background: #d5d5d5; }
+
+/* ===== SIDE PANEL ===== */
+.side-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4); z-index: 1100;
+  opacity: 0; visibility: hidden;
+  transition: opacity .25s, visibility .25s;
+}
+.side-overlay.open { opacity: 1; visibility: visible; }
+.side-panel {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 280px; max-width: 80vw;
+  background: #fff; z-index: 1200;
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+  display: flex; flex-direction: column;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+}
+.side-panel.open { transform: translateX(0); }
+.side-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  font-weight: 700; font-size: 15px;
+}
+.side-close {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: none; cursor: pointer;
+  border-radius: 6px; color: var(--text);
+}
+.side-close:hover { background: #f0f0f0; }
+.side-body {
+  flex: 1; overflow-y: auto; padding: 12px 0;
+}
+.side-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px; cursor: pointer;
+  color: var(--text); text-decoration: none;
+  font-size: 14px; transition: background .15s;
+  border: none; background: none; width: 100%;
+  text-align: left; font-family: inherit;
+}
+.side-item:hover { background: #f5f5f5; }
+.side-item .dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.side-sub {
+  padding-left: 34px; font-size: 13px; color: var(--text-light);
+}
+.keyword-tooltip {
+  display: none; padding: 8px 16px 8px 44px;
+  font-size: 12px; color: #555; line-height: 1.5;
+  background: #fafafa; border-left: 3px solid var(--accent-yellow);
+  margin: 0 12px 4px 12px; border-radius: 4px;
+}
+.keyword-tooltip.show { display: block; }
+.side-step-label {
+  padding: 12px 16px 4px 16px; font-size: 12px; font-weight: 700;
+  color: #888; text-transform: uppercase;
+}
+
+/* ===== MAIN CONTENT ===== */
+.container {
+  max-width: 760px; margin: 0 auto;
+  padding: 30px 16px 60px;
+}
+
+/* Title Section */
+.title-section {
+  text-align: center; padding: 20px 0 30px;
+  background: linear-gradient(135deg, #ffffff 0%, #f4f6f9 100%);
+  border-radius: 16px; margin-bottom: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  border: 1px solid var(--border);
+}
+.title-tags {
+  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 16px; padding: 0 10px;
+}
+.title-tag {
+  background: #1e293b; color: #fff;
+  padding: 4px 12px; border-radius: 4px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+}
+.title-badge {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: #fff; padding: 4px 12px;
+  border-radius: 4px; font-size: 12px;
+  font-weight: 600; letter-spacing: 0.5px;
+}
+.main-title {
+  font-size: calc(24px * var(--font-scale));
+  font-weight: 900; line-height: 1.35;
+  color: var(--text); margin-bottom: 12px;
+  word-break: keep-all; padding: 0 10px;
+}
+.main-subtitle {
+  font-size: calc(15px * var(--font-scale));
+  color: var(--text-light); font-weight: 500;
+  line-height: 1.6; word-break: keep-all;
+  padding: 0 20px;
+}
+
+/* Dashboard / Summary */
+.summary-box {
+  background: #ffffff; border-radius: 12px;
+  border: 2px solid #e2e8f0; padding: 24px;
+  margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.summary-core {
+  text-align: center; font-size: calc(16px * var(--font-scale));
+  font-weight: 700; color: #1e293b;
+  line-height: 1.6; padding-bottom: 20px;
+  border-bottom: 1px dashed #cbd5e1; margin-bottom: 20px;
+  word-break: keep-all;
+}
+.summary-core .hl-text { color: var(--step1); }
+.summary-core .hl-text2 { color: var(--step2); }
+
+.summary-points {
+  display: grid; grid-template-columns: 1fr; gap: 16px;
+}
+@media(min-width: 640px) {
+  .summary-points { grid-template-columns: repeat(3, 1fr); }
+}
+.sum-pt {
+  background: #f8fafc; padding: 16px;
+  border-radius: 10px; border: 1px solid #e2e8f0;
+  text-align: center;
+}
+.sum-pt-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 10px; color: #fff;
+}
+.sum-pt-title {
+  font-size: calc(14px * var(--font-scale));
+  font-weight: 800; margin-bottom: 6px; color: #0f172a;
+}
+.sum-pt-desc {
+  font-size: calc(13px * var(--font-scale));
+  color: #475569; line-height: 1.5; word-break: keep-all;
+}
+
+/* Keywords */
+.keywords-section {
+  margin-bottom: 36px; text-align: center;
+}
+.kw-title {
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 800; margin-bottom: 12px;
+  color: var(--text);
+}
+.kw-list {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center;
+}
+.kw-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 16px; border-radius: 30px;
+  font-size: calc(13px * var(--font-scale));
+  font-weight: 600; border: 1.5px solid;
+  background: #fff; cursor: default;
+  transition: transform .15s;
+}
+.kw-tag:hover { transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+/* Logic Connector (Flow) */
+.logic-connector {
+  display: flex; flex-direction: column; align-items: center;
+  margin: 10px 0; position: relative;
+}
+.conn-line-top {
+  width: 2px; height: 20px; background: #cbd5e1;
+}
+.conn-box {
+  background: #f1f5f9; border: 1px solid #cbd5e1;
+  padding: 14px 20px; border-radius: 12px;
+  max-width: 90%; text-align: center;
+  font-size: calc(14.5px * var(--font-scale));
+  font-weight: 500; color: #334155;
+  line-height: 1.6; word-break: keep-all;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  position: relative;
+}
+.conn-arrow {
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #cbd5e1;
+  margin-top: -1px;
+}
+
+/* Steps & Accordion */
+.step-container { margin-bottom: 20px; }
+.step-header {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #1e293b; color: #fff;
+  padding: 6px 16px; border-radius: 8px 8px 0 0;
+  font-size: calc(13px * var(--font-scale));
+  font-weight: 700; margin-bottom: -1px;
+  position: relative; z-index: 10;
+}
+.accordion-card {
+  border-radius: 0 8px 8px 8px; overflow: hidden;
+  border: 2px solid #e2e8f0;
+  background: #fff; transition: border-color .3s;
+  margin-bottom: 12px;
+}
+.step-container:nth-of-type(1) .step-header { background: var(--step1); }
+.step-container:nth-of-type(1) .accordion-card { border-color: #bfdbfe; }
+.step-container:nth-of-type(2) .step-header { background: var(--step2); }
+.step-container:nth-of-type(2) .accordion-card { border-color: #fecaca; }
+.step-container:nth-of-type(3) .step-header { background: var(--step3); }
+.step-container:nth-of-type(3) .accordion-card { border-color: #bbf7d0; }
+.step-container:nth-of-type(4) .step-header { background: var(--step4); }
+.step-container:nth-of-type(4) .accordion-card { border-color: #e9d5ff; }
+
+.accordion-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 18px; cursor: pointer;
+  user-select: none; background: #fff;
+}
+.acc-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: #fff; font-weight: 800; font-size: 14px;
+}
+.acc-title-wrap { flex: 1; min-width: 0; }
+.acc-title {
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 700; color: var(--text);
+  line-height: 1.4; word-break: keep-all;
+}
+.acc-chevron {
+  width: 24px; height: 24px; flex-shrink: 0;
+  transition: transform .3s; color: #94a3b8;
+}
+.accordion-card.open .acc-chevron { transform: rotate(180deg); }
+.accordion-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease;
+}
+.accordion-inner {
+  padding: 0 18px 20px;
+}
+
+/* Bible Verse */
+.bible-verse-box {
+  background: #f8fafc;
+  border-left: 4px solid;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.bible-header {
+  display: flex; align-items: center; gap: 6px;
+  font-size: calc(13px * var(--font-scale));
+  font-weight: 800; margin-bottom: 8px;
+}
+.bible-header svg { width: 16px; height: 16px; flex-shrink: 0; }
+.bible-text {
+  font-size: calc(14px * var(--font-scale));
+  line-height: 1.7; color: var(--text);
+  margin-bottom: 10px;
+}
+.bible-text:last-child { margin-bottom: 0; }
+.bible-ref {
+  font-size: calc(12px * var(--font-scale));
+  font-weight: 700; color: #64748b;
+  display: block; margin-bottom: 4px;
+}
+
+/* Highlighting */
+.hl { background: var(--highlight-yellow); padding: 1px 3px; border-radius: 3px; font-weight: 700; color: var(--text); }
+
+/* Content blocks */
+.content-block { margin-bottom: 16px; }
+.content-block h4 {
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 800; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+  color: #0f172a;
+}
+.content-block p, .content-block li {
+  font-size: calc(var(--base-font-size) * var(--font-scale));
+  line-height: 1.8; color: var(--text);
+  margin-bottom: 8px; word-break: keep-all;
+}
+.content-block ul { padding-left: 22px; margin-top: 6px; }
+.content-block li { margin-bottom: 6px; }
+
+.sub-point {
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 3px solid;
+}
+.sub-point-title {
+  font-size: calc(14px * var(--font-scale));
+  font-weight: 800; margin-bottom: 6px;
+  color: #1e293b;
+}
+.sub-point p {
+  font-size: calc(var(--base-font-size) * var(--font-scale));
+  line-height: 1.7; color: var(--text); margin-bottom: 0;
+}
+
+/* ===== CONCLUSION (Vision Stairs) ===== */
+.conclusion-section {
+  margin: 40px 0; padding: 40px 20px;
+  background: #ffffff; border-radius: 16px;
+  border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+.conclusion-title {
+  text-align: center; font-size: calc(22px * var(--font-scale));
+  font-weight: 900; color: #78350f; margin-bottom: 30px;
+  word-break: keep-all;
+}
+.vision-container {
+  display: flex; flex-direction: column; align-items: center; gap: 30px;
+}
+@media(min-width: 768px) {
+  .vision-container { flex-direction: row; justify-content: center; align-items: stretch; gap: 20px; }
+}
+
+/* Stairs */
+.vision-steps {
+  display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 400px;
+}
+@media(min-width: 768px) {
+  .vision-steps { 
+    flex-direction: row; align-items: flex-end; gap: 16px; 
+    height: 330px; max-width: none; flex: 1;
+  }
+}
+.v-step-wrapper {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  width: 100%;
+}
+@media(min-width: 768px) {
+  .v-step-wrapper { height: 100%; width: 33%; }
+}
+.v-step-desc {
+  text-align: center; margin-bottom: 12px;
+}
+.v-step-desc p {
+  font-size: calc(13.5px * var(--font-scale)); line-height: 1.5; font-weight: 600; color: #334155; word-break: keep-all; margin: 0;
+}
+.v-step-desc small {
+  font-size: 0.85rem; color: #64748b; display: block; margin-top: 4px; font-weight: 500;
+}
+.v-step {
+  border-radius: 12px; padding: 18px 10px; text-align: center;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;
+  width: 100%;
+}
+.v-step:hover { transform: translateY(-4px); }
+.v-step h4 { font-size: calc(16.5px * var(--font-scale)); font-weight: 800; margin: 0; line-height: 1.3;}
+
+/* Colors matching the image */
+.v-step.step1 { background: linear-gradient(135deg, #0f766e, #115e59); color: white; }
+.v-step.step2 { background: linear-gradient(135deg, #b45309, #92400e); color: white; }
+.v-step.step3 { background: linear-gradient(135deg, #fcd34d, #f59e0b); color: #1a1a1a; }
+
+@media(min-width: 768px) {
+  .v-step.step1 { height: 110px; border-radius: 12px 12px 0 0; }
+  .v-step.step2 { height: 160px; border-radius: 12px 12px 0 0; }
+  .v-step.step3 { height: 210px; border-radius: 12px 12px 0 0; }
+}
+
+/* Arrow between steps on mobile */
+.mobile-arrow {
+  display: block; text-align: center; color: #cbd5e1; font-size: 20px;
+}
+@media(min-width: 768px) {
+  .mobile-arrow { display: none; }
+}
+
+/* Result Box */
+.vision-result-box {
+  background: #fff; border: 4px solid #115e59; border-radius: 8px;
+  padding: 6px; width: 100%; max-width: 400px; display: flex;
+}
+@media(min-width: 768px) {
+  .vision-result-box { width: 320px; flex-shrink: 0; }
+}
+.vision-result-inner {
+  border: 2px solid #d97706; border-radius: 4px; padding: 24px;
+  display: flex; align-items: center; justify-content: center; width: 100%;
+  background: #fafaf9; text-align: center;
+}
+.vision-result-inner p {
+  font-size: calc(16.5px * var(--font-scale)); font-weight: 700;
+  color: #1a1a1a; line-height: 1.7; word-break: keep-all; margin: 0;
+}
+
+
+/* ===== Quiz Section ===== */
+.quiz-section {
+  margin: 40px 0; padding: 30px 20px;
+  background: #ffffff; border-radius: 16px;
+  border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.quiz-title {
+  text-align: center;
+  font-size: calc(20px * var(--font-scale));
+  font-weight: 900; margin-bottom: 24px;
+  color: var(--quiz-color);
+}
+.quiz-item {
+  margin-bottom: 24px; padding: 20px;
+  background: #f8fafc; border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+.quiz-q {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 16px;
+}
+.quiz-badge {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--quiz-color); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 800; flex-shrink: 0;
+}
+.quiz-q-text {
+  font-size: 1rem; font-weight: 700;
+  line-height: 1.6; color: var(--text); padding-top: 2px;
+  word-break: keep-all;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-radius: 10px;
+  border: 2px solid #cbd5e1; cursor: pointer;
+  transition: all .2s; font-size: 1rem; font-weight: 500;
+  color: var(--text); background: #fff;
+  min-height: 48px; word-break: keep-all;
+}
+.quiz-opt:hover { border-color: var(--quiz-color); background: #f0f4ff; }
+.quiz-opt.selected { border-color: var(--quiz-color); background: #eef2ff; font-weight: 700;}
+.quiz-opt.correct { border-color: #16a34a; background: #f0fdf4; }
+.quiz-opt.wrong { border-color: #dc2626; background: #fef2f2; }
+.quiz-opt-circle {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid #cbd5e1; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  transition: all .2s;
+}
+.quiz-opt.selected .quiz-opt-circle {
+  border-color: var(--quiz-color); background: var(--quiz-color); color: #fff;
+}
+.quiz-opt.correct .quiz-opt-circle {
+  border-color: #16a34a; background: #16a34a; color: #fff;
+}
+.quiz-opt.wrong .quiz-opt-circle {
+  border-color: #dc2626; background: #dc2626; color: #fff;
+}
+.quiz-hint-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 12px; padding: 6px 12px;
+  font-size: 0.9rem; font-weight: 600; color: #64748b;
+  background: #fff; border: 1px solid #cbd5e1;
+  border-radius: 8px; cursor: pointer; transition: background .2s;
+}
+.quiz-hint-btn:hover { background: #f1f5f9; }
+.quiz-hint-text {
+  display: none; margin-top: 8px; padding: 12px 16px;
+  font-size: 0.95rem; font-weight: 500; color: #856404;
+  background: #fffde7; border-radius: 8px;
+  border-left: 4px solid var(--accent-yellow);
+  line-height: 1.6; word-break: keep-all;
+}
+.quiz-hint-text.show { display: block; }
+.quiz-submit-wrap { text-align: center; margin-top: 24px; }
+.quiz-submit {
+  padding: 14px 40px; border-radius: 12px;
+  background: var(--quiz-color); color: #fff;
+  font-size: 1.1rem; font-weight: 800;
+  border: none; cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
+}
+.quiz-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(99, 102, 241, 0.4); }
+.quiz-result {
+  display: none; text-align: center; margin-top: 20px;
+  padding: 20px; border-radius: 12px;
+  font-size: 1.05rem; font-weight: 700;
+  line-height: 1.6; word-break: keep-all;
+}
+
+/* Prayer */
+.prayer-section {
+  margin: 40px 0; padding: 30px 24px;
+  background: linear-gradient(to bottom, #ffffff, #fff1f2); 
+  border-radius: 16px;
+  border: 1px solid #fecdd3;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.prayer-title {
+  text-align: center;
+  font-size: calc(20px * var(--font-scale));
+  font-weight: 900; margin-bottom: 20px;
+  color: var(--prayer-color);
+}
+.prayer-text {
+  font-size: calc(var(--base-font-size) * var(--font-scale));
+  line-height: 1.9; color: #1f2937;
+  text-align: left; font-weight: 500; word-break: keep-all;
+}
+.prayer-text p { margin-bottom: 12px; }
+
+@media (max-width: 480px) {
+  .container { padding: 20px 12px 40px; }
+  .summary-box { padding: 16px; }
+  .conn-box { font-size: calc(13.5px * var(--font-scale)); padding: 12px 16px; }
+  .accordion-header { padding: 14px 12px; }
+  .accordion-inner { padding: 0 12px 16px; }
+  .quiz-item { padding: 16px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="bar-left">
+    <button class="bar-btn" id="menuBtn" aria-label="목차">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <a class="bar-btn" href="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/" aria-label="홈">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+    </a>
+  </div>
+  <div class="bar-title-wrap">
+    <span class="bar-title-text">보배이신 그리스도, 철저히 소모되어 하나님을 얻는 삶</span>
+  </div>
+  <div class="bar-right">
+    <button class="font-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-btn" onclick="adjustFont(0)">가</button>
+    <button class="font-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<!-- SIDE PANEL -->
+<div class="side-overlay" id="sideOverlay"></div>
+<div class="side-panel" id="sidePanel">
+  <div class="side-header">
+    <span>목차</span>
+    <button class="side-close" id="sideClose">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="side-body">
+    <a class="side-item" href="#title-sec" onclick="closePanel()">
+      <span class="dot" style="background:#2563eb"></span> 요약 및 키워드
+    </a>
+    
+    <div class="side-step-label">Step 1. 이상과 계시</div>
+    <a class="side-item side-sub" href="#point-1" onclick="closePanel(); openAccordion(0);">1. 탁월하신 그리스도</a>
+    <a class="side-item side-sub" href="#point-2" onclick="closePanel(); openAccordion(1);">2. 보배가 되는 길</a>
+    <a class="side-item side-sub" href="#point-3" onclick="closePanel(); openAccordion(2);">3. 하늘의 통치</a>
+    
+    <div class="side-step-label">Step 2. 비워짐의 과정</div>
+    <a class="side-item side-sub" href="#point-4" onclick="closePanel(); openAccordion(3);">4. 욥의 체험과 소모</a>
+    
+    <div class="side-step-label">Step 3. 신성한 채워짐</div>
+    <a class="side-item side-sub" href="#point-5" onclick="closePanel(); openAccordion(4);">5. 66권 성경의 한 가지</a>
+    
+    <div class="side-step-label">Step 4. 실천과 완결</div>
+    <a class="side-item side-sub" href="#point-6" onclick="closePanel(); openAccordion(5);">6. 그 영을 따라 사는 삶</a>
+    
+    <div style="margin-top: 8px; border-top: 1px solid #e2e8f0; padding-top: 8px;"></div>
+    
+    <!-- Added Conclusion Menu Item -->
+    <a class="side-item" href="#conclusion-sec" onclick="closePanel()">
+      <span class="dot" style="background:#f59e0b"></span> 결론: 시대적 이상 아래
+    </a>
+    
+    <a class="side-item" href="#quiz-sec" onclick="closePanel()">
+      <span class="dot" style="background:var(--quiz-color)"></span> 퀴즈
+    </a>
+    <a class="side-item" href="#prayer-sec" onclick="closePanel()">
+      <span class="dot" style="background:var(--prayer-color)"></span> 오늘의 기도
+    </a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+<!-- TITLE -->
+<div class="title-section" id="title-sec">
+  <div class="title-tags">
+    <span class="title-tag">2026 국제중국어 1주 5,6일</span>
+    <span class="title-badge">다니엘서 · 욥기</span>
+  </div>
+  <h1 class="main-title">보배이신 그리스도를 누리고,<br>철저히 소모되어 하나님을 얻는 삶</h1>
+</div>
+
+<!-- DASHBOARD (Summary Box) -->
+<div class="summary-box">
+  <div class="summary-core">
+    <span class="hl-text">탁월하시고 보배로우신 그리스도를 온전히 누리는 것(다니엘)</span>과, 우리의 타고난 <span class="hl-text2">'자기 의'를 비워내고 하나님 자신을 생명으로 얻는 것(욥)</span>이 바로 성경 전체를 꿰뚫는 하나님의 경륜입니다.
+  </div>
+  <div class="summary-points">
+    <div class="sum-pt">
+      <div class="sum-pt-icon" style="background: var(--step1);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div class="sum-pt-title">보배로우신 그리스도</div>
+      <div class="sum-pt-desc">제사장이자 왕이신 그리스도를 최고로 감상할 때, 우리도 하나님의 '보배'가 됩니다.</div>
+    </div>
+    <div class="sum-pt">
+      <div class="sum-pt-icon" style="background: var(--step2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="sum-pt-title">고난의 진짜 목적</div>
+      <div class="sum-pt-desc">심판이 아니라, 자기만족과 의로움을 허물고 그 빈자리에 하나님 자신을 채우는 과정입니다.</div>
+    </div>
+    <div class="sum-pt">
+      <div class="sum-pt-icon" style="background: var(--step4);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-4V4a2 2 0 00-4 0v6H6l6 8 6-8z"/><path d="M6 22h12"/></svg></div>
+      <div class="sum-pt-title">연합된 영 안의 삶</div>
+      <div class="sum-pt-desc">이 모든 신성한 역사를 체험하는 길은 생명 주시는 영과 연합하여 모든 일을 행하는 것입니다.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYWORDS -->
+<div class="keywords-section">
+  <div class="kw-title">🔑 핵심 키워드</div>
+  <div class="kw-list">
+    <div class="kw-tag" style="border-color:var(--step1); color:var(--step1);">보배 
+      <span style="display:none;font-weight:400;color:#555;font-size:12px;margin-top:4px;">하나님의 눈에 가장 귀하고 가치 있는 분. 이 보배를 감상할수록 우리도 하나님의 보배가 됩니다.</span>
+    </div>
+    <div class="kw-tag" style="border-color:var(--step2); color:var(--step2);">소모
+      <span style="display:none;">타고난 자기 의와 만족을 허물어뜨려, 빈자리에 하나님을 더 깊이 채워 넣으시려는 과정입니다.</span>
+    </div>
+    <div class="kw-tag" style="border-color:var(--step3); color:var(--step3);">분배
+      <span style="display:none;">하나님께서 그리스도 안에서 생명 주시는 영으로 그분 자신을 우리 안에 넣어 주시는 것입니다.</span>
+    </div>
+    <div class="kw-tag" style="border-color:var(--step4); color:var(--step4);">연합
+      <span style="display:none;">신성한 영과 우리의 거듭난 영이 하나 되어, 일상의 모든 일을 그 영 안에서 행하는 상태입니다.</span>
+    </div>
+    <div class="kw-tag" style="border-color:#d97706; color:#d97706;">추구하다
+      <span style="display:none;">스스로의 윤리적 성취에 머물지 않고, 우리에게 결핍된 하나님 자신을 얻기 위해 나아가는 것입니다.</span>
+    </div>
+    <div class="kw-tag" style="border-color:#0891b2; color:#0891b2;">전환하다
+      <span style="display:none;">보배이신 그리스도께 첫째 위치를 드리고 그 영을 따라 살아감으로써 이 시대를 이기는 자가 되는 것입니다.</span>
+    </div>
+  </div>
+  <p style="font-size:13px; color:#64748b; margin-top:10px;">태그를 클릭하면 의미를 확인할 수 있습니다.</p>
+</div>
+
+<!-- ACCORDION STEPS -->
+
+<!-- STEP 1 -->
+<div class="step-container">
+  <div class="step-header">STEP 1. 이상의 계시 (다니엘)</div>
+  
+  <div class="accordion-card" id="point-1">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-icon" style="background:var(--step1);">1</div>
+      <div class="acc-title-wrap">
+        <div class="acc-title">탁월하시고 보배로우신 그리스도</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-inner">
+        <div class="bible-verse-box" style="border-color:var(--step1);">
+          <div class="bible-header" style="color:var(--step1);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 단 10:5-7</div>
+          <p class="bible-text">내가 눈을 들어 보니, <span class="hl">세마포 옷을 입고</span> 허리에 <span class="hl">우바스의 정금 띠를 띤 한 사람</span>이 있었다. 그분의 몸은 또한 <span class="hl">녹주석 같고</span>, 그분의 얼굴은 <span class="hl">번개의 모습 같으며</span>, 그분의 눈은 <span class="hl">횃불 같고</span>, 그분의 팔과 발은 <span class="hl">광낸 놋이 빛나는 것 같으며</span>, 그분의 말소리는 <span class="hl">무리의 소리 같았다</span>. 나 다니엘만 홀로 그 이상을 보았고 …</p>
+          
+          <div class="bible-header" style="color:var(--step1); margin-top: 12px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 단 9:23</div>
+          <p class="bible-text">그대가 간청을 드리기 시작할 때 명령이 내려져, 내가 그대에게 말해 주려고 온 것은 <span class="hl">그대가 보배로움 자체인 까닭</span>입니다.</p>
+        </div>
+
+        <div class="content-block">
+          <p>다니엘에게 큰 고통에 관한 것을 보여 주시기 전에, 하나님은 <b>탁월하신 사람</b>을 그에게 계시하셨다. 이 탁월하신 그리스도 곧 <span class="hl">땅에서의 하나님의 움직임의 중심과 전부이신 분</span>께서 다니엘에게 나타나셨는데, 이것은 다니엘에게 <b>감상과 위로와 격려와 희망과 안정</b>을 주시기 위해서였다.</p>
+          
+          <h4 style="margin-top: 20px;"><i class="fas fa-dove"></i> 그리스도의 여섯 가지 모습</h4>
+          
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">① 제사장 — 세마포 옷</div>
+            <p>그리스도는 포로 되어 있는 <span class="hl">그분의 선민을 돌보시기 위해</span> 제사장의 직분 안에서 나타나셨다. 싸우기 위한 갑옷이 아니라 구약의 제사장 의복인 세마포 옷을 입고 계셨으며, 성경의 예표에서 <span class="hl">세마포는 인성을 상징</span>한다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">② 왕 — 정금 띠</div>
+            <p>그리스도는 모든 백성들을 다스리시기 위해 금띠로 상징된 왕의 직분을 가지시고 나타나셨다. 허리띠는 강화되기 위한 것이다. 제사장 직분은 인간적이지만, <span class="hl">그분의 왕의 직분은 신성하다(금)</span>.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">③ 보배로움과 존엄함 — 녹주석 같은 몸</div>
+            <p>그리스도는 하나님의 백성이 귀하게 여기도록 보배로움과 존엄함을 지니시고 나타나셨다. '녹주석'은 체현되신 그리스도께서 <span class="hl">신성하시고(황색) 생명으로 충만하시며(녹색) 하늘에 속하심(청색)</span>을 상징한다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">④ 광채와 빛 비추는 시선 — 번개 같은 얼굴, 횃불 같은 눈</div>
+            <p>그리스도는 그분의 백성에게 <span class="hl">빛을 비추시기 위해서</span> 광채를 지니시고 나타나셨다. 살피시고 심판하시기 위한 그리스도의 빛 비추는 시선은 횃불 같은 그분의 눈으로 상징된다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">⑤ 빛나는 일과 움직임 — 광낸 놋 같은 팔과 발</div>
+            <p>놋은 <span class="hl">사람들을 빛나게 하는 하나님의 심판</span>을 상징한다. 그리스도는 하나님께 심판받고 시험받으셨으며, 하나님의 시험과 심판은 그분을 광낸 놋처럼 빛나게 했다. 그러한 그리스도는 다른 사람들에 의해 시험받으셨고 또한 다른 사람들을 시험하신다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">⑥ 강한 말씀 — 무리의 소리 같은 말소리</div>
+            <p>그리스도는 무리의 소리와 같은 그분의 말소리로 상징된, <span class="hl">백성을 심판하시는 강한 말씀</span> 가운데 나타나셨다.</p>
+          </div>
+
+          <p style="margin-top: 16px;">그리스도는 귀하고, 소중하며, 온전하고, 완전하시다. 사람으로서 그리스도는 하나님의 경륜을 수행하는 하나님의 움직임의 중심과 전부이시다. <span class="hl">제사장으로서 그리스도는 우리를 돌보시고, 왕으로서 그분은 우리를 다스리신다.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-card" id="point-2">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-icon" style="background:var(--step1);">2</div>
+      <div class="acc-title-wrap">
+        <div class="acc-title">그리스도를 감상할 때 보배로운 사람이 됨</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-inner">
+        <div class="bible-verse-box" style="border-color:var(--step1);">
+          <div class="bible-header" style="color:var(--step1);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 단 10:11, 19</div>
+          <p class="bible-text">"<span class="hl">보배로운 사람 다니엘이여</span>, 이제 그대에게 하는 말을 이해하고 그대가 있는 곳에서 일어서십시오." … "보배로운 사람이여, 두려워하지 마십시오. 그대에게 평안이 있기를 바랍니다. <span class="hl">강해지고 또 강해지십시오.</span>"</p>
+          
+          <div class="bible-header" style="color:var(--step1); margin-top: 12px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 벧전 2:7, 출 19:5</div>
+          <p class="bible-text">그러므로 그분은 <span class="hl">믿는 여러분에게는 보배</span>이시며 … 이제 너희가 참으로 나의 말에 순종하고 나의 언약을 지키면, 너희는 모든 백성들 가운데에서 <span class="hl">내 개인적인 보물</span>이 될 것이다.</p>
+        </div>
+
+        <div class="content-block">
+          <p>그리스도는 <span class="hl">그 보배</span>이시다. 그분은 가장 보배로운 보물이시다. 심지어 바울은 이 보배를 위해 모든 것을 버리고, 자신의 성취와 모든 것을 배설물처럼 여겼다. 바울은 오직 이 보배를 얻고자 했다.</p>
+
+          <h4 style="margin-top: 20px;"><i class="fas fa-gem"></i> 보배가 되는 영적 원리</h4>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">💡 핵심 원리</div>
+            <p>우리가 이 보배를 <span class="hl">감상할수록</span>, 이 보배를 더욱 <span class="hl">얻고자 할수록</span>, 우리는 이 보배를 더욱 누리게 되고, 또한 <span class="hl">하나님의 눈에 심지어 보배 자체</span>가 된다. 하나님께서 다니엘을 보셨을 때, 하나님도 다니엘을 보배라고 말씀하셨다. 다니엘은 단순히 그 보배이신 분을 보았을 뿐만 아니라, 다니엘 자신이 바로 그 보배 자체가 된 것이다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">🔍 영적 시력의 중요성</div>
+            <p>그리스도에 관한 이상은 <span class="hl">물질적이지 않고 영적이기 때문에</span>, 오직 다니엘에게만 보였다. 세상 사람들의 눈에 예수님은 단지 한 사람에 지나지 않는다. 그러나 하나님의 긍휼을 받아 영적인 시력을 가진 우리는 <span class="hl">그리스도께서 얼마나 사랑스러우시고 보배로우신지를 볼 수 있다</span>.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">📖 하나님과의 친밀함</div>
+            <p>예언을 이해하고자 하는 사람은 반드시 <span class="hl">하나님과 친밀한 관계</span>를 가져야 한다. 아브라함은 하나님의 친구였기 때문에(약 2:23), 하나님은 자신의 일을 아브라함에게 숨기지 않으셨다(창 18:17). 다니엘이 이상을 보고 예언들을 기록했던 것은 그가 하나님께 <span class="hl">'보배로운 사람'</span>이었기 때문이다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-card" id="point-3">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-icon" style="background:var(--step1);">3</div>
+      <div class="acc-title-wrap">
+        <div class="acc-title">하늘의 통치 — 그리스도께 으뜸의 위치를 드림</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-inner">
+        <div class="bible-verse-box" style="border-color:var(--step1);">
+          <div class="bible-header" style="color:var(--step1);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 골 1:18, 단 2:34-35</div>
+          <p class="bible-text">또한 그분은 몸인 교회의 머리이십니다. 그분은 시작이시며, 죽은 사람들 가운데 가장 먼저 나신 분이십니다. 이것은 <span class="hl">그분 자신께서 만물 가운데서 으뜸이 되시기 위한 것</span>이었습니다. … 손을 대지 않고 떠 내어진 돌 하나가 그 형상의 쇠와 진흙으로 된 발을 쳐서 산산이 부수었습니다. … 그 형상을 친 <span class="hl">돌은 큰 산이 되어 온 땅을 채웠습니다</span>.</p>
+          
+          <div class="bible-header" style="color:var(--step1); margin-top: 12px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 단 4:34-35, 계 2:4-5</div>
+          <p class="bible-text">그분의 통치권은 <span class="hl">영원한 통치권</span>이요 그분의 왕국은 대대에 이르기 때문이다. … 그분은 하늘의 군대에서나 땅의 주민들 가운데서나 <span class="hl">그분의 뜻대로 행하시니</span> … 그러나 너에게 책망할 것이 한 가지 있다. 그것은 네가 <span class="hl">첫째가는 사랑을 버린 것</span>이다. 그러므로 네가 어디에서 떨어졌는지를 기억하고 <span class="hl">회개하여 첫째가는 일을 하여라</span>.</p>
+        </div>
+
+        <div class="content-block">
+          <p>다니엘은 온 세계 정세가 모든 것에서 그리스도께 으뜸의 위치, 첫째 위치를 드리기 위해 <span class="hl">하늘들의 하나님에 의해 하늘들의 통치 아래 있다는 계시</span>를 받았다.</p>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">🌍 시대의 이상</div>
+            <p>그 이상은 확실히 <span class="hl">하나의 시대의 이상</span>으로, 오늘날 전 세계의 정세와 상황을 이상을 통해 열어 보여 주시는 것이다. 손을 대지 않고 떠 내어진 돌이 큰 산이 되어 온 땅을 채우듯, 그리스도의 왕국은 모든 인간 정부를 대체하고 영원히 설 것이다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step1);">
+            <div class="sub-point-title">🔑 적용</div>
+            <p>우리 모두 <span class="hl">그리스도를 누림으로써 시대를 전환하는 사람</span>이 되어, 다니엘처럼 되어야 한다. 모든 것에서 그리스도께 으뜸의 위치, 첫째 위치를 드려야 한다. 우리의 첫째가는 사랑을 회복하여, 첫째가는 일을 해야 한다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTOR 1 -->
+<div class="logic-connector">
+  <div class="conn-line-top"></div>
+  <div class="conn-box">
+    다니엘이 본 '탁월하신 그리스도'의 이상을 통해 우리가 으뜸으로 추구해야 할 영광스러운 보배를 먼저 보여줍니다. <br><b>그렇다면 우리가 이 보배(하나님)를 내면에 온전히 얻으려면 어떤 과정이 필요할까요?</b>
+  </div>
+  <div class="conn-arrow"></div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-container">
+  <div class="step-header">STEP 2. 비워짐의 과정 (욥)</div>
+  
+  <div class="accordion-card" id="point-4">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-icon" style="background:var(--step2);">4</div>
+      <div class="acc-title-wrap">
+        <div class="acc-title">타고난 사람의 소모와 하나님을 얻음</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-inner">
+        <div class="bible-verse-box" style="border-color:var(--step2);">
+          <div class="bible-header" style="color:var(--step2);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 욥 38:1, 42:1</div>
+          <p class="bible-text">그때 <span class="hl">여호와께서 회오리바람 속에서 욥에게 응답하여 말씀하셨다</span>. 그러자 <span class="hl">욥이 여호와께 응답하여 말하였다</span>.</p>
+          
+          <div class="bible-header" style="color:var(--step2); margin-top: 12px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 빌 3:8, 욥 1:1</div>
+          <p class="bible-text">내가 모든 것을 또한 해로운 것으로 여기는 것은 <span class="hl">내 주 그리스도 예수님을 아는 지식이 가장 탁월한 것이기 때문</span>입니다. 내가 그리스도 때문에 모든 것을 잃어버리고, 그 모든 것을 배설물로 여깁니다. 그래서 내가 <span class="hl">그리스도를 얻고</span>, … 우스 땅에 욥이라는 이름을 가진 한 사람이 있었는데, 이 사람은 <span class="hl">온전하고 올곧았으며</span> 하나님을 경외하고 악에서 떠난 사람이었다.</p>
+        </div>
+
+        <div class="content-block">
+          <div class="sub-point" style="border-color: var(--step2);">
+            <div class="sub-point-title">⚡ 욥의 친구들 vs 하나님의 의도</div>
+            <p>욥의 친구들의 논리는 <span class="hl">선과 악의 지식나무의 노선</span>에 따른 것이었다. 그들은 욥이 겪는 고통이 하나님의 심판의 문제라고 생각했다. 하지만 욥이 겪는 고통은 <span class="hl">하나님께서 욥을 얻으심으로 욥이 하나님을 더 얻을 수 있게 하시려고</span> 하나님께서 욥을 소모되게 하는 것이었다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step2);">
+            <div class="sub-point-title">🔥 소모의 목적</div>
+            <p>욥의 <span class="hl">자기 의, 자기 만족, 자기의 올곧음</span>은 하나님께서 소모되게 하셔야 할 대상이었다. 악을 행하지 않고 세상을 사랑하지 않기 때문에, 스스로를 의롭다고 여기면서 의를 주장하는가? 이 의를 우리가 말하기 시작할 때, 그것은 <span class="hl">우리의 우상</span>이 될 수 있다. 우리와 하나님 사이를 멀어지게 하는 것이 될 것이다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step2);">
+            <div class="sub-point-title">🏗️ 허무심과 건축하심</div>
+            <p>욥에 대한 하나님의 의도는 스스로 온전하고 올곧았던 <span class="hl">타고난 욥을 허물어뜨리심으로써</span> 하나님의 본성과 속성들로 새롭게 된 욥을 건축하시는 것이었다. 욥이 각종 고난을 받아들이게 하심으로써, 그가 스스로는 아무것도 아니며 하나님 앞에서 완전히 무가치한 존재임을 깨닫게 하려 하셨다. 욥은 비워져야 했다. <span class="hl">하나님이 들어오셔서, 그가 하나님을 더 많이 얻을 수 있도록</span> 하시기 위해서이다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step2);">
+            <div class="sub-point-title">🌳 생명나무의 노선</div>
+            <p>하나님의 의도는 <span class="hl">욥을 생명나무의 노선 안에 두셔서 욥을 하나님의 사람이 되게</span> 하시는 것이었다. 더 나아가 생명의 사람으로 만드시는 것이다. 자신의 종교, 뜻, 정욕 안에 머무르지 않고, 참으로 하나님께 속한 생명의 사람이 되게 하시는 것이다. 생명나무는 <span class="hl">우리가 그분을 매일 의지하고 먹어야만 살아갈 수 있음</span>을 보여준다.</p>
+          </div>
+
+          <p style="margin-top: 16px;">우리 모두는 하나님이 부족하다. 하나님이 결핍되어 있다. 지식이나 행위가 부족한 것은 아닐지라도, 우리 안에는 <span class="hl">하나님의 분량, 하나님의 조성, 하나님의 향기</span>가 거의 없다. 하나님께서 다양한 환경을 통해 우리 안에서 허무시고 소모 시키시는 일을 하셔서, 하나님께서 우리 안에 더 많이 더해지시도록 해야 한다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTOR 2 -->
+<div class="logic-connector">
+  <div class="conn-line-top"></div>
+  <div class="conn-box">
+    우리의 타고난 '자기 의와 올곧음'이 소모되고 부서지는 과정이 반드시 필요합니다.<br><b>자아가 부서지고 비워진 그 자리에, 하나님은 무엇을 채우실까요?</b>
+  </div>
+  <div class="conn-arrow"></div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-container">
+  <div class="step-header">STEP 3. 신성한 채워짐</div>
+  
+  <div class="accordion-card" id="point-5">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-icon" style="background:var(--step3);">5</div>
+      <div class="acc-title-wrap">
+        <div class="acc-title">66권 성경의 한 가지 — 하나님의 분배</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-inner">
+        <div class="bible-verse-box" style="border-color:var(--step3);">
+          <div class="bible-header" style="color:var(--step3);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 엡 3:9, 1:22-23</div>
+          <p class="bible-text"><span class="hl">만물을 창조하신 하나님 속에 영원부터 감추어져 있던 비밀의 경륜</span>이 무엇인지를 모든 사람에게 밝히게 하시어, … 만물을 그리스도의 발아래 복종시키시고, 그리스도를 만물 위의 머리가 되게 하시어 교회에게 주셨습니다. <span class="hl">교회는 그리스도의 몸이요, 만물 안에서 만물을 충만하게 하시는 분의 충만</span>입니다.</p>
+          
+          <div class="bible-header" style="color:var(--step3); margin-top: 12px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 계 21:2</div>
+          <p class="bible-text">또 내가 보니, <span class="hl">거룩한 성 새 예루살렘이 하늘에서 하나님에게서 내려오는데</span>, 남편을 위하여 단장한 신부로 준비되어 있었습니다.</p>
+        </div>
+
+        <div class="content-block">
+          <div class="sub-point" style="border-color: var(--step3);">
+            <div class="sub-point-title">📖 66권의 핵심</div>
+            <p>욥기는 육십육 권으로 된 성경이 오직 <span class="hl">한 가지를 위해 있음</span>을 계시한다. 이것은 <span class="hl">하나님께서 그리스도 안에서 그 영에 의해 그분 자신을 우리 안에 분배하심</span>으로 우리의 생명과 본성과 모든 것이 되심으로써 우리가 그리스도를 살고 표현하는 것이다. 이것이 우리의 생활을 지배하는 원칙이 되어야 한다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step3);">
+            <div class="sub-point-title">🔄 분배의 결과</div>
+            <p>우리가 그 영을 따라 모든 것을 한다면, 우리는 그리스도의 <span class="hl">육체 되심, 인간 생활, 죽음, 부활, 승천과 그 영의 부어지심</span>을 체험할 수 있다. 이러한 체험은 우리를 <span class="hl">하나님의 교회, 그리스도의 몸, 새사람, 삼일 하나님의 유기체</span>가 되게 할 것이며, 이 항목들은 <span class="hl">새 예루살렘으로 완결</span>될 것이다.</p>
+          </div>
+
+          <p style="margin-top: 16px;">이 말씀이 우리 마음속에 깊이 새겨지기를 바란다. 66권 성경은 바로 이 한 가지를 말한다. 여러분이 이 한 가지를 보게 되면, <span class="hl">성경 전체가 여러분에게 열릴 것</span>이다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONNECTOR 3 -->
+<div class="logic-connector">
+  <div class="conn-line-top"></div>
+  <div class="conn-box">
+    자아가 비워진 자리에 하나님의 생명과 본성이 분배됩니다.<br><b>이 놀라운 신성한 역사를 우리의 일상에서 어떻게 실천하고 체험할 수 있을까요?</b>
+  </div>
+  <div class="conn-arrow"></div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-container">
+  <div class="step-header">STEP 4. 실천과 완결</div>
+  
+  <div class="accordion-card" id="point-6">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-icon" style="background:var(--step4);">6</div>
+      <div class="acc-title-wrap">
+        <div class="acc-title">연합된 그 영을 따라 사는 삶</div>
+      </div>
+      <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-inner">
+        <div class="bible-verse-box" style="border-color:var(--step4);">
+          <div class="bible-header" style="color:var(--step4);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 갈 5:25, 롬 8:4</div>
+          <p class="bible-text"><span class="hl">우리가 그 영을 따라 산다면, 또한 그 영을 따라 행합시다</span>. … 육체를 따라 행하지 않고 <span class="hl">영을 따라 행하는 우리 안에서 율법의 의로운 요구가 이루어지도록</span> 하신 것입니다.</p>
+          
+          <div class="bible-header" style="color:var(--step4); margin-top: 12px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 고후 3:18, 계 22:17</div>
+          <p class="bible-text">그러나 우리 모두는 <span class="hl">너울을 벗은 얼굴로 거울처럼 주님의 영광을 바라보고 반사함으로써</span> 그분과 동일한 형상으로 변화되어 <span class="hl">영광에서 영광에 이릅니다</span>. 이것은 주 영에게서 비롯됩니다. … 그 영과 신부께서 말씀하십니다. "오십시오! … 목마른 사람은 오십시오. 원하는 사람은 다 <span class="hl">생명수를 거저 받아 마시십시오</span>."</p>
+        </div>
+
+        <div class="content-block">
+          <div class="sub-point" style="border-color: var(--step4);">
+            <div class="sub-point-title">💨 완결되신 영</div>
+            <p>오늘날 삼일 하나님은 완전히 <span class="hl">그 영으로 완결되셨다</span>. 모든 것을 포함하신 영이신 그 영은 삼일 하나님의 완결이시자 총체이시다. 그 영을 받아들일 때, 우리는 아들과 아버지를 받아들인다. 이 <span class="hl">생명 주시는 영</span>은 모든 것을 포함하시고 복합되시고 완결되셨다. 더욱이 지금 그분은 우리 안에 계신다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step4);">
+            <div class="sub-point-title">🔗 연합된 영</div>
+            <p>영이신 하나님은 이미 우리 영 안에 들어오셨으며, <span class="hl">그분의 영과 우리의 영은 연합되어 한 영이 되었다</span>. 오늘 우리의 훈련은 바로 이 영에 따라 생활하고 행하며, 바로 이 영을 따라 크고 작은 모든 일을 하는 것이다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step4);">
+            <div class="sub-point-title">🛠️ 실제적인 실행</div>
+            <p>우리는 <span class="hl">그 영에 의해, 그 영과 함께, 그 영 안에서, 그 영을 통해</span> 모든 것을 하고 모든 것이 되어야 한다. 우리는 그 영으로 기도하고, 그 영으로 성경을 읽으며, 그 영으로 다른 사람들을 사랑하고, 그 영으로 복음을 전해야 한다.</p>
+            <p style="margin-top:8px;">주님을 위해 말하기 전에 단순히 이렇게 기도한다: "주님, 제가 당신과 한 영 될 수 있도록 저와 한 영 되어 주십시오. 주님, 제가 말하는 것이 당신께서 말씀하시는 것이 될 수 있도록 저의 말함 안에서 말씀해 주십시오." 이것이 하나님의 영원한 경륜의 분배 안에서 사는 것이다.</p>
+          </div>
+
+          <div class="sub-point" style="border-color: var(--step4);">
+            <div class="sub-point-title">🏆 이기는 이</div>
+            <p>이렇게 함으로써 우리는 <span class="hl">하나님의 시대의 이상 아래에서 살 수 있다</span>. 오늘 우리는 영 안에 사는 사람으로서, 곧 이기는 이들이 될 것이다. 오늘날 수많은 우상들을 이기고, <span class="hl">시대를 전환하는 사람들</span>이 되어, 왕국 시대를 가져올 수 있을 것이다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCLUSION VISUAL (Added Section) -->
+<div class="conclusion-section" id="conclusion-sec">
+  <h2 class="conclusion-title">하나님의 시대적 이상 아래 사는 삶</h2>
+  
+  <div class="vision-container">
+    <!-- Stairs Visual -->
+    <div class="vision-steps">
+      <div class="v-step-wrapper">
+        <div class="v-step-desc">
+          <p>탁월하신 그리스도를<br>이상으로 봅니다.</p>
+          <small>(보배로 조성됨)</small>
+        </div>
+        <div class="v-step step1">
+          <h4>다니엘<br>(이상)</h4>
+        </div>
+      </div>
+      
+      <div class="mobile-arrow"><i class="fas fa-chevron-down"></i></div>
+      
+      <div class="v-step-wrapper">
+        <div class="v-step-desc">
+          <p>나의 타고난 의를 비우고<br>오직 하나님 자신을<br>추구합니다.</p>
+        </div>
+        <div class="v-step step2">
+          <h4>욥<br>(비워짐)</h4>
+        </div>
+      </div>
+      
+      <div class="mobile-arrow"><i class="fas fa-chevron-down"></i></div>
+      
+      <div class="v-step-wrapper">
+        <div class="v-step-desc">
+          <p>매 순간 연합된 영 안에서<br>생활하고 행합니다.</p>
+        </div>
+        <div class="v-step step3">
+          <h4>그 영<br>(실재)</h4>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Result Framed Box -->
+    <div class="vision-result-box">
+      <div class="vision-result-inner">
+        <p>이 세 단계를 거칠 때,<br>우리는 수많은 우상들을 이기고<br>시대를 전환하여<br><strong>왕국 시대를 가져오는<br>이기는 이들</strong>이 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-section" id="quiz-sec">
+  <div class="quiz-title">📝 이해도 퀴즈</div>
+  
+  <div class="quiz-item" data-correct="2">
+    <div class="quiz-q">
+      <div class="quiz-badge">1</div>
+      <div class="quiz-q-text">다니엘 10장에서 그리스도가 입고 계셨던 세마포 옷은 무엇을 상징하는가?</div>
+    </div>
+    <div class="quiz-options">
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">A</div>그리스도의 신성</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">B</div>그리스도의 왕의 직분</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">C</div>그리스도의 인성 (제사장 직분)</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">D</div>그리스도의 심판</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint-text">성경의 예표에서 세마포는 어떤 속성을 상징하는지, 그리고 제사장이 입는 의복이 무엇인지 생각해 보세요.</div>
+  </div>
+  
+  <div class="quiz-item" data-correct="1">
+    <div class="quiz-q">
+      <div class="quiz-badge">2</div>
+      <div class="quiz-q-text">욥의 친구들의 논리는 어떤 나무의 노선에 따른 것이었는가?</div>
+    </div>
+    <div class="quiz-options">
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">A</div>생명나무</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">B</div>선과 악의 지식나무</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">C</div>무화과나무</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">D</div>올리브나무</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint-text">욥의 친구들은 고통의 원인을 선악의 관점, 즉 심판의 문제로 보았습니다. 이것은 어떤 나무의 원리에 따른 것일까요?</div>
+  </div>
+  
+  <div class="quiz-item" data-correct="3">
+    <div class="quiz-q">
+      <div class="quiz-badge">3</div>
+      <div class="quiz-q-text">66권 성경이 말하는 '한 가지'는 무엇인가?</div>
+    </div>
+    <div class="quiz-options">
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">A</div>윤리적으로 선하게 사는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">B</div>하나님의 심판을 피하는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">C</div>종교적 의식을 지키는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">D</div>하나님이 그리스도 안에서 그 영에 의해 자신을 우리 안에 분배하시는 것</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint-text">하나님께서 우리의 생명과 본성과 모든 것이 되시는 것, 곧 '분배'와 관련된 답을 찾아보세요.</div>
+  </div>
+  
+  <div class="quiz-item" data-correct="0">
+    <div class="quiz-q">
+      <div class="quiz-badge">4</div>
+      <div class="quiz-q-text">하나님이 욥을 소모시키신 목적은 무엇인가?</div>
+    </div>
+    <div class="quiz-options">
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">A</div>타고난 욥을 허물어뜨려 하나님의 본성으로 새롭게 건축하시려는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">B</div>욥의 죄를 심판하시려는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">C</div>욥에게 더 많은 물질적 축복을 주시려는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">D</div>욥이 더 강한 사람이 되게 하시려는 것</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint-text">하나님의 의도는 욥의 자기 의와 만족을 벗기신 후, 무엇으로 다시 건축하시려는 것이었는지 생각해 보세요.</div>
+  </div>
+  
+  <div class="quiz-item" data-correct="1">
+    <div class="quiz-q">
+      <div class="quiz-badge">5</div>
+      <div class="quiz-q-text">오늘날 그리스도인이 그 영을 따라 사는 실제적인 방법으로 가장 적절한 것은?</div>
+    </div>
+    <div class="quiz-options">
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">A</div>선과 악의 지식나무 안에서 윤리적으로 행동하는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">B</div>우리의 영을 사용하여 그 영에 의해, 그 영과 함께 모든 것을 하는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">C</div>많은 성경 지식을 쌓는 것</div>
+      <div class="quiz-opt" onclick="selectOpt(this)"><div class="quiz-opt-circle">D</div>종교적 규율을 엄격히 지키는 것</div>
+    </div>
+    <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+    <div class="quiz-hint-text">갈라디아서 5:25의 말씀과 연결하여 생각해 보세요. 우리의 '영'을 어떻게 사용하는 것이 핵심인지 생각해 보세요.</div>
+  </div>
+  
+  <div class="quiz-submit-wrap">
+    <button class="quiz-submit" onclick="submitQuiz()">결과 확인</button>
+  </div>
+  <div class="quiz-result" id="quizResult"></div>
+</div>
+
+<!-- PRAYER -->
+<div class="prayer-section" id="prayer-sec">
+  <div class="prayer-title">오늘의 기도</div>
+  <div class="prayer-text">
+    <p>주 예수님, 당신은 <b>보배 중의 보배</b>이시며 가장 보배로운 분이십니다. 주님, 저에게 영적인 시력을 주시어 다니엘이 본 <b>탁월하신 그리스도</b>를 볼 수 있게 해 주십시오.</p>
+    <p>주님, 제가 당신과 <b>한 영</b> 될 수 있도록 저와 한 영 되어 주십시오. 주님, 제가 말하는 것이 당신께서 말씀하시는 것이 될 수 있도록 <b>저의 말함 안에서 말씀해 주십시오</b>.</p>
+    <p>주님, 자기 의와 자기 만족과 자기의 올곧음을 <b>소모시켜 주십시오</b>. 제가 하나님을 더 깊이 추구하도록 이끌어 주심으로, 제게 부족한 것이 <b>하나님 자신</b>이라는 것을 깨닫게 해 주십시오.</p>
+    <p>주님, 저를 <b>생명나무의 노선</b> 안에 두셔서 하나님의 사람이 되게 하여 주십시오. 그 영에 의해, 그 영과 함께, 그 영 안에서, 그 영을 통해 <b>모든 것을 하고 모든 것이 되게</b> 해 주십시오.</p>
+    <p>주님, 제가 당신의 보배로우심을 더 깊이 알고 체험할수록, 보배로우신 주님의 귀함을 더 감상하게 하여 주십시오.</p>
+    <p>주님, 우리 모두가 <b>그리스도를 누림으로써 시대를 전환하는 사람</b>이 되어, 이기는 이들이 되게 하여 주십시오. 아멘.</p>
+  </div>
+</div>
+
+</div><!-- container -->
+
+<script>
+// Font size adjustment
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else fontScale = Math.max(0.7, Math.min(1.5, fontScale + dir * 0.05));
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+
+// Side panel
+const menuBtn = document.getElementById('menuBtn');
+const sidePanel = document.getElementById('sidePanel');
+const sideOverlay = document.getElementById('sideOverlay');
+const sideClose = document.getElementById('sideClose');
+
+function openPanel() { sidePanel.classList.add('open'); sideOverlay.classList.add('open'); }
+function closePanel() { sidePanel.classList.remove('open'); sideOverlay.classList.remove('open'); }
+menuBtn.addEventListener('click', openPanel);
+sideOverlay.addEventListener('click', closePanel);
+sideClose.addEventListener('click', closePanel);
+
+// Keyword tags click to show description
+document.querySelectorAll('.kw-tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    const span = tag.querySelector('span');
+    if (span) {
+      if(span.style.display === 'none' || span.style.display === '') {
+        // Hide all others first
+        document.querySelectorAll('.kw-tag span').forEach(s => {
+          s.style.display = 'none';
+          s.parentElement.style.paddingBottom = '6px';
+        });
+        span.style.display = 'block';
+        tag.style.paddingBottom = '12px';
+      } else {
+        span.style.display = 'none';
+        tag.style.paddingBottom = '6px';
+      }
+    }
+  });
+});
+
+// Accordion
+function toggleAccordion(header) {
+  const card = header.parentElement;
+  const body = card.querySelector('.accordion-body');
+  if (card.classList.contains('open')) {
+    card.classList.remove('open');
+    body.style.maxHeight = '0';
+  } else {
+    card.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    setTimeout(() => { if(card.classList.contains('open')) body.style.maxHeight = body.scrollHeight + 'px'; }, 300);
+  }
+}
+
+function openAccordion(idx) {
+  const cards = document.querySelectorAll('.accordion-card');
+  if (cards[idx]) {
+    const card = cards[idx];
+    if (!card.classList.contains('open')) {
+      toggleAccordion(card.querySelector('.accordion-header'));
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 350);
+    } else {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+}
+
+// Quiz
+function toggleHint(btn) {
+  const hintText = btn.nextElementSibling;
+  hintText.classList.toggle('show');
+}
+
+function selectOpt(el) {
+  const item = el.closest('.quiz-item');
+  if (item.classList.contains('answered')) return;
+  item.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function submitQuiz() {
+  const items = document.querySelectorAll('.quiz-item');
+  let score = 0;
+  let allAnswered = true;
+  items.forEach(item => {
+    const correct = parseInt(item.dataset.correct);
+    const opts = item.querySelectorAll('.quiz-opt');
+    let selected = -1;
+    opts.forEach((o, i) => { if (o.classList.contains('selected')) selected = i; });
+    if (selected === -1) { allAnswered = false; return; }
+    item.classList.add('answered');
+    if (selected === correct) {
+      opts[selected].classList.add('correct');
+      score++;
+    } else {
+      opts[selected].classList.add('wrong');
+      opts[correct].classList.add('correct');
+    }
+  });
+  if (!allAnswered) {
+    alert('모든 문제에 답을 선택해 주세요.');
+    return;
+  }
+  const result = document.getElementById('quizResult');
+  result.style.display = 'block';
+  let feedback = '';
+  if (score === 5) { feedback = '🎉 완벽합니다! 성경 전체를 꿰뚫는 핵심 경륜을 정확히 이해하셨습니다.'; result.style.background = '#f0fdf4'; result.style.color = '#166534'; }
+  else if (score >= 3) { feedback = '👍 잘하셨습니다! 흐름을 잘 파악하고 계시네요.'; result.style.background = '#fffbeb'; result.style.color = '#92400e'; }
+  else { feedback = '📖 각 단계(Step)의 핵심 요점을 다시 한 번 묵상해 보세요!'; result.style.background = '#fef2f2'; result.style.color = '#991b1b'; }
+  result.innerHTML = '<div style="font-size:1.3rem;font-weight:800;margin-bottom:6px;">' + score + ' / 5 점</div>' + feedback;
+}
+</script>
+</body>
+</html>
