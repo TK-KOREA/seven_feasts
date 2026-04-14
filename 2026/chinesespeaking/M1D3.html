@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그러나 노아는 — 은혜와 하나님의 건축</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --base-font-size: 17px;
+  --font-scale: 1;
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #333333;
+  --accent-yellow: #ffe066;
+  --highlight-yellow: #fff3b0;
+  --border-light: #e0e0e0;
+  --card-bg: #fafafa;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --radius: 14px;
+  --topbar-h: 44px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: calc(var(--base-font-size) * var(--font-scale));
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg);
+  padding-top: var(--topbar-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--topbar-h);
+  background: #fff;
+  border-bottom: 1px solid var(--border-light);
+  display: flex; align-items: center;
+  padding: 0;
+  font-size: 14px !important;
+}
+.topbar * { font-size: 14px !important; }
+.topbar-left {
+  display: flex; align-items: center; gap: 2px;
+  flex-shrink: 0; padding-left: 6px;
+}
+.topbar-btn {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  border: none; background: transparent; cursor: pointer;
+  border-radius: 8px; color: var(--text);
+  flex-shrink: 0;
+}
+.topbar-btn:hover { background: #f0f0f0; }
+.topbar-btn svg { width: 20px; height: 20px; }
+.topbar-title-wrap {
+  flex: 1; min-width: 0; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; padding: 0 8px;
+  white-space: nowrap;
+}
+.topbar-title-wrap::-webkit-scrollbar { display: none; }
+.topbar-title-text {
+  font-weight: 700; color: var(--text);
+  display: inline-block;
+}
+.topbar-right {
+  display: flex; align-items: center; gap: 0;
+  flex-shrink: 0; padding-right: 6px;
+}
+.font-btn {
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border-light); background: #fff;
+  cursor: pointer; font-weight: 700; color: var(--text);
+  font-size: 14px !important;
+}
+.font-btn:first-child { border-radius: 6px 0 0 6px; }
+.font-btn:nth-child(2) { border-left: none; border-right: none; font-size: 12px !important; color: #666; }
+.font-btn:last-child { border-radius: 0 6px 6px 0; }
+.font-btn:hover { background: #f5f5f5; }
+
+/* ===== SIDE PANEL ===== */
+.side-overlay {
+  position: fixed; inset: 0; z-index: 1100;
+  background: rgba(0,0,0,0.3);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.side-overlay.open { opacity: 1; pointer-events: auto; }
+.side-panel {
+  position: fixed; top: 0; left: -300px; z-index: 1200;
+  width: 280px; max-width: 85vw; height: 100vh;
+  background: #fff; transition: left 0.3s ease;
+  overflow-y: auto; padding: 20px 0;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+}
+.side-panel.open { left: 0; }
+.side-panel-header {
+  padding: 0 20px 16px; border-bottom: 1px solid var(--border-light);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.side-panel-header h3 { font-size: 16px !important; font-weight: 700; }
+.side-close {
+  width: 30px; height: 30px; border: none; background: transparent;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  border-radius: 6px; color: #666;
+}
+.side-close:hover { background: #f0f0f0; }
+.side-nav { padding: 12px 0; }
+.side-nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 20px; cursor: pointer; color: var(--text);
+  text-decoration: none; font-size: 15px !important;
+  transition: background 0.2s;
+}
+.side-nav-item:hover { background: #f7f7f7; }
+.side-nav-item .nav-icon { width: 20px; text-align: center; flex-shrink: 0; font-size: 15px !important; }
+.side-sub { padding-left: 50px; }
+.side-sub .side-nav-item { padding: 7px 20px 7px 0; font-size: 14px !important; color: #444; }
+/* keyword tooltip */
+.kw-item { position: relative; }
+.kw-tooltip {
+  display: none; background: #fffef0; border: 1px solid #e8e4c8;
+  border-radius: 8px; padding: 10px 14px; margin: 4px 0 4px 50px;
+  font-size: 13px !important; line-height: 1.6; color: #444;
+}
+.kw-item.active .kw-tooltip { display: block; }
+
+/* ===== MAIN ===== */
+.container { max-width: 720px; margin: 0 auto; padding: 20px 16px 40px; }
+
+/* Title Section */
+#sec-title { text-align: center; padding: 30px 0 10px; }
+#sec-title .subtitle {
+  font-size: calc(13px * var(--font-scale));
+  color: #888; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+#sec-title h1 {
+  font-size: calc(26px * var(--font-scale));
+  font-weight: 900; line-height: 1.4;
+  color: var(--text);
+}
+#sec-title h1 .hl {
+  background: var(--accent-yellow);
+  padding: 0 6px; border-radius: 4px;
+}
+#sec-title .ref {
+  margin-top: 10px; font-size: calc(14px * var(--font-scale));
+  color: #666;
+}
+
+/* Dashboard */
+#sec-dashboard { margin: 30px 0; }
+.dash-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.dash-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px; padding: 16px 12px;
+  text-align: center;
+}
+.dash-card .dash-icon { font-size: 24px; margin-bottom: 6px; }
+.dash-card .dash-label {
+  font-size: calc(11px * var(--font-scale));
+  color: #888; margin-bottom: 2px;
+}
+.dash-card .dash-value {
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 700; color: var(--text);
+}
+
+/* Flow connector */
+.flow-section { margin: 30px 0 10px; }
+.flow-steps {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 4px;
+}
+.flow-step {
+  background: #f8f8f8; border: 1px solid #e8e8e8;
+  border-radius: 20px; padding: 6px 14px;
+  font-size: calc(12px * var(--font-scale));
+  font-weight: 500; color: #555; white-space: nowrap;
+}
+.flow-arrow { color: #ccc; font-size: 16px; }
+
+/* Section heading */
+.sec-heading {
+  font-size: calc(18px * var(--font-scale));
+  font-weight: 700; margin: 30px 0 16px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--accent-yellow);
+}
+
+/* Keywords */
+#sec-keywords { margin: 20px 0; }
+.kw-cloud {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 16px 0;
+}
+.kw-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #f8f8f4; border: 1px solid #e8e4d0;
+  border-radius: 20px; padding: 6px 14px;
+  font-size: calc(14px * var(--font-scale));
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.kw-tag:hover, .kw-tag.active {
+  background: var(--accent-yellow);
+  border-color: #e6c84a;
+}
+.kw-def {
+  display: none; background: #fffef5; border: 1px solid #ece5c0;
+  border-radius: 10px; padding: 14px 16px; margin-top: 10px;
+  font-size: calc(14px * var(--font-scale));
+  line-height: 1.7; color: #333;
+}
+.kw-def.show { display: block; animation: fadeIn 0.3s ease; }
+.kw-def-title { font-weight: 700; margin-bottom: 4px; }
+
+/* Accordion */
+.accordion { margin-bottom: 14px; }
+.acc-header {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px; cursor: pointer;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  transition: all 0.2s;
+  user-select: none;
+}
+.acc-header:hover { border-color: #ccc; }
+.acc-header.open {
+  border-radius: var(--radius) var(--radius) 0 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.acc-icon-wrap {
+  width: 36px; height: 36px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px; font-size: 18px;
+}
+.acc-title-area { flex: 1; min-width: 0; }
+.acc-num {
+  font-size: calc(11px * var(--font-scale));
+  color: #999; margin-bottom: 2px;
+}
+.acc-title {
+  font-size: calc(16px * var(--font-scale));
+  font-weight: 700; color: var(--text);
+  word-break: keep-all;
+}
+.acc-chevron {
+  flex-shrink: 0; margin-top: 4px;
+  transition: transform 0.3s;
+  color: #aaa;
+}
+.acc-header.open .acc-chevron { transform: rotate(180deg); }
+.acc-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+.acc-body.open { max-height: 8000px; }
+.acc-content { padding: 18px 16px; }
+
+/* Bible verse */
+.bible-box {
+  background: #f9f8f2; border-left: 3px solid var(--accent-yellow);
+  border-radius: 0 8px 8px 0; padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.bible-ref {
+  display: flex; align-items: center; gap: 6px;
+  font-size: calc(12px * var(--font-scale));
+  font-weight: 700; color: #8b7e5a;
+  margin-bottom: 6px;
+}
+.bible-ref svg { width: 14px; height: 14px; flex-shrink: 0; }
+.bible-text {
+  font-size: calc(15px * var(--font-scale));
+  line-height: 1.75; color: #333;
+}
+.bible-text + .bible-ref { margin-top: 10px; }
+
+.hl {
+  background: var(--accent-yellow);
+  padding: 0 3px; border-radius: 3px;
+  font-weight: 700;
+}
+
+.point-text {
+  font-size: calc(15px * var(--font-scale));
+  line-height: 1.8; color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.point-text:last-child { margin-bottom: 0; }
+
+.sub-title {
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 700; color: var(--text);
+  margin: 16px 0 8px;
+  padding-left: 10px;
+  border-left: 3px solid var(--accent-yellow);
+}
+
+.connect-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #f0f7ff; border: 1px solid #d0e4f7;
+  border-radius: 6px; padding: 3px 10px;
+  font-size: calc(12px * var(--font-scale));
+  color: #4a7fb5; margin-top: 12px;
+}
+
+/* Quiz */
+#sec-quiz { margin: 30px 0; }
+.quiz-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius); padding: 20px 16px;
+  margin-bottom: 14px;
+}
+.quiz-q {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 14px;
+}
+.quiz-num {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--accent-yellow);
+  border-radius: 50%; display: flex;
+  align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; color: var(--text);
+}
+.quiz-question { font-size: 1rem; font-weight: 500; line-height: 1.6; }
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border: 1px solid var(--border-light);
+  border-radius: 10px; cursor: pointer; transition: all 0.2s;
+  font-size: 1rem; line-height: 1.5;
+  background: #fff;
+  min-height: 44px;
+}
+.quiz-opt:hover { border-color: #ccc; background: #fafafa; }
+.quiz-opt.selected { border-color: #4a90d9; background: #f0f7ff; }
+.quiz-opt.correct { border-color: #4caf50; background: #f0faf0; }
+.quiz-opt.wrong { border-color: #e57373; background: #fef0f0; }
+.quiz-opt .opt-circle {
+  width: 22px; height: 22px; flex-shrink: 0;
+  border: 2px solid #ccc; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: transparent;
+}
+.quiz-opt.selected .opt-circle { border-color: #4a90d9; color: #4a90d9; }
+.quiz-opt.correct .opt-circle { border-color: #4caf50; background: #4caf50; color: #fff; }
+.quiz-opt.wrong .opt-circle { border-color: #e57373; background: #e57373; color: #fff; }
+
+.quiz-hint-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 10px; padding: 6px 12px;
+  border: 1px solid #e8e4d0; background: #fffef5;
+  border-radius: 8px; cursor: pointer;
+  font-size: 0.85rem; color: #8b7e5a;
+  transition: background 0.2s;
+}
+.quiz-hint-btn:hover { background: #fff8d6; }
+.quiz-hint {
+  display: none; margin-top: 8px; padding: 10px 14px;
+  background: #fffef5; border: 1px solid #ece5c0;
+  border-radius: 8px; font-size: 0.9rem;
+  line-height: 1.6; color: #555;
+}
+.quiz-hint.show { display: block; animation: fadeIn 0.3s; }
+
+.quiz-feedback {
+  display: none; margin-top: 10px; padding: 10px 14px;
+  border-radius: 8px; font-size: 0.9rem;
+}
+.quiz-feedback.show { display: block; animation: fadeIn 0.3s; }
+.quiz-feedback.correct-fb { background: #f0faf0; color: #2e7d32; }
+.quiz-feedback.wrong-fb { background: #fef0f0; color: #c62828; }
+
+.quiz-submit-area { text-align: center; margin-top: 20px; }
+.quiz-submit-btn {
+  padding: 12px 32px; border: none;
+  background: var(--accent-yellow);
+  border-radius: 10px; font-size: 1rem;
+  font-weight: 700; color: var(--text);
+  cursor: pointer; transition: background 0.2s;
+}
+.quiz-submit-btn:hover { background: #ffd633; }
+.quiz-result {
+  display: none; text-align: center; padding: 24px 16px;
+  background: var(--card-bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius); margin-top: 16px;
+}
+.quiz-result.show { display: block; animation: fadeIn 0.4s; }
+.quiz-score {
+  font-size: calc(40px * var(--font-scale));
+  font-weight: 900; color: var(--text);
+}
+.quiz-msg {
+  font-size: calc(15px * var(--font-scale));
+  color: #555; margin-top: 8px;
+}
+
+/* Prayer */
+#sec-prayer { margin: 30px 0 20px; }
+.prayer-box {
+  background: #fafaf6; border: 1px solid #ece8d8;
+  border-radius: var(--radius); padding: 24px 20px;
+}
+.prayer-text {
+  font-size: calc(15px * var(--font-scale));
+  line-height: 2; color: #333;
+  word-break: keep-all;
+}
+
+/* 방주 3층 시각화 영역 */
+.ark-visual {
+  display: flex; flex-direction: column; gap: 10px; margin: 20px 0;
+  background: #faf9f5; border: 1px solid #e8e0d5; border-radius: 12px; padding: 16px;
+}
+.ark-floor {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px; border-radius: 8px;
+  position: relative; overflow: hidden;
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.ark-floor::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+}
+.floor-3::before { background: #eac54f; }
+.floor-2::before { background: #6da2c4; }
+.floor-1::before { background: #d97777; }
+
+.floor-num {
+  flex-shrink: 0; width: 50px; text-align: center;
+  font-size: calc(18px * var(--font-scale)); font-weight: 900; color: #444;
+}
+.floor-num span { 
+  display: block; font-size: calc(10px * var(--font-scale)); 
+  color: #888; font-weight: 500; margin-top: 2px;
+}
+.floor-info { flex: 1; }
+.floor-title { 
+  font-size: calc(16px * var(--font-scale)); 
+  font-weight: 700; color: var(--text); margin-bottom: 4px; 
+}
+.floor-desc { 
+  font-size: calc(14px * var(--font-scale)); 
+  color: var(--text-secondary); line-height: 1.5; word-break: keep-all;
+}
+.floor-desc .sub-desc {
+  display: block; color: #777; font-size: 0.95em; margin-top: 4px;
+}
+.floor-ref { 
+  font-size: calc(12px * var(--font-scale)); color: #666; margin-top: 8px; 
+  display: inline-flex; align-items: center; gap: 5px; 
+  background: #f4f4f4; padding: 4px 10px; border-radius: 6px; font-weight: 500;
+}
+
+.ark-note {
+  background: #fffef0; border: 1px dashed #d4c894; border-radius: 8px;
+  padding: 14px; margin-top: 6px; font-size: calc(14.5px * var(--font-scale));
+  color: #444; text-align: center; line-height: 1.6; word-break: keep-all;
+}
+
+/* 요점 7 시각화 영역 */
+.window-visual {
+  display: flex; flex-direction: column; gap: 12px; margin: 20px 0;
+  background: #faf9f5; border: 1px solid #e8e0d5; border-radius: 12px; padding: 16px;
+}
+.light-row {
+  display: flex; gap: 12px; align-items: stretch;
+}
+.light-card {
+  flex: 1; padding: 16px; border-radius: 8px; background: #fff;
+  border-top: 4px solid #ccc; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex; flex-direction: column;
+}
+.light-card.vertical { border-top-color: #eac54f; }
+.light-card.horizontal { border-top-color: #d97777; }
+.light-icon { font-size: 24px; margin-bottom: 8px; }
+.light-title {
+  font-size: calc(15px * var(--font-scale)); font-weight: 700; color: var(--text); margin-bottom: 6px;
+}
+.light-desc {
+  font-size: calc(13.5px * var(--font-scale)); color: var(--text-secondary); line-height: 1.5; word-break: keep-all;
+}
+@media (max-width: 480px) {
+  .light-row { flex-direction: column; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .dash-grid { grid-template-columns: repeat(2, 1fr); }
+  .container { padding: 16px 12px 40px; }
+  .acc-content { padding: 14px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <button class="topbar-btn" id="menuBtn" aria-label="목차">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <a href="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/" class="topbar-btn" aria-label="홈">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </a>
+  </div>
+  <div class="topbar-title-wrap">
+    <span class="topbar-title-text">그러나 노아는 — 은혜와 하나님의 건축</span>
+  </div>
+  <div class="topbar-right">
+    <button class="font-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-btn" onclick="adjustFont(0)">가</button>
+    <button class="font-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<!-- SIDE PANEL -->
+<div class="side-overlay" id="sideOverlay"></div>
+<div class="side-panel" id="sidePanel">
+  <div class="side-panel-header">
+    <h3>목차</h3>
+    <button class="side-close" id="sideClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="side-nav" id="sideNav">
+    <a class="side-nav-item" href="#sec-title" onclick="closePanel()">
+      <span class="nav-icon">📌</span> 제목
+    </a>
+    <a class="side-nav-item" href="#sec-dashboard" onclick="closePanel()">
+      <span class="nav-icon">📊</span> 대시보드
+    </a>
+    <a class="side-nav-item" href="#sec-keywords" onclick="closePanel()">
+      <span class="nav-icon">🔑</span> 키워드
+    </a>
+    <div class="side-sub" id="kwSubMenu"></div>
+    <a class="side-nav-item" href="#sec-points" onclick="closePanel()">
+      <span class="nav-icon">📖</span> 핵심요점
+    </a>
+    <div class="side-sub">
+      <a class="side-nav-item" href="#point1" onclick="closePanel()">① 은혜의 보좌로 나아감</a>
+      <a class="side-nav-item" href="#point2" onclick="closePanel()">② 은혜: 하나님의 임재</a>
+      <a class="side-nav-item" href="#point3" onclick="closePanel()">③ 은혜의 산물: 의(義)</a>
+      <a class="side-nav-item" href="#point4" onclick="closePanel()">④ 창조물과 건축물의 차이</a>
+      <a class="side-nav-item" href="#point5" onclick="closePanel()">⑤ 방주: 하나님의 첫 건축물</a>
+      <a class="side-nav-item" href="#point6" onclick="closePanel()">⑥ 방주의 세 층: 삼일 하나님</a>
+      <a class="side-nav-item" href="#point7" onclick="closePanel()">⑦ 하나의 창: 하나의 이상</a>
+    </div>
+    <a class="side-nav-item" href="#sec-quiz" onclick="closePanel()">
+      <span class="nav-icon">✏️</span> 퀴즈
+    </a>
+    <a class="side-nav-item" href="#sec-prayer" onclick="closePanel()">
+      <span class="nav-icon">&nbsp;</span> 오늘의 기도
+    </a>
+  </nav>
+</div>
+
+<div class="container">
+
+<!-- TITLE -->
+<section id="sec-title">
+  <div class="subtitle">2026 국제중국어 1주 3,4일</div>
+  <h1>"<span class="hl">그러나 노아는</span>"<br>은혜와 하나님의 건축</h1>
+  <div class="ref">창세기 6:8 — "그러나 노아는 여호와 앞에 은총을 입었다."</div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="sec-dashboard">
+  <h2 class="sec-heading">📊 핵심 대시보드</h2>
+  <div class="dash-grid">
+    <div class="dash-card">
+      <div class="dash-icon">🛡️</div>
+      <div class="dash-label">은혜란</div>
+      <div class="dash-value">하나님의 임재</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-icon">⚔️</div>
+      <div class="dash-label">육체란</div>
+      <div class="dash-value">마귀의 임재</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-icon">⚖️</div>
+      <div class="dash-label">은혜의 산물</div>
+      <div class="dash-value">의(義)</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-icon">🏗️</div>
+      <div class="dash-label">첫 건축물</div>
+      <div class="dash-value">노아의 방주</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-icon">🔺</div>
+      <div class="dash-label">세 층</div>
+      <div class="dash-value">삼일 하나님</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-icon">💡</div>
+      <div class="dash-label">하나의 창</div>
+      <div class="dash-value">하나의 이상</div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<div class="flow-section">
+  <div class="flow-steps">
+    <span class="flow-step">육체(마귀의 임재)</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">은혜의 보좌로</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">하나님의 임재</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">의(義)의 산물</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">방주 건조</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">삼일 하나님 체험</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-step">하나의 이상</span>
+  </div>
+</div>
+
+<!-- KEYWORDS -->
+<section id="sec-keywords">
+  <h2 class="sec-heading">🔑 키워드</h2>
+  <div class="kw-cloud" id="kwCloud"></div>
+  <div id="kwDefArea"></div>
+</section>
+
+<!-- POINTS -->
+<section id="sec-points">
+  <h2 class="sec-heading">📖 핵심요점</h2>
+
+  <!-- POINT 1 -->
+  <div class="accordion" id="point1">
+    <div class="acc-header" onclick="toggleAcc(this)" style="border-left: 3px solid #5c9ece;">
+      <div class="acc-icon-wrap" style="background:#eef5fb;">🪑</div>
+      <div class="acc-title-area">
+        <div class="acc-num">요점 1</div>
+        <div class="acc-title">은혜의 보좌로 나아감 — "그러나 노아는"</div>
+      </div>
+      <div class="acc-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div class="bible-box">
+          <div class="bible-ref"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 히 4:16</div>
+          <div class="bible-text">그러므로 우리가 <span class="hl">긍휼을 받고 은혜를 입어서</span> 때맞추어 도움을 얻기 위하여, <span class="hl">은혜의 보좌 앞에 담대히 나아갑시다.</span></div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 창 6:8</div>
+          <div class="bible-text">그러나 <span class="hl">노아는 여호와 앞에 은총을 입었다.</span></div>
+        </div>
+        <p class="point-text">'은총'은 또한 <span class="hl">'은혜'</span>로 번역할 수 있다. 노아 시대에 사람들은 얼마나 배역적이었고 악하게 되었는지, 그 많은 사람들 가운데서도 한 사람이 있었다. '그러나 노아는'에서 <span class="hl">'그러나'</span>라는 말이 매우 중요하다. '그러나'는 일종의 상반되는 상황을 나타낸다.</p>
+        <p class="point-text">우리 모두가 이렇게 말할 수 있기를 바란다. '그러나', '그러나 내 이름은', 오늘날 이렇게 많은 타락한 사람들 가운데서도, '그러나 나라는 사람'이 있다. 하나님 앞에서 은총을 입었다.</p>
+
+        <div class="sub-title">은혜의 보좌로 가게 하는 요인</div>
+        <p class="point-text">은혜는 우리가 누리는 하나님 자신이자, 육체와 관련된 상황에 맞서도록 우리를 도우시는 하나님 자신이다. 히브리서 4장 16절에 따르면, 우리는 은혜를 입어서 때맞추어 도움을 얻을 수 있다. 우리에게 <span class="hl">은혜를 필요로 하게 하는 요인은 주로 육체</span>이다.</p>
+        <p class="point-text">사람으로서 수많은 체험을 거친 후에, 우리가 얼마나 많이 육체 안에 머무는지를 깨닫게 되었다. 이전에 주님께 화를 내며 "주님, 왜 육체를 가져가지 않으십니까?"라고 말씀드렸다. 결국 주님은 어떤 의미에서 육체가 필요하다는 것을 보여 주셨다. 왜냐하면 <span class="hl">육체가 바로 은혜의 보좌로 갈 수밖에 없게 하는 요인</span>이기 때문이다.</p>
+        <p class="point-text">이 육체로는 아무것도 할 수 없다. 할 수 있는 전부는 은혜의 보좌로 가는 것이다. 비록 할 수 있는 것은 아무것도 없지만, <span class="hl">우리가 갈 수 있는 곳이 있다. 그곳은 바로 은혜의 보좌이다.</span></p>
+        <div class="connect-badge">➡️ 다음: 은혜란 곧 하나님의 임재</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT 2 -->
+  <div class="accordion" id="point2">
+    <div class="acc-header" onclick="toggleAcc(this)" style="border-left: 3px solid #d4a843;">
+      <div class="acc-icon-wrap" style="background:#fdf6e3;">✨</div>
+      <div class="acc-title-area">
+        <div class="acc-num">요점 2</div>
+        <div class="acc-title">은혜: 하나님의 임재 vs 육체: 마귀의 임재</div>
+      </div>
+      <div class="acc-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div class="bible-box">
+          <div class="bible-ref"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 고전 15:10</div>
+          <div class="bible-text">그러나 내가 지금의 내가 된 것은 <span class="hl">하나님의 은혜로 된 것</span>이니, 나에게 주신 그분의 은혜가 헛되지 않았던 것입니다. 나는 모든 사도들보다 더 많이 수고하였습니다. 그러나 그것은 <span class="hl">내가 아니라, 나와 함께한 하나님의 은혜</span>였습니다.</div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 고후 12:9</div>
+          <div class="bible-text">그러나 주님은 나에게 말씀하셨습니다. "<span class="hl">나의 은혜가 너에게 충분하다.</span> 왜냐하면 나의 능력은 사람이 약할 때에 온전하게 나타나기 때문이다."</div>
+        </div>
+        <p class="point-text"><span class="hl">육체는 마귀의 임재이고, 은혜는 하나님의 임재이다.</span> 우리가 사탄의 임재에 맞서려면, 우리에게 하나님의 임재가 필요하다.</p>
+        <p class="point-text">매 순간, 심지어 우리가 기도하고 있는 동안에도 사탄은 우리의 육체 안에 있다. 아주 많은 경우에 기도는 육체에 의해 방해받았다. 이러한 육체의 방해로 인해 우리는 은혜의 보좌로 가지 않을 수 없다.</p>
+        <p class="point-text">비록 <span class="hl">사탄은 우리보다 크지만 하나님은 사탄보다 크시다.</span> 사탄이 이곳에 우리와 함께 있기 때문에 우리에게는 하나님의 임재가 필요하다. "주님, 당신은 당신의 원수가 이곳에 있음을 아십니다. 당신께서 오셔서 그를 대항하여 저와 함께 서 계셔야 합니다."</p>
+        <p class="point-text"><span class="hl">하나님께서 우리에게 오셔서 우리와 함께 서 계실 때 그것이 은혜이다.</span></p>
+
+        <div class="sub-title">은혜의 정의</div>
+        <p class="point-text">은혜는 우리의 짐을 짊어지는 분이신 놀라우신 그리스도로서, 우리 안에서 우리를 대신하여 우리의 누림을 위해 모든 것을 한다. 곧 그리스도 안에 계신 우리의 하나님이 은혜로서 우리에게 누림이 되시며, 우리의 모든 짐을 짊어지시는 분이 되시는 것이다.</p>
+        <div class="connect-badge">➡️ 다음: 이 은혜가 무엇을 산출하는가</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT 3 -->
+  <div class="accordion" id="point3">
+    <div class="acc-header" onclick="toggleAcc(this)" style="border-left: 3px solid #5ca05c;">
+      <div class="acc-icon-wrap" style="background:#f0f8f0;">⚖️</div>
+      <div class="acc-title-area">
+        <div class="acc-num">요점 3</div>
+        <div class="acc-title">은혜의 산물: 의(義) — 하나님과 사람에게 올바름</div>
+      </div>
+      <div class="acc-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div class="bible-box">
+          <div class="bible-ref"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 롬 5:17</div>
+          <div class="bible-text">한 사람의 범죄로 말미암아 죽음이 그 한 사람을 통하여 왕 노릇을 하였다면, <span class="hl">은혜를 넘치게 받고 의의 선물을 넘치게 받는 사람들</span>은 더욱 한 분 예수 그리스도를 통하여 <span class="hl">생명 안에서 왕으로서 다스릴 것</span>입니다.</div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 롬 5:21</div>
+          <div class="bible-text">죄가 죽음 안에서 왕 노릇을 한 것같이, <span class="hl">은혜도 의를 통하여 왕으로서 다스려</span> 우리 주 예수 그리스도를 통하여 영원한 생명에 이르게 하려는 것입니다.</div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 벧후 2:5</div>
+          <div class="bible-text">또한 하나님은 옛 세상을 아끼지 않으시고 경건하지 않은 사람들의 세상을 홍수로 잠기게 하실 때, <span class="hl">의를 전파한 노아</span>와 그의 일곱 식구를 보호하셨습니다.</div>
+        </div>
+        <p class="point-text"><span class="hl">은혜의 산물은 의이다.</span> 은혜의 능력, 은혜의 힘, 은혜의 생명에 의해 우리는 하나님께 올바를 수 있고, 서로에게 올바를 수 있으며, 심지어 우리 자신에게 올바를 수 있다.</p>
+        <p class="point-text">은혜를 받았으므로 심지어 가장 나쁜 환경 속에서도 평안을 누릴 수 있고, 하나님을 살아낼 수 있다. 자신의 의지나 힘으로가 아니라, 은혜를 베푸시는 이 하나님을 의지하는 것이다. 그것은 곧 하나님의 임재이다.</p>
+
+        <div class="sub-title">의(義)의 의미</div>
+        <p class="point-text"><span class="hl">의는 하나님 앞에서 그분의 표준에 따라 사람과 하나님 모두에게 의로운 것</span>이다. 우리 사람은 모두 불의한 존재이다 — 하나님께, 서로 사이에서, 심지어 아내와 자녀와 남편에게도 불의하다. 의는 의로움에 있어서 어떠한 것도 부족함이 없는 상태이다. <span class="hl">우리가 그리스도를 누릴 때, 자연스럽게 살아내는 것이 바로 의이다.</span></p>
+        <div class="connect-badge">➡️ 다음: 은혜에서 하나님의 건축으로</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT 4 -->
+  <div class="accordion" id="point4">
+    <div class="acc-header" onclick="toggleAcc(this)" style="border-left: 3px solid #9b6db5;">
+      <div class="acc-icon-wrap" style="background:#f5f0fa;">🔄</div>
+      <div class="acc-title-area">
+        <div class="acc-num">요점 4</div>
+        <div class="acc-title">창조물과 건축물의 차이 — 하나님 자신이 재료</div>
+      </div>
+      <div class="acc-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div class="bible-box">
+          <div class="bible-ref"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 고전 3:9</div>
+          <div class="bible-text">왜냐하면 우리는 하나님의 동역자들이기 때문입니다. 여러분은 하나님의 경작지이며, <span class="hl">하나님의 건축물</span>입니다.</div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 엡 2:22</div>
+          <div class="bible-text">그분 안에서 여러분 또한 <span class="hl">영 안에 있는 하나님의 거처로 함께 건축되고</span> 있습니다.</div>
+        </div>
+
+        <div class="sub-title">창조 vs 건축</div>
+        <p class="point-text">하나님께서 창조하신 그분의 피조물 안에는 <span class="hl">하나님 자신께 속한 것이 전혀 없다.</span> 하나님은 창조하실 때 그분 자신이 아닌 그분의 손으로 일하셨지만, <span class="hl">건축하실 때는 그분 자신을 재료로 하여 일하신다.</span></p>
+        <p class="point-text">하나님의 건축물은 하나님 자신과 그분의 피조물인 사람의 <span class="hl">신성한 연합</span>이다.</p>
+
+        <div class="sub-title">구원 전과 후</div>
+        <p class="point-text">우리가 단지 하나님의 창조물의 한 부분이라면 우리 안에는 하나님께 속한 것이 전혀 없을 것이다. 그러나 우리는 하나님의 건축물의 한 부분이기 때문에 우리 안에는 <span class="hl">하나님께 속한 무언가가 있다.</span></p>
+        <p class="point-text">구원받기 전에 우리는 단지 창조물일 뿐 건축물은 아니었다. 그러나 우리가 구원을 받음으로 하나님은 그분 자신을 우리와 연합하셨다. <span class="hl">하나님은 신성한 본성과 우리의 인간 본성을 연합하시어 우리를 신성한 건축물이 되게 하셨다.</span></p>
+        <div class="connect-badge">➡️ 다음: 이 건축의 첫 번째 예표</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT 5 -->
+  <div class="accordion" id="point5">
+    <div class="acc-header" onclick="toggleAcc(this)" style="border-left: 3px solid #c27c4e;">
+      <div class="acc-icon-wrap" style="background:#faf2ec;">🚢</div>
+      <div class="acc-title-area">
+        <div class="acc-num">요점 5</div>
+        <div class="acc-title">방주: 하나님의 첫 번째 건축물 = 하나님-사람 그리스도</div>
+      </div>
+      <div class="acc-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div class="bible-box">
+          <div class="bible-ref"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 요 1:14</div>
+          <div class="bible-text"><span class="hl">말씀께서 육체가 되시어</span> 우리 가운데 장막을 치시니, 은혜와 실재가 충만하였다. 우리가 그분의 영광을 보니, 아버지에게서 온 독생자의 영광이었다.</div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 히 11:7</div>
+          <div class="bible-text">노아는 <span class="hl">믿음으로</span>, 아직 보이지 않는 것들에 관한 하나님의 지시를 경외하는 마음으로 받아들여, <span class="hl">자기 집을 구원하기 위해 방주를 준비</span>함으로써, 세상을 유죄판결 하고 믿음에 따른 의의 상속자가 되었습니다.</div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 마 16:18</div>
+          <div class="bible-text">또 내가 그대에게 말합니다. 그대는 베드로입니다. <span class="hl">내가 이 반석 위에 내 교회를 건축할 것</span>이니, 음부의 문들이 교회를 이기지 못할 것입니다.</div>
+        </div>
+
+        <div class="sub-title">방주 = 그리스도의 예표</div>
+        <p class="point-text"><span class="hl">성경에 나오는 하나님의 첫 번째 건축물은 노아의 방주이다.</span> 방주는 우리에게 구원자가 되시는 구속자 그리스도의 예표이다. 그분께 구속과 해방과 구원과 안전과 보호가 있다.</p>
+        <p class="point-text">구속자와 구원자이신 그리스도는 하나의 건축물이시다. 그리스도는 하나님이실 뿐 아니라 <span class="hl">하나님-사람</span>이시다. 즉 그리스도는 사람과 함께 건축되신 하나님이시다.</p>
+        <p class="point-text">요한복음 1장 1절은 태초에 말씀께서 계셨고, 그 말씀은 하나님이셨다고 말한다. 그러나 14절은 말씀께서 육체가 되셨다고 말한다. 하나님이신 말씀께서 그분 자신을 인성과 연합하셨다. 이것이 건축이다. 육체가 되신 그리스도는 장막, 곧 <span class="hl">신성한 재료가 인간적인 재료와 연합된 하나의 건축물</span>이시다. 그리스도 안에는 신성과 인성이 있다. 그분의 두 본성은 두 가지 재료로서 함께 연합되고 하나로 건축되었다.</p>
+
+        <div class="sub-title">개인적 그리스도에서 단체적 그리스도로</div>
+        <p class="point-text">방주를 건조하는 것은 <span class="hl">그리스도의 풍성의 요소를 건축 재료로 하여 단체적인 그리스도, 곧 그리스도의 몸인 교회를 건축하는 것의 예표</span>이다. 이 방주는 개인적인 그리스도뿐만 아니라 단체적인 그리스도도 예표한다. 건축되어 세워진 것은 바로 오늘날 그리스도의 몸인 교회이다.</p>
+        <p class="point-text">오늘날 우리는 교회 안에, 그리스도의 몸 안에 살아갈 때, 오늘날 타락하고 하나님께 심판받은 이 세상으로부터 구원받을 수 있다.</p>
+        <div class="connect-badge">➡️ 다음: 방주의 세 층이 의미하는 것</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT 6 -->
+  <div class="accordion" id="point6">
+    <div class="acc-header" onclick="toggleAcc(this)" style="border-left: 3px solid #4a8fa8;">
+      <div class="acc-icon-wrap" style="background:#eef6f9;">🔺</div>
+      <div class="acc-title-area">
+        <div class="acc-num">요점 6</div>
+        <div class="acc-title">방주의 세 층: 삼일 하나님의 체험 — 영 → 아들 → 아버지</div>
+      </div>
+      <div class="acc-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div class="bible-box">
+          <div class="bible-ref"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 창 6:16</div>
+          <div class="bible-text">그 방주에 빛이 들어오도록 창을 내고 … 방주 옆쪽에는 입구를 내라. 그리고 <span class="hl">그 방주를 아래층과 둘째 층과 셋째 층으로 만들어라.</span></div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 엡 2:18</div>
+          <div class="bible-text">왜냐하면 <span class="hl">그분을 통하여 우리 모두가 한 성령 안에서 아버지께 나아가기</span> 때문입니다.</div>
+        </div>
+
+        <div class="sub-title">세 층 = 삼일 하나님</div>
+        <p class="point-text">방주의 세 층은 우리 모두가 도달해야 할 높이를 상징한다. 의심할 바 없이 <span class="hl">방주의 세 층은 삼일 하나님을 상징한다.</span></p>
+        <p class="point-text">우리의 체험에 따르면, 먼저 <span class="hl">그 영께서 우리에게 오셔서 우리를 찾아 아들께로 이끄시며</span> 우리를 감동시키시어 아들을 믿게 하신다. 아들을 믿은 후에 우리는 "오, 아버지!"라고 불렀다. <span class="hl">그 영은 우리를 아들께로 이끄시고, 아들은 우리를 아버지께로 이끄신다.</span> 아버지께 나아갈 때 우리는 셋째 층에 있는 것이다.</p>
+
+        <div class="sub-title">각 층의 영적 의미</div>
+        <div class="ark-visual">
+          <!-- 3층 -->
+          <div class="ark-floor floor-3">
+            <div class="floor-num">3층<span>Third Floor</span></div>
+            <div class="floor-info">
+              <div class="floor-title">아버지 (The Father)</div>
+              <div class="floor-desc">
+                가장 높은 곳에서 사랑과 빛으로 품으시는 분.
+                <span class="sub-desc">어느 날 우리 모두는 아버지의 층에 도달할 것이다. <span class="hl">이것은 가장 높고 가장 위대하며 가장 비밀한 곳</span>이다. (요한일서: 사랑과 빛)</span>
+              </div>
+              <div class="floor-ref">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> 
+                눅 15장: 탕자를 안아주는 아버지
+              </div>
+            </div>
+          </div>
+          <!-- 2층 -->
+          <div class="ark-floor floor-2">
+            <div class="floor-num">2층<span>Second Floor</span></div>
+            <div class="floor-info">
+              <div class="floor-title">아들 (The Son)</div>
+              <div class="floor-desc">
+                가운데 계시며 은혜와 진리가 되시는 분.
+                <span class="sub-desc">그리스도를 아는 것은 첫째 층에 있는 것과 다르며 더 높은 것이다. (요한복음: 은혜와 진리)</span>
+              </div>
+              <div class="floor-ref">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> 
+                눅 15장: 양을 찾는 목자
+              </div>
+            </div>
+          </div>
+          <!-- 1층 -->
+          <div class="ark-floor floor-1">
+            <div class="floor-num">1층<span>First Floor</span></div>
+            <div class="floor-info">
+              <div class="floor-title">그 영 (The Spirit)</div>
+              <div class="floor-desc">
+                우리를 찾아 '아들께로 이끄시는 분'.
+                <span class="sub-desc">방주의 첫째 층은 그 영이다. 아들이신 그리스도를 알려면 우리 모두는 먼저 그 영께 가야 한다.</span>
+              </div>
+              <div class="floor-ref">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> 
+                눅 15장: 잃어버린 드라크마를 찾는 여인
+              </div>
+            </div>
+          </div>
+
+          <div class="ark-note">
+            방주의 세 층은 공간적 분할이 아닌,<br>
+            <strong>우리가 도달해야 할 영적 체험의 '높이(삼일 하나님)'</strong>를 상징합니다. (창 6:16)
+          </div>
+        </div>
+
+        <div class="sub-title">삼층집의 비유</div>
+        <p class="point-text">내게 삼층집이 있다고 해 보자. 여러분이 나의 각별한 친구가 아니라면, 나는 여러분을 1층까지만 들어오게 할 것이다. 좋은 친구라면 2층에까지 올라오도록 허락할 것이다. 그러나 매우 친밀한 사이가 아니라면, 결코 <span class="hl">3층으로 데려가 나의 비밀들과 은밀한 것들과 감추어진 보물들을 보여 주지 않을 것이다.</span></p>
+        <div class="connect-badge">➡️ 다음: 방주의 하나의 창이 가리키는 것</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT 7 -->
+  <div class="accordion" id="point7">
+    <div class="acc-header" onclick="toggleAcc(this)" style="border-left: 3px solid #c9a64e;">
+      <div class="acc-icon-wrap" style="background:#fdf8ec;">💡</div>
+      <div class="acc-title-area">
+        <div class="acc-num">요점 7</div>
+        <div class="acc-title">하나의 창: 하나의 이상, 하나의 계시, 하나의 빛</div>
+      </div>
+      <div class="acc-chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div class="bible-box">
+          <div class="bible-ref"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 행 26:19</div>
+          <div class="bible-text">아그립바왕이시여, 그러므로 내가 <span class="hl">하늘에 속한 그 이상을 거스르지 않고,</span></div>
+          <div class="bible-ref" style="margin-top:10px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6zm0 2h12v16H6V4zm2 2v2h8V6H8zm0 4v2h8v-2H8z"/></svg> 잠 29:18</div>
+          <div class="bible-text"><span class="hl">이상이 없으면 백성이 제한을 벗어던지나</span> / 율법을 지키는 이는 행복하다.</div>
+        </div>
+
+        <div class="sub-title">하나의 창 = 하늘을 향한 빛</div>
+        <p class="point-text">방주에는 <span class="hl">오직 하나의 창문이 하늘을 향하여 나 있었다.</span> 천장에 낸 채광창은 우리가 빛 속에 있고 정오의 가장 밝은 빛으로 가득함을 의미한다.</p>
+
+        <div class="window-visual">
+          <div class="light-row">
+            <!-- 수평적 빛 차단 -->
+            <div class="light-card horizontal">
+              <div class="light-icon">🚫↔️</div>
+              <div class="light-title">수평적 빛의 차단</div>
+              <div class="light-desc">방주에는 옆을 보는 창문이 없습니다. 빛은 <span class="hl" style="background:#ffdada;">동서남북(주변의 수많은 논쟁과 사역)</span>에서 오지 않습니다.</div>
+            </div>
+            <!-- 수직적 단일 이상 -->
+            <div class="light-card vertical">
+              <div class="light-icon">☀️⬇️</div>
+              <div class="light-title">수직적인 단일한 이상</div>
+              <div class="light-desc">하나님의 건축물에는 오직 하나의 창, 하나의 계시, 하늘에 속한 <span class="hl">유일한 '신약 사역'의 통제</span>만이 존재합니다.</div>
+            </div>
+          </div>
+          <div class="ark-note">
+            <strong>하나님의 경륜과 교회 안에는 오직 하나의 창문만 있어야 합니다.</strong><br>빛은 위에서 옵니다.
+          </div>
+        </div>
+
+        <p class="point-text">우리가 첫째 층과 둘째 층과 셋째 층 중 어디에 있는지는 우리가 소유한 빛의 정도에 의해 입증된다. <span class="hl">빛이 많을수록 더 높은 곳에 있는 것이며, 빛이 적을수록 더 낮은 곳에 있는 것이다.</span></p>
+        <p class="point-text">우리는 수많은 이상과 계시가 아니라 <span class="hl">오직 하나의 이상, 하나의 계시, 곧 하나님의 유일한 이상, 시대의 이상</span>인 그분의 하나의 신약 사역에 비춤을 받아야 한다. 이 이상이 우리의 모든 생활과 행함을 통제하고 지시하며 다스리게 해야 한다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="sec-quiz">
+  <h2 class="sec-heading">✏️ 퀴즈</h2>
+  <div id="quizArea"></div>
+  <div class="quiz-submit-area">
+    <button class="quiz-submit-btn" onclick="submitQuiz()">결과 확인</button>
+  </div>
+  <div class="quiz-result" id="quizResult">
+    <div class="quiz-score" id="quizScore"></div>
+    <div class="quiz-msg" id="quizMsg"></div>
+  </div>
+</section>
+
+<!-- PRAYER -->
+<section id="sec-prayer">
+  <h2 class="sec-heading">오늘의 기도</h2>
+  <div class="prayer-box">
+    <p class="prayer-text">
+      주 예수님, 저는 이 육체로는 아무것도 할 수 없음을 인정합니다. 그러나 감사합니다. 은혜의 보좌 앞에 갈 수 있음을 감사합니다. 주님, 당신은 당신의 원수가 이곳에 있음을 아십니다. 당신께서 오셔서 그를 대항하여 저와 함께 서 계셔야 합니다.
+    </p>
+    <p class="prayer-text" style="margin-top:12px;">
+      주님, 당신의 은혜가 저에게 충분합니다. 저를 은혜의 보좌로 계속 이끄시어 긍휼을 받고 은혜를 입어서 때맞추어 도움을 얻게 하소서. 은혜의 산물인 의를 저의 생활 속에서 계속 살아내게 하소서.
+    </p>
+    <p class="prayer-text" style="margin-top:12px;">
+      주님, 저를 단지 창조물이 아닌 당신의 건축물의 한 부분으로 세워 주소서. 당신의 신성한 본성과 저의 인간 본성을 연합하시어, 저를 당신의 신성한 건축물의 재료로 삼아 주소서. 그 영께서 저를 아들께로, 아들께서 저를 아버지께로 이끄시어, 가장 높은 셋째 층에 도달하게 하소서.
+    </p>
+    <p class="prayer-text" style="margin-top:12px;">
+      주님, 오직 하나의 창, 하나의 이상, 하나의 계시로 제 모든 생활과 행함을 통제하시고 지시하시며 다스려 주소서. 하늘에 속한 그 이상을 결코 거스르지 않게 하소서. 아멘.
+    </p>
+  </div>
+</section>
+
+</div><!-- container -->
+
+<script>
+// ===== FONT SIZE =====
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else fontScale = Math.max(0.7, Math.min(1.5, fontScale + dir * 0.05));
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+
+// ===== SIDE PANEL =====
+const panel = document.getElementById('sidePanel');
+const overlay = document.getElementById('sideOverlay');
+document.getElementById('menuBtn').onclick = () => { panel.classList.toggle('open'); overlay.classList.toggle('open'); };
+document.getElementById('sideClose').onclick = closePanel;
+overlay.onclick = closePanel;
+function closePanel() { panel.classList.remove('open'); overlay.classList.remove('open'); }
+
+// ===== ACCORDION =====
+function toggleAcc(header) {
+  const body = header.nextElementSibling;
+  header.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// ===== KEYWORDS =====
+const keywords = [
+  { word: '은혜', def: '우리가 누리는 하나님 자신이자, 육체와 관련된 상황에 맞서도록 우리를 도우시는 하나님 자신. 하나님께서 우리에게 오셔서 우리와 함께 서 계실 때 그것이 은혜이다.' },
+  { word: '육체', def: '마귀의 임재. 우리에게 은혜를 필요로 하게 하는 주된 요인이며, 은혜의 보좌로 갈 수밖에 없게 하는 요인이다.' },
+  { word: '의(義)', def: '은혜의 산물. 하나님 앞에서 그분의 표준에 따라 사람과 하나님 모두에게 의로운 것. 그리스도를 누릴 때 자연스럽게 살아내는 것이 바로 의이다.' },
+  { word: '건축', def: '하나님이 그분 자신을 재료로 하여 일하시는 것. 하나님 자신과 피조물인 사람의 신성한 연합. 기름을 돌 위에 부은 것처럼 하나님과 사람이 함께 연합되고 연결되는 것.' },
+  { word: '방주', def: '성경에 나오는 하나님의 첫 번째 건축물. 구원자 그리스도의 예표이며, 신성과 인성이 연합된 하나님-사람 그리스도를 상징한다.' },
+  { word: '삼일 하나님', def: '아버지와 아들과 영. 방주의 세 층으로 상징되며, 그 영은 우리를 아들께로, 아들은 우리를 아버지께로 이끄신다.' },
+  { word: '이상', def: '하나의 창으로 하늘에서 들어오는 빛. 하나님의 건축물에는 오직 하나의 계시와 하나의 이상이 있으며, 이 이상이 우리의 생활과 행함을 통제하고 다스린다.' },
+  { word: '임재', def: '은혜는 하나님의 임재이고, 육체는 마귀의 임재. 사탄의 임재에 맞서려면 하나님의 임재가 필요하다.' },
+];
+
+const kwCloud = document.getElementById('kwCloud');
+const kwDefArea = document.getElementById('kwDefArea');
+const kwSubMenu = document.getElementById('kwSubMenu');
+let activeKw = null;
+
+keywords.forEach((kw, i) => {
+  // cloud tag
+  const tag = document.createElement('span');
+  tag.className = 'kw-tag';
+  tag.textContent = kw.word;
+  tag.onclick = () => toggleKw(i);
+  kwCloud.appendChild(tag);
+
+  // sub menu
+  const sub = document.createElement('div');
+  sub.className = 'kw-item';
+  sub.innerHTML = `<a class="side-nav-item" onclick="toggleKwFromMenu(${i}); closePanel();"><span class="nav-icon">·</span> ${kw.word}</a>`;
+  kwSubMenu.appendChild(sub);
+});
+
+function toggleKw(i) {
+  const tags = kwCloud.querySelectorAll('.kw-tag');
+  if (activeKw === i) {
+    activeKw = null;
+    tags[i].classList.remove('active');
+    kwDefArea.innerHTML = '';
+    return;
+  }
+  if (activeKw !== null) tags[activeKw].classList.remove('active');
+  activeKw = i;
+  tags[i].classList.add('active');
+  kwDefArea.innerHTML = `<div class="kw-def show"><div class="kw-def-title">${keywords[i].word}</div>${keywords[i].def}</div>`;
+}
+function toggleKwFromMenu(i) {
+  toggleKw(i);
+  setTimeout(() => document.getElementById('sec-keywords').scrollIntoView({behavior:'smooth'}), 300);
+}
+
+// ===== QUIZ =====
+const quizData = [
+  {
+    q: '창세기 6장 8절에서 "은총"은 또한 무엇으로 번역할 수 있는가?',
+    opts: ['사랑', '은혜', '평안', '지혜'],
+    ans: 1,
+    hint: '노아가 여호와 앞에서 받은 것이며, 하나님 자신과 관련됩니다.'
+  },
+  {
+    q: '"육체는 ___의 임재이고, 은혜는 ___의 임재이다." 빈칸에 들어갈 말은?',
+    opts: ['세상 / 천사', '마귀 / 하나님', '죄 / 성령', '사람 / 그리스도'],
+    ans: 1,
+    hint: '육체와 은혜를 "임재"라는 관점에서 대비하여 설명한 핵심 문장입니다.'
+  },
+  {
+    q: '방주의 세 층이 상징하는 것은 무엇인가?',
+    opts: ['과거·현재·미래', '영·혼·몸', '삼일 하나님(영·아들·아버지)', '창조·구속·완성'],
+    ans: 2,
+    hint: '엡 2:18 — "그분을 통하여 우리 모두가 한 성령 안에서 아버지께 나아가기 때문입니다."'
+  },
+  {
+    q: '하나님의 "창조"와 "건축"의 차이점은 무엇인가?',
+    opts: [
+      '창조는 빠르고, 건축은 느리다',
+      '창조는 손으로 일하고, 건축은 자신을 재료로 하여 일하신다',
+      '창조는 하늘에서, 건축은 땅에서 이루어진다',
+      '창조는 영적이고, 건축은 물질적이다'
+    ],
+    ans: 1,
+    hint: '건축할 때 하나님께서 사용하시는 "재료"가 무엇인지 생각해 보세요.'
+  },
+  {
+    q: '방주에 오직 하나의 창만 있었다는 것이 의미하는 바는?',
+    opts: [
+      '환기를 위한 설계',
+      '노아의 건축 기술 한계',
+      '하나님의 건축물에는 하나의 계시와 하나의 이상이 있어야 함',
+      '빛이 많으면 위험하기 때문'
+    ],
+    ans: 2,
+    hint: '행 26:19 — "하늘에 속한 그 이상을 거스르지 않고"와 연결됩니다.'
+  }
+];
+
+const quizArea = document.getElementById('quizArea');
+const userAnswers = new Array(quizData.length).fill(-1);
+
+quizData.forEach((q, qi) => {
+  let optsHtml = q.opts.map((o, oi) =>
+    `<div class="quiz-opt" data-qi="${qi}" data-oi="${oi}" onclick="selectOpt(${qi},${oi})">
+      <span class="opt-circle">${['①','②','③','④'][oi]}</span>
+      <span>${o}</span>
+    </div>`
+  ).join('');
+
+  quizArea.innerHTML += `
+    <div class="quiz-card" id="qcard${qi}">
+      <div class="quiz-q">
+        <span class="quiz-num">${qi+1}</span>
+        <span class="quiz-question">${q.q}</span>
+      </div>
+      <div class="quiz-options">${optsHtml}</div>
+      <button class="quiz-hint-btn" onclick="showHint(${qi})">💡 힌트 보기</button>
+      <div class="quiz-hint" id="hint${qi}">${q.hint}</div>
+      <div class="quiz-feedback" id="fb${qi}"></div>
+    </div>`;
+});
+
+function selectOpt(qi, oi) {
+  userAnswers[qi] = oi;
+  document.querySelectorAll(`.quiz-opt[data-qi="${qi}"]`).forEach(el => {
+    el.classList.remove('selected','correct','wrong');
+    el.querySelector('.opt-circle').textContent = ['①','②','③','④'][+el.dataset.oi];
+  });
+  const sel = document.querySelector(`.quiz-opt[data-qi="${qi}"][data-oi="${oi}"]`);
+  sel.classList.add('selected');
+}
+
+function showHint(qi) {
+  document.getElementById('hint'+qi).classList.toggle('show');
+}
+
+function submitQuiz() {
+  let score = 0;
+  quizData.forEach((q, qi) => {
+    const fb = document.getElementById('fb'+qi);
+    document.querySelectorAll(`.quiz-opt[data-qi="${qi}"]`).forEach(el => {
+      el.classList.remove('selected','correct','wrong');
+      if (+el.dataset.oi === q.ans) {
+        el.classList.add('correct');
+        el.querySelector('.opt-circle').textContent = '✓';
+      } else if (+el.dataset.oi === userAnswers[qi] && userAnswers[qi] !== q.ans) {
+        el.classList.add('wrong');
+        el.querySelector('.opt-circle').textContent = '✗';
+      }
+    });
+    if (userAnswers[qi] === q.ans) {
+      score++;
+      fb.className = 'quiz-feedback show correct-fb';
+      fb.textContent = '정답입니다!';
+    } else {
+      fb.className = 'quiz-feedback show wrong-fb';
+      fb.textContent = '오답 — 정답: ' + q.opts[q.ans];
+    }
+  });
+  const res = document.getElementById('quizResult');
+  res.classList.add('show');
+  document.getElementById('quizScore').textContent = score + ' / ' + quizData.length;
+  const msgs = [
+    '다시 한번 핵심요점을 살펴보세요!',
+    '조금 더 노력해 보세요!',
+    '잘하고 있어요!',
+    '좋은 이해력입니다!',
+    '거의 완벽해요!',
+    '완벽합니다! 축하합니다! 🎉'
+  ];
+  document.getElementById('quizMsg').textContent = msgs[score];
+}
+</script>
+</body>
+</html>
