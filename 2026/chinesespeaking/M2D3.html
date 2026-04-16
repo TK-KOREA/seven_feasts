@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>은혜의 발견과 누림 — 시대를 전환하는 생활</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --base-font-size: 17px;
+  --font-scale: 1;
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #333333;
+  --accent-blue: #2563eb;
+  --accent-gold: #d97706;
+  --accent-green: #059669;
+  --accent-red: #dc2626;
+  --accent-purple: #7c3aed;
+  --accent-teal: #0d9488;
+  --accent-indigo: #4f46e5;
+  --accent-rose: #e11d48;
+  --highlight-yellow: #fef08a;
+  --highlight-yellow-strong: #fde047;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --section-bg: #f9fafb;
+  --verse-bg: #fffbeb;
+  --verse-border: #fbbf24;
+  --topbar-h: 44px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: calc(var(--base-font-size) * var(--font-scale));
+  scroll-behavior: smooth;
+  scroll-padding-top: 56px;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  padding-top: var(--topbar-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--topbar-h);
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex; align-items: center;
+  padding: 0 8px;
+  z-index: 1000;
+  gap: 4px;
+}
+.topbar-btn {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  border: none; background: none;
+  border-radius: 8px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #333; font-size: 18px;
+  transition: background .15s;
+}
+.topbar-btn:hover { background: #f3f4f6; }
+.topbar-title {
+  flex: 1; min-width: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 4px;
+}
+.topbar-title::-webkit-scrollbar { display: none; }
+.font-controls {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 2px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 2px;
+}
+.font-ctrl-btn {
+  width: 30px; height: 30px;
+  border: none; background: none;
+  border-radius: 6px; cursor: pointer;
+  font-size: 14px; font-weight: 600;
+  color: #333;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.font-ctrl-btn:hover { background: #e5e7eb; }
+
+/* ===== SIDE PANEL ===== */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.3);
+  z-index: 1001;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s;
+}
+.overlay.open { opacity: 1; pointer-events: auto; }
+.sidepanel {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 280px; max-width: 80vw;
+  background: #fff;
+  z-index: 1002;
+  transform: translateX(-100%);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  overflow-y: auto;
+  padding: 20px 0;
+  box-shadow: 4px 0 24px rgba(0,0,0,.1);
+}
+.sidepanel.open { transform: translateX(0); }
+.sidepanel-header {
+  padding: 0 20px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 8px;
+  font-size: 15px; font-weight: 700;
+  color: var(--accent-blue);
+  display: flex; align-items: center; gap: 8px;
+}
+.sidepanel-close {
+  margin-left: auto;
+  width: 30px; height: 30px;
+  border: none; background: #f3f4f6;
+  border-radius: 8px; cursor: pointer;
+  font-size: 16px; color: #666;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-item {
+  display: block;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s;
+  font-weight: 500;
+}
+.nav-item:hover { background: #f3f4f6; }
+.nav-item.sub {
+  padding-left: 36px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #555;
+}
+.nav-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 8px 20px;
+}
+.keyword-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 3px;
+  background: #f3f4f6;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  transition: all .2s;
+  border: 1px solid transparent;
+}
+.keyword-tag:hover, .keyword-tag.active {
+  background: #fef3c7;
+  border-color: #fbbf24;
+}
+.keyword-def {
+  display: none;
+  padding: 8px 20px 12px 36px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  background: #fefce8;
+  border-left: 3px solid #fbbf24;
+  margin: 0 20px 4px;
+  border-radius: 0 8px 8px 0;
+}
+.keyword-def.show { display: block; }
+
+/* ===== MAIN CONTENT ===== */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 32px 16px 28px;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 4px 16px;
+  background: #eff6ff;
+  color: var(--accent-blue);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: .5px;
+}
+.hero h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #111;
+  margin-bottom: 8px;
+}
+.hero h1 .highlight-word {
+  background: linear-gradient(180deg, transparent 50%, var(--highlight-yellow) 50%);
+  padding: 0 4px;
+}
+.hero-sub {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Verse Analysis (Greek Text) */
+.verse-analysis {
+  margin-top: 28px;
+  text-align: left;
+}
+.verse-compare {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  padding: 18px 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.1);
+}
+.verse-row {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #fcd34d;
+}
+.verse-row:last-child {
+  border-bottom: none; margin-bottom: 0; padding-bottom: 0;
+}
+.v-label {
+  font-size: 0.75rem; font-weight: 800; color: #b45309; margin-bottom: 8px;
+  display: inline-flex; align-items: center; gap: 4px; background: #fef3c7; padding: 4px 10px; border-radius: 6px;
+}
+.v-text { font-size: 1rem; color: #111; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+.v-grk { 
+  font-size: 1.25rem; color: #92400e; font-family: 'Times New Roman', serif; 
+  margin-bottom: 6px; line-height: 1.4; letter-spacing: 0.5px;
+}
+.v-pron { font-size: 0.8rem; color: #b45309; font-style: italic; margin-bottom: 10px; }
+.v-lit { 
+  font-size: 0.85rem; color: #1a1a1a; background: #fff; padding: 10px 12px; 
+  border-radius: 8px; border: 1px solid #fde68a; line-height: 1.5; font-weight: 500;
+}
+.v-lit strong { color: var(--accent-gold); }
+
+.word-study-title {
+  font-size: 0.95rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.word-grid {
+  display: grid; grid-template-columns: 1fr; gap: 12px;
+}
+.word-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s;
+}
+.word-card:hover { transform: translateY(-2px); border-color: #cbd5e1; }
+.word-header { 
+  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; 
+  border-bottom: 1px solid #f3f4f6; padding-bottom: 8px;
+}
+.word-grk { font-size: 1.2rem; font-weight: 700; color: var(--accent-gold); font-family: 'Times New Roman', serif; }
+.word-pron { font-size: 0.75rem; color: #b45309; text-align: right; margin-top: 2px; letter-spacing: 0.5px; }
+.word-kr { font-size: 0.95rem; font-weight: 800; color: #111; }
+.word-mean { 
+  font-size: 0.75rem; color: #475569; background: #f1f5f9; 
+  padding: 3px 8px; border-radius: 6px; margin-top: 4px; display: inline-block; font-weight: 500;
+}
+.word-desc { font-size: 0.82rem; color: #333; line-height: 1.6; }
+.word-desc strong { color: var(--accent-blue); background: linear-gradient(180deg, transparent 60%, #dbeafe 60%); }
+
+/* Dashboard */
+.dashboard {
+  margin: 24px 0;
+  padding: 20px 16px;
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+.dashboard-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 6px;
+}
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.dash-card {
+  padding: 14px 12px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+.dash-icon {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+.dash-label {
+  font-size: 0.72rem;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.dash-value {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.4;
+}
+
+/* Flow connector */
+.flow-section {
+  margin: 28px 0;
+}
+.flow-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 6px;
+}
+.flow-steps {
+  position: relative;
+  padding-left: 28px;
+}
+.flow-steps::before {
+  content: '';
+  position: absolute;
+  left: 11px; top: 12px; bottom: 12px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-blue), var(--accent-gold), var(--accent-green));
+  border-radius: 2px;
+}
+.flow-step {
+  position: relative;
+  padding: 8px 0 20px;
+}
+.flow-step:last-child { padding-bottom: 0; }
+.flow-dot {
+  position: absolute;
+  left: -28px; top: 12px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  color: #fff;
+  font-weight: 700;
+  z-index: 1;
+}
+.flow-step-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2px;
+}
+.flow-step-desc {
+  font-size: 0.76rem;
+  color: #666;
+  line-height: 1.5;
+}
+.flow-arrow {
+  position: absolute;
+  left: -20px; bottom: 2px;
+  font-size: 10px;
+  color: #999;
+}
+
+/* Keywords inline section */
+.keywords-section {
+  margin: 24px 0;
+  padding: 16px;
+  background: #f0f9ff;
+  border-radius: 12px;
+  border: 1px solid #bae6fd;
+}
+.keywords-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.kw-container {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.kw-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 14px;
+  background: #fff;
+  border: 1px solid #dbeafe;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #1e40af;
+  cursor: pointer;
+  transition: all .2s;
+}
+.kw-chip:hover { background: #fef3c7; border-color: #fde68a; }
+.kw-tooltip {
+  display: none;
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: #fffbeb;
+  border-radius: 10px;
+  border: 1px solid #fde68a;
+  font-size: 0.8rem;
+  color: #333;
+  line-height: 1.6;
+}
+.kw-tooltip.show { display: block; }
+
+/* Accordion */
+.accordion-group {
+  margin: 24px 0;
+}
+.accordion-group-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
+  display: flex; align-items: center; gap: 8px;
+}
+.accordion {
+  margin-bottom: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: box-shadow .3s;
+}
+.accordion:hover { box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.accordion-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: background .2s;
+}
+.accordion-header:hover { background: #f9fafb; }
+.acc-icon {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.acc-number {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+}
+.acc-title-text {
+  flex: 1;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+.acc-chevron {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .3s;
+  color: #999;
+  font-size: 14px;
+}
+.accordion.open .acc-chevron { transform: rotate(180deg); }
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1);
+}
+.accordion-content {
+  padding: 0 16px 18px;
+}
+
+/* Bible verse block */
+.verse-block {
+  padding: 12px 14px;
+  background: var(--verse-bg);
+  border-left: 3px solid var(--verse-border);
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 14px;
+}
+.verse-ref {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #b45309;
+  margin-bottom: 6px;
+}
+.verse-ref svg { flex-shrink: 0; }
+.verse-text {
+  font-size: 0.84rem;
+  color: #78350f;
+  line-height: 1.7;
+}
+.verse-text + .verse-text {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #fde68a;
+}
+
+/* Content text */
+.content-text {
+  font-size: 0.92rem;
+  color: #1a1a1a;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.content-text:last-child { margin-bottom: 0; }
+.hl {
+  background: var(--highlight-yellow);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.bold { font-weight: 700; }
+.sub-point {
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  margin: 10px 0;
+  border: 1px solid #e2e8f0;
+}
+.sub-point-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 4px;
+}
+.sub-point-text {
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.7;
+}
+.result-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin: 2px 4px 2px 0;
+}
+
+/* Connector arrows between sections */
+.section-connector {
+  text-align: center;
+  padding: 8px 0;
+  color: #cbd5e1;
+  font-size: 20px;
+}
+
+/* Step styling & Core Message */
+.hero-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.core-message {
+  background: #eff6ff;
+  border-left: 4px solid var(--accent-blue);
+  padding: 16px;
+  border-radius: 0 12px 12px 0;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e40af;
+  line-height: 1.6;
+}
+.step-header {
+  background: var(--text);
+  color: #fff;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 32px 0 12px 0;
+}
+.step-header:first-child { margin-top: 0; }
+.step-connector {
+  margin: 16px 0;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  color: #475569;
+  text-align: center;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.step-connector strong {
+  color: var(--accent-blue);
+}
+
+/* Quiz */
+.quiz-section {
+  margin: 32px 0;
+  padding: 20px 16px;
+  background: #f0fdf4;
+  border-radius: 16px;
+  border: 1px solid #bbf7d0;
+}
+.quiz-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.quiz-item {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #d1fae5;
+}
+.quiz-q {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 12px;
+}
+.quiz-badge {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  background: var(--accent-green);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.quiz-q-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.5;
+  padding-top: 2px;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+.quiz-opt:hover { border-color: #a7f3d0; background: #f0fdf4; }
+.quiz-opt.selected { border-color: var(--accent-blue); background: #eff6ff; }
+.quiz-opt.correct { border-color: #22c55e; background: #f0fdf4; }
+.quiz-opt.wrong { border-color: #ef4444; background: #fef2f2; }
+.quiz-opt-marker {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  transition: all .2s;
+}
+.quiz-opt.selected .quiz-opt-marker { border-color: var(--accent-blue); color: var(--accent-blue); }
+.quiz-opt.correct .quiz-opt-marker { border-color: #22c55e; background: #22c55e; color: #fff; }
+.quiz-opt.wrong .quiz-opt-marker { border-color: #ef4444; background: #ef4444; color: #fff; }
+.quiz-hint-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: #92400e;
+  cursor: pointer;
+  transition: all .2s;
+}
+.quiz-hint-btn:hover { background: #fef3c7; }
+.quiz-hint-text {
+  display: none;
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: #fffbeb;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: #78350f;
+  line-height: 1.6;
+  border: 1px solid #fde68a;
+}
+.quiz-hint-text.show { display: block; }
+.quiz-feedback {
+  display: none;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct-fb { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.quiz-feedback.wrong-fb { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+.quiz-submit {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--accent-green);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background .2s;
+}
+.quiz-submit:hover { background: #047857; }
+.quiz-result {
+  display: none;
+  margin-top: 16px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid #22c55e;
+}
+.quiz-result.show { display: block; }
+.quiz-score {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-green);
+}
+.quiz-score-label {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+.quiz-result-msg {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Prayer */
+.prayer-section {
+  margin: 32px 0;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, #faf5ff 0%, #fdf4ff 100%);
+  border-radius: 16px;
+  border: 1px solid #e9d5ff;
+}
+.prayer-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-purple);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.prayer-text {
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  line-height: 2;
+}
+
+/* Footer */
+.footer-note {
+  text-align: center;
+  padding: 24px 16px;
+  font-size: 0.72rem;
+  color: #999;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in {
+  animation: fadeInUp .5s ease forwards;
+}
+
+/* ===== INTRO OVERLAY (SCRATCH-OFF) ===== */
+#intro-container {
+  position: fixed; inset: 0; z-index: 10000;
+  background: #050505;
+  display: flex; align-items: center; justify-content: center;
+}
+
+#intro-reveal-text {
+  text-align: center;
+  color: #fbbf24;
+  text-shadow: 0 0 25px rgba(251, 191, 36, 0.5), 0 0 10px rgba(251, 191, 36, 0.8);
+  z-index: 1;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+}
+.reveal-main {
+  font-size: 2.1rem; font-weight: 900; line-height: 1.4; margin-bottom: 20px;
+  word-break: keep-all; letter-spacing: -1px;
+}
+.reveal-sub {
+  font-size: 1.2rem; font-weight: 600; color: #fde68a;
+}
+
+/* Voice Recognition Prompt */
+.voice-prompt-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.voice-prompt-container.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.voice-msg {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #a7f3d0;
+  text-align: center;
+  line-height: 1.5;
+  text-shadow: none;
+}
+.voice-btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.voice-action-btn {
+  padding: 10px 24px;
+  background: #fbbf24;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+  transition: transform 0.1s;
+}
+.voice-action-btn:active { transform: scale(0.95); }
+
+.skip-btn {
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px solid #9ca3af;
+  color: #e5e7eb;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-shadow: none;
+}
+.skip-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: #fff;
+}
+
+/* 덮개 레이어 */
+#intro-cover {
+  position: absolute; inset: 0; z-index: 2;
+}
+#intro-cover.cleared {
+  pointer-events: none;
+}
+#scratch-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair;
+}
+
+/* 덮개 위에 표시되는 극적인 텍스트 */
+.intro-content {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 90%; max-width: 480px; text-align: center;
+  color: #fff; pointer-events: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  transition: opacity 0.8s ease;
+}
+.intro-step {
+  font-size: 1.3rem; font-weight: 800; margin-bottom: 30px;
+  line-height: 1.5; letter-spacing: -0.5px;
+}
+.intro-step .light { color: #f3f4f6; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+.intro-step .dark { color: #ef4444; text-shadow: 0 0 15px rgba(239, 68, 68, 0.6); font-size: 1.5rem; display: inline-block; margin-top: 8px;}
+.intro-title {
+  font-size: 2.1rem; font-weight: 900; color: #e5e7eb;
+  line-height: 1.35; margin-bottom: 24px;
+  text-shadow: 3px 5px 15px rgba(0,0,0,0.9);
+  word-break: keep-all; letter-spacing: -1px;
+}
+.intro-desc {
+  font-size: 1.05rem; color: #9ca3af; line-height: 1.6;
+  margin-bottom: 40px; word-break: keep-all;
+}
+
+.intro-instruction {
+  font-size: 1rem; font-weight: 700; color: #a7f3d0;
+  animation: pulse 2s infinite;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scratch-icon {
+  font-size: 2.8rem;
+  animation: swipe 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes swipe {
+  0% { transform: translateX(-20px) rotate(-15deg); }
+  50% { transform: translateX(20px) rotate(15deg); }
+  100% { transform: translateX(-20px) rotate(-15deg); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .container { padding: 16px 12px 48px; }
+  .hero h1 { font-size: 1.4rem; }
+  .dash-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .accordion-header { padding: 12px 12px; }
+  .accordion-content { padding: 0 12px 14px; }
+  
+  .reveal-main { font-size: 1.8rem; }
+  .intro-title { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body style="overflow: hidden;">
+
+<!-- INTRO CONTAINER -->
+<div id="intro-container">
+  
+  <!-- REVEAL TEXT (문지르면 뒤에서 나타나는 반전 텍스트) -->
+  <div id="intro-reveal-text">
+    <div class="reveal-main">"우리가 긍휼을 받고 은혜를 입어서 때맞추어 도움을 얻기 위하여,<br>은혜의 보좌 앞에 담대히 나아갑시다."</div>
+    <div class="reveal-sub">- 히브리서 4장 16절 -</div>
+    
+    <div class="voice-prompt-container" id="voice-prompt-container">
+      <div class="voice-msg" id="voice-msg">위 문장을 직접 소리 내어 읽어주세요</div>
+      <div class="voice-btn-group">
+        <button class="voice-action-btn" id="start-voice-btn">🎤 읽기 시작</button>
+        <button class="skip-btn" id="skip-intro-btn">건너뛰기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COVER LAYER -->
+  <div id="intro-cover">
+    <canvas id="scratch-canvas"></canvas>
+    
+    <div class="intro-content" id="intro-content">
+      <div class="intro-step">
+        <span class="light">사람들이 먹고 마시고 장가가고 시집가며</span><br>(마 24장)<br>
+        <span class="dark">하나님을 떠나 육체가 되어버린 타락한 시대</span><br>(창 6장)
+      </div>
+      <h1 class="intro-title">절망적인 이 시대 속에서<br>이기는 자가 될 수 있을까?</h1>
+      <div class="intro-desc">
+        유혹을 이길 수 있는 유일한 열쇠를 발견하다
+      </div>
+      <div class="intro-instruction">
+        <div class="scratch-icon">👆</div>
+        화면을 문질러 숨겨진 비밀을 확인하세요
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <button class="topbar-btn" onclick="window.open('https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/','_blank')" aria-label="홈">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </button>
+  <div class="topbar-title">은혜의 발견과 누림 — 시대를 전환하는 생활</div>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    목차
+    <button class="sidepanel-close" onclick="togglePanel()">✕</button>
+  </div>
+
+  <a class="nav-item" onclick="goTo('hero-section')">📖 제목</a>
+  <a class="nav-item" onclick="goTo('dashboard-section')">📊 대시보드</a>
+
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('keywords-section')" style="font-weight:700;color:var(--accent-blue);">🔑 키워드</a>
+  <div style="padding:6px 20px;" id="nav-keywords">
+    <span class="keyword-tag" onclick="showKwDef('kd1',this)">은혜</span>
+    <span class="keyword-tag" onclick="showKwDef('kd2',this)">긍휼</span>
+    <span class="keyword-tag" onclick="showKwDef('kd3',this)">보좌</span>
+    <span class="keyword-tag" onclick="showKwDef('kd4',this)">영</span>
+    <span class="keyword-tag" onclick="showKwDef('kd5',this)">의</span>
+  </div>
+  <div class="keyword-def" id="kd1">우리를 위해 우리 안에서 모든 것을 하시는 하나님 자신. 거저 베풀어지는 친절.</div>
+  <div class="keyword-def" id="kd2">비참한 상태에 있는 자를 향한 감정적이고 실질적인 동정과 자비.</div>
+  <div class="keyword-def" id="kd3">하나님의 통치와 은혜가 흘러나오는 중심. 오늘날 우리의 거듭난 영 안에 있다.</div>
+  <div class="keyword-def" id="kd4">우리가 삼일 하나님의 은혜를 누리고 접촉하는 유일한 기관.</div>
+  <div class="keyword-def" id="kd5">은혜가 산출하는 가장 뛰어난 산물. 하나님과 사람 앞에 올바르게 서게 하는 주관적인 의.</div>
+
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:700;color:#111;">📌 핵심요점</a>
+  <a class="nav-item sub" onclick="goTo('step-1')">Step 1. 절망의 배경과 반전</a>
+  <a class="nav-item sub" onclick="goTo('step-2')">Step 2. 은혜의 누림</a>
+  <a class="nav-item sub" onclick="goTo('step-3')">Step 3. 은혜의 결과</a>
+
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:700;color:#111;">📌 세부항목</a>
+  <a class="nav-item sub" onclick="goTo('acc-1')">1. 타락한 시대의 실지 상황</a>
+  <a class="nav-item sub" onclick="goTo('acc-2')">2. 은혜를 입어 시대를 바꿈</a>
+  <a class="nav-item sub" onclick="goTo('acc-3')">3. 은혜의 참된 의미</a>
+  <a class="nav-item sub" onclick="goTo('acc-4')">4. 은혜를 누리는 세 가지 방면</a>
+  <a class="nav-item sub" onclick="goTo('acc-5')">5. 하나 안에서의 모임과 고난</a>
+  <a class="nav-item sub" onclick="goTo('acc-6')">6. 주님을 위한 수고</a>
+  <a class="nav-item sub" onclick="goTo('acc-7')">7. 의를 산출하여 시대를 전환함</a>
+
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('quiz-section')">✅ 퀴즈</a>
+  <a class="nav-item" onclick="goTo('prayer-section')">오늘의 기도</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container" id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-section">
+    <div class="hero-badge">2026 국제중국어 2주 1,2일</div>
+    <h1>"<span class="highlight-word">은혜의 발견과 누림</span>"<br>시대를 전환하는 생활</h1>
+    <p class="hero-sub">타락하고 어두운 시대 속에서 오직 은혜만이<br>우리를 의로운 삶으로 이끌어 세상을 심판하게 한다</p>
+    
+    <div class="verse-analysis animate-in">
+      
+      <!-- 원문 대조 (헬라어) -->
+      <div class="verse-compare">
+        <div class="verse-row">
+          <div class="v-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            히브리서 4:16
+          </div>
+          <div class="v-text">그러므로 우리가 긍휼을 받고 은혜를 입어서 때맞추어 도움을 얻기 위하여, 은혜의 보좌 앞에 담대히 나아갑시다.</div>
+          <div class="v-grk">προσερχώμεθα οὖν μετὰ παρρησίας τῷ θρόνῳ τῆς χάριτος, ἵνα λάβωμεν ἔλεος καὶ χάριν εὕρωμεν εἰς εὔκαιρον βοήθειαν.</div>
+          <div class="v-pron">[프로세르코메다 운 메타 파르레시아스 토 쓰로노 테스 카리토스, 히나 라보멘 엘레오스 카이 카린 헤우로멘 에이스 에우카이론 보에쎄이안]</div>
+          <div class="v-lit">💡 <strong>문법적 직역:</strong> 그러므로 우리가 긍휼을 받고 시의적절한 도움을 향하여 은혜를 발견하기[얻기] 위해, 담대함과 함께 은혜의 보좌로 나아갑시다.</div>
+        </div>
+      </div>
+
+      <!-- 핵심 단어 분석 -->
+      <div class="word-study-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        헬라어 원문 핵심 단어 분석
+      </div>
+      <div class="word-grid">
+        <div class="word-card">
+          <div class="word-header">
+            <div>
+              <div class="word-kr">나아갑시다</div>
+              <div class="word-mean">다가가다, 접근하다</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="word-grk">προσερχώμεθα</div>
+              <div class="word-pron">[프로세르코메다]</div>
+            </div>
+          </div>
+          <div class="word-desc">
+            '~를 향하여(πρός)'와 '가다(ἔρχομαι)'의 합성어입니다. <strong>가정법(청유형)</strong>이 사용되어 함께 보좌로 나아가자는 적극적인 행동을 촉구합니다.
+          </div>
+        </div>
+        <div class="word-card">
+          <div class="word-header">
+            <div>
+              <div class="word-kr">담대히</div>
+              <div class="word-mean">숨김없이 말함, 두려움 없는 확신</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="word-grk">παρρησίας</div>
+              <div class="word-pron">[파르레시아스]</div>
+            </div>
+          </div>
+          <div class="word-desc">
+            '모든(πᾶς)'과 '말(ῥῆσις)'의 합성어에서 유래했습니다. 감추거나 두려워함 없이 <strong>모든 것을 드러내놓고 당당하게 나아가는 태도</strong>를 뜻합니다.
+          </div>
+        </div>
+        <div class="word-card">
+          <div class="word-header">
+            <div>
+              <div class="word-kr">은혜</div>
+              <div class="word-mean">거저 베풀어지는 호의, 친절</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="word-grk">χάριτος</div>
+              <div class="word-pron">[카리토스]</div>
+            </div>
+          </div>
+          <div class="word-desc">
+            받을 자격이나 공로가 없는 타락한 사람에게 조건 없이 주어지는 <strong>하나님 자신의 임재와 공급</strong>을 가리킵니다.
+          </div>
+        </div>
+        <div class="word-card">
+          <div class="word-header">
+            <div>
+              <div class="word-kr">얻기 (발견하여)</div>
+              <div class="word-mean">찾다, 알아내다</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="word-grk">εὕρωμεν</div>
+              <div class="word-pron">[헤우로멘]</div>
+            </div>
+          </div>
+          <div class="word-desc">
+            영어 '유레카(Eureka)'의 어원이 되는 단어입니다. 단순히 주어지는 것이 아니라, 적극적인 나아감을 통해 <strong>은혜를 발견하여 획득함</strong>을 의미합니다.
+          </div>
+        </div>
+        <div class="word-card">
+          <div class="word-header">
+            <div>
+              <div class="word-kr">때맞추어</div>
+              <div class="word-mean">시기적절한, 알맞은 시점</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="word-grk">εὔκαιρον</div>
+              <div class="word-pron">[에우카이론]</div>
+            </div>
+          </div>
+          <div class="word-desc">
+            단순한 물리적 시간(크로노스)이 아닌, 우리의 특정한 필요와 고난에 <strong>정확히 부합하는 결정적인 때(카이로스)</strong>를 말합니다.
+          </div>
+        </div>
+        <div class="word-card">
+          <div class="word-header">
+            <div>
+              <div class="word-kr">도움을</div>
+              <div class="word-mean">원조, 구호</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="word-grk">βοήθειαν</div>
+              <div class="word-pron">[보에쎄이안]</div>
+            </div>
+          </div>
+          <div class="word-desc">
+            어원적으로 <strong>'누군가의 부르짖음을 듣고 달려가서 구조하는 행위'</strong>라는 구체적인 이미지를 내포하고 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard" id="dashboard-section">
+    <div class="dashboard-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      전체 맥락 요약
+    </div>
+
+    <div class="core-message">
+      타락하고 어두운 시대 속에서, 우리는 오직 <strong>'은혜(우리 안에서 모든 것을 하시는 하나님 자신)'</strong>를 발견하고 누림으로써 시대를 전환하는 의로운 삶을 살 수 있습니다.
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="dash-icon">🌪️</div>
+        <div class="dash-label">배경</div>
+        <div class="dash-value">먹고 마시며 쾌락을 즐기는<br>육체가 된 타락한 시대</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-icon">✨</div>
+        <div class="dash-label">전환점</div>
+        <div class="dash-value">"그러나 노아는"<br>은혜를 입고 발견함</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-icon">🗝️</div>
+        <div class="dash-label">핵심 원리</div>
+        <div class="dash-value">사랑, 영, 말씀, 모임으로<br>매 순간 은혜를 누림</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-icon">⚖️</div>
+        <div class="dash-label">결과</div>
+        <div class="dash-value">주관적인 의를 산출하여<br>세상을 심판하고 시대를 바꿈</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow-section">
+    <div class="flow-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      일상에서 은혜를 누리는 네 가지 길
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-dot" style="background:var(--accent-rose);">1</div>
+        <div class="flow-step-label">사랑 — 부패함 없이 주님을 사랑함</div>
+        <div class="flow-step-desc">그리스도의 몸, 새 사람 등 하나님의 경륜을 통하여 그분을 절대적으로 사랑함</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot" style="background:var(--accent-blue);">2</div>
+        <div class="flow-step-label">영 — 연합된 영을 훈련함</div>
+        <div class="flow-step-desc">은혜의 영께서 거하시는 우리의 영 안으로 돌이켜 삼일 하나님의 풍성을 누림</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot" style="background:var(--accent-teal);">3</div>
+        <div class="flow-step-label">말씀 — 하나님의 말씀을 먹음</div>
+        <div class="flow-step-desc">은혜의 말씀을 우리 존재 안으로 받아들여 마음의 즐거움과 기쁨이 되게 함</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot" style="background:var(--accent-purple);">4</div>
+        <div class="flow-step-label">모임 — 하나 안에서 성도들과 모임</div>
+        <div class="flow-step-desc">하나라는 터 위에서 헐몬의 이슬과 같이 매일 신선하게 적시는 은혜를 누림</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS SECTION -->
+  <section class="keywords-section" id="keywords-section">
+    <div class="keywords-section-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      핵심 키워드
+    </div>
+    <div class="kw-container">
+      <span class="kw-chip" onclick="toggleKwTip('kwt1')">은혜 (Grace)</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt2')">긍휼 (Mercy)</span>
+      <span class="keyword-tag" onclick="toggleKwTip('kwt3')">보좌 (Throne)</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt4')">영 (Spirit)</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt5')">주관적인 의 (Righteousness)</span>
+    </div>
+    <div class="kw-tooltip" id="kwt1">단순히 외부적인 축복이 아니라, 우리에게 오셔서 우리 안에서, 우리를 위해 모든 것을 하시는 하나님 자신입니다.</div>
+    <div class="kw-tooltip" id="kwt2">타락하고 비참한 상태에 빠진 우리를 불쌍히 여기시어 은혜를 향해 나아갈 수 있게 하시는 하나님의 동정입니다.</div>
+    <div class="kw-tooltip" id="kwt3">우주를 통치하는 권위의 보좌이자, 동시에 오늘날 우리 영 안에 있어 늘 담대히 나아갈 수 있는 은혜의 보좌입니다.</div>
+    <div class="kw-tooltip" id="kwt4">은혜이신 삼일 하나님을 접촉하고 누릴 수 있는 유일한 내적 기관입니다. 바울은 서신서마다 은혜가 영과 함께하기를 구했습니다.</div>
+    <div class="kw-tooltip" id="kwt5">우리가 스스로 만들어낸 올바름이 아니라, 은혜를 누린 결과로써 삶 속에 살아내어져 하나님과 사람 앞에 올바르게 되는 상태입니다.</div>
+  </section>
+
+  <!-- ACCORDION GROUP -->
+  <div class="accordion-group">
+    <div class="accordion-group-title" id="keypoints-section">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      핵심요점
+    </div>
+
+    <div class="step-header" id="step-1">Step 1. 절망의 배경과 위대한 반전</div>
+
+    <!-- 1 -->
+    <div class="accordion" id="acc-1">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-red);">1</div>
+        <div class="acc-icon" style="background:#fef2f2;">⚠️</div>
+        <div class="acc-title-text">타락한 시대의 실지 상황 — 영적 무감각</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              마태복음 24:37-38
+            </div>
+            <div class="verse-text">노아의 때와 같이, 사람의 아들이 오는 것도 그러할 것입니다.</div>
+            <div class="verse-text">왜냐하면 홍수가 나기 전에, 사람들은 노아가 방주 안으로 들어가던 날까지 <b>먹고 마시고 장가가고 시집갔으며</b></div>
+          </div>
+
+          <p class="content-text">하나님은 단지 “내가 후회한다”고 말씀하신 것이 아니라 그 시대의 <span class="hl">참된 타락의 상태</span>를 계시하셨습니다. 사람들은 심판이 오고 있는 것을 알지 못하고 먹고 마시며 쾌락을 즐기는 일에만 몰두했습니다.</p>
+          <p class="content-text">오늘날의 시대도 마찬가지입니다. 팬데믹 이후 사람들은 <b>"오늘만 살고, 현재를 즐기자"</b>는 무의식적인 태도에 빠져 있습니다. 이 어그러지고 비뚤어지고 음란한 시대에, 부도덕과 정욕의 유혹 앞에 스스로 서 있을 수 있는 사람은 아무도 없습니다. 우리는 자신이 철저히 타락하고 육체가 되었음을 인정해야 합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">⬇</div>
+
+    <!-- 2 -->
+    <div class="accordion" id="acc-2">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-gold);">2</div>
+        <div class="acc-icon" style="background:#fffbeb;">✨</div>
+        <div class="acc-title-text">"그러나 노아는" — 은혜를 입어 시대를 바꿈</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              창세기 6:8
+            </div>
+            <div class="verse-text"><b>그러나 노아는 여호와 앞에 은총(은혜)을 입었다.</b></div>
+          </div>
+
+          <p class="content-text">창세기를 기록한 주된 목적은 인간의 타락을 보여주는 것이 아니라, <span class="hl">하나님의 은혜가 타락한 사람들을 위해 얼마나 많은 것을 할 수 있는지</span>를 보여주는 것입니다. 사탄이 상황을 극도로 망쳐 놓았을 때, 하나님은 패배하신 것처럼 보였습니다.</p>
+          <p class="content-text"><b>"그러나"</b> 반전이 일어났습니다. 하나님 앞에 은혜를 입고 시대를 바꾼 사람들이 항상 있었습니다. 다니엘이 그러했고, 노아가 그러했습니다. 연약하고 절망적인 우리 자신이나 어두운 환경을 보지 마십시오. 오늘 우리에게 필요한 것은 <span class="hl">하나님의 눈앞에서 은혜를 발견하는 것</span>입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">
+      절망적인 상황 속에서 오직 <strong>'은혜'</strong>만이 돌파구가 됩니다. 그렇다면 이 은혜의 참된 의미는 무엇이며, 우리는 일상에서 어떻게 이 은혜를 지속적으로 누릴 수 있을까요?
+    </div>
+
+    <div class="step-header" id="step-2">Step 2. 은혜의 누림</div>
+
+    <!-- 3 -->
+    <div class="accordion" id="acc-3">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-teal);">3</div>
+        <div class="acc-icon" style="background:#f0fdfa;">🎁</div>
+        <div class="acc-title-text">은혜의 참된 의미 — 우리 안에서 일하시는 하나님</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              요한복음 1:14
+            </div>
+            <div class="verse-text">말씀께서 육체가 되시어 우리 가운데 장막을 치시니, <b>은혜와 실재가 충만하였다.</b></div>
+          </div>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              요한계시록 22:21
+            </div>
+            <div class="verse-text"><b>주 예수님의 은혜가</b> 모든 성도들과 함께 있기를 바랍니다. 아멘.</div>
+          </div>
+
+          <p class="content-text">은혜는 물질적인 축복이나 외적인 환경의 개선이 아닙니다. 암초를 만나면 암초를 치워달라고 기도하는 것이 사람의 길이라면, <span class="hl">하나님의 길은 물의 수위(은혜)를 높여 암초를 덮어버리는 것</span>입니다.</p>
+          <p class="content-text">은혜란 우리의 누림을 통해 <b>우리에게 모든 것이 되시고, 우리 안에서, 우리를 통해서, 우리를 위해서 모든 것을 하시는 하나님 자신(그분의 임재)</b>입니다. 우리는 감당할 수 없는 상황 속에서 보좌 앞으로 나아가 "주님, 저의 힘이 되어 주십시오. 저와 함께 서 주십시오"라고 기도해야 합니다. 성경의 마지막은 우리가 새 예루살렘이 되기 위해 오직 주 예수님의 '은혜'가 필요함을 선포합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">⬇</div>
+
+    <!-- 4 -->
+    <div class="accordion" id="acc-4">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-blue);">4</div>
+        <div class="acc-icon" style="background:#eff6ff;">❤️</div>
+        <div class="acc-title-text">은혜를 누리는 길 — 사랑, 영, 말씀</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <p class="content-text">우리는 세 가지 내적 수단을 통해 은혜를 풍성히 누릴 수 있습니다.</p>
+          
+          <div class="sub-point">
+            <div class="sub-point-title">1. 사랑 (Love)</div>
+            <div class="sub-point-text">
+              "우리 주 예수 그리스도를 부패함 없이 사랑하는 모든 사람에게 은혜가 함께하기를 바랍니다." (엡 6:24) 믿음은 은혜를 받아들이게 하고, <span class="hl">사랑은 은혜를 누리게 합니다.</span> 우리가 주님을 사랑할 때 그분의 은혜를 맛볼 수 있습니다.
+            </div>
+          </div>
+          <div class="sub-point">
+            <div class="sub-point-title">2. 영 (Spirit)</div>
+            <div class="sub-point-text">
+              "주님께서 그대의 영과 함께 계시기를 바랍니다." (딤후 4:22) 은혜의 보좌는 하늘에 있을 뿐만 아니라 <b>우리의 거듭난 영 안</b>에 있습니다. 우리가 연합된 영으로 돌이켜 영을 사용할 때 넘치는 은혜의 공급을 받습니다.
+            </div>
+          </div>
+          <div class="sub-point">
+            <div class="sub-point-title">3. 말씀 (Word)</div>
+            <div class="sub-point-text">
+              "주님의 말씀을 발견하고 제가 그것을 먹었더니 주님의 말씀이 제게 마음의 즐거움과 기쁨이 되었습니다." (렘 15:16) 하나님의 말씀은 <span class="hl">은혜의 말씀</span>입니다. 말씀을 섭취할 때 우리 안에서 은혜가 자라납니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">⬇</div>
+
+    <!-- 5 -->
+    <div class="accordion" id="acc-5">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-purple);">5</div>
+        <div class="acc-icon" style="background:#faf5ff;">⛪</div>
+        <div class="acc-title-text">은혜를 누리는 길 — 하나 안의 모임과 고난</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              시편 133:1, 3
+            </div>
+            <div class="verse-text">보라, <b>형제들이 연합하여 거하는 것</b>이 얼마나 좋고 얼마나 즐거운가! ... 헤르몬의 이슬이 시온의 산들에 내림 같아라.</div>
+          </div>
+          
+          <p class="content-text">우리가 각 지방의 교회 안에서, <b>하나라는 터 위에서</b> 성도들과 함께 모일 때 우리는 <span class="hl">헐몬의 이슬과 같이 신선하게 적시는 은혜</span>를 누리게 됩니다. 초대 교회에서 바나바가 안디옥에 갔을 때 그는 '성도들의 구원과 거룩한 생활로 표현된 삼일 하나님' 곧 <b>눈에 보이는 은혜</b>를 보았습니다.</p>
+
+          <p class="content-text">또한 은혜는 고난과 시련 속에서 더욱 빛을 발합니다. 사도 바울이 가시로 인해 고통받을 때, 주님은 가시를 제거하는 대신 <span class="hl">"나의 은혜가 너에게 충분하다"</span>(고후 12:9)고 하셨습니다. 고난의 때가 바로 은혜가 우리 안에서 충만히 증가하는 때입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">
+      충분히 은혜를 누렸다면, 그 은혜는 우리 안에서 멈추지 않고 생명력 있게 역사하여 <strong>영광스러운 결과</strong>를 낳게 됩니다.
+    </div>
+
+    <div class="step-header" id="step-3">Step 3. 은혜의 영광스러운 결과</div>
+
+    <!-- 6 -->
+    <div class="accordion" id="acc-6">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-indigo);">6</div>
+        <div class="acc-icon" style="background:#eef2ff;">💪</div>
+        <div class="acc-title-text">주님을 위한 수고와 은혜의 청지기</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              고린도전서 15:10
+            </div>
+            <div class="verse-text">내가 지금의 내가 된 것은 <b>하나님의 은혜</b>로 된 것이니 ... 나는 모든 사도들보다 더 많이 수고하였습니다. 그러나 그것은 내가 아니라, <b>나와 함께한 하나님의 은혜</b>였습니다.</div>
+          </div>
+          
+          <p class="content-text">은혜를 누릴수록 우리는 <span class="hl">주님의 은혜의 능력으로 그분을 위해 수고</span>하게 됩니다. 연약하고 낙심될 때, 나가서 복음을 전하거나 어린양을 돌보아 보십시오. 자신이 하는 것이 아니라, 내 안의 은혜가 일하고 있음을 깨닫게 될 것입니다.</p>
+          <p class="content-text">나아가 우리는 <b>하나님의 다양한 은혜를 맡은 선한 청지기</b>가 되어야 합니다(벧전 4:10). 청지기는 먼저 자신이 양식을 배불리 먹고 누린 후, 하나님의 집안 식구들에게 그 풍성한 은혜를 나누어 주는 사람입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">⬇</div>
+
+    <!-- 7 -->
+    <div class="accordion" id="acc-7">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-teal);">7</div>
+        <div class="acc-icon" style="background:#f0fdfa;">⚖️</div>
+        <div class="acc-title-text">의를 산출하여 시대를 전환함</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              로마서 5:21
+            </div>
+            <div class="verse-text">죄가 죽음 안에서 왕 노릇을 한 것같이, <b>은혜도 의를 통하여 왕으로서 다스려</b> 우리 주 예수 그리스도를 통하여 영원한 생명에 이르게 하려는 것입니다.</div>
+          </div>
+
+          <p class="content-text">육체가 있는 곳에 은혜가 있고, <span class="hl">은혜가 있는 곳에는 그 결과인 의(Righteousness)</span>가 있습니다. 아내나 남편에게 스스로 올바르려 노력하는 것은 불가능합니다. 오직 은혜를 발견할 때만 태도가 변하고 서로에게 주관적으로 올바를 수 있습니다.</p>
+
+          <p class="content-text">노아는 은혜를 입었고, 그 은혜는 노아를 강하게 하여 일상에서 의를 살아내게 했습니다(히 11:7). 노아가 살아낸 이 주관적인 의는 부패한 세상을 심판(유죄판결)할 수 있는 <span class="hl">하나님의 견고한 입지</span>가 되었습니다. 결국 <b>은혜가 의를 산출하여 시대를 전환시킨 것</b>입니다. 새 예루살렘은 완전히 은혜의 산출물이자 '의가 거하는' 곳입니다!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <section class="quiz-section" id="quiz-section">
+    <div class="quiz-title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      이해도 퀴즈
+    </div>
+
+    <!-- Q1 -->
+    <div class="quiz-item" data-correct="2">
+      <div class="quiz-q">
+        <div class="quiz-badge">1</div>
+        <div class="quiz-q-text">주님의 회복 안에서 말하는 '은혜'의 가장 참된 의미는 무엇인가요?</div>
+      </div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 내가 원하는 물질적인 필요나 환경의 축복을 받는 것</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우리 안에서 우리를 위해 모든 것을 하시는 하나님 자신(임재)</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 죄를 짓더라도 아무런 징계 없이 무조건 용서받는 것</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 기적적으로 눈앞의 암초(어려움)가 완전히 제거되는 것</div>
+      </div>
+      <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+      <div class="quiz-hint-text">은혜는 외적인 사물이나 환경의 변화가 아닙니다. 요한복음 1:14을 떠올려 보세요.</div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-item" data-correct="3">
+      <div class="quiz-q">
+        <div class="quiz-badge">2</div>
+        <div class="quiz-q-text">히브리서 4장 16절에 따르면, 우리가 긍휼을 받고 때맞추어 도움을 얻기 위해 담대히 나아가야 할 곳은 어디인가요?</div>
+      </div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 지성소 밖의 뜰</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 종교적인 제단</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 은혜의 보좌</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 율법의 산</div>
+      </div>
+      <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+      <div class="quiz-hint-text">헬라어 'τῷ θρόνῳ τῆς χάριτος (토 쓰로노 테스 카리토스)'가 의미하는 곳입니다. 이 보좌는 오늘날 우리의 영 안에 있습니다.</div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-item" data-correct="4">
+      <div class="quiz-q">
+        <div class="quiz-badge">3</div>
+        <div class="quiz-q-text">우리가 일상에서 은혜를 내적으로 누리기 위한 3가지 주요 수단이 <b>아닌</b> 것은?</div>
+      </div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 부패함 없이 주님을 사랑함</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 연합된 영을 훈련함</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 하나님의 은혜의 말씀을 먹음</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 자신의 힘으로 율법의 조문을 엄격히 지킴</div>
+      </div>
+      <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+      <div class="quiz-hint-text">믿음은 받아들이게 하고 '사랑'은 누리게 합니다. 또한 서신서의 끝은 항상 '영'을 언급하며, 예레미야는 '말씀'을 먹고 기뻐했습니다.</div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-item" data-correct="1">
+      <div class="quiz-q">
+        <div class="quiz-badge">4</div>
+        <div class="quiz-q-text">사도행전 11장 23절에서 바나바가 안디옥에 도착하여 본 '하나님의 은혜'는 구체적으로 무엇을 가리켰나요?</div>
+      </div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 믿는 이들의 구원과 생명의 변화, 기능 발휘로 표현된 삼일 하나님</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 성도들이 모이는 거대하고 화려한 예배당 건물</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 로마 제국으로부터 교회가 정치적인 인정을 받은 것</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 성도들의 세속적인 사업이 크게 번창한 것</div>
+      </div>
+      <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+      <div class="quiz-hint-text">바나바가 본 은혜는 외적인 부귀영화가 아니라, 하나라는 터 위에서 성도들 안에 살아 역사하는 생명의 증거들이었습니다.</div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-item" data-correct="2">
+      <div class="quiz-q">
+        <div class="quiz-badge">5</div>
+        <div class="quiz-q-text">은혜가 우리 안에서 일한 결과로 산출되는 가장 뛰어난 산물로써, 로마서 5:21에서 "은혜와 함께 왕 노릇"하며 하나님께 세상을 심판할 입지를 제공하는 것은 무엇인가요?</div>
+      </div>
+      <div class="quiz-options">
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 인간적인 동정심과 자비</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님과 사람 앞에 올바르게 되는 주관적인 의(Righteousness)</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 율법에 기록된 모든 조문에 대한 해박한 지식</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 육체의 타락함을 은폐할 수 있는 종교적인 의식</div>
+      </div>
+      <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
+      <div class="quiz-hint-text">노아는 은혜를 통해 생활 속에서 '이것'을 살아내어 그 세대를 유죄판결 할 수 있었습니다. 육체가 있는 곳에 은혜가 있고 은혜가 있는 곳에 '이것'이 산출됩니다.</div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+    <button class="quiz-submit" onclick="submitQuiz()">결과 확인하기</button>
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-score-label">최종 점수</div>
+      <div class="quiz-score" id="quizScore">0 / 5</div>
+      <div class="quiz-result-msg" id="quizMsg"></div>
+    </div>
+  </section>
+
+  <!-- PRAYER -->
+  <section class="prayer-section" id="prayer-section">
+    <div class="prayer-title">
+      오늘의 기도
+    </div>
+    <div class="prayer-text">
+      주 예수님, 이 타락하고 무감각해진 시대의 영적 흑암 속에서, 저는 철저히 무력한 존재임을 고백합니다. 육체가 되어버린 제 자신이나 절망적인 환경을 바라보지 않게 하시고, 오직 은혜의 보좌 앞에 담대히 나아가 긍휼과 때맞춘 도움을 얻게 하소서.<br><br>
+      주님, 은혜가 어떤 외부적인 축복이 아니라 제 안에서 모든 것을 해주시는 '주님의 임재' 자체임을 보게 하소서. 날마다 주님을 부패함 없이 사랑하게 하시고, 제 연합된 영을 훈련하며, 생명의 말씀을 먹고 기뻐하게 하소서. 또한 하나라는 터 위에서 교회로 모일 때 헐몬의 이슬과 같이 충만한 은혜로 저를 적셔 주시기를 원합니다.<br><br>
+      오, 은혜의 주님! 이 은혜가 제 안에서 역사하여 주관적인 '의'를 살아내게 하소서. 그리하여 주님을 위해 넘치게 수고하게 하시고, 이 부패한 세상을 끝내며 영광스러운 새 시대를 이끌어오는 주님의 통로가 되게 하소서.<br><br>
+      주 예수님, 저를 은혜로 채워주십시오. 아멘.
+    </div>
+  </section>
+
+  <div class="footer-note">
+    2026 국제중국어 2주 1,2일
+  </div>
+</div>
+
+<script>
+// Font size control
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+  else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+
+// Side panel
+function togglePanel() {
+  document.getElementById('sidepanel').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function goTo(id) {
+  togglePanel();
+  setTimeout(() => {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }, 300);
+}
+
+// Keyword definitions in side panel
+function showKwDef(id, el) {
+  const def = document.getElementById(id);
+  const isShown = def.classList.contains('show');
+  document.querySelectorAll('.keyword-def').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.keyword-tag').forEach(t => t.classList.remove('active'));
+  if (!isShown) {
+    def.classList.add('show');
+    el.classList.add('active');
+  }
+}
+
+// Keyword tooltips in main content
+function toggleKwTip(id) {
+  const tip = document.getElementById(id);
+  const isShown = tip.classList.contains('show');
+  document.querySelectorAll('.kw-tooltip').forEach(t => t.classList.remove('show'));
+  if (!isShown) tip.classList.add('show');
+}
+
+// Accordion
+function toggleAcc(header) {
+  const acc = header.parentElement;
+  const body = acc.querySelector('.accordion-body');
+  if (acc.classList.contains('open')) {
+    body.style.maxHeight = '0';
+    acc.classList.remove('open');
+  } else {
+    acc.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    setTimeout(() => {
+      if (acc.classList.contains('open')) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    }, 400);
+  }
+}
+
+// Quiz
+function selectOpt(el) {
+  const item = el.closest('.quiz-item');
+  if (item.classList.contains('answered')) return;
+  item.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function toggleHint(btn) {
+  const hint = btn.nextElementSibling;
+  hint.classList.toggle('show');
+  btn.textContent = hint.classList.contains('show') ? '💡 힌트 닫기' : '💡 힌트 보기';
+}
+
+function submitQuiz() {
+  let score = 0;
+  const items = document.querySelectorAll('.quiz-item');
+  items.forEach(item => {
+    const correct = parseInt(item.dataset.correct) - 1;
+    const opts = item.querySelectorAll('.quiz-opt');
+    const fb = item.querySelector('.quiz-feedback');
+    let selectedIdx = -1;
+    opts.forEach((o, i) => {
+      if (o.classList.contains('selected')) selectedIdx = i;
+    });
+    item.classList.add('answered');
+    if (selectedIdx === correct) {
+      score++;
+      opts[selectedIdx].classList.add('correct');
+      fb.className = 'quiz-feedback show correct-fb';
+      fb.textContent = '✅ 정답입니다!';
+    } else {
+      if (selectedIdx >= 0) opts[selectedIdx].classList.add('wrong');
+      opts[correct].classList.add('correct');
+      fb.className = 'quiz-feedback show wrong-fb';
+      fb.textContent = '❌ 오답입니다. 정답은 ' + ['A','B','C','D'][correct] + '입니다.';
+    }
+  });
+  document.getElementById('quizScore').textContent = score + ' / 5';
+  const msgEl = document.getElementById('quizMsg');
+  if (score === 5) msgEl.textContent = '🎉 완벽합니다! 은혜의 본질과 누림을 정확히 이해하셨습니다!';
+  else if (score >= 3) msgEl.textContent = '👏 잘 하셨습니다! 부족한 부분을 아코디언에서 다시 확인해보세요.';
+  else msgEl.textContent = '📖 핵심요점을 꼼꼼히 다시 읽어보시길 권합니다.';
+  document.getElementById('quizResult').classList.add('show');
+  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ========================================
+// Intro Scratch-Off Logic 
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('intro-container');
+  const canvas = document.getElementById('scratch-canvas');
+  const introCover = document.getElementById('intro-cover');
+  const introContent = document.getElementById('intro-content');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  
+  let isDrawing = false;
+  let lastX = 0, lastY = 0;
+  let cleared = false;
+  let isFirstTouch = true;
+  let checkInterval = null;
+  
+  document.getElementById('start-voice-btn').addEventListener('click', startVoiceRecognition);
+  document.getElementById('skip-intro-btn').addEventListener('click', finishIntro);
+  
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    fillCanvas();
+  }
+  
+  function fillCanvas() {
+    let bgGradient = ctx.createRadialGradient(
+      canvas.width / 2, canvas.height / 2, 0,
+      canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height)
+    );
+    bgGradient.addColorStop(0, '#1f2937'); 
+    bgGradient.addColorStop(1, '#020617'); 
+    ctx.fillStyle = bgGradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  resize();
+  window.addEventListener('resize', () => {
+    if(!cleared) resize();
+  });
+
+  function getPos(e) {
+    let rect = canvas.getBoundingClientRect();
+    let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+    let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+    return {
+      x: clientX - rect.left,
+      y: clientY - rect.top
+    };
+  }
+
+  function start(e) {
+    if (cleared) return;
+    
+    if (isFirstTouch) {
+      introContent.style.opacity = '0';
+      isFirstTouch = false;
+    }
+    
+    isDrawing = true;
+    let pos = getPos(e);
+    lastX = pos.x;
+    lastY = pos.y;
+    scratch(e);
+
+    if (!checkInterval) {
+      checkInterval = setInterval(() => {
+        if (isDrawing && !cleared) checkPercent();
+      }, 400);
+    }
+  }
+
+  function end() {
+    isDrawing = false;
+    if (checkInterval) {
+      clearInterval(checkInterval);
+      checkInterval = null;
+    }
+    if (!cleared) checkPercent();
+  }
+
+  function scratch(e) {
+    if (!isDrawing || cleared) return;
+    if (e.cancelable) e.preventDefault(); 
+    
+    let pos = getPos(e);
+    let brushSize = Math.max(120, Math.min(window.innerWidth, window.innerHeight) * 0.25);
+    
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.lineWidth = brushSize;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+    
+    lastX = pos.x;
+    lastY = pos.y;
+  }
+
+  function checkPercent() {
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    let transPixels = 0;
+    const totalPixels = canvas.width * canvas.height;
+    const step = 4 * 200; 
+    
+    for (let i = 0; i < data.length; i += step) {
+      if (data[i + 3] < 128) transPixels++;
+    }
+    
+    const percent = transPixels / (totalPixels / 200);
+    
+    if (percent > 0.20 && !cleared) { 
+      cleared = true;
+      if (checkInterval) clearInterval(checkInterval);
+      
+      introCover.style.pointerEvents = 'none';
+      canvas.style.transition = 'opacity 1s ease';
+      canvas.style.opacity = '0';
+      
+      setTimeout(() => {
+        canvas.style.display = 'none';
+        introCover.style.display = 'none';
+        introCover.classList.add('cleared');
+        document.getElementById('voice-prompt-container').classList.add('show');
+      }, 1000); 
+    }
+  }
+
+  function getSimilarity(s1, s2) {
+    if (s1 === s2) return 1.0;
+    const len1 = s1.length;
+    const len2 = s2.length;
+    const matrix = Array(len1 + 1).fill(null).map(() => Array(len2 + 1).fill(null));
+
+    for (let i = 0; i <= len1; i++) matrix[i][0] = i;
+    for (let j = 0; j <= len2; j++) matrix[0][j] = j;
+
+    for (let i = 1; i <= len1; i++) {
+      for (let j = 1; j <= len2; j++) {
+        const cost = s1[i - 1] === s2[j - 1] ? 0 : 1;
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j] + 1, 
+          matrix[i][j - 1] + 1, 
+          matrix[i - 1][j - 1] + cost 
+        );
+      }
+    }
+    const maxLength = Math.max(len1, len2);
+    return (maxLength - matrix[len1][len2]) / maxLength;
+  }
+
+  function startVoiceRecognition() {
+    const voiceMsg = document.getElementById('voice-msg');
+    const startBtn = document.getElementById('start-voice-btn');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      voiceMsg.innerHTML = "음성 인식을 지원하지 않는 브라우저입니다.<br>건너뛰기를 눌러주세요.";
+      voiceMsg.style.color = "#fca5a5";
+      startBtn.style.display = 'none';
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'ko-KR';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = function() {
+      voiceMsg.innerHTML = "듣고 있습니다... 🎤<br><span style='font-size:0.85rem; color:#9ca3af; font-weight:400;'>(마이크 권한을 허용해주세요)</span>";
+      startBtn.style.display = 'none';
+    };
+
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript.replace(/[\s\.\,\"\-\']+/g, '');
+      console.log("인식된 텍스트:", transcript);
+      
+      const target1 = "은혜의보좌앞에담대히나아갑시다";
+      const target2 = "우리가긍휼을받고은혜를입어서때맞추어도움을얻기위하여은혜의보좌앞에담대히나아갑시다";
+      const target3 = "우리가긍휼을받고은혜를입어서때맞추어도움을얻기위하여은혜의보좌앞에담대히나아갑시다히브리서4장16절";
+
+      const transcriptSub = transcript.substring(0, target2.length + 2);
+
+      const sim1 = getSimilarity(target1, transcript);
+      const sim2 = getSimilarity(target2, transcript);
+      const sim3 = getSimilarity(target3, transcript);
+      const sim2_sub = getSimilarity(target2, transcriptSub); 
+
+      const maxSim = Math.max(sim1, sim2, sim3, sim2_sub);
+      console.log("유사도:", (maxSim * 100).toFixed(1) + "%");
+      
+      if (maxSim >= 0.70) { // 긴 문장이므로 판정 기준을 70%로 조정
+        voiceMsg.innerHTML = "✨ 인식 완료! ✨";
+        voiceMsg.style.color = "#fbbf24";
+        setTimeout(finishIntro, 800);
+      } else {
+        voiceMsg.innerHTML = `다시 한번 또렷이 읽어주세요 🎤<br><span style='font-size:0.85rem;color:#fca5a5;'>현재 일치율: ${Math.round(maxSim * 100)}% (70% 이상 필요)</span>`;
+        startBtn.style.display = 'block';
+        startBtn.textContent = "다시 시도하기";
+      }
+    };
+
+    recognition.onerror = function(event) {
+      console.error("음성 인식 에러:", event.error);
+      startBtn.style.display = 'block';
+      startBtn.textContent = "다시 시도하기";
+      
+      if(event.error === 'not-allowed' || event.error === 'audio-capture') {
+        voiceMsg.innerHTML = "마이크 권한이 거부되었습니다.<br>건너뛰기를 눌러주세요.";
+        voiceMsg.style.color = "#fca5a5";
+      } else {
+        voiceMsg.innerHTML = "인식에 실패했습니다. 다시 시도해주세요 🎤";
+      }
+    };
+
+    try {
+      recognition.start();
+    } catch (e) {
+      console.error("Speech recognition start failed:", e);
+    }
+  }
+
+  function finishIntro() {
+    container.style.transition = 'opacity 1.5s ease, transform 1.5s ease';
+    container.style.opacity = '0';
+    container.style.transform = 'scale(1.05)';
+    
+    setTimeout(() => {
+      container.remove();
+      document.body.style.overflow = '';
+    }, 1500);
+  }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', scratch);
+  canvas.addEventListener('mouseup', end);
+  canvas.addEventListener('mouseleave', end);
+  
+  canvas.addEventListener('touchstart', start, {passive: false});
+  canvas.addEventListener('touchmove', scratch, {passive: false});
+  canvas.addEventListener('touchend', end);
+  canvas.addEventListener('touchcancel', end);
+});
+</script>
+</body>
+</html>
