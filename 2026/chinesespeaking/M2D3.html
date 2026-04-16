@@ -259,17 +259,25 @@ body {
 
 /* Word-by-word Greek and Pronunciation layout */
 .v-grk-container {
-  display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 16px;
+  display: flex; flex-wrap: wrap; gap: 10px 12px; margin-bottom: 16px; justify-content: flex-start;
 }
 .grk-pair {
-  display: flex; flex-direction: column; align-items: center;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: #fff; border: 1px solid #fde68a; border-radius: 8px; padding: 8px 12px;
+  box-shadow: 0 2px 6px rgba(251, 191, 36, 0.1); min-width: 64px;
 }
 .grk-pair .grk {
   font-size: 1.25rem; color: #92400e; font-family: 'Times New Roman', serif;
-  line-height: 1.2; letter-spacing: 0.3px; font-weight: 600;
+  line-height: 1.2; letter-spacing: 0.3px; font-weight: 600; margin-bottom: 2px;
 }
 .grk-pair .pron {
-  font-size: 0.75rem; color: #b45309; font-style: normal; margin-top: 4px; letter-spacing: -0.5px;
+  font-size: 0.72rem; color: #d97706; font-style: normal; letter-spacing: -0.5px; margin-bottom: 8px;
+}
+.grk-pair .kor {
+  font-size: 0.85rem; color: #1a1a1a; font-weight: 700; margin-bottom: 2px; line-height: 1.2;
+}
+.grk-pair .eng {
+  font-size: 0.8rem; color: #475569; font-family: 'Georgia', serif; font-style: italic; line-height: 1.2;
 }
 
 .v-lit { 
@@ -516,6 +524,26 @@ body {
 .accordion-content {
   padding: 0 16px 18px;
 }
+
+/* Point Tag Design */
+.point-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-right: 6px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+.tag-red { background: #fef2f2; color: var(--accent-red); border: 1px solid #fecaca; }
+.tag-gold { background: #fffbeb; color: var(--accent-gold); border: 1px solid #fde68a; }
+.tag-teal { background: #f0fdfa; color: var(--accent-teal); border: 1px solid #ccfbf1; }
+.tag-blue { background: #eff6ff; color: var(--accent-blue); border: 1px solid #bfdbfe; }
+.tag-indigo { background: #eef2ff; color: var(--accent-indigo); border: 1px solid #c7d2fe; }
+.tag-rose { background: #fff1f2; color: var(--accent-rose); border: 1px solid #fecdd3; }
+.tag-green { background: #f0fdf4; color: var(--accent-green); border: 1px solid #bbf7d0; }
+.tag-purple { background: #faf5ff; color: var(--accent-purple); border: 1px solid #e9d5ff; }
 
 /* Bible verse block */
 .verse-block {
@@ -1097,7 +1125,7 @@ body {
 
   <!-- HERO -->
   <section class="hero" id="hero-section">
-    <div class="hero-badge">2026 국제중국어 2주 1,2일</div>
+    <div class="hero-badge">2026 국제중국어 2주 3,4일</div>
     <h1>"<span class="highlight-word">은혜의 발견과 누림</span>"<br>시대를 전환하는 생활</h1>
     <p class="hero-sub">타락하고 어두운 시대 속에서 오직 은혜만이<br>우리를 의로운 삶으로 이끌어 세상을 심판하게 한다</p>
     
@@ -1114,23 +1142,74 @@ body {
           <div class="v-eng">Let us therefore come forward with boldness to the throne of grace that we may receive mercy and find grace for timely help.</div>
           
           <div class="v-grk-container">
-            <div class="grk-pair"><span class="grk">προσερχώμεθα</span><span class="pron">프로세르코메다</span></div>
-            <div class="grk-pair"><span class="grk">οὖν</span><span class="pron">운</span></div>
-            <div class="grk-pair"><span class="grk">μετὰ</span><span class="pron">메타</span></div>
-            <div class="grk-pair"><span class="grk">παρρησίας</span><span class="pron">파르레시아스</span></div>
-            <div class="grk-pair"><span class="grk">τῷ</span><span class="pron">토</span></div>
-            <div class="grk-pair"><span class="grk">θρόνῳ</span><span class="pron">쓰로노</span></div>
-            <div class="grk-pair"><span class="grk">τῆς</span><span class="pron">테스</span></div>
-            <div class="grk-pair"><span class="grk">χάριτος,</span><span class="pron">카리토스,</span></div>
-            <div class="grk-pair"><span class="grk">ἵνα</span><span class="pron">히나</span></div>
-            <div class="grk-pair"><span class="grk">λάβωμεν</span><span class="pron">라보멘</span></div>
-            <div class="grk-pair"><span class="grk">ἔλεος</span><span class="pron">엘레오스</span></div>
-            <div class="grk-pair"><span class="grk">καὶ</span><span class="pron">카이</span></div>
-            <div class="grk-pair"><span class="grk">χάριν</span><span class="pron">카린</span></div>
-            <div class="grk-pair"><span class="grk">εὕρωμεν</span><span class="pron">헤우로멘</span></div>
-            <div class="grk-pair"><span class="grk">εἰς</span><span class="pron">에이스</span></div>
-            <div class="grk-pair"><span class="grk">εὔκαιρον</span><span class="pron">에우카이론</span></div>
-            <div class="grk-pair"><span class="grk">βοήθειαν.</span><span class="pron">보에쎄이안.</span></div>
+            <div class="grk-pair">
+              <span class="grk">προσερχώμεθα</span><span class="pron">[프로세르코메다]</span>
+              <span class="kor">나아갑시다</span><span class="eng">Let us come forward</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">οὖν</span><span class="pron">[운]</span>
+              <span class="kor">그러므로</span><span class="eng">therefore</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">μετὰ</span><span class="pron">[메타]</span>
+              <span class="kor">~와 함께</span><span class="eng">with</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">παρρησίας</span><span class="pron">[파르레시아스]</span>
+              <span class="kor">담대히</span><span class="eng">boldness</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">τῷ</span><span class="pron">[토]</span>
+              <span class="kor">(그)</span><span class="eng">to the</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">θρόνῳ</span><span class="pron">[쓰로노]</span>
+              <span class="kor">보좌 앞에</span><span class="eng">throne</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">τῆς</span><span class="pron">[테스]</span>
+              <span class="kor">(그)</span><span class="eng">of</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">χάριτος,</span><span class="pron">[카리토스]</span>
+              <span class="kor">은혜의</span><span class="eng">grace</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">ἵνα</span><span class="pron">[히나]</span>
+              <span class="kor">~하기 위하여</span><span class="eng">that</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">λάβωμεν</span><span class="pron">[라보멘]</span>
+              <span class="kor">받고</span><span class="eng">we may receive</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">ἔλεος</span><span class="pron">[엘레오스]</span>
+              <span class="kor">긍휼을</span><span class="eng">mercy</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">καὶ</span><span class="pron">[카이]</span>
+              <span class="kor">(그리고)</span><span class="eng">and</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">χάριν</span><span class="pron">[카린]</span>
+              <span class="kor">은혜를</span><span class="eng">grace</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">εὕρωμεν</span><span class="pron">[헤우로멘]</span>
+              <span class="kor">입어서 (얻기)</span><span class="eng">find</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">εἰς</span><span class="pron">[에이스]</span>
+              <span class="kor">위하여</span><span class="eng">for</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">εὔκαιρον</span><span class="pron">[에우카이론]</span>
+              <span class="kor">때맞추어</span><span class="eng">timely</span>
+            </div>
+            <div class="grk-pair">
+              <span class="grk">βοήθειαν.</span><span class="pron">[보에쎄이안]</span>
+              <span class="kor">도움을</span><span class="eng">help</span>
+            </div>
           </div>
 
           <div class="v-lit">💡 <strong>문법적 직역:</strong> 그러므로 우리가 긍휼을 받고 시의적절한 도움을 향하여 은혜를 발견하기[얻기] 위해, 담대함과 함께 은혜의 보좌로 나아갑시다.</div>
@@ -1336,7 +1415,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-red);">a</div>
         <div class="acc-icon" style="background:#fef2f2;">✨</div>
-        <div class="acc-title-text">본질 · 은혜 = 하나님 자신 · 하나님의 임재</div>
+        <div class="acc-title-text"><span class="point-tag tag-red">본질</span>은혜 = 하나님 자신 · 하나님의 임재</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1390,7 +1469,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-gold);">b</div>
         <div class="acc-icon" style="background:#fffbeb;">❤️</div>
-        <div class="acc-title-text">통로 1 · 사랑 — 은혜를 누리는 첫 번째 통로</div>
+        <div class="acc-title-text"><span class="point-tag tag-gold">통로 1</span>사랑 — 은혜를 누리는 첫 번째 통로</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1434,7 +1513,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-teal);">c</div>
         <div class="acc-icon" style="background:#f0fdfa;">🕊️</div>
-        <div class="acc-title-text">통로 2 · 영 — 은혜의 보좌가 있는 곳</div>
+        <div class="acc-title-text"><span class="point-tag tag-teal">통로 2</span>영 — 은혜의 보좌가 있는 곳</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1484,7 +1563,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-blue);">d</div>
         <div class="acc-icon" style="background:#eff6ff;">📖</div>
-        <div class="acc-title-text">통로 3 · 말씀 — 하나님의 말씀은 은혜의 말씀</div>
+        <div class="acc-title-text"><span class="point-tag tag-blue">통로 3</span>말씀 — 하나님의 말씀은 은혜의 말씀</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1536,7 +1615,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-indigo);">e</div>
         <div class="acc-icon" style="background:#eef2ff;">👥</div>
-        <div class="acc-title-text">터 · 하나 — 교회 생활 안에서 체험하는 은혜</div>
+        <div class="acc-title-text"><span class="point-tag tag-indigo">터</span>하나 — 교회 생활 안에서 체험하는 은혜</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1577,7 +1656,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-rose);">f</div>
         <div class="acc-icon" style="background:#fff1f2;">⛈️</div>
-        <div class="acc-title-text">시련 · 고난 — 고난 속에서 증가하는 은혜</div>
+        <div class="acc-title-text"><span class="point-tag tag-rose">시련</span>고난 — 고난 속에서 증가하는 은혜</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1616,7 +1695,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-green);">g</div>
         <div class="acc-icon" style="background:#f0fdf4;">💪</div>
-        <div class="acc-title-text">수고 · 수고 — 은혜의 능력으로 주님을 위해</div>
+        <div class="acc-title-text"><span class="point-tag tag-green">수고</span>은혜의 능력으로 주님을 위해</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1650,7 +1729,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-purple);">h</div>
         <div class="acc-icon" style="background:#faf5ff;">🤲</div>
-        <div class="acc-title-text">청지기 · 청지기 — 다양한 은혜를 맡은 선한 청지기</div>
+        <div class="acc-title-text"><span class="point-tag tag-purple">청지기</span>다양한 은혜를 맡은 선한 청지기</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1677,7 +1756,7 @@ body {
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-red);">i</div>
         <div class="acc-icon" style="background:#fef2f2;">⚖️</div>
-        <div class="acc-title-text">결과 · 의 — 은혜는 의를 산출한다</div>
+        <div class="acc-title-text"><span class="point-tag tag-red">결과</span>의 — 은혜는 의를 산출한다</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1725,84 +1804,84 @@ body {
     <div class="quiz-item" data-correct="2">
       <div class="quiz-q">
         <div class="quiz-badge">1</div>
-        <div class="quiz-q-text">성경에서 '은혜'라는 단어가 처음으로 언급된 구절은 어디인가?</div>
+        <div class="quiz-q-text">창세기 6장 8절에서 노아가 여호와 앞에서 은혜를 입었다고 할 때, 본문이 강조하는 독특한 표현은 무엇입니까?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 창세기 3장 15절</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 창세기 6장 8절</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 창세기 12장 1절</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 요한복음 1장 14절</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 하나님께서 노아에게 은혜를 일방적으로 주셨다.</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 노아가 여호와 앞에서 은혜를 발견하였다.</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 하나님께서 노아의 가족 모두에게 은혜를 부어주셨다.</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 노아가 자신의 의로운 행위로 은혜를 샀다.</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">노아가 "여호와 앞에 은총(은혜)을 입었다"고 기록된 구절입니다.</div>
+      <div class="quiz-hint-text">창세기 6장 8절의 원문과 메시지에서 은혜를 '주셨다'고 하지 않고 어떻게 표현했는지 떠올려 보세요. (키워드 참조)</div>
       <div class="quiz-feedback"></div>
     </div>
 
     <!-- Q2 -->
-    <div class="quiz-item" data-correct="3">
+    <div class="quiz-item" data-correct="4">
       <div class="quiz-q">
         <div class="quiz-badge">2</div>
-        <div class="quiz-q-text">이 메시지에서 말하는 '은혜'의 본질은 무엇인가?</div>
+        <div class="quiz-q-text">메시지에 따르면 은혜의 참된 정의는 무엇입니까?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 하나님께서 주시는 외적인 축복</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 어려운 환경이 바뀌는 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 우리에게 모든 것이 되시는 하나님 자신 · 하나님의 임재</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 기적적으로 문제가 해결되는 것</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 어려운 상황에서 기적적으로 문제가 해결되는 외적인 축복</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 미래에 우리가 천국에 갈 수 있도록 보장해 주는 티켓</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 우리가 잘못을 저질렀을 때 용서해 주시는 하나님의 자비</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 우리를 위해 여러 일을 하시는 하나님 자신이자 그분의 임재</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">은혜는 외적인 사물이나 환경의 변화가 아닙니다. 우리 안에서·우리를 통해·우리를 위해 모든 것을 하시는 분입니다.</div>
+      <div class="quiz-hint-text">은혜는 단순한 사물이나 외적인 축복이 아닙니다. 요한복음 1:14과 연결되는 은혜의 본질을 생각해 보세요.</div>
       <div class="quiz-feedback"></div>
     </div>
 
     <!-- Q3 -->
-    <div class="quiz-item" data-correct="2">
+    <div class="quiz-item" data-correct="3">
       <div class="quiz-q">
         <div class="quiz-badge">3</div>
-        <div class="quiz-q-text">우리가 은혜를 누리기 위한 세 가지 통로(수단)는 무엇인가?</div>
+        <div class="quiz-q-text">메시지에 따르면, 하나님께서 믿는 이들에게 '육체(타락한 본성)'를 남겨두신 긍정적인 이유는 무엇입니까?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 기도 · 금식 · 봉사</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 사랑 · 영 · 말씀</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 믿음 · 소망 · 사랑</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 의 · 평화 · 기쁨</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리가 죄를 지을 때마다 벌을 주기 위해서</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우리가 스스로의 힘으로 육체를 극복하는 영웅이 되게 하려고</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 우리가 끊임없이 은혜의 보좌로 돌이키도록 돕기 위해서</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 육체 자체가 영적인 성장을 위한 영양분이 되기 때문에</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">핵심 요점 b, c, d에 해당하는 세 가지 통로입니다.</div>
+      <div class="quiz-hint-text">육체는 우리를 손상하기 위한 것이 아니라, 우리가 '이곳'으로 나아가지 않을 수 없게 만들기 위함입니다. (핵심요점 f 참조)</div>
       <div class="quiz-feedback"></div>
     </div>
 
     <!-- Q4 -->
-    <div class="quiz-item" data-correct="4">
+    <div class="quiz-item" data-correct="3">
       <div class="quiz-q">
         <div class="quiz-badge">4</div>
-        <div class="quiz-q-text">"노아의 때와 같이, ____의 때도 그러할 것이다." 빈칸에 들어갈 말은?</div>
+        <div class="quiz-q-text">은혜와 의의 관계에 대한 설명으로 옳은 것은 무엇입니까?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 아브라함</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 다윗</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 모세</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 사람의 아들</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 의를 완벽하게 행하는 사람만이 은혜를 받을 자격이 있다.</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 은혜는 의로운 삶과 상관없이 구원만 보장해 주는 것이다.</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 은혜의 능력과 생명은 우리 안에서 의로운 삶을 산출한다.</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 의는 율법의 산물이고, 은혜는 복음의 산물이라 서로 별개이다.</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">마태복음 24장 37절, 누가복음 17장 26절에 나오는 말씀입니다.</div>
+      <div class="quiz-hint-text">로마서 5장 21절을 떠올려 보세요. 은혜가 먼저 우리 안으로 분배될 때 삶에서 결과적으로 무엇이 나타나게 될까요?</div>
       <div class="quiz-feedback"></div>
     </div>
 
     <!-- Q5 -->
-    <div class="quiz-item" data-correct="3">
+    <div class="quiz-item" data-correct="1">
       <div class="quiz-q">
         <div class="quiz-badge">5</div>
-        <div class="quiz-q-text">은혜의 능력과 힘과 생명에 의해 결국 산출되는 것은 무엇인가?</div>
+        <div class="quiz-q-text">우리가 은혜를 누릴 수 있는 구체적인 수단 세 가지로 제시된 것은 무엇입니까?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 기적</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 평안</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 의 (궁극적으로 새 예루살렘)</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 번영</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 주님을 사랑함, 영을 사용함, 은혜의 말씀을 먹음</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 성지 순례, 신학 공부, 십계명 준수</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 침묵 수행, 도덕적 수양, 고전 읽기</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 금식, 철야 기도, 자선 활동</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">로마서 5장 21절이 핵심 근거입니다. "은혜도 ____을(를) 통하여 왕으로서 다스려…"</div>
+      <div class="quiz-hint-text">핵심 요점의 b, c, d 항목(통로 1, 2, 3)을 다시 한 번 확인해 보세요.</div>
       <div class="quiz-feedback"></div>
     </div>
 
@@ -1829,7 +1908,7 @@ body {
   </section>
 
   <div class="footer-note">
-    2026 국제중국어 2주 1,2일
+    2026 국제중국어 2주 3,4일
   </div>
 </div>
 
