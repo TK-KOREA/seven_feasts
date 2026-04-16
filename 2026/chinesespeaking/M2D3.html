@@ -6,7 +6,7 @@
 <title>은혜의 발견과 누림 — 시대를 전환하는 생활</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root { 
+:root {
   --base-font-size: 17px;
   --font-scale: 1;
   --bg: #ffffff;
@@ -45,6 +45,8 @@ body {
   line-height: 1.75;
   padding-top: var(--topbar-h);
   -webkit-text-size-adjust: 100%;
+  word-break: keep-all; /* 긴 단어나 텍스트가 박스 밖으로 나가지 않게 방지 */
+  overflow-wrap: break-word;
 }
 
 /* ===== TOP BAR ===== */
@@ -252,7 +254,8 @@ body {
   font-size: 0.75rem; font-weight: 800; color: #b45309; margin-bottom: 8px;
   display: inline-flex; align-items: center; gap: 4px; background: #fef3c7; padding: 4px 10px; border-radius: 6px;
 }
-.v-text { font-size: 1rem; color: #111; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+.v-text { font-size: 1rem; color: #111; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
+.v-eng { font-size: 0.92rem; color: #334155; font-weight: 500; margin-bottom: 12px; line-height: 1.5; font-family: 'Georgia', serif; }
 .v-grk { 
   font-size: 1.25rem; color: #92400e; font-family: 'Times New Roman', serif; 
   margin-bottom: 6px; line-height: 1.4; letter-spacing: 0.5px;
@@ -274,11 +277,12 @@ body {
 .word-card {
   background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s;
+  height: 100%; /* 유동적 텍스트 확장에 대응 */
 }
 .word-card:hover { transform: translateY(-2px); border-color: #cbd5e1; }
 .word-header { 
   display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; 
-  border-bottom: 1px solid #f3f4f6; padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6; padding-bottom: 8px; gap: 8px;
 }
 .word-grk { font-size: 1.2rem; font-weight: 700; color: var(--accent-gold); font-family: 'Times New Roman', serif; }
 .word-pron { font-size: 0.75rem; color: #b45309; text-align: right; margin-top: 2px; letter-spacing: 0.5px; }
@@ -316,6 +320,7 @@ body {
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   text-align: center;
+  display: flex; flex-direction: column; justify-content: center;
 }
 .dash-icon {
   font-size: 1.4rem;
@@ -383,12 +388,6 @@ body {
   font-size: 0.76rem;
   color: #666;
   line-height: 1.5;
-}
-.flow-arrow {
-  position: absolute;
-  left: -20px; bottom: 2px;
-  font-size: 10px;
-  color: #999;
 }
 
 /* Keywords inline section */
@@ -477,9 +476,10 @@ body {
   width: 24px; height: 24px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.8rem; /* a,b,c 영문표기에 맞게 조금 키움 */
   font-weight: 700;
   color: #fff;
+  text-transform: uppercase;
 }
 .acc-title-text {
   flex: 1;
@@ -1061,20 +1061,16 @@ body {
   <div class="keyword-def" id="kd5">은혜가 산출하는 가장 뛰어난 산물. 하나님과 사람 앞에 올바르게 서게 하는 주관적인 의.</div>
 
   <div class="nav-divider"></div>
-  <a class="nav-item" style="font-weight:700;color:#111;">📌 핵심요점</a>
-  <a class="nav-item sub" onclick="goTo('step-1')">Step 1. 절망의 배경과 반전</a>
-  <a class="nav-item sub" onclick="goTo('step-2')">Step 2. 은혜의 누림</a>
-  <a class="nav-item sub" onclick="goTo('step-3')">Step 3. 은혜의 결과</a>
-
-  <div class="nav-divider"></div>
-  <a class="nav-item" style="font-weight:700;color:#111;">📌 세부항목</a>
-  <a class="nav-item sub" onclick="goTo('acc-1')">1. 타락한 시대의 실지 상황</a>
-  <a class="nav-item sub" onclick="goTo('acc-2')">2. 은혜를 입어 시대를 바꿈</a>
-  <a class="nav-item sub" onclick="goTo('acc-3')">3. 은혜의 참된 의미</a>
-  <a class="nav-item sub" onclick="goTo('acc-4')">4. 은혜를 누리는 세 가지 방면</a>
-  <a class="nav-item sub" onclick="goTo('acc-5')">5. 하나 안에서의 모임과 고난</a>
-  <a class="nav-item sub" onclick="goTo('acc-6')">6. 주님을 위한 수고</a>
-  <a class="nav-item sub" onclick="goTo('acc-7')">7. 의를 산출하여 시대를 전환함</a>
+  <a class="nav-item" style="font-weight:700;color:#111;">📌 핵심 요점</a>
+  <a class="nav-item sub" onclick="goTo('acc-1')">a. 하나님 자신이신 은혜</a>
+  <a class="nav-item sub" onclick="goTo('acc-2')">b. 사랑 — 누림의 첫 번째 통로</a>
+  <a class="nav-item sub" onclick="goTo('acc-3')">c. 영 — 은혜의 보좌가 있는 곳</a>
+  <a class="nav-item sub" onclick="goTo('acc-4')">d. 말씀 — 하나님의 은혜의 말씀</a>
+  <a class="nav-item sub" onclick="goTo('acc-5')">e. 하나 — 교회 생활 안에서의 체험</a>
+  <a class="nav-item sub" onclick="goTo('acc-6')">f. 고난 — 증가하는 은혜</a>
+  <a class="nav-item sub" onclick="goTo('acc-7')">g. 수고 — 은혜의 능력으로</a>
+  <a class="nav-item sub" onclick="goTo('acc-8')">h. 청지기 — 다양한 은혜를 맡음</a>
+  <a class="nav-item sub" onclick="goTo('acc-9')">i. 의 — 은혜는 의를 산출함</a>
 
   <div class="nav-divider"></div>
   <a class="nav-item" onclick="goTo('quiz-section')">✅ 퀴즈</a>
@@ -1100,6 +1096,7 @@ body {
             히브리서 4:16
           </div>
           <div class="v-text">그러므로 우리가 긍휼을 받고 은혜를 입어서 때맞추어 도움을 얻기 위하여, 은혜의 보좌 앞에 담대히 나아갑시다.</div>
+          <div class="v-eng">Let us therefore come forward with boldness to the throne of grace that we may receive mercy and find grace for timely help.</div>
           <div class="v-grk">προσερχώμεθα οὖν μετὰ παρρησίας τῷ θρόνῳ τῆς χάριτος, ἵνα λάβωμεν ἔλεος καὶ χάριν εὕρωμεν εἰς εὔκαιρον βοήθειαν.</div>
           <div class="v-pron">[프로세르코메다 운 메타 파르레시아스 토 쓰로노 테스 카리토스, 히나 라보멘 엘레오스 카이 카린 헤우로멘 에이스 에우카이론 보에쎄이안]</div>
           <div class="v-lit">💡 <strong>문법적 직역:</strong> 그러므로 우리가 긍휼을 받고 시의적절한 도움을 향하여 은혜를 발견하기[얻기] 위해, 담대함과 함께 은혜의 보좌로 나아갑시다.</div>
@@ -1295,74 +1292,17 @@ body {
   <div class="accordion-group">
     <div class="accordion-group-title" id="keypoints-section">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      핵심요점
+      은혜에 관한 9가지 핵심 요점
     </div>
 
-    <div class="step-header" id="step-1">Step 1. 절망의 배경과 위대한 반전</div>
+    <div class="step-header" id="step-1">Step 1. 은혜의 본질</div>
 
-    <!-- 1 -->
+    <!-- A -->
     <div class="accordion" id="acc-1">
       <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number" style="background:var(--accent-red);">1</div>
-        <div class="acc-icon" style="background:#fef2f2;">⚠️</div>
-        <div class="acc-title-text">타락한 시대의 실지 상황 — 영적 무감각</div>
-        <div class="acc-chevron">▼</div>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content">
-          <div class="verse-block">
-            <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
-              마태복음 24:37-38
-            </div>
-            <div class="verse-text">노아의 때와 같이, 사람의 아들이 오는 것도 그러할 것입니다.</div>
-            <div class="verse-text">왜냐하면 홍수가 나기 전에, 사람들은 노아가 방주 안으로 들어가던 날까지 <b>먹고 마시고 장가가고 시집갔으며</b></div>
-          </div>
-
-          <p class="content-text">하나님은 단지 “내가 후회한다”고 말씀하신 것이 아니라 그 시대의 <span class="hl">참된 타락의 상태</span>를 계시하셨습니다. 사람들은 심판이 오고 있는 것을 알지 못하고 먹고 마시며 쾌락을 즐기는 일에만 몰두했습니다.</p>
-          <p class="content-text">오늘날의 시대도 마찬가지입니다. 팬데믹 이후 사람들은 <b>"오늘만 살고, 현재를 즐기자"</b>는 무의식적인 태도에 빠져 있습니다. 이 어그러지고 비뚤어지고 음란한 시대에, 부도덕과 정욕의 유혹 앞에 스스로 서 있을 수 있는 사람은 아무도 없습니다. 우리는 자신이 철저히 타락하고 육체가 되었음을 인정해야 합니다.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-connector">⬇</div>
-
-    <!-- 2 -->
-    <div class="accordion" id="acc-2">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number" style="background:var(--accent-gold);">2</div>
-        <div class="acc-icon" style="background:#fffbeb;">✨</div>
-        <div class="acc-title-text">"그러나 노아는" — 은혜를 입어 시대를 바꿈</div>
-        <div class="acc-chevron">▼</div>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content">
-          <div class="verse-block">
-            <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
-              창세기 6:8
-            </div>
-            <div class="verse-text"><b>그러나 노아는 여호와 앞에 은총(은혜)을 입었다.</b></div>
-          </div>
-
-          <p class="content-text">창세기를 기록한 주된 목적은 인간의 타락을 보여주는 것이 아니라, <span class="hl">하나님의 은혜가 타락한 사람들을 위해 얼마나 많은 것을 할 수 있는지</span>를 보여주는 것입니다. 사탄이 상황을 극도로 망쳐 놓았을 때, 하나님은 패배하신 것처럼 보였습니다.</p>
-          <p class="content-text"><b>"그러나"</b> 반전이 일어났습니다. 하나님 앞에 은혜를 입고 시대를 바꾼 사람들이 항상 있었습니다. 다니엘이 그러했고, 노아가 그러했습니다. 연약하고 절망적인 우리 자신이나 어두운 환경을 보지 마십시오. 오늘 우리에게 필요한 것은 <span class="hl">하나님의 눈앞에서 은혜를 발견하는 것</span>입니다.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-connector">
-      절망적인 상황 속에서 오직 <strong>'은혜'</strong>만이 돌파구가 됩니다. 그렇다면 이 은혜의 참된 의미는 무엇이며, 우리는 일상에서 어떻게 이 은혜를 지속적으로 누릴 수 있을까요?
-    </div>
-
-    <div class="step-header" id="step-2">Step 2. 은혜의 누림</div>
-
-    <!-- 3 -->
-    <div class="accordion" id="acc-3">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number" style="background:var(--accent-teal);">3</div>
-        <div class="acc-icon" style="background:#f0fdfa;">🎁</div>
-        <div class="acc-title-text">은혜의 참된 의미 — 우리 안에서 일하시는 하나님</div>
+        <div class="acc-number" style="background:var(--accent-red);">a</div>
+        <div class="acc-icon" style="background:#fef2f2;">✨</div>
+        <div class="acc-title-text">본질 · 은혜 = 하나님 자신 · 하나님의 임재</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1372,7 +1312,14 @@ body {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
               요한복음 1:14
             </div>
-            <div class="verse-text">말씀께서 육체가 되시어 우리 가운데 장막을 치시니, <b>은혜와 실재가 충만하였다.</b></div>
+            <div class="verse-text">말씀께서 육체가 되시어 우리 가운데 장막을 치시니, <b>은혜와 실재가 충만하였다.</b> 우리가 그분의 영광을 보니, 아버지에게서 온 독생자의 영광이었다.</div>
+          </div>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              요한복음 1:16-17
+            </div>
+            <div class="verse-text">우리가 다 그분의 충만에서 받았으니, <b>은혜 위에 은혜였다.</b> 왜냐하면 율법은 모세를 통하여 주어진 것이지만, <b>은혜와 실재는 예수 그리스도를 통하여 왔기 때문이다.</b></div>
           </div>
           <div class="verse-block">
             <div class="verse-ref">
@@ -1382,87 +1329,34 @@ body {
             <div class="verse-text"><b>주 예수님의 은혜가</b> 모든 성도들과 함께 있기를 바랍니다. 아멘.</div>
           </div>
 
-          <p class="content-text">은혜는 물질적인 축복이나 외적인 환경의 개선이 아닙니다. 암초를 만나면 암초를 치워달라고 기도하는 것이 사람의 길이라면, <span class="hl">하나님의 길은 물의 수위(은혜)를 높여 암초를 덮어버리는 것</span>입니다.</p>
-          <p class="content-text">은혜란 우리의 누림을 통해 <b>우리에게 모든 것이 되시고, 우리 안에서, 우리를 통해서, 우리를 위해서 모든 것을 하시는 하나님 자신(그분의 임재)</b>입니다. 우리는 감당할 수 없는 상황 속에서 보좌 앞으로 나아가 "주님, 저의 힘이 되어 주십시오. 저와 함께 서 주십시오"라고 기도해야 합니다. 성경의 마지막은 우리가 새 예루살렘이 되기 위해 오직 주 예수님의 '은혜'가 필요함을 선포합니다.</p>
-        </div>
-      </div>
-    </div>
+          <p class="content-text">은혜는 하나님께서 주신 어떤 것만이 아니라, <span class="hl">우리를 위해 여러 일을 하시는 하나님 자신</span>입니다.</p>
+          <p class="content-text">은혜는 단지 하나님께서 우리에게 주시는 객관적인 것만이 아닙니다. 은혜는 <span class="hl">우리에게 오셔서 우리를 위해 일하시는 하나님 자신</span>입니다. 여러분은 약합니까? 하나님께서 여러분의 힘이 되시기 위해 오실 것인데, 이렇게 오시는 것이 은혜입니다. 여러분은 자신이 처한 상황을 감당할 수 없습니까? 하나님께서 오셔서 여러분과 함께 서 계시고 여러분을 위해서 그리고 여러분 안에서 그 상황을 감당하실 것입니다. 이것이 은혜입니다.</p>
+          <p class="content-text">은혜는 또한 우리가 환경 가운데 만나는 무언가가 아닙니다. 외적인 환경의 변화가 은혜가 아닙니다. 어려운 상황이 바뀌는 것이 은혜가 아닙니다.</p>
 
-    <div class="section-connector">⬇</div>
-
-    <!-- 4 -->
-    <div class="accordion" id="acc-4">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number" style="background:var(--accent-blue);">4</div>
-        <div class="acc-icon" style="background:#eff6ff;">❤️</div>
-        <div class="acc-title-text">은혜를 누리는 길 — 사랑, 영, 말씀</div>
-        <div class="acc-chevron">▼</div>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content">
-          <p class="content-text">우리는 세 가지 내적 수단을 통해 은혜를 풍성히 누릴 수 있습니다.</p>
-          
           <div class="sub-point">
-            <div class="sub-point-title">1. 사랑 (Love)</div>
+            <div class="sub-point-title">🚢 암초와 수위의 비유</div>
             <div class="sub-point-text">
-              "우리 주 예수 그리스도를 부패함 없이 사랑하는 모든 사람에게 은혜가 함께하기를 바랍니다." (엡 6:24) 믿음은 은혜를 받아들이게 하고, <span class="hl">사랑은 은혜를 누리게 합니다.</span> 우리가 주님을 사랑할 때 그분의 은혜를 맛볼 수 있습니다.
+              배가 항해하다가 암초를 만나면 어떻게 해야하겠습니까? 여러분의 기도는 암초를 제거해 달라는 것입니까? <span class="hl">하나님의 방식은 물의 수위를 높이시는 것입니다.</span> 암초는 그대로 있지만, 은혜가 넘칩니다.
             </div>
           </div>
-          <div class="sub-point">
-            <div class="sub-point-title">2. 영 (Spirit)</div>
-            <div class="sub-point-text">
-              "주님께서 그대의 영과 함께 계시기를 바랍니다." (딤후 4:22) 은혜의 보좌는 하늘에 있을 뿐만 아니라 <b>우리의 거듭난 영 안</b>에 있습니다. 우리가 연합된 영으로 돌이켜 영을 사용할 때 넘치는 은혜의 공급을 받습니다.
-            </div>
-          </div>
-          <div class="sub-point">
-            <div class="sub-point-title">3. 말씀 (Word)</div>
-            <div class="sub-point-text">
-              "주님의 말씀을 발견하고 제가 그것을 먹었더니 주님의 말씀이 제게 마음의 즐거움과 기쁨이 되었습니다." (렘 15:16) 하나님의 말씀은 <span class="hl">은혜의 말씀</span>입니다. 말씀을 섭취할 때 우리 안에서 은혜가 자라납니다.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="section-connector">⬇</div>
-
-    <!-- 5 -->
-    <div class="accordion" id="acc-5">
-      <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number" style="background:var(--accent-purple);">5</div>
-        <div class="acc-icon" style="background:#faf5ff;">⛪</div>
-        <div class="acc-title-text">은혜를 누리는 길 — 하나 안의 모임과 고난</div>
-        <div class="acc-chevron">▼</div>
-      </div>
-      <div class="accordion-body">
-        <div class="accordion-content">
-          <div class="verse-block">
-            <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
-              시편 133:1, 3
-            </div>
-            <div class="verse-text">보라, <b>형제들이 연합하여 거하는 것</b>이 얼마나 좋고 얼마나 즐거운가! ... 헤르몬의 이슬이 시온의 산들에 내림 같아라.</div>
-          </div>
-          
-          <p class="content-text">우리가 각 지방의 교회 안에서, <b>하나라는 터 위에서</b> 성도들과 함께 모일 때 우리는 <span class="hl">헐몬의 이슬과 같이 신선하게 적시는 은혜</span>를 누리게 됩니다. 초대 교회에서 바나바가 안디옥에 갔을 때 그는 '성도들의 구원과 거룩한 생활로 표현된 삼일 하나님' 곧 <b>눈에 보이는 은혜</b>를 보았습니다.</p>
-
-          <p class="content-text">또한 은혜는 고난과 시련 속에서 더욱 빛을 발합니다. 사도 바울이 가시로 인해 고통받을 때, 주님은 가시를 제거하는 대신 <span class="hl">"나의 은혜가 너에게 충분하다"</span>(고후 12:9)고 하셨습니다. 고난의 때가 바로 은혜가 우리 안에서 충만히 증가하는 때입니다.</p>
+          <p class="content-text">성경 전체를 마무리하는 마지막 구절이 "주 예수님의 은혜가 모든 성도들과 함께 있기를 바랍니다. 아멘"인 것은 매우 의미심장합니다. 이 책의 모든 이상을 보고 모든 예언의 말씀을 들은 후에도, 우리에게는 <span class="hl">여전히 주님의 은혜가 필요합니다</span>.</p>
         </div>
       </div>
     </div>
 
     <div class="step-connector">
-      충분히 은혜를 누렸다면, 그 은혜는 우리 안에서 멈추지 않고 생명력 있게 역사하여 <strong>영광스러운 결과</strong>를 낳게 됩니다.
+      은혜의 본질이 곧 하나님 자신이라면, 우리는 어떻게 이 은혜를 누릴 수 있을까요?
     </div>
 
-    <div class="step-header" id="step-3">Step 3. 은혜의 영광스러운 결과</div>
+    <div class="step-header" id="step-2">Step 2. 은혜를 누리는 통로</div>
 
-    <!-- 6 -->
-    <div class="accordion" id="acc-6">
+    <!-- B -->
+    <div class="accordion" id="acc-2">
       <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number" style="background:var(--accent-indigo);">6</div>
-        <div class="acc-icon" style="background:#eef2ff;">💪</div>
-        <div class="acc-title-text">주님을 위한 수고와 은혜의 청지기</div>
+        <div class="acc-number" style="background:var(--accent-gold);">b</div>
+        <div class="acc-icon" style="background:#fffbeb;">❤️</div>
+        <div class="acc-title-text">통로 1 · 사랑 — 은혜를 누리는 첫 번째 통로</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1470,25 +1364,43 @@ body {
           <div class="verse-block">
             <div class="verse-ref">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
-              고린도전서 15:10
+              에베소서 6:24
             </div>
-            <div class="verse-text">내가 지금의 내가 된 것은 <b>하나님의 은혜</b>로 된 것이니 ... 나는 모든 사도들보다 더 많이 수고하였습니다. 그러나 그것은 내가 아니라, <b>나와 함께한 하나님의 은혜</b>였습니다.</div>
+            <div class="verse-text">우리 주 예수 그리스도를 <b>부패함 없이 사랑하는 모든 사람</b>에게 은혜가 함께하기를 바랍니다.</div>
           </div>
-          
-          <p class="content-text">은혜를 누릴수록 우리는 <span class="hl">주님의 은혜의 능력으로 그분을 위해 수고</span>하게 됩니다. 연약하고 낙심될 때, 나가서 복음을 전하거나 어린양을 돌보아 보십시오. 자신이 하는 것이 아니라, 내 안의 은혜가 일하고 있음을 깨닫게 될 것입니다.</p>
-          <p class="content-text">나아가 우리는 <b>하나님의 다양한 은혜를 맡은 선한 청지기</b>가 되어야 합니다(벧전 4:10). 청지기는 먼저 자신이 양식을 배불리 먹고 누린 후, 하나님의 집안 식구들에게 그 풍성한 은혜를 나누어 주는 사람입니다.</p>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              요한복음 21:15-17
+            </div>
+            <div class="verse-text">"요한의 아들 시몬이여, 이 사람들보다 <b>그대가 나를 더 사랑하십니까?</b>" … "내 어린양들을 먹이십시오."</div>
+            <div class="verse-text">"요한의 아들 시몬이여, <b>그대가 나를 사랑하십니까?</b>" … "내 양들을 목양하십시오."</div>
+            <div class="verse-text">"요한의 아들 시몬이여, <b>그대가 나를 사랑하십니까?</b>" … "내 양들을 먹이십시오."</div>
+          </div>
+
+          <p class="content-text">은혜이신 주님에 대한 누림은 <span class="hl">그분을 사랑하는 사람들과 함께</span>합니다.</p>
+          <p class="content-text">그리스도인에게는 두 가지가 매우 중요합니다. 바로 <span class="hl">믿음과 사랑</span>입니다. 믿음은 우리로 하여금 받아들이게 하고, 사랑은 우리로 하여금 누리게 합니다. 믿음으로 우리는 은혜를 받아들이고, 사랑으로 우리는 은혜를 누립니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">🍽️ 음식의 비유</div>
+            <div class="sub-point-text">
+              아이에게 음식을 먹이면 먹기는 하지만, 좋아하지 않으면 충분히 누리지 못합니다. 그러나 좋아하는 음식이면 사랑이 그 음식을 누리게 합니다. 여러분이 좋아하는 음식 앞에 가면, 그것을 사랑합니다. <span class="hl">그 사랑이 그 음식을 누리게 하는 것입니다.</span>
+            </div>
+          </div>
+
+          <p class="content-text">에베소서는 교회를 그리스도의 몸, 한 새 사람, 그리스도의 신부, 단체적인 전투원으로 계시합니다. 이 모든 것들을 통해 그분을 사랑하는 것이 <span class="hl">부패함 없이</span> 사랑하는 것입니다.</p>
         </div>
       </div>
     </div>
 
     <div class="section-connector">⬇</div>
 
-    <!-- 7 -->
-    <div class="accordion" id="acc-7">
+    <!-- C -->
+    <div class="accordion" id="acc-3">
       <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number" style="background:var(--accent-teal);">7</div>
-        <div class="acc-icon" style="background:#f0fdfa;">⚖️</div>
-        <div class="acc-title-text">의를 산출하여 시대를 전환함</div>
+        <div class="acc-number" style="background:var(--accent-teal);">c</div>
+        <div class="acc-icon" style="background:#f0fdfa;">🕊️</div>
+        <div class="acc-title-text">통로 2 · 영 — 은혜의 보좌가 있는 곳</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1496,14 +1408,273 @@ body {
           <div class="verse-block">
             <div class="verse-ref">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
-              로마서 5:21
+              히브리서 10:29
             </div>
-            <div class="verse-text">죄가 죽음 안에서 왕 노릇을 한 것같이, <b>은혜도 의를 통하여 왕으로서 다스려</b> 우리 주 예수 그리스도를 통하여 영원한 생명에 이르게 하려는 것입니다.</div>
+            <div class="verse-text">하물며 하나님의 아들을 짓밟고 자기를 거룩하게 해 준 언약의 피를 하찮은 것으로 여기며 <b>은혜의 영을 모욕한 사람</b>은 얼마나 더 심한 형벌을 받게 될 것인지를 생각해 보십시오.</div>
+          </div>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              바울 서신의 축도
+            </div>
+            <div class="verse-text">[갈 6:18] 우리 주 예수 그리스도의 <b>은혜가 여러분의 영과 함께하기를</b> 바랍니다, 형제님들. 아멘.</div>
+            <div class="verse-text">[빌 4:23] 주 예수 그리스도의 <b>은혜가 여러분의 영과 함께하기를</b> 바랍니다.</div>
+            <div class="verse-text">[딤후 4:22] 주님께서 그대의 영과 함께 계시기를 바랍니다. <b>은혜가 여러분과 함께하기를</b> 바랍니다.</div>
+          </div>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              히브리서 4:16
+            </div>
+            <div class="verse-text">그러므로 우리가 긍휼을 받고 은혜를 입어서 때맞추어 도움을 얻기 위하여, <b>은혜의 보좌 앞에 담대히 나아갑시다.</b></div>
           </div>
 
-          <p class="content-text">육체가 있는 곳에 은혜가 있고, <span class="hl">은혜가 있는 곳에는 그 결과인 의(Righteousness)</span>가 있습니다. 아내나 남편에게 스스로 올바르려 노력하는 것은 불가능합니다. 오직 은혜를 발견할 때만 태도가 변하고 서로에게 주관적으로 올바를 수 있습니다.</p>
+          <p class="content-text">우리는 우리 사람의 영을 사용함으로써 <span class="hl">삼일 하나님의 풍성한 공급</span>인 주 예수 그리스도의 은혜를 누립니다.</p>
+          <p class="content-text">은혜는 삼일 하나님께서 육체가 되시고, 죽음과 부활을 거쳐 지금은 <span class="hl">은혜의 영</span>이 되신 것입니다. 이 은혜의 영이 지금 우리의 영 안에 계시며 우리와 한 영이 되셨습니다.</p>
+          <p class="content-text">히브리서 4장의 은혜의 보좌는 어디에 있습니까? 하늘에 있습니다. 그러나 오늘 은혜의 보좌는 또한 <span class="hl">우리의 연합된 영 안에</span>도 있습니다. 야곱이 본 벧엘의 사닥다리처럼, 하늘과 땅을 연결하고, 하늘을 땅에 이끌어오는 <span class="hl">하늘의 문이 바로 우리의 영 안에</span> 있습니다.</p>
 
-          <p class="content-text">노아는 은혜를 입었고, 그 은혜는 노아를 강하게 하여 일상에서 의를 살아내게 했습니다(히 11:7). 노아가 살아낸 이 주관적인 의는 부패한 세상을 심판(유죄판결)할 수 있는 <span class="hl">하나님의 견고한 입지</span>가 되었습니다. 결국 <b>은혜가 의를 산출하여 시대를 전환시킨 것</b>입니다. 새 예루살렘은 완전히 은혜의 산출물이자 '의가 거하는' 곳입니다!</p>
+          <div class="sub-point">
+            <div class="sub-point-title">📜 바울 서신의 끝맺음</div>
+            <div class="sub-point-text">
+              바울은 여러 서신의 끝맺음에서 반복적으로 "주 예수 그리스도의 은혜가 <span class="hl">여러분의 영과 함께</span> 있을 것입니다"라고 말합니다. 이것은 단순한 관용구가 아닙니다. 매우 의미심장한 부분입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">⬇</div>
+
+    <!-- D -->
+    <div class="accordion" id="acc-4">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-blue);">d</div>
+        <div class="acc-icon" style="background:#eff6ff;">📖</div>
+        <div class="acc-title-text">통로 3 · 말씀 — 하나님의 말씀은 은혜의 말씀</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              사도행전 20:32
+            </div>
+            <div class="verse-text">이제 나는 하나님과 그분의 <b>은혜의 말씀</b>에 여러분을 맡깁니다. 그 말씀은 여러분을 건축할 수 있고 거룩하게 된 모든 이들 가운데 있는 유업을 여러분에게 줄 수 있습니다.</div>
+          </div>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              골로새서 3:16
+            </div>
+            <div class="verse-text">온갖 지혜를 사용하여 <b>그리스도의 말씀이 여러분 안에 풍성히 거하도록</b> 하되, 시와 찬송과 영적인 노래들로 … 여러분의 마음에서 은혜로 하나님께 찬송함으로써 거하도록 하십시오.</div>
+          </div>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              예레미야 15:16
+            </div>
+            <div class="verse-text">주님의 말씀을 발견하고 <b>제가 그것을 먹었더니</b> / 주님의 말씀이 제게 / 마음의 즐거움과 기쁨이 되었습니다.</div>
+          </div>
+
+          <p class="content-text">하나님의 말씀은 <span class="hl">은혜의 말씀</span>입니다.</p>
+          <p class="content-text">하나님의 말씀은 우리를 거룩하게 할 수 있고, 우리를 건축할 수 있습니다. 이것은 하나님의 은혜의 말씀입니다. <span class="hl">주님의 말씀과 주님의 은혜는 나란히 움직이는 것</span>입니다.</p>
+          <p class="content-text">주님의 말씀은 음식입니다. 먹기 위한 것입니다. 예레미야가 먹은 후에 그에게 마음의 즐거움과 기쁨이 되었습니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">🗝️ 은혜를 누리는 세 가지 수단</div>
+            <div class="sub-point-text">
+              <strong>사랑 · 영 · 말씀</strong> — 이 세 가지가 우리가 은혜를 누리기 위한 강력한 세 가지 수단입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">
+      개인적인 누림을 넘어, 이 은혜는 언제 가장 강력하게 체험될까요?
+    </div>
+
+    <div class="step-header" id="step-3">Step 3. 교회 생활과 고난 속의 은혜</div>
+
+    <!-- E -->
+    <div class="accordion" id="acc-5">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-indigo);">e</div>
+        <div class="acc-icon" style="background:#eef2ff;">👥</div>
+        <div class="acc-title-text">터 · 하나 — 교회 생활 안에서 체험하는 은혜</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              시편 133:3
+            </div>
+            <div class="verse-text">헤르몬의 이슬이 / <b>시온의 산들에 내림 같아라.</b> / 거기서 여호와께서 복을 명하셨으니 / 영원한 생명이라.</div>
+          </div>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              사도행전 4:33 & 11:23
+            </div>
+            <div class="verse-text">[행 4:33] 사도들이 큰 능력으로 주 예수님의 부활을 증언하니, <b>큰 은혜가 그들 모두에게 있었다.</b></div>
+            <div class="verse-text">[행 11:23] 그(바나바)가 도착하여, <b>하나님의 은혜를 보고</b> 기뻐하며, 모든 사람에게 굳센 마음으로 주님께 머물러 있으라고 격려하였다.</div>
+          </div>
+
+          <p class="content-text">우리는 <span class="hl">하나라는 터 위에서 성도들과 함께 모일 때</span> 생명의 은혜이신 과정을 거치신 삼일 하나님을 체험합니다.</p>
+          <p class="content-text">헐몬의 이슬은 시온의 산들에 내립니다. 여기에서 말하는 시온 산은 <span class="hl">복수형</span>으로 기록되어 있는데, 이것은 여러 <span class="hl">지방 교회들</span>을 가리켜 말하는 것입니다. 하나의 유일한 몸을 이루는 지방 교회들입니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">👀 바나바가 본 것</div>
+            <div class="sub-point-text">
+              바나바가 안디옥에 도착하여 본 것은 무엇입니까? 바로 <span class="hl">하나님의 은혜를 보았습니다</span>. 성도들이 큰 주택에 사는 것이 아닙니다. 그때 그들은 박해를 받고 흩어졌습니다. 그가 본 은혜는 <strong>믿는 이들이 받아들이고 누린 삼일 하나님이며, 그들의 구원과 생명의 변화와 거룩한 생활과 집회에서 사용한 은사들로 표현된 삼일 하나님</strong>입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">⬇</div>
+
+    <!-- F -->
+    <div class="accordion" id="acc-6">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-rose);">f</div>
+        <div class="acc-icon" style="background:#fff1f2;">⛈️</div>
+        <div class="acc-title-text">시련 · 고난 — 고난 속에서 증가하는 은혜</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              고린도후서 12:9
+            </div>
+            <div class="verse-text">그러나 주님은 나에게 말씀하셨습니다. "<b>나의 은혜가 너에게 충분하다.</b> 왜냐하면 나의 능력은 사람이 약할 때에 온전하게 나타나기 때문이다." 그러므로 나는 그리스도의 능력이 나에게 장막으로 드리워지도록 오히려 나의 약한 것을 더더욱 기쁘게 자랑하겠습니다.</div>
+          </div>
+
+          <p class="content-text">우리는 고난과 시련 속에서도 증가하며 <span class="hl">모든 것을 충족하는 우리의 은혜이신 주님</span>을 체험할 수 있습니다.</p>
+          <p class="content-text">은혜를 체험하는 생활은 절대로 순조로운 일들만 가득한 생활이 아닐 것입니다. 바울에게는 가시가 있었기 때문에 세 번이나 기도했지만, 주님께서 제거해 주시지 않으셨습니다. <span class="hl">"나의 은혜가 너에게 충분하다"</span>라고 말씀하셨습니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">⚡ 실행 및 적용</div>
+            <div class="sub-point-text">
+              고난을 두려워하지 말고, 시련을 두려워하지 마십시오. <span class="hl">그때가 바로 은혜가 더해지는 때</span>입니다.
+            </div>
+          </div>
+
+          <p class="content-text">육체가 있는 곳에 은혜가 있습니다. 밤낮으로 육체는 우리가 은혜의 보좌를 향해 돌이키도록 돕습니다. 하나님은 그분의 주권과 지혜로, 어떤 의미에서 육체가 우리에게 유용한 것임을 아시고 육체를 남겨 두셨습니다. 그것은 우리를 손상하기 위한 것이 아니라, <span class="hl">우리가 은혜의 보좌로 나아가지 않을 수 없게 하기 위한 것</span>입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">
+      고난과 시련을 이겨낸 충만한 은혜는 마침내 우리를 행동하게 하고, 영광스러운 결실을 맺게 합니다.
+    </div>
+
+    <div class="step-header" id="step-4">Step 4. 은혜의 수고와 결과</div>
+
+    <!-- G -->
+    <div class="accordion" id="acc-7">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-green);">g</div>
+        <div class="acc-icon" style="background:#f0fdf4;">💪</div>
+        <div class="acc-title-text">수고 · 수고 — 은혜의 능력으로 주님을 위해</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              고린도전서 15:10, 58
+            </div>
+            <div class="verse-text">[고전 15:10] 그러나 <b>내가 지금의 내가 된 것은 하나님의 은혜로 된 것이니</b>, 나에게 주신 그분의 은혜가 헛되지 않았던 것입니다. 나는 모든 사도들보다 더 많이 수고하였습니다. 그러나 그것은 내가 아니라, <b>나와 함께한 하나님의 은혜였습니다</b>.</div>
+            <div class="verse-text">[고전 15:58] 그러므로 내 사랑하는 형제님들, 여러분은 견고하여 흔들리지 말며, 항상 주님의 일을 더욱 많이 하십시오. 여러분이 아는 대로, <b>여러분의 수고가 주님 안에서 헛되지 않습니다</b>.</div>
+          </div>
+
+          <p class="content-text">우리는 <span class="hl">주님의 은혜의 능력</span>으로 주님을 위해 수고해야 합니다.</p>
+          <p class="content-text">바울은 "내가 지금의 내가 된 것은 하나님의 은혜로 된 것이니, … 모든 사도들보다 더 많이 수고하였습니다. 그러나 그것은 <span class="hl">내가 아니라, 나와 함께한 하나님의 은혜</span>였습니다"라고 말했습니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">🤝 실행 및 적용</div>
+            <div class="sub-point-text">
+              자신이 연약하고 낙심될 때 가장 좋은 것은 <span class="hl">복음을 전하러 나가 보는 것</span>입니다. 곧바로 은혜가 함께함을 체험할 것입니다. 자신이 무기력하다고 느낄 때, 소망이 없다고 느낄 때 <span class="hl">재빨리 어린양 한 사람을 돌보아 보십시오</span>. 그때 우리는 은혜로 수고하면서 말하게 됩니다. "내가 아니요, 나와 함께한 하나님의 은혜였습니다." 아멘.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">⬇</div>
+
+    <!-- H -->
+    <div class="accordion" id="acc-8">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-purple);">h</div>
+        <div class="acc-icon" style="background:#faf5ff;">🤲</div>
+        <div class="acc-title-text">청지기 · 청지기 — 다양한 은혜를 맡은 선한 청지기</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              베드로전서 4:10 / 에베소서 4:29
+            </div>
+            <div class="verse-text">[벧전 4:10] 각 사람이 은사를 받은 대로, <b>하나님의 다양한 은혜를 맡은 선한 청지기들</b>로서 서로 은사를 공급하십시오.</div>
+            <div class="verse-text">[엡 4:29] 어떤 나쁜 말도 여러분의 입 밖에 내지 말고, 오히려 듣는 사람들을 건축하는 데 좋은 말을 필요에 따라 하여 <b>그들에게 은혜를 끼치도록</b> 하십시오.</div>
+          </div>
+
+          <p class="content-text">우리는 <span class="hl">하나님의 다양한 은혜를 맡은 선한 청지기들</span>이 되어야 합니다.</p>
+          <p class="content-text">주님을 위해 수고하는 것은 사실 가장 누림직한 일입니다. 청지기의 일은 무엇인가요? <span class="hl">음식을 나누어 주는 것</span>입니다. 먼저 자신이 배불리 먹고 그 풍성을 하나님의 집안 식구들에게 나누어 주는 것입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">⬇</div>
+
+    <!-- I -->
+    <div class="accordion" id="acc-9">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number" style="background:var(--accent-red);">i</div>
+        <div class="acc-icon" style="background:#fef2f2;">⚖️</div>
+        <div class="acc-title-text">결과 · 의 — 은혜는 의를 산출한다</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              로마서 5:17, 21
+            </div>
+            <div class="verse-text">[롬 5:17] … <b>은혜를 넘치게 받고 의의 선물을 넘치게 받는 사람들</b>은 더욱 한 분 예수 그리스도를 통하여 생명 안에서 왕으로서 다스릴 것입니다.</div>
+            <div class="verse-text">[롬 5:21] 죄가 죽음 안에서 왕 노릇을 한 것같이, <b>은혜도 의를 통하여 왕으로서 다스려</b> 우리 주 예수 그리스도를 통하여 영원한 생명에 이르게 하려는 것입니다.</div>
+          </div>
+          <div class="verse-block">
+            <div class="verse-ref">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              히브리서 11:7
+            </div>
+            <div class="verse-text">노아는 <b>믿음으로</b>, 아직 보이지 않는 것들에 관한 하나님의 지시를 경외하는 마음으로 받아들여, 자기 집을 구원하기 위해 방주를 준비함으로써, 세상을 유죄판결 하고 <b>믿음에 따른 의의 상속자</b>가 되었습니다.</div>
+          </div>
+
+          <p class="content-text">은혜의 능력과 은혜의 힘과 은혜의 생명에 의해 우리는 <span class="hl">하나님께 올바를 수 있고 서로에게 올바를 수 있습니다</span>. 은혜는 의를 산출합니다.</p>
+          <p class="content-text">이 은혜는 하나님 자신이 노아 안에 분배된 것입니다. 하나님이 노아 안에 일해 넣어지시자, 노아는 믿음을 갖게 되었고 그 믿음으로 인해 하나님은 노아를 의롭다 하셨습니다. 여기에서의 의는 <span class="hl">다만 객관적인 의가 아니라, 주관적인 의</span>입니다. 은혜가 노아를 강하게 하여 그로 하여금 의로운 생활을 살게 한 것입니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">💞 구체적 사례 — 남편과 아내</div>
+            <div class="sub-point-text">
+              <span class="hl">은혜 없이 아내에게 올바를 수 있는 남편은 한 명도 없으며, 은혜 없이 남편에게 올바를 수 있는 아내도 없습니다.</span> 오직 한 종류의 아내와 남편만이 올바른데, 그것은 은혜를 발견한 아내와 남편입니다. 일단 우리가 은혜를 발견하면, 은혜로 말미암아 우리는 자신의 남편이나 아내와의 관계에서 올바르게 될 것입니다.
+            </div>
+          </div>
+
+          <p class="content-text">최종적으로 <span class="hl">새 예루살렘은 완전히 은혜의 산출물</span>입니다. 동시에 새 하늘과 새 땅에는 의가 거합니다. 그것이 바로 새 예루살렘입니다. <span class="hl">은혜가 우리 안에서 이루어낸 일이 바로 우리가 새 예루살렘이 되게 하고, 의의 완전한 표현이 되게 합니다.</span></p>
         </div>
       </div>
     </div>
@@ -1513,23 +1684,23 @@ body {
   <section class="quiz-section" id="quiz-section">
     <div class="quiz-title">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-      이해도 퀴즈
+      이해 점검 퀴즈
     </div>
 
     <!-- Q1 -->
     <div class="quiz-item" data-correct="2">
       <div class="quiz-q">
         <div class="quiz-badge">1</div>
-        <div class="quiz-q-text">주님의 회복 안에서 말하는 '은혜'의 가장 참된 의미는 무엇인가요?</div>
+        <div class="quiz-q-text">성경에서 '은혜'라는 단어가 처음으로 언급된 구절은 어디인가?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 내가 원하는 물질적인 필요나 환경의 축복을 받는 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우리 안에서 우리를 위해 모든 것을 하시는 하나님 자신(임재)</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 죄를 짓더라도 아무런 징계 없이 무조건 용서받는 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 기적적으로 눈앞의 암초(어려움)가 완전히 제거되는 것</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 창세기 3장 15절</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 창세기 6장 8절</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 창세기 12장 1절</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 요한복음 1장 14절</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">은혜는 외적인 사물이나 환경의 변화가 아닙니다. 요한복음 1:14을 떠올려 보세요.</div>
+      <div class="quiz-hint-text">노아가 "여호와 앞에 은총(은혜)을 입었다"고 기록된 구절입니다.</div>
       <div class="quiz-feedback"></div>
     </div>
 
@@ -1537,71 +1708,71 @@ body {
     <div class="quiz-item" data-correct="3">
       <div class="quiz-q">
         <div class="quiz-badge">2</div>
-        <div class="quiz-q-text">히브리서 4장 16절에 따르면, 우리가 긍휼을 받고 때맞추어 도움을 얻기 위해 담대히 나아가야 할 곳은 어디인가요?</div>
+        <div class="quiz-q-text">이 메시지에서 말하는 '은혜'의 본질은 무엇인가?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 지성소 밖의 뜰</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 종교적인 제단</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 은혜의 보좌</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 율법의 산</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 하나님께서 주시는 외적인 축복</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 어려운 환경이 바뀌는 것</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 우리에게 모든 것이 되시는 하나님 자신 · 하나님의 임재</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 기적적으로 문제가 해결되는 것</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">헬라어 'τῷ θρόνῳ τῆς χάριτος (토 쓰로노 테스 카리토스)'가 의미하는 곳입니다. 이 보좌는 오늘날 우리의 영 안에 있습니다.</div>
+      <div class="quiz-hint-text">은혜는 외적인 사물이나 환경의 변화가 아닙니다. 우리 안에서·우리를 통해·우리를 위해 모든 것을 하시는 분입니다.</div>
       <div class="quiz-feedback"></div>
     </div>
 
     <!-- Q3 -->
-    <div class="quiz-item" data-correct="4">
+    <div class="quiz-item" data-correct="2">
       <div class="quiz-q">
         <div class="quiz-badge">3</div>
-        <div class="quiz-q-text">우리가 일상에서 은혜를 내적으로 누리기 위한 3가지 주요 수단이 <b>아닌</b> 것은?</div>
+        <div class="quiz-q-text">우리가 은혜를 누리기 위한 세 가지 통로(수단)는 무엇인가?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 부패함 없이 주님을 사랑함</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 연합된 영을 훈련함</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 하나님의 은혜의 말씀을 먹음</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 자신의 힘으로 율법의 조문을 엄격히 지킴</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 기도 · 금식 · 봉사</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 사랑 · 영 · 말씀</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 믿음 · 소망 · 사랑</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 의 · 평화 · 기쁨</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">믿음은 받아들이게 하고 '사랑'은 누리게 합니다. 또한 서신서의 끝은 항상 '영'을 언급하며, 예레미야는 '말씀'을 먹고 기뻐했습니다.</div>
+      <div class="quiz-hint-text">핵심 요점 b, c, d에 해당하는 세 가지 통로입니다.</div>
       <div class="quiz-feedback"></div>
     </div>
 
     <!-- Q4 -->
-    <div class="quiz-item" data-correct="1">
+    <div class="quiz-item" data-correct="4">
       <div class="quiz-q">
         <div class="quiz-badge">4</div>
-        <div class="quiz-q-text">사도행전 11장 23절에서 바나바가 안디옥에 도착하여 본 '하나님의 은혜'는 구체적으로 무엇을 가리켰나요?</div>
+        <div class="quiz-q-text">"노아의 때와 같이, ____의 때도 그러할 것이다." 빈칸에 들어갈 말은?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 믿는 이들의 구원과 생명의 변화, 기능 발휘로 표현된 삼일 하나님</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 성도들이 모이는 거대하고 화려한 예배당 건물</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 로마 제국으로부터 교회가 정치적인 인정을 받은 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 성도들의 세속적인 사업이 크게 번창한 것</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 아브라함</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 다윗</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 모세</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 사람의 아들</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">바나바가 본 은혜는 외적인 부귀영화가 아니라, 하나라는 터 위에서 성도들 안에 살아 역사하는 생명의 증거들이었습니다.</div>
+      <div class="quiz-hint-text">마태복음 24장 37절, 누가복음 17장 26절에 나오는 말씀입니다.</div>
       <div class="quiz-feedback"></div>
     </div>
 
     <!-- Q5 -->
-    <div class="quiz-item" data-correct="2">
+    <div class="quiz-item" data-correct="3">
       <div class="quiz-q">
         <div class="quiz-badge">5</div>
-        <div class="quiz-q-text">은혜가 우리 안에서 일한 결과로 산출되는 가장 뛰어난 산물로써, 로마서 5:21에서 "은혜와 함께 왕 노릇"하며 하나님께 세상을 심판할 입지를 제공하는 것은 무엇인가요?</div>
+        <div class="quiz-q-text">은혜의 능력과 힘과 생명에 의해 결국 산출되는 것은 무엇인가?</div>
       </div>
       <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 인간적인 동정심과 자비</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님과 사람 앞에 올바르게 되는 주관적인 의(Righteousness)</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 율법에 기록된 모든 조문에 대한 해박한 지식</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 육체의 타락함을 은폐할 수 있는 종교적인 의식</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 기적</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 평안</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 의 (궁극적으로 새 예루살렘)</div>
+        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 번영</div>
       </div>
       <button class="quiz-hint-btn" onclick="toggleHint(this)">💡 힌트 보기</button>
-      <div class="quiz-hint-text">노아는 은혜를 통해 생활 속에서 '이것'을 살아내어 그 세대를 유죄판결 할 수 있었습니다. 육체가 있는 곳에 은혜가 있고 은혜가 있는 곳에 '이것'이 산출됩니다.</div>
+      <div class="quiz-hint-text">로마서 5장 21절이 핵심 근거입니다. "은혜도 ____을(를) 통하여 왕으로서 다스려…"</div>
       <div class="quiz-feedback"></div>
     </div>
 
-    <button class="quiz-submit" onclick="submitQuiz()">결과 확인하기</button>
+    <button class="quiz-submit" onclick="submitQuiz()">정답 확인 & 점수 보기</button>
     <div class="quiz-result" id="quizResult">
       <div class="quiz-score-label">최종 점수</div>
       <div class="quiz-score" id="quizScore">0 / 5</div>
@@ -1615,10 +1786,11 @@ body {
       오늘의 기도
     </div>
     <div class="prayer-text">
-      주 예수님, 이 타락하고 무감각해진 시대의 영적 흑암 속에서, 저는 철저히 무력한 존재임을 고백합니다. 육체가 되어버린 제 자신이나 절망적인 환경을 바라보지 않게 하시고, 오직 은혜의 보좌 앞에 담대히 나아가 긍휼과 때맞춘 도움을 얻게 하소서.<br><br>
-      주님, 은혜가 어떤 외부적인 축복이 아니라 제 안에서 모든 것을 해주시는 '주님의 임재' 자체임을 보게 하소서. 날마다 주님을 부패함 없이 사랑하게 하시고, 제 연합된 영을 훈련하며, 생명의 말씀을 먹고 기뻐하게 하소서. 또한 하나라는 터 위에서 교회로 모일 때 헐몬의 이슬과 같이 충만한 은혜로 저를 적셔 주시기를 원합니다.<br><br>
-      오, 은혜의 주님! 이 은혜가 제 안에서 역사하여 주관적인 '의'를 살아내게 하소서. 그리하여 주님을 위해 넘치게 수고하게 하시고, 이 부패한 세상을 끝내며 영광스러운 새 시대를 이끌어오는 주님의 통로가 되게 하소서.<br><br>
-      주 예수님, 저를 은혜로 채워주십시오. 아멘.
+      "주님, 지금 은혜의 보좌 앞에 나아갑니다. 당신의 은혜의 보좌에서 은혜를 입어 때맞추어 도움을 얻습니다.<br><br>
+      주님, 저에게는 당신의 은혜가 매 순간 필요합니다. 저에게는 당신의 은혜가 매년, 매주, 매일, 매시간 필요할 뿐 아니라 매 순간 필요합니다. 당신의 은혜가 없으면 저는 아무것도 감당할 수 없습니다.<br><br>
+      주님, 저는 당신께서 은혜로우시다는 것과, 저를 위해 예비해 두신 은혜가 당신께 있다는 것을 압니다. 주님, 은혜는 저의 협력을 필요로 하므로, 저는 저의 필요가 채워지도록 은혜를 발견하기 위해 당신의 은혜의 보좌 앞에 무릎을 꿇습니다.<br><br>
+      주님, 제가 여기 있습니다. 저에게는 당신의 은혜가 필요합니다. 저는 당신께 좋은 것을 구하려고 온 것이 아닙니다. 저는 저의 필요가 채워지도록 은혜를 발견하기 위해 나아왔습니다. 주님, 저는 당신의 임재 없이는 직장과 학교에 갈 수 없습니다. 주님, 저는 당신의 임재 없이는 백화점에 갈 수도 없습니다. 주님, 제게 필요한 것은 당신께서 저와 함께 서 주시는 것입니다. 오셔서 저의 힘이 되어 주십시오. 주님, 저를 붙들어 주시고 지탱해 주십시오."<br><br>
+      <div style="text-align: right; font-weight: bold; color: var(--accent-purple);">— 아멘 —</div>
     </div>
   </section>
 
@@ -1669,19 +1841,27 @@ function toggleKwTip(id) {
   if (!isShown) tip.classList.add('show');
 }
 
-// Accordion
+// ===== ACCORDION LOGIC FIXED FOR FONT SCALING =====
 function toggleAcc(header) {
   const acc = header.parentElement;
   const body = acc.querySelector('.accordion-body');
+  
   if (acc.classList.contains('open')) {
+    // 닫을 때: 애니메이션이 부드럽게 되도록 none에서 현재 픽셀 높이로 순간 고정
+    body.style.maxHeight = body.scrollHeight + 'px';
+    // 브라우저 리플로우(Reflow) 강제 발생시켜 변경된 높이 인식하게 함
+    void body.offsetHeight;
+    // 0으로 줄임
     body.style.maxHeight = '0';
     acc.classList.remove('open');
   } else {
+    // 열 때: 높이를 먼저 픽셀로 설정하여 트랜지션 실행
     acc.classList.add('open');
     body.style.maxHeight = body.scrollHeight + 'px';
+    // 트랜지션(0.4초)이 끝난 후 픽셀 제한을 해제(none)하여 폰트 변화에 유연하게 대응
     setTimeout(() => {
       if (acc.classList.contains('open')) {
-        body.style.maxHeight = body.scrollHeight + 'px';
+        body.style.maxHeight = 'none';
       }
     }, 400);
   }
@@ -1727,9 +1907,9 @@ function submitQuiz() {
   });
   document.getElementById('quizScore').textContent = score + ' / 5';
   const msgEl = document.getElementById('quizMsg');
-  if (score === 5) msgEl.textContent = '🎉 완벽합니다! 은혜의 본질과 누림을 정확히 이해하셨습니다!';
-  else if (score >= 3) msgEl.textContent = '👏 잘 하셨습니다! 부족한 부분을 아코디언에서 다시 확인해보세요.';
-  else msgEl.textContent = '📖 핵심요점을 꼼꼼히 다시 읽어보시길 권합니다.';
+  if (score === 5) msgEl.textContent = '🎉 완벽합니다! 은혜에 관한 이상을 깊이 파악하셨습니다. "그러나 노아는 여호와 앞에 은총을 입었다" — 이제 실생활에서 은혜의 보좌 앞에 담대히 나아가시길!';
+  else if (score >= 3) msgEl.textContent = '👏 훌륭합니다! 핵심 요점들을 잘 이해하고 계십니다. 놓친 부분을 다시 확인해보세요.';
+  else msgEl.textContent = '📖 핵심요점들을 다시 한번 찬천히 음미해보시길 권합니다.';
   document.getElementById('quizResult').classList.add('show');
   document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
@@ -1929,7 +2109,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const maxSim = Math.max(sim1, sim2, sim3, sim2_sub);
       console.log("유사도:", (maxSim * 100).toFixed(1) + "%");
       
-      if (maxSim >= 0.70) { // 긴 문장이므로 판정 기준을 70%로 조정
+      if (maxSim >= 0.70) { 
         voiceMsg.innerHTML = "✨ 인식 완료! ✨";
         voiceMsg.style.color = "#fbbf24";
         setTimeout(finishIntro, 800);
