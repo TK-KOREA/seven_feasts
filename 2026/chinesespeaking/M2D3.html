@@ -45,7 +45,7 @@ body {
   line-height: 1.75;
   padding-top: var(--topbar-h);
   -webkit-text-size-adjust: 100%;
-  word-break: keep-all; /* 긴 단어나 텍스트가 박스 밖으로 나가지 않게 방지 */
+  word-break: keep-all; 
   overflow-wrap: break-word;
 }
 
@@ -255,12 +255,23 @@ body {
   display: inline-flex; align-items: center; gap: 4px; background: #fef3c7; padding: 4px 10px; border-radius: 6px;
 }
 .v-text { font-size: 1rem; color: #111; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
-.v-eng { font-size: 0.92rem; color: #334155; font-weight: 500; margin-bottom: 12px; line-height: 1.5; font-family: 'Georgia', serif; }
-.v-grk { 
-  font-size: 1.25rem; color: #92400e; font-family: 'Times New Roman', serif; 
-  margin-bottom: 6px; line-height: 1.4; letter-spacing: 0.5px;
+.v-eng { font-size: 0.92rem; color: #334155; font-weight: 500; margin-bottom: 16px; line-height: 1.5; font-family: 'Georgia', serif; }
+
+/* Word-by-word Greek and Pronunciation layout */
+.v-grk-container {
+  display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 16px;
 }
-.v-pron { font-size: 0.8rem; color: #b45309; font-style: italic; margin-bottom: 10px; }
+.grk-pair {
+  display: flex; flex-direction: column; align-items: center;
+}
+.grk-pair .grk {
+  font-size: 1.25rem; color: #92400e; font-family: 'Times New Roman', serif;
+  line-height: 1.2; letter-spacing: 0.3px; font-weight: 600;
+}
+.grk-pair .pron {
+  font-size: 0.75rem; color: #b45309; font-style: normal; margin-top: 4px; letter-spacing: -0.5px;
+}
+
 .v-lit { 
   font-size: 0.85rem; color: #1a1a1a; background: #fff; padding: 10px 12px; 
   border-radius: 8px; border: 1px solid #fde68a; line-height: 1.5; font-weight: 500;
@@ -277,7 +288,7 @@ body {
 .word-card {
   background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s;
-  height: 100%; /* 유동적 텍스트 확장에 대응 */
+  height: 100%; 
 }
 .word-card:hover { transform: translateY(-2px); border-color: #cbd5e1; }
 .word-header { 
@@ -476,7 +487,7 @@ body {
   width: 24px; height: 24px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; /* a,b,c 영문표기에 맞게 조금 키움 */
+  font-size: 0.8rem; 
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
@@ -999,17 +1010,21 @@ body {
     <canvas id="scratch-canvas"></canvas>
     
     <div class="intro-content" id="intro-content">
-      <div class="intro-step">
-        <span class="light">사람들이 먹고 마시고 장가가고 시집가며</span><br>(마 24장)<br>
-        <span class="dark">하나님을 떠나 육체가 되어버린 타락한 시대</span><br>(창 6장)
+      <h1 class="intro-title" style="margin-bottom: 20px; font-size: 1.9rem;">우리의 스스로의 힘으로는<br>설 수 없는 시대</h1>
+      
+      <div class="intro-desc" style="color: #e5e7eb; margin-bottom: 24px;">
+        유혹은 밖에 있고, 정욕은 안에 있습니다.<br>
+        이 어그러지고 비뚤어진 세대에 맞서기 위해서는 우리는 어떻게 해야 할까요?
       </div>
-      <h1 class="intro-title">절망적인 이 시대 속에서<br>이기는 자가 될 수 있을까?</h1>
-      <div class="intro-desc">
-        유혹을 이길 수 있는 유일한 열쇠를 발견하다
+      
+      <div class="intro-step" style="font-size: 0.95rem; font-weight: 500; border-left: 3px solid #fbbf24; padding-left: 14px; text-align: left; margin: 0 auto 28px; max-width: 320px; line-height: 1.6;">
+        <span style="color: #fde68a;">"나의 영이 영원히 사람과 다투지 않겠다.<br>왜냐하면 사람이 참으로 육체가 되었기 때문이다."</span><br>
+        <span style="font-size: 0.8rem; color: #9ca3af; display: inline-block; margin-top: 6px;">(창 6:3)</span>
       </div>
+      
       <div class="intro-instruction">
         <div class="scratch-icon">👆</div>
-        화면을 문질러 숨겨진 비밀을 확인하세요
+        화면을 문질러 숨겨진 반전을 확인하세요
       </div>
     </div>
   </div>
@@ -1097,8 +1112,27 @@ body {
           </div>
           <div class="v-text">그러므로 우리가 긍휼을 받고 은혜를 입어서 때맞추어 도움을 얻기 위하여, 은혜의 보좌 앞에 담대히 나아갑시다.</div>
           <div class="v-eng">Let us therefore come forward with boldness to the throne of grace that we may receive mercy and find grace for timely help.</div>
-          <div class="v-grk">προσερχώμεθα οὖν μετὰ παρρησίας τῷ θρόνῳ τῆς χάριτος, ἵνα λάβωμεν ἔλεος καὶ χάριν εὕρωμεν εἰς εὔκαιρον βοήθειαν.</div>
-          <div class="v-pron">[프로세르코메다 운 메타 파르레시아스 토 쓰로노 테스 카리토스, 히나 라보멘 엘레오스 카이 카린 헤우로멘 에이스 에우카이론 보에쎄이안]</div>
+          
+          <div class="v-grk-container">
+            <div class="grk-pair"><span class="grk">προσερχώμεθα</span><span class="pron">프로세르코메다</span></div>
+            <div class="grk-pair"><span class="grk">οὖν</span><span class="pron">운</span></div>
+            <div class="grk-pair"><span class="grk">μετὰ</span><span class="pron">메타</span></div>
+            <div class="grk-pair"><span class="grk">παρρησίας</span><span class="pron">파르레시아스</span></div>
+            <div class="grk-pair"><span class="grk">τῷ</span><span class="pron">토</span></div>
+            <div class="grk-pair"><span class="grk">θρόνῳ</span><span class="pron">쓰로노</span></div>
+            <div class="grk-pair"><span class="grk">τῆς</span><span class="pron">테스</span></div>
+            <div class="grk-pair"><span class="grk">χάριτος,</span><span class="pron">카리토스,</span></div>
+            <div class="grk-pair"><span class="grk">ἵνα</span><span class="pron">히나</span></div>
+            <div class="grk-pair"><span class="grk">λάβωμεν</span><span class="pron">라보멘</span></div>
+            <div class="grk-pair"><span class="grk">ἔλεος</span><span class="pron">엘레오스</span></div>
+            <div class="grk-pair"><span class="grk">καὶ</span><span class="pron">카이</span></div>
+            <div class="grk-pair"><span class="grk">χάριν</span><span class="pron">카린</span></div>
+            <div class="grk-pair"><span class="grk">εὕρωμεν</span><span class="pron">헤우로멘</span></div>
+            <div class="grk-pair"><span class="grk">εἰς</span><span class="pron">에이스</span></div>
+            <div class="grk-pair"><span class="grk">εὔκαιρον</span><span class="pron">에우카이론</span></div>
+            <div class="grk-pair"><span class="grk">βοήθειαν.</span><span class="pron">보에쎄이안.</span></div>
+          </div>
+
           <div class="v-lit">💡 <strong>문법적 직역:</strong> 그러므로 우리가 긍휼을 받고 시의적절한 도움을 향하여 은혜를 발견하기[얻기] 위해, 담대함과 함께 은혜의 보좌로 나아갑시다.</div>
         </div>
       </div>
