@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --base-font-size: 17px;
+  --base-font-size: 19px;
   --font-scale: 1;
   --bg: #ffffff;
   --text: #1a1a1a;
@@ -254,17 +254,43 @@ body {
   font-size: 0.75rem; font-weight: 800; color: #b45309; margin-bottom: 8px;
   display: inline-flex; align-items: center; gap: 4px; background: #fef3c7; padding: 4px 10px; border-radius: 6px;
 }
-.v-text { font-size: 1rem; color: #111; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
-.v-eng { font-size: 0.92rem; color: #334155; font-weight: 500; margin-bottom: 16px; line-height: 1.5; font-family: 'Georgia', serif; }
+.v-text { font-size: 1rem; color: #111; font-weight: 700; margin-bottom: 12px; line-height: 1.7; }
+.v-eng { font-size: 0.92rem; color: #334155; font-weight: 500; margin-bottom: 12px; line-height: 1.5; font-family: 'Georgia', serif; }
+.v-grk { font-size: 1.05rem; color: #92400e; font-family: 'Times New Roman', serif; line-height: 1.6; margin-bottom: 16px; }
 
-/* Word-by-word Greek and Pronunciation layout */
+.v-lit { 
+  font-size: 0.85rem; color: #1a1a1a; background: #fff; padding: 10px 12px; 
+  border-radius: 8px; border: 1px solid #fde68a; line-height: 1.5; font-weight: 500;
+}
+.v-lit strong { color: var(--accent-gold); }
+
+/* Interactive Greek Word Boxes */
 .v-grk-container {
-  display: flex; flex-wrap: wrap; gap: 10px 12px; margin-bottom: 16px; justify-content: flex-start;
+  display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; justify-content: flex-start;
 }
 .grk-pair {
   display: flex; flex-direction: column; align-items: center; text-align: center;
-  background: #fff; border: 1px solid #fde68a; border-radius: 8px; padding: 8px 12px;
-  box-shadow: 0 2px 6px rgba(251, 191, 36, 0.1); min-width: 64px;
+  background: #fff; border: 1px solid #fde68a; border-radius: 8px; padding: 12px 10px;
+  box-shadow: 0 2px 6px rgba(251, 191, 36, 0.1); min-width: 68px;
+  cursor: pointer; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.grk-pair:hover {
+  transform: translateY(-3px); border-color: var(--accent-blue);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+.grk-pair.non-clickable {
+  cursor: default; background: #fafafa; border-color: #e5e7eb; box-shadow: none;
+}
+.grk-pair.non-clickable:hover {
+  transform: none; border-color: #e5e7eb; box-shadow: none;
+}
+.click-hint {
+  position: absolute; top: -6px; right: -6px;
+  background: var(--accent-blue); color: #fff;
+  width: 20px; height: 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 .grk-pair .grk {
   font-size: 1.25rem; color: #92400e; font-family: 'Times New Roman', serif;
@@ -280,38 +306,41 @@ body {
   font-size: 0.8rem; color: #475569; font-family: 'Georgia', serif; font-style: italic; line-height: 1.2;
 }
 
-.v-lit { 
-  font-size: 0.85rem; color: #1a1a1a; background: #fff; padding: 10px 12px; 
-  border-radius: 8px; border: 1px solid #fde68a; line-height: 1.5; font-weight: 500;
+.instruction-text {
+  font-size: 0.8rem; color: #b45309; text-align: center; margin-top: 14px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: #fef3c7; padding: 6px; border-radius: 8px;
 }
-.v-lit strong { color: var(--accent-gold); }
 
-.word-study-title {
-  font-size: 0.95rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 12px;
-  display: flex; align-items: center; gap: 6px;
+/* Word Modal (Popup) */
+.word-modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 10000; display: none; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+  padding: 16px;
 }
-.word-grid {
-  display: grid; grid-template-columns: 1fr; gap: 12px;
+.word-modal-overlay.show { display: flex; opacity: 1; }
+.word-modal {
+  background: #fff; border-radius: 16px; width: 100%; max-width: 420px;
+  padding: 24px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transform: translateY(20px); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
 }
-.word-card {
-  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s;
-  height: 100%; 
+.word-modal-overlay.show .word-modal { transform: translateY(0); }
+.word-modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  font-size: 16px; color: #666; transition: background 0.2s;
 }
-.word-card:hover { transform: translateY(-2px); border-color: #cbd5e1; }
-.word-header { 
-  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; 
-  border-bottom: 1px solid #f3f4f6; padding-bottom: 8px; gap: 8px;
-}
-.word-grk { font-size: 1.2rem; font-weight: 700; color: var(--accent-gold); font-family: 'Times New Roman', serif; }
-.word-pron { font-size: 0.75rem; color: #b45309; text-align: right; margin-top: 2px; letter-spacing: 0.5px; }
-.word-kr { font-size: 0.95rem; font-weight: 800; color: #111; }
-.word-mean { 
-  font-size: 0.75rem; color: #475569; background: #f1f5f9; 
-  padding: 3px 8px; border-radius: 6px; margin-top: 4px; display: inline-block; font-weight: 500;
-}
-.word-desc { font-size: 0.82rem; color: #333; line-height: 1.6; }
-.word-desc strong { color: var(--accent-blue); background: linear-gradient(180deg, transparent 60%, #dbeafe 60%); }
+.word-modal-close:hover { background: #e5e7eb; }
+.word-modal-grk { font-size: 1.8rem; font-weight: 700; color: var(--accent-gold); font-family: 'Times New Roman', serif; margin-bottom: 2px; }
+.word-modal-pron { font-size: 0.85rem; color: #b45309; margin-bottom: 12px; letter-spacing: 0.5px; }
+.word-modal-kr { font-size: 1.25rem; font-weight: 800; color: #111; margin-bottom: 6px; }
+.word-modal-grammar { font-size: 0.78rem; color: #64748b; margin-bottom: 8px; }
+.word-modal-mean { font-size: 0.85rem; color: #1e40af; background: #eff6ff; padding: 4px 10px; border-radius: 6px; display: inline-block; font-weight: 600; margin-bottom: 16px; border: 1px solid #bfdbfe; }
+.word-modal-desc { font-size: 0.95rem; color: #333; line-height: 1.7; border-top: 1px dashed #e5e7eb; padding-top: 16px; }
+.word-modal-desc strong { color: var(--accent-blue); background: linear-gradient(180deg, transparent 60%, #dbeafe 60%); }
 
 /* Dashboard */
 .dashboard {
@@ -1124,182 +1153,107 @@ body {
 
   <!-- HERO -->
   <section class="hero" id="hero-section">
-    <div class="hero-badge">2026 국제중국어 · Ⅲ. 노아의 일</div>
+    <div class="hero-badge">2026 국제중국어 2주 5,6일</div>
     <h1>"<span class="highlight-word">노아의 일</span>"<br>시대를 바꾸는 건축</h1>
     <p class="hero-sub">하나님의 전진된 계시를 따라 방주(교회)를 건축하는 것,<br>이것이 이 세대를 종결하고 새로운 시대를 이끌어 오는 유일한 길이다</p>
     
     <div class="verse-analysis animate-in">
       
-      <!-- 원문 대조 (헬라어) -->
+      <!-- 오늘의 구절 -->
       <div class="verse-compare">
         <div class="verse-row">
           <div class="v-label">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            히브리서 11:7
+            오늘의 구절 (히브리서 11:7)
           </div>
+          
           <div class="v-text">노아는 믿음으로, 아직 보이지 않는 것들에 관한 하나님의 지시를 경외하는 마음으로 받아들여, 자기 집을 구원하기 위해 방주를 준비함으로써, 세상을 유죄판결 하고 믿음에 따른 의의 상속자가 되었습니다.</div>
-          <div class="v-eng">By faith Noah, being divinely instructed concerning things not yet seen, being moved by pious fear, prepared an ark for the salvation of his house, through which he condemned the world and became an heir of the righteousness which is according to faith.</div>
+          <div class="v-eng" style="margin-bottom: 12px;">By faith Noah, being divinely instructed concerning things not yet seen, being moved by pious fear, prepared an ark for the salvation of his house, through which he condemned the world and became an heir of the righteousness which is according to faith.</div>
+          
+          <div class="instruction-text" style="margin-bottom: 20px;">
+            👆 헬라어 박스를 터치하여 상세 의미를 확인하세요!
+          </div>
           
           <div class="v-grk-container">
-            <div class="grk-pair">
+            <div class="grk-pair" onclick="openWordModal('pistei')">
+              <div class="click-hint">👆</div>
               <span class="grk">Πίστει</span><span class="pron">[피스테이]</span>
               <span class="kor">믿음으로</span><span class="eng">By faith</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair" onclick="openWordModal('chrematistheis')">
+              <div class="click-hint">👆</div>
               <span class="grk">χρηματισθεὶς</span><span class="pron">[크레마티스데이스]</span>
               <span class="kor">지시를 받아</span><span class="eng">being instructed</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair non-clickable">
               <span class="grk">Νῶε</span><span class="pron">[노에]</span>
               <span class="kor">노아는</span><span class="eng">Noah</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair non-clickable">
               <span class="grk">περὶ</span><span class="pron">[페리]</span>
               <span class="kor">~에 관하여</span><span class="eng">concerning</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair non-clickable">
               <span class="grk">τῶν</span><span class="pron">[톤]</span>
               <span class="kor">(그것들)</span><span class="eng">the things</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair" onclick="openWordModal('medepo')">
+              <div class="click-hint">👆</div>
               <span class="grk">μηδέπω</span><span class="pron">[메데포]</span>
               <span class="kor">아직 ~않은</span><span class="eng">not yet</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair" onclick="openWordModal('blepomenon')">
+              <div class="click-hint">👆</div>
               <span class="grk">βλεπομένων,</span><span class="pron">[블레포메논]</span>
               <span class="kor">보이는</span><span class="eng">being seen</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair" onclick="openWordModal('eulabetheis')">
+              <div class="click-hint">👆</div>
               <span class="grk">εὐλαβηθεὶς</span><span class="pron">[율라베데이스]</span>
               <span class="kor">경외함으로</span><span class="eng">with godly fear</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair" onclick="openWordModal('kataskeuasen')">
+              <div class="click-hint">👆</div>
               <span class="grk">κατεσκεύασεν</span><span class="pron">[카테스큐아센]</span>
               <span class="kor">준비하였다</span><span class="eng">prepared</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair" onclick="openWordModal('kiboton')">
+              <div class="click-hint">👆</div>
               <span class="grk">κιβωτὸν</span><span class="pron">[키보톤]</span>
               <span class="kor">방주를</span><span class="eng">an ark</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair non-clickable">
               <span class="grk">εἰς</span><span class="pron">[에이스]</span>
               <span class="kor">~을 위하여</span><span class="eng">for</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair non-clickable">
               <span class="grk">σωτηρίαν</span><span class="pron">[소테리안]</span>
               <span class="kor">구원을</span><span class="eng">salvation</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair non-clickable">
               <span class="grk">τοῦ οἴκου</span><span class="pron">[투 오이쿠]</span>
               <span class="kor">집의</span><span class="eng">of the house</span>
             </div>
-            <div class="grk-pair">
+            <div class="grk-pair non-clickable">
               <span class="grk">αὐτοῦ</span><span class="pron">[아우투]</span>
               <span class="kor">그의</span><span class="eng">of him</span>
             </div>
+            <div class="grk-pair" onclick="openWordModal('katekrinem')">
+              <div class="click-hint">👆</div>
+              <span class="grk">κατέκρινεν</span><span class="pron">[카테크리넨]</span>
+              <span class="kor">유죄판결 하고</span><span class="eng">condemned</span>
+            </div>
+            <div class="grk-pair" onclick="openWordModal('kleronomos')">
+              <div class="click-hint">👆</div>
+              <span class="grk">κληρονόμος</span><span class="pron">[클레로노모스]</span>
+              <span class="kor">상속자가</span><span class="eng">an heir</span>
+            </div>
           </div>
-
-          <div class="v-lit">💡 <strong>문법적 직역:</strong> 믿음으로 노아는, 아직 보이지 않는 것들에 관하여 (신적) 지시를 받아 경외함으로, 자기 집의 구원을 향하여 방주를 (철저히) 준비하였다.</div>
+          
+          <div class="v-lit">💡 <strong>문법적 직역:</strong> 믿음으로 노아는, 아직 보이지 않는 것들에 관하여 (신적) 지시를 받아 경외함으로, 자기 집의 구원을 향하여 방주를 (철저히) 준비하였다. (그것을 통해 세상을 정죄하고 믿음에 따른 의의 상속자가 되었다.)</div>
         </div>
       </div>
 
-      <!-- 핵심 단어 분석 -->
-      <div class="word-study-title">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        헬라어 원문 핵심 단어 분석
-      </div>
-      <div class="word-grid">
-        <div class="word-card">
-          <div class="word-header">
-            <div>
-              <div class="word-kr">믿음으로</div>
-              <div class="word-mean">수단의 여격 · 신뢰</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="word-grk">Πίστει</div>
-              <div class="word-pron">[피스테이]</div>
-            </div>
-          </div>
-          <div class="word-desc">
-            히브리서 11장 전체를 관통하는 주제어입니다. 문장 맨 앞에 배치된 <strong>수단의 여격</strong>으로, 노아의 모든 행위가 전적으로 '믿음'이라는 수단을 통해 이루어졌음을 강조합니다.
-          </div>
-        </div>
-        <div class="word-card">
-          <div class="word-header">
-            <div>
-              <div class="word-kr">지시를 받아</div>
-              <div class="word-mean">신탁(神託)을 받다</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="word-grk">χρηματισθεὶς</div>
-              <div class="word-pron">[크레마티스데이스]</div>
-            </div>
-          </div>
-          <div class="word-desc">
-            어원 χρηματίζω는 <strong>'하나님께서 공식적이고 권위 있게 계시하심'</strong>을 뜻합니다. 단순한 내면의 감동이 아니라, 노아가 <strong>하늘로부터의 신적 계시</strong>를 직접 받았음을 드러냅니다.
-          </div>
-        </div>
-        <div class="word-card">
-          <div class="word-header">
-            <div>
-              <div class="word-kr">경외함으로</div>
-              <div class="word-mean">경건한 두려움 · 주의 깊음</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="word-grk">εὐλαβηθεὶς</div>
-              <div class="word-pron">[율라베데이스]</div>
-            </div>
-          </div>
-          <div class="word-desc">
-            단순한 공포(φόβος)가 아닌, <strong>거룩한 경외와 조심스러운 순종의 태도</strong>를 뜻합니다. 계시를 받은 사람이 그 말씀의 무게 앞에서 보이는 합당한 반응입니다.
-          </div>
-        </div>
-        <div class="word-card">
-          <div class="word-header">
-            <div>
-              <div class="word-kr">준비하였다</div>
-              <div class="word-mean">철저히 갖추어 건축함</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="word-grk">κατεσκεύασεν</div>
-              <div class="word-pron">[카테스큐아센]</div>
-            </div>
-          </div>
-          <div class="word-desc">
-            '완전히(κατά)' + '장비를 갖추다(σκευή)'의 합성어입니다. 단순히 '짓다(οἰκοδομέω)'보다 강한 의미로, <strong>하나님의 설계도대로 모든 부품을 완비하여 완성하는 행위</strong>를 가리킵니다.
-          </div>
-        </div>
-        <div class="word-card">
-          <div class="word-header">
-            <div>
-              <div class="word-kr">방주</div>
-              <div class="word-mean">상자 · 궤 · 구원의 처소</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="word-grk">κιβωτὸν</div>
-              <div class="word-pron">[키보톤]</div>
-            </div>
-          </div>
-          <div class="word-desc">
-            70인역에서 노아의 방주, 언약궤, 아기 모세의 갈대 상자에 동일하게 사용된 단어입니다. 심판 가운데 <strong>하나님의 임재와 보호를 담아내는 구원의 처소</strong>를 상징합니다.
-          </div>
-        </div>
-        <div class="word-card">
-          <div class="word-header">
-            <div>
-              <div class="word-kr">구원</div>
-              <div class="word-mean">안전 · 보존 · 건짐</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="word-grk">σωτηρίαν</div>
-              <div class="word-pron">[소테리안]</div>
-            </div>
-          </div>
-          <div class="word-desc">
-            영적 · 물리적 구원을 모두 포함합니다. 방주가 '자기 집의 구원을 향하여(εἰς)' 준비되었다는 것은, <strong>건축 자체가 곧 구원의 경험</strong>이 되었음을 드러냅니다.
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1352,18 +1306,18 @@ body {
       </div>
       <div class="flow-step">
         <div class="flow-dot" style="background:var(--accent-blue);">2</div>
-        <div class="flow-step-label">다름 — 세대의 조류를 거스름</div>
+        <div class="flow-step-label">전파 — 세대의 조류를 거스름</div>
         <div class="flow-step-desc">다니엘·바울·루터처럼 계시가 우리를 다르게 만들도록 허락하며 의를 전파함</div>
+      </div>
+            <div class="flow-step">
+        <div class="flow-dot" style="background:var(--accent-purple);">4</div>
+        <div class="flow-step-label">건축 — 건축하시고 건축되신 하나님을</div>
+        <div class="flow-step-desc">과정을 거치신 삼일 하나님을 다른 이들의 속사람 안으로 공급하여 그분께서 친히 건축해 넣으시게 함</div>
       </div>
       <div class="flow-step">
         <div class="flow-dot" style="background:var(--accent-teal);">3</div>
         <div class="flow-step-label">동역 — 하나님과 함께 일함</div>
         <div class="flow-step-desc">"나는 내 자신의 일을 하지 않고 아버지께서 하시는 일을 합니다" — 그분이 하시는 건축에 참여함</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-dot" style="background:var(--accent-purple);">4</div>
-        <div class="flow-step-label">공급 — 건축하시고 건축되신 하나님을</div>
-        <div class="flow-step-desc">과정을 거치신 삼일 하나님을 다른 이들의 속사람 안으로 공급하여 그분께서 친히 건축해 넣으시게 함</div>
       </div>
     </div>
   </section>
@@ -1839,7 +1793,20 @@ body {
   </section>
 
   <div class="footer-note">
-    2026 국제중국어 · Ⅲ. 노아의 일은 시대를 바꾸는 일이었다
+    2026 국제중국어 2주 5,6일
+  </div>
+</div>
+
+<!-- Word Modal (Popup) -->
+<div class="word-modal-overlay" id="wordModalOverlay" onclick="closeWordModal(event)">
+  <div class="word-modal" onclick="event.stopPropagation()">
+    <button class="word-modal-close" onclick="closeWordModal(event)">✕</button>
+    <div class="word-modal-kr" id="wm-kr"></div>
+    <div class="word-modal-grk" id="wm-grk"></div>
+    <div class="word-modal-pron" id="wm-pron"></div>
+    <div class="word-modal-grammar" id="wm-grammar"></div>
+    <div class="word-modal-mean" id="wm-mean"></div>
+    <div class="word-modal-desc" id="wm-desc"></div>
   </div>
 </div>
 
@@ -1951,6 +1918,90 @@ function submitQuiz() {
   else msgEl.textContent = '📖 핵심요점들을 다시 한번 찬찬히 음미해보시길 권합니다. 특히 "건축하시고 건축되신 하나님"의 이상이 중요합니다.';
   document.getElementById('quizResult').classList.add('show');
   document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ========================================
+// Word Modal Logic
+// ========================================
+const wordData = {
+  pistei: {
+    grk: "Πίστει", pron: "[피스테이]", kr: "믿음으로",
+    grammar: "명사, 여격, 여성, 단수",
+    mean: "믿음으로, 신뢰로",
+    desc: "원형 'πίστις(믿음)'의 여격형으로 '~함으로(수단/방법)'를 나타냅니다. 노아의 모든 행동의 근간이 된 확신입니다."
+  },
+  chrematistheis: {
+    grk: "χρηματισθεὶς", pron: "[크레마티스데이스]", kr: "지시를 받아",
+    grammar: "분사, 과거(Aorist), 수동태, 주격",
+    mean: "신탁을 받다, 경고를 받다",
+    desc: "사전적으로 신탁을 주거나 신적 지시를 내리는 것을 뜻하며, 수동태이므로 하나님께 '지시를 받은 상태'를 의미합니다."
+  },
+  medepo: {
+    grk: "μηδέπω", pron: "[메데포]", kr: "아직 ~않은",
+    grammar: "부사",
+    mean: "아직 ~않은 (not yet)",
+    desc: "미래의 불확실한 사실이나 아직 경험하지 못한 사건을 강하게 부정하는 부사입니다. 노아는 당시 한 번도 경험하지 못한 홍수에 대한 경고를 받았습니다."
+  },
+  blepomenon: {
+    grk: "βλεπομένων", pron: "[블레포메논]", kr: "보이는 (것들)",
+    grammar: "분사, 현재, 수동태, 속격",
+    mean: "보다",
+    desc: "수동태 분사로 쓰여 시각적으로 인지되는 대상들을 지칭합니다."
+  },
+  eulabetheis: {
+    grk: "εὐλαβηθεὶς", pron: "[에울라베데이스]", kr: "경외하는 마음으로",
+    grammar: "분사, 과거, 수동태(디포넌트)",
+    mean: "조심하여, 경외함으로",
+    desc: "사전적 의미는 '주의 깊게 다루다', '두려워하다', '경건한 두려움을 갖다'입니다. 하나님의 지시에 대한 깊은 경외심을 보여줍니다."
+  },
+  kataskeuasen: {
+    grk: "κατεσκεύασεν", pron: "[카테스큐아센]", kr: "준비했다 (건축했다)",
+    grammar: "동사, 직설법, 과거, 능동태",
+    mean: "도구나 건물을 갖추어 만들다",
+    desc: "단순히 만드는 것을 넘어 시간과 공을 들여 '준비하고 설비하여 건조하는' 행위를 뜻합니다."
+  },
+  kiboton: {
+    grk: "κιβωτὸν", pron: "[키보톤]", kr: "방주를",
+    grammar: "명사, 대격, 여성, 단수",
+    mean: "상자, 궤, 방주",
+    desc: "나무로 짠 궤나 상자 형태의 배를 의미합니다. 스스로 방향을 조절하는 키가 없이 하나님의 인도에 전적으로 맡기는 구조입니다."
+  },
+  katekrinem: {
+    grk: "κατέκρινεν", pron: "[카테크리넨]", kr: "유죄판결을 내렸다",
+    grammar: "동사, 직설법, 과거, 능동태",
+    mean: "유죄판결을 내리다, 정죄하다",
+    desc: "법정 용어로, 누군가에게 불리한 판결을 내리는 것을 뜻합니다. 노아의 믿음의 행위 자체가 불신 세상을 심판하는 명백한 증거가 되었습니다."
+  },
+  kleronomos: {
+    grk: "κληρονόμος", pron: "[클레로노모스]", kr: "상속자가",
+    grammar: "명사, 주격, 남성, 단수",
+    mean: "상속자, 후사",
+    desc: "재산이나 권리를 상속받는 자격을 가진 사람을 의미합니다. 노아는 방주를 건축함으로 의의 상속자가 되었습니다."
+  }
+};
+
+function openWordModal(key) {
+  const data = wordData[key];
+  if(!data) return;
+  
+  document.getElementById('wm-kr').textContent = data.kr;
+  document.getElementById('wm-grk').textContent = data.grk;
+  document.getElementById('wm-pron').textContent = data.pron;
+  document.getElementById('wm-grammar').textContent = data.grammar;
+  document.getElementById('wm-mean').textContent = data.mean;
+  
+  // 설명 텍스트 안의 따옴표 부분을 강조
+  const formattedDesc = data.desc.replace(/('.*?')/g, '<strong>$1</strong>').replace(/("(.*?)")/g, '<strong>$1</strong>');
+  document.getElementById('wm-desc').innerHTML = formattedDesc;
+  
+  document.getElementById('wordModalOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+}
+
+function closeWordModal(e) {
+  if(e) e.preventDefault();
+  document.getElementById('wordModalOverlay').classList.remove('show');
+  document.body.style.overflow = ''; // 배경 스크롤 복구
 }
 
 // ========================================
