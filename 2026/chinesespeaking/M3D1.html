@@ -241,6 +241,835 @@ body {
   line-height: 1.6;
 }
 
+/* ===== HERO BANNER IMAGE ===== */
+.hero-banner {
+  margin: 24px auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.25);
+  position: relative;
+  background: #050505;
+}
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== FIGURE (In-Content Image Block) ===== */
+.figure-block {
+  margin: 20px 0 14px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+.figure-block img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.figure-caption {
+  padding: 10px 14px;
+  font-size: 0.75rem;
+  color: #555;
+  text-align: center;
+  background: #fafafa;
+  border-top: 1px solid #e5e7eb;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.figure-caption .caption-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-right: 6px;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+.figure-caption .caption-tag.blue { background: var(--accent-blue); }
+.figure-caption .caption-tag.red { background: var(--accent-red); }
+.figure-caption .caption-tag.gold { background: var(--accent-gold); }
+.figure-caption .caption-tag.green { background: var(--accent-green); }
+.figure-caption .caption-tag.purple { background: var(--accent-purple); }
+.figure-caption .caption-tag.rose { background: var(--accent-rose); }
+.figure-caption .caption-tag.teal { background: var(--accent-teal); }
+
+/* ============================================================
+   INFOGRAPHIC SYSTEM — 9 ALL-HTML VISUALS (single-file, no PNGs)
+   ============================================================ */
+
+/* Shared infographic container */
+.ig {
+  padding: 20px 16px;
+  background: linear-gradient(180deg, #fafafa 0%, #f3f4f6 100%);
+  position: relative;
+  overflow: hidden;
+}
+.ig-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 6px;
+  letter-spacing: -0.4px;
+  line-height: 1.35;
+}
+.ig-sub {
+  font-size: 0.78rem;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+/* ===== IG-1  HERO BANNER (Anatomy of Spiritual War) ===== */
+.ig-hero {
+  background: radial-gradient(ellipse at 70% 50%, #1f2937 0%, #050505 70%);
+  padding: 28px 22px;
+  color: #f5f5f4;
+  position: relative;
+  min-height: 280px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+  align-items: center;
+  overflow: hidden;
+}
+.ig-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 70%, rgba(96,165,250,0.18) 0%, transparent 40%),
+    radial-gradient(circle at 75% 30%, rgba(217,119,6,0.15) 0%, transparent 45%);
+  pointer-events: none;
+}
+.ig-hero-text { position: relative; z-index: 2; }
+.ig-hero-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  color: #fafafa;
+  letter-spacing: -0.5px;
+}
+.ig-hero-sub {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #86efac;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.ig-hero-body {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: #d4d4d8;
+  border-left: 2px solid #86efac;
+  padding-left: 10px;
+}
+.ig-hero-visual {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+.ig-hero-visual svg { width: 100%; height: auto; max-width: 220px; }
+
+@media (max-width: 560px) {
+  .ig-hero { grid-template-columns: 1fr; padding: 22px 16px; }
+  .ig-hero-title { font-size: 1.15rem; }
+  .ig-hero-visual { min-height: 160px; }
+  .ig-hero-visual svg { max-width: 170px; }
+}
+
+/* ===== IG-2  BC 605 (Seemingly Defeated / Prepared Overcomers) ===== */
+.ig-bc605-scene {
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  border-radius: 12px;
+  padding: 18px 14px;
+  position: relative;
+  color: #f5f5f4;
+  margin-bottom: 14px;
+}
+.ig-bc605-year {
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #fbbf24;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%);
+  border: 1px solid #78350f;
+}
+.ig-bc605-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+.ig-bc605-city {
+  text-align: center;
+  padding: 10px 8px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.ig-bc605-city .city-icon {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+  display: block;
+  line-height: 1;
+}
+.ig-bc605-city .city-name-ko {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fafafa;
+}
+.ig-bc605-city .city-name-en {
+  font-size: 0.62rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+.ig-bc605-arrow {
+  color: #fbbf24;
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-align: center;
+}
+.ig-bc605-overcomers {
+  margin-top: 14px;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(59,130,246,0.15));
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(134,239,172,0.3);
+}
+.ig-bc605-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #34d399, #3b82f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(59,130,246,0.4);
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.ig-bc605-caption {
+  text-align: center;
+  font-size: 0.68rem;
+  color: #a7f3d0;
+  margin-top: 6px;
+  font-weight: 600;
+}
+.ig-insight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+.ig-insight-card {
+  padding: 12px 10px;
+  background: #fff;
+  border-radius: 10px;
+  border-left: 3px solid var(--accent-red);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.ig-insight-card.g { border-left-color: var(--accent-green); }
+.ig-insight-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--accent-red);
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+}
+.ig-insight-card.g .ig-insight-label { color: #047857; }
+.ig-insight-text {
+  font-size: 0.72rem;
+  color: #374151;
+  line-height: 1.55;
+}
+
+/* ===== IG-3  ABSOLUTE ONENESS (Flower of 4 + God center) ===== */
+.ig-oneness-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-top: 6px;
+}
+.ig-oneness-side {
+  padding: 10px 8px;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: #374151;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  position: relative;
+}
+.ig-oneness-side::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  background: linear-gradient(180deg, #86efac, #34d399);
+  border-radius: 3px;
+}
+.ig-oneness-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #065f46;
+  margin-bottom: 4px;
+}
+.ig-oneness-label small {
+  font-size: 0.62rem;
+  color: #6b7280;
+  font-weight: 600;
+  margin-left: 3px;
+}
+.ig-oneness-center {
+  position: relative;
+  aspect-ratio: 1/1;
+  max-width: 220px;
+  margin: 0 auto;
+}
+.ig-oneness-center svg { width: 100%; height: 100%; display: block; }
+.ig-oneness-petal-name {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #065f46;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+.ig-oneness-petal-name.tl { top: 8%; left: 14%; }
+.ig-oneness-petal-name.tr { top: 8%; right: 14%; }
+.ig-oneness-petal-name.bl { bottom: 8%; left: 14%; }
+.ig-oneness-petal-name.br { bottom: 8%; right: 14%; }
+.ig-oneness-center-god {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #dbeafe 60%, #93c5fd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #1e3a8a;
+  box-shadow:
+    0 0 40px rgba(147,197,253,0.8),
+    0 0 0 3px #fff,
+    inset 0 0 12px rgba(255,255,255,0.8);
+  z-index: 3;
+}
+
+@media (max-width: 560px) {
+  .ig-oneness-wrap { grid-template-columns: 1fr; }
+  .ig-oneness-center { max-width: 260px; }
+}
+
+/* ===== IG-4  PRACTICE FRAMEWORK (Funnel) ===== */
+.ig-funnel-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.ig-funnel-input {
+  padding: 12px 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border: 1px solid #86efac;
+  text-align: center;
+}
+.ig-funnel-input.blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-color: #93c5fd;
+}
+.ig-funnel-input-icon {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+  display: block;
+}
+.ig-funnel-input-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #065f46;
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+.ig-funnel-input.blue .ig-funnel-input-title { color: #1e3a8a; }
+.ig-funnel-input-sub {
+  font-size: 0.66rem;
+  color: #047857;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.ig-funnel-input.blue .ig-funnel-input-sub { color: #2563eb; }
+.ig-funnel-input-body {
+  font-size: 0.68rem;
+  color: #374151;
+  line-height: 1.55;
+}
+.ig-funnel-svg-wrap {
+  text-align: center;
+  margin: 6px 0 10px;
+}
+.ig-funnel-svg-wrap svg { max-width: 140px; height: auto; }
+.ig-funnel-output {
+  padding: 12px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 100%);
+  border-radius: 10px;
+  border: 1px solid #bae6fd;
+  font-size: 0.72rem;
+  color: #0c4a6e;
+  line-height: 1.6;
+  text-align: center;
+}
+.ig-funnel-output strong { color: #047857; }
+
+/* ===== IG-5  VISION BLOCKADE (Veil between human history & divine) ===== */
+.ig-veil-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  min-height: 180px;
+  margin-bottom: 14px;
+}
+.ig-veil-side {
+  padding: 18px 14px;
+  position: relative;
+}
+.ig-veil-side.dark {
+  background: linear-gradient(135deg, #78716c 0%, #44403c 100%);
+  color: #fde68a;
+}
+.ig-veil-side.light {
+  background: linear-gradient(135deg, #bfdbfe 0%, #e0e7ff 100%);
+  color: #1e3a8a;
+}
+.ig-veil-side-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  display: block;
+  text-align: center;
+}
+.ig-veil-side-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.ig-veil-side-body {
+  font-size: 0.68rem;
+  line-height: 1.55;
+  text-align: center;
+  opacity: 0.95;
+}
+.ig-veil-divider {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(45deg, rgba(0,0,0,0.4) 0 3px, rgba(0,0,0,0.15) 3px 6px);
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* ===== IG-6  GREAT HUMAN IMAGE (4 empires anatomy) ===== */
+.ig-image-wrap {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.ig-image-svg {
+  width: 120px;
+  flex-shrink: 0;
+}
+.ig-image-svg svg { width: 100%; height: auto; display: block; }
+.ig-image-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ig-image-label {
+  padding: 8px 10px;
+  background: #fff;
+  border-radius: 8px;
+  border-left: 4px solid #d4a574;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ig-image-label-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(0,0,0,0.15);
+}
+.ig-image-label-text strong {
+  color: #1a1a1a;
+  font-weight: 800;
+}
+.ig-image-label-text small {
+  color: #6b7280;
+  font-size: 0.62rem;
+  display: block;
+  margin-top: 1px;
+}
+.ig-traits {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  border-radius: 10px;
+  color: #f5f5f4;
+}
+.ig-traits-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #fbbf24;
+  letter-spacing: 0.3px;
+}
+.ig-traits-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+.ig-trait {
+  font-size: 0.68rem;
+  padding: 6px 8px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  border-left: 2px solid #fbbf24;
+  line-height: 1.35;
+}
+.ig-trait b { color: #fbbf24; }
+
+@media (max-width: 560px) {
+  .ig-image-wrap { grid-template-columns: 1fr; }
+  .ig-image-svg { width: 100px; margin: 0 auto; }
+  .ig-traits-list { grid-template-columns: 1fr; }
+}
+
+/* ===== IG-7  STONE & MOUNTAIN (Phase 1 → Phase 2) ===== */
+.ig-phases {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: stretch;
+  margin-bottom: 12px;
+}
+.ig-phase {
+  padding: 14px 10px;
+  border-radius: 12px;
+  position: relative;
+  text-align: center;
+}
+.ig-phase.p1 {
+  background: linear-gradient(135deg, #1c1917 0%, #44403c 100%);
+  color: #fef3c7;
+}
+.ig-phase.p2 {
+  background: linear-gradient(135deg, #1e40af 0%, #10b981 100%);
+  color: #fff;
+}
+.ig-phase-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 20px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.ig-phase.p2 .ig-phase-badge { background: rgba(255,255,255,0.2); }
+.ig-phase-icon {
+  font-size: 2.2rem;
+  margin: 6px 0;
+  display: block;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+.ig-phase-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.ig-phase-body {
+  font-size: 0.66rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+.ig-phase-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fbbf24;
+  font-weight: 900;
+}
+.ig-meaning-box {
+  padding: 12px 14px;
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  color: #1e3a8a;
+  line-height: 1.6;
+}
+.ig-meaning-box strong { color: #0c4a6e; }
+
+@media (max-width: 560px) {
+  .ig-phases { grid-template-columns: 1fr; }
+  .ig-phase-arrow { transform: rotate(90deg); padding: 4px 0; }
+}
+
+/* ===== IG-8  TRANSFORMATION FLYWHEEL ===== */
+.ig-flywheel {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto 14px;
+  aspect-ratio: 1/1;
+}
+.ig-flywheel svg { width: 100%; height: 100%; display: block; }
+.ig-fly-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #065f46;
+  line-height: 1.25;
+  letter-spacing: 0.3px;
+}
+.ig-fly-center small { display: block; font-size: 0.58rem; color: #6b7280; font-weight: 600; margin-top: 2px; }
+.ig-fly-step {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  border: 3px solid;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.1;
+}
+.ig-fly-step small { font-size: 0.56rem; font-weight: 600; opacity: 0.75; margin-top: 1px; }
+.ig-fly-step.s1 { top: 8%; right: 12%; border-color: #10b981; color: #065f46; }
+.ig-fly-step.s2 { bottom: 8%; left: 50%; transform: translateX(-50%); border-color: #3b82f6; color: #1e3a8a; }
+.ig-fly-step.s3 { top: 8%; left: 12%; border-color: #34d399; color: #065f46; }
+.ig-fly-desc {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.ig-fly-desc-item {
+  padding: 8px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  font-size: 0.64rem;
+  line-height: 1.5;
+  color: #374151;
+  border-top: 3px solid #10b981;
+}
+.ig-fly-desc-item.b { border-top-color: #3b82f6; }
+.ig-fly-desc-item.g { border-top-color: #34d399; }
+.ig-fly-desc-num {
+  display: inline-block;
+  font-weight: 800;
+  color: #065f46;
+  margin-right: 4px;
+  font-size: 0.7rem;
+}
+.ig-fly-desc-item.b .ig-fly-desc-num { color: #1e3a8a; }
+.ig-fly-apply {
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #f0fdf4, #ecfeff);
+  border: 1px dashed #86efac;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  color: #065f46;
+  line-height: 1.55;
+}
+.ig-fly-apply b { color: #047857; }
+
+@media (max-width: 560px) {
+  .ig-fly-desc { grid-template-columns: 1fr; }
+}
+
+/* ===== IG-9  SYNTHESIS EQUATION ===== */
+.ig-eq-wrap {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1.1fr;
+  gap: 6px;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+.ig-eq-card {
+  padding: 12px 8px;
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  border-top: 4px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ig-eq-card.c1 { border-top-color: #f59e0b; }
+.ig-eq-card.c2 { border-top-color: #10b981; }
+.ig-eq-card.c3 { border-top-color: #3b82f6; }
+.ig-eq-card.result {
+  background: linear-gradient(135deg, #065f46 0%, #1e40af 100%);
+  color: #fff;
+  border-top: 4px solid #fbbf24;
+  padding: 12px 10px;
+}
+.ig-eq-icon {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+  display: block;
+  line-height: 1;
+}
+.ig-eq-title {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+.ig-eq-card.result .ig-eq-title { color: #fbbf24; font-size: 0.82rem; }
+.ig-eq-sub {
+  font-size: 0.6rem;
+  color: #6b7280;
+  line-height: 1.45;
+}
+.ig-eq-card.result .ig-eq-sub { color: #e5e7eb; font-weight: 600; font-size: 0.62rem; }
+.ig-eq-op {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #6b7280;
+}
+.ig-eq-op.eq { color: #fbbf24; }
+
+@media (max-width: 640px) {
+  .ig-eq-wrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .ig-eq-op { display: none; }
+  .ig-eq-card.result { grid-column: 1 / -1; }
+}
+
+/* ===== SYNTHESIS SECTION (Final Image) ===== */
+.synthesis-section {
+  margin: 36px 0 28px;
+  padding: 24px 18px 20px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfccb 50%, #f0f9ff 100%);
+  border-radius: 20px;
+  border: 1px solid #86efac;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.08);
+}
+.synthesis-title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #166534;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+.synthesis-sub {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+.synthesis-image {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  background: #fff;
+}
+.synthesis-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.synthesis-callout {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  border-left: 4px solid var(--accent-green);
+  font-size: 0.88rem;
+  color: #166534;
+  line-height: 1.7;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+.synthesis-callout strong {
+  color: #14532d;
+  background: #bbf7d0;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
 /* Verse Analysis (Hebrew Text) */
 .verse-analysis {
   margin-top: 28px;
@@ -1126,6 +1955,8 @@ body {
   
   .intro-instruction { font-size: 0.95rem; }
   .scratch-icon { font-size: 2.4rem; }
+  
+  .synthesis-title { font-size: 0.95rem; }
 }
 
 /* Small height screens (Small phones) */
@@ -1244,6 +2075,7 @@ body {
   <a class="nav-item sub" onclick="goTo('acc-1')">Step 1. 정체성(이름) 지키기</a>
   <a class="nav-item sub" onclick="goTo('acc-3')">Step 2. 생명나무(예수님) 먹기</a>
   <a class="nav-item sub" onclick="goTo('acc-6')">Step 3. 신성한 이상 보기</a>
+  <a class="nav-item sub" onclick="goTo('synthesis-section')">📌 종합 — 단체적 이기는 이</a>
 
   <div class="nav-divider"></div>
   <a class="nav-item" onclick="goTo('quiz-section')">✅ 퀴즈</a>
@@ -1258,7 +2090,9 @@ body {
     <div class="hero-badge">2026 국제중국어 3주 1,2일</div>
     <h1>"<span class="highlight-word">다니엘과 그의 동반자들</span>"<br>사탄의 책략에 맞선 이기는 이들</h1>
     <p class="hero-sub">하나님과 절대적으로 하나 된 생활로 귀신적인 음식을 거절하고,<br>예수님을 먹음으로써 단체적인 그리스도를 건축하는 이기는 이들</p>
+
     
+
     <div class="verse-analysis animate-in">
       
       <!-- 오늘의 구절 -->
@@ -1270,7 +2104,7 @@ body {
           </div>
           
           <div class="v-text">그러나 다니엘은 왕의 가장 좋은 음식과 왕이 마시는 포도주로 자신을 더럽히지 않겠다고 마음을 정하고, 자신을 더럽히지 않게 해 달라고 내시장에게 요청하였다.</div>
-          <div class="v-eng" style="margin-bottom: 12px;">But Daniel set his heart not to defile himself with the king’s choice provision and with the wine that the king drank, so he requested of the leader of the eunuchs that he might not defile himself.</div>
+          <div class="v-eng" style="margin-bottom: 12px;">But Daniel set his heart not to defile himself with the king's choice provision and with the wine that the king drank, so he requested of the leader of the eunuchs that he might not defile himself.</div>
           
           <div class="instruction-text" style="margin-bottom: 20px;">
             👆 히브리어 박스를 터치하여 상세 의미를 확인하세요!
@@ -1444,10 +2278,115 @@ body {
 
           <p class="content-text">주님의 회복의 원칙은 <span class="hl">다니엘과 그의 동반자들(하나냐, 미사엘, 아사랴) 네 사람이 단체적인 이기는 자가 되어</span>, 절대적으로 하나님과 하나 됨으로써 사탄의 책략을 이긴 것에서 볼 수 있습니다.</p>
 
+          <!-- ★ IG-3: 이기는 이의 핵심 원칙: 절대적인 하나 됨 (Pure HTML+SVG) -->
+          <div class="figure-block">
+            <div class="ig">
+              <div class="ig-title">이기는 이의 핵심 원칙: 절대적인 하나 됨</div>
+              <div class="ig-oneness-wrap">
+                <div class="ig-oneness-side">
+                  <div class="ig-oneness-label">정의 <small>(Definition)</small></div>
+                  이기는 이란 누구인가? 먹고 마심, 기거함, 사람 대하는 모든 생활 영역에서 사탄의 유혹을 거절하고 <strong style="color:#047857;">'하나님과 절대적으로 하나 된(Absolutely one with God)'</strong> 단체적인 무리.
+                </div>
+                <div class="ig-oneness-center" aria-hidden="true">
+                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <radialGradient id="petalGrad" cx="0.5" cy="0.5" r="0.5">
+                        <stop offset="0" stop-color="#d1fae5" stop-opacity="0.9"/>
+                        <stop offset="0.7" stop-color="#86efac" stop-opacity="0.7"/>
+                        <stop offset="1" stop-color="#10b981" stop-opacity="0.4"/>
+                      </radialGradient>
+                      <radialGradient id="centerGlow" cx="0.5" cy="0.5" r="0.5">
+                        <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="0.5" stop-color="#bfdbfe" stop-opacity="0.6"/>
+                        <stop offset="1" stop-color="#60a5fa" stop-opacity="0"/>
+                      </radialGradient>
+                    </defs>
+                    <!-- Background light halo -->
+                    <circle cx="100" cy="100" r="95" fill="url(#centerGlow)"/>
+                    <!-- 4 petals (flower arrangement) -->
+                    <g transform="translate(100,100)">
+                      <!-- TL petal -->
+                      <ellipse cx="-30" cy="-30" rx="42" ry="42" fill="url(#petalGrad)" stroke="#34d399" stroke-width="1.2" opacity="0.85"/>
+                      <!-- TR petal -->
+                      <ellipse cx="30" cy="-30" rx="42" ry="42" fill="url(#petalGrad)" stroke="#34d399" stroke-width="1.2" opacity="0.85"/>
+                      <!-- BL petal -->
+                      <ellipse cx="-30" cy="30" rx="42" ry="42" fill="url(#petalGrad)" stroke="#34d399" stroke-width="1.2" opacity="0.85"/>
+                      <!-- BR petal -->
+                      <ellipse cx="30" cy="30" rx="42" ry="42" fill="url(#petalGrad)" stroke="#34d399" stroke-width="1.2" opacity="0.85"/>
+                      <!-- Rays from center -->
+                      <g stroke="#fff" stroke-width="1" opacity="0.6">
+                        <line x1="0" y1="0" x2="0" y2="-70"/>
+                        <line x1="0" y1="0" x2="0" y2="70"/>
+                        <line x1="0" y1="0" x2="-70" y2="0"/>
+                        <line x1="0" y1="0" x2="70" y2="0"/>
+                      </g>
+                    </g>
+                  </svg>
+                  <div class="ig-oneness-petal-name tl">다니엘</div>
+                  <div class="ig-oneness-petal-name tr">하나냐</div>
+                  <div class="ig-oneness-petal-name bl">미사엘</div>
+                  <div class="ig-oneness-petal-name br">아사랴</div>
+                  <div class="ig-oneness-center-god">하나님</div>
+                </div>
+                <div class="ig-oneness-side">
+                  <div class="ig-oneness-label">목적 <small>(Purpose)</small></div>
+                  바빌론의 시스템 안에서도 결코 우상과 타협하지 않고 <strong style="color:#047857;">하나님의 증거</strong>를 지켜내는 것.
+                </div>
+              </div>
+            </div>
+            <div class="figure-caption">
+              <span class="caption-tag red">원칙</span>네 사람이 하나님을 중심으로 <strong>절대적으로 하나 된</strong> 단체적 무리 — 먹고 마심, 기거함, 사람을 대하는 모든 생활 영역에서 증거를 지켜낸 이들
+            </div>
+          </div>
+
           <div class="sub-point">
             <div class="sub-point-title">🌅 패배한 것처럼 보이는 상황 속에서</div>
             <div class="sub-point-text">
               하나님의 선민이 바빌론으로 포로 되어 가면서, 성전의 기물들 중 일부가 시날 땅으로 옮겨져 <strong>우상의 신전 안에 두어짐</strong>으로써, 유일하신 하나님 여호와께 경배를 드리는 하나님의 선민의 증거가 완전히 손상되었습니다. 사탄은 아마도 <strong>"하나님은 이미 패배하셨고, 이 땅에 더 이상 하나님께 드리는 경배가 없을 것"</strong>이라고 생각했을 것입니다.
+            </div>
+          </div>
+
+          <!-- ★ IG-2: 겉보기에는 무너진 증거 (Pure HTML) -->
+          <div class="figure-block">
+            <div class="ig">
+              <div class="ig-title">겉보기에는 무너진 증거, 그러나 예비된 이기는 이들</div>
+              <div class="ig-sub">성전 기물들이 바빌론 우상의 신전으로 옮겨지며 땅에서 하나님을 향한 경배가 끝난 것처럼 보였습니다. 그러나…</div>
+              <div class="ig-bc605-scene">
+                <div class="ig-bc605-year">기원전 605년</div>
+                <div class="ig-bc605-flow">
+                  <div class="ig-bc605-city">
+                    <span class="city-icon">🏛️</span>
+                    <div class="city-name-ko">예루살렘</div>
+                    <div class="city-name-en">Jerusalem</div>
+                  </div>
+                  <div class="ig-bc605-arrow">━▶</div>
+                  <div class="ig-bc605-city">
+                    <span class="city-icon">🗿</span>
+                    <div class="city-name-ko">바빌론 우상의 신전</div>
+                    <div class="city-name-en">Babylonian Idol's Temple</div>
+                  </div>
+                </div>
+                <div class="ig-bc605-overcomers">
+                  <div class="ig-bc605-avatar">다니엘</div>
+                  <div class="ig-bc605-avatar">하나냐</div>
+                  <div class="ig-bc605-avatar">미사엘</div>
+                  <div class="ig-bc605-avatar">아사랴</div>
+                </div>
+                <div class="ig-bc605-caption">✨ 바빌론 한가운데 예비하신 젊은 이기는 이들</div>
+              </div>
+              <div class="ig-insight-grid">
+                <div class="ig-insight-card">
+                  <div class="ig-insight-label">🔻 사탄의 오판</div>
+                  <div class="ig-insight-text">선민의 표면적인 실패. "하나님은 패배하셨다"는 착각.</div>
+                </div>
+                <div class="ig-insight-card g">
+                  <div class="ig-insight-label">✨ 하나님의 주권</div>
+                  <div class="ig-insight-text">하나님은 실패하지 않으셨다. 사탄의 책략에 맞서 승리할 젊은 '이기는 이들'을 바빌론 한가운데로 안배하셨다.</div>
+                </div>
+              </div>
+            </div>
+            <div class="figure-caption">
+              <span class="caption-tag">BC 605</span>사탄의 오판과 하나님의 주권 — 표면적 패배 속에서도 하나님은 <strong>바빌론 한가운데</strong>에 젊은 이기는 이들(다니엘과 세 동반자)을 안배하셨습니다
             </div>
           </div>
 
@@ -1674,6 +2613,66 @@ body {
             </div>
           </div>
 
+          <!-- ★ IG-4: 실천 프레임워크 - 오늘 어떻게 예수님을 먹을 것인가? (Pure HTML+SVG) -->
+          <div class="figure-block">
+            <div class="ig">
+              <div class="ig-title">실천 프레임워크: 오늘 어떻게 예수님을 먹을 것인가?</div>
+              <div class="ig-funnel-wrap">
+                <div class="ig-funnel-input">
+                  <span class="ig-funnel-input-icon">📖</span>
+                  <div class="ig-funnel-input-title">말씀을 기도로 읽기</div>
+                  <div class="ig-funnel-input-sub">(Pray-reading)</div>
+                  <div class="ig-funnel-input-body">성경 구절의 엑기스(정수)를 기도로 취함. <em>"주님의 말씀이 혀에 꿀보다 답니다"</em> (렘 15:16)</div>
+                </div>
+                <div class="ig-funnel-input blue">
+                  <span class="ig-funnel-input-icon">🤝</span>
+                  <div class="ig-funnel-input-title">영적인 동역자 접촉</div>
+                  <div class="ig-funnel-input-sub">(Fellowship)</div>
+                  <div class="ig-funnel-input-body">순수한 마음으로 주님을 부르는 이들과 함께함. 사람을 접촉하는 것도 영적 먹음의 일종 (딤후 2:22)</div>
+                </div>
+              </div>
+              <div class="ig-funnel-svg-wrap" aria-hidden="true">
+                <svg viewBox="0 0 140 160" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="funnelStream" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0" stop-color="#86efac"/>
+                      <stop offset="0.5" stop-color="#60a5fa"/>
+                      <stop offset="1" stop-color="#34d399"/>
+                    </linearGradient>
+                    <linearGradient id="funnelGlass" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0" stop-color="#bfdbfe" stop-opacity="0.3"/>
+                      <stop offset="1" stop-color="#93c5fd" stop-opacity="0.6"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Two streams flowing into funnel -->
+                  <path d="M 25 10 Q 30 40 55 55" fill="none" stroke="url(#funnelStream)" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+                  <path d="M 115 10 Q 110 40 85 55" fill="none" stroke="url(#funnelStream)" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+                  <!-- Funnel (triangle) -->
+                  <path d="M 20 55 L 120 55 L 75 110 L 65 110 Z" fill="url(#funnelGlass)" stroke="#60a5fa" stroke-width="1.5"/>
+                  <!-- Stream exits funnel to building -->
+                  <rect x="66" y="110" width="8" height="20" fill="url(#funnelStream)"/>
+                  <!-- Building (church) -->
+                  <path d="M 50 130 L 90 130 L 90 155 L 50 155 Z" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+                  <path d="M 55 140 L 65 140 L 65 155 L 55 155 Z" fill="#818cf8" opacity="0.6"/>
+                  <path d="M 75 140 L 85 140 L 85 155 L 75 155 Z" fill="#818cf8" opacity="0.6"/>
+                  <!-- Cross on top -->
+                  <line x1="70" y1="125" x2="70" y2="135" stroke="#4f46e5" stroke-width="1.5"/>
+                  <line x1="67" y1="128" x2="73" y2="128" stroke="#4f46e5" stroke-width="1.5"/>
+                  <!-- Sparkles -->
+                  <circle cx="45" cy="75" r="1.5" fill="#fbbf24"/>
+                  <circle cx="95" cy="80" r="1.2" fill="#fbbf24"/>
+                  <circle cx="70" cy="95" r="1" fill="#fbbf24"/>
+                </svg>
+              </div>
+              <div class="ig-funnel-output">
+                올바르게 먹을 때, <strong>분열은 사라지고 성도들은 생명 안에서 연결</strong>됩니다. 주님의 회복은 곧 교회를 건축하기 위해 <strong>'예수님을 먹는 것을 회복하는 것'</strong>입니다.
+              </div>
+            </div>
+            <div class="figure-caption">
+              <span class="caption-tag blue">실천</span>오늘 예수님을 먹는 두 통로 — <strong>말씀을 기도로 읽기</strong>(렘 15:16) + <strong>영적인 동역자 접촉</strong>(딤후 2:22). 올바르게 먹을 때 분열은 사라지고 성도들은 생명 안에서 연결됩니다
+            </div>
+          </div>
+
           <p class="content-text">성경 전체는 건축물을 산출하기 위한 먹는 문제에 있어서 일관적입니다. <span class="hl">주님은 어떻게 그분의 교회를 건축하시는가? 그 길은 우리가 예수님을 먹는 것입니다!</span></p>
 
           <div class="sub-point">
@@ -1723,10 +2722,132 @@ body {
 
           <p class="content-text">다니엘과 그의 동반자들은 <span class="hl">사람들이 거대한 인간 형상을 보지 못하게 하고 인간 역사 속에 있는 신성한 역사인 산산이 부수는 돌을 보지 못하게 하는 마귀적인 눈멀게 함</span>에 맞서 승리했습니다. 이 세대의 신이 사람들의 눈을 멀게 하고 있으며, 수많은 그리스도인조차도 이 사탄의 눈멀게 함에 괴롭힘을 당하고 있습니다.</p>
 
+          <!-- ★ IG-5: 전선 3 - 영적 시야의 차단 (Pure HTML) -->
+          <div class="figure-block">
+            <div class="ig">
+              <div class="ig-title">전선 3. 영적 시야의 차단 (마귀적인 눈멀게 함)</div>
+              <div class="ig-veil-wrap">
+                <div class="ig-veil-side dark">
+                  <span class="ig-veil-side-icon">💰🏛️⚙️⛓️</span>
+                  <div class="ig-veil-side-title">인간 역사<br>(Human History)</div>
+                  <div class="ig-veil-side-body">돈 · 정부 · 기계 · 체인… 사탄은 사람들의 눈을 가려 하나님께서 우주 가운데 가지신 <strong>'완전한 경륜'</strong>을 보지 못하게 합니다.</div>
+                </div>
+                <div class="ig-veil-divider" aria-hidden="true"></div>
+                <div class="ig-veil-side light">
+                  <span class="ig-veil-side-icon">⛰️✨👑</span>
+                  <div class="ig-veil-side-title">신성한 역사<br>(Divine History)</div>
+                  <div class="ig-veil-side-body">그 이면에서 흐르고 있는 하나님의 역사 — 그러나 이 세대의 신은 수많은 그리스도인들조차 <strong>이것을 보지 못하도록</strong> 집요하게 방해합니다.</div>
+                </div>
+              </div>
+              <div class="ig-funnel-output" style="background:linear-gradient(135deg,#fef3c7,#fef2f2);border-color:#fbbf24;color:#78350f;">
+                👁️ 다니엘과 그의 동반자들은 이 <strong>마귀적인 눈멀게 함</strong>을 이기고, 인간 역사 속에 있는 <strong>신성한 역사 — 산산이 부수는 돌</strong>을 보았습니다.
+              </div>
+            </div>
+            <div class="figure-caption">
+              <span class="caption-tag purple">전선 3</span>이 세대의 신이 인간 역사 이면에 흐르는 <strong>신성한 역사(Divine History)</strong>를 보지 못하도록 집요하게 방해합니다 — 이것이 사탄의 세 번째 책략
+            </div>
+          </div>
+
           <div class="sub-point">
             <div class="sub-point-title">🗿 거대한 형상 — 인간 정부의 총체</div>
             <div class="sub-point-text">
               <strong>금으로 된 머리, 은으로 된 가슴과 등, 놋으로 된 허리와 배, 철로 된 다리, 그리고 반은 철이고 반은 흙으로 된 발과 발가락.</strong> 이것은 인류 역사의 요약이며 인간 정부의 총체를 묘사합니다. 인간 정부의 특징은 언제나 세 가지였습니다: <span class="hl">① 하나님께 반역하는 것, ② 사람을 높이는 것, ③ 우상을 숭배하는 것</span>. 인류 역사 내내 모든 인간 정부 가운데 있었던 특징으로, 예외가 없습니다.
+            </div>
+          </div>
+
+          <!-- ★ IG-6: 해부 - 거대한 인간 형상 (Pure HTML+SVG) -->
+          <div class="figure-block">
+            <div class="ig">
+              <div class="ig-title">해부: 거대한 인간 형상 (인류 역사의 총체)</div>
+              <div class="ig-image-wrap">
+                <div class="ig-image-svg" aria-hidden="true">
+                  <svg viewBox="0 0 120 280" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="gold" x1="0" x2="1" y1="0" y2="1">
+                        <stop offset="0" stop-color="#fde68a"/>
+                        <stop offset="1" stop-color="#d97706"/>
+                      </linearGradient>
+                      <linearGradient id="silver" x1="0" x2="1" y1="0" y2="1">
+                        <stop offset="0" stop-color="#f1f5f9"/>
+                        <stop offset="1" stop-color="#94a3b8"/>
+                      </linearGradient>
+                      <linearGradient id="bronze" x1="0" x2="1" y1="0" y2="1">
+                        <stop offset="0" stop-color="#fed7aa"/>
+                        <stop offset="1" stop-color="#c2410c"/>
+                      </linearGradient>
+                      <linearGradient id="iron" x1="0" x2="1" y1="0" y2="1">
+                        <stop offset="0" stop-color="#9ca3af"/>
+                        <stop offset="1" stop-color="#1f2937"/>
+                      </linearGradient>
+                      <linearGradient id="ironClay" x1="0" x2="1" y1="0" y2="1">
+                        <stop offset="0" stop-color="#78716c"/>
+                        <stop offset="0.5" stop-color="#92400e"/>
+                        <stop offset="1" stop-color="#44403c"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Head (gold) -->
+                    <ellipse cx="60" cy="24" rx="18" ry="22" fill="url(#gold)" stroke="#78350f" stroke-width="1"/>
+                    <!-- Chest & arms (silver) -->
+                    <path d="M 38 50 L 82 50 L 90 90 L 82 110 L 38 110 L 30 90 Z" fill="url(#silver)" stroke="#334155" stroke-width="1"/>
+                    <rect x="20" y="55" width="12" height="55" rx="3" fill="url(#silver)" stroke="#334155" stroke-width="0.8"/>
+                    <rect x="88" y="55" width="12" height="55" rx="3" fill="url(#silver)" stroke="#334155" stroke-width="0.8"/>
+                    <!-- Belly & thighs (bronze) -->
+                    <path d="M 40 110 L 80 110 L 84 175 L 36 175 Z" fill="url(#bronze)" stroke="#7c2d12" stroke-width="1"/>
+                    <!-- Legs (iron) -->
+                    <rect x="40" y="175" width="18" height="65" rx="2" fill="url(#iron)" stroke="#111827" stroke-width="1"/>
+                    <rect x="62" y="175" width="18" height="65" rx="2" fill="url(#iron)" stroke="#111827" stroke-width="1"/>
+                    <!-- Feet & toes (iron + clay) -->
+                    <path d="M 38 240 L 60 240 L 60 265 L 36 265 Z" fill="url(#ironClay)" stroke="#1c1917" stroke-width="1"/>
+                    <path d="M 60 240 L 82 240 L 84 265 L 60 265 Z" fill="url(#ironClay)" stroke="#1c1917" stroke-width="1"/>
+                    <!-- Toe divisions -->
+                    <line x1="44" y1="258" x2="44" y2="265" stroke="#1c1917" stroke-width="0.6"/>
+                    <line x1="50" y1="258" x2="50" y2="265" stroke="#1c1917" stroke-width="0.6"/>
+                    <line x1="56" y1="258" x2="56" y2="265" stroke="#1c1917" stroke-width="0.6"/>
+                    <line x1="66" y1="258" x2="66" y2="265" stroke="#1c1917" stroke-width="0.6"/>
+                    <line x1="72" y1="258" x2="72" y2="265" stroke="#1c1917" stroke-width="0.6"/>
+                    <line x1="78" y1="258" x2="78" y2="265" stroke="#1c1917" stroke-width="0.6"/>
+                    <!-- Connection lines -->
+                    <line x1="78" y1="24" x2="115" y2="24" stroke="#78350f" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <line x1="90" y1="80" x2="115" y2="80" stroke="#334155" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <line x1="84" y1="142" x2="115" y2="142" stroke="#7c2d12" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <line x1="80" y1="208" x2="115" y2="208" stroke="#111827" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <line x1="84" y1="252" x2="115" y2="252" stroke="#1c1917" stroke-width="0.5" stroke-dasharray="2,2"/>
+                  </svg>
+                </div>
+                <div class="ig-image-labels">
+                  <div class="ig-image-label" style="border-left-color:#d97706;">
+                    <div class="ig-image-label-dot" style="background:linear-gradient(135deg,#fde68a,#d97706);"></div>
+                    <div class="ig-image-label-text"><strong>머리 (순금)</strong><small>바빌론 제국</small></div>
+                  </div>
+                  <div class="ig-image-label" style="border-left-color:#94a3b8;">
+                    <div class="ig-image-label-dot" style="background:linear-gradient(135deg,#f1f5f9,#94a3b8);"></div>
+                    <div class="ig-image-label-text"><strong>가슴과 팔 (은)</strong><small>메도-페르시아</small></div>
+                  </div>
+                  <div class="ig-image-label" style="border-left-color:#c2410c;">
+                    <div class="ig-image-label-dot" style="background:linear-gradient(135deg,#fed7aa,#c2410c);"></div>
+                    <div class="ig-image-label-text"><strong>배와 넓적다리 (놋)</strong><small>그리스 제국</small></div>
+                  </div>
+                  <div class="ig-image-label" style="border-left-color:#1f2937;">
+                    <div class="ig-image-label-dot" style="background:linear-gradient(135deg,#9ca3af,#1f2937);"></div>
+                    <div class="ig-image-label-text"><strong>다리 (쇠)</strong><small>로마 제국</small></div>
+                  </div>
+                  <div class="ig-image-label" style="border-left-color:#78350f;">
+                    <div class="ig-image-label-dot" style="background:linear-gradient(135deg,#78716c,#92400e);"></div>
+                    <div class="ig-image-label-text"><strong>발과 발가락 (쇠+진흙)</strong><small>복원된 최종 로마 제국 (적그리스도와 그의 군대)</small></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ig-traits">
+                <div class="ig-traits-title">⚔️ 인간 정부의 3대 특징</div>
+                <div class="ig-traits-list">
+                  <div class="ig-trait"><b>1.</b> 하나님께<br>반역함</div>
+                  <div class="ig-trait"><b>2.</b> 사람을<br>끝없이 높임</div>
+                  <div class="ig-trait"><b>3.</b> 우상숭배에<br>빠짐</div>
+                </div>
+              </div>
+            </div>
+            <div class="figure-caption">
+              <span class="caption-tag gold">해부</span>네 제국의 총체 — 바빌론 → 메도-페르시아 → 그리스 → 로마 → 복원된 최종 로마(적그리스도와 그의 군대). 모든 시대 인간 정부의 3대 특징: <strong>하나님께 반역 · 사람을 높임 · 우상숭배</strong>
             </div>
           </div>
 
@@ -1736,6 +2857,34 @@ body {
             <div class="sub-point-title">👑 돌은 중심, 산은 전부</div>
             <div class="sub-point-text">
               그리스도의 몸이 건축되고 신부가 예비되면, 주님은 그 신부를 그분의 군대로 얻으실 것입니다. 그리스도와 그분의 신부는 단체적인 이기는 이가 되어 <strong>사람의 손으로 뜨지 아니한 돌</strong>이 됩니다. 결국 그 돌은 큰 산이 됩니다. <span class="hl">돌은 중심이신 그리스도요, 산은 전부이신 그리스도</span>입니다. 할렐루야! 거대한 형상을 부수는 돌이 큰 산이 되어 온 땅에 충만하게 될 것입니다.
+            </div>
+          </div>
+
+          <!-- ★ IG-7: 반전 - 산산이 부수는 돌과 큰 산 (Pure HTML) -->
+          <div class="figure-block">
+            <div class="ig">
+              <div class="ig-title">반전: 산산이 부수는 돌과 큰 산</div>
+              <div class="ig-phases">
+                <div class="ig-phase p1">
+                  <span class="ig-phase-badge">PHASE 1</span>
+                  <span class="ig-phase-icon">💥🦶</span>
+                  <div class="ig-phase-title">타격 (Strike)</div>
+                  <div class="ig-phase-body">사람의 손으로 뜨지 않은 돌이 적그리스도와 그의 군대(인간 정부의 최종 형태)를 쳐서 <strong style="color:#fbbf24;">멸절</strong>합니다.</div>
+                </div>
+                <div class="ig-phase-arrow" aria-hidden="true">━▶</div>
+                <div class="ig-phase p2">
+                  <span class="ig-phase-badge">PHASE 2</span>
+                  <span class="ig-phase-icon">⛰️✨</span>
+                  <div class="ig-phase-title">큰 산 (우주적 왕국)</div>
+                  <div class="ig-phase-body">온 땅에 <strong style="color:#fde68a;">충만한 하나님의 왕국</strong>. 큰 산이 되어 세상을 채웁니다.</div>
+                </div>
+              </div>
+              <div class="ig-meaning-box">
+                💎 <strong>사람의 손으로 뜨지 않은 돌:</strong> 단체적인 그리스도 (신랑과 신부, 영적 군대). 돌은 <strong>'중심'</strong>이신 그리스도를 의미합니다. 산은 <strong>'전부'</strong>이신 그리스도를 의미합니다.
+              </div>
+            </div>
+            <div class="figure-caption">
+              <span class="caption-tag rose">반전</span>Phase 1 <strong>타격</strong>(단체적 그리스도가 형상의 발을 침) → Phase 2 <strong>우주적 왕국</strong>(큰 산이 온 땅에 충만). 돌은 '중심'이신 그리스도, 산은 '전부'이신 그리스도
             </div>
           </div>
 
@@ -1781,6 +2930,68 @@ body {
             </div>
           </div>
 
+          <!-- ★ IG-8: 돌이 되는 생명의 순환 (Transformation Flywheel) - Pure HTML+SVG -->
+          <div class="figure-block">
+            <div class="ig">
+              <div class="ig-title">돌이 되는 생명의 순환 (Transformation Flywheel)</div>
+              <div class="ig-flywheel" aria-hidden="true">
+                <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="wheelGrad" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0" stop-color="#86efac"/>
+                      <stop offset="0.5" stop-color="#60a5fa"/>
+                      <stop offset="1" stop-color="#34d399"/>
+                    </linearGradient>
+                    <radialGradient id="centerLight" cx="0.5" cy="0.5" r="0.5">
+                      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+                      <stop offset="1" stop-color="#d1fae5" stop-opacity="0"/>
+                    </radialGradient>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#10b981"/>
+                    </marker>
+                  </defs>
+                  <!-- Center glow -->
+                  <circle cx="110" cy="110" r="60" fill="url(#centerLight)"/>
+                  <!-- Circular flow (ring) -->
+                  <circle cx="110" cy="110" r="75" fill="none" stroke="url(#wheelGrad)" stroke-width="16" opacity="0.35"/>
+                  <!-- Arrow arcs showing direction -->
+                  <path d="M 110 35 A 75 75 0 0 1 175 148" fill="none" stroke="#34d399" stroke-width="3" marker-end="url(#arrowhead)" opacity="0.85"/>
+                  <path d="M 175 148 A 75 75 0 0 1 45 148" fill="none" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrowhead)" opacity="0.85"/>
+                  <path d="M 45 148 A 75 75 0 0 1 110 35" fill="none" stroke="#10b981" stroke-width="3" marker-end="url(#arrowhead)" opacity="0.85"/>
+                  <!-- Sparkles -->
+                  <circle cx="170" cy="50" r="2" fill="#fbbf24" opacity="0.7"/>
+                  <circle cx="50" cy="60" r="1.5" fill="#fbbf24" opacity="0.7"/>
+                  <circle cx="180" cy="170" r="1.8" fill="#fbbf24" opacity="0.7"/>
+                  <circle cx="40" cy="170" r="1.5" fill="#fbbf24" opacity="0.7"/>
+                </svg>
+                <div class="ig-fly-center">Spiritual<br>Transformation<br><small>Flywheel</small></div>
+                <div class="ig-fly-step s1">1. 마심<small>Drink</small></div>
+                <div class="ig-fly-step s2">2. 변화<small>Transform</small></div>
+                <div class="ig-fly-step s3">3. 건축<small>Build</small></div>
+              </div>
+              <div class="ig-fly-desc">
+                <div class="ig-fly-desc-item">
+                  <span class="ig-fly-desc-num">1.</span>
+                  <strong>마심 (Drink)</strong> — 말씀의 순전한 젖(예수님)을 사모하고 들이마심. <em>(벧전 2:2)</em>
+                </div>
+                <div class="ig-fly-desc-item b">
+                  <span class="ig-fly-desc-num">2.</span>
+                  <strong>변화 (Transform)</strong> — 마신 말씀이 내면에 신성한 요소를 주입하여 흙 같은 자아를 <em>'살아 있는 돌(Living Stone)'</em>로 변화시킴.
+                </div>
+                <div class="ig-fly-desc-item g">
+                  <span class="ig-fly-desc-num">3.</span>
+                  <strong>건축 (Build)</strong> — 개인의 돌들이 모여 영적인 집과 거룩한 제사장 체계(그리스도의 신부-군대)로 건축됨. <em>(벧전 2:5)</em>
+                </div>
+              </div>
+              <div class="ig-fly-apply">
+                <b>🔑 적용:</b> 형제자매를 사랑하기 어려울 때, 주님의 젖을 마시면 내면이 변화되어 하나 됨을 이루고 건축의 재료가 됩니다.
+              </div>
+            </div>
+            <div class="figure-caption">
+              <span class="caption-tag teal">변화</span>돌이 되는 생명의 순환 — <strong>마심(벧전 2:2) → 변화 → 건축(벧전 2:5)</strong>. 형제자매를 사랑하기 어려울 때, 주님의 젖을 마시면 내면이 변화되어 하나 됨을 이루고 건축의 재료가 됩니다
+            </div>
+          </div>
+
           <div class="sub-point">
             <div class="sub-point-title">💔 집회에 가기 싫은 형제, 그리고 회복</div>
             <div class="sub-point-text">
@@ -1795,6 +3006,40 @@ body {
       </div>
     </div>
   </div>
+
+  <!-- ★ IG-9: SYNTHESIS - 단체적인 이기는 이의 완성 (Pure HTML) -->
+  <section class="synthesis-section" id="synthesis-section">
+    <div class="synthesis-title">📌 종합 — 단체적인 이기는 이의 완성</div>
+    <div class="synthesis-sub">세 가지 전선에서의 승리가 하나의 방정식으로 통합됩니다</div>
+    <div class="ig-eq-wrap">
+      <div class="ig-eq-card c1">
+        <span class="ig-eq-icon">📜</span>
+        <div class="ig-eq-title">새로운 정체성</div>
+        <div class="ig-eq-sub">우상을 거절하고<br>새 이름을 회복함</div>
+      </div>
+      <div class="ig-eq-op" aria-hidden="true">+</div>
+      <div class="ig-eq-card c2">
+        <span class="ig-eq-icon">🍞</span>
+        <div class="ig-eq-title">생명의 양식</div>
+        <div class="ig-eq-sub">종교적 제도를 넘어<br>매일 예수님을 먹고 마심</div>
+      </div>
+      <div class="ig-eq-op" aria-hidden="true">+</div>
+      <div class="ig-eq-card c3">
+        <span class="ig-eq-icon">💎</span>
+        <div class="ig-eq-title">신성한 이상</div>
+        <div class="ig-eq-sub">인류 역사를 부수는<br>단체적인 돌의 비전</div>
+      </div>
+      <div class="ig-eq-op eq" aria-hidden="true">=</div>
+      <div class="ig-eq-card result">
+        <span class="ig-eq-icon">🛡️👑</span>
+        <div class="ig-eq-title">그리스도의<br>신부이자 군대</div>
+        <div class="ig-eq-sub">(The Corporate Overcomer)</div>
+      </div>
+    </div>
+    <div class="synthesis-callout">
+      <strong>새로운 정체성</strong> + <strong>생명의 양식</strong> + <strong>신성한 이상</strong> = <strong>그리스도의 신부이자 군대</strong>. 장래의 생명나무를 기다리지 마십시오. 오늘 말씀을 기도로 읽어 생명나무를 누리고, 우주적인 거대한 형상을 파쇄할 이기는 이의 대열에 합류하십시오. 주님은 바로 지금, 그분의 교회를 건축하고 계십니다!
+    </div>
+  </section>
 
   <!-- QUIZ -->
   <section class="quiz-section" id="quiz-section">
