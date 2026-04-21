@@ -1,109 +1,165 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
+<!DOCTYPE html><html lang="ko" style="--font-scale: 1.1500000000000001;"><head>
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>우상과 자아를 이기고 하늘의 다스림에 복종하는 이기는 이들</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&amp;family=Noto+Serif+KR:wght@300;400;500;600;700;900&amp;family=Gowun+Batang:wght@400;700&amp;display=swap" rel="stylesheet">
 <style>
+
+/* ============================================================
+   REDESIGN — 따뜻한 에디토리얼 / 묵상의 공간
+   절제된 베이스 + 의도된 3대 앵커
+   ============================================================ */
+
 :root {
-  --base-font-size: 19px;
+  --base-font-size: 17px;
   --font-scale: 1;
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --text-secondary: #333333;
-  --accent-blue: #2563eb;
-  --accent-gold: #d97706;
-  --accent-green: #059669;
-  --accent-red: #dc2626;
-  --accent-purple: #7c3aed;
-  --accent-teal: #0d9488;
-  --accent-indigo: #4f46e5;
-  --accent-rose: #e11d48;
-  --highlight-yellow: #fef08a;
-  --highlight-yellow-strong: #fde047;
-  --card-bg: #ffffff;
-  --card-border: #e5e7eb;
-  --section-bg: #f9fafb;
-  --verse-bg: #fffbeb;
-  --verse-border: #fbbf24;
-  --topbar-h: 44px;
+
+  /* 따뜻한 페이퍼 팔레트 */
+  --paper:        #f5f0e6;
+  --paper-card:   #faf6ec;
+  --paper-verse:  #f0e8d4;
+
+  /* 잉크 — 검정 아닌 따뜻한 갈빛 */
+  --ink:          #1a1410;
+  --ink-soft:     #4a3f36;
+  --ink-mute:     #8a7b6c;
+
+  /* 선 */
+  --line:         #d9cfbc;
+  --line-soft:    #e8dfce;
+
+  /* 단일 강조색 — 딥 버건디 */
+  --accent:       #8b1e2b;
+  --accent-soft:  #b84452;
+  --accent-bg:    #f8e8e4;
+
+  /* 하이라이터 */
+  --marker:       #f0d878;
+
+  /* legacy vars remapped so stray references still render in palette */
+  --bg:                var(--paper);
+  --text:              var(--ink);
+  --text-secondary:    var(--ink-soft);
+  --accent-blue:       var(--accent);
+  --accent-gold:       var(--accent);
+  --accent-green:      var(--ink-soft);
+  --accent-red:        var(--accent);
+  --accent-purple:     var(--ink-soft);
+  --accent-teal:       var(--ink-soft);
+  --accent-indigo:     var(--ink-soft);
+  --accent-rose:       var(--accent);
+  --highlight-yellow:        var(--marker);
+  --highlight-yellow-strong: var(--marker);
+  --card-bg:      var(--paper-card);
+  --card-border:  var(--line-soft);
+  --section-bg:   var(--paper-card);
+  --verse-bg:     var(--paper-verse);
+  --verse-border: var(--accent);
+  --topbar-h: 48px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
-  font-size: calc(var(--base-font-size) * var(--font-scale));
+  font-size: var(--base-font-size);
   scroll-behavior: smooth;
-  scroll-padding-top: 56px;
+  scroll-padding-top: 60px;
+}
+
+/* 상단 고정바를 제외한 모든 컨텐츠를 함께 확대/축소
+   (px/rem 구분 없이 내부의 모든 폰트·여백·이미지가 함께 스케일됨) */
+.container,
+.sidepanel,
+.word-modal-overlay {
+  zoom: var(--font-scale);
 }
 
 body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.75;
+  font-family: 'Noto Serif KR', 'Gowun Batang', serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.9;
+  letter-spacing: -0.01em;
   padding-top: var(--topbar-h);
   -webkit-text-size-adjust: 100%;
-  word-break: keep-all; 
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
   overflow-wrap: break-word;
 }
 
-/* ===== TOP BAR ===== */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(ellipse at top left, rgba(139,30,43,0.025) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(74,63,54,0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== TOP BAR — 조용한 크림 톤 ===== */
 .topbar {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--topbar-h);
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
+  background: rgba(245, 240, 230, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--line);
   display: flex; align-items: center;
-  padding: 0 8px;
+  padding: 0 10px;
   z-index: 1000;
   gap: 4px;
 }
 .topbar-btn {
   flex-shrink: 0;
-  width: 34px; height: 34px;
+  width: 36px; height: 36px;
   border: none; background: none;
-  border-radius: 8px; cursor: pointer;
+  border-radius: 4px; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  color: #333; font-size: 18px;
+  color: var(--ink-soft);
   transition: background .15s;
 }
-.topbar-btn:hover { background: #f3f4f6; }
+.topbar-btn:hover { background: var(--line-soft); }
 .topbar-title {
   flex: 1; min-width: 0;
   overflow-x: auto;
   white-space: nowrap;
-  font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
   font-weight: 600;
-  color: #1a1a1a;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 0 4px;
+  padding: 0 6px;
 }
 .topbar-title::-webkit-scrollbar { display: none; }
 .font-controls {
   flex-shrink: 0;
   display: flex; align-items: center; gap: 2px;
-  background: #f3f4f6;
-  border-radius: 8px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
   padding: 2px;
 }
 .font-ctrl-btn {
   width: 30px; height: 30px;
   border: none; background: none;
-  border-radius: 6px; cursor: pointer;
-  font-size: 14px; font-weight: 600;
-  color: #333;
+  border-radius: 3px; cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--ink-soft);
   display: flex; align-items: center; justify-content: center;
   transition: background .15s;
 }
-.font-ctrl-btn:hover { background: #e5e7eb; }
+.font-ctrl-btn:hover { background: var(--line-soft); }
 
 /* ===== SIDE PANEL ===== */
 .overlay {
   position: fixed; inset: 0;
-  background: rgba(0,0,0,.3);
+  background: rgba(26, 20, 16, 0.35);
   z-index: 1001;
   opacity: 0; pointer-events: none;
   transition: opacity .25s;
@@ -111,585 +167,850 @@ body {
 .overlay.open { opacity: 1; pointer-events: auto; }
 .sidepanel {
   position: fixed; top: 0; left: 0; bottom: 0;
-  width: 280px; max-width: 80vw;
-  background: #fff;
+  width: 300px; max-width: 82vw;
+  background: var(--paper);
   z-index: 1002;
   transform: translateX(-100%);
   transition: transform .3s cubic-bezier(.4,0,.2,1);
   overflow-y: auto;
   padding: 20px 0;
-  box-shadow: 4px 0 24px rgba(0,0,0,.1);
+  box-shadow: 4px 0 28px rgba(26,20,16,.12);
+  font-family: 'Noto Sans KR', sans-serif;
 }
 .sidepanel.open { transform: translateX(0); }
 .sidepanel-header {
-  padding: 0 20px 16px;
-  border-bottom: 1px solid #e5e7eb;
-  margin-bottom: 8px;
-  font-size: 15px; font-weight: 700;
-  color: var(--accent-blue);
+  padding: 0 22px 16px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 12px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
   display: flex; align-items: center; gap: 8px;
 }
 .sidepanel-close {
   margin-left: auto;
-  width: 30px; height: 30px;
-  border: none; background: #f3f4f6;
-  border-radius: 8px; cursor: pointer;
-  font-size: 16px; color: #666;
+  width: 28px; height: 28px;
+  border: none; background: transparent;
+  border-radius: 3px; cursor: pointer;
+  font-size: 14px; color: var(--ink-mute);
   display: flex; align-items: center; justify-content: center;
 }
+.sidepanel-close:hover { background: var(--line-soft); color: var(--ink); }
 .nav-item {
   display: block;
-  padding: 10px 20px;
-  font-size: 14px;
-  color: #333;
+  padding: 10px 22px;
+  font-size: 13px;
+  color: var(--ink-soft);
   text-decoration: none;
   cursor: pointer;
-  transition: background .15s;
+  transition: background .15s, color .15s;
   font-weight: 500;
+  letter-spacing: -0.005em;
 }
-.nav-item:hover { background: #f3f4f6; }
+.nav-item:hover { background: var(--paper-card); color: var(--ink); }
 .nav-item.sub {
-  padding-left: 36px;
-  font-size: 13px;
+  padding-left: 38px;
+  font-size: 12.5px;
   font-weight: 400;
-  color: #555;
+  color: var(--ink-mute);
 }
 .nav-divider {
   height: 1px;
-  background: #e5e7eb;
-  margin: 8px 20px;
+  background: var(--line);
+  margin: 10px 22px;
 }
 .keyword-tag {
   display: inline-block;
   padding: 4px 12px;
   margin: 3px;
-  background: #f3f4f6;
-  border-radius: 20px;
-  font-size: 13px;
-  color: #333;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+  font-size: 12px;
+  color: var(--ink-soft);
   cursor: pointer;
   transition: all .2s;
-  border: 1px solid transparent;
+  font-weight: 500;
 }
 .keyword-tag:hover, .keyword-tag.active {
-  background: #fef3c7;
-  border-color: #fbbf24;
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
 }
 .keyword-def {
   display: none;
-  padding: 8px 20px 12px 36px;
-  font-size: 13px;
-  color: #555;
-  line-height: 1.6;
-  background: #fefce8;
-  border-left: 3px solid #fbbf24;
-  margin: 0 20px 4px;
-  border-radius: 0 8px 8px 0;
+  padding: 12px 22px 14px 38px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  background: var(--paper-card);
+  border-left: 2px solid var(--accent);
+  margin: 4px 22px;
+  border-radius: 0 3px 3px 0;
+  font-family: 'Noto Serif KR', serif;
 }
 .keyword-def.show { display: block; }
 
-/* ===== MAIN CONTENT ===== */
+/* ===== MAIN CONTAINER ===== */
 .container {
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 20px 16px 60px;
+  padding: 40px 22px 80px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Series Tag */
+/* ===== HERO / SERIES META ===== */
 .series-tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-  color: #fff;
-  border-radius: 8px;
-  font-size: 0.78rem;
+  gap: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.3px;
-  margin-bottom: 14px;
-  box-shadow: 0 3px 10px rgba(30, 64, 175, 0.25);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  margin-bottom: 16px;
 }
 .series-tag::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  background: #fbbf24;
-  border-radius: 50%;
-  box-shadow: 0 0 6px #fbbf24;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  border-radius: 0;
+  box-shadow: none;
 }
 
-/* Hero */
 .hero {
-  text-align: center;
-  padding: 32px 16px 28px;
+  text-align: left;
+  padding: 8px 0 4px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 .hero-badge {
   display: inline-block;
-  padding: 4px 16px;
-  background: #eff6ff;
-  color: var(--accent-blue);
-  border-radius: 20px;
-  font-size: 0.75rem;
+  padding: 0;
+  background: none;
+  color: var(--ink-mute);
+  border-radius: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
   font-weight: 600;
-  margin-bottom: 16px;
-  letter-spacing: .5px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-badge::before {
+  content: '— ';
+  color: var(--accent);
+  font-weight: 700;
 }
 .hero h1 {
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2rem;
+  font-weight: 900;
   line-height: 1.4;
-  color: #111;
-  margin-bottom: 8px;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  margin-bottom: 22px;
 }
 .hero h1 .highlight-word {
-  background: linear-gradient(180deg, transparent 50%, var(--highlight-yellow) 50%);
-  padding: 0 4px;
+  background: linear-gradient(180deg, transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  padding: 0 3px;
 }
 .hero-sub {
-  font-size: 0.9rem;
-  color: #555;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  color: var(--ink-soft);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.85;
+  padding-left: 18px;
+  border-left: 2px solid var(--line);
 }
 
-/* Verse Analysis (Aramaic Text) */
+/* ===== Aramaic verse analysis ===== */
 .verse-analysis {
-  margin-top: 28px;
+  margin-top: 40px;
   text-align: left;
 }
 .verse-compare {
-  background: #fffbeb;
-  border: 1px solid #fde68a;
-  border-radius: 12px;
-  padding: 18px 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.1);
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  padding: 24px 22px;
+  margin-bottom: 24px;
+  box-shadow: none;
 }
 .verse-row {
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px dashed #fcd34d;
+  border-bottom: 1px dashed var(--line);
 }
 .verse-row:last-child {
   border-bottom: none; margin-bottom: 0; padding-bottom: 0;
 }
 .v-label {
-  font-size: 0.75rem; font-weight: 800; color: #b45309; margin-bottom: 8px;
-  display: inline-flex; align-items: center; gap: 4px; background: #fef3c7; padding: 4px 10px; border-radius: 6px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: none; padding: 0; border-radius: 0;
 }
-.v-text { font-size: 1rem; color: #111; font-weight: 700; margin-bottom: 12px; line-height: 1.7; }
-.v-eng { font-size: 0.92rem; color: #334155; font-weight: 500; margin-bottom: 12px; line-height: 1.5; font-family: 'Georgia', serif; }
-.v-grk { font-size: 1.05rem; color: #92400e; font-family: 'Times New Roman', serif; line-height: 1.6; margin-bottom: 16px; }
-
-.v-lit { 
-  font-size: 0.85rem; color: #1a1a1a; background: #fff; padding: 10px 12px; 
-  border-radius: 8px; border: 1px solid #fde68a; line-height: 1.5; font-weight: 500;
+.v-label svg { display: none; }
+.v-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16.5px;
+  color: var(--ink);
+  font-weight: 500;
+  margin-bottom: 14px;
+  line-height: 1.85;
+  letter-spacing: -0.01em;
 }
-.v-lit strong { color: var(--accent-gold); }
+.v-text b { color: var(--ink); font-weight: 700; }
+.v-eng {
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-mute);
+  font-style: italic;
+  margin-bottom: 14px;
+  line-height: 1.7;
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+.v-grk {
+  font-size: 1rem;
+  color: var(--accent);
+  font-family: 'Times New Roman', serif;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
 
-/* Interactive Aramaic Word Boxes */
+.v-lit {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  background: var(--paper-verse);
+  padding: 14px 16px;
+  border-radius: 3px;
+  border: none;
+  border-left: 2px solid var(--accent);
+  line-height: 1.8;
+  font-weight: 400;
+}
+.v-lit strong { color: var(--accent); font-weight: 700; }
+
+/* Aramaic word boxes — quieter, warmer */
 .v-grk-container {
-  display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; justify-content: flex-start;
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 18px; justify-content: flex-start;
 }
 .grk-pair {
   display: flex; flex-direction: column; align-items: center; text-align: center;
-  background: #fff; border: 1px solid #fde68a; border-radius: 8px; padding: 12px 10px;
-  box-shadow: 0 2px 6px rgba(251, 191, 36, 0.1); min-width: 68px;
-  cursor: pointer; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+  padding: 10px 8px;
+  box-shadow: none;
+  min-width: 68px;
+  cursor: pointer;
+  transition: transform .2s, border-color .2s, background .2s;
   position: relative;
 }
 .grk-pair:hover {
-  transform: translateY(-3px); border-color: var(--accent-blue);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--paper-card);
+  box-shadow: none;
 }
 .grk-pair.non-clickable {
-  cursor: default; background: #fafafa; border-color: #e5e7eb; box-shadow: none;
+  cursor: default; background: transparent; border-color: var(--line-soft);
 }
 .grk-pair.non-clickable:hover {
-  transform: none; border-color: #e5e7eb; box-shadow: none;
+  transform: none; border-color: var(--line-soft); background: transparent;
 }
 .click-hint {
   position: absolute; top: -6px; right: -6px;
-  background: var(--accent-blue); color: #fff;
-  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); color: var(--paper);
+  width: 16px; height: 16px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  font-size: 9px; box-shadow: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
 }
 .grk-pair .grk {
-  font-size: 1.35rem; color: #92400e; font-family: 'Times New Roman', serif;
-  line-height: 1.2; letter-spacing: 0.3px; font-weight: 600; margin-bottom: 2px;
+  font-size: 1.25rem; color: var(--accent);
+  font-family: 'Times New Roman', serif;
+  line-height: 1.2; letter-spacing: 0.3px;
+  font-weight: 600; margin-bottom: 2px;
   direction: rtl;
 }
 .grk-pair .pron {
-  font-size: 0.72rem; color: #d97706; font-style: normal; letter-spacing: -0.5px; margin-bottom: 8px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px; color: var(--ink-mute);
+  letter-spacing: 0; margin-bottom: 8px;
+  font-weight: 500;
 }
 .grk-pair .kor {
-  font-size: 0.85rem; color: #1a1a1a; font-weight: 700; margin-bottom: 2px; line-height: 1.2;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px; color: var(--ink);
+  font-weight: 700; margin-bottom: 2px; line-height: 1.2;
 }
 .grk-pair .eng {
-  font-size: 0.8rem; color: #475569; font-family: 'Georgia', serif; font-style: italic; line-height: 1.2;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 11.5px; color: var(--ink-mute);
+  font-style: italic; line-height: 1.2;
 }
 
 .instruction-text {
-  font-size: 0.8rem; color: #b45309; text-align: center; margin-top: 14px; font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px; color: var(--ink-mute);
+  text-align: center; margin-top: 14px;
+  font-weight: 600; letter-spacing: 0.08em;
   display: flex; align-items: center; justify-content: center; gap: 6px;
-  background: #fef3c7; padding: 6px; border-radius: 8px;
+  background: none; padding: 8px 0; border-radius: 0;
+  border-top: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--line);
 }
 
-/* Word Modal (Popup) */
+/* Word Modal */
 .word-modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-  z-index: 10000; display: none; align-items: center; justify-content: center;
+  position: fixed; inset: 0;
+  background: rgba(26,20,16,0.55);
+  z-index: 10000;
+  display: none; align-items: center; justify-content: center;
   opacity: 0; transition: opacity 0.3s;
   padding: 16px;
 }
 .word-modal-overlay.show { display: flex; opacity: 1; }
 .word-modal {
-  background: #fff; border-radius: 16px; width: 100%; max-width: 420px;
-  padding: 24px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transform: translateY(20px); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: var(--paper);
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  width: 100%; max-width: 440px;
+  padding: 28px 24px;
+  box-shadow: 0 16px 40px rgba(26,20,16,0.25);
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
 }
 .word-modal-overlay.show .word-modal { transform: translateY(0); }
 .word-modal-close {
-  position: absolute; top: 16px; right: 16px;
-  background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; cursor: pointer;
-  font-size: 16px; color: #666; transition: background 0.2s;
+  position: absolute; top: 14px; right: 14px;
+  background: transparent;
+  border: 1px solid var(--line);
+  width: 30px; height: 30px; border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 14px; color: var(--ink-mute);
+  transition: all .2s;
 }
-.word-modal-close:hover { background: #e5e7eb; }
-.word-modal-grk { font-size: 2rem; font-weight: 700; color: var(--accent-gold); font-family: 'Times New Roman', serif; margin-bottom: 2px; direction: rtl; }
-.word-modal-pron { font-size: 0.85rem; color: #b45309; margin-bottom: 12px; letter-spacing: 0.5px; }
-.word-modal-kr { font-size: 1.25rem; font-weight: 800; color: #111; margin-bottom: 6px; }
-.word-modal-grammar { font-size: 0.78rem; color: #64748b; margin-bottom: 8px; }
-.word-modal-mean { font-size: 0.85rem; color: #1e40af; background: #eff6ff; padding: 4px 10px; border-radius: 6px; display: inline-block; font-weight: 600; margin-bottom: 16px; border: 1px solid #bfdbfe; }
-.word-modal-desc { font-size: 0.95rem; color: #333; line-height: 1.7; border-top: 1px dashed #e5e7eb; padding-top: 16px; }
-.word-modal-desc strong { color: var(--accent-blue); background: linear-gradient(180deg, transparent 60%, #dbeafe 60%); }
+.word-modal-close:hover {
+  background: var(--accent); color: var(--paper); border-color: var(--accent);
+}
+.word-modal-grk {
+  font-size: 1.9rem; font-weight: 700;
+  color: var(--accent);
+  font-family: 'Times New Roman', serif;
+  margin-bottom: 4px; direction: rtl;
+}
+.word-modal-pron {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px; color: var(--ink-mute);
+  margin-bottom: 14px; letter-spacing: 0.08em;
+}
+.word-modal-kr {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.35rem; font-weight: 800;
+  color: var(--ink); margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.word-modal-grammar {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px; color: var(--ink-mute);
+  margin-bottom: 10px; letter-spacing: 0.04em;
+}
+.word-modal-mean {
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 13px; color: var(--accent);
+  background: var(--paper-verse);
+  padding: 4px 12px; border-radius: 3px;
+  display: inline-block; font-weight: 600;
+  margin-bottom: 18px;
+  border: none;
+  border-left: 2px solid var(--accent);
+  font-style: italic;
+}
+.word-modal-desc {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px; color: var(--ink-soft);
+  line-height: 1.85;
+  border-top: 1px dashed var(--line);
+  padding-top: 18px;
+}
+.word-modal-desc strong {
+  color: var(--ink); font-weight: 700;
+  background: linear-gradient(180deg, transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  padding: 0 2px;
+}
 
-/* Dashboard */
+/* ===== DASHBOARD ===== */
 .dashboard {
-  margin: 24px 0;
-  padding: 20px 16px;
-  background: #f8fafc;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  margin: 40px 0;
+  padding: 28px 26px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
 }
 .dashboard-title {
-  font-size: 0.85rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--accent-blue);
-  margin-bottom: 16px;
-  display: flex; align-items: center; gap: 6px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px;
 }
+.dashboard-title svg { display: none; }
+
+.core-message {
+  background: transparent;
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 22px;
+  border-radius: 0;
+  margin: 0 0 28px;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+}
+.core-message strong {
+  color: var(--ink);
+  font-weight: 700;
+  font-style: normal;
+  background: linear-gradient(180deg, transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  padding: 0 2px;
+}
+
 .dash-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 22px 24px;
 }
 .dash-card {
-  padding: 14px 12px;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  text-align: center;
-  display: flex; flex-direction: column; justify-content: center;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  text-align: left;
+  display: block;
 }
-.dash-icon {
-  font-size: 1.4rem;
-  margin-bottom: 6px;
-}
+.dash-icon { display: none; }
 .dash-label {
-  font-size: 0.72rem;
-  color: #666;
-  font-weight: 500;
-  margin-bottom: 2px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 .dash-value {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #111;
-  line-height: 1.4;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
 }
 
-/* Flow connector */
+/* ===== FLOW SECTION ===== */
 .flow-section {
-  margin: 28px 0;
+  margin: 56px 0;
 }
 .flow-title {
-  font-size: 0.85rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--accent-blue);
-  margin-bottom: 16px;
-  display: flex; align-items: center; gap: 6px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px;
 }
+.flow-title svg { display: none; }
 .flow-steps {
   position: relative;
-  padding-left: 28px;
+  padding-left: 32px;
 }
 .flow-steps::before {
   content: '';
   position: absolute;
-  left: 11px; top: 12px; bottom: 12px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--accent-red), var(--accent-gold), var(--accent-purple));
-  border-radius: 2px;
+  left: 11px; top: 14px; bottom: 14px;
+  width: 1px;
+  background: var(--line);
+  border-radius: 0;
 }
 .flow-step {
   position: relative;
-  padding: 8px 0 20px;
+  padding: 4px 0 22px;
 }
 .flow-step:last-child { padding-bottom: 0; }
 .flow-dot {
   position: absolute;
-  left: -28px; top: 12px;
+  left: -32px; top: 4px;
   width: 22px; height: 22px;
   border-radius: 50%;
+  background: var(--paper) !important;
+  border: 1px solid var(--accent);
   display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif;
   font-size: 11px;
-  color: #fff;
+  color: var(--accent);
   font-weight: 700;
   z-index: 1;
 }
 .flow-step-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 2px;
-}
-.flow-step-desc {
-  font-size: 0.76rem;
-  color: #666;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.015em;
   line-height: 1.5;
 }
+.flow-step-desc {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
 
-/* Keywords inline section */
+/* ===== KEYWORDS ===== */
 .keywords-section {
-  margin: 24px 0;
-  padding: 16px;
-  background: #f0f9ff;
-  border-radius: 12px;
-  border: 1px solid #bae6fd;
+  margin: 48px 0;
+  padding: 26px 24px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
 }
 .keywords-section-title {
-  font-size: 0.85rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--accent-blue);
-  margin-bottom: 12px;
-  display: flex; align-items: center; gap: 6px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 8px;
 }
+.keywords-section-title svg { display: none; }
 .kw-container {
-  display: flex; flex-wrap: wrap; gap: 6px;
+  display: flex; flex-wrap: wrap; gap: 8px;
 }
 .kw-chip {
   display: inline-flex; align-items: center; gap: 4px;
-  padding: 6px 14px;
-  background: #fff;
-  border: 1px solid #dbeafe;
-  border-radius: 20px;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: #1e40af;
+  padding: 8px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
   cursor: pointer;
   transition: all .2s;
+  letter-spacing: 0;
 }
-.kw-chip:hover { background: #fef3c7; border-color: #fde68a; }
+.kw-chip:hover, .kw-chip.active {
+  background: var(--accent); border-color: var(--accent);
+  color: var(--paper);
+}
 .kw-tooltip {
   display: none;
-  margin-top: 10px;
-  padding: 12px 14px;
-  background: #fffbeb;
-  border-radius: 10px;
-  border: 1px solid #fde68a;
-  font-size: 0.8rem;
-  color: #333;
-  line-height: 1.6;
+  margin-top: 14px;
+  padding: 16px 18px;
+  background: var(--paper-verse);
+  border-radius: 3px;
+  border: none;
+  border-left: 2px solid var(--accent);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.8;
 }
 .kw-tooltip.show { display: block; }
 
-/* Accordion */
+/* ===== ACCORDION ===== */
 .accordion-group {
-  margin: 24px 0;
+  margin: 48px 0;
 }
 .accordion-group-title {
-  font-size: 0.9rem;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 64px 0 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  display: block;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+  position: relative;
+}
+.accordion-group-title::before {
+  content: 'CORE';
+  display: block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  color: #111;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #e5e7eb;
-  display: flex; align-items: center; gap: 8px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  margin-bottom: 10px;
 }
+.accordion-group-title svg { display: none; }
+
 .accordion {
-  margin-bottom: 12px;
-  border-radius: 14px;
+  margin-bottom: 14px;
+  border-radius: 4px;
   overflow: hidden;
-  border: 1px solid #e5e7eb;
-  transition: box-shadow .3s;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  transition: border-color .25s;
+  box-shadow: none;
 }
-.accordion:hover { box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.accordion:hover { border-color: var(--line); box-shadow: none; }
+.accordion.open { border-color: var(--line); }
+
 .accordion-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 14px 16px;
-  background: #fff;
+  display: flex; align-items: flex-start; gap: 18px;
+  padding: 22px 24px;
+  background: transparent;
   cursor: pointer;
   user-select: none;
   transition: background .2s;
 }
-.accordion-header:hover { background: #f9fafb; }
-.acc-icon {
-  flex-shrink: 0;
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
-}
+.accordion-header:hover { background: rgba(139,30,43,0.025); }
+
+/* ── 번호 배지 ── */
+.acc-icon { display: none; }
 .acc-number {
   flex-shrink: 0;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; 
+  width: auto; height: auto;
+  background: transparent !important;
+  border-radius: 0;
+  color: var(--accent) !important;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
   font-weight: 700;
-  color: #fff;
+  letter-spacing: 0.18em;
+  padding-top: 4px;
+  min-width: 36px;
+  display: block;
+  text-align: left;
   text-transform: uppercase;
 }
+
+/* ── 🔥 제목 — 항상 크고 선명하게 ── */
 .acc-title-text {
   flex: 1;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  line-height: 1.4;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  letter-spacing: -0.018em;
 }
+
+/* hide stamp tags inside accordion titles (they were colored category chips) */
+.acc-title-text .point-tag { display: none; }
+
 .acc-chevron {
   flex-shrink: 0;
-  width: 24px; height: 24px;
+  width: 22px; height: 22px;
   display: flex; align-items: center; justify-content: center;
   transition: transform .3s;
-  color: #999;
-  font-size: 14px;
+  color: var(--ink-mute);
+  font-size: 11px;
+  padding-top: 4px;
 }
-.accordion.open .acc-chevron { transform: rotate(180deg); }
+.accordion.open .acc-chevron { transform: rotate(180deg); color: var(--accent); }
+
 .accordion-body {
   max-height: 0;
   overflow: hidden;
   transition: max-height .4s cubic-bezier(.4,0,.2,1);
 }
 .accordion-content {
-  padding: 0 16px 18px;
+  padding: 4px 24px 26px 78px;
+  border-top: 1px dashed var(--line);
+  padding-top: 22px;
+  margin-top: 0;
 }
 
-/* Point Tag Design */
+/* ===== POINT TAGS (kept simple, muted) ===== */
 .point-tag {
-  display: inline-block;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  margin-right: 6px;
-  vertical-align: middle;
-  transform: translateY(-1px);
+  display: none;
 }
-.tag-red { background: #fef2f2; color: var(--accent-red); border: 1px solid #fecaca; }
-.tag-gold { background: #fffbeb; color: var(--accent-gold); border: 1px solid #fde68a; }
-.tag-teal { background: #f0fdfa; color: var(--accent-teal); border: 1px solid #ccfbf1; }
-.tag-blue { background: #eff6ff; color: var(--accent-blue); border: 1px solid #bfdbfe; }
-.tag-indigo { background: #eef2ff; color: var(--accent-indigo); border: 1px solid #c7d2fe; }
-.tag-rose { background: #fff1f2; color: var(--accent-rose); border: 1px solid #fecdd3; }
-.tag-green { background: #f0fdf4; color: var(--accent-green); border: 1px solid #bbf7d0; }
-.tag-purple { background: #faf5ff; color: var(--accent-purple); border: 1px solid #e9d5ff; }
 
-/* Bible verse block */
+/* ===== VERSE BLOCK — 본문과 분명히 차별 ===== */
 .verse-block {
-  padding: 12px 14px;
-  background: var(--verse-bg);
-  border-left: 3px solid var(--verse-border);
-  border-radius: 0 10px 10px 0;
-  margin-bottom: 14px;
+  position: relative;
+  padding: 22px 24px 22px 26px;
+  background: var(--paper-verse);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  margin: 22px 0;
+}
+.verse-block::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 3rem;
+  color: var(--accent);
+  opacity: 0.28;
+  line-height: 1;
+  font-weight: 900;
 }
 .verse-ref {
   display: flex; align-items: center; gap: 6px;
-  font-size: 0.75rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
   font-weight: 700;
-  color: #b45309;
-  margin-bottom: 6px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
 }
-.verse-ref svg { flex-shrink: 0; }
+.verse-ref svg { display: none; }
 .verse-text {
-  font-size: 0.84rem;
-  color: #78350f;
-  line-height: 1.7;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  letter-spacing: -0.01em;
 }
+.verse-text b { color: var(--ink); font-weight: 700; }
 .verse-text + .verse-text {
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px dashed #fde68a;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
 }
 
-/* Content text */
+/* ===== PROSE ===== */
 .content-text {
-  font-size: 0.92rem;
-  color: #1a1a1a;
-  line-height: 1.8;
-  margin-bottom: 12px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.9;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
 }
 .content-text:last-child { margin-bottom: 0; }
-.hl {
-  background: var(--highlight-yellow);
-  padding: 1px 4px;
-  border-radius: 3px;
-  font-weight: 600;
-}
-.bold { font-weight: 700; }
-.sub-point {
-  padding: 10px 14px;
-  background: #f8fafc;
-  border-radius: 10px;
-  margin: 10px 0;
-  border: 1px solid #e2e8f0;
-}
-.sub-point-title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #334155;
-  margin-bottom: 4px;
-}
-.sub-point-text {
-  font-size: 0.84rem;
-  color: #475569;
-  line-height: 1.7;
-}
-.result-tag {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 6px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  margin: 2px 4px 2px 0;
+
+/* drop cap on first content-text of each accordion-content */
+.accordion-content > .content-text:first-child::first-letter {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 3.4em;
+  font-weight: 900;
+  float: left;
+  line-height: 0.88;
+  margin: 8px 8px -4px 0;
+  color: var(--accent);
 }
 
-/* Comparison Table (형상 vs 넷째 사람 등) */
+.hl {
+  background: linear-gradient(180deg, transparent 55%, var(--marker) 55%, var(--marker) 92%, transparent 92%);
+  padding: 0 2px;
+  border-radius: 0;
+  font-weight: 500;
+}
+.bold, .content-text strong { font-weight: 700; color: var(--ink); }
+
+.sub-point {
+  padding: 18px 22px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  border-left: 2px solid var(--ink-mute);
+  margin: 22px 0;
+}
+.sub-point-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.sub-point-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  letter-spacing: -0.01em;
+}
+.sub-point-text strong { color: var(--ink); font-weight: 700; }
+
+.result-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--paper-card) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 3px 4px 3px 0;
+}
+
+/* ===== COMPARISON TABLE (천연 vs 이기는 이) ===== */
 .name-table {
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
+  background: var(--paper-card);
+  border-radius: 4px;
+  border: 1px solid var(--line-soft);
   overflow: hidden;
-  margin: 14px 0;
+  margin: 22px 0;
 }
 .name-row {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 12px;
-  border-bottom: 1px solid #f3f4f6;
-  gap: 8px;
+  padding: 16px 14px;
+  border-bottom: 1px dashed var(--line);
+  gap: 10px;
 }
 .name-row:last-child { border-bottom: none; }
 .name-row.header {
-  background: #f8fafc;
-  font-size: 0.72rem;
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
   font-weight: 700;
-  color: #64748b;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
 }
 .name-cell {
   display: flex;
@@ -697,262 +1018,331 @@ body {
   text-align: center;
 }
 .name-cell .nm {
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: #111;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.45;
 }
 .name-cell .mn {
-  font-size: 0.7rem;
-  color: #666;
-  margin-top: 2px;
-  font-weight: 500;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin-top: 4px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
 }
-.name-cell.original .nm { color: var(--accent-red); }
-.name-cell.changed .nm { color: var(--accent-blue); }
+.name-cell.original .nm { color: var(--ink-mute); }
+.name-cell.changed .nm { color: var(--accent); }
 .name-arrow {
-  color: #cbd5e1;
-  font-size: 16px;
-  font-weight: 700;
+  color: var(--line);
+  font-size: 14px;
+  font-weight: 400;
 }
 
-/* Connector arrows between sections */
+/* ===== SECTION CONNECTOR (arrows) ===== */
 .section-connector {
   text-align: center;
-  padding: 8px 0;
-  color: #cbd5e1;
-  font-size: 20px;
+  padding: 14px 0;
+  color: var(--line);
+  font-size: 14px;
+  letter-spacing: 0.4em;
 }
 
-/* Step styling & Core Message */
-.hero-tag {
-  display: inline-block;
-  padding: 4px 12px;
-  background: #f1f5f9;
-  color: #475569;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-.core-message {
-  background: #eff6ff;
-  border-left: 4px solid var(--accent-blue);
-  padding: 16px;
-  border-radius: 0 12px 12px 0;
-  margin-bottom: 20px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #1e40af;
-  line-height: 1.6;
-}
+/* ===== STEP HEADER — 섹션 번호 시그니처 디테일 ===== */
 .step-header {
-  background: var(--text);
-  color: #fff;
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin: 32px 0 12px 0;
+  display: block;
+  background: transparent !important;
+  color: var(--ink) !important;
+  padding: 0 0 22px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  font-family: 'Noto Serif KR', serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.4 !important;
+  margin: 72px 0 28px !important;
+  position: relative;
 }
-.step-header:first-child { margin-top: 0; }
+.step-header::before {
+  content: attr(data-kicker);
+  display: block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.step-header:first-child { margin-top: 0 !important; }
+
 .step-connector {
-  margin: 16px 0;
-  padding: 14px 16px;
-  background: #f8fafc;
-  border: 1px dashed #cbd5e1;
-  border-radius: 12px;
-  font-size: 0.88rem;
-  color: #475569;
-  text-align: center;
-  line-height: 1.6;
-  word-break: keep-all;
+  margin: 28px 0;
+  padding: 6px 0 6px 26px;
+  background: transparent;
+  border: none;
+  border-left: 3px solid var(--accent);
+  border-radius: 0;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  text-align: left;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
 }
 .step-connector strong {
-  color: var(--accent-blue);
+  color: var(--ink);
+  font-weight: 700;
+  font-style: normal;
 }
 
-/* Quiz */
+/* ===== QUIZ ===== */
 .quiz-section {
-  margin: 32px 0;
-  padding: 20px 16px;
-  background: #f0fdf4;
-  border-radius: 16px;
-  border: 1px solid #bbf7d0;
+  margin: 64px 0 40px;
+  padding: 28px 24px 30px;
+  background: var(--paper-card);
+  border-radius: 4px;
+  border: 1px solid var(--line-soft);
 }
 .quiz-title {
-  font-size: 0.9rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--accent-green);
-  margin-bottom: 16px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
   display: flex; align-items: center; gap: 8px;
 }
+.quiz-title svg { display: none; }
 .quiz-item {
-  margin-bottom: 20px;
-  padding: 16px;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #d1fae5;
+  margin-bottom: 22px;
+  padding: 20px;
+  background: var(--paper);
+  border-radius: 3px;
+  border: 1px solid var(--line-soft);
 }
 .quiz-q {
-  display: flex; align-items: flex-start; gap: 10px;
-  margin-bottom: 12px;
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 14px;
 }
 .quiz-badge {
   flex-shrink: 0;
   width: 28px; height: 28px;
-  background: var(--accent-green);
-  color: #fff;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.78rem;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 12.5px;
   font-weight: 700;
 }
 .quiz-q-text {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #111;
-  line-height: 1.5;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.55;
   padding-top: 2px;
+  letter-spacing: -0.015em;
 }
 .quiz-options { display: flex; flex-direction: column; gap: 8px; }
 .quiz-opt {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: flex-start; gap: 12px;
   padding: 12px 14px;
-  background: #f9fafb;
-  border: 2px solid #e5e7eb;
-  border-radius: 10px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
   cursor: pointer;
   transition: all .2s;
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.5;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
 }
-.quiz-opt:hover { border-color: #a7f3d0; background: #f0fdf4; }
-.quiz-opt.selected { border-color: var(--accent-blue); background: #eff6ff; }
-.quiz-opt.correct { border-color: #22c55e; background: #f0fdf4; }
-.quiz-opt.wrong { border-color: #ef4444; background: #fef2f2; }
+.quiz-opt:hover { border-color: var(--accent-soft); background: var(--paper); }
+.quiz-opt.selected { border-color: var(--accent); background: var(--paper); color: var(--ink); }
+.quiz-opt.correct { border-color: var(--accent); background: var(--paper-verse); color: var(--ink); }
+.quiz-opt.wrong { border-color: var(--line); background: var(--paper-card); color: var(--ink-mute); text-decoration: line-through; }
 .quiz-opt-marker {
   flex-shrink: 0;
-  width: 24px; height: 24px;
-  border: 2px solid #ccc;
+  width: 22px; height: 22px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-mute);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px; font-weight: 700;
   transition: all .2s;
+  margin-top: 2px;
 }
-.quiz-opt.selected .quiz-opt-marker { border-color: var(--accent-blue); color: var(--accent-blue); }
-.quiz-opt.correct .quiz-opt-marker { border-color: #22c55e; background: #22c55e; color: #fff; }
-.quiz-opt.wrong .quiz-opt-marker { border-color: #ef4444; background: #ef4444; color: #fff; }
+.quiz-opt.selected .quiz-opt-marker { border-color: var(--accent); color: var(--accent); background: var(--paper); }
+.quiz-opt.correct .quiz-opt-marker { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+.quiz-opt.wrong .quiz-opt-marker { border-color: var(--line); background: var(--paper); color: var(--ink-mute); }
+
 .quiz-hint-btn {
   display: inline-flex; align-items: center; gap: 4px;
-  margin-top: 8px;
-  padding: 6px 12px;
-  background: #fefce8;
-  border: 1px solid #fde68a;
-  border-radius: 8px;
-  font-size: 0.78rem;
-  color: #92400e;
+  margin-top: 10px;
+  padding: 7px 12px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
   cursor: pointer;
   transition: all .2s;
 }
-.quiz-hint-btn:hover { background: #fef3c7; }
+.quiz-hint-btn:hover { background: var(--paper-card); border-color: var(--accent); color: var(--accent); }
 .quiz-hint-text {
   display: none;
-  margin-top: 8px;
-  padding: 10px 12px;
-  background: #fffbeb;
-  border-radius: 8px;
-  font-size: 0.82rem;
-  color: #78350f;
-  line-height: 1.6;
-  border: 1px solid #fde68a;
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: var(--paper-verse);
+  border-radius: 3px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  border: none;
+  border-left: 2px solid var(--accent);
 }
 .quiz-hint-text.show { display: block; }
 .quiz-feedback {
   display: none;
-  margin-top: 8px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 0.84rem;
+  margin-top: 10px;
+  padding: 11px 14px;
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   line-height: 1.6;
 }
 .quiz-feedback.show { display: block; }
-.quiz-feedback.correct-fb { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-.quiz-feedback.wrong-fb { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+.quiz-feedback.correct-fb {
+  background: var(--paper-verse);
+  color: var(--accent);
+  border: none;
+  border-left: 2px solid var(--accent);
+}
+.quiz-feedback.wrong-fb {
+  background: var(--paper-card);
+  color: var(--ink-soft);
+  border: none;
+  border-left: 2px solid var(--ink-mute);
+}
 
 .quiz-submit {
   display: block;
   width: 100%;
   padding: 14px;
-  background: var(--accent-green);
-  color: #fff;
+  background: var(--accent);
+  color: var(--paper);
   border: none;
-  border-radius: 12px;
-  font-size: 1rem;
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   cursor: pointer;
-  margin-top: 16px;
+  margin-top: 18px;
   transition: background .2s;
 }
-.quiz-submit:hover { background: #047857; }
+.quiz-submit:hover { background: #6e1622; }
 .quiz-result {
   display: none;
-  margin-top: 16px;
-  padding: 20px;
-  background: #fff;
-  border-radius: 12px;
+  margin-top: 20px;
+  padding: 26px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 3px;
   text-align: center;
-  border: 2px solid #22c55e;
 }
 .quiz-result.show { display: block; }
-.quiz-score {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--accent-green);
-}
 .quiz-score-label {
-  font-size: 0.85rem;
-  color: #666;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
   margin-bottom: 8px;
 }
+.quiz-score {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
 .quiz-result-msg {
-  font-size: 0.9rem;
-  color: #333;
-  font-weight: 500;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  font-weight: 400;
+  line-height: 1.75;
 }
 
-/* Prayer */
+/* ===== PRAYER ===== */
 .prayer-section {
-  margin: 32px 0;
-  padding: 24px 16px;
-  background: linear-gradient(135deg, #faf5ff 0%, #fdf4ff 100%);
-  border-radius: 16px;
-  border: 1px solid #e9d5ff;
+  margin: 64px 0 40px;
+  padding: 36px 28px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  position: relative;
 }
 .prayer-title {
-  font-size: 0.9rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--accent-purple);
-  margin-bottom: 16px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
   display: flex; align-items: center; gap: 8px;
 }
 .prayer-text {
-  font-size: 0.9rem;
-  color: #1a1a1a;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 16.5px;
+  color: var(--ink);
   line-height: 2;
+  letter-spacing: -0.01em;
 }
+.prayer-text strong { color: var(--accent); font-weight: 700; }
 
-/* Footer */
+/* ===== FOOTER ===== */
 .footer-note {
   text-align: center;
-  padding: 24px 16px;
-  font-size: 0.72rem;
-  color: #999;
+  padding: 40px 16px 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--line);
+  margin-top: 56px;
 }
 
-/* Animations */
+/* ===== Animations ===== */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
@@ -961,31 +1351,43 @@ body {
   animation: fadeInUp .5s ease forwards;
 }
 
-/* ===== INTRO OVERLAY (SCRATCH-OFF) ===== */
+/* ===== INTRO OVERLAY (SCRATCH-OFF) — Redesigned ===== */
 #intro-container {
   position: fixed; inset: 0; z-index: 10000;
-  background: #050505;
+  background: #1a1410;
   display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif;
 }
 
 #intro-reveal-text {
   text-align: center;
-  color: #fbbf24;
-  text-shadow: 0 0 25px rgba(251, 191, 36, 0.5), 0 0 10px rgba(251, 191, 36, 0.8);
+  color: var(--paper);
+  text-shadow: none;
   z-index: 1;
   padding: 20px;
   width: 90%;
-  max-width: 500px;
+  max-width: 560px;
 }
 .reveal-main {
-  font-size: 1.6rem; font-weight: 900; line-height: 1.5; margin-bottom: 20px;
-  word-break: keep-all; letter-spacing: -1px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  word-break: keep-all;
+  letter-spacing: -0.02em;
+  color: var(--paper);
 }
 .reveal-sub {
-  font-size: 1.05rem; font-weight: 600; color: #fde68a;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-soft);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
 }
 
-/* Voice Recognition Prompt */
+/* Voice prompt */
 .voice-prompt-container {
   margin-top: 40px;
   display: flex;
@@ -998,178 +1400,168 @@ body {
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 .voice-prompt-container.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+  opacity: 1; transform: translateY(0); pointer-events: auto;
 }
 .voice-msg {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #a7f3d0;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--paper);
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.7;
   text-shadow: none;
+  letter-spacing: -0.01em;
 }
 .voice-btn-group {
-  display: flex;
-  gap: 12px;
-  margin-top: 8px;
+  display: flex; gap: 12px; margin-top: 8px;
 }
 .voice-action-btn {
-  padding: 10px 24px;
-  background: #fbbf24;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 24px;
-  font-size: 0.95rem;
-  font-weight: 800;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: var(--paper);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
-  transition: transform 0.1s;
+  box-shadow: none;
+  transition: all 0.15s;
 }
-.voice-action-btn:active { transform: scale(0.95); }
+.voice-action-btn:hover { background: #6e1622; border-color: #6e1622; }
+.voice-action-btn:active { transform: scale(0.98); }
 
 .skip-btn {
-  padding: 10px 24px;
+  padding: 12px 24px;
   background: transparent;
-  border: 1px solid #9ca3af;
-  color: #e5e7eb;
-  border-radius: 24px;
-  font-size: 0.95rem;
-  font-weight: 500;
+  border: 1px solid rgba(245,240,230,0.35);
+  color: rgba(245,240,230,0.75);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s;
   text-shadow: none;
 }
 .skip-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-color: #fff;
+  background: rgba(245,240,230,0.08);
+  color: var(--paper);
+  border-color: rgba(245,240,230,0.6);
 }
 
-/* 덮개 레이어 */
+/* Cover layer */
 #intro-cover {
   position: absolute; inset: 0; z-index: 2;
 }
-#intro-cover.cleared {
-  pointer-events: none;
-}
+#intro-cover.cleared { pointer-events: none; }
 #scratch-canvas {
   position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair;
 }
 
-/* 덮개 위에 표시되는 극적인 텍스트 */
 .intro-content {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 90%; max-width: 480px; text-align: center;
-  color: #fff; pointer-events: none;
-  font-family: 'Noto Sans KR', sans-serif;
+  width: 90%; max-width: 520px; text-align: center;
+  color: var(--paper); pointer-events: none;
+  font-family: 'Noto Serif KR', serif;
   transition: opacity 0.8s ease;
 }
 .intro-step {
-  font-size: 1.3rem; font-weight: 800; margin-bottom: 30px;
-  line-height: 1.5; letter-spacing: -0.5px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem; font-weight: 500;
+  margin-bottom: 28px;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  color: rgba(245,240,230,0.85);
 }
-.intro-step .light { color: #f3f4f6; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-.intro-step .dark { color: #ef4444; text-shadow: 0 0 15px rgba(239, 68, 68, 0.6); font-size: 1.5rem; display: inline-block; margin-top: 8px;}
+.intro-step .light { color: var(--paper); text-shadow: none; }
+.intro-step .dark { color: var(--accent-soft); text-shadow: none; font-weight: 700; display: inline-block; margin-top: 6px;}
 .intro-title {
-  font-size: 2.1rem; font-weight: 900; color: #e5e7eb;
-  line-height: 1.35; margin-bottom: 24px;
-  text-shadow: 3px 5px 15px rgba(0,0,0,0.9);
-  word-break: keep-all; letter-spacing: -1px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--paper);
+  line-height: 1.4;
+  margin-bottom: 24px;
+  text-shadow: none;
+  word-break: keep-all;
+  letter-spacing: -0.025em;
 }
 .intro-desc {
-  font-size: 1.05rem; color: #9ca3af; line-height: 1.6;
-  margin-bottom: 40px; word-break: keep-all;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 1rem;
+  color: rgba(245,240,230,0.72);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  word-break: keep-all;
+  font-style: italic;
+  letter-spacing: -0.01em;
 }
 
 .intro-instruction {
-  font-size: 1rem; font-weight: 700; color: #a7f3d0;
-  animation: pulse 2s infinite;
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  animation: pulse 2.4s infinite;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
 .scratch-icon {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   animation: swipe 2s infinite;
+  opacity: 0.85;
 }
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.55; }
 }
 @keyframes swipe {
-  0% { transform: translateX(-20px) rotate(-15deg); }
-  50% { transform: translateX(20px) rotate(15deg); }
-  100% { transform: translateX(-20px) rotate(-15deg); }
+  0% { transform: translateX(-18px) rotate(-12deg); }
+  50% { transform: translateX(18px) rotate(12deg); }
+  100% { transform: translateX(-18px) rotate(-12deg); }
 }
 
-/* Mobile adjustments */
+/* ===== Mobile ===== */
 @media (max-width: 480px) {
-  .container { padding: 16px 12px 48px; }
-  .hero h1 { font-size: 1.4rem; }
-  .dash-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .accordion-header { padding: 12px 12px; }
-  .accordion-content { padding: 0 12px 14px; }
-  .name-row { grid-template-columns: 1fr auto 1fr; gap: 4px; padding: 10px 8px; }
-  .name-cell .nm { font-size: 0.82rem; }
-  .name-cell .mn { font-size: 0.65rem; }
-  
-  .reveal-main { font-size: 1.3rem; }
-  .intro-title { font-size: 1.7rem; }
+  .container { padding: 28px 18px 60px; }
+  .hero h1 { font-size: 1.55rem; line-height: 1.45; }
+  .hero-sub { font-size: 14.5px; }
+  .accordion-group-title, .step-header { font-size: 1.25rem !important; }
+  .acc-title-text { font-size: 1.05rem; }
+  .accordion-header { padding: 18px 18px; gap: 14px; }
+  .accordion-content { padding: 18px 18px 22px 54px; }
+  .acc-number { min-width: 30px; font-size: 12px; }
+  .dash-grid { grid-template-columns: 1fr; gap: 20px; }
+  .name-row { grid-template-columns: 1fr auto 1fr; gap: 4px; padding: 12px 10px; }
+  .name-cell .nm { font-size: 13px; }
+  .name-cell .mn { font-size: 11px; }
+  .content-text { font-size: 16px; }
+  .verse-text { font-size: 14.5px; }
+  .prayer-text { font-size: 15px; }
+  .reveal-main { font-size: 1.2rem; }
+  .intro-title { font-size: 1.55rem; }
 }
+
 </style>
 </head>
-<body style="overflow: hidden;">
+<body style="cursor: crosshair; font-size: 20px;" data-cc-id="cc-1">
 
 <!-- INTRO CONTAINER -->
-<div id="intro-container">
-  
-  <!-- REVEAL TEXT -->
-  <div id="intro-reveal-text">
-    <div class="reveal-main">"그분께서 그리 아니 하실지라도,<br>저희는 왕께서 세우신 금형상에<br>경배하지 않을 것입니다."</div>
-    <div class="reveal-sub">- 다니엘 3장 18절 -</div>
-    
-    <div class="voice-prompt-container" id="voice-prompt-container">
-      <div class="voice-msg" id="voice-msg">위 문장을 직접 소리 내어 읽어주세요</div>
-      <div class="voice-btn-group">
-        <button class="voice-action-btn" id="start-voice-btn">🎤 읽기 시작</button>
-        <button class="skip-btn" id="skip-intro-btn">건너뛰기</button>
-      </div>
-    </div>
-  </div>
 
-  <!-- COVER LAYER -->
-  <div id="intro-cover">
-    <canvas id="scratch-canvas"></canvas>
-    
-    <div class="intro-content" id="intro-content">
-      <h1 class="intro-title" style="margin-bottom: 20px; font-size: 1.85rem;">금형상 앞에 엎드리라는<br>거대한 압력의 시대</h1>
-      
-      <div class="intro-desc" style="color: #e5e7eb; margin-bottom: 24px;">
-        온 세상이 나팔 소리에 맞춰 형상에 경배합니다.<br>
-        불응하는 자는 이글거리는 불가마 속으로 던져집니다.
-      </div>
-      
-      <div class="intro-step" style="font-size: 0.95rem; font-weight: 500; border-left: 3px solid #fbbf24; padding-left: 14px; text-align: left; margin: 0 auto 28px; max-width: 320px; line-height: 1.6;">
-        <span style="color: #fde68a;">그러나 세 젊은 이기는 이들은<br>말합니다: <strong style="color:#fbbf24;">"그리 아니 하실지라도,<br>우리는 경배하지 않겠습니다."</strong><br>
-        그리고 불 한가운데에 <strong style="color:#fbbf24;">넷째 사람</strong>이 걸으십니다.</span><br>
-        <span style="font-size: 0.8rem; color: #9ca3af; display: inline-block; margin-top: 6px;">(다니엘 라이프 스타디 中)</span>
-      </div>
-      
-      <div class="intro-instruction">
-        <div class="scratch-icon">👆</div>
-        화면을 문질러 이기는 이들의 비밀을 확인하세요
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- TOP BAR -->
 <div class="topbar" id="topbar">
   <button class="topbar-btn" onclick="togglePanel()" aria-label="목차">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
   <button class="topbar-btn" onclick="window.open('https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/','_blank')" aria-label="홈">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
   </button>
   <div class="topbar-title">우상·자아를 이기고 하늘의 다스림에 복종</div>
   <div class="font-controls">
@@ -1185,7 +1577,7 @@ body {
 <!-- SIDE PANEL -->
 <div class="sidepanel" id="sidepanel">
   <div class="sidepanel-header">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
     목차
     <button class="sidepanel-close" onclick="togglePanel()">✕</button>
   </div>
@@ -1228,8 +1620,7 @@ body {
 
   <!-- HERO -->
   <section class="hero" id="hero-section">
-    <div class="series-tag">2026 국제중국어 2주 3,4일</div>
-    <div class="hero-badge">다니엘 라이프 스타디 · 결정 연구</div>
+    <div class="hero-badge">2026 국제중국어 3주 3,4일</div>
     <h1>"<span class="highlight-word">그리 아니 하실지라도</span>"<br>우상·자아를 이기고 하늘의 다스림에 복종하는 이기는 이들</h1>
     <p class="hero-sub">금형상 앞에서 순교의 영으로 주님 편에 서고, 불가마 한가운데서<br>넷째 사람이신 그리스도의 임재를 누리며, 만물 안에서 그분을 으뜸이 되시게 함</p>
     
@@ -1239,7 +1630,7 @@ body {
       <div class="verse-compare">
         <div class="verse-row">
           <div class="v-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
             오늘의 구절 (다니엘 3:17-18)
           </div>
           
@@ -1319,7 +1710,7 @@ body {
   <!-- DASHBOARD -->
   <section class="dashboard" id="dashboard-section">
     <div class="dashboard-title">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
       전체 맥락 요약
     </div>
 
@@ -1354,7 +1745,7 @@ body {
   <!-- FLOW -->
   <section class="flow-section">
     <div class="flow-title">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
       이기는 이가 되는 네 단계의 흐름
     </div>
     <div class="flow-steps">
@@ -1384,7 +1775,7 @@ body {
   <!-- KEYWORDS SECTION -->
   <section class="keywords-section" id="keywords-section">
     <div class="keywords-section-title">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       핵심 키워드
     </div>
     <div class="kw-container">
@@ -1398,31 +1789,31 @@ body {
     <div class="kw-tooltip" id="kwt2">몸의 원수이며 숨은 우상입니다. 자기 유익·자기 높임·자기 영광·자기 아름다움·자기 힘으로 하나님을 대치합니다. 몸 안에 살 때 자아는 자연스럽게 처리됩니다.</div>
     <div class="kw-tooltip" id="kwt3">이글거리는 불가마 한가운데를 세 이기는 이들과 함께 거니신 사람의 아들이신 그리스도. 고난을 없애지 않으시고, 고난의 환경을 쾌적한 장소로 바꾸십니다.</div>
     <div class="kw-tooltip" id="kwt4">땅은 하늘에 속한 행정 아래 있습니다. 모든 것이 협력하여 선을 이루어(롬 8:28) 그리스도께서 으뜸이 되시게 하는 하나님의 경륜적 행정입니다.</div>
-    <div class="kw-tooltip" id="kwt5">하나님의 경륜 안에서 첫째는 곧 전부입니다. 우주·교회·창조·일상 모든 영역에서 그리스도께서 첫째·중심·모든 것이 되시는 것입니다.</div>
+    <div class="kw-tooltip show" id="kwt5">하나님의 경륜 안에서 첫째는 곧 전부입니다. 우주·교회·창조·일상 모든 영역에서 그리스도께서 첫째·중심·모든 것이 되시는 것입니다.</div>
   </section>
 
   <!-- ACCORDION GROUP -->
   <div class="accordion-group">
     <div class="accordion-group-title" id="keypoints-section">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
       다니엘 3-4장의 이기는 이의 핵심 요점
     </div>
 
     <div class="step-header" id="step-1">Step 1. 우상과 자아를 거절하기 (Ⅳ · 단 3장)</div>
 
     <!-- Ⅳ 대항목 -->
-    <div class="accordion" id="acc-1">
+    <div class="accordion open" id="acc-1">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-red);">Ⅳ</div>
         <div class="acc-icon" style="background:#fef2f2;">🗿</div>
         <div class="acc-title-text"><span class="point-tag tag-red">승리</span>우상숭배에 대한 회유에 맞서 승리함</div>
         <div class="acc-chevron">▼</div>
       </div>
-      <div class="accordion-body">
+      <div class="accordion-body" style="max-height: none;">
         <div class="accordion-content">
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               다니엘 3:1-7 / 마태복음 4:9-10
             </div>
             <div class="verse-text">[단 3:6] 누구든지 엎드려 경배하지 않으면, <b>그 즉시 이글거리는 불가마 한가운데로 던져질 것이오.</b></div>
@@ -1448,18 +1839,18 @@ body {
     </div>
 
     <!-- Ⅳ-A -->
-    <div class="accordion" id="acc-2">
+    <div class="accordion open" id="acc-2">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-gold);">A</div>
         <div class="acc-icon" style="background:#fffbeb;">🔍</div>
         <div class="acc-title-text"><span class="point-tag tag-gold">분별</span>참되신 하나님이 아닌 모든 것이 우상</div>
         <div class="acc-chevron">▼</div>
       </div>
-      <div class="accordion-body">
+      <div class="accordion-body" style="max-height: none;">
         <div class="accordion-content">
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               요한일서 5:20-21
             </div>
             <div class="verse-text">[20] … 우리는 그 참되신 분, 곧 하나님의 아들 예수 그리스도 안에 있습니다. <b>이분은 참되신 하나님이시며 영원한 생명이십니다.</b></div>
@@ -1492,18 +1883,18 @@ body {
     </div>
 
     <!-- Ⅳ-B -->
-    <div class="accordion" id="acc-3">
+    <div class="accordion open" id="acc-3">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-rose);">B</div>
         <div class="acc-icon" style="background:#fff1f2;">💔</div>
         <div class="acc-title-text"><span class="point-tag tag-rose">처리</span>몸의 원수는 자아 — 자아를 부인해야 함</div>
         <div class="acc-chevron">▼</div>
       </div>
-      <div class="accordion-body">
+      <div class="accordion-body" style="max-height: none;">
         <div class="accordion-content">
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               마태복음 16:24 / 고린도후서 4:5
             </div>
             <div class="verse-text">[마 16:24] "누구든지 나를 따라오려거든, <b>자기를 부인하고 자기 십자가를 지고 나를 따라오십시오.</b>"</div>
@@ -1533,18 +1924,18 @@ body {
     <div class="section-connector">⬇</div>
 
     <!-- Ⅳ-C -->
-    <div class="accordion" id="acc-4">
+    <div class="accordion open" id="acc-4">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-blue);">C</div>
         <div class="acc-icon" style="background:#eff6ff;">🔥</div>
         <div class="acc-title-text"><span class="point-tag tag-blue">결단</span>순교의 영으로 불가마 속으로 던져짐</div>
         <div class="acc-chevron">▼</div>
       </div>
-      <div class="accordion-body">
+      <div class="accordion-body" style="max-height: none;">
         <div class="accordion-content">
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               다니엘 3:17-18, 19-23
             </div>
             <div class="verse-text">[17-18] 저희가 섬기는 저희 하나님은 이글거리는 불가마에서 저희를 건져 내실 수 있으시니, … <b>그분께서 그리 아니 하실지라도, 저희는 왕의 신들을 섬기거나 왕께서 세우신 금형상에 경배하지 않을 것</b>이니 그리 알아주십시오.</div>
@@ -1575,25 +1966,25 @@ body {
     <div class="step-header" id="step-2">Step 2. 고난 속의 임재 누리기 (Ⅳ-D·E)</div>
 
     <!-- Ⅳ-D·E -->
-    <div class="accordion" id="acc-5">
+    <div class="accordion open" id="acc-5">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-teal);">D·E</div>
         <div class="acc-icon" style="background:#f0fdfa;">🚶</div>
         <div class="acc-title-text"><span class="point-tag tag-teal">임재</span>넷째 사람 — 불 속을 쾌적한 곳으로 바꾸심</div>
         <div class="acc-chevron">▼</div>
       </div>
-      <div class="accordion-body">
+      <div class="accordion-body" style="max-height: none;">
         <div class="accordion-content">
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               다니엘 3:24-25
             </div>
             <div class="verse-text">[24-25] … "우리가 세 사람을 묶어 불 한가운데로 던지지 않았소?" … "보시오, 나에게는 <b>네 사람이 풀려나 불 한가운데를 걸어 다니는 것이 보이오.</b> 그런데도 그들은 해를 입지 않고 있소. 게다가 <b>넷째 사람의 모습은 신들의 아들 같소.</b>"</div>
           </div>
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               히브리서 4:15-16
             </div>
             <div class="verse-text">[15] 우리의 대제사장은 우리의 연약한 느낌을 공감하지 못하시는 분이 아니십니다. <b>그분은 모든 점에서 우리와 마찬가지로 유혹을 받으신 분</b>이시지만, 죄는 없으십니다.</div>
@@ -1667,18 +2058,18 @@ body {
     <div class="step-header" id="step-3">Step 3. 하늘의 다스림과 으뜸 되심 (Ⅴ · 단 4장)</div>
 
     <!-- Ⅴ 대항목 -->
-    <div class="accordion" id="acc-6">
+    <div class="accordion open" id="acc-6">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-indigo);">Ⅴ</div>
         <div class="acc-icon" style="background:#eef2ff;">👑</div>
         <div class="acc-title-text"><span class="point-tag tag-indigo">이상</span>하늘들의 통치를 가로막는 덮개에 맞서 승리</div>
         <div class="acc-chevron">▼</div>
       </div>
-      <div class="accordion-body">
+      <div class="accordion-body" style="max-height: none;">
         <div class="accordion-content">
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               다니엘 4:34-35
             </div>
             <div class="verse-text">[34] … 나는 가장 높으신 분을 찬양하고 영존하시는 분을 찬송하며 … <b>그분의 통치권은 영원한 통치권이요 그분의 왕국은 대대에 이르기 때문이다.</b></div>
@@ -1686,7 +2077,7 @@ body {
           </div>
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               로마서 8:28-29 / 골로새서 1:18
             </div>
             <div class="verse-text">[롬 8:28] 또한 우리는 하나님을 사랑하는 사람들, 곧 그분의 목적에 따라 부름받은 사람들에게는 <b>모든 것이 협력함으로써 선이 이루어진다</b>는 것을 압니다.</div>
@@ -1735,25 +2126,25 @@ body {
     </div>
 
     <!-- Ⅴ-B -->
-    <div class="accordion" id="acc-7">
+    <div class="accordion open" id="acc-7">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number" style="background:var(--accent-purple);">B</div>
         <div class="acc-icon" style="background:#faf5ff;">⚖️</div>
         <div class="acc-title-text"><span class="point-tag tag-purple">교훈</span>교만하게 행하는 이를 낮추실 수 있으심</div>
         <div class="acc-chevron">▼</div>
       </div>
-      <div class="accordion-body">
+      <div class="accordion-body" style="max-height: none;">
         <div class="accordion-content">
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               다니엘 4:37
             </div>
             <div class="verse-text">[37] 이제 나 느부갓네살이 하늘들의 왕을 찬양하고 높이며 그분께 경의를 표함은, 그분의 모든 일이 진실하고 그분의 길들이 정의롭기 때문이요, <b>그분께서 교만하게 행하는 이를 낮추실 수 있으시기 때문이다.</b></div>
           </div>
           <div class="verse-block">
             <div class="verse-ref">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#b45309" stroke="none"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1H8v-1zm0 3h8v1H8v-1z"></path></svg>
               예레미야 9:23-24
             </div>
             <div class="verse-text">[23-24] "지혜로운 사람은 자기 지혜를 자랑하지 말고 힘센 사람은 자기 힘을 자랑하지 말며 부유한 사람은 자기 부를 자랑하지 마라. 자랑하는 사람은 이것을 자랑할지니 <b>곧 그가 통찰력이 있어 나를 아는 것과 내가 땅에서 자애와 정의와 의를 집행하는 여호와임을 아는 것이다.</b>"</div>
@@ -1779,7 +2170,7 @@ body {
   <!-- QUIZ -->
   <section class="quiz-section" id="quiz-section">
     <div class="quiz-title">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
       이해 점검 퀴즈
     </div>
 
@@ -1868,7 +2259,7 @@ body {
       <div class="quiz-feedback"></div>
     </div>
 
-    <button class="quiz-submit" onclick="submitQuiz()">정답 확인 & 점수 보기</button>
+    <button class="quiz-submit" onclick="submitQuiz()">정답 확인 &amp; 점수 보기</button>
     <div class="quiz-result" id="quizResult">
       <div class="quiz-score-label">최종 점수</div>
       <div class="quiz-score" id="quizScore">0 / 5</div>
@@ -1901,12 +2292,12 @@ body {
 <div class="word-modal-overlay" id="wordModalOverlay" onclick="closeWordModal(event)">
   <div class="word-modal" onclick="event.stopPropagation()">
     <button class="word-modal-close" onclick="closeWordModal(event)">✕</button>
-    <div class="word-modal-kr" id="wm-kr"></div>
-    <div class="word-modal-grk" id="wm-grk"></div>
-    <div class="word-modal-pron" id="wm-pron"></div>
-    <div class="word-modal-grammar" id="wm-grammar"></div>
-    <div class="word-modal-mean" id="wm-mean"></div>
-    <div class="word-modal-desc" id="wm-desc"></div>
+    <div class="word-modal-kr" id="wm-kr">우리의 하나님</div>
+    <div class="word-modal-grk" id="wm-grk">אֱלָהֲנָא</div>
+    <div class="word-modal-pron" id="wm-pron">[엘라하나]</div>
+    <div class="word-modal-grammar" id="wm-grammar">명사(하나님) + 1인칭 복수 소유격 접미사</div>
+    <div class="word-modal-mean" id="wm-mean">our God</div>
+    <div class="word-modal-desc" id="wm-desc">'אֱלָהּ(엘라)'는 히브리어 '엘로힘'과 어원이 같은 아람어 명사로 '신, 하나님'을 뜻합니다. '나(나)'는 '우리의'라는 소유격 접미사입니다. 세 이기는 이들은 왕 앞에서 '당신의 신들(אֱלָהָיִךְ)'과 대비되는 <strong>'우리의 하나님'</strong>을 선언합니다 — 이것은 바빌론의 수많은 신들 가운데 <strong>오직 한 분 참되신 하나님</strong>에 대한 소속의 고백입니다.</div>
   </div>
 </div>
 
@@ -2345,5 +2736,5 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.addEventListener('touchcancel', end);
 });
 </script>
-</body>
-</html>
+
+</body></html>
