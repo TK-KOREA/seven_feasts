@@ -1529,14 +1529,27 @@ body::before {
 
 /* ===== Mobile ===== */
 @media (max-width: 480px) {
-  .container { padding: 28px 18px 60px; }
+  /* 좌우 여백 최소화 — 컨텐츠 가독성 우선 */
+  .container { padding: 24px 6px 60px; }
   .hero h1 { font-size: 1.55rem; line-height: 1.45; }
-  .hero-sub { font-size: 14.5px; }
+  .hero-sub { font-size: 14.5px; padding-left: 12px; }
   .accordion-group-title, .step-header { font-size: 1.25rem !important; }
   .acc-title-text { font-size: 1.05rem; }
-  .accordion-header { padding: 18px 18px; gap: 14px; }
-  .accordion-content { padding: 18px 18px 22px 54px; }
-  .acc-number { min-width: 30px; font-size: 12px; }
+  .accordion-header { padding: 16px 10px; gap: 10px; }
+  /* 본문을 번호 배지 뒤로 밀어넣지 않고 카드 왼쪽에 붙임 */
+  .accordion-content { padding: 18px 10px 20px 10px; }
+  .acc-number { min-width: 28px; font-size: 12px; }
+  /* 인용/강조 블록 들여쓰기 축소 */
+  .verse-block { padding: 18px 12px 18px 14px; margin: 18px 0; }
+  .verse-block::before { left: 10px; }
+  .core-message { padding: 4px 0 4px 14px; }
+  .step-connector { padding: 4px 0 4px 14px; margin: 22px 0; }
+  .verse-compare { padding: 18px 12px; }
+  .v-eng { padding-left: 10px; }
+  .v-lit { padding: 12px 12px; }
+  .dashboard { padding: 22px 14px; }
+  .quiz-section { padding: 22px 12px 24px; }
+  .series-tag::before { width: 20px; }
   .dash-grid { grid-template-columns: 1fr; gap: 20px; }
   .name-row { grid-template-columns: 1fr auto 1fr; gap: 4px; padding: 12px 10px; }
   .name-cell .nm { font-size: 13px; }
@@ -1620,7 +1633,7 @@ body::before {
 
   <!-- HERO -->
   <section class="hero" id="hero-section">
-    <div class="hero-badge">2026 국제중국어 3주 3,4일</div>
+    <div class="hero-badge">2026 국제중국어 2주 3,4일</div>
     <h1>"<span class="highlight-word">그리 아니 하실지라도</span>"<br>우상·자아를 이기고 하늘의 다스림에 복종하는 이기는 이들</h1>
     <p class="hero-sub">금형상 앞에서 순교의 영으로 주님 편에 서고, 불가마 한가운데서<br>넷째 사람이신 그리스도의 임재를 누리며, 만물 안에서 그분을 으뜸이 되시게 함</p>
     
