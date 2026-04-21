@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>우상과 자아를 이기고 하늘의 다스림에 복종하는 이기는 이들</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&amp;family=Noto+Serif+KR:wght@300;400;500;600;700;900&amp;family=Gowun+Batang:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&amp;family=Noto+Serif+KR:wght@300;400;500;600;700;900&amp;family=Gowun+Batang:wght@400;700&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
 <style>
 
 /* ============================================================
@@ -367,25 +367,31 @@ body::before {
 }
 .v-label svg { display: none; }
 .v-text {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Noto Serif KR', 'Gowun Batang', serif;
+  font-size: 17px;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 14px;
+  line-height: 1.95;
+  letter-spacing: -0.003em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+.v-text b { color: var(--ink); font-weight: 600; }
+.v-eng {
+  font-family: 'Lora', Georgia, 'Noto Serif KR', serif;
   font-size: 16.5px;
   color: var(--ink);
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 14px;
   line-height: 1.85;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.005em;
+  word-spacing: 0.03em;
+  text-wrap: pretty;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
-.v-text b { color: var(--ink); font-weight: 700; }
-.v-eng {
-  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
-  font-size: 14px;
-  color: var(--ink-mute);
-  font-style: italic;
-  margin-bottom: 14px;
-  line-height: 1.7;
-  padding-left: 14px;
-  border-left: 1px solid var(--line);
-}
+.v-eng b { color: var(--ink); font-weight: 600; }
 .v-grk {
   font-size: 1rem;
   color: var(--accent);
@@ -1545,7 +1551,6 @@ body::before {
   .core-message { padding: 4px 0 4px 14px; }
   .step-connector { padding: 4px 0 4px 14px; margin: 22px 0; }
   .verse-compare { padding: 18px 12px; }
-  .v-eng { padding-left: 10px; }
   .v-lit { padding: 12px 12px; }
   .dashboard { padding: 22px 14px; }
   .quiz-section { padding: 22px 12px 24px; }
@@ -1647,7 +1652,7 @@ body::before {
             오늘의 구절 (다니엘 3:17-18)
           </div>
           
-          <div class="v-text">[17] 그렇게 된다 하더라도 왕이시여, 저희가 섬기는 저희 하나님은 이글거리는 불가마에서 저희를 건져 내실 수 있으시니, 그분께서 저희를 왕의 손에서 건져 내실 것입니다. [18] 그러나 왕이시여! 그분께서 그리 아니 하실지라도, 저희는 왕의 신들을 섬기거나 왕께서 세우신 금형상에 경배하지 않을 것이니 그리 알아주십시오.</div>
+          <div class="v-text">그렇게 된다 하더라도 왕이시여, 저희가 섬기는 저희 하나님은 이글거리는 불가마에서 저희를 건져 내실 수 있으시니, 그분께서 저희를 왕의 손에서 건져 내실 것입니다. 그러나 왕이시여! 그분께서 그리 아니 하실지라도, 저희는 왕의 신들을 섬기거나 왕께서 세우신 금형상에 경배하지 않을 것이니 그리 알아주십시오.</div>
           <div class="v-eng" style="margin-bottom: 12px;">Our God whom we serve is able to rescue us from the furnace of blazing fire... But if not, let it be known to you, O king, that we will not serve your gods nor worship the golden image you have set up.</div>
           
           <div class="instruction-text" style="margin-bottom: 20px;">
