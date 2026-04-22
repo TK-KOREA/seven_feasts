@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>두 나무 — 두 근원, 두 길, 두 원칙, 두 완결로 보는 생명과 죽음의 경로</title>
+<title>노아·다니엘·욥 — 생명의 노선 안에서 이기는 생활 · 두 나무의 신성한 계시</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Gowun+Batang:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
@@ -1274,6 +1274,81 @@ body::before {
   padding: 0 4px;
 }
 
+/* Three-stage purpose diagram */
+.purpose-stages {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 22px 0;
+}
+.purpose-stage {
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.purpose-stage-num {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.purpose-stage-body { flex: 1; }
+.purpose-stage-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.purpose-stage-desc {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+/* Examples grid */
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0 22px;
+}
+.example-chip {
+  padding: 14px 10px;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+  text-align: center;
+}
+.example-chip .ex-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+.example-chip .ex-label {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
 .footer-note {
   text-align: center;
   padding: 40px 16px 16px;
@@ -1461,7 +1536,473 @@ body::before {
   .two-path-scene { flex-direction: column; min-height: auto; }
   .path-box { max-width: 100%; width: 100%; }
   .compare-row { grid-template-columns: 1fr auto 1fr; gap: 4px; padding: 12px 10px; }
+  .examples-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .example-chip { padding: 10px 4px; }
+  .example-chip .ex-name { font-size: 12.5px; }
 }
+
+/* ============================================================
+   TODAY'S VERSE · 오늘의 구절 — 로마서 8:6 (meaning-based boxes)
+   ============================================================ */
+.todays-verse-section {
+  margin: 30px 0 40px 0;
+  padding: 34px 22px 28px 22px;
+  background: linear-gradient(180deg, #fbf6ea 0%, #f5ecd8 100%);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 2px 14px rgba(74,63,54,0.06);
+  position: relative;
+}
+.todays-verse-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-soft) 50%, var(--accent) 100%);
+  border-radius: 6px 6px 0 0;
+}
+.tv-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--line);
+}
+.tv-kicker {
+  display: inline-block;
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding: 4px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.5);
+}
+.tv-ref {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.tv-ref-en {
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  color: var(--ink-mute);
+  font-style: italic;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+.tv-guide {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-mute);
+  margin-bottom: 18px;
+  padding: 8px 14px;
+  background: rgba(139,30,43,0.05);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+.tv-guide-wrap { text-align: center; margin-bottom: 18px; }
+.tv-guide b { color: var(--accent); font-weight: 600; }
+
+
+/* ━━ Greek sentence (word-by-word as it is) ━━ */
+.tv-greek-sentence {
+  padding: 26px 20px 22px 20px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  margin-bottom: 18px;
+}
+.tv-greek-title {
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 16px;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line);
+}
+.tv-greek-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 2px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px 0;
+  line-height: 1.2;
+}
+.tv-greek-line + .tv-greek-line {
+  border-top: 1px dashed var(--line-soft);
+  margin-top: 4px;
+  padding-top: 14px;
+}
+
+.tv-word {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 5px;
+  border-radius: 3px;
+  gap: 2px;
+  min-width: 24px;
+  transition: background 0.15s, transform 0.15s;
+}
+.tv-word .w-gk {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+.tv-word .w-pr {
+  font-size: 0.66rem;
+  color: var(--ink-mute);
+  font-style: italic;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+/* Key (clickable) word */
+.tv-word.key {
+  cursor: pointer;
+  background: rgba(139,30,43,0.06);
+  border-bottom: 2px solid var(--accent);
+  padding: 3px 7px 2px 7px;
+  margin: 0 1px;
+  position: relative;
+}
+.tv-word.key:hover {
+  background: rgba(139,30,43,0.16);
+  transform: translateY(-2px);
+}
+.tv-word.key .w-gk {
+  color: var(--accent);
+  font-weight: 700;
+}
+.tv-word.key .w-pr {
+  color: var(--accent);
+  font-weight: 500;
+  opacity: 0.85;
+}
+.tv-word.key::before {
+  content: '';
+  position: absolute;
+  top: 2px; right: 3px;
+  width: 4px; height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* Functional word (article, conjunction) — muted, non-clickable */
+.tv-word.func .w-gk {
+  color: var(--ink-mute);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.tv-word.func .w-pr {
+  opacity: 0.55;
+}
+
+/* Punctuation */
+.tv-punct {
+  display: inline-flex;
+  align-items: flex-end;
+  padding-bottom: 3px;
+  font-family: 'Lora', serif;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0 1px;
+}
+
+/* Compact translations */
+.tv-trans-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.tv-trans-row {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  align-items: baseline;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 3px;
+}
+.tv-trans-row.en { border-left-color: #6b7a8f; }
+.tv-trans-tag {
+  font-family: 'Lora', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fbf6ea;
+  background: var(--accent);
+  padding: 2px 0;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+}
+.tv-trans-row.en .tv-trans-tag { background: #6b7a8f; }
+.tv-trans-text {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.tv-trans-row.en .tv-trans-text {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.tv-trans-text b { color: var(--accent); font-weight: 700; }
+
+/* Legend */
+.tv-legend {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+}
+.tv-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink-soft);
+}
+.tv-legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.tv-legend-dot.key  { background: var(--accent); }
+.tv-legend-dot.func { background: var(--ink-mute); }
+
+
+/* Summary */
+.tv-summary {
+  margin-top: 24px;
+  padding: 20px 22px;
+  background: var(--accent);
+  color: #fbf6ea;
+  border-radius: 4px;
+  position: relative;
+}
+.tv-summary::before {
+  content: '∴';
+  position: absolute;
+  top: -14px; left: 20px;
+  width: 30px; height: 30px;
+  background: #fbf6ea;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Lora', serif;
+}
+.tv-summary-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.tv-summary-text {
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: #fbf6ea;
+}
+.tv-summary-text b { color: #ffd878; font-weight: 700; }
+
+/* POPUP MODAL — key word meanings */
+.tv-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,20,16,0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: tvOverlayIn 0.2s ease-out;
+}
+.tv-popup-overlay.active { display: flex; }
+@keyframes tvOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.tv-popup {
+  background: var(--paper-card);
+  border-radius: 6px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  animation: tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);
+  position: relative;
+}
+@keyframes tvPopIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.tv-popup-close {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 32px; height: 32px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  z-index: 2;
+}
+.tv-popup-close:hover {
+  background: var(--accent);
+  color: #fbf6ea;
+  border-color: var(--accent);
+}
+.tv-popup-header {
+  padding: 24px 28px 16px 28px;
+  border-bottom: 1px dashed var(--line);
+}
+.tv-popup-kicker {
+  font-family: 'Lora', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.tv-popup-meaning {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.tv-popup-greek {
+  font-family: 'Lora', serif;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 4px;
+}
+.tv-popup-body {
+  padding: 18px 22px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tv-popup-word {
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 3px;
+}
+.tv-popup-word-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.tv-popup-word-gk {
+  font-family: 'Lora', serif;
+  font-size: 1.22rem;
+  color: var(--accent);
+  font-weight: 600;
+  line-height: 1.1;
+}
+.tv-popup-word-pron {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.tv-popup-word-strong {
+  font-size: 0.65rem;
+  color: var(--ink-mute);
+  font-family: 'Lora', serif;
+  letter-spacing: 0.04em;
+  margin-left: auto;
+}
+.tv-popup-word-meaning {
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 6px 0;
+}
+.tv-popup-word-meaning em {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+.tv-popup-word-note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  padding-top: 6px;
+  border-top: 1px dashed var(--line);
+}
+.tv-popup-word-note b { color: var(--accent); font-weight: 600; }
+
+@media (max-width: 720px) {
+  .todays-verse-section { padding: 24px 10px 22px 10px; }
+  .tv-ref { font-size: 1.4rem; }
+  .tv-greek-sentence { padding: 20px 10px 16px 10px; }
+  .tv-word .w-gk { font-size: 1rem; }
+  .tv-word .w-pr { font-size: 0.62rem; }
+  .tv-word.func .w-gk { font-size: 0.9rem; }
+  .tv-word.key { padding: 2px 5px 1px 5px; }
+  .tv-trans-row { padding: 9px 10px; grid-template-columns: 28px 1fr; gap: 8px; }
+  .tv-trans-text { font-size: 0.88rem; }
+  .tv-summary { padding: 16px; }
+  .tv-summary-text { font-size: 0.88rem; }
+  .tv-popup-header { padding: 20px 20px 14px 20px; }
+  .tv-popup-body { padding: 14px 14px 20px 14px; }
+  .tv-popup-word { padding: 12px 14px; }
+  .tv-popup-word-strong { margin-left: 0; width: 100%; }
+}
+
+
+
+
+
 </style>
 </head>
 <body style="overflow: hidden;">
@@ -1469,8 +2010,8 @@ body::before {
 <!-- INTRO CONTAINER -->
 <div id="intro-container">
   <div id="intro-reveal-text">
-    <div class="reveal-main">"생명으로 이끄는 문은 좁고,<br>그 길이 비좁아 찾는 사람이 적습니다."</div>
-    <div class="reveal-sub">— 마태복음 7:14 —</div>
+    <div class="reveal-main">"동산 한가운데 있는 <br>생명나무와, <br>선과 악의 지식나무도 <br>자라게 하셨다."</div>
+    <div class="reveal-sub">— 창세기 2:9 —</div>
 
     <div class="voice-prompt-container" id="voice-prompt-container">
       <div class="voice-msg" id="voice-msg">위 문장을 직접 소리 내어 읽어주세요</div>
@@ -1485,21 +2026,22 @@ body::before {
     <canvas id="scratch-canvas"></canvas>
 
     <div class="intro-content" id="intro-content">
-      <h1 class="intro-title">두 나무 —<br>두 근원, 두 길, 두 원칙,<br>두 완결</h1>
+      <h1 class="intro-title">두 나무 · 두 근원 · 두 길<br>두 원칙 · 두 완결</h1>
 
       <div class="intro-desc">
-        창세기 2장의 두 나무는 우주 안에 있는 두 근원의 상징입니다.<br>
-        생명나무는 하나님을, 선악나무는 사탄을 상징합니다.
+        성경에 있는 신성한 계시에는 <strong>다섯 가지 쌍</strong>이 있습니다.<br>
+        창세기 2장에서 시작되어 요한계시록 22장에서 완결되는 한 편의 이야기 —<br>
+        그 중심에 <b>노아 · 다니엘 · 욥</b>이 있습니다.
       </div>
 
       <div class="intro-pullquote">
-        신성한 계시에 따르면, <strong>지식과 선과 악은 모두 사탄</strong>입니다. 참된 선은 하나님 자신이며(마 19:17), 만일 우리가 하나님을 떠나 선한 것들을 만진다면, 우리는 사탄을 만지고 있습니다.
-        <span class="attrib">— 욥기 라이프 스타디, 메시지 37 —</span>
+        창세기 2장에는 두 나무가 있으나, 요한계시록 21-22장의 거룩한 성에는 오직 <strong>한 나무, 곧 생명나무</strong>만이 있습니다. 각 근원은 하나의 노선을 가져오고, 그 노선은 하나의 길이 되며, 그 길은 <strong>하나의 결론</strong>으로 완결됩니다.
+        <span class="attrib">— 욥기 라이프 스타디 메시지 37 —</span>
       </div>
 
       <div class="intro-instruction">
         <div class="scratch-icon">👆</div>
-        화면을 문질러 두 나무의 비밀을 확인하세요
+        화면을 문질러 계시를 확인하세요
       </div>
     </div>
   </div>
@@ -1513,7 +2055,7 @@ body::before {
   <button class="topbar-btn" onclick="window.open('https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/','_blank')" aria-label="홈">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
   </button>
-  <div class="topbar-title">두 나무 — 두 근원·두 길·두 원칙·두 완결</div>
+  <div class="topbar-title">두 나무, 두 근원, 두 길, 두 원칙, 두 완결</div>
   <div class="font-controls">
     <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
     <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
@@ -1531,33 +2073,37 @@ body::before {
     <button class="sidepanel-close" onclick="togglePanel()">✕</button>
   </div>
 
-  <a class="nav-item" onclick="goTo('hero-section')">제목 & 오늘의 구절</a>
+  <a class="nav-item" onclick="goTo('hero-section')">제목 & 특별집회 주제</a>
+  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 롬 8:6</a>
   <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
+  <a class="nav-item" onclick="goTo('flow-section')">다섯 단계의 흐름</a>
 
   <div class="nav-divider"></div>
   <a class="nav-item" onclick="goTo('keywords-section')" style="font-weight:700;color:var(--accent);">키워드</a>
   <div style="padding:6px 20px;" id="nav-keywords">
-    <span class="keyword-tag" onclick="showKwDef('kd1',this)">두 나무</span>
-    <span class="keyword-tag" onclick="showKwDef('kd2',this)">두 근원</span>
-    <span class="keyword-tag" onclick="showKwDef('kd3',this)">두 길</span>
-    <span class="keyword-tag" onclick="showKwDef('kd4',this)">두 원칙</span>
-    <span class="keyword-tag" onclick="showKwDef('kd5',this)">두 완결</span>
+    <span class="keyword-tag" onclick="showKwDef('kd1',this)">이기는 이들 · 시온</span>
+    <span class="keyword-tag" onclick="showKwDef('kd2',this)">하나님의 영원한 목적</span>
+    <span class="keyword-tag" onclick="showKwDef('kd3',this)">두 나무 · 두 근원</span>
+    <span class="keyword-tag" onclick="showKwDef('kd4',this)">사탄의 상업적 원칙</span>
+    <span class="keyword-tag" onclick="showKwDef('kd5',this)">도덕의 영역 → 생명의 영역</span>
   </div>
-  <div class="keyword-def" id="kd1">창세기 2장의 생명나무와 선악을 알게 하는 나무. 두 나무는 각각 삼일 하나님과 사탄 마귀를 상징하는 표징입니다. 나무 자체가 목적이 아니라 사람이 그 열매를 먹기 위한 것입니다.</div>
-  <div class="keyword-def" id="kd2">생명나무는 하나님을 추구하는 사람들의 근원이며, 선악나무는 사탄을 따르는 사람들의 근원입니다. 두 근원은 이 땅에 두 왕국을 산출합니다.</div>
-  <div class="keyword-def" id="kd3">생명의 길(비좁은 길)과 죽음과 선악의 길(널찍한 길). 마태복음 7:13-14에 계시된 두 길로, 사람들이 하나님과 맺는 관계의 두 방향을 보여 줍니다.</div>
-  <div class="keyword-def" id="kd4">생명의 원칙(하나님을 의지하는 원칙)과 선악의 원칙(하나님에게서 독립하는 원칙). 두 원칙은 사람이 실제 삶에서 어떤 근원을 접촉하느냐를 결정합니다.</div>
-  <div class="keyword-def" id="kd5">생명의 길의 완결은 새 예루살렘(생명수의 성)이고, 죽음과 선악의 길의 완결은 불못입니다. 요한계시록 21-22장에서 이 두 완결이 분명하게 드러납니다.</div>
+  <div class="keyword-def" id="kd1">예루살렘은 교회를 예표하고, 시온은 교회 안에 있는 이기는 이들을 예표합니다. 예루살렘의 특징과 생명과 축복과 건축은 모두 시온에서 나옵니다. 하나님께서 이 땅 위에서 그분의 움직이심을 완성하시기 위해 결국 필요로 하시는 것은 바로 이기는 이들입니다. 노아·다니엘·욥은 생명의 노선에서 이기는 생활을 산 '본'입니다.</div>
+  <div class="keyword-def" id="kd2">창 1:26 — 사람이 하나님의 형상을 지녀 그분을 표현하고, 하나님의 통치권을 위임받아 그분을 대표하는 것. 이 목적을 이루는 '길'은 생명이며, 하나님께서 그분 자신을 사람에게 생명과 생명 공급으로 분배하심입니다.</div>
+  <div class="keyword-def" id="kd3">창세기 2장의 두 나무는 사물이 아니라 두 인격을 상징합니다 — 생명나무는 삼일 하나님, 선악나무는 사탄 마귀. 이 두 나무는 두 부류 사람들의 두 근원이 됩니다.</div>
+  <div class="keyword-def" id="kd4">사탄은 선과 악에 기반한 '상업적 원칙'으로 모든 것을 계산합니다(욥 1:9-11). 그는 하나님께서 사람을 다루시는 목적이 '사람이 하나님을 충만히 얻는 것'임을 알지 못합니다.</div>
+  <div class="keyword-def" id="kd5">욥과 세 친구는 도덕의 영역 — 인간의 도덕과 순전함을 높이는 영역 — 에 있었습니다. 그들에게 필요한 것은 올바른 영역, 곧 생명나무의 영역으로 전환되는 것이었습니다.</div>
 
   <div class="nav-divider"></div>
   <a class="nav-item" style="font-weight:700;color:var(--ink);">핵심 요점</a>
-  <a class="nav-item sub" onclick="goTo('acc-1')">Ⅰ-A. 두 나무 — 하나님과 사탄의 상징</a>
-  <a class="nav-item sub" onclick="goTo('acc-2')">Ⅰ-B. 두 근원 — 두 왕국을 산출</a>
-  <a class="nav-item sub" onclick="goTo('acc-3')">Ⅰ-C. 두 길 — 생명의 길 vs 선악의 길</a>
-  <a class="nav-item sub" onclick="goTo('acc-4')">Ⅰ-D. 두 원칙 — 의지 vs 독립</a>
-  <a class="nav-item sub" onclick="goTo('acc-5')">Ⅰ-E. 두 완결 — 새 예루살렘 vs 불못</a>
-  <a class="nav-item sub" onclick="goTo('acc-6')">욥기에서 본 두 나무</a>
-  <a class="nav-item sub" onclick="goTo('acc-7')">창세기 2장의 삼각관계와 우리</a>
+  <a class="nav-item sub" onclick="goTo('acc-0')">서언 — 특별집회의 전체 주제</a>
+  <a class="nav-item sub" onclick="goTo('acc-purp')">창 1-2장 — 목적과 절차</a>
+  <a class="nav-item sub" onclick="goTo('acc-1')">Ⅰ-A. 두 나무</a>
+  <a class="nav-item sub" onclick="goTo('acc-2')">Ⅰ-B. 두 근원</a>
+  <a class="nav-item sub" onclick="goTo('acc-3')">Ⅰ-C. 두 길</a>
+  <a class="nav-item sub" onclick="goTo('acc-4')">Ⅰ-D. 두 원칙</a>
+  <a class="nav-item sub" onclick="goTo('acc-5')">Ⅰ-E. 두 완결</a>
+  <a class="nav-item sub" onclick="goTo('acc-6')">욥기 1-2장 — 하늘의 회의</a>
+  <a class="nav-item sub" onclick="goTo('acc-7')">오늘 우리 — 작은 에덴동산</a>
 
   <div class="nav-divider"></div>
   <a class="nav-item" onclick="goTo('recap-section')">전체 복습</a>
@@ -1570,9 +2116,9 @@ body::before {
 
   <!-- HERO -->
   <section class="hero" id="hero-section">
-    <div class="hero-badge">욥기 라이프 스타디 · 메시지 37</div>
-    <h1>신성한 계시 안에 있는<br><span class="highlight-word">두 나무</span>:<br>두 근원 · 두 길 · 두 원칙 · 두 완결</h1>
-    <p class="hero-sub">창세기 2장의 두 나무는 요한계시록 21-22장까지 성경 전체를 관통하는 통제하는 원칙입니다. 우리는 생명나무의 근원에서 출발하여 새 예루살렘에 이르는 생명의 길을 선택해야 합니다.</p>
+    <div class="hero-badge">2026 국제중국어 4주 1,2일</div>
+    <h1>두 나무 · 두 근원<br>두 길 · 두 원칙<br>두 완결</h1>
+    <p class="hero-sub">성경 전체는 하나의 통제하는 원칙 위에 기록되어 있습니다 — 삼일 하나님께서 그분 자신을 우리 안으로 분배하심. 노아·다니엘·욥의 생활은 이 분배가 실제로 사람 안에서 어떻게 펼쳐지는지 보여 주는 살아 있는 본입니다. 우리가 그 본을 보아야 합니다.</p>
 
     <!-- TWO TREES VISUAL -->
     <div class="two-trees-diagram animate-in">
@@ -1580,37 +2126,117 @@ body::before {
         <span class="tree-icon">🌳</span>
         <div class="tree-name red">생명나무</div>
         <div class="tree-sub">TREE OF LIFE</div>
-        <div class="tree-desc">삼일 하나님을 상징 — 사람에게 <strong>생명</strong>이 되심. 그 열매는 <strong>양분과 생명을 분배하는 음식</strong>이 됩니다 (창 2:9, 시 36:9)</div>
+        <div class="tree-desc">삼일 하나님께서 그리스도 안에 체현되시어 <strong>음식의 형태로 사람의 생명</strong>이 되심. 아벨·에녹·노아·욥이 이 근원을 선택했습니다</div>
       </div>
       <div class="tree-card death">
         <span class="tree-icon">🌿</span>
         <div class="tree-name gray">선악을 알게 하는 나무</div>
         <div class="tree-sub">TREE OF KNOWLEDGE</div>
-        <div class="tree-desc">사탄 마귀를 상징 — 사람에게 <strong>죽음</strong>이 됨. 그 열매는 <strong>사람을 죽이는 독</strong>이 됩니다 (창 2:17)</div>
+        <div class="tree-desc">사탄이 <strong>죽음의 근원</strong>이 됨. '죽음나무'가 아니라 '선과 악의 지식나무'로 불림 — 지식과 선과 악이 모두 사탄입니다</div>
       </div>
     </div>
   </section>
 
+
+  <!-- TODAY'S VERSE · 오늘의 구절 — 로마서 8:6 (Greek word-by-word, clickable key words) -->
+  <section class="todays-verse-section" id="todays-verse-section">
+    <div class="tv-header">
+      <div class="tv-kicker">오늘의 구절 · Today's Verse</div>
+      <div class="tv-ref">로마서 8:6</div>
+      <div class="tv-ref-en">Romans 8:6 · Recovery Version</div>
+    </div>
+
+        <!-- 번역 (한국어 & 영어) -->
+    <div class="tv-trans-compact">
+      <div class="tv-trans-row kr">
+        <span class="tv-trans-tag">한</span>
+        <span class="tv-trans-text">육체에 둔 생각은 <b>죽음</b>이지만, 영에 둔 생각은 <b>생명과 평안</b>입니다. <span style="color:var(--ink-mute);font-size:0.82rem;">— 회복역</span></span>
+      </div>
+      <div class="tv-trans-row en">
+        <span class="tv-trans-tag">EN</span>
+        <span class="tv-trans-text">For the mind set on the flesh is death, but the mind set on the spirit is life and peace. <span style="font-style:normal;color:var(--ink-mute);font-size:0.78rem;">— Recovery Version</span></span>
+      </div>
+    </div>
+
+    <!-- 헬라어 원문 — 단어 그대로, 각 단어 아래 한국어 발음 -->
+    <div class="tv-greek-sentence">
+      <div class="tv-greek-title">ΕΛΛΗΝΙΚΗ · 헬라어 원문 (NA28)</div>
+
+      <!-- 줄 1: τὸ γὰρ φρόνημα τῆς σαρκὸς θάνατος, -->
+      <div class="tv-greek-line">
+        <span class="tv-word func"><span class="w-gk">τὸ</span><span class="w-pr">토</span></span>
+        <span class="tv-word func"><span class="w-gk">γὰρ</span><span class="w-pr">가르</span></span>
+        <span class="tv-word key" onclick="tvShowWord('phronema')"><span class="w-gk">φρόνημα</span><span class="w-pr">프로네마</span></span>
+        <span class="tv-word func"><span class="w-gk">τῆς</span><span class="w-pr">테스</span></span>
+        <span class="tv-word key" onclick="tvShowWord('sarkos')"><span class="w-gk">σαρκὸς</span><span class="w-pr">사르코스</span></span>
+        <span class="tv-word key" onclick="tvShowWord('thanatos')"><span class="w-gk">θάνατος</span><span class="w-pr">타나토스</span></span>
+        <span class="tv-punct">,</span>
+      </div>
+
+      <!-- 줄 2: τὸ δὲ φρόνημα τοῦ πνεύματος ζωὴ καὶ εἰρήνη. -->
+      <div class="tv-greek-line">
+        <span class="tv-word func"><span class="w-gk">τὸ</span><span class="w-pr">토</span></span>
+        <span class="tv-word func"><span class="w-gk">δὲ</span><span class="w-pr">데</span></span>
+        <span class="tv-word key" onclick="tvShowWord('phronema')"><span class="w-gk">φρόνημα</span><span class="w-pr">프로네마</span></span>
+        <span class="tv-word func"><span class="w-gk">τοῦ</span><span class="w-pr">투</span></span>
+        <span class="tv-word key" onclick="tvShowWord('pneumatos')"><span class="w-gk">πνεύματος</span><span class="w-pr">프뉴마토스</span></span>
+        <span class="tv-word key" onclick="tvShowWord('zoe')"><span class="w-gk">ζωὴ</span><span class="w-pr">조에</span></span>
+        <span class="tv-word func"><span class="w-gk">καὶ</span><span class="w-pr">카이</span></span>
+        <span class="tv-word key" onclick="tvShowWord('eirene')"><span class="w-gk">εἰρήνη</span><span class="w-pr">에이레네</span></span>
+        <span class="tv-punct">.</span>
+      </div>
+    </div>
+
+    <!-- 범례 -->
+    <div class="tv-legend">
+      <span class="tv-legend-item"><span class="tv-legend-dot key"></span>중요 단어 (클릭 가능)</span>
+      <span class="tv-legend-item"><span class="tv-legend-dot func"></span>관사 · 접속사</span>
+    </div>
+
+    <!-- 구조 요약 -->
+    <div class="tv-summary">
+      <div class="tv-summary-title">Structure · 구조의 핵심</div>
+      <div class="tv-summary-text">
+        헬라어 특유의 <b>명사문(Nominal Clause)</b> — be 동사 ἐστίν이 생략된 채 명사들만 나열됨. 두 개의 대조되는 소유격 명사구 "<b>육체의(σαρκός) 프로네마</b>" vs "<b>영의(πνεύματος) 프로네마</b>"를 나란히 배치하여, 그 결과가 각각 <b>죽음(θάνατος)</b>과 <b>생명·평안(ζωὴ καὶ εἰρήνη)</b>이라는 상태와 직결됨을 <b>병렬 구조</b>로 선명하게 보여줍니다.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TV POPUP MODAL · 핵심 단어 사전 (BDAG · Thayer's · Strong's) -->
+  <div class="tv-popup-overlay" id="tv-popup-overlay" onclick="tvClosePopupOnBg(event)">
+    <div class="tv-popup" id="tv-popup">
+      <button class="tv-popup-close" onclick="tvClosePopup()" aria-label="닫기">✕</button>
+      <div class="tv-popup-header">
+        <div class="tv-popup-kicker">헬라어 단어 사전 · BDAG · Thayer's · Strong's</div>
+        <div class="tv-popup-meaning" id="tv-popup-meaning"></div>
+        <div class="tv-popup-greek" id="tv-popup-greek"></div>
+      </div>
+      <div class="tv-popup-body" id="tv-popup-body"></div>
+    </div>
+  </div>
+
+
   <!-- DASHBOARD -->
   <section class="dashboard" id="dashboard-section">
-    <div class="dashboard-title">전체 맥락 요약</div>
+    <div class="dashboard-title">특별집회 전체 맥락 요약</div>
 
     <div class="core-message">
-      성경 전체는 <strong>두 나무</strong>라는 통제하는 원칙으로 쓰였습니다. 창세기 2장의 두 나무에서 시작하여 요한계시록 22장의 새 예루살렘으로 완결됩니다. <strong>우리가 어떤 나무를 먹느냐</strong>가 우리의 근원, 길, 원칙, 그리고 최후의 완결을 결정합니다.
+      주님의 회복은 <strong>시온의 건축</strong>입니다. 예루살렘은 교회를, 시온은 교회 안의 <strong>이기는 이들</strong>을 예표합니다. 하나님께서 이 땅에서 그분의 움직이심을 완성하시기 위해 결국 필요로 하시는 것은 이기는 이들입니다. 노아·다니엘·욥은 그 본입니다.
     </div>
 
     <div class="dash-grid">
       <div class="dash-card">
-        <div class="dash-label">두 표징</div>
-        <div class="dash-value">생명나무 (하나님)<br>선악나무 (사탄)</div>
+        <div class="dash-label">전체 주제</div>
+        <div class="dash-value">생명의 노선 안에서<br>이기는 생활의 본</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">통제하는 원칙</div>
+        <div class="dash-value">삼일 하나님의<br>분배</div>
       </div>
       <div class="dash-card">
         <div class="dash-label">두 근원</div>
-        <div class="dash-value">아벨 → 하나님<br>가인 → 사탄</div>
-      </div>
-      <div class="dash-card">
-        <div class="dash-label">두 길</div>
-        <div class="dash-value">생명의 길 (비좁은)<br>죽음의 길 (널찍한)</div>
+        <div class="dash-value">생명이신 하나님<br>죽음인 사탄</div>
       </div>
       <div class="dash-card">
         <div class="dash-label">두 완결</div>
@@ -1620,33 +2246,33 @@ body::before {
   </section>
 
   <!-- FLOW -->
-  <section class="flow-section">
-    <div class="flow-title">두 나무에서 두 완결까지 — 다섯 단계의 흐름</div>
+  <section class="flow-section" id="flow-section">
+    <div class="flow-title">신성한 계시의 다섯 가지 쌍 — 다섯 단계의 흐름</div>
     <div class="flow-steps">
       <div class="flow-step">
         <div class="flow-dot">A</div>
-        <div class="flow-step-label">두 나무 — 두 근원의 표징</div>
-        <div class="flow-step-desc">창세기 2장의 두 나무는 단순한 식물이 아니라 하나님(생명나무)과 사탄(선악나무)을 상징하는 표징입니다. 인격이신 두 존재를 가리킵니다.</div>
+        <div class="flow-step-label">두 나무 — 두 인격의 표징</div>
+        <div class="flow-step-desc">창세기 2장에서 가장 두드러진 표징 한 쌍. 생명나무는 삼일 하나님을, 선악나무는 사탄 마귀를 상징합니다. 사물이 아닌 두 인격을 가리키는 표징입니다.</div>
       </div>
       <div class="flow-step">
         <div class="flow-dot">B</div>
-        <div class="flow-step-label">두 근원 — 두 왕국을 산출</div>
-        <div class="flow-step-desc">두 나무는 두 부류 사람들의 근원이 됩니다. 생명나무를 따르는 사람들(아벨→하나님의 왕국)과 선악나무를 따르는 사람들(가인→사탄의 왕국)로 나뉩니다.</div>
+        <div class="flow-step-label">두 근원 — 두 부류 사람과 두 왕국</div>
+        <div class="flow-step-desc">두 나무는 두 부류 사람들의 근원이 됩니다. 욥 같은 사람들은 생명이신 하나님을 추구하고, 가인 같은 사람들은 죽음인 사탄을 따릅니다. 이 두 근원이 하나님의 왕국과 사탄의 왕국을 산출합니다.</div>
       </div>
       <div class="flow-step">
         <div class="flow-dot">C</div>
-        <div class="flow-step-label">두 길 — 생명의 길 vs 선악의 길</div>
-        <div class="flow-step-desc">두 근원은 두 노선, 곧 두 길을 산출합니다. 비좁은 생명의 길과 널찍한 죽음과 선악의 길입니다. 각 길은 서로 다른 방향으로 사람을 인도합니다.</div>
+        <div class="flow-step-label">두 길 — 비좁은 생명의 길과 널찍한 죽음의 길</div>
+        <div class="flow-step-desc">두 근원은 두 노선(길)을 산출합니다. 생명의 길은 사람이 하나님을 찾고 얻고 누려 가장 충만한 단계에 이르게 하며, 죽음의 길은 사탄의 자녀가 되어 멸망에 이르게 합니다.</div>
       </div>
       <div class="flow-step">
         <div class="flow-dot">D</div>
-        <div class="flow-step-label">두 원칙 — 의지 vs 독립</div>
-        <div class="flow-step-desc">두 길은 두 원칙을 형성합니다. 하나님을 의지하는 생명의 원칙과, 하나님에게서 독립하는 선악의 원칙. 실제 삶에서 어느 원칙을 따르느냐가 삶을 결정합니다.</div>
+        <div class="flow-step-label">두 원칙 — 의지하는 원칙 vs 독립하는 원칙</div>
+        <div class="flow-step-desc">두 길은 두 원칙을 형성합니다. 생명의 원칙은 하나님을 의지하여 그분을 접촉·추구·누림으로 충만한 단계에 이르게 하고, 선악의 원칙은 하나님에게서 독립하여 사탄을 따르게 합니다.</div>
       </div>
       <div class="flow-step">
         <div class="flow-dot">E</div>
         <div class="flow-step-label">두 완결 — 새 예루살렘 vs 불못</div>
-        <div class="flow-step-desc">두 길의 최종 결과입니다. 생명나무의 완결은 새 예루살렘(계 22장), 선악나무의 완결은 불못(계 20장). 요한계시록에서 두 완결이 분명해집니다.</div>
+        <div class="flow-step-desc">두 길의 최종 결과. 생명의 길은 새 예루살렘(계 21-22장)에서 완성되고, 죽음과 선악의 길은 불못(계 20장)에서 완결됩니다. 성경은 창 2장에서 계 22장까지 이 두 경로의 이야기입니다.</div>
       </div>
     </div>
   </section>
@@ -1655,107 +2281,227 @@ body::before {
   <section class="keywords-section" id="keywords-section">
     <div class="keywords-section-title">핵심 키워드</div>
     <div class="kw-container">
-      <span class="kw-chip" onclick="toggleKwTip('kwt1')">생명나무 (Tree of Life)</span>
-      <span class="kw-chip" onclick="toggleKwTip('kwt2')">선악나무 (Tree of Knowledge)</span>
-      <span class="kw-chip" onclick="toggleKwTip('kwt3')">두 근원 (Two Sources)</span>
-      <span class="kw-chip" onclick="toggleKwTip('kwt4')">비좁은 길</span>
-      <span class="kw-chip" onclick="toggleKwTip('kwt5')">새 예루살렘</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt1')">이기는 이들 · 시온</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt2')">하나님의 자기 분배</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt3')">영원한 목적의 3단계</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt4')">사탄의 상업적 원칙</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt5')">삼각관계 (하나님-사람-사탄)</span>
     </div>
-    <div class="kw-tooltip" id="kwt1">생명나무는 사람과 하나님의 관계에서 사람에게 생명이 되시는 삼일 하나님을 상징합니다(창 2:9, 시 36:9). 하나님께서 사람을 창조하신 후 생명나무 앞에 두신 의도는, 사람이 생명나무를 먹고 신진대사적으로 하나님을 흡수하여 생명으로 받아들이게 하시려는 것이었습니다. 요한계시록 22장에서 이 나무는 거룩한 성 안에 완성된 모습으로 나타납니다.</div>
-    <div class="kw-tooltip" id="kwt2">선악을 알게 하는 나무는 사람이 하나님 앞에서 타락할 때 사람에게 죽음이 된 악한 자 사탄 마귀를 상징합니다. 이 나무의 이름이 '죽음나무'가 아니라 '선과 악의 지식나무'인 것이 중요합니다. 신성한 계시에 따르면 지식과 선과 악은 모두 사탄입니다. 하나님은 단순하시지만 사탄은 매우 복잡합니다.</div>
-    <div class="kw-tooltip" id="kwt3">두 나무는 두 부류 사람들의 두 근원입니다. 생명나무는 자신의 공급과 누림을 위해 생명이신 하나님을 추구하는 사람들의 근원이며, 선악나무는 죽음과 영원한 멸망에 이르게 하는 독인 사탄을 따르는 사람들의 근원입니다. 두 근원의 결과는 두 왕국, 곧 하나님의 왕국과 사탄의 왕국이 됩니다.</div>
-    <div class="kw-tooltip" id="kwt4">마태복음 7:14의 비좁은 길은 생명의 길입니다. 사도행전에서 "그 길"(행 9:2), "구원의 길"(16:17), "주님의 길"(18:25), "하나님의 길"(18:26)로도 불립니다. 이 길은 사람이 하나님을 찾고, 얻으며, 영원한 생명 안에서 공급으로 누리게 합니다. 생명의 길에는 아벨, 에녹, 노아, 아브라함, 다윗, 모든 신약의 믿는 이들이 있습니다.</div>
-    <div class="kw-tooltip" id="kwt5">새 예루살렘은 생명나무의 최종 완성이자 하나님의 생명의 길의 완결입니다(계 21:2, 10-11, 22:1-2). 이 성의 중심에는 하나님과 어린양의 보좌가 있고, 거기서 생명수의 강이 흘러나오며, 강 양편에 생명나무가 자랍니다. 새 예루살렘은 우리가 하나님을 찾고 얻어 가장 충만한 단계에 이르도록 하는 가장 큰 격려입니다.</div>
+    <div class="kw-tooltip" id="kwt1">예루살렘은 교회를, 시온은 교회 안의 이기는 이들을 예표합니다. 예루살렘의 특징과 생명과 축복과 건축은 모두 시온에서 나옵니다. 시온은 교두보가 되는 사람들입니다. 노아·다니엘·욥의 생활은 바로 이 이기는 이들의 본으로 우리에게 주어졌습니다.</div>
+    <div class="kw-tooltip" id="kwt2">성경 전체 66권은 하나의 통제하는 원칙 위에 기록되었습니다 — 삼일 하나님께서 그분 자신을 우리 안으로 분배하시는 것. 이를 통해 우리는 그분을 체험하고 누리며 표현할 수 있게 되고, 그분의 신성한 경륜을 이룰 수 있게 됩니다.</div>
+    <div class="kw-tooltip" id="kwt3">① 사람을 창조하여 하나님을 생명으로 담을 수 있는 그릇으로 만드심. ② 사람을 생명나무 앞에 두어 하나님을 생명으로 받아들이게 하심. ③ 하나님 자신을 사람 안에 넣으셔서 사람이 하나님의 충만이 되게 하심.</div>
+    <div class="kw-tooltip" id="kwt4">사탄은 "욥이 까닭 없이 하나님을 경외하리이까"(욥 1:9)라고 계산합니다. 그는 선과 악에 기반한 상업적 원칙으로 모든 것을 저울질합니다. 하나님께서 사람을 다루시는 진정한 목적 — 사람이 하나님을 충만히 얻도록 하심 — 을 사탄은 알지 못합니다.</div>
+    <div class="kw-tooltip" id="kwt5">창 2장에는 하나님-사람-사탄의 삼각관계가 있습니다. 사람은 두 근원 사이에 위치합니다. 로마서 5-8장에서도 이 삼각관계가 계속됩니다. 오늘 모든 신약의 믿는 이들은 작은 에덴동산과 같습니다 — 우리는 두 근원 앞에 서 있으며, 여기에는 중립 지대가 없습니다.</div>
   </section>
 
 
   <!-- ACCORDIONS -->
   <div class="accordion-group">
-    <div class="accordion-group-title" id="keypoints-section">Ⅰ. 신성한 계시의 다섯 가지 쌍</div>
+    <div class="accordion-group-title" id="keypoints-section">핵심 요점 — 서언 · 목적 · 다섯 쌍 · 적용</div>
 
-    <div class="step-header" data-kicker="Step 1 · 창 2장 → 계 22장">두 나무에서 두 완결까지</div>
+    <div class="step-header" data-kicker="Preamble · 특별집회의 전체 주제">서언 — 왜 '본'이 필요한가</div>
 
-    <!-- A. 두 나무 -->
-    <div class="accordion" id="acc-1">
+    <!-- 서언 (NEW) -->
+    <div class="accordion" id="acc-0">
       <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number">A</div>
-        <div class="acc-title-text">두 나무 — 하나님과 사탄의 상징</div>
+        <div class="acc-number">◎</div>
+        <div class="acc-title-text">노아·다니엘·욥 — 이기는 생활의 본</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
         <div class="accordion-content">
           <div class="verse-block">
-            <div class="verse-ref">창세기 2:9, 17</div>
-            <div class="verse-text">[9] 여호와 하나님은 그 땅에 보기 즐겁고 먹기 좋은 온갖 나무를 자라게 하셨고, <b>동산 한가운데 있는 생명나무</b>와, <b>선과 악의 지식나무</b>도 자라게 하셨다.</div>
-            <div class="verse-text">[17] 그러나 선과 악의 지식나무의 열매는 먹어서는 안 된다. 그것을 먹는 날에는 <b>반드시 죽을 것이다.</b></div>
+            <div class="verse-ref">에스겔 14:14 / 벧후 2:5 / 단 6:22</div>
+            <div class="verse-text">[겔 14:14] 비록 <b>노아와 다니엘과 욥</b>, 이 세 사람이 거기에 있을지라도 그들은 자기의 의로 말미암아 그들의 생명만 건지리라.</div>
           </div>
 
-          <p class="content-text">창세기 1장과 2장에서 가장 두드러진 표징들 중의 하나는 두 나무, 곧 <span class="hl">생명나무와 선과 악의 지식나무</span>입니다. 이 두 나무는 어떤 사물이나 물체가 아니라, <strong>인격이신 하나님과 사탄을 상징합니다</strong>.</p>
+          <p class="content-text">이번 특별집회의 전체 주제는 <span class="hl">노아와 다니엘과 욥이 생명의 노선 안에서 이기는 생활을 살아 하나님의 경륜을 이루는 본이 된다</span>는 것입니다. 그들은 우리의 본입니다.</p>
+
+          <div class="examples-grid">
+            <div class="example-chip"><div class="ex-name">노아</div><div class="ex-label">세대를 거스른 건축</div></div>
+            <div class="example-chip"><div class="ex-name">다니엘</div><div class="ex-label">포로 중의 기도</div></div>
+            <div class="example-chip"><div class="ex-name">욥</div><div class="ex-label">벗겨짐을 통한 얻음</div></div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">왜 '본'이 필요한가</div>
+            <div class="sub-point-text">
+              사람들을 목양하고 소중히 보살피며 양육하는 가장 좋은 길은 <strong>합당한 본을 제시하는 것</strong>입니다. 현재 수많은 그리스도인이 방향 감각을 잃고 방황하는 것은, 그들에게 합당한 본이 부족하기 때문입니다. 새 신자들이나 어리고 약한 사람들을 돌보는 합당한 길은 그들이 <span class="hl">본을 보게 하는 것</span>입니다.
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">주님의 회복 = 시온의 건축</div>
+            <div class="sub-point-text">
+              주님의 회복은 시온을 건축하는 것입니다. 예루살렘의 특징과 생명과 축복과 건축은 <strong>모두 시온에서 나옵니다</strong>. 예루살렘은 교회를 예표하고, 시온은 <span class="hl">교회 안에 있는 이기는 이들</span>을 예표합니다. 하나님께서 이 땅에서 그분의 움직이심을 완성하시기 위해 결국 필요로 하시는 것은 바로 이기는 이들입니다 — 교두보가 되는 사람들입니다.
+            </div>
+          </div>
+
+          <p class="content-text">성경 전체 66권은 다음과 같은 <span class="hl">통제하는 원칙에 입각하여 쓰였습니다 — 삼일 하나님께서 그분 자신을 우리 안으로 분배하시는 것</span>입니다. 이를 통해 우리는 그분을 체험하고 누리며 표현할 수 있게 되고, 그분의 신성한 경륜을 이룰 수 있게 됩니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">
+      이 본들이 가리키는 통제하는 원칙을 이해하려면, <strong>창세기 1-2장의 목적과 절차</strong>를 먼저 보아야 합니다.
+    </div>
+
+    <!-- 창 1-2장 목적과 절차 (NEW) -->
+    <div class="accordion" id="acc-purp">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">⊙</div>
+        <div class="acc-title-text">창세기 1-2장 — 하나님의 영원한 목적과 그 절차</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">창세기 1:26</div>
+            <div class="verse-text">하나님이 이르시되, "<b>우리의 형상을 따라 우리의 모양대로 사람을 만들자</b>. 그리고 그들이 <b>바다의 물고기와 공중의 새와 땅의 짐승들과 땅 위를 기는 것들을 다스리게 하자</b>."</div>
+          </div>
+
+          <p class="content-text">창세기 1장과 2장은 두 가지 매우 중요한 사건을 보여 줍니다. 첫째는 <strong>사람을 향한 하나님의 영원한 목적</strong>이고, 둘째는 <strong>그 목적을 이루는 길과 수단</strong>입니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">하나님의 영원한 목적 (창 1:26)</div>
+            <div class="sub-point-text">
+              하나님께서 사람을 창조하신 뜻은 — 사람이 <strong>하나님의 형상을 지녀 그분을 표현하고</strong>, <strong>하나님의 통치권을 위임받아 그분을 대표하게 하려는 것</strong>입니다. 이 목적에 도달하기 위해서는 길이 필요했습니다. 하나님께서 그분의 목적을 이루시는 길은 바로 <span class="hl">생명을 통해서</span>입니다 — 그분 자신을 사람에게 생명과 생명 공급으로 분배하심으로써.
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">영원한 목적을 이루시는 세 단계</div>
+            <div class="sub-point-text">창세기 2장은 절차를 보여 줍니다:</div>
+
+            <div class="purpose-stages">
+              <div class="purpose-stage">
+                <div class="purpose-stage-num">1</div>
+                <div class="purpose-stage-body">
+                  <div class="purpose-stage-title">사람을 창조하여 <b>하나님을 담는 그릇</b>으로 만드심</div>
+                  <div class="purpose-stage-desc">사람에게 생명의 호흡을 불어넣어 사람의 영이 되게 하심(창 2:7). 그러나 그때에는 아직 하나님 자신을 사람의 생명으로 넣지는 않으심.</div>
+                </div>
+              </div>
+              <div class="purpose-stage">
+                <div class="purpose-stage-num">2</div>
+                <div class="purpose-stage-body">
+                  <div class="purpose-stage-title">사람을 <b>생명나무 앞에</b> 두어 하나님을 생명으로 받아들이게 하심</div>
+                  <div class="purpose-stage-desc">생명나무는 삼일 하나님께서 그리스도 안에 체현되시어 음식의 형태로 사람의 생명이 되심을 상징. 사람이 그분을 신진대사적으로 흡수하게 하심.</div>
+                </div>
+              </div>
+              <div class="purpose-stage">
+                <div class="purpose-stage-num">3</div>
+                <div class="purpose-stage-body">
+                  <div class="purpose-stage-title">하나님 자신을 사람 안에 넣으셔서 <b>사람이 하나님의 충만</b>이 되게 하심</div>
+                  <div class="purpose-stage-desc">이것이 바로 사람이 창 1:26의 영원한 목적을 완성하는 단계 — 하나님의 형상을 지녀 그분을 표현하고 그분의 통치권을 대표함.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="content-text">그러나 하나님은 위대하시기에 사람에게 강요하지 않으셨습니다. 그분은 사람에게 <strong>자유 의지</strong>를 주셨고 <strong>선택의 자유</strong>를 허락하셨습니다. 그래서 창세기 2장에는 생명나무와 선악을 알게 하는 나무가 <span class="hl">함께</span> 언급됩니다 — 사람이 선택해야 했습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-header" data-kicker="Ⅰ · 창 2장 → 계 22장">신성한 계시의 다섯 가지 쌍</div>
+
+    <!-- A. 두 나무 -->
+    <div class="accordion" id="acc-1">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">A</div>
+        <div class="acc-title-text">두 나무 — 하나님과 사탄의 표징</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">창세기 2:9, 17 / 요한복음 1:4, 15:5</div>
+            <div class="verse-text">[창 2:9] 여호와 하나님은 … 동산 한가운데 있는 <b>생명나무</b>와 <b>선과 악의 지식나무</b>도 자라게 하셨다.</div>
+            <div class="verse-text">[요 15:5] 나는 <b>포도나무</b>이다 … 그분 안에 생명이 있었고(요 1:4).</div>
+          </div>
+
+          <p class="content-text">성경은 표징의 책입니다(계 1:1). 요한계시록에는 금등잔대·별들·유다 지파의 사자·어린양·네 말·해를 입은 여자 등 많은 표징이 있고, 마지막이자 가장 큰 표징은 <strong>새 예루살렘</strong>입니다. 창세기 1-2장에도 가장 두드러진 한 쌍의 표징이 있습니다 — <span class="hl">두 나무</span>입니다.</p>
 
           <div class="sub-point">
             <div class="sub-point-title">생명나무 — 삼일 하나님의 상징</div>
             <div class="sub-point-text">
-              생명나무는 <strong>사람에게 생명이 되시는 삼일 하나님</strong>을 상징합니다. "그분 안에 생명이 있었고"(요 1:4), "나는 포도나무이다"(요 15:5). 이 두 구절을 함께 보면, 그리스도께서 생명나무이심을 알 수 있습니다. 그 열매는 <strong>사람에게 양분을 주고 생명을 분배하는 음식</strong>이 됩니다.
+              생명나무는 사람과 하나님의 관계에서 <strong>사람에게 생명이 되시는 삼일 하나님</strong>을 상징합니다(창 2:9, 시 36:9). 요 1:4 — "그분 안에 생명이 있었고", 요 15:5 — "나는 포도나무이다." 두 구절을 함께 놓고 볼 때 <strong>그리스도께서 생명나무</strong>이심을 알 수 있습니다. 하나님께서 사람 안에 생명의 호흡을 불어넣으셨을 때, 그것은 사람의 영이 되었으나 <span class="hl">아직 하나님 자신이 사람의 생명이 되신 것은 아니었습니다</span>.
             </div>
           </div>
 
           <div class="sub-point">
             <div class="sub-point-title">선악나무 — 사탄 마귀의 상징</div>
             <div class="sub-point-text">
-              선악을 알게 하는 나무는 <strong>사람에게 죽음이 된 악한 자 사탄 마귀</strong>를 상징합니다. 그 열매는 사람을 죽이는 독이 됩니다. 주목해야 할 것은 이 나무가 <strong>'죽음나무'가 아니라 '선과 악의 지식나무'</strong>라는 점입니다 — 신성한 계시에 따르면 지식과 선과 악은 모두 사탄입니다. <span class="hl">하나님은 단순하시지만, 사탄은 매우 복잡합니다.</span>
+              선악을 알게 하는 나무는 사람이 타락할 때 <strong>사람에게 죽음이 된 악한 자 사탄 마귀</strong>를 상징합니다(창 2:17). 이 나무가 '죽음나무'가 아니라 '선과 악의 지식나무'로 불리는 것이 중요합니다 — <span class="hl">신성한 계시에 따르면 지식과 선과 악이 모두 사탄</span>입니다. <strong>하나님은 단순하시지만, 사탄은 매우 복잡</strong>합니다. 첫 번째 나무는 오직 생명이신 하나님만을 상징하지만, 두 번째 나무에는 지식과 선과 악이 포함되어 있습니다.
             </div>
           </div>
 
-          <p class="content-text">중요한 진리: <span class="hl">참된 선은 하나님 자신입니다</span>(마 19:17). 만일 우리가 하나님을 떠나 선한 것들을 만진다면, 우리는 사탄을 만지고 있는 것입니다. 오늘날 텔레비전과 다양한 신문과 잡지들은 <strong>선과 악의 지식나무의 가지들</strong>입니다.</p>
+          <p class="content-text">참된 선은 <span class="hl">하나님 자신</span>입니다(막 10:17-18, 마 19:17). 부자 청년이 주 예수님을 '선한 선생님'이라 불렀을 때, 주님은 "하나님 한 분 외에는 아무도 선하지 않습니다"라고 대답하셨습니다. 만일 우리가 하나님을 떠나 선한 것들을 만진다면, 그것은 우리가 <strong>사탄을 만지고 있음</strong>을 의미합니다. 오늘날의 텔레비전·신문·잡지들은 분명히 선과 악의 지식나무의 가지들입니다.</p>
+
+          <p class="content-text">두 나무는 자재를 산출하기 위한 것이 아니라 <strong>사람이 그 열매를 먹기 위한 것</strong>입니다. 생명나무의 열매는 <span class="hl">양분을 주고 생명을 분배하는 음식</span>이 되지만, 선악나무의 열매는 <span class="hl">사람을 죽이는 독</span>이 됩니다. 우리는 자신이 먹는 것에 주의해야 합니다.</p>
         </div>
       </div>
     </div>
 
     <div class="step-connector">
-      두 나무는 단지 표징입니다. 더 중요한 것은 그것이 산출하는 <strong>두 근원</strong>입니다.
+      두 나무는 표징일 뿐입니다. 더 중요한 것은 그것이 산출하는 <strong>두 근원</strong>과 그로 인한 <strong>두 왕국</strong>입니다.
     </div>
 
     <!-- B. 두 근원 -->
     <div class="accordion" id="acc-2">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">B</div>
-        <div class="acc-title-text">두 근원 — 두 왕국을 산출함</div>
+        <div class="acc-title-text">두 근원 — 두 부류 사람과 두 왕국</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
         <div class="accordion-content">
           <div class="verse-block">
-            <div class="verse-ref">요한복음 1:4 / 요한복음 8:44 / 마태복음 21:43</div>
-            <div class="verse-text">[요 1:4] 그분 안에 <b>생명이 있었고</b>, 그 생명은 사람들의 빛이었다.</div>
-            <div class="verse-text">[요 8:44] 너희는 너희 아버지인 마귀에게서 난 자들이며, 너희 아버지의 욕망을 행하기를 원하느니라.</div>
+            <div class="verse-ref">요 1:4 / 요 8:44 / 마 21:43 / 골 1:13</div>
+            <div class="verse-text">[요 8:44] 너희는 <b>너희 아버지인 마귀</b>에게서 난 자들이며, 너희 아버지의 욕망을 행하기를 원하느니라.</div>
+            <div class="verse-text">[골 1:13] 그분께서 우리를 어둠의 권세에서 건져 내시어, <b>그분의 사랑하시는 아들의 왕국으로 옮겨 주셨습니다.</b></div>
           </div>
 
-          <p class="content-text">두 나무는 하나님과 사탄의 상징이며, <span class="hl">두 부류 사람들의 두 근원이 됩니다</span>. 첫 번째 나무, 생명나무는 자신의 공급과 누림을 위해 생명이신 하나님을 추구하는 사람들의 근원이며, <strong>아벨이 그러한 사람들 중 첫 번째</strong>였습니다. 두 번째 나무, 선악나무는 사탄을 따르는 사람들의 근원이며, <strong>가인이 그러한 사람들 중 첫 번째</strong>였습니다.</p>
+          <p class="content-text">두 나무는 하나님과 사탄의 상징이며, <span class="hl">두 부류 사람들의 두 근원이 됩니다</span>.</p>
 
           <div class="compare-table">
             <div class="compare-row header">
-              <div>생명나무의 노선</div>
+              <div>생명나무의 근원</div>
               <div>·</div>
-              <div>선악나무의 노선</div>
+              <div>선악나무의 근원</div>
             </div>
             <div class="compare-row">
-              <div class="compare-cell life"><div class="nm">아벨</div><div class="mn">첫 번째 생명의 사람</div></div>
+              <div class="compare-cell life"><div class="nm">욥 (대표)</div><div class="mn">생명이신 하나님을 추구</div></div>
               <div class="compare-div">↔</div>
-              <div class="compare-cell death"><div class="nm">가인</div><div class="mn">첫 번째 선악의 사람</div></div>
+              <div class="compare-cell death"><div class="nm">가인 (대표)</div><div class="mn">독인 사탄을 따름</div></div>
             </div>
             <div class="compare-row">
-              <div class="compare-cell life"><div class="nm">하나님의 왕국</div><div class="mn">교회 (신약 경륜)</div></div>
+              <div class="compare-cell life"><div class="nm">하나님의 왕국</div><div class="mn">이스라엘 / 교회 (마 21:43)</div></div>
               <div class="compare-div">↔</div>
-              <div class="compare-cell death"><div class="nm">사탄의 왕국</div><div class="mn">세상 시스템</div></div>
+              <div class="compare-cell death"><div class="nm">사탄의 왕국</div><div class="mn">(마 12:26)</div></div>
             </div>
             <div class="compare-row">
-              <div class="compare-cell life"><div class="nm">생명과 누림</div><div class="mn">하나님을 공급으로</div></div>
+              <div class="compare-cell life"><div class="nm">공급과 누림</div><div class="mn">자양분이 되는 음식</div></div>
               <div class="compare-div">↔</div>
-              <div class="compare-cell death"><div class="nm">죽음과 멸망</div><div class="mn">사탄의 독을 흡수</div></div>
+              <div class="compare-cell death"><div class="nm">죽음과 멸망</div><div class="mn">사람을 죽이는 독</div></div>
             </div>
           </div>
 
-          <p class="content-text">이 두 근원의 결과는 이 땅에 있는 <span class="hl">두 왕국</span>이 됩니다. 첫 번째 왕국은 하나님의 왕국이며 — 구약에서는 이스라엘 왕국, 신약에서는 교회(마 21:43). 두 번째 왕국은 사탄의 왕국입니다(마 12:26, 골 1:13). <strong>우리가 거듭난 후에는 이 왕국 이동이 이루어집니다</strong> — "그분께서 우리를 어둠의 권세에서 건져 내시어, 그분의 사랑하시는 아들의 왕국으로 옮겨 주셨습니다"(골 1:13).</p>
+          <div class="sub-point">
+            <div class="sub-point-title">생명나무의 근원 — 대표 인물은 욥</div>
+            <div class="sub-point-text">
+              자신의 공급과 누림을 위해 <strong>생명이신 하나님을 추구하는 사람들의 근원</strong>입니다(요 1:4, 15:1). 이 메시지의 대표 인물로 <span class="hl">욥</span>이 제시됩니다. 욥은 도덕적으로 좋은 사람이었으나, 하나님께서 그를 다루신 목적은 그가 <strong>물질적인 것들이나 도덕적 성취에 머무르지 않고, 하나님을 가장 충만한 단계로 얻도록</strong> 하시는 것이었습니다.
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">선악나무의 근원 — 대표 인물은 가인</div>
+            <div class="sub-point-text">
+              죽음과 영원한 멸망에 이르게 하는 독인 <strong>사탄을 따르는 사람들의 근원</strong>입니다(요 8:44). 우리가 <strong>타락하여 구원받기 전에는 모두 선악나무의 영역 안에</strong> 있었습니다. 그러나 거듭난 후에는 생명나무라는 근원 안에 놓이게 되었습니다.
+            </div>
+          </div>
+
+          <p class="content-text">두 근원의 결과는 이 땅의 <span class="hl">두 왕국</span>입니다. 첫째는 하나님의 왕국 — 구약에서는 이스라엘, 신약에서는 교회(마 21:43). 둘째는 사탄의 왕국(마 12:26). <strong>거듭남은 이 왕국 이동</strong>입니다 — "그분께서 우리를 어둠의 권세에서 건져 내시어, 그분의 사랑하시는 아들의 왕국으로 옮겨 주셨습니다"(골 1:13).</p>
         </div>
       </div>
     </div>
@@ -1766,81 +2512,89 @@ body::before {
     <div class="accordion" id="acc-3">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">C</div>
-        <div class="acc-title-text">두 길 — 생명의 길 vs 죽음과 선악의 길</div>
+        <div class="acc-title-text">두 길 — 생명의 길(비좁은 길) vs 죽음과 선악의 길(널찍한 길)</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
         <div class="accordion-content">
           <div class="verse-block">
             <div class="verse-ref">마태복음 7:13-14</div>
-            <div class="verse-text">[13] 좁은 문을 통해 들어가십시오. <b>파멸로 이끄는 문은 넓고, 그 길이 널찍하여</b> 그리로 들어가는 사람이 많으며,</div>
-            <div class="verse-text">[14] <b>생명으로 이끄는 문은 좁고, 그 길이 비좁아</b> 찾는 사람이 적습니다.</div>
+            <div class="verse-text">[13] 좁은 문을 통해 들어가십시오. <b>파멸로 이끄는 문은 넓고 그 길이 널찍하여</b> 그리로 들어가는 사람이 많으며,</div>
+            <div class="verse-text">[14] <b>생명으로 이끄는 문은 좁고 그 길이 비좁아</b> 찾는 사람이 적습니다.</div>
           </div>
 
-          <p class="content-text">이 두 근원은 두 노선을 산출하며, 이것은 <span class="hl">두 길</span>이 됩니다. 두 길은 사람들을 하나님께서 정하신 서로 다른 두 완결로 인도합니다.</p>
+          <p class="content-text">두 근원은 두 노선을 산출하며, 이것이 <span class="hl">두 길</span>이 됩니다. 이 두 길은 사람들을 하나님께서 정하신 서로 다른 두 완결로 인도합니다.</p>
 
           <div class="sub-point">
             <div class="sub-point-title">첫 번째 길 — 생명의 길 (비좁은 길)</div>
             <div class="sub-point-text">
-              이 길은 사도행전에서 여러 이름으로 불립니다:<br><br>
-              <span class="result-tag">그 길 (행 9:2)</span>
+              이 길은 신약에서 여러 이름으로 불립니다:<br><br>
+              <span class="result-tag">비좁은 길 (마 7:14)</span>
+              <span class="result-tag">그 길 (행 9:2, 19:9)</span>
               <span class="result-tag">구원의 길 (행 16:17)</span>
               <span class="result-tag">주님의 길 (행 18:25)</span>
               <span class="result-tag">하나님의 길 (행 18:26)</span>
               <span class="result-tag">바른 길 (벧후 2:15)</span>
               <span class="result-tag">의의 길 (벧후 2:21)</span><br><br>
-              이 길에는 <strong>아벨, 에녹, 노아, 아브라함, 이삭, 야곱, 모세, 다윗, 욥, 신약의 모든 믿는 이들</strong>이 있습니다. 이 생명의 길은 사람이 하나님을 찾고, 하나님을 얻으며, <span class="hl">하나님을 영원한 생명 안에서 공급으로 누려 가장 충만한 단계에 이르게 합니다.</span>
+              이 생명의 길은 사람이 하나님을 찾고, 얻고, <strong>영원한 생명 안에서 공급으로 누리게</strong> 합니다. 사람이 하나님에게서 나서(요 1:12-13) 그분의 생명과 본성을 얻고, <span class="hl">변화되어 그분의 영광스러운 형상과 같은 형상을 이루며</span>(고후 3:18), 영광 안에서 영광스럽게 되어 <strong>가장 충만한 정도로 그분을 얻고 그분께 참여</strong>하게 합니다.
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">생명의 길에 있는 사람들</div>
+            <div class="sub-point-text">
+              <strong>아벨, 셋, 에노스, 에녹, 노아, 아브라함, 이삭, 야곱, 모세, 다윗, 사무엘, 구약의 모든 신언자들, 욥, 신약의 모든 믿는 이들</strong>(히 11:39-40). <span class="hl">욥을 다루신 하나님의 목적</span>은 그가 충만한 정도로 하나님을 얻을 수 있도록, 그를 선악의 길에서 이러한 생명의 길로 돌이키게 하시는 것이었습니다.
             </div>
           </div>
 
           <div class="sub-point">
             <div class="sub-point-title">두 번째 길 — 죽음과 선악의 길 (널찍한 길)</div>
             <div class="sub-point-text">
-              이 길에는 <strong>가인, 라멕, 함, 니므롯, 고라, 발람, 사울, 압살롬, 적그리스도와 그 추종자들</strong>(계 19:19-21), 그리고 모든 불신자들이 있습니다(계 20:15). 이 죽음의 길에서 사람들은 의식적으로든 <strong>무의식적으로든 사탄을 따르게 됩니다</strong>. 그 결과는 사탄의 동반자가 되어 그의 영원한 멸망에 참여하는 것입니다.
+              이 길은 사람들이 사탄을 따라가 <strong>사탄의 자녀</strong>가 되고(요일 3:10), 그의 동반자가 되어 그의 영원한 멸망 가운데 함께 있게 되는 길입니다(마 25:41). 이 길에는 <strong>가인, 라멕, 야발, 유발, 두발가인, 함, 구스, 니므롯, 고라, 발람, 사울, 압살롬, 적그리스도와 그 추종자들</strong>(계 19:19-21), 그리고 모든 불신자들(계 20:15)이 있습니다.
             </div>
           </div>
 
-          <p class="content-text">주의해야 할 것: <span class="hl">오늘 우리는 한 발은 생명나무의 노선에, 다른 한 발은 선악나무의 노선에 두고 있을 수 있습니다</span>. 결혼 생활에서, 배우자와 대화할 때도 마찬가지입니다. 우리는 이 두 길 사이에서 머뭇거리며 오락가락할 수 있습니다. 여기에는 <strong>중립 지대가 없습니다</strong>.</p>
+          <p class="content-text">주의할 것: 우리의 실제적 체험 안에서 우리는 종종 <span class="hl">한 발은 생명나무의 노선에, 다른 한 발은 선악나무의 노선에</span> 두고 있습니다. 결혼 생활에서, 배우자와의 대화에서도 마찬가지입니다. 우리는 이 두 길 사이에서 머뭇거리며 오락가락할 수 있습니다. <strong>중립 지대는 없습니다</strong>.</p>
         </div>
       </div>
     </div>
 
     <div class="step-connector">
-      두 길은 각각 하나의 원칙을 형성합니다. <strong>두 원칙</strong>은 우리의 실제 삶에서 어떤 근원을 접촉하느냐를 결정합니다.
+      두 길은 각각 하나의 원칙을 형성합니다. <strong>두 원칙</strong>은 우리가 실제 삶에서 하나님과 맺는 관계를 통제·지배·규제합니다.
     </div>
 
     <!-- D. 두 원칙 -->
     <div class="accordion" id="acc-4">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">D</div>
-        <div class="acc-title-text">두 원칙 — 하나님을 의지함 vs 하나님에서 독립함</div>
+        <div class="acc-title-text">두 원칙 — 하나님을 의지함 vs 하나님에게서 독립함</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
         <div class="accordion-content">
           <div class="verse-block">
-            <div class="verse-ref">요한복음 15:5 / 예레미야 17:5-6</div>
-            <div class="verse-text">[요 15:5] 나는 포도나무요, 너희는 가지들이다. <b>그분 안에 거하고 그분께서도 그 안에 거하시는 사람</b>은 많은 열매를 맺는다. 나를 떠나서는 너희가 아무것도 할 수 없다.</div>
-            <div class="verse-text">[렘 17:5-6] "사람을 의지하고 혈육을 그 힘으로 삼으며 <b>마음이 주님에게서 떠나는 사람은 저주를 받을 것이라</b>."</div>
+            <div class="verse-ref">요 15:5 / 창 4:3-4 / 렘 17:5-6</div>
+            <div class="verse-text">[요 15:5] 나는 포도나무요 너희는 가지들이다. <b>그분 안에 거하고 그분께서도 그 안에 거하시는 사람</b>은 많은 열매를 맺는다. 나를 떠나서는 너희가 아무것도 할 수 없다.</div>
+            <div class="verse-text">[렘 17:5] 사람을 의지하고 혈육을 그 힘으로 삼으며 <b>마음이 주님에게서 떠나는 사람</b>은 저주를 받을 것이라.</div>
           </div>
 
-          <p class="content-text">두 길은 두 원칙을 형성합니다. 이 두 원칙은 <span class="hl">사람들이 하나님과 맺는 관계를 통제하고 지배하고 규제하는</span> 두 가지 기준입니다.</p>
+          <p class="content-text">두 길은 두 원칙을 형성합니다. 이 두 원칙은 <span class="hl">사람들이 하나님과 맺는 관계를 통제하고 지배하고 규제하는</span> 두 기준입니다.</p>
 
           <div class="sub-point">
             <div class="sub-point-title">첫 번째 원칙 — 생명의 원칙 (하나님을 의지함)</div>
             <div class="sub-point-text">
-              사람들은 이 원칙에 따라 생명의 길 안에서 하나님을 접촉하며, 한 단계 한 단계씩 하나님을 찾고 얻으며 소유하고 누려서 결국 <strong>가장 충만한 정도에까지 이르게 됩니다</strong>. 이것이 욥을 다루신 하나님의 목적이기도 했습니다 — 그가 <span class="hl">선악의 길에서 생명의 길로 돌이키게 하시는 것</span>.
+              <strong>아벨이 양 떼의 첫 새끼로 드린 것</strong>(창 4:4)처럼, 이 원칙은 하나님을 의지합니다. 사람들은 이 원칙을 따라 생명의 길 안에서 하나님을 접촉하며, 한 단계 한 단계 <strong>하나님을 찾고 얻으며 소유하고 누려</strong> 결국 <span class="hl">가장 충만한 정도</span>에 이르게 됩니다. 이것이 바로 욥을 다루신 하나님의 목적이었습니다 — 그를 선악의 길에서 생명의 길로 돌이키게 하시는 것.
             </div>
           </div>
 
           <div class="sub-point">
-            <div class="sub-point-title">두 번째 원칙 — 선악의 원칙 (하나님에서 독립함)</div>
+            <div class="sub-point-title">두 번째 원칙 — 죽음과 선악의 원칙 (하나님에게서 독립함)</div>
             <div class="sub-point-text">
-              이 원칙을 따라갈 때 우리는 의식적으로든 무의식적으로든 <strong>사탄을 따르게 됩니다</strong>. 이 죽음의 길에서 우리는 하나님과 생명의 길을 거절하게 되고, 결국 사탄의 동반자가 되어 영원한 형벌에 참여하게 됩니다. 우리는 <span class="hl">선악의 영역으로부터 구출받아야 합니다</span>.
+              <strong>가인이 자신의 땅의 소산을 가져온 것</strong>(창 4:3)처럼, 이 원칙은 하나님에게서 독립합니다. 이 원칙 안에서 우리는 죽음의 길을 걷게 되고, 의식적으로든 무의식적으로든 <strong>사탄을 따르게 됩니다</strong>. 이 죽음의 길에서 우리는 하나님과 생명의 길을 거절하게 되고, 결국 사탄의 동반자가 되어 영원한 형벌에 참여하게 됩니다. 우리는 <span class="hl">선악의 영역으로부터 구출받아야</span> 합니다.
             </div>
           </div>
 
-          <p class="content-text">이 메시지의 주된 부담은 우리로 하여금 <span class="hl">빛 비춤을 받고 보게 하는 것</span>입니다. 그래서 우리가 격려를 받아 선과 악의 지식나무의 근원, 그 노선, 그 길, 그 원칙에서 <strong>완전히 구원받아 생명나무의 근원, 그 길, 그 원칙으로 전환되어 살게 하려는 것</strong>입니다. 우리는 생명의 원칙에 따라 살고 행동해야 하며, 옳고 그름이나 선악에 따라 살지 말아야 합니다.</p>
+          <p class="content-text">이 메시지의 주된 부담은 우리로 하여금 <span class="hl">빛 비춤을 받고 보게 하는 것</span>입니다. 그래서 우리가 격려를 받아 선과 악의 지식나무의 근원·노선·길·원칙에서 <strong>완전히 구원받아, 생명나무의 근원·노선·길·원칙으로 전환되어 살도록 하려는 것</strong>입니다. 우리는 생명의 원칙에 따라 살고 행동해야 하며, 옳고 그름이나 선악에 따라 살지 말아야 합니다.</p>
         </div>
       </div>
     </div>
@@ -1851,97 +2605,109 @@ body::before {
     <div class="accordion" id="acc-5">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">E</div>
-        <div class="acc-title-text">두 완결 — 새 예루살렘 vs 불못</div>
+        <div class="acc-title-text">두 완결 — 새 예루살렘 vs 불 못</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
         <div class="accordion-content">
           <div class="verse-block">
-            <div class="verse-ref">요한계시록 22:1-2 / 계 20:10, 15</div>
-            <div class="verse-text">[계 22:1-2] 그가 또 내게 <b>수정같이 맑은 생명수의 강</b>을 보여 주었는데, 하나님과 어린양의 보좌에서 흘러나와 그 성의 넓은 길 한가운데로 흐르더라. <b>강 양편에는 생명나무</b>가 있어…</div>
-            <div class="verse-text">[계 20:10] 그들을 미혹하던 마귀가 <b>불과 유황이 있는 못에 던져졌다</b>. 거기에는 짐승과 거짓 선지자도 있어, 세세 영원토록 밤낮으로 고통을 받을 것이다.</div>
+            <div class="verse-ref">요한계시록 22:1-2 / 계 19:20, 20:10, 14-15, 21:8</div>
+            <div class="verse-text">[계 22:1-2] 그가 또 내게 <b>수정같이 맑은 생명수의 강</b>을 보여 주었는데, <b>하나님과 어린양의 보좌에서 흘러나와</b> 그 성의 넓은 길 한가운데로 흐르더라. <b>강 양편에는 생명나무</b>가 있어…</div>
+            <div class="verse-text">[계 20:10] 그들을 미혹하던 마귀가 <b>불과 유황이 있는 못에 던져졌다.</b> 거기에는 짐승과 거짓 선지자도 있어, 세세 영원토록 밤낮으로 고통을 받을 것이다.</div>
           </div>
 
-          <p class="content-text">두 길의 최종 결과는 <span class="hl">두 완결</span>입니다. 이 두 완결은 하나님의 경륜 전체의 결론입니다.</p>
+          <p class="content-text">두 길의 최종 결과가 <span class="hl">두 완결</span>입니다. 이것은 하나님과의 관계에서 사람들이 취한 두 길의 최종 결과입니다.</p>
 
           <div class="two-path-scene">
             <div class="path-box life-box">
-              <span class="path-box-icon">🏙️</span>
               <div class="path-box-title red">새 예루살렘</div>
-              <div class="path-box-desc">생명나무의 최종 완성<br>생명수의 성<br>(계 21:2, 22:1-2)</div>
+              <div class="path-box-desc">생명나무의 최종 완성<br>생명수의 성<br>(계 21:2, 10-11, 22:1-2)</div>
             </div>
             <div class="path-vs">VS</div>
             <div class="path-box death-box">
-              <span class="path-box-icon">🔥</span>
               <div class="path-box-title gray">불 못</div>
-              <div class="path-box-desc">선악나무의 최종 완성<br>영원한 형벌의 장소<br>(계 19:20, 20:10)</div>
+              <div class="path-box-desc">선악나무의 최종 완성<br>영원한 형벌<br>(계 19:20, 20:10, 14-15, 21:8)</div>
             </div>
           </div>
 
           <div class="sub-point">
             <div class="sub-point-title">새 예루살렘 — 생명나무의 최종 완성</div>
             <div class="sub-point-text">
-              요한계시록 22장에서 우리는 <strong>오직 한 나무, 생명나무만</strong>을 봅니다. 선악나무는 완전히 사라졌습니다. 그 성의 중심에는 하나님과 어린양의 보좌가 있고, 거기서 <strong>생명수의 강이 흘러나오며, 강 양편에 생명나무가 자랍니다</strong>. 이것은 가장 충만한 정도로 하나님을 얻고 그분께 참여하는 사람들의 영원한 거처입니다. <span class="hl">이 완결은 우리가 하나님을 찾고 얻어 가장 충만한 단계에 이르도록 하는 가장 큰 격려입니다.</span>
+              거룩한 성 안에 <strong>오직 한 나무, 생명나무만</strong>이 있습니다. 성의 중심에는 하나님과 어린양의 보좌가 있는데, 이는 하나님의 신성한 행정을 가리킵니다. 어린양은 등이시며(계 21:23), 하나님은 등 안의 빛이십니다 — 이는 빛과 등이신 하나님과 어린양께서 <strong>하나</strong>이심을 가리킵니다. 한 분 하나님에게서 <strong>하나의 강</strong>이 흘러나오며, <span class="hl">강 양편에 생명나무가 자랍니다</span>. 이것은 가장 좋고 가장 영광스러운 것이며, 우리가 하나님을 찾고 얻어 가장 충만한 단계에 이르도록 하는 <strong>큰 격려</strong>입니다.
             </div>
           </div>
 
           <div class="sub-point">
-            <div class="sub-point-title">불못 — 선악나무의 최종 완성</div>
+            <div class="sub-point-title">불 못 — 선악나무의 최종 완성</div>
             <div class="sub-point-text">
-              요한계시록 22장에서 모든 부정적인 것들은 <strong>불못과 연결됩니다</strong>(계 19:20, 20:10, 14-15, 21:8). 이것은 하나님의 경륜의 길에서 벗어나 사탄을 따르는 사람들에게 주어지는 엄중한 경고입니다. <span class="hl">우리는 이 결과에서 구원받아야 합니다.</span>
+              이 원칙에 따라, 생명나무의 최종 완성이 거룩한 성이라면 선악나무의 최종 완성은 반드시 불못입니다. 요한계시록 22장에서 <strong>모든 부정적인 것들은 결국 불못과 연결됩니다</strong>(계 19:20, 20:10, 14-15, 21:8). 이는 하나님의 경륜의 길에서 벗어나 사탄을 따르는 사람들에게 주어지는 <span class="hl">엄중한 경고</span>입니다. 우리는 이 결과에서 구원받아야 합니다.
             </div>
           </div>
 
-          <p class="content-text">창세기 2장에서 두 나무가 사람 앞에 놓였습니다. 그리고 요한계시록 21-22장에서 그 두 나무가 취한 결말이 드러납니다. 성경 전체는 이 두 경로의 이야기입니다. 우리는 <span class="hl">분명한 선택을 해야 합니다 — 생명나무의 경로</span>입니다.</p>
+          <p class="content-text">창세기 2장에서 두 나무가 사람 앞에 놓였고, 요한계시록 21-22장에서 그 두 나무가 취한 결말이 드러납니다. 두 근원과 두 완결 사이에 두 노선이 있고, 이것이 두 길이 됩니다 — <span class="hl">각 근원은 하나의 노선을 가져오고, 그 노선은 하나의 길이 되며, 그 길은 하나의 결론으로 완결됩니다</span>.</p>
         </div>
       </div>
     </div>
 
-    <div class="step-header" data-kicker="Step 2 · 욥기 적용">욥기에서 본 두 나무</div>
+    <div class="step-header" data-kicker="Ⅱ · 욥기 1-2장 적용">욥기에 숨겨진 두 나무의 기본 사상</div>
 
-    <!-- 욥기에서의 두 나무 -->
+    <!-- 욥기 1-2장 -->
     <div class="accordion" id="acc-6">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">Ⅱ</div>
-        <div class="acc-title-text">욥기에 숨겨진 두 나무의 기본 사상</div>
+        <div class="acc-title-text">욥기 1-2장 — 하늘의 두 회의와 사탄의 상업적 원칙</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
         <div class="accordion-content">
           <div class="verse-block">
-            <div class="verse-ref">욥기 1:1, 8 / 창세기 2:9</div>
-            <div class="verse-text">[욥 1:1] 우스 땅에 욥이라고 하는 사람이 있었는데 <b>온전하고 정직하여 하나님을 경외하며 악에서 떠난 자</b>였다.</div>
-            <div class="verse-text">[욥 1:8] 여호와께서 사탄에게 이르시되 … <b>"내 종 욥을 주의하여 보았느냐? 그와 같이 온전하고 정직하여 하나님을 경외하며 악에서 떠난 자는 세상에 없느니라."</b></div>
+            <div class="verse-ref">욥기 1:1, 8-11</div>
+            <div class="verse-text">[1] 우스 땅에 욥이라 하는 사람이 있었는데 <b>온전하고 정직하여 하나님을 경외하며 악에서 떠난 자</b>였다.</div>
+            <div class="verse-text">[9-10] 사탄이 여호와께 대답하여 이르되, "<b>욥이 어찌 까닭 없이 하나님을 경외하리이까?</b> 주께서 그와 그의 집과 그의 모든 소유물을 울타리로 두르지 아니하셨나이까?"</div>
           </div>
 
-          <p class="content-text">창세기 2장에는 <span class="hl">한 사람 아담이 있고, 두 나무가 있으며, 하나님과 사탄이 있습니다</span>. 이천 년이 지난 후 욥기 1장에도 동일한 상황이 있습니다 — 한 사람 욥이 있고, 하나님과 사탄이 있습니다. 그러나 욥의 상태는 아담보다 더 심각합니다. 왜냐하면 욥 안에는 <strong>선악을 알게 하는 나무의 성장과 발전이 있기 때문</strong>입니다.</p>
+          <p class="content-text">창세기 2장에는 한 사람 아담이 있고 두 나무(하나님과 사탄)가 있습니다. 이천 년이 지난 후 욥기 1장에도 <strong>동일한 구도</strong>가 있습니다 — 한 사람 욥이 있고, 하나님과 사탄이 있습니다. 그러나 욥의 상태는 아담보다 더 심각합니다. 왜냐하면 욥 안에는 <span class="hl">선악을 알게 하는 나무의 성장과 발전</span>이 있기 때문입니다.</p>
 
           <div class="sub-point">
-            <div class="sub-point-title">처음에는 밖에, 나중에는 안에</div>
+            <div class="sub-point-title">밖에서 안으로 — 객관적이었다가 주관적이 됨</div>
             <div class="sub-point-text">
-              처음에는 선악을 알게 하는 나무가 아담의 <strong>밖에</strong> 있었습니다 — 객관적인 것이었습니다. 그러나 아담이 그 열매를 먹은 후, 이 나무가 아담 <strong>안에</strong> 심겼고 아담의 모든 후손 안에서 자라게 되었습니다. 욥기에 이르면 욥과 그의 아내, 그리고 그의 세 친구들 안에서 <span class="hl">선악을 알게 하는 나무가 성장하고 발전한 모습</span>을 봅니다.
+              처음에는 선악나무가 아담의 <strong>밖에</strong> 있었습니다 — 객관적이었습니다. 그러나 아담이 그 열매를 먹은 후, 이 나무가 아담 안에 <strong>심겼고, 아담 안에서 자라기 시작했으며, 모든 후손 안에서도 자라게 되었습니다</strong>. 욥기 1장 이하에서 우리는 욥과 그의 아내, 욥의 친구들 안에서 <span class="hl">선악나무가 성장하고 발전한 모습</span>을 봅니다. 그들은 선악나무로 조성되었고, 그 나무에 의해 점유되었습니다.
             </div>
           </div>
 
           <div class="sub-point">
-            <div class="sub-point-title">욥을 다루신 하나님의 목적</div>
+            <div class="sub-point-title">하늘의 두 차례 회의</div>
             <div class="sub-point-text">
-              도덕적으로 욥은 좋은 사람이었습니다. 하나님도 사탄 앞에서 그를 칭찬하셨습니다. 그러나 오직 하나님만이 욥의 진정한 필요를 아셨습니다 — <strong>욥에게 하나님 자신이 결핍되어 있었습니다</strong>. 욥은 창세기 1:26의 하나님의 영원한 목적을 완성하지 못했습니다. 하나님의 목적은 욥이 <span class="hl">물질적인 것들이나 도덕적인 성취에 머무르지 않고, 하나님을 가장 충만한 단계로 얻도록 하는 것</span>이었습니다.
+              하나님은 욥을 사랑하셨기 때문에, 하늘에서 <strong>두 차례 회의</strong>를 열어 욥을 어떻게 다루실지 논의하셨습니다. 욥에 관한 하늘의 회의는 <strong>사탄이 참석한 가운데</strong> 열렸습니다. 사탄은 이미 심판받은 존재였지만 여전히 활동하고 있었으며, 하나님의 엄격한 목적 아래 사용되어 <span class="hl">하나님께서 사랑하시는 사람을 다루는 추악한 도구</span>가 되었습니다.
             </div>
           </div>
 
-          <p class="content-text">욥과 그의 세 친구는 모두 <strong>잘못된 영역</strong>에 있었습니다. 그들은 도덕의 영역, 즉 인간의 도덕과 순전함을 높이는 영역에 있었습니다. 그들에게 필요한 것은 <span class="hl">올바른 영역, 곧 생명나무의 영역으로 전환되는 것</span>이었습니다. 오직 생명나무만이 욥과 그의 친구들을 위한 진정한 해답이었습니다.</p>
+          <div class="sub-point">
+            <div class="sub-point-title">사탄의 상업적 원칙 — 그는 목적을 알지 못함</div>
+            <div class="sub-point-text">
+              사탄은 하나님께서 사람을 다루시는 목적을 알지 못했습니다. 왜냐하면 사탄은 <strong>선과 악에 기반한 자신의 상업적 원칙</strong>에 기초해 그것을 생각했기 때문입니다. 욥 역시 하나님께서 그분을 사랑하고 추구하는 사람을 다루시는 목적이 — <span class="hl">우리가 하나님 외에 얻을 수 있는 모든 것보다 더 충만히 하나님을 얻게 하려는 것</span>임을 — 알지 못했습니다.
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">욥과 세 친구 — 도덕의 영역에 머묾</div>
+            <div class="sub-point-text">
+              도덕적으로 욥은 좋은 사람이었고 하나님도 그를 칭찬하셨습니다. 그러나 오직 하나님만이 욥의 진정한 필요를 아셨습니다 — <strong>욥에게 하나님 자신이 결핍되어 있었습니다</strong>. 욥과 그의 세 친구는 모두 잘못된 영역, 곧 <strong>도덕의 영역 — 인간의 도덕과 순전함을 높이는 영역 — 에 있었습니다</strong>. 그들에게 필요한 것은 <span class="hl">올바른 영역, 곧 생명나무의 영역으로 전환되는 것</span>이었습니다. 오직 생명나무만이 욥과 그의 세 친구를 위한 진정한 해답이었습니다.
+            </div>
+          </div>
+
+          <p class="content-text">욥의 체험은 하나님의 경륜 안에서 취해진 한 단계였습니다. 하나님께서 취하신 단계는, 자기를 의롭다 여기며 자신만만했던 욥에게 <span class="hl">소모되심과 벗겨지심</span>의 과정을 허락하는 것이었습니다 — 그가 물질적인 것들이나 도덕적 성취에 머무르지 않고, <strong>하나님을 가장 충만한 단계로 얻도록</strong> 하기 위함이었습니다.</p>
         </div>
       </div>
     </div>
 
     <div class="section-connector">· · ·</div>
 
-    <!-- 삼각관계와 우리 -->
+    <!-- 오늘 우리 -->
     <div class="accordion" id="acc-7">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">Ⅲ</div>
-        <div class="acc-title-text">창세기 2장의 삼각관계와 오늘의 우리</div>
+        <div class="acc-title-text">오늘 우리 — 작은 에덴동산, 두 근원 앞에 선 사람</div>
         <div class="acc-chevron">▼</div>
       </div>
       <div class="accordion-body">
@@ -1952,110 +2718,152 @@ body::before {
             <div class="verse-text">[골 1:13] 그분께서 우리를 어둠의 권세에서 건져 내시어, <b>그분의 사랑하시는 아들의 왕국으로 옮겨 주셨습니다.</b></div>
           </div>
 
-          <p class="content-text">창세기 2장에는 하나님과 사람과 사탄 사이의 <span class="hl">삼각관계</span>가 있습니다. 사람은 하나님과 사탄 사이에 위치합니다. 로마서 5-8장에 이르면 이 삼각관계가 계속됩니다.</p>
+          <p class="content-text">창세기 2장에는 하나님과 사람과 사탄 사이의 <span class="hl">삼각관계</span>가 있습니다. 사람은 하나님과 사탄 사이에 위치합니다. 신약에 있는 로마서 5-8장에 이르면 이 삼각관계가 계속됩니다.</p>
 
           <div class="sub-point">
-            <div class="sub-point-title">오늘날 모든 믿는 이는 작은 에덴동산</div>
+            <div class="sub-point-title">오늘날 모든 믿는 이 = 작은 에덴동산</div>
             <div class="sub-point-text">
-              우리는 <strong>두 근원 앞에 서 있습니다</strong>. 하나는 하나님이신 생명의 근원이고, 다른 하나는 사탄인 죽음의 근원입니다. 우리는 우리의 생각을 어디에 두어야 합니까? <span class="hl">여기에는 중립 지대가 없습니다</span>. 로마서 8:6 — "영에 둔 생각은 생명과 평안이요, 육체에 둔 생각은 죽음이다."
+              오늘날 모든 신약의 믿는 이들은 <strong>작은 에덴동산</strong>과 같습니다. 우리는 <span class="hl">두 근원 앞에 서 있습니다</span> — 하나는 하나님이신 생명의 근원이고, 다른 하나는 사탄인 죽음의 근원입니다. 우리의 생각을 어디에 두어야 합니까? 롬 8:6 — "영에 둔 생각은 생명과 평안이요, 육체에 둔 생각은 죽음이다." <strong>여기에는 중립 지대가 없습니다</strong>.
             </div>
           </div>
 
           <div class="sub-point">
-            <div class="sub-point-title">우리가 추구해야 할 것</div>
+            <div class="sub-point-title">두 길 사이에서 오락가락하지 말라</div>
             <div class="sub-point-text">
-              우리는 <strong>생명나무로 우리 자신이 조성되어야 하며</strong>, 심지어 우리 온 존재가 작은 생명나무가 되어야 합니다. <strong>생명의 원칙에 따라 살고 행동해야 하며</strong>, 옳고 그름이나 선악에 따라 살지 말아야 합니다. 그렇게 할 때 우리는 <span class="hl">살아 계신 그리스도를 나타내는 삶을 살 수 있고, 하나님께서 사람에게 가지신 그 영원한 목적을 이룰 수 있습니다</span>.
+              우리의 실제적 체험 안에서 우리는 종종 <strong>한 발은 생명나무의 노선에, 다른 한 발은 선악나무의 노선에</strong> 두고 있습니다. 결혼 생활에서, 배우자와 대화할 때도 마찬가지입니다. 혹은 이 두 길 사이에서 <span class="hl">머뭇거리며 오락가락</span>합니다. 우리가 그리스도를 믿고 영원한 생명을 얻어 거듭날 때, <strong>생명나무가 우리 영 안에 심기게 됩니다</strong>. 그 생명나무는 우리 영 안에서 자라나 온 존재에 퍼져야 합니다.
             </div>
           </div>
 
-          <p class="content-text">우리가 그리스도를 믿고 영원한 생명을 얻어 거듭날 때, <strong>생명나무가 우리 영 안에 심기게 됩니다</strong>. 그 생명나무는 우리 영 안에서 자라나 온 존재에 퍼져야 합니다. <span class="hl">이것이 하나님의 경륜의 목표입니다 — 생명나무이신 그리스도가 우리의 모든 것이 되시는 것.</span></p>
+          <div class="sub-point">
+            <div class="sub-point-title">우리의 목표 — 작은 생명나무가 됨</div>
+            <div class="sub-point-text">
+              우리는 <strong>생명나무로 우리 자신이 조성되어야 하며, 심지어 우리 온 존재가 작은 생명나무가 되어야 합니다</strong>. <span class="hl">생명의 원칙에 따라 살고 행동해야 하며, 옳고 그름이나 선악에 따라 살지 말아야 합니다</span>. 그렇게 할 때 우리는 살아 계신 그리스도를 나타내는 삶을 살 수 있고, 하나님께서 사람에게 가지신 그 영원한 목적을 이룰 수 있습니다.
+            </div>
+          </div>
+
+          <p class="content-text">이것이 바로 <span class="hl">노아와 다니엘과 욥이 우리에게 남긴 본</span>입니다 — 생명의 노선 안에서 이기는 생활을 살아 하나님의 경륜을 이루는 것. 그들이 그러했듯이, 우리도 시온의 건축에 참여하는 <strong>이기는 이들</strong>이 될 수 있습니다.</p>
         </div>
       </div>
     </div>
   </div>
 
 
+
   <!-- RECAP -->
   <section class="recap-section" id="recap-section">
-    <div class="recap-title">전체 메시지 복습 — 다섯 가지 쌍</div>
+    <div class="recap-title">전체 메시지 복습 — 서언과 다섯 쌍</div>
 
     <div class="recap-anchor">
-      <div class="recap-subtitle">① <strong>두 나무</strong> — 두 인격의 상징</div>
-      <div class="recap-subtitle small">성경에서 가장 두드러진 두 표징 (창 2:9)</div>
+      <div class="recap-subtitle">◎ <strong>서언</strong> — 노아·다니엘·욥이 우리의 본</div>
+      <div class="recap-subtitle small">특별집회의 전체 주제 (겔 14:14)</div>
       <div class="recap-grid">
         <div class="recap-item">
-          <div class="recap-num">🌳</div>
-          <div class="recap-item-text"><strong>생명나무:</strong> 사람에게 생명이 되시는 삼일 하나님을 상징. 그 열매는 양분과 생명을 분배하는 음식이 됨 (시 36:9, 요 1:4, 15:5)</div>
+          <div class="recap-num">★</div>
+          <div class="recap-item-text"><strong>주님의 회복은 시온의 건축:</strong> 예루살렘=교회, 시온=이기는 이들. 하나님께서 결국 필요로 하시는 것은 이기는 이들 — 교두보가 되는 사람들. 노아·다니엘·욥은 그 본이다</div>
         </div>
         <div class="recap-item">
-          <div class="recap-num">🌿</div>
-          <div class="recap-item-text"><strong>선악나무:</strong> 사람에게 죽음이 된 사탄 마귀를 상징. 지식과 선과 악 모두 사탄. 그 열매는 사람을 죽이는 독이 됨 (창 2:17)</div>
+          <div class="recap-num">📖</div>
+          <div class="recap-item-text"><strong>성경 66권의 통제하는 원칙:</strong> 삼일 하나님께서 그분 자신을 우리 안으로 분배하시는 것. 이를 통해 우리는 그분을 체험·누림·표현하여 그분의 경륜을 이룬다</div>
         </div>
       </div>
     </div>
 
     <div class="recap-anchor">
-      <div class="recap-subtitle">② <strong>두 근원</strong> — 두 왕국과 두 부류의 사람</div>
-      <div class="recap-subtitle small">두 나무는 두 부류 사람들의 두 근원이 됨</div>
+      <div class="recap-subtitle">⊙ <strong>창 1-2장</strong> — 영원한 목적과 그 절차</div>
+      <div class="recap-subtitle small">창 1:26 — 형상과 통치권. 절차는 3단계</div>
       <div class="recap-grid">
         <div class="recap-item green">
           <div class="recap-num">1</div>
-          <div class="recap-item-text"><strong>아벨 → 하나님의 왕국:</strong> 생명이신 하나님을 자신의 공급과 누림으로 추구하는 사람들. 구약의 이스라엘, 신약의 교회 (마 21:43)</div>
+          <div class="recap-item-text"><strong>그릇으로 만드심:</strong> 사람을 창조하여 하나님을 담는 그릇이 되게 하심 (창 2:7)</div>
         </div>
         <div class="recap-item green">
           <div class="recap-num">2</div>
-          <div class="recap-item-text"><strong>가인 → 사탄의 왕국:</strong> 죽음과 영원한 멸망에 이르게 하는 독인 사탄을 따르는 사람들 (마 12:26, 요 8:44)</div>
+          <div class="recap-item-text"><strong>생명나무 앞에 두심:</strong> 신진대사적으로 하나님을 흡수하게 하심</div>
+        </div>
+        <div class="recap-item green">
+          <div class="recap-num">3</div>
+          <div class="recap-item-text"><strong>충만이 되게 하심:</strong> 하나님 자신을 사람 안에 넣으셔서 사람이 하나님의 충만이 되게 하심</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recap-anchor">
+      <div class="recap-subtitle">① <strong>두 나무</strong> — 두 인격의 표징</div>
+      <div class="recap-subtitle small">가장 두드러진 한 쌍의 표징 (창 2:9)</div>
+      <div class="recap-grid">
+        <div class="recap-item">
+          <div class="recap-num">🌳</div>
+          <div class="recap-item-text"><strong>생명나무:</strong> 사람에게 생명이 되시는 삼일 하나님. 그리스도는 생명나무(요 1:4 + 요 15:5). 열매는 양분과 생명을 분배하는 음식</div>
+        </div>
+        <div class="recap-item">
+          <div class="recap-num">🌿</div>
+          <div class="recap-item-text"><strong>선악나무:</strong> 사람에게 죽음이 된 사탄 마귀. '죽음나무'가 아닌 '지식나무'로 불림 — 지식·선·악이 모두 사탄. 하나님은 단순, 사탄은 복잡</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recap-anchor">
+      <div class="recap-subtitle">② <strong>두 근원</strong> — 두 부류 사람과 두 왕국</div>
+      <div class="recap-subtitle small">두 나무는 두 부류의 두 근원</div>
+      <div class="recap-grid">
+        <div class="recap-item green">
+          <div class="recap-num">1</div>
+          <div class="recap-item-text"><strong>욥 → 하나님의 왕국:</strong> 생명이신 하나님을 공급·누림으로 추구. 이스라엘/교회 (마 21:43)</div>
+        </div>
+        <div class="recap-item green">
+          <div class="recap-num">2</div>
+          <div class="recap-item-text"><strong>가인 → 사탄의 왕국:</strong> 독인 사탄을 따름. 거듭남 = 왕국 이동 (골 1:13)</div>
         </div>
       </div>
     </div>
 
     <div class="recap-anchor">
       <div class="recap-subtitle">③ <strong>두 길</strong> — 비좁은 길 vs 널찍한 길</div>
-      <div class="recap-subtitle small">두 근원은 두 노선(길)을 산출함 (마 7:13-14)</div>
+      <div class="recap-subtitle small">두 근원은 두 노선을 산출 (마 7:13-14)</div>
       <div class="recap-grid">
         <div class="recap-item">
           <div class="recap-num">1</div>
-          <div class="recap-item-text"><strong>생명의 길 (비좁은 길):</strong> 그 길 / 구원의 길 / 주님의 길 / 하나님의 길 / 바른 길. 이 길은 사람이 하나님을 찾고, 얻고, 누려 가장 충만한 단계에 이르게 함</div>
+          <div class="recap-item-text"><strong>생명의 길(비좁은 길):</strong> 그 길/구원의 길/주님의 길/하나님의 길/바른 길/의의 길. 아벨·에녹·노아·아브라함·다윗·욥·신약의 모든 믿는 이들</div>
         </div>
         <div class="recap-item">
           <div class="recap-num">2</div>
-          <div class="recap-item-text"><strong>죽음과 선악의 길 (널찍한 길):</strong> 사람이 사탄을 따라 그의 자녀가 되게 하는 길. 의식적으로든 무의식적으로든 사탄을 따르게 됨</div>
+          <div class="recap-item-text"><strong>죽음과 선악의 길(널찍한 길):</strong> 가인·라멕·니므롯·고라·발람·사울·압살롬·적그리스도와 그 추종자들, 모든 불신자들</div>
         </div>
       </div>
     </div>
 
     <div class="recap-anchor">
       <div class="recap-subtitle">④ <strong>두 원칙</strong> — 의지 vs 독립</div>
-      <div class="recap-subtitle small">두 길은 두 원칙을 형성하여 하나님과의 관계를 통제함</div>
+      <div class="recap-subtitle small">하나님과의 관계를 통제·지배·규제하는 기준</div>
       <div class="recap-grid">
         <div class="recap-item purple">
           <div class="recap-num">1</div>
-          <div class="recap-item-text"><strong>생명의 원칙 (하나님을 의지):</strong> 이 원칙으로 사람은 생명의 길 안에서 하나님을 접촉하며, 하나님을 찾고 얻으며 소유하고 누려 가장 충만한 정도에 이름 (요 15:5)</div>
+          <div class="recap-item-text"><strong>생명의 원칙(의지):</strong> 아벨이 양 떼의 첫 새끼로 드림 (창 4:4, 요 15:5). 계속 하나님을 접촉·찾음·얻음·누려 가장 충만한 단계에 이름</div>
         </div>
         <div class="recap-item purple">
           <div class="recap-num">2</div>
-          <div class="recap-item-text"><strong>선악의 원칙 (하나님에서 독립):</strong> 이 원칙으로 사람은 의식적으로든 무의식적으로든 사탄을 따르게 됨. 하나님과 생명의 길을 거절하고 영원한 형벌에 이름 (렘 17:5-6)</div>
+          <div class="recap-item-text"><strong>선악의 원칙(독립):</strong> 가인이 자기 땅의 소산을 가져옴 (창 4:3, 렘 17:5-6). 의식적/무의식적으로 사탄을 따라 영원한 형벌에 이름</div>
         </div>
       </div>
     </div>
 
     <div class="recap-anchor">
       <div class="recap-subtitle">⑤ <strong>두 완결</strong> — 두 길의 최종 결과</div>
-      <div class="recap-subtitle small">요한계시록 21-22장과 20장에서 분명하게 드러남</div>
+      <div class="recap-subtitle small">계 21-22장과 계 20장에서 드러남</div>
       <div class="recap-grid">
         <div class="recap-item">
           <div class="recap-num">1</div>
-          <div class="recap-item-text"><strong>새 예루살렘 (생명수의 성):</strong> 생명나무의 최종 완성. 가장 좋고 가장 영광스러운 것. 하나님을 가장 충만한 단계로 얻은 사람들의 거처 (계 22:1-2)</div>
+          <div class="recap-item-text"><strong>새 예루살렘(생명수의 성):</strong> 거룩한 성 안에 오직 한 나무. 하나님-어린양의 보좌에서 하나의 강, 강 양편의 생명나무. 가장 좋고 영광스러운 것 — 큰 격려</div>
         </div>
         <div class="recap-item">
           <div class="recap-num">2</div>
-          <div class="recap-item-text"><strong>불못:</strong> 선악나무의 최종 완성. 가장 나쁘고 비참한 결과. 사탄과 그를 따른 사람들이 받는 영원한 형벌의 장소 (계 20:10, 15)</div>
+          <div class="recap-item-text"><strong>불 못:</strong> 요한계시록 22장의 모든 부정적인 것들이 연결되는 곳. 하나님의 경륜의 길에서 벗어난 사람들을 향한 엄중한 경고</div>
         </div>
       </div>
     </div>
 
     <div class="recap-note">
-      <strong>우리의 결단:</strong> 우리는 선과 악의 지식나무의 근원, 그 노선, 그 길, 그 원칙에서 완전히 구원받아, <strong>생명나무의 근원, 그 노선, 그 길, 그 원칙으로 전환되어 살아야 합니다.</strong> 우리는 생명나무로 우리 자신이 조성되어야 하며, 우리 온 존재가 작은 생명나무가 되어야 합니다. 아멘.
+      <strong>이 메시지의 부담:</strong> 우리가 빛 비춤을 받아 보게 되는 것. 선과 악의 지식나무의 근원·노선·길·원칙에서 완전히 구원받아, <strong>생명나무의 근원·노선·길·원칙으로 전환되어 살게 하려는 것</strong>입니다. 우리는 생명나무로 조성되어 온 존재가 작은 생명나무가 되어야 합니다 — 노아·다니엘·욥처럼 이기는 생활의 본이 되어야 합니다. 아멘.
     </div>
   </section>
 
@@ -2064,44 +2872,44 @@ body::before {
     <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto; color:var(--ink-mute); font-weight:500;">1 / 10</span></div>
 
     <div id="quiz-container">
-      <div class="quiz-item" data-index="0" data-correct="2">
+      <div class="quiz-item" data-index="0" data-correct="1">
         <div class="quiz-q">
           <div class="quiz-badge">1</div>
-          <div class="quiz-q-text">창세기 2장의 두 나무가 상징하는 것은 무엇입니까?</div>
+          <div class="quiz-q-text">창세기 2장에 등장하는 생명나무가 상징하는 핵심적인 의미는 무엇입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 선한 천사와 악한 천사</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 삼일 하나님과 사탄 마귀 — 두 인격</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 구약의 율법과 신약의 은혜</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 이스라엘 왕국과 사탄의 왕국</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 사람에게 생명이 되시는 삼일 하나님</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 에덴동산의 아름다운 외관</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 인간의 도덕적 완성</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 우주의 창조적 지혜</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
 
-      <div class="quiz-item" data-index="1" data-correct="3">
+      <div class="quiz-item" data-index="1" data-correct="2">
         <div class="quiz-q">
           <div class="quiz-badge">2</div>
-          <div class="quiz-q-text">신성한 계시에 따르면, '선과 악의 지식나무'에서 선(善)과 지식은 결국 무엇입니까?</div>
+          <div class="quiz-q-text">선과 악의 지식나무에 대한 설명 중 본문의 내용과 일치하는 것은 무엇입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 하나님께서 사람에게 주신 긍정적인 선물</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 구원받지 못한 사람의 부족한 도덕</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 사탄 — 지식과 선과 악 모두 사탄이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 인간의 양심</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 선한 것과 악한 것을 분별하게 하는 긍정적인 도구이다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 사람이 타락할 때 죽음이 된 사탄을 상징한다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 인간의 이성을 발달시키기 위한 하나님의 시험 장치이다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 하나님께서 사람에게 지혜를 주시기 위해 심으신 나무이다.</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
 
-      <div class="quiz-item" data-index="2" data-correct="1">
+      <div class="quiz-item" data-index="2" data-correct="4">
         <div class="quiz-q">
           <div class="quiz-badge">3</div>
-          <div class="quiz-q-text">생명나무의 근원에 있는 두 부류 사람 중 첫 번째는 누구입니까?</div>
+          <div class="quiz-q-text">요한계시록 22장에서 묘사된 거룩한 성의 중심에는 무엇이 있습니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 아벨</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 가인</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 아담</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 노아</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 생명나무와 선악의 지식나무</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 금등잔대와 일곱 별</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 열두 지파의 이름이 새겨진 문들</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 하나님과 어린양의 보좌</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
@@ -2109,27 +2917,27 @@ body::before {
       <div class="quiz-item" data-index="3" data-correct="4">
         <div class="quiz-q">
           <div class="quiz-badge">4</div>
-          <div class="quiz-q-text">마태복음 7:14에서 생명의 길은 어떻게 묘사됩니까?</div>
+          <div class="quiz-q-text">본문에 따르면 '참된 선'의 정의는 무엇입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 널찍하고 많은 사람이 다니는 길</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 쉽고 편안한 길</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 지혜로운 자만이 걷는 넓은 길</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 좁고 비좁아 찾는 사람이 적은 길</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 악을 행하지 않는 순전한 마음</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 지식과 지혜를 겸비한 인격</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 남을 돕고 구제하는 윤리적 행위</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 하나님 자신을 얻는 것</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
 
-      <div class="quiz-item" data-index="4" data-correct="2">
+      <div class="quiz-item" data-index="4" data-correct="4">
         <div class="quiz-q">
           <div class="quiz-badge">5</div>
-          <div class="quiz-q-text">두 원칙 중 생명의 원칙의 핵심 특징은 무엇입니까?</div>
+          <div class="quiz-q-text">하나님께서 욥을 다루신 궁극적인 목적은 무엇입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 인간의 도덕과 순전함을 높이는 것</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님을 의지하며 그분을 찾고 얻고 누리는 것</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 하나님에게서 독립하여 자신의 길을 가는 것</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 성경 지식을 축적하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 사탄의 참소가 틀렸음을 증명하기 위해</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 욥에게 갑절의 물질적 복을 주기 위해</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 욥의 숨겨진 죄를 회개시키기 위해</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 욥을 선악의 길에서 생명의 길로 돌이켜 하나님을 얻게 하기 위해</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
@@ -2137,41 +2945,41 @@ body::before {
       <div class="quiz-item" data-index="5" data-correct="1">
         <div class="quiz-q">
           <div class="quiz-badge">6</div>
-          <div class="quiz-q-text">생명나무의 최종 완결(완성)은 무엇입니까?</div>
+          <div class="quiz-q-text">생명의 노선을 따른 사람들의 근원이 되는 첫 번째 인물은 누구입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 새 예루살렘 — 생명수의 성</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 불못</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 지상의 천년왕국</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 하늘나라</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 아벨</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 셋</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 아담</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 노아</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
 
-      <div class="quiz-item" data-index="6" data-correct="3">
+      <div class="quiz-item" data-index="6" data-correct="1">
         <div class="quiz-q">
           <div class="quiz-badge">7</div>
-          <div class="quiz-q-text">욥기에서 두 나무의 기본 사상과 관련하여, 욥의 진정한 문제는 무엇이었습니까?</div>
+          <div class="quiz-q-text">죽음과 선악의 원칙이 가지는 특징은 무엇입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 사탄의 공격에 믿음이 흔들린 것</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님을 경외하지 않은 것</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 도덕적으로는 선했으나 하나님 자신이 결핍되어 있었던 것</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 악한 행실로 하나님의 징계를 받은 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 하나님에게서 독립하는 원칙</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님을 전적으로 신뢰하는 원칙</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 물질적인 풍요를 추구하는 원칙</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 고난을 통해 인내를 배우는 원칙</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
 
-      <div class="quiz-item" data-index="7" data-correct="4">
+      <div class="quiz-item" data-index="7" data-correct="3">
         <div class="quiz-q">
           <div class="quiz-badge">8</div>
-          <div class="quiz-q-text">로마서 8:6에 따르면, 생명과 평안의 결과를 가져오는 것은 무엇입니까?</div>
+          <div class="quiz-q-text">생명나무 노선의 최종 완결과 죽음나무 노선의 최종 완결은 각각 무엇입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 육체에 둔 생각</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 선악을 분별하는 지식</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 도덕적인 행동</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 영에 둔 생각</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 이스라엘 왕국과 사탄의 나라</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 낙원과 음부</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 새 예루살렘과 불 못</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 에덴동산과 바벨론</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
@@ -2179,13 +2987,13 @@ body::before {
       <div class="quiz-item" data-index="8" data-correct="2">
         <div class="quiz-q">
           <div class="quiz-badge">9</div>
-          <div class="quiz-q-text">처음에 선악나무는 아담에게 어떤 관계에 있었습니까?</div>
+          <div class="quiz-q-text">하나님께서 사람을 자신의 형상대로 창조하신 두 가지 주요 목적은 무엇입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 아담 안에 있는 주관적인 것이었다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 아담 밖에 있는 객관적인 것이었다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 아담과 전혀 무관한 것이었다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 이미 아담의 영 안에 심겨 있었다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 에덴동산을 경작하고 지키게 하기 위해</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님을 표현하고 그분을 대표하게 하기 위해</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 지식을 탐구하고 만물을 과학적으로 관리하기 위해</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 사탄의 유혹을 견디고 도덕성을 증명하기 위해</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
@@ -2193,13 +3001,13 @@ body::before {
       <div class="quiz-item" data-index="9" data-correct="3">
         <div class="quiz-q">
           <div class="quiz-badge">10</div>
-          <div class="quiz-q-text">우리가 거듭날 때 우리 영 안에 심기는 것은 무엇입니까?</div>
+          <div class="quiz-q-text">본문에서 오늘날 '선과 악의 지식나무의 가지들'로 언급된 실제적인 사례는 무엇입니까?</div>
         </div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 선악을 아는 지식</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 도덕적 완전함</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 생명나무 — 생명이신 그리스도</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 성경 지식</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 성경 공부와 신학 강의</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 자연 경관과 식물학 지식</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 텔레비전, 신문, 잡지 등 현대 매체</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 교회의 집회와 봉사 활동</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
@@ -2219,7 +3027,7 @@ body::before {
 
   <!-- PRAYER / CLOSING -->
   <section class="prayer-section" id="prayer-section">
-    <div class="prayer-heading">생명나무를 선택하는 결단</div>
+    <div class="prayer-heading">이기는 이들이 되는 결단</div>
 
     <div class="prayer-callbox">
       <p>우리는 <span class="cb-house">생명나무</span>로 우리 자신이 조성되어야 합니다.<br>우리 온 존재가 작은 생명나무가 되어야 합니다.</p>
@@ -2227,15 +3035,15 @@ body::before {
     </div>
 
     <div class="prayer-amen-box">
-      <p>주 예수님, 우리는 오늘 다시 한번 두 나무 앞에 서 있습니다. 우리는 선악의 영역으로부터 구출받아 생명나무의 영역으로 전환되기를 원합니다.</p>
-      <p>우리의 생각을 영에 두게 하시고, 하나님을 의지하는 생명의 원칙으로 살게 하소서. 선악을 분별하는 것이 아니라, 주님 자신을 생명으로 먹고 마시는 삶을 살게 하소서.</p>
-      <p>우리를 비좁은 생명의 길 위에 두시어, <strong>새 예루살렘이라는 완결</strong>을 향해 한 단계씩 나아가게 하소서. 주님, 당신만이 우리의 생명나무이십니다.</p>
+      <p>주 예수님, 우리는 오늘 노아와 다니엘과 욥이라는 본 앞에 서 있습니다. 그들처럼 생명의 노선 안에서 이기는 생활을 살아, 주님의 회복에 쓰임 받는 시온의 사람들이 되기를 원합니다.</p>
+      <p>우리를 선악의 영역 — 도덕과 순전함을 높이는 영역 — 으로부터 구출하시고, 생명나무의 영역으로 전환시켜 주소서. 우리의 생각을 영에 두게 하시고, 매 순간 주님을 의지하는 생명의 원칙으로 살게 하소서.</p>
+      <p>주님, 우리 온 존재를 <strong>작은 생명나무</strong>로 조성해 주시옵소서. 그리하여 하나님께서 사람에게 가지신 영원한 목적 — 주님을 표현하고 주님의 통치권을 대표하는 것 — 을 이루게 하시고, <strong>새 예루살렘이라는 완결</strong>을 향해 한 단계씩 나아가게 하소서.</p>
       <div class="prayer-amen-sig">— AMEN —</div>
     </div>
   </section>
 
   <div class="footer-note">
-    욥기 라이프 스타디 · 메시지 37 · 두 나무 · 두 근원 · 두 길 · 두 원칙 · 두 완결
+    욥기 라이프 스타디 특별집회 · 개요 & 메시지 Ⅰ · 노아·다니엘·욥 — 생명의 노선 안에서 이기는 생활
   </div>
 </div>
 
@@ -2273,6 +3081,107 @@ function toggleKwTip(id) {
   document.querySelectorAll('.kw-tooltip').forEach(t => t.classList.remove('show'));
   if (!isShown) tip.classList.add('show');
 }
+
+/* ─── TODAY'S VERSE POPUP — Greek word lexicon ─── */
+const TV_WORD_DATA = {
+  'phronema': {
+    gk: 'φρόνημα',
+    pron: '프로네마',
+    strong: 'G5427',
+    grammar: '명사 · 주격 · 중성 · 단수',
+    meaning: '생각, 성향, 마음가짐 <em>(mind-set, way of thinking, aim)</em>',
+    note: '동사 <b>φρονέω</b>(프로네오: 생각하다, 마음에 두다)에서 파생된 명사입니다. 단순히 스쳐 가는 생각이 아니라 <b>"어떠한 방향으로 고정된 생각이나 뜻"</b>을 의미합니다. 이 절에서는 <b>육체와 영 양쪽 모두에 동일하게</b> 쓰여, 마음이 어느 쪽으로 "고정되어 있는가"의 문제임을 보여 줍니다.',
+    context: 'τὸ γὰρ φρόνημα τῆς σαρκὸς … τὸ δὲ φρόνημα τοῦ πνεύματος'
+  },
+  'sarkos': {
+    gk: 'σαρκὸς',
+    pron: '사르코스',
+    strong: 'G4561',
+    lemma: 'σάρξ',
+    grammar: '명사 · 소유격 · 여성 · 단수',
+    meaning: '육체, 살, 신체 <em>(flesh, body)</em>',
+    note: '원형은 <b>σάρξ</b>(사륵스). 여기서는 소유격으로 쓰여 <b>"육체의(of the flesh)"</b> 혹은 <b>"육체에 속한"</b>이라는 수식어로 사용되었습니다.',
+    context: 'τὸ γὰρ φρόνημα τῆς σαρκὸς (육체의 생각)'
+  },
+  'thanatos': {
+    gk: 'θάνατος',
+    pron: '타나토스',
+    strong: 'G2288',
+    grammar: '명사 · 주격 · 남성 · 단수',
+    meaning: '죽음, 사망 <em>(death)</em>',
+    note: '생물학적 죽음이나 생명이 없는 상태를 가리키는 <b>가장 일반적인 헬라어 단어</b>입니다. 명사문(be 동사 생략)의 술어로서, 뒤에 오는 <b>δὲ(그러나)</b>와 연결되어 역접 관계를 이룹니다.',
+    context: 'τὸ φρόνημα τῆς σαρκὸς [ἐστίν] θάνατος'
+  },
+  'pneumatos': {
+    gk: 'πνεύματος',
+    pron: '프뉴마토스',
+    strong: 'G4151',
+    lemma: 'πνεῦμα',
+    grammar: '명사 · 소유격 · 중성 · 단수',
+    meaning: '영, 바람, 숨 <em>(spirit, wind, breath)</em>',
+    note: '원형은 <b>πνεῦμα</b>(프뉴마). <b>공기의 흐름</b>이나 <b>호흡</b>을 뜻하는 단어에서 유래했습니다. 여기서는 소유격으로 쓰여 <b>"영의(of the spirit)"</b>라는 의미를 갖습니다. 성경 전체에서 하나님의 영을 가리키는 핵심 단어입니다.',
+    context: 'τὸ δὲ φρόνημα τοῦ πνεύματος (영의 생각)'
+  },
+  'zoe': {
+    gk: 'ζωὴ',
+    pron: '조에',
+    strong: 'G2222',
+    grammar: '명사 · 주격 · 여성 · 단수',
+    meaning: '생명, 삶 <em>(life)</em>',
+    note: '생물학적 생명이나 활력이 있는 상태를 의미합니다. <b>참고:</b> 헬라어에는 "생명"을 뜻하는 또 다른 단어 <b>βίος</b>(비오스)가 있는데, 이는 주로 <b>생활 방식이나 수명</b>을 뜻합니다. 반면 <b>ζωή</b>는 <b>생명력 그 자체</b>를 뜻하는 경우가 많습니다.',
+    context: 'τὸ φρόνημα τοῦ πνεύματος [ἐστίν] ζωὴ καὶ εἰρήνη'
+  },
+  'eirene': {
+    gk: 'εἰρήνη',
+    pron: '에이레네',
+    strong: 'G1515',
+    grammar: '명사 · 주격 · 여성 · 단수',
+    meaning: '평화, 평안, 조화 <em>(peace, tranquility)</em>',
+    note: '혼란이나 갈등이 없는 <b>고요하고 평온한 상태</b>를 의미합니다. 히브리어 <b>"샬롬(Shalom)"</b>에 대응하는 헬라어로, 단순한 전쟁의 부재가 아니라 <b>전인적인 온전함·조화</b>의 상태를 가리킵니다.',
+    context: 'ζωὴ καὶ εἰρήνη (생명과 평안)'
+  }
+};
+
+function tvShowWord(key) {
+  const w = TV_WORD_DATA[key];
+  if (!w) return;
+  const strongLine = w.lemma
+    ? `${w.strong} · 원형 ${w.lemma}`
+    : w.strong;
+  document.getElementById('tv-popup-meaning').innerHTML = `${w.gk} <span style="font-size:0.82rem;color:var(--ink-mute);font-style:italic;font-weight:400;">· ${w.pron}</span>`;
+  document.getElementById('tv-popup-greek').textContent = w.context || '';
+  const bodyEl = document.getElementById('tv-popup-body');
+  bodyEl.innerHTML = `
+    <div class="tv-popup-word">
+      <div class="tv-popup-word-top">
+        <span class="tv-popup-word-gk">${w.gk}</span>
+        <span class="tv-popup-word-pron">${w.pron}</span>
+        <span class="tv-popup-word-strong">${strongLine}</span>
+      </div>
+      <div class="tv-popup-word-meaning">${w.meaning}</div>
+      <div style="font-size:0.78rem;color:var(--ink-mute);margin-bottom:6px;font-family:'Lora',serif;letter-spacing:0.02em;">${w.grammar}</div>
+      <div class="tv-popup-word-note">${w.note}</div>
+    </div>
+  `;
+  document.getElementById('tv-popup-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function tvClosePopup() {
+  document.getElementById('tv-popup-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function tvClosePopupOnBg(e) {
+  if (e.target.id === 'tv-popup-overlay') tvClosePopup();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const ov = document.getElementById('tv-popup-overlay');
+    if (ov && ov.classList.contains('active')) tvClosePopup();
+  }
+});
 
 function toggleAcc(header) {
   const acc = header.parentElement;
@@ -2342,9 +3251,9 @@ function submitQuiz() {
   document.getElementById('quiz-progress').textContent = '결과';
   document.getElementById('quizScore').textContent = score + ' / ' + totalQuizzes;
   const msgEl = document.getElementById('quizMsg');
-  if (score === 10) msgEl.textContent = '완벽합니다! 두 나무의 신성한 계시를 모두 정확히 숙지하셨습니다.';
+  if (score === 10) msgEl.textContent = '완벽합니다! 특별집회 개요와 다섯 가지 쌍의 계시를 모두 정확히 숙지하셨습니다.';
   else if (score >= 7) msgEl.textContent = '훌륭합니다! 메시지의 핵심 요점들을 잘 이해하고 계십니다.';
-  else msgEl.textContent = '두 나무의 핵심 요점들을 다시 묵상하며 깊이 새겨보시길 권해드립니다.';
+  else msgEl.textContent = '다시 한번 서언과 다섯 쌍의 계시를 묵상하며 깊이 새겨보시길 권해드립니다.';
   document.getElementById('quizResult').classList.add('show');
   document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -2475,16 +3384,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     recognition.onresult = function(event) {
       const transcript = event.results[0][0].transcript.replace(/[\s\.\,\"\-\']+/g, '');
-      const target1 = "생명으로이끄는문은좁고그길이비좁아찾는사람이적습니다";
+      const target1 = "동산한가운데있는생명나무와선과악의지식나무도자라게하셨다";
+      const target2 = "동산한가운데있는생명나무와선과악의지식나무";
       const sim1 = getSimilarity(target1, transcript);
+      const sim2 = getSimilarity(target2, transcript);
       const sim1_sub = getSimilarity(target1, transcript.substring(0, target1.length + 2));
-      const maxSim = Math.max(sim1, sim1_sub);
-      if (maxSim >= 0.70) {
+      const maxSim = Math.max(sim1, sim2, sim1_sub);
+      if (maxSim >= 0.60) {
         voiceMsg.innerHTML = "✓ 인식 완료";
         voiceMsg.style.color = "#b84452";
         setTimeout(finishIntro, 800);
       } else {
-        voiceMsg.innerHTML = `다시 한번 또렷이 읽어주세요 🎤<br><span style='font-size:0.85rem;color:#b84452;'>현재 일치율: ${Math.round(maxSim * 100)}% (70% 이상 필요)</span>`;
+        voiceMsg.innerHTML = `다시 한번 또렷이 읽어주세요 🎤<br><span style='font-size:0.85rem;color:#b84452;'>현재 일치율: ${Math.round(maxSim * 100)}% (60% 이상 필요)</span>`;
         startBtn.style.display = 'block';
         startBtn.textContent = "다시 시도";
       }
