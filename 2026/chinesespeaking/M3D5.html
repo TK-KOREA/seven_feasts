@@ -13,30 +13,18 @@
 :root {
   --base-font-size: 17px;
   --font-scale: 1;
-
-  /* 따뜻한 페이퍼 팔레트 */
   --paper:        #f5f0e6;
   --paper-card:   #faf6ec;
   --paper-verse:  #f0e8d4;
-
-  /* 잉크 */
   --ink:          #1a1410;
   --ink-soft:     #4a3f36;
   --ink-mute:     #8a7b6c;
-
-  /* 선 */
   --line:         #d9cfbc;
   --line-soft:    #e8dfce;
-
-  /* 단일 강조색 — 딥 버건디 */
   --accent:       #8b1e2b;
   --accent-soft:  #b84452;
   --accent-bg:    #f8e8e4;
-
-  /* 하이라이터 */
   --marker:       #f0d878;
-
-  /* legacy remapped */
   --bg:                var(--paper);
   --text:              var(--ink);
   --text-secondary:    var(--ink-soft);
@@ -95,7 +83,6 @@ body::before {
   z-index: 0;
 }
 
-/* ===== TOP BAR ===== */
 .topbar {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--topbar-h);
@@ -152,7 +139,6 @@ body::before {
 }
 .font-ctrl-btn:hover { background: var(--line-soft); }
 
-/* ===== SIDE PANEL ===== */
 .overlay {
   position: fixed; inset: 0;
   background: rgba(26, 20, 16, 0.35);
@@ -248,7 +234,6 @@ body::before {
 }
 .keyword-def.show { display: block; }
 
-/* ===== MAIN CONTAINER ===== */
 .container {
   max-width: 680px;
   margin: 0 auto;
@@ -257,7 +242,6 @@ body::before {
   z-index: 1;
 }
 
-/* ===== HERO ===== */
 .series-tag {
   display: inline-flex;
   align-items: center;
@@ -330,7 +314,6 @@ body::before {
   border-left: 2px solid var(--line);
 }
 
-/* ===== Aramaic verse analysis ===== */
 .verse-analysis {
   margin-top: 40px;
   text-align: left;
@@ -403,7 +386,48 @@ body::before {
 }
 .v-lit strong { color: var(--accent); font-weight: 700; }
 
-/* Aramaic word boxes */
+/* NEW: Grammatical insight block */
+.v-grammar-note {
+  margin-top: 16px;
+  padding: 16px 18px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+.v-grammar-note .vgn-title {
+  display: inline-block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  padding: 3px 8px;
+  background: var(--paper-verse);
+  border-radius: 2px;
+}
+.v-grammar-note p { margin-bottom: 10px; }
+.v-grammar-note p:last-child { margin-bottom: 0; }
+.v-grammar-note strong { color: var(--accent); font-weight: 700; }
+.v-grammar-note .vgn-term {
+  display: inline-block;
+  padding: 1px 7px;
+  background: var(--paper-verse);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-family: 'Times New Roman', serif;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+  margin: 0 2px;
+  direction: rtl;
+}
+
 .v-grk-container {
   display: flex; flex-wrap: wrap; gap: 10px;
   margin-bottom: 18px; justify-content: flex-start;
@@ -464,6 +488,23 @@ body::before {
   font-style: italic; line-height: 1.2;
 }
 
+/* NEW: Badge for participle / grammatical marker on word boxes */
+.grk-pair .gmark {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: var(--paper);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
 .instruction-text {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 11.5px; color: var(--ink-mute);
@@ -475,7 +516,6 @@ body::before {
   border-bottom: 1px dashed var(--line);
 }
 
-/* Word Modal */
 .word-modal-overlay {
   position: fixed; inset: 0;
   background: rgba(26,20,16,0.55);
@@ -495,6 +535,8 @@ body::before {
   transform: translateY(20px);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
+  max-height: 88vh;
+  overflow-y: auto;
 }
 .word-modal-overlay.show .word-modal { transform: translateY(0); }
 .word-modal-close {
@@ -527,6 +569,19 @@ body::before {
   color: var(--ink); margin-bottom: 8px;
   letter-spacing: -0.02em;
 }
+.word-modal-strong {
+  display: inline-block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-mute);
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 .word-modal-grammar {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 11.5px; color: var(--ink-mute);
@@ -556,7 +611,6 @@ body::before {
   padding: 0 2px;
 }
 
-/* ===== DASHBOARD ===== */
 .dashboard {
   margin: 40px 0;
   padding: 28px 26px;
@@ -632,7 +686,6 @@ body::before {
   letter-spacing: -0.01em;
 }
 
-/* ===== FLOW SECTION ===== */
 .flow-section {
   margin: 56px 0;
 }
@@ -696,7 +749,6 @@ body::before {
   line-height: 1.75;
 }
 
-/* ===== KEYWORDS ===== */
 .keywords-section {
   margin: 48px 0;
   padding: 26px 24px;
@@ -751,7 +803,6 @@ body::before {
 }
 .kw-tooltip.show { display: block; }
 
-/* ===== ACCORDION ===== */
 .accordion-group {
   margin: 48px 0;
 }
@@ -857,7 +908,6 @@ body::before {
 
 .point-tag { display: none; }
 
-/* ===== VERSE BLOCK ===== */
 .verse-block {
   position: relative;
   padding: 22px 24px 22px 26px;
@@ -903,7 +953,6 @@ body::before {
   border-top: 1px dashed var(--line);
 }
 
-/* ===== PROSE ===== */
 .content-text {
   font-family: 'Noto Serif KR', serif;
   font-size: 17px;
@@ -972,7 +1021,6 @@ body::before {
   margin: 3px 4px 3px 0;
 }
 
-/* ===== COMPARISON TABLE ===== */
 .name-table {
   background: var(--paper-card);
   border-radius: 4px;
@@ -1037,7 +1085,6 @@ body::before {
   letter-spacing: 0.4em;
 }
 
-/* ===== STEP HEADER ===== */
 .step-header {
   display: block;
   background: transparent !important;
@@ -1088,7 +1135,6 @@ body::before {
   font-style: normal;
 }
 
-/* ===== RECAP SECTION ===== */
 .recap-section {
   margin: 56px 0;
   padding: 32px 26px;
@@ -1200,7 +1246,6 @@ body::before {
   font-style: normal;
 }
 
-/* ===== QUIZ ===== */
 .quiz-section {
   margin: 64px 0 40px;
   padding: 28px 24px 30px;
@@ -1222,12 +1267,15 @@ body::before {
 }
 .quiz-title svg { display: none; }
 .quiz-item {
+  display: none; /* hidden by default for pagination */
   margin-bottom: 22px;
   padding: 20px;
   background: var(--paper);
   border-radius: 3px;
   border: 1px solid var(--line-soft);
 }
+.quiz-item.active { display: block; }
+.quiz-item.reviewed { display: block; }
 .quiz-q {
   display: flex; align-items: flex-start; gap: 12px;
   margin-bottom: 14px;
@@ -1289,36 +1337,24 @@ body::before {
 .quiz-opt.correct .quiz-opt-marker { border-color: var(--accent); background: var(--accent); color: var(--paper); }
 .quiz-opt.wrong .quiz-opt-marker { border-color: var(--line); background: var(--paper); color: var(--ink-mute); }
 
-.quiz-hint-btn {
-  display: inline-flex; align-items: center; gap: 4px;
-  margin-top: 10px;
-  padding: 7px 12px;
-  background: transparent;
+.quiz-nav-btn {
+  padding: 14px;
+  background: var(--paper-card);
+  color: var(--ink-soft);
   border: 1px solid var(--line);
   border-radius: 3px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   cursor: pointer;
   transition: all .2s;
 }
-.quiz-hint-btn:hover { background: var(--paper-card); border-color: var(--accent); color: var(--accent); }
-.quiz-hint-text {
-  display: none;
-  margin-top: 10px;
-  padding: 12px 14px;
-  background: var(--paper-verse);
-  border-radius: 3px;
-  font-family: 'Noto Serif KR', serif;
-  font-size: 13.5px;
-  color: var(--ink-soft);
-  line-height: 1.75;
-  border: none;
-  border-left: 2px solid var(--accent);
-}
-.quiz-hint-text.show { display: block; }
+.quiz-nav-btn:hover:not(:disabled) { background: var(--line-soft); }
+.quiz-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.quiz-nav-btn.primary { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.quiz-nav-btn.primary:hover:not(:disabled) { background: #6e1622; }
+
 .quiz-feedback {
   display: none;
   margin-top: 10px;
@@ -1344,24 +1380,6 @@ body::before {
   border-left: 2px solid var(--ink-mute);
 }
 
-.quiz-submit {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  background: var(--accent);
-  color: var(--paper);
-  border: none;
-  border-radius: 3px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: 18px;
-  transition: background .2s;
-}
-.quiz-submit:hover { background: #6e1622; }
 .quiz-result {
   display: none;
   margin-top: 20px;
@@ -1397,7 +1415,6 @@ body::before {
   line-height: 1.75;
 }
 
-/* ===== PRAYER ===== */
 .prayer-section {
   margin: 64px 0 40px;
   padding: 36px 28px;
@@ -1433,7 +1450,196 @@ body::before {
   padding: 0 2px;
 }
 
-/* ===== FOOTER ===== */
+/* ============================================================
+   NEW: HOUSE-OF-PRAYER CALL SECTION
+   ============================================================ */
+.prayer-section-call { position: relative; overflow: hidden; }
+.prayer-eyebrow {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 10px;
+}
+.prayer-heading {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.55rem; font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  margin-bottom: 24px;
+  line-height: 1.45;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.prayer-heading::first-letter {
+  color: var(--accent);
+}
+.prayer-callbox {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 22px 24px;
+  margin-bottom: 26px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  line-height: 1.95;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: -0.005em;
+  box-shadow: 0 2px 14px rgba(26,20,16,0.06);
+  position: relative;
+  z-index: 2;
+}
+.prayer-callbox p { margin: 0; }
+.prayer-callbox p + p {
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+.prayer-callbox .cb-house {
+  color: var(--accent);
+  font-weight: 800;
+  background: linear-gradient(180deg, transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  padding: 0 3px;
+}
+.prayer-callbox .cb-faithful {
+  font-weight: 700;
+  color: var(--ink);
+  background: linear-gradient(180deg, transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  padding: 0 3px;
+}
+.prayer-network-scene {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  margin: 0 0 26px;
+  border-radius: 4px;
+  background-color: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  overflow: hidden;
+}
+.prayer-network-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #8a7b6c 0.9px, transparent 1.2px);
+  background-size: 10px 10px;
+  opacity: 0.22;
+  -webkit-mask-image: radial-gradient(ellipse 92% 78% at center, #000 30%, transparent 88%);
+  mask-image: radial-gradient(ellipse 92% 78% at center, #000 30%, transparent 88%);
+  pointer-events: none;
+}
+.prayer-network-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.prayer-network-svg .p-line {
+  stroke: #c9a857;
+  stroke-width: 1.1;
+  fill: none;
+  opacity: 0.7;
+  stroke-dasharray: 0;
+}
+.prayer-network-svg .p-node {
+  fill: #d9b767;
+  filter: drop-shadow(0 0 3px rgba(217,183,103,0.45));
+}
+.prayer-plaque {
+  position: relative;
+  z-index: 3;
+  max-width: 320px;
+  width: 100%;
+  padding: 6px;
+  background: linear-gradient(140deg, #1c2840 0%, #0f1728 100%);
+  border-radius: 5px;
+  box-shadow:
+    0 14px 38px rgba(15,23,40,0.38),
+    0 4px 14px rgba(15,23,40,0.25),
+    inset 0 1px 0 rgba(217,183,103,0.1);
+}
+.prayer-plaque-inner {
+  border: 1.2px solid rgba(217,183,103,0.55);
+  border-radius: 3.5px;
+  padding: 26px 24px;
+  position: relative;
+}
+.prayer-plaque-inner::before,
+.prayer-plaque-inner::after {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px;
+  border: 1.2px solid rgba(217,183,103,0.75);
+}
+.prayer-plaque-inner::before {
+  top: 5px; left: 5px;
+  border-right: none; border-bottom: none;
+}
+.prayer-plaque-inner::after {
+  bottom: 5px; right: 5px;
+  border-left: none; border-top: none;
+}
+.prayer-plaque-quote {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 900;
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: #e6c87d;
+  text-align: center;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.55);
+}
+.prayer-plaque-quote::before {
+  content: '\2018';
+  color: #d9b767; opacity: 0.85; margin-right: 1px;
+  font-size: 1.3em;
+}
+.prayer-plaque-quote::after {
+  content: '\2019';
+  color: #d9b767; opacity: 0.85; margin-left: 1px;
+  font-size: 1.3em;
+}
+.plaque-em {
+  color: #f5d98a;
+  font-weight: 900;
+  background: linear-gradient(180deg, transparent 58%, rgba(217,183,103,0.25) 58%, rgba(217,183,103,0.25) 92%, transparent 92%);
+  padding: 0 2px;
+}
+.prayer-amen-box {
+  background: var(--paper-verse);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  padding: 20px 22px;
+  font-family: 'Gowun Batang','Noto Serif KR',serif;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.9;
+  font-weight: 500;
+}
+.prayer-amen-box p { margin-bottom: 14px; font-style: italic; }
+.prayer-amen-box p:last-of-type { margin-bottom: 0; }
+.prayer-amen-box strong {
+  color: var(--accent);
+  font-weight: 700;
+  font-style: normal;
+}
+.prayer-amen-sig {
+  text-align: right;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.32em;
+  font-size: 12px;
+  font-style: normal;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+
 .footer-note {
   text-align: center;
   padding: 40px 16px 16px;
@@ -1446,7 +1652,6 @@ body::before {
   margin-top: 56px;
 }
 
-/* ===== Animations ===== */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1455,7 +1660,6 @@ body::before {
   animation: fadeInUp .5s ease forwards;
 }
 
-/* ===== INTRO OVERLAY ===== */
 #intro-container {
   position: fixed; inset: 0; z-index: 10000;
   background: #1a1410;
@@ -1639,7 +1843,6 @@ body::before {
   100% { transform: translateX(-18px) rotate(-12deg); }
 }
 
-/* ===== Mobile ===== */
 @media (max-width: 480px) {
   .container { padding: 24px 6px 60px; }
   .hero h1 { font-size: 1.55rem; line-height: 1.45; }
@@ -1655,6 +1858,7 @@ body::before {
   .step-connector { padding: 4px 0 4px 14px; margin: 22px 0; }
   .verse-compare { padding: 18px 12px; }
   .v-lit { padding: 12px 12px; }
+  .v-grammar-note { padding: 14px 12px; }
   .dashboard { padding: 22px 14px; }
   .quiz-section { padding: 22px 12px 24px; }
   .recap-section { padding: 24px 14px; }
@@ -1666,8 +1870,20 @@ body::before {
   .content-text { font-size: 16px; }
   .verse-text { font-size: 14.5px; }
   .prayer-text { font-size: 15px; }
+  .prayer-section-call { padding: 26px 14px; }
+  .prayer-heading { font-size: 1.2rem; padding-bottom: 14px; margin-bottom: 18px; }
+  .prayer-callbox { padding: 16px 14px; font-size: 14.5px; }
+  .prayer-network-scene { min-height: 280px; padding: 30px 10px; }
+  .prayer-plaque { max-width: 260px; }
+  .prayer-plaque-inner { padding: 20px 18px; }
+  .prayer-plaque-quote { font-size: 1.1rem; line-height: 1.65; }
+  .prayer-amen-box { padding: 16px 14px; font-size: 14px; }
   .reveal-main { font-size: 1.2rem; }
   .intro-title { font-size: 1.55rem; }
+  .grk-pair { min-width: 60px; padding: 8px 6px; }
+  .grk-pair .grk { font-size: 1.1rem; }
+  .grk-pair .kor { font-size: 12px; }
+  .grk-pair .eng { font-size: 10.5px; }
 }
 </style>
 </head>
@@ -1740,7 +1956,7 @@ body::before {
     <button class="sidepanel-close" onclick="togglePanel()">✕</button>
   </div>
 
-  <a class="nav-item" onclick="goTo('hero-section')">제목</a>
+  <a class="nav-item" onclick="goTo('hero-section')">제목 & 오늘의 구절</a>
   <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
 
   <div class="nav-divider"></div>
@@ -1783,79 +1999,152 @@ body::before {
     <h1>"<span class="highlight-word">전에 늘 하던 대로</span>"<br>무지와 방탕을 이기고 신실한 기도로 하나님의 경륜을 수행하는 이기는 이들</h1>
     <p class="hero-sub">벨사살의 방탕·모독·무지를 반면교사 삼고, 다니엘처럼 예루살렘을 향해 창을 열고 하루 세 번 무릎 꿇어 하나님의 경륜의 철로를 놓는 기도하는 사람이 됨</p>
 
+    <!-- ============================================
+         오늘의 구절 — 아람어 원문 분석 (재구성)
+         ============================================ -->
     <div class="verse-analysis animate-in">
       <div class="verse-compare">
         <div class="verse-row">
-          <div class="v-label">오늘의 구절 · 다니엘 6:10</div>
+          <div class="v-label">오늘의 구절 · 다니엘 6:10 (아람어 원문 분석)</div>
 
-          <div class="v-text">[10] 다니엘은 그 금령에 서명이 이루어졌다는 것을 알면서도 자신의 집으로 가서(그의 위층 방 창은 예루살렘을 향하여 열려 있었다), 전에 늘 하던 대로 날마다 세 번 자신의 하나님께 무릎을 꿇고 기도하며 감사를 드렸다.</div>
-          <div class="v-eng">When Daniel knew that the writing was signed, he went into his house, and his windows being open in his chamber toward Jerusalem, he kneeled upon his knees three times a day, and prayed, and gave thanks before his God, as he did aforetime.</div>
+          <div class="v-text">[10] 다니엘은 그 금령에 <b>서명이 이루어졌다</b>는 것을 알면서도 자신의 집으로 가서(그의 <b>위층 방</b>에는 예루살렘을 향하여 열려 있는 <b>창문들이 있었다</b>), <b>전에 늘 하던 대로</b> 날마다 세 번 자신의 하나님께 무릎을 꿇고 기도하며 감사를 드렸다.</div>
+          <div class="v-eng">When Daniel knew that the writing was signed, he went into his house, and his windows being open in his chamber toward Jerusalem, he kneeled upon his knees three times a day, and prayed, and gave thanks before his God, <b>as he did aforetime</b>.</div>
 
-          <div class="instruction-text">👆 아람어 박스를 터치하여 상세 의미를 확인하세요</div>
+          <div class="instruction-text">👆 아람어 단어 박스를 터치하여 상세 의미를 확인하세요</div>
 
+          <!-- Aramaic word boxes (following the verse order) -->
           <div class="v-grk-container" style="margin-top:18px;">
+
             <div class="grk-pair non-clickable">
               <span class="grk">דָּנִיֵּאל</span><span class="pron">[다니엘]</span>
               <span class="kor">다니엘</span><span class="eng">Daniel</span>
             </div>
+
             <div class="grk-pair" onclick="openWordModal('kedi')">
               <div class="click-hint">👆</div>
               <span class="grk">כְּדִי</span><span class="pron">[케디]</span>
               <span class="kor">~한 즉시</span><span class="eng">as soon as</span>
             </div>
+
             <div class="grk-pair" onclick="openWordModal('yeda')">
               <div class="click-hint">👆</div>
               <span class="grk">יְדַע</span><span class="pron">[예다]</span>
               <span class="kor">알다</span><span class="eng">to know</span>
             </div>
+
+            <div class="grk-pair" onclick="openWordModal('reshim')">
+              <div class="click-hint">👆</div>
+              <span class="grk">רְשִׁים</span><span class="pron">[레쉼]</span>
+              <span class="kor">서명되다</span><span class="eng">(be) signed</span>
+              <span class="gmark">수동 완료</span>
+            </div>
+
             <div class="grk-pair" onclick="openWordModal('ketava')">
               <div class="click-hint">👆</div>
               <span class="grk">כְּתָבָא</span><span class="pron">[케타바]</span>
-              <span class="kor">문서/칙령</span><span class="eng">the writing</span>
+              <span class="kor">그 문서</span><span class="eng">the writing</span>
             </div>
+
+            <div class="grk-pair" onclick="openWordModal('al_enter')">
+              <div class="click-hint">👆</div>
+              <span class="grk">עַל</span><span class="pron">[알]</span>
+              <span class="kor">들어가다</span><span class="eng">went in</span>
+            </div>
+
+            <div class="grk-pair" onclick="openWordModal('illitheh')">
+              <div class="click-hint">👆</div>
+              <span class="grk">עִלִּיתֵהּ</span><span class="pron">[일리테]</span>
+              <span class="kor">다락방</span><span class="eng">upper room</span>
+            </div>
+
             <div class="grk-pair" onclick="openWordModal('kavvin')">
               <div class="click-hint">👆</div>
               <span class="grk">כַּוִּין</span><span class="pron">[카빈]</span>
               <span class="kor">창문들</span><span class="eng">windows</span>
             </div>
+
             <div class="grk-pair" onclick="openWordModal('petichan')">
               <div class="click-hint">👆</div>
               <span class="grk">פְּתִיחָן</span><span class="pron">[페티한]</span>
               <span class="kor">열려있는</span><span class="eng">being open</span>
+              <span class="gmark">수동 분사</span>
             </div>
+
             <div class="grk-pair" onclick="openWordModal('neged')">
               <div class="click-hint">👆</div>
               <span class="grk">נֶגֶד יְרוּשְׁלֶם</span><span class="pron">[네게드 예루샬렘]</span>
               <span class="kor">예루살렘을 향하여</span><span class="eng">toward Jerusalem</span>
             </div>
+
             <div class="grk-pair" onclick="openWordModal('telatha')">
               <div class="click-hint">👆</div>
               <span class="grk">תְּלָתָה</span><span class="pron">[텔라타]</span>
               <span class="kor">세 번</span><span class="eng">three times</span>
             </div>
+
             <div class="grk-pair" onclick="openWordModal('barekh')">
               <div class="click-hint">👆</div>
               <span class="grk">בָּרֵךְ</span><span class="pron">[바레크]</span>
-              <span class="kor">무릎을 꿇다</span><span class="eng">kneeled</span>
+              <span class="kor">무릎 꿇으며</span><span class="eng">kneeling</span>
+              <span class="gmark">능동 분사</span>
             </div>
+
             <div class="grk-pair" onclick="openWordModal('metsalle')">
               <div class="click-hint">👆</div>
               <span class="grk">מְצַלֵּא</span><span class="pron">[메찰레]</span>
               <span class="kor">기도하며</span><span class="eng">praying</span>
+              <span class="gmark">강조 분사</span>
             </div>
+
             <div class="grk-pair" onclick="openWordModal('mode')">
               <div class="click-hint">👆</div>
               <span class="grk">מוֹדֵא</span><span class="pron">[모데]</span>
               <span class="kor">감사하며</span><span class="eng">giving thanks</span>
+              <span class="gmark">사역 분사</span>
             </div>
+
+            <div class="grk-pair" onclick="openWordModal('qodam')">
+              <div class="click-hint">👆</div>
+              <span class="grk">קֳדָם</span><span class="pron">[코담]</span>
+              <span class="kor">~앞에서</span><span class="eng">before</span>
+            </div>
+
+            <div class="grk-pair" onclick="openWordModal('hawa_abed')">
+              <div class="click-hint">👆</div>
+              <span class="grk">הֲוָא עָבֵד</span><span class="pron">[하와 아베드]</span>
+              <span class="kor">늘 행해왔다</span><span class="eng">was doing</span>
+              <span class="gmark">과거 습관</span>
+            </div>
+
             <div class="grk-pair" onclick="openWordModal('qadmat')">
               <div class="click-hint">👆</div>
               <span class="grk">מִן־קַדְמַת דְּנָה</span><span class="pron">[민 카드마트 데나]</span>
               <span class="kor">전에 늘 하던 대로</span><span class="eng">as aforetime</span>
             </div>
+
           </div>
 
-          <div class="v-lit">💡 <strong>문법적 직역:</strong> 그리고 다니엘은, 그 문서가 서명되었음을 알게 된 즉시, 자기 집으로 들어갔는데, 그의 다락방에는 예루살렘을 향하여 열려 있는 창문들이 있었다. 그리고 <strong>하루에 세 번의 때</strong>에, 그는 자기 무릎 위에 무릎을 꿇고 기도하였고, 자기 하나님 앞에서 감사를 드렸으니, <strong>이전부터 늘 해 오던 그대로</strong>였다.</div>
+          <!-- Literal translation (한층 더 정밀한 번역) -->
+          <div class="v-lit">💡 <strong>문법적 직역(Literal rendering):</strong> 그리고 다니엘은, 그 문서(칙령)가 <strong>공식적으로 서명되었음</strong>을 알게 된 <strong>즉시</strong>, 자기 집으로 들어갔다. 그의 <strong>다락방(위층 방)</strong>에는 예루살렘을 향하여 <strong>열려 있는 상태로 유지되고 있는</strong> 창문들이 있었다. 그리고 <strong>하루에 세 번의 때(정해진 시각)</strong>에, 그는 자기 무릎 위에 무릎을 꿇고 <strong>(계속해서) 기도하고 있었으며, (계속해서) 감사를 드리고 있었으니</strong>, 자기 하나님의 <strong>면전(앞)에서</strong>였다. 이는 <strong>이전부터 늘 행해 오고 있었던 그대로</strong>였다.</div>
+
+          <!-- NEW: Grammatical features note -->
+          <div class="v-grammar-note">
+            <span class="vgn-title">⚙ 원문의 숨겨진 문법적 설계</span>
+
+            <p><strong>① 분사형(Participle)의 연속 3연타.</strong> 원문 하반절의 세 동사 —
+              <span class="vgn-term">בָּרֵךְ</span>(무릎 꿇으며),
+              <span class="vgn-term">מְצַלֵּא</span>(기도하며),
+              <span class="vgn-term">מוֹדֵא</span>(감사하며) — 은 모두 <strong>분사형</strong>으로 기록되었습니다. 아람어에서 분사는 일회적 과거가 아니라 <strong>지속적·반복적·습관적 동작</strong>을 생생하게 묘사할 때 사용됩니다. 즉 다니엘의 기도는 '그날 한 번'의 퍼포먼스가 아니라 <strong>수십 년 동안 끊임없이 이어져 온 동사의 흐름</strong>이었습니다.</p>
+
+            <p><strong>② 복합 동사구 <span class="vgn-term">הֲוָא עָבֵד</span> (하와 아베드).</strong> 직역하면 "그는 행하고 있는 중이었다(He was doing)." 이는 아람어에서 <strong>과거의 습관적 행위</strong>를 나타내는 전형적인 관용 표현입니다. 금령이라는 예기치 못한 사건이 터졌음에도, 기존의 <strong>관습적 행위가 단절 없이 그대로 지속</strong>되었다는 사실을 문법 자체가 증언하고 있습니다.</p>
+
+            <p><strong>③ 수동 분사 <span class="vgn-term">פְּתִיחָן</span>.</strong> '창문들'이 '(지금 막) 열렸다'가 아니라 <strong>'이미 열린 상태가 지속되고 있다'</strong>는 지속적 상태를 나타냅니다. 다니엘은 금령 소식을 듣고서야 창을 연 것이 아닙니다 — 그 창은 <strong>이미 오래전부터 열려 있었고 지금도 그대로</strong>였습니다.</p>
+
+            <p style="margin-top:14px; padding-top:14px; border-top: 1px dashed var(--line); font-style:italic; color:var(--ink);">
+              ✦ 아람어 문법 전체가 한 목소리로 외칩니다 — <strong>"신실함이란 위기가 만드는 영웅성이 아니라, 평범한 날들이 쌓아 온 동사의 흐름이다."</strong>
+            </p>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1932,6 +2221,7 @@ body::before {
     <div class="kw-tooltip" id="kwt4">다니엘은 수십 년 동안 하루 세 번 기도해 왔습니다. 사탄의 계략은 단지 30일만 중단하게 하는 것이었습니다. 겉으로는 괜찮아 보이지만, 이것이 바로 신실함을 깨뜨리려는 계략입니다. 기도에 있어 느슨해지는 것이 바로 사탄의 마지막 계략입니다.</div>
     <div class="kw-tooltip" id="kwt5">하나님의 움직이심은 달리기 위해 철로가 필요한 기차와 같습니다. 사람의 기도는 하나님의 움직이심이 전진할 수 있도록 길을 열어 드리는 철로입니다. 기도 외에는 하나님의 경륜을 완성하고 성취할 다른 길이 없습니다.</div>
   </section>
+
 
   <!-- ACCORDIONS -->
   <div class="accordion-group">
@@ -2242,11 +2532,11 @@ body::before {
     </div>
   </div>
 
+
   <!-- RECAP -->
   <section class="recap-section" id="recap-section">
     <div class="recap-title">전체 메시지 복습 — 세 가지 중요한 점</div>
 
-    <!-- Group 1 -->
     <div class="recap-anchor">
       <div class="recap-subtitle">① 이기는 이가 되려면 <strong>사탄의 6가지 계략</strong>을 간파해야 합니다</div>
       <div class="recap-subtitle small">다니엘서는 우리가 기도하다 보면 어느새 사탄의 계략을 간파할 수 있게 된다는 것을 말해 줍니다.</div>
@@ -2278,7 +2568,6 @@ body::before {
       </div>
     </div>
 
-    <!-- Group 2 -->
     <div class="recap-anchor">
       <div class="recap-subtitle">② <strong>생명의 노선 위에서 이기는 생활을 사는 6가지 길</strong></div>
       <div class="recap-subtitle small">아주 단순합니다. 이것 역시 이 여섯 장 안에 있습니다.</div>
@@ -2310,7 +2599,6 @@ body::before {
       </div>
     </div>
 
-    <!-- Group 3 -->
     <div class="recap-anchor">
       <div class="recap-subtitle">③ 시대를 전환하는 사람이 되기 위한 <strong>4가지 훈련</strong></div>
       <div class="recap-subtitle small">다니엘은 시대를 전환한 청년이었습니다. 주님의 종은 《시대를 전환하는 사람》에서 네 가지를 말씀하셨습니다.</div>
@@ -2341,118 +2629,241 @@ body::before {
 
   <!-- QUIZ -->
   <section class="quiz-section" id="quiz-section">
-    <div class="quiz-title">이해 점검 퀴즈</div>
+    <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto; color:var(--ink-mute); font-weight:500;">1 / 10</span></div>
 
-    <div class="quiz-item" data-correct="3">
-      <div class="quiz-q">
-        <div class="quiz-badge">1</div>
-        <div class="quiz-q-text">메시지에 따르면 벨사살이 범한 '하나님의 거룩함을 모독한 것'은 구체적으로 무엇입니까?</div>
+    <div id="quiz-container">
+      <div class="quiz-item" data-index="0" data-correct="2">
+        <div class="quiz-q">
+          <div class="quiz-badge">1</div>
+          <div class="quiz-q-text">다니엘서 5장에서 벨사살 왕이 하나님의 거룩함을 모독한 구체적인 행위는 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 다니엘을 무시하고 바빌론의 박수와 술객들만을 신뢰한 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 예루살렘 성전에서 가져온 금은 그릇으로 술을 마시며 우상을 찬양한 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 바빌론 성벽을 느부갓네살보다 더 높이 쌓아 자신의 위세를 과시한 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 메디아와 페르시아 군대의 침공을 대비하지 않고 방치한 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
       </div>
-      <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 성전을 파괴하고 재건하지 않은 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님의 제사장들을 죽인 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 예루살렘 성전의 거룩한 그릇들을 가져다 우상을 찬양하는 데 사용한 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 하나님의 이름을 직접 저주한 것</div>
+
+      <div class="quiz-item" data-index="1" data-correct="3">
+        <div class="quiz-q">
+          <div class="quiz-badge">2</div>
+          <div class="quiz-q-text">다니엘서 5장 12절에 따르면, 왕후가 다니엘을 추천하며 언급한 그의 특징은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 왕국에서 가장 나이가 많은 현자로서의 경험</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 바빌론의 모든 마법과 법술에 능통함</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 탁월한 영과 지식과 통찰력을 소유함</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 느부갓네살 왕의 혈통적 후계자로서의 권위</div>
+        </div>
+        <div class="quiz-feedback"></div>
       </div>
-      <button class="quiz-hint-btn" onclick="toggleHint(this)">힌트 보기</button>
-      <div class="quiz-hint-text">"벨사살이 예루살렘에 있던 성전에서 하나님께 경배하는 데 사용된 그릇들을 가져다 우상들에 경배하는 데에 사용했다. 그것은 하나님의 거룩함을 모독한 것이었다." (Ⅵ-A 항목)</div>
-      <div class="quiz-feedback"></div>
+
+      <div class="quiz-item" data-index="2" data-correct="3">
+        <div class="quiz-q">
+          <div class="quiz-badge">3</div>
+          <div class="quiz-q-text">다니엘이 벨사살 왕을 책망하면서 그의 선왕 느부갓네살의 사례를 언급한 이유는 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 벨사살이 느부갓네살의 통치 방식보다 더 잔인했기 때문에</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 느부갓네살이 쌓아올린 바빌론의 영광을 칭송하기 위해</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 벨사살이 선왕이 겪은 징계의 교훈을 알면서도 주의하지 않았기 때문에</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 벨사살에게 왕위 계승의 정당성을 부여하기 위해</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="3" data-correct="4">
+        <div class="quiz-q">
+          <div class="quiz-badge">4</div>
+          <div class="quiz-q-text">다니엘서 6장의 내재적인 비밀로 언급된 것은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 이방 왕국에서 높은 지위에 오르는 처세술</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 다리오 왕을 설득하여 유다 포로를 해방시키는 전략</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 사자 굴에서 살아남는 신비한 능력의 비법</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 기도 외에는 하나님의 경륜을 성취할 다른 길이 없다는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="4" data-correct="1">
+        <div class="quiz-q">
+          <div class="quiz-badge">5</div>
+          <div class="quiz-q-text">사탄이 다니엘을 공격하기 위해 총리들과 지방관들을 통해 세운 간교한 책략의 핵심은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 하나님의 경륜을 수행하기 위한 기도의 통로를 차단하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 메디아와 페르시아의 법을 어기도록 유도하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 다니엘의 재정적 비리를 찾아내어 왕의 신임을 기하게 하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 다니엘이 예루살렘으로 돌아가려는 계획을 폭로하는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="5" data-correct="4">
+        <div class="quiz-q">
+          <div class="quiz-badge">6</div>
+          <div class="quiz-q-text">본문에서 다니엘의 기도는 하나님의 움직임을 위한 무엇에 비유되었습니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 등불</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 방패</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 열쇠</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 철로</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="6" data-correct="2">
+        <div class="quiz-q">
+          <div class="quiz-badge">7</div>
+          <div class="quiz-q-text">다니엘은 왕의 금령에 서명이 된 것을 알고도 어떻게 행동했습니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 왕에게 직접 찾아가 금령의 부당함을 항의함</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 전과 같이 날마다 세 번 예루살렘을 향해 기도하며 감사를 드림</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 30일 동안만 기도를 중단하고 은밀하게 묵상함</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 예루살렘을 향한 창문을 닫고 골방에서 기도함</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="7" data-correct="3">
+        <div class="quiz-q">
+          <div class="quiz-badge">8</div>
+          <div class="quiz-q-text">본문에서 언급한 다니엘의 기도가 향해야 할 '하나님의 영원한 경륜 안의 목표'가 아닌 것은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 거룩한 성으로 예표된 하나님의 왕국</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 성전으로 예표된 하나님의 집</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 개인의 안위와 왕국에서의 지위 유지</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 거룩한 땅으로 예표된 그리스도</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="8" data-correct="2">
+        <div class="quiz-q">
+          <div class="quiz-badge">9</div>
+          <div class="quiz-q-text">벨사살 왕에게 나타난 손가락이 쓴 글자 중 '메네(Mene)'의 해독 결과는 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 왕의 교만함이 하늘 끝까지 닿아 짐승처럼 될 것이다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님께서 왕의 왕국의 날수를 세어서 끝나게 하셨다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 왕을 저울에 달아 보니 부족함이 발견되었다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 왕의 왕국이 나뉘어 메디아와 페르시아에 주어질 것이다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="9" data-correct="4">
+        <div class="quiz-q">
+          <div class="quiz-badge">10</div>
+          <div class="quiz-q-text">본문에서 '오늘날 주님의 회복의 생명선'이라고 정의된 것은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 복음 전파</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 봉사</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 성경 읽기</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 기도</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
     </div>
 
-    <div class="quiz-item" data-correct="3">
-      <div class="quiz-q">
-        <div class="quiz-badge">2</div>
-        <div class="quiz-q-text">메시지에 따르면 다니엘서 6장에서 사탄이 다니엘에게 사용한 간교한 계략의 핵심은 무엇입니까?</div>
-      </div>
-      <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 다니엘의 지혜를 빼앗아 통찰력을 잃게 하는 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 다니엘을 물리적으로 완전히 죽여 없애는 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 30일만이라도 기도를 중단시켜 '신실함'을 깨뜨리는 것</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 다니엘이 다른 신을 섬기도록 강요하는 것</div>
-      </div>
-      <button class="quiz-hint-btn" onclick="toggleHint(this)">힌트 보기</button>
-      <div class="quiz-hint-text">"주의하십시오. 단지 경배를 금지한 것이 아니라 '신실함'을 금지한 것입니다. 만약 다니엘이 '30일만 쉬었다가 다시 기도하겠다'고 타협했다면 겉으로는 아무 문제도 없었을 것입니다." (Ⅶ 항목)</div>
-      <div class="quiz-feedback"></div>
+    <div class="quiz-nav" id="quiz-nav" style="display:flex; gap:10px; margin-top:20px;">
+      <button class="quiz-nav-btn" id="quiz-prev-btn" onclick="navQuiz(-1)" style="flex:1;">이전</button>
+      <button class="quiz-nav-btn primary" id="quiz-next-btn" onclick="navQuiz(1)" style="flex:2;">다음 퀴즈</button>
     </div>
 
-    <div class="quiz-item" data-correct="2">
-      <div class="quiz-q">
-        <div class="quiz-badge">3</div>
-        <div class="quiz-q-text">"하나님의 움직이심은 기차와 같고, 사람의 기도는 ____와 같다"에서 빈칸에 들어갈 말은?</div>
-      </div>
-      <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 기관사 (엔지니어)</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 철로 (rail)</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 연료 (fuel)</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 승객 (passenger)</div>
-      </div>
-      <button class="quiz-hint-btn" onclick="toggleHint(this)">힌트 보기</button>
-      <div class="quiz-hint-text">"하나님의 움직이심은 달리기 위해 철로가 필요한 기차와 같다. 사람의 기도는 하나님의 움직이심이 전진할 수 있도록 길을 열어 드리는 철로와 같다." (Ⅶ-A 항목)</div>
-      <div class="quiz-feedback"></div>
-    </div>
-
-    <div class="quiz-item" data-correct="4">
-      <div class="quiz-q">
-        <div class="quiz-badge">4</div>
-        <div class="quiz-q-text">다니엘이 예루살렘을 향해 기도한 것이 보여주는 원칙 — 우리의 기도가 향해야 하는 세 가지가 아닌 것은?</div>
-      </div>
-      <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 거룩한 땅 — 모든 것을 포함하신 그리스도</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 거룩한 성 — 하나님의 나라로서의 교회</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 거룩한 성전 — 하나님의 집으로서의 교회</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 거룩한 왕조 — 세상 나라의 정치적 회복</div>
-      </div>
-      <button class="quiz-hint-btn" onclick="toggleHint(this)">힌트 보기</button>
-      <div class="quiz-hint-text">"우리의 기도가 하나님의 영원한 경륜 안의 목표인 (거룩한 땅으로 예표된) 그리스도와 (거룩한 성으로 예표된) 하나님의 왕국과 (성전으로 예표된) 하나님의 집을 향할 때, 하나님은 우리의 기도를 들으실 것이다." (Ⅶ-B 항목)</div>
-      <div class="quiz-feedback"></div>
-    </div>
-
-    <div class="quiz-item" data-correct="2">
-      <div class="quiz-q">
-        <div class="quiz-badge">5</div>
-        <div class="quiz-q-text">다니엘서 5장에서 젊은 이기는 이들이 이긴 구체적인 두 가지는 무엇입니까?</div>
-      </div>
-      <div class="quiz-options">
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우상숭배와 자아</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 무지함과 경시함 (역사의 공과를 배우지 못함)</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 두려움과 낙심</div>
-        <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 세상적 입맛과 귀신적 음식</div>
-      </div>
-      <button class="quiz-hint-btn" onclick="toggleHint(this)">힌트 보기</button>
-      <div class="quiz-hint-text">"다니엘서 5장에서 젊은 이기는 이들은 무지함과 경시함을 이겼습니다. … 그는 분명 그 결과를 보았습니다. 그러나 참되게 공과를 배우지 않았습니다." (Ⅵ 항목 서두)</div>
-      <div class="quiz-feedback"></div>
-    </div>
-
-    <button class="quiz-submit" onclick="submitQuiz()">정답 확인 &amp; 점수 보기</button>
     <div class="quiz-result" id="quizResult">
       <div class="quiz-score-label">최종 점수</div>
-      <div class="quiz-score" id="quizScore">0 / 5</div>
+      <div class="quiz-score" id="quizScore">0 / 10</div>
       <div class="quiz-result-msg" id="quizMsg"></div>
     </div>
   </section>
 
-  <!-- PRAYER -->
-  <section class="prayer-section" id="prayer-section">
-    <div class="prayer-title">
-      오늘의 기도
+  <!-- PRAYER · 기도의 집으로의 부르심 (Call to the House of Prayer) -->
+  <section class="prayer-section prayer-section-call" id="prayer-section">
+    <div class="prayer-heading">기도의 집으로의 부르심</div>
+
+    <div class="prayer-callbox">
+      <p>주님이 돌아오실 때, 온 땅의 교회들이 가져야 할 가장 큰 특징은<br>
+      모두 <span class="cb-house">'기도의 집'</span>이 되는 것입니다.</p>
+      <p>작은 어려움 앞에서 기도를 놓지 마십시오.<br>
+      <span class="cb-faithful">신실한 기도</span>로 주님을 다시 오시게 하십시오.</p>
     </div>
-    <div class="prayer-text">
-      <div style="font-family:'Noto Sans KR',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">— 첫째 기도 —</div>
-      <div style="font-family:'Noto Sans KR',sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); margin-bottom:14px; letter-spacing:0.02em;">거룩함을 지키고 역사의 공과를 배우기 위한 기도</div>
- 
-      <div style="background:var(--paper-verse); border-left:3px solid var(--accent); padding:16px 18px; margin-bottom:20px; font-style:italic; font-weight:500; color:var(--ink); border-radius:0 3px 3px 0;">
-        "주님, 우리를 보존하셔서 <strong>성취로 교만해지지 않게</strong> 하시고, 성경과 역사 두 노선에서 <strong>공과를 배우는 이들이 되게</strong> 하소서."
+
+    <div class="prayer-network-scene" aria-label="기도의 철로가 온 땅을 가로지르는 이미지">
+      <svg class="prayer-network-svg" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f5d98a" stop-opacity="0.9"/>
+            <stop offset="60%" stop-color="#d9b767" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#d9b767" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Golden lines connecting prayer-house nodes across continents (the 'railways') -->
+        <g class="p-line-group">
+          <line class="p-line" x1="130" y1="180" x2="310" y2="155"/>
+          <line class="p-line" x1="130" y1="180" x2="250" y2="380"/>
+          <line class="p-line" x1="310" y1="155" x2="440" y2="210"/>
+          <line class="p-line" x1="310" y1="155" x2="560" y2="120"/>
+          <line class="p-line" x1="440" y1="210" x2="560" y2="120"/>
+          <line class="p-line" x1="440" y1="210" x2="490" y2="320"/>
+          <line class="p-line" x1="440" y1="210" x2="620" y2="230"/>
+          <line class="p-line" x1="560" y1="120" x2="720" y2="175"/>
+          <line class="p-line" x1="620" y1="230" x2="720" y2="175"/>
+          <line class="p-line" x1="620" y1="230" x2="760" y2="380"/>
+          <line class="p-line" x1="490" y1="320" x2="620" y2="230"/>
+          <line class="p-line" x1="490" y1="320" x2="760" y2="380"/>
+          <line class="p-line" x1="250" y1="380" x2="490" y2="320"/>
+          <line class="p-line" x1="130" y1="180" x2="440" y2="210"/>
+          <line class="p-line" x1="720" y1="175" x2="810" y2="270"/>
+          <line class="p-line" x1="250" y1="380" x2="380" y2="440"/>
+          <line class="p-line" x1="380" y1="440" x2="490" y2="320"/>
+          <line class="p-line" x1="380" y1="440" x2="760" y2="380"/>
+        </g>
+
+        <!-- Glow halos behind key nodes -->
+        <g>
+          <circle cx="130" cy="180" r="14" fill="url(#nodeGlow)"/>
+          <circle cx="440" cy="210" r="14" fill="url(#nodeGlow)"/>
+          <circle cx="620" cy="230" r="14" fill="url(#nodeGlow)"/>
+          <circle cx="760" cy="380" r="14" fill="url(#nodeGlow)"/>
+        </g>
+
+        <!-- Golden prayer-house nodes -->
+        <g class="p-node-group">
+          <circle class="p-node" cx="130" cy="180" r="5"/>
+          <circle class="p-node" cx="310" cy="155" r="5"/>
+          <circle class="p-node" cx="440" cy="210" r="5.5"/>
+          <circle class="p-node" cx="560" cy="120" r="5"/>
+          <circle class="p-node" cx="620" cy="230" r="5.5"/>
+          <circle class="p-node" cx="720" cy="175" r="5"/>
+          <circle class="p-node" cx="810" cy="270" r="4.5"/>
+          <circle class="p-node" cx="760" cy="380" r="5"/>
+          <circle class="p-node" cx="490" cy="320" r="5"/>
+          <circle class="p-node" cx="380" cy="440" r="4.5"/>
+          <circle class="p-node" cx="250" cy="380" r="5"/>
+          <circle class="p-node" cx="160" cy="320" r="4"/>
+        </g>
+      </svg>
+
+      <div class="prayer-plaque">
+        <div class="prayer-plaque-inner">
+          <div class="prayer-plaque-quote">
+            우리의 신실한 기도가<br>
+            시대를 전환하는<br>
+            <span class="plaque-em">철로</span>가 됩니다.
+          </div>
+        </div>
       </div>
- 
-      <div style="font-family:'Noto Sans KR',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); margin-top:28px; margin-bottom:10px; padding-top:20px; border-top:1px dashed var(--line);">— 둘째 기도 —</div>
-      <div style="font-family:'Noto Sans KR',sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); margin-bottom:14px; letter-spacing:0.02em;">기도에 신실하여 경륜의 철로를 놓는 기도</div>
- 
-      <div style="background:var(--paper-verse); border-left:3px solid var(--accent); padding:16px 18px; margin-bottom:20px; font-style:italic; font-weight:500; color:var(--ink); border-radius:0 3px 3px 0;">
-        "주님, 저에게 <strong>다니엘의 신실함</strong>을 주시어, <strong>전에 늘 하던 대로</strong> 하루 세 번 예루살렘을 향해 창을 열고 기도하는 이가 되게 하소서. 기도의 철로를 놓아 주님의 경륜이 전진하게 하소서."
-      </div>
- 
-      <div style="text-align: right; font-weight: bold; color: var(--accent);">— 아멘 —</div>
     </div>
+
   </section>
 
   <div class="footer-note">
@@ -2467,6 +2878,7 @@ body::before {
     <div class="word-modal-kr" id="wm-kr"></div>
     <div class="word-modal-grk" id="wm-grk"></div>
     <div class="word-modal-pron" id="wm-pron"></div>
+    <div class="word-modal-strong" id="wm-strong"></div>
     <div class="word-modal-grammar" id="wm-grammar"></div>
     <div class="word-modal-mean" id="wm-mean"></div>
     <div class="word-modal-desc" id="wm-desc"></div>
@@ -2538,16 +2950,50 @@ function selectOpt(el) {
   el.classList.add('selected');
 }
 
-function toggleHint(btn) {
-  const hint = btn.nextElementSibling;
-  hint.classList.toggle('show');
-  btn.textContent = hint.classList.contains('show') ? '힌트 닫기' : '힌트 보기';
+// QUIZ NAVIGATION & SUBMIT LOGIC (paginated, 10 questions)
+let currentQuizIdx = 0;
+const totalQuizzes = 10;
+
+function navQuiz(dir) {
+  const items = document.querySelectorAll('.quiz-item');
+  items[currentQuizIdx].classList.remove('active');
+
+  currentQuizIdx += dir;
+
+  if (currentQuizIdx < 0) currentQuizIdx = 0;
+  if (currentQuizIdx >= totalQuizzes) {
+    currentQuizIdx = totalQuizzes - 1;
+    submitQuiz();
+    return;
+  }
+
+  items[currentQuizIdx].classList.add('active');
+  updateQuizNav();
+}
+
+function updateQuizNav() {
+  document.getElementById('quiz-progress').textContent = (currentQuizIdx + 1) + ' / ' + totalQuizzes;
+  const prevBtn = document.getElementById('quiz-prev-btn');
+  const nextBtn = document.getElementById('quiz-next-btn');
+
+  prevBtn.disabled = currentQuizIdx === 0;
+
+  if (currentQuizIdx === totalQuizzes - 1) {
+    nextBtn.textContent = '결과 확인하기';
+  } else {
+    nextBtn.textContent = '다음 퀴즈';
+  }
 }
 
 function submitQuiz() {
   let score = 0;
   const items = document.querySelectorAll('.quiz-item');
+
   items.forEach(item => {
+    item.classList.add('reviewed');
+    item.classList.remove('active');
+    item.classList.add('answered');
+
     const correct = parseInt(item.dataset.correct) - 1;
     const opts = item.querySelectorAll('.quiz-opt');
     const fb = item.querySelector('.quiz-feedback');
@@ -2555,7 +3001,7 @@ function submitQuiz() {
     opts.forEach((o, i) => {
       if (o.classList.contains('selected')) selectedIdx = i;
     });
-    item.classList.add('answered');
+
     if (selectedIdx === correct) {
       score++;
       opts[selectedIdx].classList.add('correct');
@@ -2568,81 +3014,120 @@ function submitQuiz() {
       fb.textContent = '정답은 ' + ['A','B','C','D'][correct] + '입니다';
     }
   });
-  document.getElementById('quizScore').textContent = score + ' / 5';
+
+  document.getElementById('quiz-nav').style.display = 'none';
+  document.getElementById('quiz-progress').textContent = '결과';
+  document.getElementById('quizScore').textContent = score + ' / ' + totalQuizzes;
+
   const msgEl = document.getElementById('quizMsg');
-  if (score === 5) msgEl.textContent = '완벽합니다. 무지·방탕을 이기고 신실한 기도로 하나님의 경륜의 철로를 놓는 이기는 이의 비결을 깊이 파악하셨습니다.';
-  else if (score >= 3) msgEl.textContent = '훌륭합니다. 핵심 요점들을 잘 이해하고 계십니다. 놓친 부분을 다시 확인해보세요.';
-  else msgEl.textContent = '핵심 요점들을 다시 찬찬히 음미해보시길 권합니다. 특히 "거룩함 모독", "신실함을 깨뜨리는 계략", "기도는 철로", "거룩한 땅·성·성전을 향한 기도"가 중요합니다.';
+  if (score === 10) {
+    msgEl.textContent = '완벽합니다! 벨사살의 교훈과 다니엘의 기도의 비밀을 모두 정확히 숙지하셨습니다.';
+  } else if (score >= 7) {
+    msgEl.textContent = '훌륭합니다! 메시지의 핵심 요점들을 아주 잘 이해하고 계십니다.';
+  } else {
+    msgEl.textContent = '핵심 요점들을 다시 찬찬히 묵상하며 공과를 깊이 새겨보시길 권해드립니다.';
+  }
+
   document.getElementById('quizResult').classList.add('show');
-  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Aramaic Word Modal
+// Aramaic Word Modal — expanded with Strong's numbers & grammatical insights
 const wordData = {
   kedi: {
     grk: "כְּדִי", pron: "[케디]", kr: "~한 즉시",
-    grammar: "접속사 (아람어 'when, as soon as')",
+    strong: "", grammar: "접속사 (아람어 'when, as soon as')",
     mean: "as soon as, when",
     desc: "'כְּדִי(케디)'는 아람어로 '~하자마자, 알게 된 즉시'라는 뜻의 시간 접속사입니다. 이 한 단어가 다니엘의 태도 전체를 보여줍니다 — <strong>금령을 안 후에 '고민하여 한참 생각한 다음' 기도한 것이 아니라, 그 문서가 서명되었음을 '안 즉시' 곧바로 집으로 가서 기도했다</strong>는 것입니다. 망설임이 없었습니다. 이미 오래전에 결심이 끝나 있었기 때문입니다. 신실함은 위기의 순간에 만들어지는 것이 아니라, 위기 이전의 수십 년 동안 축적되는 것입니다."
   },
   yeda: {
     grk: "יְדַע", pron: "[예다]", kr: "알다",
-    grammar: "동사, 페알(Peal) 완료형",
+    strong: "H3046", grammar: "동사, 페알(Peal) 완료, 3인칭 남성 단수",
     mean: "to know, to be aware of",
-    desc: "'יְדַע(예다)'는 히브리어 '야다(ידע)'와 같은 어근으로 '알다, 인지하다'를 뜻합니다. 다니엘은 <strong>'몰라서' 기도한 것이 아닙니다</strong>. 그는 금령이 서명된 것을 정확히 알고 있었고, 그 결과 사자 굴에 던져질 것도 알고 있었습니다. <strong>지식 + 결단</strong>이 신실함을 만듭니다. 벨사살은 '이 모든 것을 아시면서도 마음을 낮추시지 않았고'(단 5:22), 다니엘은 '알면서도 전에 늘 하던 대로' 기도했습니다. 같은 '앎' 앞에서 두 사람의 운명이 갈렸습니다."
+    desc: "'יְדַע(예다)'는 히브리어 '야다(ידע)'와 같은 어근으로 '알다, 인지하다'를 뜻합니다. <strong>Peal 완료형</strong>은 '이미 인지가 끝난 상태'를 나타냅니다 — 다니엘은 <strong>'몰라서' 기도한 것이 아니라</strong>, 금령이 서명된 사실을 정확히 알고도 그대로 기도했습니다. 그 결과 사자 굴에 던져질 것도 알고 있었습니다. <strong>지식 + 결단</strong>이 신실함을 만듭니다. 벨사살은 '이 모든 것을 아시면서도 마음을 낮추시지 않았고'(단 5:22), 다니엘은 '알면서도 전에 늘 하던 대로' 기도했습니다. 같은 '앎' 앞에서 두 사람의 운명이 갈렸습니다."
+  },
+  reshim: {
+    grk: "רְשִׁים", pron: "[레쉼]", kr: "서명되다",
+    strong: "H7560", grammar: "동사, 페일(Peil·수동) 완료, 3인칭 남성 단수",
+    mean: "to be signed, inscribed",
+    desc: "'רְשִׁים(레쉼)'은 '서명하다, 기록하다, 새기다'를 뜻하는 동사가 <strong>수동태(Peil) + 완료형</strong>으로 쓰인 것입니다. 즉 다니엘이 본 것은 단순히 '누가 무엇을 썼다'가 아니라 <strong>'그 법령이 공식적으로 서명되어 이미 효력이 발생한 상태'</strong>였습니다. 페르시아 법에 따라 왕의 서명이 들어간 칙령은 <strong>왕 자신도 철회할 수 없었습니다</strong>(단 6:8, 15). 다시 말해 다니엘은 이 기도가 자신을 사자 굴로 보낼 '되돌릴 수 없는 판결'이라는 사실을 명확히 알고 있었습니다. 그럼에도 그의 반응은 '타협'이 아니라 '그대로 계속'이었습니다."
   },
   ketava: {
     grk: "כְּתָבָא", pron: "[케타바]", kr: "문서/칙령",
-    grammar: "명사, 남성 단수, 한정형(definite)",
+    strong: "H3792", grammar: "명사, 남성 단수, 한정상태(definite)",
     mean: "the writing, the decree",
     desc: "'כְּתָבָא(케타바)'는 '쓰인 것, 문서, 칙령'을 뜻합니다. 흥미로운 점은, 다니엘서에서 이 단어가 두 번 중요하게 등장한다는 것입니다. <strong>5장에서는 벽에 쓰인 글('케타바')이 벨사살의 종말</strong>을 선언했고, <strong>6장에서는 왕의 칙령('케타바')이 다니엘의 기도를 금지</strong>했습니다. 그러나 한 '쓰인 것'은 교만한 왕을 무너뜨렸고, 다른 '쓰인 것'은 기도하는 사람을 막지 못했습니다. 인간의 문서보다 하나님의 뜻이 더 강력합니다."
   },
+  al_enter: {
+    grk: "עַל", pron: "[알]", kr: "들어가다",
+    strong: "H5954", grammar: "동사, 페알(Peal) 완료, 3인칭 남성 단수 (어근 עֲלַל)",
+    mean: "to go in, enter",
+    desc: "이 '알(עַל)'은 전치사 '~위에'와 철자가 같아 오해하기 쉽지만, 여기서는 <strong>동사 어근 עֲלַל(알랄, '들어가다')에서 파생된 동사</strong>입니다. 즉 '자신의 집으로 <strong>들어갔다</strong>'는 의도적인 움직임을 나타냅니다. 다니엘은 금령 소식을 듣자마자 <strong>뒷골목으로 피하지도, 궁정에 남아 변명을 준비하지도 않고, 곧장 자기 집으로 걸어 들어갔습니다</strong>. 이 한 걸음 걸음에는 이미 '어떤 선택을 할 것인가'에 대한 답이 담겨 있었습니다 — 그의 다리가 그의 고백이었습니다."
+  },
+  illitheh: {
+    grk: "עִלִּיתֵהּ", pron: "[일리테]", kr: "다락방",
+    strong: "H5952", grammar: "명사, 여성 단수 + 3인칭 남성 대명사 접미사",
+    mean: "his upper room / roof-chamber",
+    desc: "'עִלִּיתֵהּ(일리테)'는 '다락방, 위층 방(roof-chamber)'을 뜻합니다. 고대 근동의 다락방은 <strong>평지붕 위에 지어진 구조물</strong>로, 집에서 가장 <strong>사적이고·조용하며·통풍이 잘되는</strong> 공간이었습니다. 선지자 엘리사가 거하던 방도(왕하 4:10), 베드로가 환상을 본 방도(행 10:9), 성령이 강림하신 곳도(행 1:13) 모두 이 '다락방'입니다. <strong>하나님과의 교통을 위한 개인적 성소</strong>였던 것입니다. 다니엘은 페르시아 궁정의 총리였으나, 권력의 중심이 아닌 바로 이 <strong>'위층 방'</strong>에서 그의 참된 정체성을 유지했습니다."
+  },
   kavvin: {
     grk: "כַּוִּין", pron: "[카빈]", kr: "창문들",
-    grammar: "명사, 여성 복수, 한정되지 않음",
+    strong: "H3551", grammar: "명사, 여성 복수, 한정되지 않음",
     mean: "windows",
     desc: "'כַּוִּין(카빈)'은 '창문들'(복수)을 뜻합니다. 주의해야 할 점 — 다니엘은 창문을 <strong>'닫지 않았습니다'</strong>. 신실한 기도는 <strong>숨지 않는 기도</strong>입니다. 왕의 금령이 내려졌을 때, 두려워서 창문을 닫고 몰래 기도하는 것도 일리가 있어 보입니다. 그러나 다니엘은 그렇게 하지 않았습니다. <strong>공개적이고 정직하게, 아무 일도 없는 것처럼 계속 기도했습니다</strong>. 이것은 '순교의 영'의 또 다른 표현입니다 — 자신의 생명보다 하나님 앞의 양심을 더 귀하게 여기는 태도입니다."
   },
   petichan: {
     grk: "פְּתִיחָן", pron: "[페티한]", kr: "열려있는",
-    grammar: "수동 분사, 페알(Peal), 여성 복수",
-    mean: "being open",
-    desc: "'פְּתִיחָן(페티한)'은 '열려있는 상태'를 나타내는 <strong>수동 분사</strong>입니다. 분사형은 '지금 막 열었다'가 아니라 <strong>'이미 열린 채 계속 유지되고 있다'</strong>는 지속적 상태를 강조합니다. 즉, 다니엘은 금령이 내린 '후에야 창을 연 것'이 아닙니다. <strong>수십 년 전부터 늘 열려 있었고, 지금도 그대로 열려 있었습니다</strong>. 그의 기도 생활은 즉흥적 반응이 아니라 오래된 습관이자 생활 방식이었습니다."
+    strong: "H6606", grammar: "수동 분사, 페일(Peil), 여성 복수",
+    mean: "being open (continuous)",
+    desc: "'פְּתִיחָן(페티한)'은 '열려있는 상태'를 나타내는 <strong>수동 분사(Peil passive participle)</strong>입니다. 분사형은 '지금 막 열었다'가 아니라 <strong>'이미 열린 채 계속 유지되고 있다'</strong>는 <span style='background:var(--marker); padding:0 3px;'>지속적 상태</span>를 강조합니다. 즉, 다니엘은 금령이 내린 '후에야 창을 연 것'이 아닙니다. <strong>수십 년 전부터 늘 열려 있었고, 지금도 그대로 열려 있었습니다</strong>. 그의 기도 생활은 즉흥적 반응이 아니라 오래된 습관이자 생활 방식이었습니다 — 문법이 그의 인격을 증언합니다."
   },
   neged: {
     grk: "נֶגֶד יְרוּשְׁלֶם", pron: "[네게드 예루샬렘]", kr: "예루살렘을 향하여",
-    grammar: "전치사 + 고유명사",
+    strong: "H5049", grammar: "전치사 + 고유명사",
     mean: "toward Jerusalem",
     desc: "'נֶגֶד(네게드)'는 '~의 맞은편으로, 정면으로 향하여'를 뜻합니다. 당시 다니엘이 있던 <strong>바빌론/페르시아 궁정에서 예루살렘은 서쪽으로 수백 마일 떨어진 곳</strong>이었고, 성전은 이미 파괴된 상태였습니다. 그러나 다니엘은 여전히 그곳을 향해 기도했습니다. 왜냐하면 솔로몬의 기도(왕상 8:48-49)에 따라, 포로 된 자들이 <strong>'땅과 성과 집을 향하여 기도하면' 하나님께서 들으시겠다</strong>고 약속하셨기 때문입니다. 즉 다니엘은 물리적 방향이 아니라 <strong>하나님의 경륜의 세 목표 — 그리스도(땅)·왕국(성)·교회(집) — 를 향해</strong> 기도한 것입니다."
   },
   telatha: {
     grk: "תְּלָתָה", pron: "[텔라타]", kr: "세 번",
-    grammar: "수사, 기수 (아람어)",
+    strong: "H8532", grammar: "수사, 기수 (아람어)",
     mean: "three times",
     desc: "'תְּלָתָה(텔라타)'는 '셋, 세 번'을 뜻합니다. <strong>'하루 세 번'</strong>이라는 리듬은 의미심장합니다. 시편 55편 17절의 '저녁과 아침과 정오에 내가 기도하며 부르짖으리라'를 반영하는 것으로, <strong>정해진 시간에 반복되는 규칙적 기도</strong>를 의미합니다. 신실함은 '기분이 날 때' 기도하는 것이 아닙니다. 오히려 <strong>기분과 상관없이 정해진 리듬으로 계속하는 것</strong>입니다. 이것이 사탄이 가장 무너뜨리고 싶어 하는 부분 — 바로 이 '규칙적 리듬'입니다."
   },
   barekh: {
     grk: "בָּרֵךְ", pron: "[바레크]", kr: "무릎을 꿇다",
-    grammar: "동사, 페알(Peal) 분사, 남성 단수",
-    mean: "to kneel, bow the knees",
-    desc: "'בָּרֵךְ(바레크)'는 '무릎(בֶּרֶךְ)'과 같은 어근으로 '무릎을 꿇다'를 뜻합니다. 흥미로운 점은 이 어근이 <strong>'축복하다(בָּרַךְ, 바라크)'</strong>와 같은 뿌리라는 것입니다. 히브리적 사고에서는 <strong>'무릎을 꿇는 것이 곧 축복을 받는 것'</strong>입니다. 다니엘 3장의 세 이기는 이들은 금형상 앞에 <strong>무릎을 꿇지 않음('라 니스구드')</strong>으로써 하늘의 축복을 받았고, 다니엘 6장에서는 그와 반대로 하나님 앞에 <strong>'무릎을 꿇음'으로써</strong> 축복을 이어갔습니다. 누구 앞에 무릎을 꿇느냐가 모든 것을 결정합니다."
+    strong: "H1289", grammar: "동사, 페알(Peal) 능동 분사, 남성 단수",
+    mean: "kneeling (continuous)",
+    desc: "'בָּרֵךְ(바레크)'는 '무릎(בֶּרֶךְ)'과 같은 어근으로 '무릎을 꿇다'를 뜻합니다. 여기서는 <strong>능동 분사형</strong>으로, '무릎을 꿇고 있는 중'이라는 <strong>지속되는 자세</strong>를 묘사합니다. 흥미로운 점은 이 어근이 <strong>'축복하다(בָּרַךְ, 바라크)'</strong>와 같은 뿌리라는 것입니다. 히브리적 사고에서는 <strong>'무릎을 꿇는 것이 곧 축복을 받는 것'</strong>입니다. 다니엘 3장의 세 이기는 이들은 금형상 앞에 <strong>무릎을 꿇지 않음('라 니스구드')</strong>으로써 하늘의 축복을 받았고, 다니엘 6장에서는 그와 반대로 하나님 앞에 <strong>'무릎을 꿇음'으로써</strong> 축복을 이어갔습니다. 누구 앞에 무릎을 꿇느냐가 모든 것을 결정합니다."
   },
   metsalle: {
     grk: "מְצַלֵּא", pron: "[메찰레]", kr: "기도하며",
-    grammar: "동사, 파엘(Pael, 강조형) 분사, 남성 단수",
-    mean: "praying",
-    desc: "'מְצַלֵּא(메찰레)'는 '기도하다'를 뜻하는 아람어 동사로, <strong>파엘(강조형)</strong>은 '간절하고 집중된 기도'를 의미합니다. 단순히 '말하는 것(אָמַר)'이 아니라 <strong>마음을 다해 하나님 앞으로 향하는 행위</strong>입니다. 또한 이 어근은 '기울다, 굽히다'에서 유래했는데, 기도는 <strong>우리 자신을 하나님의 뜻을 향해 기울이고 굽히는 것</strong>임을 보여줍니다. 기도는 하나님을 우리 쪽으로 굽히는 것이 아니라, 우리가 하나님의 경륜의 방향으로 기울어지는 것입니다."
+    strong: "H6739", grammar: "동사, 파엘(Pael·강조) 능동 분사, 남성 단수",
+    mean: "praying (continuous, intense)",
+    desc: "'מְצַלֵּא(메찰레)'는 '기도하다'를 뜻하는 아람어 동사로, <strong>파엘(강조형) 분사</strong>는 '간절하고 집중된 기도가 계속 이어지고 있음'을 의미합니다. 단순히 '말하는 것(אָמַר)'이 아니라 <strong>마음을 다해 하나님 앞으로 향하는 행위</strong>입니다. 또한 이 어근은 '기울다, 굽히다'에서 유래했는데, 기도는 <strong>우리 자신을 하나님의 뜻을 향해 기울이고 굽히는 것</strong>임을 보여줍니다. 기도는 하나님을 우리 쪽으로 굽히는 것이 아니라, 우리가 하나님의 경륜의 방향으로 기울어지는 것입니다."
   },
   mode: {
     grk: "מוֹדֵא", pron: "[모데]", kr: "감사하며",
-    grammar: "동사, 하펠(Haphel, 사역형) 분사, 남성 단수",
-    mean: "giving thanks, acknowledging",
-    desc: "'מוֹדֵא(모데)'는 '감사하다, 공개적으로 인정하다, 찬양하다'를 뜻합니다. 놀라운 점은 — <strong>다니엘이 처해 있는 상황은 '감사할' 상황이 아니었다</strong>는 것입니다. 그는 곧 사자 굴에 던져질 것이고, 포로민의 신분이었으며, 동료들로부터 시기를 받고 있었습니다. 그럼에도 그는 기도할 뿐 아니라 <strong>감사도 드렸습니다</strong>. <strong>이것이 바로 '범사에 감사하라'(살전 5:18)의 성경적 모델</strong>입니다. 환경이 변할 때마다 바뀌는 감정이 아니라, 환경과 상관없이 하나님의 신실하심을 인정하는 것 — 그것이 신실한 감사입니다."
+    strong: "H3029", grammar: "동사, 하펠(Haphel·사역) 분사, 남성 단수",
+    mean: "giving thanks, acknowledging (continuous)",
+    desc: "'מוֹדֵא(모데)'는 '감사하다, 공개적으로 인정하다, 찬양하다'를 뜻합니다. <strong>하펠(사역형) 분사</strong>로 쓰여 '감사와 고백을 계속 드리고 있음'을 나타냅니다. 놀라운 점은 — <strong>다니엘이 처해 있는 상황은 '감사할' 상황이 아니었다</strong>는 것입니다. 그는 곧 사자 굴에 던져질 것이고, 포로민의 신분이었으며, 동료들로부터 시기를 받고 있었습니다. 그럼에도 그는 기도할 뿐 아니라 <strong>감사도 드렸습니다</strong>. <strong>이것이 바로 '범사에 감사하라'(살전 5:18)의 성경적 모델</strong>입니다. 환경이 변할 때마다 바뀌는 감정이 아니라, 환경과 상관없이 하나님의 신실하심을 인정하는 것 — 그것이 신실한 감사입니다."
+  },
+  qodam: {
+    grk: "קֳדָם", pron: "[코담]", kr: "~앞에서",
+    strong: "H6925", grammar: "전치사",
+    mean: "before, in the presence of",
+    desc: "'קֳדָם(코담)'은 '~의 앞에, ~의 면전에'를 뜻하는 전치사입니다. 본문에서 다니엘은 단순히 '기도한 것'이 아니라 <strong>'자신의 하나님 앞에서(코담 엘라헤) 기도하고 감사를 드렸다'</strong>고 명시합니다. <strong>'코담'은 공간적 방향이 아니라 인격적 대면</strong>을 의미합니다. 다니엘은 페르시아 제국의 어느 관료 앞에 서 있었던 것이 아닙니다. 그의 모든 기도는 <strong>살아 계신 하나님의 얼굴 앞</strong>에서 이루어졌고, 그래서 왕의 금령도 그의 자세를 바꿀 수 없었습니다. 누구의 '앞'에 서 있느냐가 누구를 두려워하느냐를 결정합니다."
+  },
+  hawa_abed: {
+    grk: "הֲוָא עָבֵד", pron: "[하와 아베드]", kr: "늘 행해왔다",
+    strong: "H1934 + H5648", grammar: "복합 동사 (be + 분사) — 과거 습관적 행위",
+    mean: "he was doing / used to do",
+    desc: "이 두 단어는 아람어에서 <strong>과거의 습관적·지속적 행위를 나타내는 전형적인 관용 표현</strong>입니다. 하와(הֲוָא, be 동사의 과거형) + 아베드(עָבֵד, '행하다'의 능동 분사)가 결합되어 문자 그대로 <strong>\"그는 행하고 있는 중이었다(He was doing)\"</strong>가 됩니다. 영어의 과거 진행/과거 습관(used to do)과 정확히 같은 역할입니다. 이 문법의 의미가 강력합니다 — <strong>특별한 사건(금령)이 발생했음에도, 기존의 관습적 행위가 단절 없이 그대로 지속되고 있었다</strong>는 사실을 문법 자체가 증언합니다. 다니엘은 위기 때문에 '새로운 기도'를 시작한 것이 아니라, <strong>오래전부터 흘러오던 기도의 강물이 그날도 똑같이 흐르고 있었을 뿐</strong>입니다. 신실함은 이벤트가 아니라 문법입니다."
   },
   qadmat: {
     grk: "מִן־קַדְמַת דְּנָה", pron: "[민 카드마트 데나]", kr: "전에 늘 하던 대로",
-    grammar: "전치사 + 명사(앞) + 지시대명사(이것)",
-    mean: "as aforetime, as he did before",
+    strong: "H4481 + H6928 + H1836", grammar: "전치사(~부터) + 명사(앞) + 지시대명사(이것)",
+    mean: "as aforetime, from before this",
     desc: "이 세 단어의 조합은 <strong>다니엘 6장 전체의 열쇠이자 '신실함'의 본질</strong>입니다. 직역하면 '이것 이전으로부터(from before this)'로, <strong>'늘 해 오던 그대로, 조금도 변함없이'</strong>라는 뜻입니다. 이 구절의 위대함은, 위기 상황에서도 다니엘이 <strong>'특별한 기도'나 '영웅적 퍼포먼스'를 한 것이 아님</strong>을 보여주는 데 있습니다. 그는 수십 년 동안 반복해 온 일상의 리듬을 <strong>단지 그대로 이어갔을 뿐</strong>입니다. 이것이 진정한 신실함입니다 — 비상시의 영웅성이 아니라, 평범한 날들의 충성이 쌓여 비상시에도 자동으로 이어지는 것. 사탄의 마지막 계략은 바로 이 '카드마트 데나(전에 하던 대로)'의 리듬을 깨는 것입니다."
   }
 };
@@ -2654,6 +3139,15 @@ function openWordModal(key) {
   document.getElementById('wm-kr').textContent = data.kr;
   document.getElementById('wm-grk').textContent = data.grk;
   document.getElementById('wm-pron').textContent = data.pron;
+
+  const strongEl = document.getElementById('wm-strong');
+  if (data.strong && data.strong.length > 0) {
+    strongEl.textContent = "Strong's " + data.strong;
+    strongEl.style.display = 'inline-block';
+  } else {
+    strongEl.style.display = 'none';
+  }
+
   document.getElementById('wm-grammar').textContent = data.grammar;
   document.getElementById('wm-mean').textContent = data.mean;
   document.getElementById('wm-desc').innerHTML = data.desc;
@@ -2670,6 +3164,11 @@ function closeWordModal(e) {
 
 // Intro scratch-off
 document.addEventListener('DOMContentLoaded', () => {
+  // Quiz initialization — show first question
+  const firstQuiz = document.querySelector('.quiz-item');
+  if (firstQuiz) firstQuiz.classList.add('active');
+  if (typeof updateQuizNav === 'function') updateQuizNav();
+
   const container = document.getElementById('intro-container');
   const canvas = document.getElementById('scratch-canvas');
   const introCover = document.getElementById('intro-cover');
