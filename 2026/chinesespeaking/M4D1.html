@@ -1,0 +1,2523 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>두 나무 — 두 근원, 두 길, 두 원칙, 두 완결로 보는 생명과 죽음의 경로</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Gowun+Batang:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   따뜻한 에디토리얼 / 묵상의 공간 — 두 나무 · 욥기
+   ============================================================ */
+
+:root {
+  --base-font-size: 17px;
+  --font-scale: 1;
+  --paper:        #f5f0e6;
+  --paper-card:   #faf6ec;
+  --paper-verse:  #f0e8d4;
+  --ink:          #1a1410;
+  --ink-soft:     #4a3f36;
+  --ink-mute:     #8a7b6c;
+  --line:         #d9cfbc;
+  --line-soft:    #e8dfce;
+  --accent:       #8b1e2b;
+  --accent-soft:  #b84452;
+  --accent-bg:    #f8e8e4;
+  --marker:       #f0d878;
+  --bg:                var(--paper);
+  --text:              var(--ink);
+  --text-secondary:    var(--ink-soft);
+  --accent-blue:       var(--accent);
+  --accent-gold:       var(--accent);
+  --accent-green:      var(--ink-soft);
+  --accent-red:        var(--accent);
+  --accent-purple:     var(--ink-soft);
+  --accent-teal:       var(--ink-soft);
+  --accent-indigo:     var(--ink-soft);
+  --accent-rose:       var(--accent);
+  --highlight-yellow:        var(--marker);
+  --highlight-yellow-strong: var(--marker);
+  --card-bg:      var(--paper-card);
+  --card-border:  var(--line-soft);
+  --section-bg:   var(--paper-card);
+  --verse-bg:     var(--paper-verse);
+  --verse-border: var(--accent);
+  --topbar-h: 48px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: var(--base-font-size);
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+}
+
+.container,
+.sidepanel,
+.word-modal-overlay {
+  zoom: var(--font-scale);
+}
+
+body {
+  font-family: 'Noto Serif KR', 'Gowun Batang', serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.9;
+  letter-spacing: -0.01em;
+  padding-top: var(--topbar-h);
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(ellipse at top left, rgba(139,30,43,0.025) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(74,63,54,0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--topbar-h);
+  background: rgba(245, 240, 230, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center;
+  padding: 0 10px;
+  z-index: 1000;
+  gap: 4px;
+}
+.topbar-btn {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border: none; background: none;
+  border-radius: 4px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft);
+  transition: background .15s;
+}
+.topbar-btn:hover { background: var(--line-soft); }
+.topbar-title {
+  flex: 1; min-width: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 6px;
+}
+.topbar-title::-webkit-scrollbar { display: none; }
+.font-controls {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 2px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  padding: 2px;
+}
+.font-ctrl-btn {
+  width: 30px; height: 30px;
+  border: none; background: none;
+  border-radius: 3px; cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--ink-soft);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.font-ctrl-btn:hover { background: var(--line-soft); }
+
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(26, 20, 16, 0.35);
+  z-index: 1001;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s;
+}
+.overlay.open { opacity: 1; pointer-events: auto; }
+.sidepanel {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 300px; max-width: 82vw;
+  background: var(--paper);
+  z-index: 1002;
+  transform: translateX(-100%);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  overflow-y: auto;
+  padding: 20px 0;
+  box-shadow: 4px 0 28px rgba(26,20,16,.12);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.sidepanel.open { transform: translateX(0); }
+.sidepanel-header {
+  padding: 0 22px 16px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 12px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex; align-items: center; gap: 8px;
+}
+.sidepanel-close {
+  margin-left: auto;
+  width: 28px; height: 28px;
+  border: none; background: transparent;
+  border-radius: 3px; cursor: pointer;
+  font-size: 14px; color: var(--ink-mute);
+  display: flex; align-items: center; justify-content: center;
+}
+.sidepanel-close:hover { background: var(--line-soft); color: var(--ink); }
+.nav-item {
+  display: block;
+  padding: 10px 22px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.nav-item:hover { background: var(--paper-card); color: var(--ink); }
+.nav-item.sub {
+  padding-left: 38px;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--ink-mute);
+}
+.nav-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 10px 22px;
+}
+.keyword-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 3px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all .2s;
+  font-weight: 500;
+}
+.keyword-tag:hover, .keyword-tag.active {
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
+}
+.keyword-def {
+  display: none;
+  padding: 12px 22px 14px 38px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  background: var(--paper-card);
+  border-left: 2px solid var(--accent);
+  margin: 4px 22px;
+  border-radius: 0 3px 3px 0;
+  font-family: 'Noto Serif KR', serif;
+}
+.keyword-def.show { display: block; }
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 22px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.series-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  margin-bottom: 16px;
+}
+.series-tag::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero {
+  text-align: left;
+  padding: 8px 0 4px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 0;
+  background: none;
+  color: var(--ink-mute);
+  border-radius: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-badge::before {
+  content: '— ';
+  color: var(--accent);
+  font-weight: 700;
+}
+.hero h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  margin-bottom: 22px;
+}
+.hero h1 .highlight-word {
+  background: linear-gradient(180deg, transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  padding: 0 3px;
+}
+.hero-sub {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-weight: 400;
+  line-height: 1.85;
+  padding-left: 18px;
+  border-left: 2px solid var(--line);
+}
+
+/* TWO TREES VISUAL DIAGRAM */
+.two-trees-diagram {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.tree-card {
+  padding: 22px 18px;
+  border-radius: 4px;
+  border: 1px solid var(--line-soft);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.tree-card.life {
+  background: var(--paper-card);
+  border-color: var(--line-soft);
+}
+.tree-card.death {
+  background: var(--paper-card);
+  border-color: var(--line-soft);
+}
+.tree-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.tree-card.life::before { background: var(--accent); }
+.tree-card.death::before { background: var(--ink-mute); }
+.tree-icon {
+  font-size: 2.8rem;
+  line-height: 1;
+  margin-bottom: 12px;
+  display: block;
+}
+.tree-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.tree-name.red { color: var(--accent); }
+.tree-name.gray { color: var(--ink-soft); }
+.tree-sub {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px;
+  color: var(--ink-mute);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.tree-desc {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+.tree-arrow-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--line);
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 0 4px;
+  align-self: center;
+}
+
+.dashboard {
+  margin: 40px 0;
+  padding: 28px 26px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+}
+.dashboard-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.core-message {
+  background: transparent;
+  border-left: 3px solid var(--accent);
+  padding: 6px 0 6px 22px;
+  border-radius: 0;
+  margin: 0 0 28px;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+}
+.core-message strong {
+  color: var(--ink);
+  font-weight: 700;
+  font-style: normal;
+  background: linear-gradient(180deg, transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  padding: 0 2px;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 24px;
+}
+.dash-card {
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  text-align: left;
+  display: block;
+}
+.dash-label {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.dash-value {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.flow-section {
+  margin: 56px 0;
+}
+.flow-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.flow-steps {
+  position: relative;
+  padding-left: 32px;
+}
+.flow-steps::before {
+  content: '';
+  position: absolute;
+  left: 11px; top: 14px; bottom: 14px;
+  width: 1px;
+  background: var(--line);
+}
+.flow-step {
+  position: relative;
+  padding: 4px 0 22px;
+}
+.flow-step:last-child { padding-bottom: 0; }
+.flow-dot {
+  position: absolute;
+  left: -32px; top: 4px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--paper) !important;
+  border: 1px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  z-index: 1;
+}
+.flow-step-label {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.015em;
+  line-height: 1.5;
+}
+.flow-step-desc {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+.keywords-section {
+  margin: 48px 0;
+  padding: 26px 24px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+}
+.keywords-section-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.kw-container {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.kw-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 8px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all .2s;
+}
+.kw-chip:hover, .kw-chip.active {
+  background: var(--accent); border-color: var(--accent);
+  color: var(--paper);
+}
+.kw-tooltip {
+  display: none;
+  margin-top: 14px;
+  padding: 16px 18px;
+  background: var(--paper-verse);
+  border-radius: 3px;
+  border-left: 2px solid var(--accent);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+.kw-tooltip.show { display: block; }
+
+.accordion-group { margin: 48px 0; }
+.accordion-group-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 64px 0 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  display: block;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+  position: relative;
+}
+.accordion-group-title::before {
+  content: 'CORE';
+  display: block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.accordion {
+  margin-bottom: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  transition: border-color .25s;
+}
+.accordion:hover { border-color: var(--line); }
+.accordion.open { border-color: var(--line); }
+
+.accordion-header {
+  display: flex; align-items: flex-start; gap: 18px;
+  padding: 22px 24px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: background .2s;
+}
+.accordion-header:hover { background: rgba(139,30,43,0.025); }
+
+.acc-number {
+  flex-shrink: 0;
+  width: auto; height: auto;
+  background: transparent !important;
+  border-radius: 0;
+  color: var(--accent) !important;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding-top: 4px;
+  min-width: 36px;
+  display: block;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.acc-title-text {
+  flex: 1;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  letter-spacing: -0.018em;
+}
+
+.acc-chevron {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .3s;
+  color: var(--ink-mute);
+  font-size: 11px;
+  padding-top: 4px;
+}
+.accordion.open .acc-chevron { transform: rotate(180deg); color: var(--accent); }
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1);
+}
+.accordion-content {
+  padding: 4px 24px 26px 78px;
+  border-top: 1px dashed var(--line);
+  padding-top: 22px;
+}
+
+.verse-block {
+  position: relative;
+  padding: 22px 24px 22px 26px;
+  background: var(--paper-verse);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  margin: 22px 0;
+}
+.verse-block::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 3rem;
+  color: var(--accent);
+  opacity: 0.28;
+  line-height: 1;
+  font-weight: 900;
+}
+.verse-ref {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.verse-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  letter-spacing: -0.01em;
+}
+.verse-text b { color: var(--ink); font-weight: 700; }
+.verse-text + .verse-text {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+.content-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.9;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.content-text:last-child { margin-bottom: 0; }
+
+.accordion-content > .content-text:first-child::first-letter {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 3.4em;
+  font-weight: 900;
+  float: left;
+  line-height: 0.88;
+  margin: 8px 8px -4px 0;
+  color: var(--accent);
+}
+
+.hl {
+  background: linear-gradient(180deg, transparent 55%, var(--marker) 55%, var(--marker) 92%, transparent 92%);
+  padding: 0 2px;
+}
+
+.sub-point {
+  padding: 18px 22px;
+  background: transparent;
+  border: none;
+  border-left: 2px solid var(--ink-mute);
+  margin: 22px 0;
+}
+.sub-point-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.sub-point-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  letter-spacing: -0.01em;
+}
+.sub-point-text strong { color: var(--ink); font-weight: 700; }
+
+.result-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--paper-card) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 3px 4px 3px 0;
+}
+
+/* Comparison table */
+.compare-table {
+  background: var(--paper-card);
+  border-radius: 4px;
+  border: 1px solid var(--line-soft);
+  overflow: hidden;
+  margin: 22px 0;
+}
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px 14px;
+  border-bottom: 1px dashed var(--line);
+  gap: 10px;
+}
+.compare-row:last-child { border-bottom: none; }
+.compare-row.header {
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.compare-cell {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.compare-cell .nm {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+}
+.compare-cell .mn {
+  font-family: 'Gowun Batang', serif;
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin-top: 4px;
+  font-style: italic;
+  line-height: 1.4;
+}
+.compare-cell.life .nm { color: var(--accent); }
+.compare-cell.death .nm { color: var(--ink-soft); }
+.compare-div { color: var(--line); font-size: 12px; text-align: center; }
+
+.section-connector {
+  text-align: center;
+  padding: 14px 0;
+  color: var(--line);
+  font-size: 14px;
+  letter-spacing: 0.4em;
+}
+
+.step-header {
+  display: block;
+  background: transparent !important;
+  color: var(--ink) !important;
+  padding: 0 0 22px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  font-family: 'Noto Serif KR', serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.4 !important;
+  margin: 72px 0 28px !important;
+  position: relative;
+}
+.step-header::before {
+  content: attr(data-kicker);
+  display: block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.step-header:first-child { margin-top: 0 !important; }
+
+.step-connector {
+  margin: 28px 0;
+  padding: 6px 0 6px 26px;
+  background: transparent;
+  border: none;
+  border-left: 3px solid var(--accent);
+  font-family: 'Gowun Batang', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  text-align: left;
+  line-height: 1.75;
+}
+.step-connector strong { color: var(--ink); font-weight: 700; font-style: normal; }
+
+/* RECAP */
+.recap-section {
+  margin: 56px 0;
+  padding: 32px 26px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+}
+.recap-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  letter-spacing: -0.02em;
+  display: block;
+  position: relative;
+}
+.recap-title::before {
+  content: 'REVIEW';
+  display: block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.recap-subtitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+  line-height: 1.55;
+}
+.recap-subtitle.small {
+  font-family: 'Gowun Batang', serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: var(--ink-soft) !important;
+  font-style: italic;
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+.recap-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.recap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--paper);
+  border-radius: 3px;
+  border: 1px solid var(--line-soft);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+}
+.recap-num {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: transparent !important;
+  border: 1px solid var(--accent);
+  color: var(--accent) !important;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+.recap-item.green .recap-num { border-color: var(--ink-soft); color: var(--ink-soft) !important; }
+.recap-item.purple .recap-num { border-color: var(--ink-mute); color: var(--ink-mute) !important; }
+.recap-item-text { flex: 1; color: var(--ink-soft); }
+.recap-item-text strong { color: var(--ink); font-weight: 700; }
+.recap-anchor {
+  margin: 32px 0 12px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+}
+.recap-anchor:first-of-type { padding-top: 0; border-top: none; margin-top: 4px; }
+.recap-note {
+  margin-top: 22px;
+  padding: 18px 20px;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  font-family: 'Gowun Batang', serif;
+  font-size: 14.5px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+.recap-note strong { color: var(--ink); font-weight: 700; font-style: normal; }
+
+/* QUIZ */
+.quiz-section {
+  margin: 64px 0 40px;
+  padding: 28px 24px 30px;
+  background: var(--paper-card);
+  border-radius: 4px;
+  border: 1px solid var(--line-soft);
+}
+.quiz-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px;
+}
+.quiz-item {
+  display: none;
+  margin-bottom: 22px;
+  padding: 20px;
+  background: var(--paper);
+  border-radius: 3px;
+  border: 1px solid var(--line-soft);
+}
+.quiz-item.active { display: block; }
+.quiz-item.reviewed { display: block; }
+.quiz-q {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 14px;
+}
+.quiz-badge {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.quiz-q-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.55;
+  padding-top: 2px;
+  letter-spacing: -0.015em;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+.quiz-opt:hover { border-color: var(--accent-soft); background: var(--paper); }
+.quiz-opt.selected { border-color: var(--accent); background: var(--paper); color: var(--ink); }
+.quiz-opt.correct { border-color: var(--accent); background: var(--paper-verse); color: var(--ink); }
+.quiz-opt.wrong { border-color: var(--line); background: var(--paper-card); color: var(--ink-mute); text-decoration: line-through; }
+.quiz-opt-marker {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-mute);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px; font-weight: 700;
+  transition: all .2s;
+  margin-top: 2px;
+}
+.quiz-opt.selected .quiz-opt-marker { border-color: var(--accent); color: var(--accent); background: var(--paper); }
+.quiz-opt.correct .quiz-opt-marker { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+.quiz-opt.wrong .quiz-opt-marker { border-color: var(--line); background: var(--paper); color: var(--ink-mute); }
+.quiz-nav-btn {
+  padding: 14px;
+  background: var(--paper-card);
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all .2s;
+}
+.quiz-nav-btn:hover:not(:disabled) { background: var(--line-soft); }
+.quiz-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.quiz-nav-btn.primary { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.quiz-nav-btn.primary:hover:not(:disabled) { background: #6e1622; }
+.quiz-feedback {
+  display: none;
+  margin-top: 10px;
+  padding: 11px 14px;
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct-fb {
+  background: var(--paper-verse);
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+}
+.quiz-feedback.wrong-fb {
+  background: var(--paper-card);
+  color: var(--ink-soft);
+  border-left: 2px solid var(--ink-mute);
+}
+.quiz-result {
+  display: none;
+  margin-top: 20px;
+  padding: 26px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  text-align: center;
+}
+.quiz-result.show { display: block; }
+.quiz-score-label {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.quiz-score {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+.quiz-result-msg {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  line-height: 1.75;
+}
+
+/* PRAYER / CLOSING SECTION */
+.prayer-section {
+  margin: 64px 0 40px;
+  padding: 36px 28px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  position: relative;
+}
+.prayer-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.prayer-heading {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.55rem; font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  margin-bottom: 24px;
+  line-height: 1.45;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.prayer-callbox {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 22px 24px;
+  margin-bottom: 26px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  line-height: 1.95;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: -0.005em;
+}
+.prayer-callbox p { margin: 0; }
+.prayer-callbox p + p {
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+.prayer-callbox .cb-house {
+  color: var(--accent);
+  font-weight: 800;
+  background: linear-gradient(180deg, transparent 58%, var(--marker) 58%, var(--marker) 92%, transparent 92%);
+  padding: 0 3px;
+}
+.prayer-amen-box {
+  background: var(--paper-verse);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  padding: 20px 22px;
+  font-family: 'Gowun Batang', serif;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.9;
+  font-weight: 500;
+}
+.prayer-amen-box p { margin-bottom: 14px; font-style: italic; }
+.prayer-amen-box p:last-of-type { margin-bottom: 0; }
+.prayer-amen-box strong { color: var(--accent); font-weight: 700; font-style: normal; }
+.prayer-amen-sig {
+  text-align: right;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.32em;
+  font-size: 12px;
+  font-style: normal;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+
+/* Network scene reuse */
+.two-path-scene {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 32px 16px;
+  margin: 0 0 26px;
+  border-radius: 4px;
+  background-color: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  gap: 12px;
+}
+.path-box {
+  flex: 1;
+  max-width: 200px;
+  border-radius: 4px;
+  padding: 20px 16px;
+  text-align: center;
+}
+.path-box.life-box {
+  background: var(--paper);
+  border: 1px solid var(--accent);
+}
+.path-box.death-box {
+  background: var(--paper);
+  border: 1px solid var(--ink-mute);
+}
+.path-box-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+.path-box-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.path-box-title.red { color: var(--accent); }
+.path-box-title.gray { color: var(--ink-soft); }
+.path-box-desc {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.path-vs {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--line);
+  padding: 0 4px;
+}
+
+.footer-note {
+  text-align: center;
+  padding: 40px 16px 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--line);
+  margin-top: 56px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeInUp .5s ease forwards; }
+
+/* INTRO */
+#intro-container {
+  position: fixed; inset: 0; z-index: 10000;
+  background: #1a1410;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+}
+#intro-reveal-text {
+  text-align: center;
+  color: var(--paper);
+  z-index: 1;
+  padding: 20px;
+  width: 90%;
+  max-width: 560px;
+}
+.reveal-main {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  word-break: keep-all;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+}
+.reveal-sub {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-soft);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.voice-prompt-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.voice-prompt-container.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.voice-msg {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--paper);
+  text-align: center;
+  line-height: 1.7;
+}
+.voice-btn-group { display: flex; gap: 12px; margin-top: 8px; }
+.voice-action-btn {
+  padding: 12px 24px;
+  background: var(--accent);
+  color: var(--paper);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.voice-action-btn:hover { background: #6e1622; border-color: #6e1622; }
+.skip-btn {
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid rgba(245,240,230,0.35);
+  color: rgba(245,240,230,0.75);
+  border-radius: 3px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.skip-btn:hover { background: rgba(245,240,230,0.08); color: var(--paper); border-color: rgba(245,240,230,0.6); }
+
+#intro-cover {
+  position: absolute; inset: 0; z-index: 2;
+}
+#intro-cover.cleared { pointer-events: none; }
+#scratch-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair;
+}
+
+.intro-content {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 90%; max-width: 520px; text-align: center;
+  color: var(--paper); pointer-events: none;
+  font-family: 'Noto Serif KR', serif;
+  transition: opacity 0.8s ease;
+}
+.intro-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--paper);
+  line-height: 1.4;
+  margin-bottom: 24px;
+  word-break: keep-all;
+  letter-spacing: -0.025em;
+}
+.intro-desc {
+  font-family: 'Gowun Batang', serif;
+  font-size: 1rem;
+  color: rgba(245,240,230,0.72);
+  line-height: 1.75;
+  margin-bottom: 30px;
+  word-break: keep-all;
+  font-style: italic;
+}
+.intro-pullquote {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-left: 2px solid var(--accent-soft);
+  padding-left: 16px;
+  text-align: left;
+  margin: 0 auto 36px;
+  max-width: 360px;
+  line-height: 1.75;
+  color: rgba(245,240,230,0.9);
+}
+.intro-pullquote strong { color: var(--accent-soft); font-weight: 700; }
+.intro-pullquote .attrib {
+  display: block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  margin-top: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.intro-instruction {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  animation: pulse 2.4s infinite;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.scratch-icon { font-size: 2.2rem; animation: swipe 2s infinite; opacity: 0.85; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+@keyframes swipe {
+  0% { transform: translateX(-18px) rotate(-12deg); }
+  50% { transform: translateX(18px) rotate(12deg); }
+  100% { transform: translateX(-18px) rotate(-12deg); }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 24px 6px 60px; }
+  .hero h1 { font-size: 1.55rem; }
+  .two-trees-diagram { grid-template-columns: 1fr; }
+  .accordion-content { padding: 18px 10px 20px 10px; }
+  .dash-grid { grid-template-columns: 1fr; gap: 20px; }
+  .two-path-scene { flex-direction: column; min-height: auto; }
+  .path-box { max-width: 100%; width: 100%; }
+  .compare-row { grid-template-columns: 1fr auto 1fr; gap: 4px; padding: 12px 10px; }
+}
+</style>
+</head>
+<body style="overflow: hidden;">
+
+<!-- INTRO CONTAINER -->
+<div id="intro-container">
+  <div id="intro-reveal-text">
+    <div class="reveal-main">"생명으로 이끄는 문은 좁고,<br>그 길이 비좁아 찾는 사람이 적습니다."</div>
+    <div class="reveal-sub">— 마태복음 7:14 —</div>
+
+    <div class="voice-prompt-container" id="voice-prompt-container">
+      <div class="voice-msg" id="voice-msg">위 문장을 직접 소리 내어 읽어주세요</div>
+      <div class="voice-btn-group">
+        <button class="voice-action-btn" id="start-voice-btn">🎤 읽기 시작</button>
+        <button class="skip-btn" id="skip-intro-btn">건너뛰기</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="intro-cover">
+    <canvas id="scratch-canvas"></canvas>
+
+    <div class="intro-content" id="intro-content">
+      <h1 class="intro-title">두 나무 —<br>두 근원, 두 길, 두 원칙,<br>두 완결</h1>
+
+      <div class="intro-desc">
+        창세기 2장의 두 나무는 우주 안에 있는 두 근원의 상징입니다.<br>
+        생명나무는 하나님을, 선악나무는 사탄을 상징합니다.
+      </div>
+
+      <div class="intro-pullquote">
+        신성한 계시에 따르면, <strong>지식과 선과 악은 모두 사탄</strong>입니다. 참된 선은 하나님 자신이며(마 19:17), 만일 우리가 하나님을 떠나 선한 것들을 만진다면, 우리는 사탄을 만지고 있습니다.
+        <span class="attrib">— 욥기 라이프 스타디, 메시지 37 —</span>
+      </div>
+
+      <div class="intro-instruction">
+        <div class="scratch-icon">👆</div>
+        화면을 문질러 두 나무의 비밀을 확인하세요
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <button class="topbar-btn" onclick="window.open('https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/','_blank')" aria-label="홈">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </button>
+  <div class="topbar-title">두 나무 — 두 근원·두 길·두 원칙·두 완결</div>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">
+    목차
+    <button class="sidepanel-close" onclick="togglePanel()">✕</button>
+  </div>
+
+  <a class="nav-item" onclick="goTo('hero-section')">제목 & 오늘의 구절</a>
+  <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
+
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('keywords-section')" style="font-weight:700;color:var(--accent);">키워드</a>
+  <div style="padding:6px 20px;" id="nav-keywords">
+    <span class="keyword-tag" onclick="showKwDef('kd1',this)">두 나무</span>
+    <span class="keyword-tag" onclick="showKwDef('kd2',this)">두 근원</span>
+    <span class="keyword-tag" onclick="showKwDef('kd3',this)">두 길</span>
+    <span class="keyword-tag" onclick="showKwDef('kd4',this)">두 원칙</span>
+    <span class="keyword-tag" onclick="showKwDef('kd5',this)">두 완결</span>
+  </div>
+  <div class="keyword-def" id="kd1">창세기 2장의 생명나무와 선악을 알게 하는 나무. 두 나무는 각각 삼일 하나님과 사탄 마귀를 상징하는 표징입니다. 나무 자체가 목적이 아니라 사람이 그 열매를 먹기 위한 것입니다.</div>
+  <div class="keyword-def" id="kd2">생명나무는 하나님을 추구하는 사람들의 근원이며, 선악나무는 사탄을 따르는 사람들의 근원입니다. 두 근원은 이 땅에 두 왕국을 산출합니다.</div>
+  <div class="keyword-def" id="kd3">생명의 길(비좁은 길)과 죽음과 선악의 길(널찍한 길). 마태복음 7:13-14에 계시된 두 길로, 사람들이 하나님과 맺는 관계의 두 방향을 보여 줍니다.</div>
+  <div class="keyword-def" id="kd4">생명의 원칙(하나님을 의지하는 원칙)과 선악의 원칙(하나님에게서 독립하는 원칙). 두 원칙은 사람이 실제 삶에서 어떤 근원을 접촉하느냐를 결정합니다.</div>
+  <div class="keyword-def" id="kd5">생명의 길의 완결은 새 예루살렘(생명수의 성)이고, 죽음과 선악의 길의 완결은 불못입니다. 요한계시록 21-22장에서 이 두 완결이 분명하게 드러납니다.</div>
+
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:700;color:var(--ink);">핵심 요점</a>
+  <a class="nav-item sub" onclick="goTo('acc-1')">Ⅰ-A. 두 나무 — 하나님과 사탄의 상징</a>
+  <a class="nav-item sub" onclick="goTo('acc-2')">Ⅰ-B. 두 근원 — 두 왕국을 산출</a>
+  <a class="nav-item sub" onclick="goTo('acc-3')">Ⅰ-C. 두 길 — 생명의 길 vs 선악의 길</a>
+  <a class="nav-item sub" onclick="goTo('acc-4')">Ⅰ-D. 두 원칙 — 의지 vs 독립</a>
+  <a class="nav-item sub" onclick="goTo('acc-5')">Ⅰ-E. 두 완결 — 새 예루살렘 vs 불못</a>
+  <a class="nav-item sub" onclick="goTo('acc-6')">욥기에서 본 두 나무</a>
+  <a class="nav-item sub" onclick="goTo('acc-7')">창세기 2장의 삼각관계와 우리</a>
+
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('recap-section')">전체 복습</a>
+  <a class="nav-item" onclick="goTo('quiz-section')">퀴즈</a>
+  <a class="nav-item" onclick="goTo('prayer-section')">오늘의 결단과 기도</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container" id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-section">
+    <div class="hero-badge">욥기 라이프 스타디 · 메시지 37</div>
+    <h1>신성한 계시 안에 있는<br><span class="highlight-word">두 나무</span>:<br>두 근원 · 두 길 · 두 원칙 · 두 완결</h1>
+    <p class="hero-sub">창세기 2장의 두 나무는 요한계시록 21-22장까지 성경 전체를 관통하는 통제하는 원칙입니다. 우리는 생명나무의 근원에서 출발하여 새 예루살렘에 이르는 생명의 길을 선택해야 합니다.</p>
+
+    <!-- TWO TREES VISUAL -->
+    <div class="two-trees-diagram animate-in">
+      <div class="tree-card life">
+        <span class="tree-icon">🌳</span>
+        <div class="tree-name red">생명나무</div>
+        <div class="tree-sub">TREE OF LIFE</div>
+        <div class="tree-desc">삼일 하나님을 상징 — 사람에게 <strong>생명</strong>이 되심. 그 열매는 <strong>양분과 생명을 분배하는 음식</strong>이 됩니다 (창 2:9, 시 36:9)</div>
+      </div>
+      <div class="tree-card death">
+        <span class="tree-icon">🌿</span>
+        <div class="tree-name gray">선악을 알게 하는 나무</div>
+        <div class="tree-sub">TREE OF KNOWLEDGE</div>
+        <div class="tree-desc">사탄 마귀를 상징 — 사람에게 <strong>죽음</strong>이 됨. 그 열매는 <strong>사람을 죽이는 독</strong>이 됩니다 (창 2:17)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard" id="dashboard-section">
+    <div class="dashboard-title">전체 맥락 요약</div>
+
+    <div class="core-message">
+      성경 전체는 <strong>두 나무</strong>라는 통제하는 원칙으로 쓰였습니다. 창세기 2장의 두 나무에서 시작하여 요한계시록 22장의 새 예루살렘으로 완결됩니다. <strong>우리가 어떤 나무를 먹느냐</strong>가 우리의 근원, 길, 원칙, 그리고 최후의 완결을 결정합니다.
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-card">
+        <div class="dash-label">두 표징</div>
+        <div class="dash-value">생명나무 (하나님)<br>선악나무 (사탄)</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">두 근원</div>
+        <div class="dash-value">아벨 → 하나님<br>가인 → 사탄</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">두 길</div>
+        <div class="dash-value">생명의 길 (비좁은)<br>죽음의 길 (널찍한)</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">두 완결</div>
+        <div class="dash-value">새 예루살렘<br>불 못</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow-section">
+    <div class="flow-title">두 나무에서 두 완결까지 — 다섯 단계의 흐름</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-dot">A</div>
+        <div class="flow-step-label">두 나무 — 두 근원의 표징</div>
+        <div class="flow-step-desc">창세기 2장의 두 나무는 단순한 식물이 아니라 하나님(생명나무)과 사탄(선악나무)을 상징하는 표징입니다. 인격이신 두 존재를 가리킵니다.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">B</div>
+        <div class="flow-step-label">두 근원 — 두 왕국을 산출</div>
+        <div class="flow-step-desc">두 나무는 두 부류 사람들의 근원이 됩니다. 생명나무를 따르는 사람들(아벨→하나님의 왕국)과 선악나무를 따르는 사람들(가인→사탄의 왕국)로 나뉩니다.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">C</div>
+        <div class="flow-step-label">두 길 — 생명의 길 vs 선악의 길</div>
+        <div class="flow-step-desc">두 근원은 두 노선, 곧 두 길을 산출합니다. 비좁은 생명의 길과 널찍한 죽음과 선악의 길입니다. 각 길은 서로 다른 방향으로 사람을 인도합니다.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">D</div>
+        <div class="flow-step-label">두 원칙 — 의지 vs 독립</div>
+        <div class="flow-step-desc">두 길은 두 원칙을 형성합니다. 하나님을 의지하는 생명의 원칙과, 하나님에게서 독립하는 선악의 원칙. 실제 삶에서 어느 원칙을 따르느냐가 삶을 결정합니다.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">E</div>
+        <div class="flow-step-label">두 완결 — 새 예루살렘 vs 불못</div>
+        <div class="flow-step-desc">두 길의 최종 결과입니다. 생명나무의 완결은 새 예루살렘(계 22장), 선악나무의 완결은 불못(계 20장). 요한계시록에서 두 완결이 분명해집니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS -->
+  <section class="keywords-section" id="keywords-section">
+    <div class="keywords-section-title">핵심 키워드</div>
+    <div class="kw-container">
+      <span class="kw-chip" onclick="toggleKwTip('kwt1')">생명나무 (Tree of Life)</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt2')">선악나무 (Tree of Knowledge)</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt3')">두 근원 (Two Sources)</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt4')">비좁은 길</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt5')">새 예루살렘</span>
+    </div>
+    <div class="kw-tooltip" id="kwt1">생명나무는 사람과 하나님의 관계에서 사람에게 생명이 되시는 삼일 하나님을 상징합니다(창 2:9, 시 36:9). 하나님께서 사람을 창조하신 후 생명나무 앞에 두신 의도는, 사람이 생명나무를 먹고 신진대사적으로 하나님을 흡수하여 생명으로 받아들이게 하시려는 것이었습니다. 요한계시록 22장에서 이 나무는 거룩한 성 안에 완성된 모습으로 나타납니다.</div>
+    <div class="kw-tooltip" id="kwt2">선악을 알게 하는 나무는 사람이 하나님 앞에서 타락할 때 사람에게 죽음이 된 악한 자 사탄 마귀를 상징합니다. 이 나무의 이름이 '죽음나무'가 아니라 '선과 악의 지식나무'인 것이 중요합니다. 신성한 계시에 따르면 지식과 선과 악은 모두 사탄입니다. 하나님은 단순하시지만 사탄은 매우 복잡합니다.</div>
+    <div class="kw-tooltip" id="kwt3">두 나무는 두 부류 사람들의 두 근원입니다. 생명나무는 자신의 공급과 누림을 위해 생명이신 하나님을 추구하는 사람들의 근원이며, 선악나무는 죽음과 영원한 멸망에 이르게 하는 독인 사탄을 따르는 사람들의 근원입니다. 두 근원의 결과는 두 왕국, 곧 하나님의 왕국과 사탄의 왕국이 됩니다.</div>
+    <div class="kw-tooltip" id="kwt4">마태복음 7:14의 비좁은 길은 생명의 길입니다. 사도행전에서 "그 길"(행 9:2), "구원의 길"(16:17), "주님의 길"(18:25), "하나님의 길"(18:26)로도 불립니다. 이 길은 사람이 하나님을 찾고, 얻으며, 영원한 생명 안에서 공급으로 누리게 합니다. 생명의 길에는 아벨, 에녹, 노아, 아브라함, 다윗, 모든 신약의 믿는 이들이 있습니다.</div>
+    <div class="kw-tooltip" id="kwt5">새 예루살렘은 생명나무의 최종 완성이자 하나님의 생명의 길의 완결입니다(계 21:2, 10-11, 22:1-2). 이 성의 중심에는 하나님과 어린양의 보좌가 있고, 거기서 생명수의 강이 흘러나오며, 강 양편에 생명나무가 자랍니다. 새 예루살렘은 우리가 하나님을 찾고 얻어 가장 충만한 단계에 이르도록 하는 가장 큰 격려입니다.</div>
+  </section>
+
+
+  <!-- ACCORDIONS -->
+  <div class="accordion-group">
+    <div class="accordion-group-title" id="keypoints-section">Ⅰ. 신성한 계시의 다섯 가지 쌍</div>
+
+    <div class="step-header" data-kicker="Step 1 · 창 2장 → 계 22장">두 나무에서 두 완결까지</div>
+
+    <!-- A. 두 나무 -->
+    <div class="accordion" id="acc-1">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">A</div>
+        <div class="acc-title-text">두 나무 — 하나님과 사탄의 상징</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">창세기 2:9, 17</div>
+            <div class="verse-text">[9] 여호와 하나님은 그 땅에 보기 즐겁고 먹기 좋은 온갖 나무를 자라게 하셨고, <b>동산 한가운데 있는 생명나무</b>와, <b>선과 악의 지식나무</b>도 자라게 하셨다.</div>
+            <div class="verse-text">[17] 그러나 선과 악의 지식나무의 열매는 먹어서는 안 된다. 그것을 먹는 날에는 <b>반드시 죽을 것이다.</b></div>
+          </div>
+
+          <p class="content-text">창세기 1장과 2장에서 가장 두드러진 표징들 중의 하나는 두 나무, 곧 <span class="hl">생명나무와 선과 악의 지식나무</span>입니다. 이 두 나무는 어떤 사물이나 물체가 아니라, <strong>인격이신 하나님과 사탄을 상징합니다</strong>.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">생명나무 — 삼일 하나님의 상징</div>
+            <div class="sub-point-text">
+              생명나무는 <strong>사람에게 생명이 되시는 삼일 하나님</strong>을 상징합니다. "그분 안에 생명이 있었고"(요 1:4), "나는 포도나무이다"(요 15:5). 이 두 구절을 함께 보면, 그리스도께서 생명나무이심을 알 수 있습니다. 그 열매는 <strong>사람에게 양분을 주고 생명을 분배하는 음식</strong>이 됩니다.
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">선악나무 — 사탄 마귀의 상징</div>
+            <div class="sub-point-text">
+              선악을 알게 하는 나무는 <strong>사람에게 죽음이 된 악한 자 사탄 마귀</strong>를 상징합니다. 그 열매는 사람을 죽이는 독이 됩니다. 주목해야 할 것은 이 나무가 <strong>'죽음나무'가 아니라 '선과 악의 지식나무'</strong>라는 점입니다 — 신성한 계시에 따르면 지식과 선과 악은 모두 사탄입니다. <span class="hl">하나님은 단순하시지만, 사탄은 매우 복잡합니다.</span>
+            </div>
+          </div>
+
+          <p class="content-text">중요한 진리: <span class="hl">참된 선은 하나님 자신입니다</span>(마 19:17). 만일 우리가 하나님을 떠나 선한 것들을 만진다면, 우리는 사탄을 만지고 있는 것입니다. 오늘날 텔레비전과 다양한 신문과 잡지들은 <strong>선과 악의 지식나무의 가지들</strong>입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">
+      두 나무는 단지 표징입니다. 더 중요한 것은 그것이 산출하는 <strong>두 근원</strong>입니다.
+    </div>
+
+    <!-- B. 두 근원 -->
+    <div class="accordion" id="acc-2">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">B</div>
+        <div class="acc-title-text">두 근원 — 두 왕국을 산출함</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">요한복음 1:4 / 요한복음 8:44 / 마태복음 21:43</div>
+            <div class="verse-text">[요 1:4] 그분 안에 <b>생명이 있었고</b>, 그 생명은 사람들의 빛이었다.</div>
+            <div class="verse-text">[요 8:44] 너희는 너희 아버지인 마귀에게서 난 자들이며, 너희 아버지의 욕망을 행하기를 원하느니라.</div>
+          </div>
+
+          <p class="content-text">두 나무는 하나님과 사탄의 상징이며, <span class="hl">두 부류 사람들의 두 근원이 됩니다</span>. 첫 번째 나무, 생명나무는 자신의 공급과 누림을 위해 생명이신 하나님을 추구하는 사람들의 근원이며, <strong>아벨이 그러한 사람들 중 첫 번째</strong>였습니다. 두 번째 나무, 선악나무는 사탄을 따르는 사람들의 근원이며, <strong>가인이 그러한 사람들 중 첫 번째</strong>였습니다.</p>
+
+          <div class="compare-table">
+            <div class="compare-row header">
+              <div>생명나무의 노선</div>
+              <div>·</div>
+              <div>선악나무의 노선</div>
+            </div>
+            <div class="compare-row">
+              <div class="compare-cell life"><div class="nm">아벨</div><div class="mn">첫 번째 생명의 사람</div></div>
+              <div class="compare-div">↔</div>
+              <div class="compare-cell death"><div class="nm">가인</div><div class="mn">첫 번째 선악의 사람</div></div>
+            </div>
+            <div class="compare-row">
+              <div class="compare-cell life"><div class="nm">하나님의 왕국</div><div class="mn">교회 (신약 경륜)</div></div>
+              <div class="compare-div">↔</div>
+              <div class="compare-cell death"><div class="nm">사탄의 왕국</div><div class="mn">세상 시스템</div></div>
+            </div>
+            <div class="compare-row">
+              <div class="compare-cell life"><div class="nm">생명과 누림</div><div class="mn">하나님을 공급으로</div></div>
+              <div class="compare-div">↔</div>
+              <div class="compare-cell death"><div class="nm">죽음과 멸망</div><div class="mn">사탄의 독을 흡수</div></div>
+            </div>
+          </div>
+
+          <p class="content-text">이 두 근원의 결과는 이 땅에 있는 <span class="hl">두 왕국</span>이 됩니다. 첫 번째 왕국은 하나님의 왕국이며 — 구약에서는 이스라엘 왕국, 신약에서는 교회(마 21:43). 두 번째 왕국은 사탄의 왕국입니다(마 12:26, 골 1:13). <strong>우리가 거듭난 후에는 이 왕국 이동이 이루어집니다</strong> — "그분께서 우리를 어둠의 권세에서 건져 내시어, 그분의 사랑하시는 아들의 왕국으로 옮겨 주셨습니다"(골 1:13).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">· · ·</div>
+
+    <!-- C. 두 길 -->
+    <div class="accordion" id="acc-3">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">C</div>
+        <div class="acc-title-text">두 길 — 생명의 길 vs 죽음과 선악의 길</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">마태복음 7:13-14</div>
+            <div class="verse-text">[13] 좁은 문을 통해 들어가십시오. <b>파멸로 이끄는 문은 넓고, 그 길이 널찍하여</b> 그리로 들어가는 사람이 많으며,</div>
+            <div class="verse-text">[14] <b>생명으로 이끄는 문은 좁고, 그 길이 비좁아</b> 찾는 사람이 적습니다.</div>
+          </div>
+
+          <p class="content-text">이 두 근원은 두 노선을 산출하며, 이것은 <span class="hl">두 길</span>이 됩니다. 두 길은 사람들을 하나님께서 정하신 서로 다른 두 완결로 인도합니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">첫 번째 길 — 생명의 길 (비좁은 길)</div>
+            <div class="sub-point-text">
+              이 길은 사도행전에서 여러 이름으로 불립니다:<br><br>
+              <span class="result-tag">그 길 (행 9:2)</span>
+              <span class="result-tag">구원의 길 (행 16:17)</span>
+              <span class="result-tag">주님의 길 (행 18:25)</span>
+              <span class="result-tag">하나님의 길 (행 18:26)</span>
+              <span class="result-tag">바른 길 (벧후 2:15)</span>
+              <span class="result-tag">의의 길 (벧후 2:21)</span><br><br>
+              이 길에는 <strong>아벨, 에녹, 노아, 아브라함, 이삭, 야곱, 모세, 다윗, 욥, 신약의 모든 믿는 이들</strong>이 있습니다. 이 생명의 길은 사람이 하나님을 찾고, 하나님을 얻으며, <span class="hl">하나님을 영원한 생명 안에서 공급으로 누려 가장 충만한 단계에 이르게 합니다.</span>
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">두 번째 길 — 죽음과 선악의 길 (널찍한 길)</div>
+            <div class="sub-point-text">
+              이 길에는 <strong>가인, 라멕, 함, 니므롯, 고라, 발람, 사울, 압살롬, 적그리스도와 그 추종자들</strong>(계 19:19-21), 그리고 모든 불신자들이 있습니다(계 20:15). 이 죽음의 길에서 사람들은 의식적으로든 <strong>무의식적으로든 사탄을 따르게 됩니다</strong>. 그 결과는 사탄의 동반자가 되어 그의 영원한 멸망에 참여하는 것입니다.
+            </div>
+          </div>
+
+          <p class="content-text">주의해야 할 것: <span class="hl">오늘 우리는 한 발은 생명나무의 노선에, 다른 한 발은 선악나무의 노선에 두고 있을 수 있습니다</span>. 결혼 생활에서, 배우자와 대화할 때도 마찬가지입니다. 우리는 이 두 길 사이에서 머뭇거리며 오락가락할 수 있습니다. 여기에는 <strong>중립 지대가 없습니다</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-connector">
+      두 길은 각각 하나의 원칙을 형성합니다. <strong>두 원칙</strong>은 우리의 실제 삶에서 어떤 근원을 접촉하느냐를 결정합니다.
+    </div>
+
+    <!-- D. 두 원칙 -->
+    <div class="accordion" id="acc-4">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">D</div>
+        <div class="acc-title-text">두 원칙 — 하나님을 의지함 vs 하나님에서 독립함</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">요한복음 15:5 / 예레미야 17:5-6</div>
+            <div class="verse-text">[요 15:5] 나는 포도나무요, 너희는 가지들이다. <b>그분 안에 거하고 그분께서도 그 안에 거하시는 사람</b>은 많은 열매를 맺는다. 나를 떠나서는 너희가 아무것도 할 수 없다.</div>
+            <div class="verse-text">[렘 17:5-6] "사람을 의지하고 혈육을 그 힘으로 삼으며 <b>마음이 주님에게서 떠나는 사람은 저주를 받을 것이라</b>."</div>
+          </div>
+
+          <p class="content-text">두 길은 두 원칙을 형성합니다. 이 두 원칙은 <span class="hl">사람들이 하나님과 맺는 관계를 통제하고 지배하고 규제하는</span> 두 가지 기준입니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">첫 번째 원칙 — 생명의 원칙 (하나님을 의지함)</div>
+            <div class="sub-point-text">
+              사람들은 이 원칙에 따라 생명의 길 안에서 하나님을 접촉하며, 한 단계 한 단계씩 하나님을 찾고 얻으며 소유하고 누려서 결국 <strong>가장 충만한 정도에까지 이르게 됩니다</strong>. 이것이 욥을 다루신 하나님의 목적이기도 했습니다 — 그가 <span class="hl">선악의 길에서 생명의 길로 돌이키게 하시는 것</span>.
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">두 번째 원칙 — 선악의 원칙 (하나님에서 독립함)</div>
+            <div class="sub-point-text">
+              이 원칙을 따라갈 때 우리는 의식적으로든 무의식적으로든 <strong>사탄을 따르게 됩니다</strong>. 이 죽음의 길에서 우리는 하나님과 생명의 길을 거절하게 되고, 결국 사탄의 동반자가 되어 영원한 형벌에 참여하게 됩니다. 우리는 <span class="hl">선악의 영역으로부터 구출받아야 합니다</span>.
+            </div>
+          </div>
+
+          <p class="content-text">이 메시지의 주된 부담은 우리로 하여금 <span class="hl">빛 비춤을 받고 보게 하는 것</span>입니다. 그래서 우리가 격려를 받아 선과 악의 지식나무의 근원, 그 노선, 그 길, 그 원칙에서 <strong>완전히 구원받아 생명나무의 근원, 그 길, 그 원칙으로 전환되어 살게 하려는 것</strong>입니다. 우리는 생명의 원칙에 따라 살고 행동해야 하며, 옳고 그름이나 선악에 따라 살지 말아야 합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">· · ·</div>
+
+    <!-- E. 두 완결 -->
+    <div class="accordion" id="acc-5">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">E</div>
+        <div class="acc-title-text">두 완결 — 새 예루살렘 vs 불못</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">요한계시록 22:1-2 / 계 20:10, 15</div>
+            <div class="verse-text">[계 22:1-2] 그가 또 내게 <b>수정같이 맑은 생명수의 강</b>을 보여 주었는데, 하나님과 어린양의 보좌에서 흘러나와 그 성의 넓은 길 한가운데로 흐르더라. <b>강 양편에는 생명나무</b>가 있어…</div>
+            <div class="verse-text">[계 20:10] 그들을 미혹하던 마귀가 <b>불과 유황이 있는 못에 던져졌다</b>. 거기에는 짐승과 거짓 선지자도 있어, 세세 영원토록 밤낮으로 고통을 받을 것이다.</div>
+          </div>
+
+          <p class="content-text">두 길의 최종 결과는 <span class="hl">두 완결</span>입니다. 이 두 완결은 하나님의 경륜 전체의 결론입니다.</p>
+
+          <div class="two-path-scene">
+            <div class="path-box life-box">
+              <span class="path-box-icon">🏙️</span>
+              <div class="path-box-title red">새 예루살렘</div>
+              <div class="path-box-desc">생명나무의 최종 완성<br>생명수의 성<br>(계 21:2, 22:1-2)</div>
+            </div>
+            <div class="path-vs">VS</div>
+            <div class="path-box death-box">
+              <span class="path-box-icon">🔥</span>
+              <div class="path-box-title gray">불 못</div>
+              <div class="path-box-desc">선악나무의 최종 완성<br>영원한 형벌의 장소<br>(계 19:20, 20:10)</div>
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">새 예루살렘 — 생명나무의 최종 완성</div>
+            <div class="sub-point-text">
+              요한계시록 22장에서 우리는 <strong>오직 한 나무, 생명나무만</strong>을 봅니다. 선악나무는 완전히 사라졌습니다. 그 성의 중심에는 하나님과 어린양의 보좌가 있고, 거기서 <strong>생명수의 강이 흘러나오며, 강 양편에 생명나무가 자랍니다</strong>. 이것은 가장 충만한 정도로 하나님을 얻고 그분께 참여하는 사람들의 영원한 거처입니다. <span class="hl">이 완결은 우리가 하나님을 찾고 얻어 가장 충만한 단계에 이르도록 하는 가장 큰 격려입니다.</span>
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">불못 — 선악나무의 최종 완성</div>
+            <div class="sub-point-text">
+              요한계시록 22장에서 모든 부정적인 것들은 <strong>불못과 연결됩니다</strong>(계 19:20, 20:10, 14-15, 21:8). 이것은 하나님의 경륜의 길에서 벗어나 사탄을 따르는 사람들에게 주어지는 엄중한 경고입니다. <span class="hl">우리는 이 결과에서 구원받아야 합니다.</span>
+            </div>
+          </div>
+
+          <p class="content-text">창세기 2장에서 두 나무가 사람 앞에 놓였습니다. 그리고 요한계시록 21-22장에서 그 두 나무가 취한 결말이 드러납니다. 성경 전체는 이 두 경로의 이야기입니다. 우리는 <span class="hl">분명한 선택을 해야 합니다 — 생명나무의 경로</span>입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-header" data-kicker="Step 2 · 욥기 적용">욥기에서 본 두 나무</div>
+
+    <!-- 욥기에서의 두 나무 -->
+    <div class="accordion" id="acc-6">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅱ</div>
+        <div class="acc-title-text">욥기에 숨겨진 두 나무의 기본 사상</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">욥기 1:1, 8 / 창세기 2:9</div>
+            <div class="verse-text">[욥 1:1] 우스 땅에 욥이라고 하는 사람이 있었는데 <b>온전하고 정직하여 하나님을 경외하며 악에서 떠난 자</b>였다.</div>
+            <div class="verse-text">[욥 1:8] 여호와께서 사탄에게 이르시되 … <b>"내 종 욥을 주의하여 보았느냐? 그와 같이 온전하고 정직하여 하나님을 경외하며 악에서 떠난 자는 세상에 없느니라."</b></div>
+          </div>
+
+          <p class="content-text">창세기 2장에는 <span class="hl">한 사람 아담이 있고, 두 나무가 있으며, 하나님과 사탄이 있습니다</span>. 이천 년이 지난 후 욥기 1장에도 동일한 상황이 있습니다 — 한 사람 욥이 있고, 하나님과 사탄이 있습니다. 그러나 욥의 상태는 아담보다 더 심각합니다. 왜냐하면 욥 안에는 <strong>선악을 알게 하는 나무의 성장과 발전이 있기 때문</strong>입니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">처음에는 밖에, 나중에는 안에</div>
+            <div class="sub-point-text">
+              처음에는 선악을 알게 하는 나무가 아담의 <strong>밖에</strong> 있었습니다 — 객관적인 것이었습니다. 그러나 아담이 그 열매를 먹은 후, 이 나무가 아담 <strong>안에</strong> 심겼고 아담의 모든 후손 안에서 자라게 되었습니다. 욥기에 이르면 욥과 그의 아내, 그리고 그의 세 친구들 안에서 <span class="hl">선악을 알게 하는 나무가 성장하고 발전한 모습</span>을 봅니다.
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">욥을 다루신 하나님의 목적</div>
+            <div class="sub-point-text">
+              도덕적으로 욥은 좋은 사람이었습니다. 하나님도 사탄 앞에서 그를 칭찬하셨습니다. 그러나 오직 하나님만이 욥의 진정한 필요를 아셨습니다 — <strong>욥에게 하나님 자신이 결핍되어 있었습니다</strong>. 욥은 창세기 1:26의 하나님의 영원한 목적을 완성하지 못했습니다. 하나님의 목적은 욥이 <span class="hl">물질적인 것들이나 도덕적인 성취에 머무르지 않고, 하나님을 가장 충만한 단계로 얻도록 하는 것</span>이었습니다.
+            </div>
+          </div>
+
+          <p class="content-text">욥과 그의 세 친구는 모두 <strong>잘못된 영역</strong>에 있었습니다. 그들은 도덕의 영역, 즉 인간의 도덕과 순전함을 높이는 영역에 있었습니다. 그들에게 필요한 것은 <span class="hl">올바른 영역, 곧 생명나무의 영역으로 전환되는 것</span>이었습니다. 오직 생명나무만이 욥과 그의 친구들을 위한 진정한 해답이었습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-connector">· · ·</div>
+
+    <!-- 삼각관계와 우리 -->
+    <div class="accordion" id="acc-7">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅲ</div>
+        <div class="acc-title-text">창세기 2장의 삼각관계와 오늘의 우리</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="verse-block">
+            <div class="verse-ref">로마서 8:6 / 골로새서 1:13</div>
+            <div class="verse-text">[롬 8:6] <b>영에 둔 생각은 생명과 평안</b>입니다. 육체에 둔 생각은 죽음입니다.</div>
+            <div class="verse-text">[골 1:13] 그분께서 우리를 어둠의 권세에서 건져 내시어, <b>그분의 사랑하시는 아들의 왕국으로 옮겨 주셨습니다.</b></div>
+          </div>
+
+          <p class="content-text">창세기 2장에는 하나님과 사람과 사탄 사이의 <span class="hl">삼각관계</span>가 있습니다. 사람은 하나님과 사탄 사이에 위치합니다. 로마서 5-8장에 이르면 이 삼각관계가 계속됩니다.</p>
+
+          <div class="sub-point">
+            <div class="sub-point-title">오늘날 모든 믿는 이는 작은 에덴동산</div>
+            <div class="sub-point-text">
+              우리는 <strong>두 근원 앞에 서 있습니다</strong>. 하나는 하나님이신 생명의 근원이고, 다른 하나는 사탄인 죽음의 근원입니다. 우리는 우리의 생각을 어디에 두어야 합니까? <span class="hl">여기에는 중립 지대가 없습니다</span>. 로마서 8:6 — "영에 둔 생각은 생명과 평안이요, 육체에 둔 생각은 죽음이다."
+            </div>
+          </div>
+
+          <div class="sub-point">
+            <div class="sub-point-title">우리가 추구해야 할 것</div>
+            <div class="sub-point-text">
+              우리는 <strong>생명나무로 우리 자신이 조성되어야 하며</strong>, 심지어 우리 온 존재가 작은 생명나무가 되어야 합니다. <strong>생명의 원칙에 따라 살고 행동해야 하며</strong>, 옳고 그름이나 선악에 따라 살지 말아야 합니다. 그렇게 할 때 우리는 <span class="hl">살아 계신 그리스도를 나타내는 삶을 살 수 있고, 하나님께서 사람에게 가지신 그 영원한 목적을 이룰 수 있습니다</span>.
+            </div>
+          </div>
+
+          <p class="content-text">우리가 그리스도를 믿고 영원한 생명을 얻어 거듭날 때, <strong>생명나무가 우리 영 안에 심기게 됩니다</strong>. 그 생명나무는 우리 영 안에서 자라나 온 존재에 퍼져야 합니다. <span class="hl">이것이 하나님의 경륜의 목표입니다 — 생명나무이신 그리스도가 우리의 모든 것이 되시는 것.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- RECAP -->
+  <section class="recap-section" id="recap-section">
+    <div class="recap-title">전체 메시지 복습 — 다섯 가지 쌍</div>
+
+    <div class="recap-anchor">
+      <div class="recap-subtitle">① <strong>두 나무</strong> — 두 인격의 상징</div>
+      <div class="recap-subtitle small">성경에서 가장 두드러진 두 표징 (창 2:9)</div>
+      <div class="recap-grid">
+        <div class="recap-item">
+          <div class="recap-num">🌳</div>
+          <div class="recap-item-text"><strong>생명나무:</strong> 사람에게 생명이 되시는 삼일 하나님을 상징. 그 열매는 양분과 생명을 분배하는 음식이 됨 (시 36:9, 요 1:4, 15:5)</div>
+        </div>
+        <div class="recap-item">
+          <div class="recap-num">🌿</div>
+          <div class="recap-item-text"><strong>선악나무:</strong> 사람에게 죽음이 된 사탄 마귀를 상징. 지식과 선과 악 모두 사탄. 그 열매는 사람을 죽이는 독이 됨 (창 2:17)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recap-anchor">
+      <div class="recap-subtitle">② <strong>두 근원</strong> — 두 왕국과 두 부류의 사람</div>
+      <div class="recap-subtitle small">두 나무는 두 부류 사람들의 두 근원이 됨</div>
+      <div class="recap-grid">
+        <div class="recap-item green">
+          <div class="recap-num">1</div>
+          <div class="recap-item-text"><strong>아벨 → 하나님의 왕국:</strong> 생명이신 하나님을 자신의 공급과 누림으로 추구하는 사람들. 구약의 이스라엘, 신약의 교회 (마 21:43)</div>
+        </div>
+        <div class="recap-item green">
+          <div class="recap-num">2</div>
+          <div class="recap-item-text"><strong>가인 → 사탄의 왕국:</strong> 죽음과 영원한 멸망에 이르게 하는 독인 사탄을 따르는 사람들 (마 12:26, 요 8:44)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recap-anchor">
+      <div class="recap-subtitle">③ <strong>두 길</strong> — 비좁은 길 vs 널찍한 길</div>
+      <div class="recap-subtitle small">두 근원은 두 노선(길)을 산출함 (마 7:13-14)</div>
+      <div class="recap-grid">
+        <div class="recap-item">
+          <div class="recap-num">1</div>
+          <div class="recap-item-text"><strong>생명의 길 (비좁은 길):</strong> 그 길 / 구원의 길 / 주님의 길 / 하나님의 길 / 바른 길. 이 길은 사람이 하나님을 찾고, 얻고, 누려 가장 충만한 단계에 이르게 함</div>
+        </div>
+        <div class="recap-item">
+          <div class="recap-num">2</div>
+          <div class="recap-item-text"><strong>죽음과 선악의 길 (널찍한 길):</strong> 사람이 사탄을 따라 그의 자녀가 되게 하는 길. 의식적으로든 무의식적으로든 사탄을 따르게 됨</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recap-anchor">
+      <div class="recap-subtitle">④ <strong>두 원칙</strong> — 의지 vs 독립</div>
+      <div class="recap-subtitle small">두 길은 두 원칙을 형성하여 하나님과의 관계를 통제함</div>
+      <div class="recap-grid">
+        <div class="recap-item purple">
+          <div class="recap-num">1</div>
+          <div class="recap-item-text"><strong>생명의 원칙 (하나님을 의지):</strong> 이 원칙으로 사람은 생명의 길 안에서 하나님을 접촉하며, 하나님을 찾고 얻으며 소유하고 누려 가장 충만한 정도에 이름 (요 15:5)</div>
+        </div>
+        <div class="recap-item purple">
+          <div class="recap-num">2</div>
+          <div class="recap-item-text"><strong>선악의 원칙 (하나님에서 독립):</strong> 이 원칙으로 사람은 의식적으로든 무의식적으로든 사탄을 따르게 됨. 하나님과 생명의 길을 거절하고 영원한 형벌에 이름 (렘 17:5-6)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recap-anchor">
+      <div class="recap-subtitle">⑤ <strong>두 완결</strong> — 두 길의 최종 결과</div>
+      <div class="recap-subtitle small">요한계시록 21-22장과 20장에서 분명하게 드러남</div>
+      <div class="recap-grid">
+        <div class="recap-item">
+          <div class="recap-num">1</div>
+          <div class="recap-item-text"><strong>새 예루살렘 (생명수의 성):</strong> 생명나무의 최종 완성. 가장 좋고 가장 영광스러운 것. 하나님을 가장 충만한 단계로 얻은 사람들의 거처 (계 22:1-2)</div>
+        </div>
+        <div class="recap-item">
+          <div class="recap-num">2</div>
+          <div class="recap-item-text"><strong>불못:</strong> 선악나무의 최종 완성. 가장 나쁘고 비참한 결과. 사탄과 그를 따른 사람들이 받는 영원한 형벌의 장소 (계 20:10, 15)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recap-note">
+      <strong>우리의 결단:</strong> 우리는 선과 악의 지식나무의 근원, 그 노선, 그 길, 그 원칙에서 완전히 구원받아, <strong>생명나무의 근원, 그 노선, 그 길, 그 원칙으로 전환되어 살아야 합니다.</strong> 우리는 생명나무로 우리 자신이 조성되어야 하며, 우리 온 존재가 작은 생명나무가 되어야 합니다. 아멘.
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-section" id="quiz-section">
+    <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto; color:var(--ink-mute); font-weight:500;">1 / 10</span></div>
+
+    <div id="quiz-container">
+      <div class="quiz-item" data-index="0" data-correct="2">
+        <div class="quiz-q">
+          <div class="quiz-badge">1</div>
+          <div class="quiz-q-text">창세기 2장의 두 나무가 상징하는 것은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 선한 천사와 악한 천사</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 삼일 하나님과 사탄 마귀 — 두 인격</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 구약의 율법과 신약의 은혜</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 이스라엘 왕국과 사탄의 왕국</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="1" data-correct="3">
+        <div class="quiz-q">
+          <div class="quiz-badge">2</div>
+          <div class="quiz-q-text">신성한 계시에 따르면, '선과 악의 지식나무'에서 선(善)과 지식은 결국 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 하나님께서 사람에게 주신 긍정적인 선물</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 구원받지 못한 사람의 부족한 도덕</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 사탄 — 지식과 선과 악 모두 사탄이다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 인간의 양심</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="2" data-correct="1">
+        <div class="quiz-q">
+          <div class="quiz-badge">3</div>
+          <div class="quiz-q-text">생명나무의 근원에 있는 두 부류 사람 중 첫 번째는 누구입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 아벨</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 가인</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 아담</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 노아</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="3" data-correct="4">
+        <div class="quiz-q">
+          <div class="quiz-badge">4</div>
+          <div class="quiz-q-text">마태복음 7:14에서 생명의 길은 어떻게 묘사됩니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 널찍하고 많은 사람이 다니는 길</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 쉽고 편안한 길</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 지혜로운 자만이 걷는 넓은 길</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 좁고 비좁아 찾는 사람이 적은 길</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="4" data-correct="2">
+        <div class="quiz-q">
+          <div class="quiz-badge">5</div>
+          <div class="quiz-q-text">두 원칙 중 생명의 원칙의 핵심 특징은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 인간의 도덕과 순전함을 높이는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님을 의지하며 그분을 찾고 얻고 누리는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 하나님에게서 독립하여 자신의 길을 가는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 성경 지식을 축적하는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="5" data-correct="1">
+        <div class="quiz-q">
+          <div class="quiz-badge">6</div>
+          <div class="quiz-q-text">생명나무의 최종 완결(완성)은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 새 예루살렘 — 생명수의 성</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 불못</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 지상의 천년왕국</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 하늘나라</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="6" data-correct="3">
+        <div class="quiz-q">
+          <div class="quiz-badge">7</div>
+          <div class="quiz-q-text">욥기에서 두 나무의 기본 사상과 관련하여, 욥의 진정한 문제는 무엇이었습니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 사탄의 공격에 믿음이 흔들린 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님을 경외하지 않은 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 도덕적으로는 선했으나 하나님 자신이 결핍되어 있었던 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 악한 행실로 하나님의 징계를 받은 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="7" data-correct="4">
+        <div class="quiz-q">
+          <div class="quiz-badge">8</div>
+          <div class="quiz-q-text">로마서 8:6에 따르면, 생명과 평안의 결과를 가져오는 것은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 육체에 둔 생각</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 선악을 분별하는 지식</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 도덕적인 행동</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 영에 둔 생각</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="8" data-correct="2">
+        <div class="quiz-q">
+          <div class="quiz-badge">9</div>
+          <div class="quiz-q-text">처음에 선악나무는 아담에게 어떤 관계에 있었습니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 아담 안에 있는 주관적인 것이었다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 아담 밖에 있는 객관적인 것이었다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 아담과 전혀 무관한 것이었다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 이미 아담의 영 안에 심겨 있었다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="quiz-item" data-index="9" data-correct="3">
+        <div class="quiz-q">
+          <div class="quiz-badge">10</div>
+          <div class="quiz-q-text">우리가 거듭날 때 우리 영 안에 심기는 것은 무엇입니까?</div>
+        </div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 선악을 아는 지식</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 도덕적 완전함</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 생명나무 — 생명이신 그리스도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 성경 지식</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+
+    <div class="quiz-nav" id="quiz-nav" style="display:flex; gap:10px; margin-top:20px;">
+      <button class="quiz-nav-btn" id="quiz-prev-btn" onclick="navQuiz(-1)" style="flex:1;">이전</button>
+      <button class="quiz-nav-btn primary" id="quiz-next-btn" onclick="navQuiz(1)" style="flex:2;">다음 퀴즈</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-score-label">최종 점수</div>
+      <div class="quiz-score" id="quizScore">0 / 10</div>
+      <div class="quiz-result-msg" id="quizMsg"></div>
+    </div>
+  </section>
+
+  <!-- PRAYER / CLOSING -->
+  <section class="prayer-section" id="prayer-section">
+    <div class="prayer-heading">생명나무를 선택하는 결단</div>
+
+    <div class="prayer-callbox">
+      <p>우리는 <span class="cb-house">생명나무</span>로 우리 자신이 조성되어야 합니다.<br>우리 온 존재가 작은 생명나무가 되어야 합니다.</p>
+      <p>생명의 원칙에 따라 살고 행동해야 하며,<br>옳고 그름이나 선악에 따라 살지 말아야 합니다.</p>
+    </div>
+
+    <div class="prayer-amen-box">
+      <p>주 예수님, 우리는 오늘 다시 한번 두 나무 앞에 서 있습니다. 우리는 선악의 영역으로부터 구출받아 생명나무의 영역으로 전환되기를 원합니다.</p>
+      <p>우리의 생각을 영에 두게 하시고, 하나님을 의지하는 생명의 원칙으로 살게 하소서. 선악을 분별하는 것이 아니라, 주님 자신을 생명으로 먹고 마시는 삶을 살게 하소서.</p>
+      <p>우리를 비좁은 생명의 길 위에 두시어, <strong>새 예루살렘이라는 완결</strong>을 향해 한 단계씩 나아가게 하소서. 주님, 당신만이 우리의 생명나무이십니다.</p>
+      <div class="prayer-amen-sig">— AMEN —</div>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    욥기 라이프 스타디 · 메시지 37 · 두 나무 · 두 근원 · 두 길 · 두 원칙 · 두 완결
+  </div>
+</div>
+
+<script>
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+  else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+
+function togglePanel() {
+  document.getElementById('sidepanel').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function goTo(id) {
+  togglePanel();
+  setTimeout(() => {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }, 300);
+}
+
+function showKwDef(id, el) {
+  const def = document.getElementById(id);
+  const isShown = def.classList.contains('show');
+  document.querySelectorAll('.keyword-def').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.keyword-tag').forEach(t => t.classList.remove('active'));
+  if (!isShown) { def.classList.add('show'); el.classList.add('active'); }
+}
+
+function toggleKwTip(id) {
+  const tip = document.getElementById(id);
+  const isShown = tip.classList.contains('show');
+  document.querySelectorAll('.kw-tooltip').forEach(t => t.classList.remove('show'));
+  if (!isShown) tip.classList.add('show');
+}
+
+function toggleAcc(header) {
+  const acc = header.parentElement;
+  const body = acc.querySelector('.accordion-body');
+  if (acc.classList.contains('open')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    void body.offsetHeight;
+    body.style.maxHeight = '0';
+    acc.classList.remove('open');
+  } else {
+    acc.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    setTimeout(() => { if (acc.classList.contains('open')) body.style.maxHeight = 'none'; }, 400);
+  }
+}
+
+function selectOpt(el) {
+  const item = el.closest('.quiz-item');
+  if (item.classList.contains('answered')) return;
+  item.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+let currentQuizIdx = 0;
+const totalQuizzes = 10;
+
+function navQuiz(dir) {
+  const items = document.querySelectorAll('.quiz-item');
+  items[currentQuizIdx].classList.remove('active');
+  currentQuizIdx += dir;
+  if (currentQuizIdx < 0) currentQuizIdx = 0;
+  if (currentQuizIdx >= totalQuizzes) { currentQuizIdx = totalQuizzes - 1; submitQuiz(); return; }
+  items[currentQuizIdx].classList.add('active');
+  updateQuizNav();
+}
+
+function updateQuizNav() {
+  document.getElementById('quiz-progress').textContent = (currentQuizIdx + 1) + ' / ' + totalQuizzes;
+  document.getElementById('quiz-prev-btn').disabled = currentQuizIdx === 0;
+  document.getElementById('quiz-next-btn').textContent = currentQuizIdx === totalQuizzes - 1 ? '결과 확인하기' : '다음 퀴즈';
+}
+
+function submitQuiz() {
+  let score = 0;
+  const items = document.querySelectorAll('.quiz-item');
+  items.forEach(item => {
+    item.classList.add('reviewed', 'answered');
+    item.classList.remove('active');
+    const correct = parseInt(item.dataset.correct) - 1;
+    const opts = item.querySelectorAll('.quiz-opt');
+    const fb = item.querySelector('.quiz-feedback');
+    let selectedIdx = -1;
+    opts.forEach((o, i) => { if (o.classList.contains('selected')) selectedIdx = i; });
+    if (selectedIdx === correct) {
+      score++;
+      opts[selectedIdx].classList.add('correct');
+      fb.className = 'quiz-feedback show correct-fb';
+      fb.textContent = '✓ 정답입니다';
+    } else {
+      if (selectedIdx >= 0) opts[selectedIdx].classList.add('wrong');
+      opts[correct].classList.add('correct');
+      fb.className = 'quiz-feedback show wrong-fb';
+      fb.textContent = '정답은 ' + ['A','B','C','D'][correct] + '입니다';
+    }
+  });
+  document.getElementById('quiz-nav').style.display = 'none';
+  document.getElementById('quiz-progress').textContent = '결과';
+  document.getElementById('quizScore').textContent = score + ' / ' + totalQuizzes;
+  const msgEl = document.getElementById('quizMsg');
+  if (score === 10) msgEl.textContent = '완벽합니다! 두 나무의 신성한 계시를 모두 정확히 숙지하셨습니다.';
+  else if (score >= 7) msgEl.textContent = '훌륭합니다! 메시지의 핵심 요점들을 잘 이해하고 계십니다.';
+  else msgEl.textContent = '두 나무의 핵심 요점들을 다시 묵상하며 깊이 새겨보시길 권해드립니다.';
+  document.getElementById('quizResult').classList.add('show');
+  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Intro scratch-off
+document.addEventListener('DOMContentLoaded', () => {
+  const firstQuiz = document.querySelector('.quiz-item');
+  if (firstQuiz) firstQuiz.classList.add('active');
+  if (typeof updateQuizNav === 'function') updateQuizNav();
+
+  const container = document.getElementById('intro-container');
+  const canvas = document.getElementById('scratch-canvas');
+  const introCover = document.getElementById('intro-cover');
+  const introContent = document.getElementById('intro-content');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+  let isDrawing = false, lastX = 0, lastY = 0, cleared = false, isFirstTouch = true, checkInterval = null;
+
+  document.getElementById('start-voice-btn').addEventListener('click', startVoiceRecognition);
+  document.getElementById('skip-intro-btn').addEventListener('click', finishIntro);
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    fillCanvas();
+  }
+  function fillCanvas() {
+    let bg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+    bg.addColorStop(0, '#2a1a10');
+    bg.addColorStop(1, '#0a0807');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+  resize();
+  window.addEventListener('resize', () => { if(!cleared) resize(); });
+
+  function getPos(e) {
+    let rect = canvas.getBoundingClientRect();
+    let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+    let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+    return { x: clientX - rect.left, y: clientY - rect.top };
+  }
+
+  function start(e) {
+    if (cleared) return;
+    if (isFirstTouch) { introContent.style.opacity = '0'; isFirstTouch = false; }
+    isDrawing = true;
+    let pos = getPos(e);
+    lastX = pos.x; lastY = pos.y;
+    scratch(e);
+    if (!checkInterval) checkInterval = setInterval(() => { if (isDrawing && !cleared) checkPercent(); }, 400);
+  }
+  function end() {
+    isDrawing = false;
+    if (checkInterval) { clearInterval(checkInterval); checkInterval = null; }
+    if (!cleared) checkPercent();
+  }
+  function scratch(e) {
+    if (!isDrawing || cleared) return;
+    if (e.cancelable) e.preventDefault();
+    let pos = getPos(e);
+    let brushSize = Math.max(120, Math.min(window.innerWidth, window.innerHeight) * 0.25);
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.lineWidth = brushSize;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+    lastX = pos.x; lastY = pos.y;
+  }
+  function checkPercent() {
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    let transPixels = 0;
+    const step = 4 * 200;
+    for (let i = 0; i < data.length; i += step) { if (data[i + 3] < 128) transPixels++; }
+    const percent = transPixels / (canvas.width * canvas.height / 200);
+    if (percent > 0.20 && !cleared) {
+      cleared = true;
+      if (checkInterval) clearInterval(checkInterval);
+      introCover.style.pointerEvents = 'none';
+      canvas.style.transition = 'opacity 1s ease';
+      canvas.style.opacity = '0';
+      setTimeout(() => {
+        canvas.style.display = 'none';
+        introCover.style.display = 'none';
+        introCover.classList.add('cleared');
+        document.getElementById('voice-prompt-container').classList.add('show');
+      }, 1000);
+    }
+  }
+
+  function getSimilarity(s1, s2) {
+    if (s1 === s2) return 1.0;
+    const len1 = s1.length, len2 = s2.length;
+    const matrix = Array(len1+1).fill(null).map(() => Array(len2+1).fill(null));
+    for (let i = 0; i <= len1; i++) matrix[i][0] = i;
+    for (let j = 0; j <= len2; j++) matrix[0][j] = j;
+    for (let i = 1; i <= len1; i++) {
+      for (let j = 1; j <= len2; j++) {
+        const cost = s1[i-1] === s2[j-1] ? 0 : 1;
+        matrix[i][j] = Math.min(matrix[i-1][j]+1, matrix[i][j-1]+1, matrix[i-1][j-1]+cost);
+      }
+    }
+    return (Math.max(len1,len2) - matrix[len1][len2]) / Math.max(len1,len2);
+  }
+
+  function startVoiceRecognition() {
+    const voiceMsg = document.getElementById('voice-msg');
+    const startBtn = document.getElementById('start-voice-btn');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      voiceMsg.innerHTML = "음성 인식을 지원하지 않는 브라우저입니다.<br>건너뛰기를 눌러주세요.";
+      voiceMsg.style.color = "#b84452";
+      startBtn.style.display = 'none';
+      return;
+    }
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'ko-KR';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.onstart = function() {
+      voiceMsg.innerHTML = "듣고 있습니다 🎤<br><span style='font-size:0.85rem; color:rgba(245,240,230,0.55); font-weight:400;'>(마이크 권한을 허용해주세요)</span>";
+      startBtn.style.display = 'none';
+    };
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript.replace(/[\s\.\,\"\-\']+/g, '');
+      const target1 = "생명으로이끄는문은좁고그길이비좁아찾는사람이적습니다";
+      const sim1 = getSimilarity(target1, transcript);
+      const sim1_sub = getSimilarity(target1, transcript.substring(0, target1.length + 2));
+      const maxSim = Math.max(sim1, sim1_sub);
+      if (maxSim >= 0.70) {
+        voiceMsg.innerHTML = "✓ 인식 완료";
+        voiceMsg.style.color = "#b84452";
+        setTimeout(finishIntro, 800);
+      } else {
+        voiceMsg.innerHTML = `다시 한번 또렷이 읽어주세요 🎤<br><span style='font-size:0.85rem;color:#b84452;'>현재 일치율: ${Math.round(maxSim * 100)}% (70% 이상 필요)</span>`;
+        startBtn.style.display = 'block';
+        startBtn.textContent = "다시 시도";
+      }
+    };
+    recognition.onerror = function(event) {
+      startBtn.style.display = 'block';
+      startBtn.textContent = "다시 시도";
+      if (event.error === 'not-allowed' || event.error === 'audio-capture') {
+        voiceMsg.innerHTML = "마이크 권한이 거부되었습니다.<br>건너뛰기를 눌러주세요.";
+        voiceMsg.style.color = "#b84452";
+      } else {
+        voiceMsg.innerHTML = "인식에 실패했습니다. 다시 시도해주세요";
+      }
+    };
+    try { recognition.start(); } catch(e) { console.error(e); }
+  }
+
+  function finishIntro() {
+    container.style.transition = 'opacity 1.5s ease, transform 1.5s ease';
+    container.style.opacity = '0';
+    container.style.transform = 'scale(1.05)';
+    setTimeout(() => { container.remove(); document.body.style.overflow = ''; }, 1500);
+  }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', scratch);
+  canvas.addEventListener('mouseup', end);
+  canvas.addEventListener('mouseleave', end);
+  canvas.addEventListener('touchstart', start, {passive: false});
+  canvas.addEventListener('touchmove', scratch, {passive: false});
+  canvas.addEventListener('touchend', end);
+  canvas.addEventListener('touchcancel', end);
+});
+</script>
+</body>
+</html>
