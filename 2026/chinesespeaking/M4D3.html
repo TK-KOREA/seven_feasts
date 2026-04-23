@@ -1713,6 +1713,133 @@ body::before {
   padding-top: 14px;
 }
 
+/* ── 히브리어 단어 박스 그리드 ── */
+.tv-heb-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.tv-heb-verse-label {
+  width: 100%;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  padding: 6px 0 10px;
+  border-bottom: 1px dashed var(--line-soft);
+  margin-bottom: 4px;
+}
+.tv-heb-verse-label + .tv-heb-grid {
+  margin-top: 2px;
+}
+.tv-heb-sep {
+  width: 100%;
+  border: none;
+  border-top: 1px dashed var(--line-soft);
+  margin: 6px 0 14px;
+}
+
+.tv-wbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: rgba(255,255,255,0.82);
+  min-width: 72px;
+  max-width: 120px;
+  overflow: hidden;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.tv-wbox.key {
+  cursor: pointer;
+  border-color: var(--accent);
+  border-width: 1.5px;
+  box-shadow: 0 1px 6px rgba(139,30,43,0.08);
+  position: relative;
+}
+.tv-wbox.key::after {
+  content: '';
+  position: absolute;
+  top: 4px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.85;
+}
+.tv-wbox.key:hover {
+  box-shadow: 0 3px 14px rgba(139,30,43,0.18);
+  transform: translateY(-3px);
+}
+.tv-wbox.func {
+  border-color: var(--line-soft);
+  background: rgba(245,240,230,0.6);
+  opacity: 0.82;
+}
+
+.tv-wbox-heb {
+  width: 100%;
+  padding: 8px 6px 6px;
+  text-align: center;
+  background: rgba(139,30,43,0.05);
+  border-bottom: 1px solid var(--line-soft);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--accent);
+  direction: rtl;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+.tv-wbox.func .tv-wbox-heb {
+  color: var(--ink-mute);
+  font-weight: 400;
+  font-size: 1.05rem;
+}
+
+.tv-wbox-pron {
+  width: 100%;
+  padding: 4px 6px 3px;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  border-bottom: 1px dashed var(--line-soft);
+  background: rgba(255,255,255,0.5);
+  letter-spacing: 0.01em;
+}
+
+.tv-wbox-kr {
+  width: 100%;
+  padding: 4px 6px 3px;
+  text-align: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.72rem;
+  color: var(--ink);
+  font-weight: 500;
+  border-bottom: 1px dashed var(--line-soft);
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.tv-wbox-en {
+  width: 100%;
+  padding: 4px 6px 6px;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.66rem;
+  font-style: italic;
+  color: var(--ink-mute);
+  line-height: 1.35;
+}
+
+/* 기존 호환 유지 */
 .tv-word {
   display: flex;
   flex-direction: column;
@@ -1738,7 +1865,6 @@ body::before {
   line-height: 1.15;
   letter-spacing: 0.01em;
 }
-
 .tv-word.key {
   cursor: pointer;
   background: rgba(139,30,43,0.06);
@@ -1751,15 +1877,8 @@ body::before {
   background: rgba(139,30,43,0.16);
   transform: translateY(-2px);
 }
-.tv-word.key .w-gk {
-  color: var(--accent);
-  font-weight: 700;
-}
-.tv-word.key .w-pr {
-  color: var(--accent);
-  font-weight: 500;
-  opacity: 0.85;
-}
+.tv-word.key .w-gk { color: var(--accent); font-weight: 700; }
+.tv-word.key .w-pr { color: var(--accent); font-weight: 500; opacity: 0.85; }
 .tv-word.key::before {
   content: '';
   position: absolute;
@@ -1769,16 +1888,8 @@ body::before {
   border-radius: 50%;
   opacity: 0.9;
 }
-
-.tv-word.func .w-gk {
-  color: var(--ink-mute);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1rem;
-}
-.tv-word.func .w-pr {
-  opacity: 0.55;
-}
+.tv-word.func .w-gk { color: var(--ink-mute); font-style: italic; font-weight: 400; font-size: 1rem; }
+.tv-word.func .w-pr { opacity: 0.55; }
 
 .tv-punct {
   display: inline-flex;
@@ -1860,41 +1971,137 @@ body::before {
 
 .tv-summary {
   margin-top: 24px;
-  padding: 20px 22px;
-  background: var(--accent);
-  color: #fbf6ea;
-  border-radius: 4px;
-  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(139,30,43,0.07);
 }
-.tv-summary::before {
-  content: '∴';
-  position: absolute;
-  top: -14px; left: 20px;
-  width: 30px; height: 30px;
-  background: #fbf6ea;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+.tv-summary-header {
+  background: var(--accent);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tv-summary-header-symbol {
+  width: 26px; height: 26px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
   border-radius: 50%;
-  font-size: 1.2rem;
+  color: #ffd878;
+  font-family: 'Lora', serif;
+  font-size: 1.05rem;
   font-weight: 700;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Lora', serif;
+  flex-shrink: 0;
 }
 .tv-summary-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  opacity: 0.7;
-  margin-bottom: 8px;
-  font-weight: 600;
+  color: rgba(255,255,255,0.82);
+  font-weight: 700;
 }
-.tv-summary-text {
-  font-size: 0.94rem;
-  line-height: 1.8;
-  color: #fbf6ea;
+.tv-summary-body {
+  background: #fbf6ea;
+  padding: 0;
 }
-.tv-summary-text b { color: #ffd878; font-weight: 700; }
+
+/* 구조 행 */
+.tv-struct-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 1px solid var(--line-soft);
+}
+.tv-struct-row:last-child { border-bottom: none; }
+.tv-struct-label {
+  background: rgba(139,30,43,0.05);
+  border-right: 2px solid var(--accent);
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.tv-struct-content {
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.tv-struct-content b { color: var(--accent); font-weight: 700; }
+.tv-struct-content em {
+  font-style: normal;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.9em;
+  color: var(--ink-mute);
+}
+
+/* 대비 화살표 행 */
+.tv-struct-contrast {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(255,255,255,0.6);
+}
+.tv-struct-before,
+.tv-struct-after {
+  padding: 10px 12px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+.tv-struct-before { text-align: right; border-right: none; }
+.tv-struct-after  { text-align: left;  border-left: none; }
+.tv-struct-before .label,
+.tv-struct-after  .label {
+  font-family: 'Lora', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.tv-struct-before .word { font-weight: 700; color: var(--ink-soft); }
+.tv-struct-after  .word { font-weight: 700; color: var(--accent); }
+.tv-struct-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: 700;
+  background: rgba(139,30,43,0.04);
+}
+
+/* 결론 행 */
+.tv-struct-conclusion {
+  padding: 12px 16px;
+  background: rgba(139,30,43,0.04);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink);
+  text-align: center;
+  border-top: 1px solid var(--line-soft);
+}
+.tv-struct-conclusion b { color: var(--accent); font-weight: 700; }
 
 .tv-popup-overlay {
   display: none;
@@ -2126,7 +2333,7 @@ body::before {
   </div>
 
   <a class="nav-item" onclick="goTo('hero-section')">제목 &amp; 특별집회 주제</a>
-  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 요 15:5</a>
+  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 욥 42:5-6</a>
   <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
   <a class="nav-item" onclick="goTo('flow-section')">다섯 단계의 흐름</a>
 
@@ -2171,25 +2378,10 @@ body::before {
 
   <!-- HERO -->
   <section class="hero" id="hero-section">
-    <div class="hero-badge">2026 국제중국어 4주 1,2일</div>
-    <h1>두 나무 · 두 근원<br>두 길 · 두 원칙<br><span class="highlight-word">두 완결</span></h1>
+    <div class="hero-badge">2026 국제중국어 4주 3,4일</div>
+    <h1>생명나무의 이상<br>우주의 중심 · 하나님-사람</h1>
     <p class="hero-sub">창세기 2장에는 두 나무가 있으나, 요한계시록 21-22장 거룩한 성에는 오직 생명나무만 있습니다. 하나님의 목적은 <b>선악나무의 노선에 머무는 욥이 아닌, 생명나무의 노선에 머무는 욥</b>을 얻으시는 것이었습니다. 그분은 욥을 심하게 다루심으로써 그의 논리를 윤리에 따른 선악의 원칙에서 <b>하나님에 따른 생명의 원칙</b>으로 조정하셨습니다 — 욥이 하나님을 얻고 하나님께 참여하는 사람이 되도록 말입니다.</p>
 
-    <!-- TWO TREES VISUAL -->
-    <div class="two-trees-diagram animate-in">
-      <div class="tree-card life">
-        <span class="tree-icon">🌳</span>
-        <div class="tree-name red">생명나무</div>
-        <div class="tree-sub">TREE OF LIFE</div>
-        <div class="tree-desc">그리스도 안에 계신 삼일 하나님께서 <strong>음식의 형태로</strong> 자신을 사람에게 분배하심. 우주의 중심이며, 하나님의 뜻의 중심. <b>새 예루살렘</b>에서 영원히 한 그루의 나무로 완성됩니다</div>
-      </div>
-      <div class="tree-card death">
-        <span class="tree-icon">🌿</span>
-        <div class="tree-name gray">선과 악의 지식나무</div>
-        <div class="tree-sub">TREE OF KNOWLEDGE</div>
-        <div class="tree-desc">사람에게 죽음이 된 사탄의 상징. 지식·선·악이 모두 사탄에게 속함. 욥과 그의 세 친구가 머물던 <b>도덕의 영역</b>, 결국 <b>불 못</b>으로 귀결되는 길</div>
-      </div>
-    </div>
   </section>
 
 
@@ -2197,72 +2389,194 @@ body::before {
   <section class="todays-verse-section" id="todays-verse-section">
     <div class="tv-header">
       <div class="tv-kicker">오늘의 구절 · Today's Verse</div>
-      <div class="tv-ref">요한복음 15:5</div>
-      <div class="tv-ref-en">John 15:5 · Recovery Version</div>
+      <div class="tv-ref">욥기 42:5–6</div>
+      <div class="tv-ref-en">Job 42:5–6 · Recovery Version</div>
     </div>
 
     <!-- 번역 (한국어 & 영어) -->
     <div class="tv-trans-compact">
       <div class="tv-trans-row kr">
         <span class="tv-trans-tag">한</span>
-        <span class="tv-trans-text">나는 <b>포도나무</b>요, 여러분은 가지들입니다. 그가 내 안에, 내가 그 안에 거하면, 그 사람은 <b>열매를 많이 맺습니다</b>. 왜냐하면 나를 떠나서는 여러분이 아무것도 할 수 없기 때문입니다. <span style="color:var(--ink-mute);font-size:0.82rem;">— 회복역</span></span>
+        <span class="tv-trans-text">제가 주님에 대해 <b>귀로만</b> 들어 왔으나 / 이제는 <b>제 눈으로</b> 주님을 뵈었습니다. 그러기에 제 자신을 <b>혐오하며</b> / 티끌과 재 가운데서 <b>회개합니다</b>.</span>
       </div>
       <div class="tv-trans-row en">
         <span class="tv-trans-tag">EN</span>
-        <span class="tv-trans-text">I am the vine; you are the branches. He who abides in Me and I in him, he bears much fruit; for apart from Me you can do nothing. <span style="font-style:normal;color:var(--ink-mute);font-size:0.78rem;">— Recovery Version</span></span>
+        <span class="tv-trans-text">I had heard of You by the hearing of the ear, / But now my eye has seen You; / Therefore I abhor myself, and I repent / In dust and ashes.</span>
       </div>
     </div>
 
-    <!-- 헬라어 원문 -->
+    <!-- 히브리어 원문 단어 박스 -->
     <div class="tv-greek-sentence">
-      <div class="tv-greek-title">ΕΛΛΗΝΙΚΗ · 헬라어 원문 (NA28)</div>
+      <div class="tv-greek-title">עִבְרִית · 히브리어 원문 (BHS) — 단어별 대조</div>
 
-      <!-- 줄 1: ἐγώ εἰμι ἡ ἄμπελος, ὑμεῖς τὰ κλήματα. -->
-      <div class="tv-greek-line">
-        <span class="tv-word key" onclick="tvShowWord('ego')"><span class="w-gk">ἐγώ</span><span class="w-pr">에고</span></span>
-        <span class="tv-word key" onclick="tvShowWord('eimi')"><span class="w-gk">εἰμι</span><span class="w-pr">에이미</span></span>
-        <span class="tv-word func"><span class="w-gk">ἡ</span><span class="w-pr">헤</span></span>
-        <span class="tv-word key" onclick="tvShowWord('ampelos')"><span class="w-gk">ἄμπελος</span><span class="w-pr">암펠로스</span></span>
-        <span class="tv-punct">,</span>
-        <span class="tv-word func"><span class="w-gk">ὑμεῖς</span><span class="w-pr">휘메이스</span></span>
-        <span class="tv-word func"><span class="w-gk">τὰ</span><span class="w-pr">타</span></span>
-        <span class="tv-word key" onclick="tvShowWord('klemata')"><span class="w-gk">κλήματα</span><span class="w-pr">클레마타</span></span>
-        <span class="tv-punct">.</span>
-      </div>
+      <!-- 욥 42:5 -->
+      <div class="tv-heb-verse-label">욥기 42:5 · Job 42:5</div>
+      <div class="tv-heb-grid">
 
-      <!-- 줄 2: ὁ μένων ἐν ἐμοὶ κἀγὼ ἐν αὐτῷ -->
-      <div class="tv-greek-line">
-        <span class="tv-word func"><span class="w-gk">ὁ</span><span class="w-pr">호</span></span>
-        <span class="tv-word key" onclick="tvShowWord('menon')"><span class="w-gk">μένων</span><span class="w-pr">메논</span></span>
-        <span class="tv-word func"><span class="w-gk">ἐν</span><span class="w-pr">엔</span></span>
-        <span class="tv-word func"><span class="w-gk">ἐμοὶ</span><span class="w-pr">에모이</span></span>
-        <span class="tv-word func"><span class="w-gk">κἀγὼ</span><span class="w-pr">카고</span></span>
-        <span class="tv-word func"><span class="w-gk">ἐν</span><span class="w-pr">엔</span></span>
-        <span class="tv-word func"><span class="w-gk">αὐτῷ</span><span class="w-pr">아우토</span></span>
-      </div>
+        <!-- לְשֵׁמַע (접두어 לְ + שֵׁמַע) -->
+        <div class="tv-wbox func">
+          <div class="tv-wbox-heb">לְשֵׁמַע</div>
+          <div class="tv-wbox-pron">레-쉐마</div>
+          <div class="tv-wbox-kr">귀의 들음으로</div>
+          <div class="tv-wbox-en">by the hearing of</div>
+        </div>
 
-      <!-- 줄 3: οὗτος φέρει καρπὸν πολύν -->
-      <div class="tv-greek-line">
-        <span class="tv-word func"><span class="w-gk">οὗτος</span><span class="w-pr">후토스</span></span>
-        <span class="tv-word key" onclick="tvShowWord('pherei')"><span class="w-gk">φέρει</span><span class="w-pr">페레이</span></span>
-        <span class="tv-word key" onclick="tvShowWord('karpon')"><span class="w-gk">καρπὸν</span><span class="w-pr">카르폰</span></span>
-        <span class="tv-word func"><span class="w-gk">πολύν</span><span class="w-pr">폴륀</span></span>
-        <span class="tv-punct">.</span>
-      </div>
+        <!-- אֹזֶן -->
+        <div class="tv-wbox key" onclick="tvShowWord('ozen')">
+          <div class="tv-wbox-heb">אֹזֶן</div>
+          <div class="tv-wbox-pron">오젠</div>
+          <div class="tv-wbox-kr">귀</div>
+          <div class="tv-wbox-en">the ear</div>
+        </div>
+
+        <!-- שְׁמַעְתִּיךָ -->
+        <div class="tv-wbox key" onclick="tvShowWord('shamati')">
+          <div class="tv-wbox-heb">שְׁמַעְתִּיךָ</div>
+          <div class="tv-wbox-pron">쉐마티카</div>
+          <div class="tv-wbox-kr">내가 당신을 들었으나</div>
+          <div class="tv-wbox-en">I had heard of You</div>
+        </div>
+
+        <!-- וְעַתָּה -->
+        <div class="tv-wbox key" onclick="tvShowWord('veatta')">
+          <div class="tv-wbox-heb">וְעַתָּה</div>
+          <div class="tv-wbox-pron">베아타</div>
+          <div class="tv-wbox-kr">그러나 이제는</div>
+          <div class="tv-wbox-en">but now</div>
+        </div>
+
+        <!-- עֵינִי -->
+        <div class="tv-wbox key" onclick="tvShowWord('eini')">
+          <div class="tv-wbox-heb">עֵינִי</div>
+          <div class="tv-wbox-pron">에이니</div>
+          <div class="tv-wbox-kr">나의 눈이</div>
+          <div class="tv-wbox-en">my eye</div>
+        </div>
+
+        <!-- רָאָתְךָ -->
+        <div class="tv-wbox key" onclick="tvShowWord('raatka')">
+          <div class="tv-wbox-heb">רָאָתְךָ</div>
+          <div class="tv-wbox-pron">라아트카</div>
+          <div class="tv-wbox-kr">주님을 뵈었습니다</div>
+          <div class="tv-wbox-en">has seen You</div>
+        </div>
+
+      </div><!-- /.tv-heb-grid (v.5) -->
+
+      <hr class="tv-heb-sep">
+
+      <!-- 욥 42:6 -->
+      <div class="tv-heb-verse-label">욥기 42:6 · Job 42:6</div>
+      <div class="tv-heb-grid">
+
+        <!-- עַל־כֵּן -->
+        <div class="tv-wbox key" onclick="tvShowWord('alkken')">
+          <div class="tv-wbox-heb">עַל־כֵּן</div>
+          <div class="tv-wbox-pron">알-켄</div>
+          <div class="tv-wbox-kr">그러기에</div>
+          <div class="tv-wbox-en">therefore</div>
+        </div>
+
+        <!-- אֶמְאַס -->
+        <div class="tv-wbox key" onclick="tvShowWord('emas')">
+          <div class="tv-wbox-heb">אֶמְאַס</div>
+          <div class="tv-wbox-pron">에마스</div>
+          <div class="tv-wbox-kr">제 자신을 혐오하며</div>
+          <div class="tv-wbox-en">I abhor myself</div>
+        </div>
+
+        <!-- וְנִחַמְתִּי -->
+        <div class="tv-wbox key" onclick="tvShowWord('venikhamti')">
+          <div class="tv-wbox-heb">וְנִחַמְתִּי</div>
+          <div class="tv-wbox-pron">베니함티</div>
+          <div class="tv-wbox-kr">회개합니다</div>
+          <div class="tv-wbox-en">and I repent</div>
+        </div>
+
+        <!-- עַל (전치사) -->
+        <div class="tv-wbox func">
+          <div class="tv-wbox-heb">עַל</div>
+          <div class="tv-wbox-pron">알</div>
+          <div class="tv-wbox-kr">가운데서</div>
+          <div class="tv-wbox-en">in</div>
+        </div>
+
+        <!-- עָפָר -->
+        <div class="tv-wbox key" onclick="tvShowWord('afar')">
+          <div class="tv-wbox-heb">עָפָר</div>
+          <div class="tv-wbox-pron">아파르</div>
+          <div class="tv-wbox-kr">티끌</div>
+          <div class="tv-wbox-en">dust</div>
+        </div>
+
+        <!-- וָאֵפֶר -->
+        <div class="tv-wbox key" onclick="tvShowWord('efer')">
+          <div class="tv-wbox-heb">וָאֵפֶר</div>
+          <div class="tv-wbox-pron">바에페르</div>
+          <div class="tv-wbox-kr">그리고 재</div>
+          <div class="tv-wbox-en">and ashes</div>
+        </div>
+
+      </div><!-- /.tv-heb-grid (v.6) -->
     </div>
 
     <!-- 범례 -->
     <div class="tv-legend">
-      <span class="tv-legend-item"><span class="tv-legend-dot key"></span>중요 단어 (클릭 가능)</span>
-      <span class="tv-legend-item"><span class="tv-legend-dot func"></span>관사 · 대명사 · 전치사</span>
+      <span class="tv-legend-item"><span class="tv-legend-dot key"></span>주요 단어 — 클릭하면 사전 팝업</span>
+      <span class="tv-legend-item"><span class="tv-legend-dot func"></span>접두사 · 전치사 · 조사</span>
+      <span class="tv-legend-item" style="color:var(--ink-mute);font-size:0.72rem;">각 박스: 히브리어 원문 · 발음 · 한국어 · 영어</span>
     </div>
 
     <!-- 구조 요약 -->
     <div class="tv-summary">
-      <div class="tv-summary-title">Structure · 구조의 핵심</div>
-      <div class="tv-summary-text">
-        주 예수님께서 사용하신 <b>"나는 …이다(ἐγώ εἰμι)" 선언문</b>입니다. 이는 요한복음 1:4의 "그분 안에 생명이 있었다"와 결합될 때, <b>그리스도께서 곧 생명나무</b>이심을 계시합니다. 한 면에서 그분은 <b>나무(ἄμπελος, 포도나무)</b>이시고, 또 다른 면에서 <b>생명(ζωή)</b> 그 자체이십니다. 그러므로 창세기 2장의 생명나무와 신약의 그리스도는 하나로 연결됩니다 — 음식의 형태로 우리에게 오셔서 자신을 분배하시는 분.
+      <div class="tv-summary-header">
+        <div class="tv-summary-header-symbol">∴</div>
+        <div class="tv-summary-title">Structure · 구조의 핵심</div>
       </div>
+      <div class="tv-summary-body">
+
+        <!-- 행 1: 42:5의 대칭 구조 -->
+        <div class="tv-struct-contrast">
+          <div class="tv-struct-before">
+            <span class="label">과거 · 42:5a</span>
+            <span class="word">귀로 들었다 <em>(שָׁמַע)</em></span>
+            <span style="font-size:0.78rem;color:var(--ink-mute);">간접 지식 — 하나님에 <i>대해</i> 앎</span>
+          </div>
+          <div class="tv-struct-arrow">→</div>
+          <div class="tv-struct-after">
+            <span class="label">이제 · 42:5b</span>
+            <span class="word">눈으로 보았다 <em>(רָאָה)</em></span>
+            <span style="font-size:0.78rem;color:var(--ink-mute);">직접 경험 — 하나님을 <i>친히</i> 만남</span>
+          </div>
+        </div>
+
+        <!-- 행 2: 전환점 וְעַתָּה -->
+        <div class="tv-struct-row">
+          <div class="tv-struct-label">전환점<br>42:5</div>
+          <div class="tv-struct-content">
+            <b>וְעַתָּה</b> <em>베아타 — "그러나 이제는"</em><br>
+            이 두 단어가 욥의 전 생애를 둘로 가릅니다. 욥기 1–41장은 모두 "귀"의 세계였고, 42:5b부터는 "눈"의 세계입니다. 하나님을 귀로만 아는 것과 눈으로 보는 것 사이의 거리가 욥이 통과해야 했던 고난 전체의 길이입니다.
+          </div>
+        </div>
+
+        <!-- 행 3: 42:6의 두 동사 -->
+        <div class="tv-struct-row">
+          <div class="tv-struct-label">응답<br>42:6</div>
+          <div class="tv-struct-content">
+            <b>אֶמְאַס</b> <em>에마스</em> — 목적어 없이 "내가 철회한다"<br>
+            자기 자신만이 아니라 <b>자기의 논리·주장 전체</b>를 내려놓는 행위.<br><br>
+            <b>וְנִחַמְתִּי</b> <em>베니함티</em> — 니팔(재귀) 완료형 "내가 돌이켜졌다"<br>
+            나 스스로 돌이키되, 동시에 신현(神現)에 의해 <b>변화를 받은</b> 상태.
+          </div>
+        </div>
+
+        <!-- 결론 -->
+        <div class="tv-struct-conclusion">
+          욥의 고난은 "귀"를 "눈"으로 바꾸는 과정이었습니다.<br>
+          하나님을 <b>직접 만날 때</b>, 선악의 논리는 저절로 무너지고 — <b>생명나무의 자리</b>로 들어서게 됩니다.
+        </div>
+
+      </div><!-- /.tv-summary-body -->
     </div>
   </section>
 
@@ -2272,7 +2586,7 @@ body::before {
     <div class="tv-popup" id="tv-popup">
       <button class="tv-popup-close" onclick="tvClosePopup()" aria-label="닫기">✕</button>
       <div class="tv-popup-header">
-        <div class="tv-popup-kicker">헬라어 단어 사전 · BDAG · Thayer's · Strong's</div>
+        <div class="tv-popup-kicker">히브리어 단어 사전 · BDB · Strong's · BHS</div>
         <div class="tv-popup-meaning" id="tv-popup-meaning"></div>
         <div class="tv-popup-greek" id="tv-popup-greek"></div>
       </div>
@@ -2944,7 +3258,7 @@ body::before {
     <!-- 오늘 우리 -->
     <div class="accordion" id="acc-10">
       <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number">✝</div>
+        <div class="acc-number">👥</div>
         <div class="acc-title-text">오늘 우리 — 선악의 원칙에서 생명의 원칙으로 완전히 전환</div>
         <div class="acc-chevron">▼</div>
       </div>
@@ -3406,74 +3720,117 @@ function toggleKwTip(id) {
   if (!isShown) tip.classList.add('show');
 }
 
-/* ─── TODAY'S VERSE POPUP — Greek word lexicon (John 15:5) ─── */
+/* ─── TODAY'S VERSE POPUP — Hebrew word lexicon (Job 42:5-6) ─── */
 const TV_WORD_DATA = {
-  'ego': {
-    gk: 'ἐγώ',
-    pron: '에고',
-    strong: 'G1473',
-    grammar: '대명사 · 1인칭 · 주격 · 단수',
-    meaning: '나 <em>(I, myself — emphatic)</em>',
-    note: '헬라어에서 1인칭 대명사는 동사 어미에 이미 포함되므로, 명시적으로 ἐγώ를 쓸 때는 <b>강조적 의미</b>를 갖습니다. 요 15:5에서 예수님께서 "<b>ἐγώ</b> εἰμι"라고 말씀하신 것은 단순한 "나는 ~이다"가 아니라, <b>"바로 나, 오직 나만이"</b>라는 강한 자기 선언입니다.',
-    context: 'ἐγώ εἰμι ἡ ἄμπελος (바로 나, 내가 그 포도나무이다)'
+  'shema': {
+    gk: 'שֵׁמַע',
+    pron: '쉐마',
+    strong: 'H8088',
+    lemma: 'שֵׁמַע',
+    grammar: '명사 · 남성 · 단수 절대형',
+    meaning: '들음, 소문, 보도 <em>(hearing, report, fame)</em>',
+    note: '동사 שָׁמַע(듣다)에서 파생된 명사형입니다. 뒤에 오는 <b>אֹזֶן(귀)</b>과 결합하여 <b>"귀로 듣는 행위"</b>를 이중 강조합니다. 단순한 정보 수신이 아니라, <b>간접적으로 전달받은 지식</b>의 특성을 나타냅니다 — 욥이 하나님에 대해 알고 있었지만, 그 지식은 아직 <b>직접 경험</b>에 기반하지 않은 것이었습니다.',
+    context: 'לְשֵׁמַע־אֹזֶן (귀의 들음으로 — 간접 지식의 한계)'
   },
-  'eimi': {
-    gk: 'εἰμι',
-    pron: '에이미',
-    strong: 'G1510',
-    grammar: '동사 · 현재 · 직설법 · 능동 · 1인칭 단수',
-    meaning: '~이다, 존재한다 <em>(I am, I exist)</em>',
-    note: '요한복음의 유명한 <b>"나는 ~이다(ἐγὼ εἰμι)"</b> 선언의 핵심 동사입니다. 이는 출 3:14의 "<b>스스로 있는 자</b>"(ἐγώ εἰμι ὁ ὤν, 70인역)를 상기시키는 <b>신적 자기 계시 공식</b>입니다. 예수님은 "나는 생명의 떡이다," "나는 빛이다," "나는 포도나무이다" 등 일곱 번의 "ἐγὼ εἰμι" 선언으로 자신을 드러내셨습니다.',
-    context: 'ἐγώ εἰμι ἡ ἄμπελος ἡ ἀληθινή (나는 참포도나무이다, 요 15:1)'
+  'ozen': {
+    gk: 'אֹזֶן',
+    pron: '오젠',
+    strong: 'H241',
+    lemma: 'אֹזֶן',
+    grammar: '명사 · 여성 · 단수 절대형',
+    meaning: '귀 <em>(ear — the organ of hearing)</em>',
+    note: '신체 기관으로서의 귀를 나타내는 기본 명사입니다. 6절의 <b>עֵינִי(나의 눈)</b>와 <b>정확한 대칭</b>을 이룹니다. 욥기 전체에서 욥과 친구들은 수많은 말을 나누었지만, 그것은 모두 <b>"귀"의 영역</b>에 머무는 것이었습니다. 하나님의 신현(神現, theophany)만이 욥을 "귀"에서 "눈"의 영역으로 이동시켰습니다.',
+    context: 'לְשֵׁמַע־אֹזֶן (귀로 듣는 것 — 욥이 구속받던 영역)'
   },
-  'ampelos': {
-    gk: 'ἄμπελος',
-    pron: '암펠로스',
-    strong: 'G288',
-    grammar: '명사 · 주격 · 여성 · 단수',
-    meaning: '포도나무 <em>(vine, grapevine)</em>',
-    note: '구약에서 포도나무는 <b>이스라엘</b>을 상징하는 핵심 이미지였습니다(시 80:8, 사 5:1-7, 렘 2:21). 그러나 이스라엘은 실패하여 들포도를 맺었습니다. 요 15:1에서 예수님은 자신을 <b>"참(ἀληθινή) 포도나무"</b>라고 선언하심으로써, <b>참된 이스라엘, 진정한 생명나무</b>이심을 드러내십니다. 이것이 창 2:9의 생명나무가 신약에서 성취되는 모습입니다.',
-    context: 'ἡ ἄμπελος (그 포도나무 — 창 2:9 생명나무의 성취)'
+  'shamati': {
+    gk: 'שְׁמַעְתִּיךָ',
+    pron: '쉐마티카',
+    strong: 'H8085',
+    lemma: 'שָׁמַע',
+    grammar: '동사 · 칼(Qal) · 완료형 · 1인칭 단수 + 2인칭 남성 단수 접미어',
+    meaning: '내가 당신을 들었다 <em>(I have heard You)</em>',
+    note: '원형 <b>שָׁמַע</b>는 "듣다, 경청하다"의 기본 동사입니다. 여기서는 <b>칼 완료형</b>으로, 과거의 완결된 사실을 나타냅니다: "나는 (과거에) 당신을 들었다." 2인칭 접미어 <b>-ךָ</b>가 붙어 "당신을"이 추가되었습니다. 욥이 하나님에 대해 <b>많이 알고 있었음</b>을 인정하는 동사이지만, 그것이 충분하지 않았음을 5절 전체가 선언합니다.',
+    context: 'שְׁמַעְתִּיךָ (내가 당신을 들어 알았었다 — 과거의 지식 체계)'
   },
-  'klemata': {
-    gk: 'κλήματα',
-    pron: '클레마타',
-    strong: 'G2814',
-    lemma: 'κλῆμα',
-    grammar: '명사 · 주격 · 중성 · 복수',
-    meaning: '가지들 <em>(branches — specifically of a vine)</em>',
-    note: '원형은 <b>κλῆμα</b>. 일반적인 "가지(κλάδος)"가 아니라, <b>포도나무의 가지</b>를 가리키는 특수한 단어입니다. 동사 κλάω(꺾다)에서 파생되어 <b>"꺾여 나온 것"</b>을 뜻합니다. 포도나무 가지는 그 자체로 독립적으로 자랄 수 없고, 반드시 <b>본줄기에 붙어 있어야만</b> 생명을 공급받습니다. 우리의 자급자족 불가능성을 잘 보여 주는 이미지입니다.',
-    context: 'ὑμεῖς τὰ κλήματα (여러분은 그 가지들입니다)'
+  'veatta': {
+    gk: 'וְעַתָּה',
+    pron: '베아타',
+    strong: 'H6258',
+    lemma: 'עַתָּה',
+    grammar: '부사 · 접속사 וְ + 시간 부사 עַתָּה',
+    meaning: '그러나 이제는 <em>(but now — contrastive)</em>',
+    note: '시간 부사 <b>עַתָּה(이제)</b> 앞에 접속사 <b>וְ(그리고/그러나)</b>가 붙어, 강한 <b>대조적 전환</b>을 만들어 냅니다. 5절의 구조적 중심축으로, <b>과거의 "들음"과 현재의 "봄"</b>을 가르는 분기점입니다. 이 짧은 두 단어가 욥의 영적 여정 전체를 구획 짓습니다 — 하나님을 아는 지식의 방식이 근본적으로 달라졌음을 선언하는 전환사입니다.',
+    context: 'וְעַתָּה עֵינִי רָאָתְךָ (그러나 이제는 — 신현 이후의 새로운 영역)'
   },
-  'menon': {
-    gk: 'μένων',
-    pron: '메논',
-    strong: 'G3306',
-    lemma: 'μένω',
-    grammar: '분사 · 현재 · 능동 · 주격 · 남성 · 단수',
-    meaning: '거하다, 머무르다, 지속하다 <em>(to abide, remain, dwell)</em>',
-    note: '원형은 <b>μένω</b>. 요한복음과 요한일서의 <b>핵심 신학 용어</b>로, 단순한 "머물기"가 아니라 <b>지속적이고 상호적인 거함</b>을 의미합니다. 현재분사 <b>μένων</b>은 "계속해서 거하고 있는 사람"을 나타내며, 순간적 경험이 아닌 <b>지속적 연합의 상태</b>를 강조합니다.',
-    context: 'ὁ μένων ἐν ἐμοί κἀγὼ ἐν αὐτῷ (내 안에 거하고, 나도 그 안에 거하는 사람)'
+  'eini': {
+    gk: 'עֵינִי',
+    pron: '에이니',
+    strong: 'H5869',
+    lemma: 'עַיִן',
+    grammar: '명사 · 여성 · 단수 + 1인칭 단수 소유 접미어 (나의 눈)',
+    meaning: '나의 눈 <em>(my eye — direct personal vision)</em>',
+    note: '원형 <b>עַיִן</b>은 "눈" 또는 "샘"을 의미하는 이중적 단어입니다. 1인칭 소유 접미어 <b>-י</b>가 붙어 "나의 눈"이 되었습니다. אֹזֶן(귀)과의 대조에서 핵심은 <b>간접 → 직접</b>의 전환입니다. 욥의 "눈"이 하나님을 "보았다"는 것은 물리적 시각이 아니라, <b>영적 계시에 의한 직접 인식</b>을 가리킵니다. 이것이 선악의 지식 노선에서 생명나무 노선으로의 이동입니다.',
+    context: 'עֵינִי רָאָתְךָ (나의 눈이 당신을 보았습니다 — 직접 계시 경험)'
   },
-  'pherei': {
-    gk: 'φέρει',
-    pron: '페레이',
-    strong: 'G5342',
-    lemma: 'φέρω',
-    grammar: '동사 · 현재 · 직설법 · 능동 · 3인칭 단수',
-    meaning: '가져오다, 맺다, 산출하다 <em>(to bear, bring forth, produce)</em>',
-    note: '원형은 <b>φέρω</b>. 여기서는 <b>"열매를 맺다"</b>는 뜻으로 사용되었습니다. 주목할 점은 이 동사가 <b>능동태</b>이지만, 그 주체가 가지 자신의 노력이 아니라 <b>"내 안에 거하는"</b> 결과로 "자연히 맺어지는" 것이라는 점입니다. 가지는 열매를 "만들어 내는" 것이 아니라, 본줄기의 생명을 받아 <b>"내어 보낼"</b> 뿐입니다.',
-    context: 'οὗτος φέρει καρπὸν πολύν (그 사람은 많은 열매를 맺는다)'
+  'raatka': {
+    gk: 'רָאָתְךָ',
+    pron: '라아트카',
+    strong: 'H7200',
+    lemma: 'רָאָה',
+    grammar: '동사 · 칼(Qal) · 완료형 · 3인칭 여성 단수(주어: עֵינִי, 눈) + 2인칭 남성 단수 접미어',
+    meaning: '(나의 눈이) 당신을 보았습니다 <em>(has seen You)</em>',
+    note: '원형 <b>רָאָה</b>는 "보다, 관찰하다, 경험하다"를 의미합니다. 주어인 <b>עֵינִי(나의 눈)</b>가 여성 명사이기 때문에 동사도 <b>3인칭 여성 단수 완료형</b>으로 일치합니다. 접미어 <b>-ךָ</b>는 "당신을"을 나타냅니다. 이 봄(seeing)은 욥의 자기 의로움의 전 체계를 무너뜨린 <b>하나님과의 직접적 만남</b>의 결과입니다 — 욥기 38–41장의 신현(theophany)의 열매입니다.',
+    context: 'עֵינִי רָאָתְךָ (나의 눈이 당신을 보았다 — 욥의 변화의 기점)'
   },
-  'karpon': {
-    gk: 'καρπὸν',
-    pron: '카르폰',
-    strong: 'G2590',
-    lemma: 'καρπός',
-    grammar: '명사 · 목적격 · 남성 · 단수',
-    meaning: '열매 <em>(fruit, produce, outcome)</em>',
-    note: '원형은 <b>καρπός</b>. 문자 그대로의 열매뿐 아니라 <b>어떤 일이나 상태의 결과·산물</b>을 나타내는 비유적 의미로도 널리 쓰입니다(예: 성령의 열매, 갈 5:22). 요 15장에서 "많은 열매"는 <b>그리스도 생명의 표현</b>이며, 이는 곧 하나님께서 사람을 창조하신 영원한 목적 — <b>하나님의 형상을 지녀 그분을 표현함</b>과 연결됩니다.',
-    context: 'καρπὸν πολύν (많은 열매 — 그리스도의 생명의 표현)'
+  'alkken': {
+    gk: 'עַל־כֵּן',
+    pron: '알-켄',
+    strong: 'H5921 / H3651',
+    lemma: 'עַל + כֵּן',
+    grammar: '전치사구 · 인과 접속 부사구',
+    meaning: '그러므로, 그런 까닭에 <em>(therefore, for this reason)</em>',
+    note: '전치사 <b>עַל(~위에/~때문에)</b>와 지시 부사 <b>כֵּן(그러하므로)</b>이 결합한 인과 접속 표현입니다. 5절의 신현(神現) 경험이 6절의 회개로 이어지는 <b>논리적 필연성</b>을 선언합니다. 하나님을 직접 보는 것은 필연적으로 자기 부인으로 이어집니다 — 이것이 생명나무 노선의 결과입니다.',
+    context: 'עַל־כֵּן אֶמְאַס (그러므로 내가 철회합니다 — 신현의 논리적 결과)'
+  },
+  'emas': {
+    gk: 'אֶמְאַס',
+    pron: '에마스',
+    strong: 'H3988',
+    lemma: 'מָאַס',
+    grammar: '동사 · 칼(Qal) · 미완료형 · 1인칭 단수 (목적어 없음)',
+    meaning: '내가 거절한다, 철회한다 <em>(I reject, despise, abhor)</em>',
+    note: '원형 <b>מָאַס</b>는 "거절하다, 멸시하다, 가치 없게 여겨 던져버리다"를 의미합니다. <b>문법적 주의점</b>: 히브리어 원문에는 이 동사의 <b>직접 목적어가 없습니다</b>. "내 자신을"이라는 목적어는 번역 과정에서 추가된 것입니다. 원문은 욥이 자기 자신뿐 아니라 <b>자신의 논리 전체, 자신의 입장 전체</b>를 철회한다는 의미를 열어 둡니다. 이것이 선악의 지식 노선에서 벗어나는 행위입니다.',
+    context: 'אֶמְאַס (내가 철회합니다 — 목적어 없는, 전면적 자기 부인)'
+  },
+  'venikhamti': {
+    gk: 'וְנִחַמְתִּי',
+    pron: '베니함티',
+    strong: 'H5162',
+    lemma: 'נָחַם',
+    grammar: '동사 · 니팔(Niphal) · 완료형 · 1인칭 단수 (수동/재귀태)',
+    meaning: '내가 뉘우쳤습니다, 마음을 돌이켰습니다 <em>(I repent, I am comforted/changed)</em>',
+    note: '원형 <b>נָחַם</b>은 칼(Qal)형에서는 "후회하다, 뉘우치다", 피엘(Piel)형에서는 "위로하다", <b>니팔(Niphal)</b>형에서는 "스스로 돌이키다, 마음을 고치다"를 의미합니다. 여기서 사용된 <b>니팔 완료형</b>은 욥 자신이 능동적으로 돌이켰으되, 동시에 외부 경험(신현)에 의해 <b>변화를 받은</b> 재귀적 상태를 표현합니다. 이것은 선악의 원칙으로부터의 이탈이며, 생명의 원칙으로의 진입입니다.',
+    context: 'וְנִחַמְתִּי עַל־עָפָר וָאֵפֶר (티끌과 재 위에서 내가 돌이켰습니다)'
+  },
+  'afar': {
+    gk: 'עָפָר',
+    pron: '아파르',
+    strong: 'H6083',
+    lemma: 'עָפָר',
+    grammar: '명사 · 남성 · 단수 절대형',
+    meaning: '티끌, 마른 흙, 먼지 <em>(dust, dry earth, powder)</em>',
+    note: '창세기 2:7 — "하나님이 땅의 <b>티끌(עָפָר)</b>로 사람을 지으시고"의 바로 그 단어입니다. 욥이 "티끌 위에서" 회개한다는 것은 자신의 <b>피조물 된 본질</b>을 인정하는 행위입니다. 창조주 앞에서 피조물로서의 자리를 회복하는 것 — 이것이 선악나무의 교만함을 내려놓고 생명나무 앞에 나아가는 자세입니다.',
+    context: 'עַל־עָפָר וָאֵפֶר (티끌과 재 가운데서 — 창 2:7의 공명)'
+  },
+  'efer': {
+    gk: 'אֵפֶר',
+    pron: '에페르',
+    strong: 'H665',
+    lemma: 'אֵפֶר',
+    grammar: '명사 · 남성 · 단수 절대형',
+    meaning: '재 <em>(ashes — symbol of mourning and lowliness)</em>',
+    note: '<b>재(אֵפֶר)</b>는 구약에서 극심한 슬픔, 애도, 낮아짐을 나타내는 상징입니다(욥 2:8, 사 61:3 "재 대신 화관"). 욥은 이 책의 처음부터 <b>재 가운데 앉아</b>(욥 2:8) 있었지만, 이제 42:6에서 그 재는 더 이상 운명의 비극에 대한 항의의 자리가 아니라, <b>하나님 앞에서의 자발적 낮아짐</b>의 자리가 됩니다. 욥의 변화가 완성되는 순간입니다.',
+    context: 'עָפָר וָאֵפֶר (티끌과 재 — 욥의 자기 비움의 완성)'
   }
 };
 
