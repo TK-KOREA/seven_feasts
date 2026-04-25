@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>두 나무, 두 근원, 두 길, 두 원칙, 두 완결 — 생명나무의 이상</title>
+<title>생명나무의 이상, 우주의 중심, 하나님-사람</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Gowun+Batang:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
@@ -1221,6 +1221,414 @@ body::before {
   border-top: 1px dashed var(--line);
 }
 
+/* ================================================================
+   NEW — PRAYER VISUAL PANELS (4 infographic interpretations)
+   ================================================================ */
+
+.pr-visual-section {
+  margin: 0 0 30px;
+  padding: 24px 20px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  position: relative;
+}
+.pr-visual-section + .pr-visual-section { margin-top: 20px; }
+.pr-visual-label {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--line);
+}
+.pr-visual-caption {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--paper-verse);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  font-family: 'Gowun Batang', serif;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--ink);
+  text-align: center;
+  font-style: italic;
+}
+.pr-visual-caption strong { color: var(--accent); font-weight: 700; font-style: normal; }
+
+/* ① 우주의 중심 — 동심원 */
+.pr-cosmos-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 8px 18px;
+  min-height: 280px;
+}
+.pr-cosmos-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+}
+.pr-cosmos-ring.ring-1 {
+  width: 260px; height: 260px;
+  background: #2a2420;
+  box-shadow: 0 4px 24px rgba(26,20,16,0.25), inset 0 0 0 2px rgba(245,240,230,0.08);
+}
+.pr-cosmos-ring.ring-2 {
+  width: 200px; height: 200px;
+  background: #4a3f36;
+  box-shadow: inset 0 0 0 2px rgba(245,240,230,0.1);
+}
+.pr-cosmos-ring.ring-3 {
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, #9fc6a8 0%, #7fa88a 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.3);
+}
+.pr-cosmos-core {
+  width: 62px; height: 62px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffd878 0%, #e8a838 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(232,168,56,0.6), inset 0 0 0 2px rgba(255,255,255,0.35);
+  animation: pr-cosmos-pulse 3s ease-in-out infinite;
+}
+@keyframes pr-cosmos-pulse {
+  0%, 100% { box-shadow: 0 0 18px rgba(232,168,56,0.6), inset 0 0 0 2px rgba(255,255,255,0.35); }
+  50%      { box-shadow: 0 0 30px rgba(232,168,56,0.85), inset 0 0 0 2px rgba(255,255,255,0.5); }
+}
+.pr-cosmos-core-text {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #5a3a10;
+  text-align: center;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.pr-cosmos-tag {
+  position: absolute;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 5px 8px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-align: left;
+}
+.pr-cosmos-tag em {
+  display: block;
+  font-family: 'Gowun Batang', serif;
+  font-size: 9.5px;
+  color: var(--ink-mute);
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 1px;
+}
+.pr-cosmos-tag.tag-1 {
+  left: -120px; top: 8px;
+  border-left: 2px solid #2a2420;
+}
+.pr-cosmos-tag.tag-2 {
+  left: -120px; top: 60px;
+  border-left: 2px solid #4a3f36;
+}
+.pr-cosmos-tag.tag-3 {
+  left: -120px; bottom: 60px;
+  border-left: 2px solid #7fa88a;
+}
+
+/* ② 3가지 조건 깔때기 */
+.pr-funnel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0 4px;
+}
+.pr-funnel-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.pr-pillar {
+  padding: 14px 10px 12px;
+  background: linear-gradient(180deg, var(--paper-card) 0%, var(--paper-verse) 100%);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 3px;
+  text-align: center;
+  position: relative;
+}
+.pr-pillar-num {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--paper);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pr-pillar-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.pr-pillar-title em {
+  display: block;
+  font-family: 'Lora', serif;
+  font-size: 10px;
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+.pr-pillar-desc {
+  font-family: 'Gowun Batang', serif;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.pr-funnel-arrow {
+  font-size: 1.3rem;
+  color: var(--accent);
+  line-height: 1;
+  margin: 4px 0 8px;
+  font-weight: 700;
+}
+.pr-funnel-result {
+  width: 80%;
+  max-width: 360px;
+  padding: 14px 16px;
+  background: var(--accent);
+  color: var(--paper);
+  border-radius: 3px;
+  text-align: center;
+  box-shadow: 0 3px 14px rgba(139,30,43,0.25);
+}
+.pr-funnel-result-kicker {
+  font-family: 'Lora', serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,216,120,0.95);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.pr-funnel-result-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.pr-funnel-result-desc {
+  font-family: 'Gowun Batang', serif;
+  font-size: 11.5px;
+  color: rgba(245,240,230,0.88);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ③ 도덕적 인간 → 하나님-사람 */
+.pr-godman { padding: 4px 0 2px; }
+.pr-godman-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.pr-godman-from {
+  padding: 16px 12px;
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  text-align: center;
+  opacity: 0.75;
+}
+.pr-godman-from-label {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 3px;
+  letter-spacing: -0.01em;
+}
+.pr-godman-from-en {
+  font-family: 'Lora', serif;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  font-style: italic;
+}
+.pr-godman-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--accent);
+}
+.pr-godman-arrow-line {
+  width: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ink-mute) 0%, var(--accent) 100%);
+}
+.pr-godman-arrow-head {
+  font-size: 12px;
+  color: var(--accent);
+  line-height: 1;
+  margin-top: -2px;
+}
+.pr-godman-to {
+  padding: 16px 12px;
+  background: linear-gradient(135deg, var(--paper-verse) 0%, #faecd0 100%);
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  text-align: center;
+  box-shadow: 0 3px 14px rgba(232,168,56,0.2);
+}
+.pr-godman-to-label {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  font-weight: 900;
+  color: var(--accent);
+  margin-bottom: 3px;
+  letter-spacing: -0.01em;
+}
+.pr-godman-to-en {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-weight: 600;
+}
+.pr-godman-note {
+  padding: 14px 16px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  font-family: 'Gowun Batang', serif;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+.pr-godman-note p { margin: 0; font-style: italic; }
+.pr-godman-note b { color: var(--ink); font-weight: 700; font-style: normal; }
+.pr-godman-note strong { color: var(--accent); font-weight: 800; font-style: normal; }
+
+/* ④ 두 완결 */
+.pr-two-ends {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+.pr-end-card {
+  padding: 16px 12px;
+  border-radius: 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.pr-end-life {
+  background: linear-gradient(180deg, #e8f3e8 0%, #c8e3c8 100%);
+  border: 1px solid #7fa88a;
+  box-shadow: 0 3px 14px rgba(127,168,138,0.25);
+}
+.pr-end-death {
+  background: linear-gradient(180deg, #e0e3e6 0%, #b8bec4 100%);
+  border: 1px solid #8a929a;
+  box-shadow: 0 3px 14px rgba(138,146,154,0.2);
+}
+.pr-end-icon {
+  font-size: 1.9rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.pr-end-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+.pr-end-life .pr-end-title { color: #2d5a3a; }
+.pr-end-death .pr-end-title { color: #3a4048; }
+.pr-end-subtitle {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.pr-end-life .pr-end-subtitle { color: #4a7a58; }
+.pr-end-death .pr-end-subtitle { color: #5a626a; }
+.pr-end-desc {
+  font-family: 'Gowun Batang', serif;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.pr-end-desc b {
+  font-weight: 700;
+  font-family: 'Noto Serif KR', serif;
+}
+.pr-end-life .pr-end-desc b { color: #2d5a3a; }
+.pr-end-death .pr-end-desc b { color: #3a4048; }
+.pr-end-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--line);
+  padding: 0 2px;
+  letter-spacing: 0.04em;
+}
+.pr-two-ends-conclusion {
+  padding: 14px 18px;
+  background: var(--accent);
+  color: var(--paper);
+  border-radius: 3px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.75;
+  text-align: center;
+  letter-spacing: -0.005em;
+  box-shadow: 0 3px 14px rgba(139,30,43,0.22);
+}
+.pr-two-ends-conclusion strong {
+  color: #ffd878;
+  font-weight: 900;
+}
+
 /* Network scene reuse */
 .two-path-scene {
   position: relative;
@@ -1621,6 +2029,23 @@ body::before {
   .examples-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .example-chip { padding: 10px 4px; }
   .example-chip .ex-name { font-size: 12.5px; }
+
+  /* Prayer visual — mobile adjustments */
+  .pr-visual-section { padding: 18px 12px 16px; }
+  .pr-cosmos-wrap { padding: 14px 0 10px; min-height: auto; }
+  .pr-cosmos-ring.ring-1 { width: 220px; height: 220px; }
+  .pr-cosmos-ring.ring-2 { width: 170px; height: 170px; }
+  .pr-cosmos-ring.ring-3 { width: 118px; height: 118px; }
+  .pr-cosmos-core { width: 54px; height: 54px; }
+  .pr-cosmos-tag { position: static; margin: 4px 4px 0 0; display: inline-block; max-width: calc(50% - 8px); font-size: 9px; }
+  .pr-cosmos-tag.tag-1, .pr-cosmos-tag.tag-2, .pr-cosmos-tag.tag-3 { left: auto; top: auto; bottom: auto; }
+  .pr-cosmos-labels { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+  .pr-funnel-pillars { grid-template-columns: 1fr; gap: 8px; }
+  .pr-pillar { padding: 12px 10px; }
+  .pr-godman-flow { grid-template-columns: 1fr; gap: 6px; }
+  .pr-godman-arrow { flex-direction: row; transform: rotate(90deg); margin: 2px auto; }
+  .pr-two-ends { grid-template-columns: 1fr; gap: 8px; }
+  .pr-end-vs { transform: rotate(90deg); padding: 4px 0; }
 }
 
 /* ============================================================
@@ -1713,6 +2138,133 @@ body::before {
   padding-top: 14px;
 }
 
+/* ── 히브리어 단어 박스 그리드 ── */
+.tv-heb-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.tv-heb-verse-label {
+  width: 100%;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  padding: 6px 0 10px;
+  border-bottom: 1px dashed var(--line-soft);
+  margin-bottom: 4px;
+}
+.tv-heb-verse-label + .tv-heb-grid {
+  margin-top: 2px;
+}
+.tv-heb-sep {
+  width: 100%;
+  border: none;
+  border-top: 1px dashed var(--line-soft);
+  margin: 6px 0 14px;
+}
+
+.tv-wbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: rgba(255,255,255,0.82);
+  min-width: 72px;
+  max-width: 120px;
+  overflow: hidden;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.tv-wbox.key {
+  cursor: pointer;
+  border-color: var(--accent);
+  border-width: 1.5px;
+  box-shadow: 0 1px 6px rgba(139,30,43,0.08);
+  position: relative;
+}
+.tv-wbox.key::after {
+  content: '';
+  position: absolute;
+  top: 4px; right: 5px;
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.85;
+}
+.tv-wbox.key:hover {
+  box-shadow: 0 3px 14px rgba(139,30,43,0.18);
+  transform: translateY(-3px);
+}
+.tv-wbox.func {
+  border-color: var(--line-soft);
+  background: rgba(245,240,230,0.6);
+  opacity: 0.82;
+}
+
+.tv-wbox-heb {
+  width: 100%;
+  padding: 8px 6px 6px;
+  text-align: center;
+  background: rgba(139,30,43,0.05);
+  border-bottom: 1px solid var(--line-soft);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--accent);
+  direction: rtl;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+.tv-wbox.func .tv-wbox-heb {
+  color: var(--ink-mute);
+  font-weight: 400;
+  font-size: 1.05rem;
+}
+
+.tv-wbox-pron {
+  width: 100%;
+  padding: 4px 6px 3px;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  border-bottom: 1px dashed var(--line-soft);
+  background: rgba(255,255,255,0.5);
+  letter-spacing: 0.01em;
+}
+
+.tv-wbox-kr {
+  width: 100%;
+  padding: 4px 6px 3px;
+  text-align: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.72rem;
+  color: var(--ink);
+  font-weight: 500;
+  border-bottom: 1px dashed var(--line-soft);
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.tv-wbox-en {
+  width: 100%;
+  padding: 4px 6px 6px;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.66rem;
+  font-style: italic;
+  color: var(--ink-mute);
+  line-height: 1.35;
+}
+
+/* 기존 호환 유지 */
 .tv-word {
   display: flex;
   flex-direction: column;
@@ -1738,7 +2290,6 @@ body::before {
   line-height: 1.15;
   letter-spacing: 0.01em;
 }
-
 .tv-word.key {
   cursor: pointer;
   background: rgba(139,30,43,0.06);
@@ -1751,15 +2302,8 @@ body::before {
   background: rgba(139,30,43,0.16);
   transform: translateY(-2px);
 }
-.tv-word.key .w-gk {
-  color: var(--accent);
-  font-weight: 700;
-}
-.tv-word.key .w-pr {
-  color: var(--accent);
-  font-weight: 500;
-  opacity: 0.85;
-}
+.tv-word.key .w-gk { color: var(--accent); font-weight: 700; }
+.tv-word.key .w-pr { color: var(--accent); font-weight: 500; opacity: 0.85; }
 .tv-word.key::before {
   content: '';
   position: absolute;
@@ -1769,16 +2313,8 @@ body::before {
   border-radius: 50%;
   opacity: 0.9;
 }
-
-.tv-word.func .w-gk {
-  color: var(--ink-mute);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1rem;
-}
-.tv-word.func .w-pr {
-  opacity: 0.55;
-}
+.tv-word.func .w-gk { color: var(--ink-mute); font-style: italic; font-weight: 400; font-size: 1rem; }
+.tv-word.func .w-pr { opacity: 0.55; }
 
 .tv-punct {
   display: inline-flex;
@@ -1860,41 +2396,137 @@ body::before {
 
 .tv-summary {
   margin-top: 24px;
-  padding: 20px 22px;
-  background: var(--accent);
-  color: #fbf6ea;
-  border-radius: 4px;
-  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(139,30,43,0.07);
 }
-.tv-summary::before {
-  content: '∴';
-  position: absolute;
-  top: -14px; left: 20px;
-  width: 30px; height: 30px;
-  background: #fbf6ea;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+.tv-summary-header {
+  background: var(--accent);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tv-summary-header-symbol {
+  width: 26px; height: 26px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
   border-radius: 50%;
-  font-size: 1.2rem;
+  color: #ffd878;
+  font-family: 'Lora', serif;
+  font-size: 1.05rem;
   font-weight: 700;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Lora', serif;
+  flex-shrink: 0;
 }
 .tv-summary-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
+  font-family: 'Lora', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  opacity: 0.7;
-  margin-bottom: 8px;
-  font-weight: 600;
+  color: rgba(255,255,255,0.82);
+  font-weight: 700;
 }
-.tv-summary-text {
-  font-size: 0.94rem;
-  line-height: 1.8;
-  color: #fbf6ea;
+.tv-summary-body {
+  background: #fbf6ea;
+  padding: 0;
 }
-.tv-summary-text b { color: #ffd878; font-weight: 700; }
+
+/* 구조 행 */
+.tv-struct-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 1px solid var(--line-soft);
+}
+.tv-struct-row:last-child { border-bottom: none; }
+.tv-struct-label {
+  background: rgba(139,30,43,0.05);
+  border-right: 2px solid var(--accent);
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Lora', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.tv-struct-content {
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.tv-struct-content b { color: var(--accent); font-weight: 700; }
+.tv-struct-content em {
+  font-style: normal;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.9em;
+  color: var(--ink-mute);
+}
+
+/* 대비 화살표 행 */
+.tv-struct-contrast {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(255,255,255,0.6);
+}
+.tv-struct-before,
+.tv-struct-after {
+  padding: 10px 12px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+.tv-struct-before { text-align: right; border-right: none; }
+.tv-struct-after  { text-align: left;  border-left: none; }
+.tv-struct-before .label,
+.tv-struct-after  .label {
+  font-family: 'Lora', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.tv-struct-before .word { font-weight: 700; color: var(--ink-soft); }
+.tv-struct-after  .word { font-weight: 700; color: var(--accent); }
+.tv-struct-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: 700;
+  background: rgba(139,30,43,0.04);
+}
+
+/* 결론 행 */
+.tv-struct-conclusion {
+  padding: 12px 16px;
+  background: rgba(139,30,43,0.04);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink);
+  text-align: center;
+  border-top: 1px solid var(--line-soft);
+}
+.tv-struct-conclusion b { color: var(--accent); font-weight: 700; }
 
 .tv-popup-overlay {
   display: none;
@@ -2055,6 +2687,470 @@ body::before {
   .tv-popup-word { padding: 12px 14px; }
   .tv-popup-word-strong { margin-left: 0; width: 100%; }
 }
+
+/* ============================================================
+   VISION IMAGE CARDS — 4 images converted into visualized blocks
+   ============================================================ */
+.vision-image-card {
+  margin: 0 0 26px;
+  padding: 26px 22px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.vision-image-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-soft) 50%, var(--accent) 100%);
+}
+.vic-label {
+  display: inline-block;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 4px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.55);
+  margin-bottom: 12px;
+}
+.vic-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--line);
+}
+.vic-caption {
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: var(--paper-verse);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  font-family: 'Gowun Batang', serif;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.8;
+  font-style: italic;
+}
+.vic-caption strong { color: var(--accent); font-weight: 700; font-style: normal; }
+
+/* --- Image 1: Cosmos Center (concentric circles) --- */
+.cosmos-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 18px;
+  align-items: center;
+  margin: 8px 0 4px;
+}
+.cosmos-diagram {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 280px;
+  margin: 0 auto;
+}
+.cosmos-ring {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cosmos-ring.r1 {
+  inset: 0;
+  background: radial-gradient(circle at center, #2a2420 0%, #1a1410 100%);
+}
+.cosmos-ring.r2 {
+  inset: 14%;
+  background: radial-gradient(circle at center, #5a4d3f 0%, #3d3228 100%);
+}
+.cosmos-ring.r3 {
+  inset: 28%;
+  background: radial-gradient(circle at center, #9ec9a9 0%, #6fa37d 100%);
+}
+.cosmos-core {
+  position: absolute;
+  inset: 42%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffe28a 0%, #e8b547 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1.15;
+  box-shadow: 0 0 22px rgba(232,181,71,0.55), inset 0 0 10px rgba(139,30,43,0.18);
+}
+.cosmos-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cosmos-lbl-item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 7px 10px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+}
+.cosmos-lbl-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  margin-top: 5px;
+  border: 1px solid var(--ink);
+}
+.cosmos-lbl-dot.d1 { background: #2a2420; }
+.cosmos-lbl-dot.d2 { background: #5a4d3f; }
+.cosmos-lbl-dot.d3 { background: #9ec9a9; }
+.cosmos-lbl-dot.d4 { background: #e8b547; border-color: var(--accent); }
+.cosmos-lbl-body {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.cosmos-lbl-body b {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  color: var(--ink);
+  font-weight: 700;
+  display: block;
+}
+.cosmos-lbl-body b .en {
+  font-family: 'Lora', serif;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  font-weight: 400;
+  font-style: italic;
+  margin-left: 4px;
+}
+
+/* --- Image 2: Funnel (3 conditions -> controlling vision) --- */
+.funnel-diagram {
+  margin: 8px 0 4px;
+}
+.funnel-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.funnel-input {
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 3px;
+  padding: 12px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+.fi-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.fi-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+.fi-title small {
+  display: block;
+  font-family: 'Lora', serif;
+  font-size: 9.5px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-mute);
+  margin-top: 1px;
+  letter-spacing: 0.04em;
+}
+.fi-desc {
+  font-family: 'Gowun Batang', serif;
+  font-size: 11px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  font-style: italic;
+  margin-top: 4px;
+}
+.funnel-flow { position: relative; height: 20px; margin: 4px auto 0; }
+.funnel-output {
+  margin-top: 4px;
+  padding: 16px 18px;
+  background: linear-gradient(180deg, var(--paper-verse) 0%, #f8e8b8 100%);
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+}
+.funnel-output::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid var(--accent);
+}
+.fo-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15.5px;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+}
+.fo-title .en {
+  display: inline-block;
+  font-family: 'Lora', serif;
+  font-size: 10.5px;
+  font-style: italic;
+  color: var(--ink-mute);
+  font-weight: 400;
+  margin-left: 6px;
+  letter-spacing: 0.04em;
+}
+.fo-desc {
+  font-family: 'Gowun Batang', serif;
+  font-size: 12.5px;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* --- Image 3: Moral Man -> God-Man --- */
+.godman-diagram {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+  margin: 8px 0 14px;
+  padding: 16px 10px;
+  background: linear-gradient(180deg, var(--paper-card) 0%, #f3ecd9 100%);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.gm-before, .gm-after {
+  padding: 14px 10px;
+  text-align: center;
+  border-radius: 3px;
+}
+.gm-before {
+  background: #e8e0d0;
+  border: 1px solid var(--ink-mute);
+  color: var(--ink-soft);
+}
+.gm-after {
+  background: linear-gradient(135deg, #f8e8b8 0%, #e8b547 100%);
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 2px 10px rgba(232,181,71,0.3);
+}
+.gm-label {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14.5px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.gm-after .gm-label { color: var(--accent); }
+.gm-sub {
+  font-family: 'Lora', serif;
+  font-size: 10.5px;
+  font-style: italic;
+  color: var(--ink-mute);
+  margin-top: 3px;
+  letter-spacing: 0.05em;
+}
+.gm-arrow {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+}
+.vic-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+.vs-side {
+  padding: 14px 14px;
+  background: var(--paper-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+}
+.vs-side:nth-child(2) {
+  background: var(--paper-verse);
+  border-color: var(--accent);
+  border-left: 3px solid var(--accent);
+}
+.vs-head {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.vs-side:nth-child(2) .vs-head { color: var(--accent); }
+.vs-body {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+.vs-body strong { color: var(--ink); font-weight: 700; }
+.vs-side:nth-child(2) .vs-body strong { color: var(--accent); }
+
+/* --- Image 4: Two Endings (New Jerusalem vs Lake of Fire) --- */
+.two-ends-diagram {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: stretch;
+  margin: 8px 0 14px;
+}
+.te-box {
+  padding: 18px 14px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+.te-box.life {
+  background: linear-gradient(180deg, #e4f0e0 0%, #f8e8b8 100%);
+  border: 1.5px solid #6fa37d;
+}
+.te-box.death {
+  background: linear-gradient(180deg, #d5d0c5 0%, #a8a095 100%);
+  border: 1px solid var(--ink-mute);
+}
+.te-icon { font-size: 1.8rem; line-height: 1; }
+.te-head {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+.te-box.life .te-head { color: #3d6a4a; }
+.te-box.death .te-head { color: var(--ink); }
+.te-sub {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.te-box.life .te-sub { color: #5a7f68; }
+.te-desc {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.65;
+  margin-top: 4px;
+  letter-spacing: -0.005em;
+}
+.te-desc strong { color: var(--accent); font-weight: 700; }
+.te-box.death .te-desc strong { color: #4a3f36; }
+.te-vs {
+  align-self: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: var(--line);
+  letter-spacing: 0.08em;
+}
+.te-footer {
+  margin-top: 14px;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, #f8e8b8 0%, #f0d878 100%);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+}
+.te-footer strong { color: var(--accent); }
+
+/* Section divider between cards and prayer */
+.prayer-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 8px 0 22px;
+}
+.prayer-divider::before,
+.prayer-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.prayer-divider span {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .cosmos-wrapper { grid-template-columns: 1fr; gap: 14px; }
+  .cosmos-diagram { max-width: 240px; }
+  .funnel-inputs { grid-template-columns: 1fr; gap: 6px; }
+  .godman-diagram { padding: 14px 8px; }
+  .vic-split { grid-template-columns: 1fr; }
+  .two-ends-diagram { grid-template-columns: 1fr; }
+  .te-vs { padding: 4px 0; }
+}
 </style>
 </head>
 <body style="overflow: hidden;">
@@ -2126,7 +3222,7 @@ body::before {
   </div>
 
   <a class="nav-item" onclick="goTo('hero-section')">제목 &amp; 특별집회 주제</a>
-  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 요 15:5</a>
+  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 욥 42:5-6</a>
   <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
   <a class="nav-item" onclick="goTo('flow-section')">다섯 단계의 흐름</a>
 
@@ -2171,25 +3267,10 @@ body::before {
 
   <!-- HERO -->
   <section class="hero" id="hero-section">
-    <div class="hero-badge">2026 국제중국어 4주 1,2일</div>
-    <h1>두 나무 · 두 근원<br>두 길 · 두 원칙<br><span class="highlight-word">두 완결</span></h1>
+    <div class="hero-badge">2026 국제중국어 4주 3,4일</div>
+    <h1>생명나무의 이상<br>우주의 중심 · 하나님-사람</h1>
     <p class="hero-sub">창세기 2장에는 두 나무가 있으나, 요한계시록 21-22장 거룩한 성에는 오직 생명나무만 있습니다. 하나님의 목적은 <b>선악나무의 노선에 머무는 욥이 아닌, 생명나무의 노선에 머무는 욥</b>을 얻으시는 것이었습니다. 그분은 욥을 심하게 다루심으로써 그의 논리를 윤리에 따른 선악의 원칙에서 <b>하나님에 따른 생명의 원칙</b>으로 조정하셨습니다 — 욥이 하나님을 얻고 하나님께 참여하는 사람이 되도록 말입니다.</p>
 
-    <!-- TWO TREES VISUAL -->
-    <div class="two-trees-diagram animate-in">
-      <div class="tree-card life">
-        <span class="tree-icon">🌳</span>
-        <div class="tree-name red">생명나무</div>
-        <div class="tree-sub">TREE OF LIFE</div>
-        <div class="tree-desc">그리스도 안에 계신 삼일 하나님께서 <strong>음식의 형태로</strong> 자신을 사람에게 분배하심. 우주의 중심이며, 하나님의 뜻의 중심. <b>새 예루살렘</b>에서 영원히 한 그루의 나무로 완성됩니다</div>
-      </div>
-      <div class="tree-card death">
-        <span class="tree-icon">🌿</span>
-        <div class="tree-name gray">선과 악의 지식나무</div>
-        <div class="tree-sub">TREE OF KNOWLEDGE</div>
-        <div class="tree-desc">사람에게 죽음이 된 사탄의 상징. 지식·선·악이 모두 사탄에게 속함. 욥과 그의 세 친구가 머물던 <b>도덕의 영역</b>, 결국 <b>불 못</b>으로 귀결되는 길</div>
-      </div>
-    </div>
   </section>
 
 
@@ -2197,72 +3278,194 @@ body::before {
   <section class="todays-verse-section" id="todays-verse-section">
     <div class="tv-header">
       <div class="tv-kicker">오늘의 구절 · Today's Verse</div>
-      <div class="tv-ref">요한복음 15:5</div>
-      <div class="tv-ref-en">John 15:5 · Recovery Version</div>
+      <div class="tv-ref">욥기 42:5–6</div>
+      <div class="tv-ref-en">Job 42:5–6 · Recovery Version</div>
     </div>
 
     <!-- 번역 (한국어 & 영어) -->
     <div class="tv-trans-compact">
       <div class="tv-trans-row kr">
         <span class="tv-trans-tag">한</span>
-        <span class="tv-trans-text">나는 <b>포도나무</b>요, 여러분은 가지들입니다. 그가 내 안에, 내가 그 안에 거하면, 그 사람은 <b>열매를 많이 맺습니다</b>. 왜냐하면 나를 떠나서는 여러분이 아무것도 할 수 없기 때문입니다. <span style="color:var(--ink-mute);font-size:0.82rem;">— 회복역</span></span>
+        <span class="tv-trans-text">제가 주님에 대해 <b>귀로만</b> 들어 왔으나 / 이제는 <b>제 눈으로</b> 주님을 뵈었습니다. 그러기에 제 자신을 <b>혐오하며</b> / 티끌과 재 가운데서 <b>회개합니다</b>.</span>
       </div>
       <div class="tv-trans-row en">
         <span class="tv-trans-tag">EN</span>
-        <span class="tv-trans-text">I am the vine; you are the branches. He who abides in Me and I in him, he bears much fruit; for apart from Me you can do nothing. <span style="font-style:normal;color:var(--ink-mute);font-size:0.78rem;">— Recovery Version</span></span>
+        <span class="tv-trans-text">I had heard of You by the hearing of the ear, / But now my eye has seen You; / Therefore I abhor myself, and I repent / In dust and ashes.</span>
       </div>
     </div>
 
-    <!-- 헬라어 원문 -->
+    <!-- 히브리어 원문 단어 박스 -->
     <div class="tv-greek-sentence">
-      <div class="tv-greek-title">ΕΛΛΗΝΙΚΗ · 헬라어 원문 (NA28)</div>
+      <div class="tv-greek-title">עִבְרִית · 히브리어 원문 (BHS) — 단어별 대조</div>
 
-      <!-- 줄 1: ἐγώ εἰμι ἡ ἄμπελος, ὑμεῖς τὰ κλήματα. -->
-      <div class="tv-greek-line">
-        <span class="tv-word key" onclick="tvShowWord('ego')"><span class="w-gk">ἐγώ</span><span class="w-pr">에고</span></span>
-        <span class="tv-word key" onclick="tvShowWord('eimi')"><span class="w-gk">εἰμι</span><span class="w-pr">에이미</span></span>
-        <span class="tv-word func"><span class="w-gk">ἡ</span><span class="w-pr">헤</span></span>
-        <span class="tv-word key" onclick="tvShowWord('ampelos')"><span class="w-gk">ἄμπελος</span><span class="w-pr">암펠로스</span></span>
-        <span class="tv-punct">,</span>
-        <span class="tv-word func"><span class="w-gk">ὑμεῖς</span><span class="w-pr">휘메이스</span></span>
-        <span class="tv-word func"><span class="w-gk">τὰ</span><span class="w-pr">타</span></span>
-        <span class="tv-word key" onclick="tvShowWord('klemata')"><span class="w-gk">κλήματα</span><span class="w-pr">클레마타</span></span>
-        <span class="tv-punct">.</span>
-      </div>
+      <!-- 욥 42:5 -->
+      <div class="tv-heb-verse-label">욥기 42:5 · Job 42:5</div>
+      <div class="tv-heb-grid">
 
-      <!-- 줄 2: ὁ μένων ἐν ἐμοὶ κἀγὼ ἐν αὐτῷ -->
-      <div class="tv-greek-line">
-        <span class="tv-word func"><span class="w-gk">ὁ</span><span class="w-pr">호</span></span>
-        <span class="tv-word key" onclick="tvShowWord('menon')"><span class="w-gk">μένων</span><span class="w-pr">메논</span></span>
-        <span class="tv-word func"><span class="w-gk">ἐν</span><span class="w-pr">엔</span></span>
-        <span class="tv-word func"><span class="w-gk">ἐμοὶ</span><span class="w-pr">에모이</span></span>
-        <span class="tv-word func"><span class="w-gk">κἀγὼ</span><span class="w-pr">카고</span></span>
-        <span class="tv-word func"><span class="w-gk">ἐν</span><span class="w-pr">엔</span></span>
-        <span class="tv-word func"><span class="w-gk">αὐτῷ</span><span class="w-pr">아우토</span></span>
-      </div>
+        <!-- לְשֵׁמַע (접두어 לְ + שֵׁמַע) -->
+        <div class="tv-wbox func">
+          <div class="tv-wbox-heb">לְשֵׁמַע</div>
+          <div class="tv-wbox-pron">레-쉐마</div>
+          <div class="tv-wbox-kr">귀의 들음으로</div>
+          <div class="tv-wbox-en">by the hearing of</div>
+        </div>
 
-      <!-- 줄 3: οὗτος φέρει καρπὸν πολύν -->
-      <div class="tv-greek-line">
-        <span class="tv-word func"><span class="w-gk">οὗτος</span><span class="w-pr">후토스</span></span>
-        <span class="tv-word key" onclick="tvShowWord('pherei')"><span class="w-gk">φέρει</span><span class="w-pr">페레이</span></span>
-        <span class="tv-word key" onclick="tvShowWord('karpon')"><span class="w-gk">καρπὸν</span><span class="w-pr">카르폰</span></span>
-        <span class="tv-word func"><span class="w-gk">πολύν</span><span class="w-pr">폴륀</span></span>
-        <span class="tv-punct">.</span>
-      </div>
+        <!-- אֹזֶן -->
+        <div class="tv-wbox key" onclick="tvShowWord('ozen')">
+          <div class="tv-wbox-heb">אֹזֶן</div>
+          <div class="tv-wbox-pron">오젠</div>
+          <div class="tv-wbox-kr">귀</div>
+          <div class="tv-wbox-en">the ear</div>
+        </div>
+
+        <!-- שְׁמַעְתִּיךָ -->
+        <div class="tv-wbox key" onclick="tvShowWord('shamati')">
+          <div class="tv-wbox-heb">שְׁמַעְתִּיךָ</div>
+          <div class="tv-wbox-pron">쉐마티카</div>
+          <div class="tv-wbox-kr">내가 당신을 들었으나</div>
+          <div class="tv-wbox-en">I had heard of You</div>
+        </div>
+
+        <!-- וְעַתָּה -->
+        <div class="tv-wbox key" onclick="tvShowWord('veatta')">
+          <div class="tv-wbox-heb">וְעַתָּה</div>
+          <div class="tv-wbox-pron">베아타</div>
+          <div class="tv-wbox-kr">그러나 이제는</div>
+          <div class="tv-wbox-en">but now</div>
+        </div>
+
+        <!-- עֵינִי -->
+        <div class="tv-wbox key" onclick="tvShowWord('eini')">
+          <div class="tv-wbox-heb">עֵינִי</div>
+          <div class="tv-wbox-pron">에이니</div>
+          <div class="tv-wbox-kr">나의 눈이</div>
+          <div class="tv-wbox-en">my eye</div>
+        </div>
+
+        <!-- רָאָתְךָ -->
+        <div class="tv-wbox key" onclick="tvShowWord('raatka')">
+          <div class="tv-wbox-heb">רָאָתְךָ</div>
+          <div class="tv-wbox-pron">라아트카</div>
+          <div class="tv-wbox-kr">주님을 뵈었습니다</div>
+          <div class="tv-wbox-en">has seen You</div>
+        </div>
+
+      </div><!-- /.tv-heb-grid (v.5) -->
+
+      <hr class="tv-heb-sep">
+
+      <!-- 욥 42:6 -->
+      <div class="tv-heb-verse-label">욥기 42:6 · Job 42:6</div>
+      <div class="tv-heb-grid">
+
+        <!-- עַל־כֵּן -->
+        <div class="tv-wbox key" onclick="tvShowWord('alkken')">
+          <div class="tv-wbox-heb">עַל־כֵּן</div>
+          <div class="tv-wbox-pron">알-켄</div>
+          <div class="tv-wbox-kr">그러기에</div>
+          <div class="tv-wbox-en">therefore</div>
+        </div>
+
+        <!-- אֶמְאַס -->
+        <div class="tv-wbox key" onclick="tvShowWord('emas')">
+          <div class="tv-wbox-heb">אֶמְאַס</div>
+          <div class="tv-wbox-pron">에마스</div>
+          <div class="tv-wbox-kr">제 자신을 혐오하며</div>
+          <div class="tv-wbox-en">I abhor myself</div>
+        </div>
+
+        <!-- וְנִחַמְתִּי -->
+        <div class="tv-wbox key" onclick="tvShowWord('venikhamti')">
+          <div class="tv-wbox-heb">וְנִחַמְתִּי</div>
+          <div class="tv-wbox-pron">베니함티</div>
+          <div class="tv-wbox-kr">회개합니다</div>
+          <div class="tv-wbox-en">and I repent</div>
+        </div>
+
+        <!-- עַל (전치사) -->
+        <div class="tv-wbox func">
+          <div class="tv-wbox-heb">עַל</div>
+          <div class="tv-wbox-pron">알</div>
+          <div class="tv-wbox-kr">가운데서</div>
+          <div class="tv-wbox-en">in</div>
+        </div>
+
+        <!-- עָפָר -->
+        <div class="tv-wbox key" onclick="tvShowWord('afar')">
+          <div class="tv-wbox-heb">עָפָר</div>
+          <div class="tv-wbox-pron">아파르</div>
+          <div class="tv-wbox-kr">티끌</div>
+          <div class="tv-wbox-en">dust</div>
+        </div>
+
+        <!-- וָאֵפֶר -->
+        <div class="tv-wbox key" onclick="tvShowWord('efer')">
+          <div class="tv-wbox-heb">וָאֵפֶר</div>
+          <div class="tv-wbox-pron">바에페르</div>
+          <div class="tv-wbox-kr">그리고 재</div>
+          <div class="tv-wbox-en">and ashes</div>
+        </div>
+
+      </div><!-- /.tv-heb-grid (v.6) -->
     </div>
 
     <!-- 범례 -->
     <div class="tv-legend">
-      <span class="tv-legend-item"><span class="tv-legend-dot key"></span>중요 단어 (클릭 가능)</span>
-      <span class="tv-legend-item"><span class="tv-legend-dot func"></span>관사 · 대명사 · 전치사</span>
+      <span class="tv-legend-item"><span class="tv-legend-dot key"></span>주요 단어 — 클릭하면 사전 팝업</span>
+      <span class="tv-legend-item"><span class="tv-legend-dot func"></span>접두사 · 전치사 · 조사</span>
+      <span class="tv-legend-item" style="color:var(--ink-mute);font-size:0.72rem;">각 박스: 히브리어 원문 · 발음 · 한국어 · 영어</span>
     </div>
 
     <!-- 구조 요약 -->
     <div class="tv-summary">
-      <div class="tv-summary-title">Structure · 구조의 핵심</div>
-      <div class="tv-summary-text">
-        주 예수님께서 사용하신 <b>"나는 …이다(ἐγώ εἰμι)" 선언문</b>입니다. 이는 요한복음 1:4의 "그분 안에 생명이 있었다"와 결합될 때, <b>그리스도께서 곧 생명나무</b>이심을 계시합니다. 한 면에서 그분은 <b>나무(ἄμπελος, 포도나무)</b>이시고, 또 다른 면에서 <b>생명(ζωή)</b> 그 자체이십니다. 그러므로 창세기 2장의 생명나무와 신약의 그리스도는 하나로 연결됩니다 — 음식의 형태로 우리에게 오셔서 자신을 분배하시는 분.
+      <div class="tv-summary-header">
+        <div class="tv-summary-header-symbol">∴</div>
+        <div class="tv-summary-title">Structure · 구조의 핵심</div>
       </div>
+      <div class="tv-summary-body">
+
+        <!-- 행 1: 42:5의 대칭 구조 -->
+        <div class="tv-struct-contrast">
+          <div class="tv-struct-before">
+            <span class="label">과거 · 42:5a</span>
+            <span class="word">귀로 들었다 <em>(שָׁמַע)</em></span>
+            <span style="font-size:0.78rem;color:var(--ink-mute);">간접 지식 — 하나님에 <i>대해</i> 앎</span>
+          </div>
+          <div class="tv-struct-arrow">→</div>
+          <div class="tv-struct-after">
+            <span class="label">이제 · 42:5b</span>
+            <span class="word">눈으로 보았다 <em>(רָאָה)</em></span>
+            <span style="font-size:0.78rem;color:var(--ink-mute);">직접 경험 — 하나님을 <i>친히</i> 만남</span>
+          </div>
+        </div>
+
+        <!-- 행 2: 전환점 וְעַתָּה -->
+        <div class="tv-struct-row">
+          <div class="tv-struct-label">전환점<br>42:5</div>
+          <div class="tv-struct-content">
+            <b>וְעַתָּה</b> <em>베아타 — "그러나 이제는"</em><br>
+            이 두 단어가 욥의 전 생애를 둘로 가릅니다. 욥기 1–41장은 모두 "귀"의 세계였고, 42:5b부터는 "눈"의 세계입니다. 하나님을 귀로만 아는 것과 눈으로 보는 것 사이의 거리가 욥이 통과해야 했던 고난 전체의 길이입니다.
+          </div>
+        </div>
+
+        <!-- 행 3: 42:6의 두 동사 -->
+        <div class="tv-struct-row">
+          <div class="tv-struct-label">응답<br>42:6</div>
+          <div class="tv-struct-content">
+            <b>אֶמְאַס</b> <em>에마스</em> — 목적어 없이 "내가 철회한다"<br>
+            자기 자신만이 아니라 <b>자기의 논리·주장 전체</b>를 내려놓는 행위.<br><br>
+            <b>וְנִחַמְתִּי</b> <em>베니함티</em> — 니팔(재귀) 완료형 "내가 돌이켜졌다"<br>
+            나 스스로 돌이키되, 동시에 신현(神現)에 의해 <b>변화를 받은</b> 상태.
+          </div>
+        </div>
+
+        <!-- 결론 -->
+        <div class="tv-struct-conclusion">
+          욥의 고난은 "귀"를 "눈"으로 바꾸는 과정이었습니다.<br>
+          하나님을 <b>직접 만날 때</b>, 선악의 논리는 저절로 무너지고 — <b>생명나무의 자리</b>로 들어서게 됩니다.
+        </div>
+
+      </div><!-- /.tv-summary-body -->
     </div>
   </section>
 
@@ -2272,7 +3475,7 @@ body::before {
     <div class="tv-popup" id="tv-popup">
       <button class="tv-popup-close" onclick="tvClosePopup()" aria-label="닫기">✕</button>
       <div class="tv-popup-header">
-        <div class="tv-popup-kicker">헬라어 단어 사전 · BDAG · Thayer's · Strong's</div>
+        <div class="tv-popup-kicker">히브리어 단어 사전 · BDB · Strong's · BHS</div>
         <div class="tv-popup-meaning" id="tv-popup-meaning"></div>
         <div class="tv-popup-greek" id="tv-popup-greek"></div>
       </div>
@@ -2359,13 +3562,13 @@ body::before {
   </section>
 
 
+
   <!-- ACCORDIONS -->
   <div class="accordion-group">
     <div class="accordion-group-title" id="keypoints-section">핵심 요점 — 욥기의 검은 배경 위에 드러나는 생명나무의 이상</div>
 
     <div class="step-header" data-kicker="Preamble · 서언">왜 욥기가 성경의 검은 배경인가</div>
 
-    <!-- 서언 -->
     <div class="accordion" id="acc-0">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">◎</div>
@@ -2379,33 +3582,22 @@ body::before {
             <div class="verse-text">하나님은 성경에 욥기를 <b>검은 배경</b>으로 넣으셨다. 욥과 그의 친구들의 말을 통해 우리는 비록 그들이 겉으로는 경건한 사람들이었지만, 그들에게 <b>하나님이 부족했고 그들이 하나님을 표현하지 않았음</b>을 본다.</div>
             <div class="verse-text">욥과 그의 친구들은 교통하기 위해서가 아니라 <b>논쟁하기 위해서</b> 모였다. 그들에게는 서로 교통할 만한 하나님께 속한 것이 없었다.</div>
           </div>
-
           <p class="content-text">성경 안에 욥기가 있는 이유는 단순합니다. 하나님은 우리에게 <span class="hl">어떤 사람이 가장 좋은가</span>가 아니라 <span class="hl">어떤 사람이 하나님을 얻었는가</span>를 보여 주기를 원하셨습니다. 욥은 당대 가장 모범적이고 윤리적인 사람이었습니다 — "온전하고 올곧았으며 하나님을 경외하고 악에서 떠난" 사람이었습니다(욥 1:1). 그런데도 왜 성경은 이 사람의 이야기를 <strong>검은 배경</strong>으로 기록했을까요?</p>
-
           <div class="sub-point">
             <div class="sub-point-title">그들에게는 하나님이 부족했다</div>
-            <div class="sub-point-text">
-              욥과 그의 세 친구는 모두 경건하고 도덕적으로 흠 없는 사람들이었습니다. 그러나 그들에게는 <strong>신성한 계시가 없었고, 신성한 생명에 대한 체험이 전혀 없었습니다</strong>. 그들은 <span class="hl">하나님에 대해 많이 말했지만, 하나님을 가진 사람들은 아니었습니다</span>. 그들의 대화는 하나님과 교통하는 대화가 아니라, 옳고 그름을 따지는 논쟁이었습니다.
-            </div>
+            <div class="sub-point-text">욥과 그의 세 친구는 모두 경건하고 도덕적으로 흠 없는 사람들이었습니다. 그러나 그들에게는 <strong>신성한 계시가 없었고, 신성한 생명에 대한 체험이 전혀 없었습니다</strong>. 그들은 <span class="hl">하나님에 대해 많이 말했지만, 하나님을 가진 사람들은 아니었습니다</span>. 그들의 대화는 하나님과 교통하는 대화가 아니라, 옳고 그름을 따지는 논쟁이었습니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">오늘 우리에게 주는 경고</div>
-            <div class="sub-point-text">
-              우리가 경건해도, 도덕적이어도, 심지어 성경 지식이 많아도 — 만일 우리에게 <strong>하나님 자신이 부족하다면</strong>, 우리 역시 욥기의 검은 배경 위에 서 있는 것입니다. 하나님이 원하시는 것은 좋은 사람이 아니라, <span class="hl">하나님을 얻고 하나님을 표현하는 사람</span>입니다.
-            </div>
+            <div class="sub-point-text">우리가 경건해도, 도덕적이어도, 심지어 성경 지식이 많아도 — 만일 우리에게 <strong>하나님 자신이 부족하다면</strong>, 우리 역시 욥기의 검은 배경 위에 서 있는 것입니다. 하나님이 원하시는 것은 좋은 사람이 아니라, <span class="hl">하나님을 얻고 하나님을 표현하는 사람</span>입니다.</div>
           </div>
-
           <p class="content-text">특별집회의 주제는 이러합니다 — <span class="hl">하나님의 의도는 선과 악의 지식나무의 노선 안에 머무는 욥이 아닌, 생명나무의 노선 안에 머무는 욥을 얻으시려는 것</span>이었습니다. 우리도 같은 다룸을 받아야 합니다.</p>
         </div>
       </div>
     </div>
 
-    <div class="step-connector">
-      왜 생명나무인가? 창세기 1-2장에서 <strong>하나님의 영원한 목적과 그 절차</strong>를 먼저 보아야 합니다.
-    </div>
+    <div class="step-connector">왜 생명나무인가? 창세기 1-2장에서 <strong>하나님의 영원한 목적과 그 절차</strong>를 먼저 보아야 합니다.</div>
 
-    <!-- 창 1-2장 목적과 절차 -->
     <div class="accordion" id="acc-purp">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">⊙</div>
@@ -2418,20 +3610,14 @@ body::before {
             <div class="verse-ref">창세기 2:9 / 창 1:26</div>
             <div class="verse-text">[창 2:9] 여호와 하나님은 그 땅에 <b>보기 즐겁고 먹기 좋은</b> 온갖 나무를 자라게 하셨고, 동산 한가운데 있는 <b>생명나무</b>와, <b>선과 악의 지식나무</b>도 자라게 하셨다.</div>
           </div>
-
           <p class="content-text">에덴동산에서 <span class="hl">가장 중요한 항목은 나무들</span>입니다. 성경의 시작과 끝 모두에서 사람이 언급될 때, 나무도 함께 언급됩니다. <strong>사람이 생명을 얻을지 아니면 죽을지, 곧 영원히 살지 아니면 멸망할지는 전적으로 사람이 나무를 어떻게 대하는지에 달려 있습니다</strong>. 그러므로 나무에 관한 사상은 사람의 운명에 있어서 <span class="hl">절대적이자 필수적인 위치</span>를 차지합니다.</p>
-
           <div class="sub-point">
             <div class="sub-point-title">'먹기에 좋은' — 생명에 초점</div>
-            <div class="sub-point-text">
-              창 2:9은 그 나무들이 <strong>"먹기에 좋았다"</strong>고 말합니다. "자재를 산출하기에 좋았다"고 말하지 않는 것에 주목해야 합니다. 창세기의 사상은 <strong>인간의 수고와 성취에 대한 것이 아닙니다</strong>. 창세기 2장의 초점은 <span class="hl">온전히 생명에 맞추어져 있습니다</span>. 나무들이 '먹기에 좋다'고 말한 이유는 — 음식이 생명과 관련되기 때문입니다. 우리는 음식 없이는 살 수 없습니다.
-            </div>
+            <div class="sub-point-text">창 2:9은 그 나무들이 <strong>"먹기에 좋았다"</strong>고 말합니다. "자재를 산출하기에 좋았다"고 말하지 않는 것에 주목해야 합니다. 창세기의 사상은 <strong>인간의 수고와 성취에 대한 것이 아닙니다</strong>. 창세기 2장의 초점은 <span class="hl">온전히 생명에 맞추어져 있습니다</span>. 나무들이 '먹기에 좋다'고 말한 이유는 — 음식이 생명과 관련되기 때문입니다. 우리는 음식 없이는 살 수 없습니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">영원한 목적을 이루시는 세 단계</div>
             <div class="sub-point-text">창세기 2장은 하나님의 절차를 보여 줍니다:</div>
-
             <div class="purpose-stages">
               <div class="purpose-stage">
                 <div class="purpose-stage-num">1</div>
@@ -2456,7 +3642,6 @@ body::before {
               </div>
             </div>
           </div>
-
           <p class="content-text">그러나 하나님은 사람에게 강요하지 않으셨고 <strong>자유 의지</strong>와 <strong>선택의 자유</strong>를 허락하셨습니다. 그래서 두 나무가 <span class="hl">함께</span> 언급됩니다 — 사람이 선택해야 했습니다.</p>
         </div>
       </div>
@@ -2464,7 +3649,6 @@ body::before {
 
     <div class="step-header" data-kicker="Ⅰ · 창 2장 → 계 22장">신성한 계시의 다섯 가지 쌍</div>
 
-    <!-- Ⅰ. 두 나무 -->
     <div class="accordion" id="acc-1">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">Ⅰ</div>
@@ -2478,47 +3662,30 @@ body::before {
             <div class="verse-text">[요 1:4] 그분 안에 <b>생명이 있었으며</b>, 그 생명은 사람들의 빛이었다.</div>
             <div class="verse-text">[요 15:5] 나는 <b>포도나무</b>요, 여러분은 가지들입니다. 그가 내 안에, 내가 그 안에 거하면, 그 사람은 열매를 많이 맺습니다.</div>
           </div>
-
           <p class="content-text">성경은 표징의 책입니다. 창세기 1-2장의 가장 두드러진 한 쌍의 표징이 <span class="hl">두 나무</span>입니다. 그리고 성경 전체는 이 두 나무의 이야기가 어떻게 전개되어 가는지 보여 줍니다.</p>
-
           <div class="sub-point">
             <div class="sub-point-title">생명나무 — 우주의 중심</div>
-            <div class="sub-point-text">
-              생명나무는 <strong>동산 한가운데</strong> 있었습니다. 하나님의 목적에 따르면 <strong>우주의 중심은 땅이고, 땅의 중심은 에덴동산이며, 에덴동산의 중심은 생명나무</strong>입니다. 중심이란 지리적 위치가 아니라 <span class="hl">중요성의 중심</span>입니다. 하나님과 사람 모두에게 이 생명나무보다 더 중심적이고 중요한 것은 없습니다. 그래서 동산에 두어진 사람이 생명나무 앞에 서 있는 모습은 <strong>매우 의미심장</strong>합니다.
-            </div>
+            <div class="sub-point-text">생명나무는 <strong>동산 한가운데</strong> 있었습니다. 하나님의 목적에 따르면 <strong>우주의 중심은 땅이고, 땅의 중심은 에덴동산이며, 에덴동산의 중심은 생명나무</strong>입니다. 중심이란 지리적 위치가 아니라 <span class="hl">중요성의 중심</span>입니다. 하나님과 사람 모두에게 이 생명나무보다 더 중심적이고 중요한 것은 없습니다. 그래서 동산에 두어진 사람이 생명나무 앞에 서 있는 모습은 <strong>매우 의미심장</strong>합니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">생명나무 = 그리스도 안의 삼일 하나님</div>
-            <div class="sub-point-text">
-              동산의 생명나무는 하나님께서 <strong>음식의 형태로 우리의 생명이 되고자 하시는 그분의 의도</strong>를 보여 줍니다. 요한복음 1장 14절에 따르면 어느 날 하나님은 육체로 오셨고, "그분 안에 생명이 있었다"(요 1:4)고 말합니다. 예수님 자신이 "나는 생명이다"(요 14:6)라고 하셨고, 요 15장에서 "나는 참포도나무"라고 하셨습니다. <span class="hl">그분 자신이 생명나무</span>이십니다.
-            </div>
+            <div class="sub-point-text">동산의 생명나무는 하나님께서 <strong>음식의 형태로 우리의 생명이 되고자 하시는 그분의 의도</strong>를 보여 줍니다. 요한복음 1장 14절에 따르면 어느 날 하나님은 육체로 오셨고, "그분 안에 생명이 있었다"(요 1:4)고 말합니다. 예수님 자신이 "나는 생명이다"(요 14:6)라고 하셨고, 요 15장에서 "나는 참포도나무"라고 하셨습니다. <span class="hl">그분 자신이 생명나무</span>이십니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">그 나무는 얼마나 높았을까</div>
-            <div class="sub-point-text">
-              생명나무의 높이는 아마 우리보다 크지 않았을 것입니다. 만일 거대했다면 아담과 하와가 그 열매에 손을 댈 수 없었을 것이며, 그들에게는 사다리도 없었습니다. 전능하신 하나님으로서 예수님은 높은 분이시지만, <strong>우리에게 음식으로 오실 때 그분은 낮은 분</strong>이십니다. 떡이시며, 심지어 <span class="hl">상 밑에 떨어진 부스러기</span>이십니다(마 15:21-27). 우리가 먹는 것은 무엇이든 우리보다 작아야 합니다. 그래서 예수님은 생명의 떡이 되시어 우리에게 오셨습니다.
-            </div>
+            <div class="sub-point-text">생명나무의 높이는 아마 우리보다 크지 않았을 것입니다. 만일 거대했다면 아담과 하와가 그 열매에 손을 댈 수 없었을 것이며, 그들에게는 사다리도 없었습니다. 전능하신 하나님으로서 예수님은 높은 분이시지만, <strong>우리에게 음식으로 오실 때 그분은 낮은 분</strong>이십니다. 떡이시며, 심지어 <span class="hl">상 밑에 떨어진 부스러기</span>이십니다(마 15:21-27). 우리가 먹는 것은 무엇이든 우리보다 작아야 합니다. 그래서 예수님은 생명의 떡이 되시어 우리에게 오셨습니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">선악나무 — 사탄의 상징</div>
-            <div class="sub-point-text">
-              선과 악의 지식나무는 <strong>사람에게 죽음이 된 악한 자 사탄 마귀</strong>를 상징합니다(창 2:17). 이 나무가 '죽음나무'가 아니라 '선과 악의 지식나무'로 불리는 것이 중요합니다 — <span class="hl">신성한 계시에 따르면 지식과 선과 악이 모두 사탄</span>입니다. <strong>하나님은 단순하시지만, 사탄은 복잡</strong>합니다. 두 번째 나무에는 지식과 선과 악이 모두 포함되어 있으며, 오늘날의 텔레비전·신문·잡지들은 명백히 이 나무의 가지들입니다.
-            </div>
+            <div class="sub-point-text">선과 악의 지식나무는 <strong>사람에게 죽음이 된 악한 자 사탄 마귀</strong>를 상징합니다(창 2:17). 이 나무가 '죽음나무'가 아니라 '선과 악의 지식나무'로 불리는 것이 중요합니다 — <span class="hl">신성한 계시에 따르면 지식과 선과 악이 모두 사탄</span>입니다. <strong>하나님은 단순하시지만, 사탄은 복잡</strong>합니다. 두 번째 나무에는 지식과 선과 악이 모두 포함되어 있으며, 오늘날의 텔레비전·신문·잡지들은 명백히 이 나무의 가지들입니다.</div>
           </div>
-
           <p class="content-text">두 나무는 자재 산출이 아니라 <strong>사람이 그 열매를 먹기 위한 것</strong>입니다. 생명나무의 열매는 <span class="hl">양분을 주고 생명을 분배하는 음식</span>이지만, 선악나무의 열매는 <span class="hl">사람을 죽이는 독</span>입니다.</p>
         </div>
       </div>
     </div>
 
-    <div class="step-connector">
-      두 나무는 표징일 뿐입니다. 더 중요한 것은 그것이 산출하는 <strong>두 근원</strong>과 그로 인한 <strong>두 왕국</strong>입니다.
-    </div>
+    <div class="step-connector">두 나무는 표징일 뿐입니다. 더 중요한 것은 그것이 산출하는 <strong>두 근원</strong>과 그로 인한 <strong>두 왕국</strong>입니다.</div>
 
-    <!-- Ⅱ. 두 근원 -->
     <div class="accordion" id="acc-2">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">Ⅱ</div>
@@ -2532,9 +3699,7 @@ body::before {
             <div class="verse-text">[요 8:44] 너희는 <b>너희 아버지인 마귀</b>에게서 난 자들이며, 너희 아버지의 욕망을 행하기를 원하느니라.</div>
             <div class="verse-text">[골 1:13] 그분께서 우리를 어둠의 권세에서 건져 내시어, <b>그분의 사랑하시는 아들의 왕국으로 옮겨 주셨습니다.</b></div>
           </div>
-
           <p class="content-text">두 나무는 두 부류 사람들의 <span class="hl">두 근원</span>이 되며, 이 두 근원은 이 땅의 <span class="hl">두 왕국</span>을 산출합니다.</p>
-
           <div class="compare-table">
             <div class="compare-row header">
               <div>생명나무의 근원</div>
@@ -2557,16 +3722,13 @@ body::before {
               <div class="compare-cell death"><div class="nm">죽음 · 독 · 멸망</div><div class="mn">사람을 죽이는 독</div></div>
             </div>
           </div>
-
           <p class="content-text">거듭나기 전에 우리는 모두 선악나무의 근원 안에 있었습니다. <strong>거듭남은 근원의 이동</strong>입니다 — 어둠의 권세에서 아들의 왕국으로 옮기심을 받은 것입니다(골 1:13). 이제 우리는 생명나무의 근원에 속한 사람들이며, 우리 삶은 이 사실을 드러내야 합니다.</p>
         </div>
       </div>
     </div>
 
-
     <div class="section-connector">· · ·</div>
 
-    <!-- Ⅲ. 두 길 -->
     <div class="accordion" id="acc-3">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">Ⅲ</div>
@@ -2580,13 +3742,10 @@ body::before {
             <div class="verse-text">[13] 좁은 문을 통해 들어가십시오. <b>파멸로 이끄는 문은 넓고 그 길이 널찍하여</b> 그리로 들어가는 사람이 많으며,</div>
             <div class="verse-text">[14] <b>생명으로 이끄는 문은 좁고 그 길이 비좁아</b> 찾는 사람이 적습니다.</div>
           </div>
-
           <p class="content-text">두 근원은 두 노선을 산출하며, 이것이 <span class="hl">두 길</span>이 됩니다. 이 두 길은 사람들을 하나님께서 정하신 서로 다른 두 완결로 인도합니다.</p>
-
           <div class="sub-point">
             <div class="sub-point-title">첫 번째 길 — 생명의 길 (비좁은 길)</div>
-            <div class="sub-point-text">
-              이 길은 신약에서 여러 이름으로 불립니다:<br><br>
+            <div class="sub-point-text">이 길은 신약에서 여러 이름으로 불립니다:<br><br>
               <span class="result-tag">비좁은 길 (마 7:14)</span>
               <span class="result-tag">그 길 (행 9:2)</span>
               <span class="result-tag">구원의 길 (행 16:17)</span>
@@ -2594,34 +3753,23 @@ body::before {
               <span class="result-tag">하나님의 길 (행 18:26)</span>
               <span class="result-tag">바른 길 (벧후 2:15)</span>
               <span class="result-tag">의의 길 (벧후 2:21)</span><br><br>
-              이 생명의 길은 사람이 하나님을 찾고, 얻고, <strong>영원한 생명 안에서 공급으로 누리게</strong> 합니다. 사람이 하나님에게서 나서 그분의 생명과 본성을 얻고, <span class="hl">변화되어 그분의 영광스러운 형상을 이루며</span>, 영광 안에서 <strong>가장 충만한 정도로 그분을 얻고 그분께 참여</strong>하게 합니다.
-            </div>
+              이 생명의 길은 사람이 하나님을 찾고, 얻고, <strong>영원한 생명 안에서 공급으로 누리게</strong> 합니다. 사람이 하나님에게서 나서 그분의 생명과 본성을 얻고, <span class="hl">변화되어 그분의 영광스러운 형상을 이루며</span>, 영광 안에서 <strong>가장 충만한 정도로 그분을 얻고 그분께 참여</strong>하게 합니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">생명의 길에 있는 사람들</div>
-            <div class="sub-point-text">
-              <strong>아벨, 셋, 에노스, 에녹, 노아, 아브라함, 이삭, 야곱, 모세, 다윗, 사무엘, 모든 신언자들, 욥, 신약의 모든 믿는 이들</strong>(히 11:39-40). <span class="hl">욥을 다루신 하나님의 목적</span>은 그가 충만한 정도로 하나님을 얻을 수 있도록, 그를 선악의 길에서 이러한 생명의 길로 <strong>돌이키게 하시는 것</strong>이었습니다.
-            </div>
+            <div class="sub-point-text"><strong>아벨, 셋, 에노스, 에녹, 노아, 아브라함, 이삭, 야곱, 모세, 다윗, 사무엘, 모든 신언자들, 욥, 신약의 모든 믿는 이들</strong>(히 11:39-40). <span class="hl">욥을 다루신 하나님의 목적</span>은 그가 충만한 정도로 하나님을 얻을 수 있도록, 그를 선악의 길에서 이러한 생명의 길로 <strong>돌이키게 하시는 것</strong>이었습니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">두 번째 길 — 죽음과 선악의 길 (널찍한 길)</div>
-            <div class="sub-point-text">
-              사탄을 따라가 <strong>사탄의 자녀</strong>가 되고, 그의 동반자가 되어 그의 영원한 멸망 가운데 함께 있게 되는 길입니다. 이 길에는 <strong>가인, 라멕, 니므롯, 고라, 발람, 사울, 압살롬, 적그리스도와 그 추종자들</strong>, 그리고 모든 불신자들이 있습니다.
-            </div>
+            <div class="sub-point-text">사탄을 따라가 <strong>사탄의 자녀</strong>가 되고, 그의 동반자가 되어 그의 영원한 멸망 가운데 함께 있게 되는 길입니다. 이 길에는 <strong>가인, 라멕, 니므롯, 고라, 발람, 사울, 압살롬, 적그리스도와 그 추종자들</strong>, 그리고 모든 불신자들이 있습니다.</div>
           </div>
-
           <p class="content-text">우리의 실제적 체험 안에서 우리는 종종 <span class="hl">한 발은 생명나무의 노선에, 다른 한 발은 선악나무의 노선에</span> 두고 있습니다. 특히 가정생활, 부부간의 대화에서 그러합니다. <strong>우리는 이 두 길 사이에서 머뭇거리며 오락가락할 수 있습니다. 중립 지대는 없습니다</strong>.</p>
         </div>
       </div>
     </div>
 
-    <div class="step-connector">
-      두 길은 각각 하나의 원칙을 형성합니다. <strong>두 원칙</strong>은 우리가 하나님과 맺는 실제 관계를 통제·지배·규제합니다.
-    </div>
+    <div class="step-connector">두 길은 각각 하나의 원칙을 형성합니다. <strong>두 원칙</strong>은 우리가 하나님과 맺는 실제 관계를 통제·지배·규제합니다.</div>
 
-    <!-- Ⅳ. 두 원칙 -->
     <div class="accordion" id="acc-4">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">Ⅳ</div>
@@ -2634,25 +3782,16 @@ body::before {
             <div class="verse-ref">갈 2:20 / 창 4:3-4 / 렘 17:5</div>
             <div class="verse-text">[갈 2:20] 나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, <b>그리스도께서 내 안에 사십니다</b>. 이제 내가 육체 안에서 사는 생명은 나를 사랑하시어 나를 위하여 자신을 버리신 하나님의 아들의 믿음 안에서 사는 생명입니다.</div>
           </div>
-
           <p class="content-text">두 길은 두 원칙을 형성합니다. 이 두 원칙은 <span class="hl">사람들이 하나님과 맺는 관계를 통제하고 지배하고 규제하는</span> 두 기준입니다.</p>
-
           <div class="sub-point">
             <div class="sub-point-title">첫 번째 원칙 — 생명의 원칙 (하나님을 의지함)</div>
-            <div class="sub-point-text">
-              <strong>아벨이 양 떼의 첫 새끼로 드린 것</strong>(창 4:4)처럼, 이 원칙은 하나님을 의지합니다. 사람들은 이 원칙을 따라 생명의 길 안에서 하나님을 접촉하며, 한 단계 한 단계 <strong>하나님을 찾고 얻으며 소유하고 누려</strong> 결국 <span class="hl">가장 충만한 정도</span>에 이르게 됩니다. 이것이 바로 욥을 다루신 하나님의 목적이었습니다.
-            </div>
+            <div class="sub-point-text"><strong>아벨이 양 떼의 첫 새끼로 드린 것</strong>(창 4:4)처럼, 이 원칙은 하나님을 의지합니다. 사람들은 이 원칙을 따라 생명의 길 안에서 하나님을 접촉하며, 한 단계 한 단계 <strong>하나님을 찾고 얻으며 소유하고 누려</strong> 결국 <span class="hl">가장 충만한 정도</span>에 이르게 됩니다. 이것이 바로 욥을 다루신 하나님의 목적이었습니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">두 번째 원칙 — 죽음과 선악의 원칙 (하나님에게서 독립함)</div>
-            <div class="sub-point-text">
-              <strong>가인이 자신의 땅의 소산을 가져온 것</strong>(창 4:3)처럼, 이 원칙은 하나님에게서 독립합니다. 이 원칙 안에서 우리는 죽음의 길을 걷게 되고, 의식적으로든 무의식적으로든 <strong>사탄을 따르게 됩니다</strong>. 우리는 <span class="hl">선악의 영역으로부터 구출받아야</span> 합니다.
-            </div>
+            <div class="sub-point-text"><strong>가인이 자신의 땅의 소산을 가져온 것</strong>(창 4:3)처럼, 이 원칙은 하나님에게서 독립합니다. 이 원칙 안에서 우리는 죽음의 길을 걷게 되고, 의식적으로든 무의식적으로든 <strong>사탄을 따르게 됩니다</strong>. 우리는 <span class="hl">선악의 영역으로부터 구출받아야</span> 합니다.</div>
           </div>
-
           <p class="content-text">우리는 거듭나기 전에는 모두 선악나무 노선 위에 있었습니다. 이제 우리는 거듭났고, 그리스도께서 생명나무로서 우리 안에 심기셨습니다. 그러나 실제 상태는 어떻습니까? <span class="hl">우리는 종종 선악의 지식의 노선 안에 머물러 있습니다</span>. 우리는 강하게 다시 상기할 필요가 있습니다 — 갈 2:20의 "이제는 더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다."</p>
-
           <p class="content-text">우리는 <strong>생명나무의 원칙 안으로 완전히 옮겨져야 하며, 선악의 지식의 원칙에서 완전히 구원받아 생명의 원칙 안으로 전환되어야 합니다</strong>. 그리하여 우리가 <span class="hl">그리스도를 살고, 그리스도를 나타내며, 하나님께서 사람에게 가지신 영원한 목적을 성취</span>해야 합니다.</p>
         </div>
       </div>
@@ -2660,7 +3799,6 @@ body::before {
 
     <div class="section-connector">· · ·</div>
 
-    <!-- Ⅴ. 두 완결 -->
     <div class="accordion" id="acc-5">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">Ⅴ</div>
@@ -2674,9 +3812,7 @@ body::before {
             <div class="verse-text">[계 22:1-2] 또 그 천사는 나에게 <b>수정처럼 빛나는 생명수의 강</b>을 보여 주었습니다. 그 강은 <b>하나님과 어린양의 보좌</b>에서 흘러나와 그 성의 길 가운데로 흐르고 있었습니다. 강의 이쪽과 저쪽에 <b>생명나무</b>가 있어서 …</div>
             <div class="verse-text">[계 22:14] <b>생명나무에 이르는 권리</b>를 얻고 문들을 통하여 그 성안으로 들어가도록 자기의 겉옷을 빠는 사람들은 복이 있다.</div>
           </div>
-
           <p class="content-text">두 길의 최종 결과가 <span class="hl">두 완결</span>입니다. 이것은 하나님과의 관계에서 사람들이 취한 두 길의 <strong>최종 결과</strong>입니다. 두 완결에는 각각 <span class="hl">놀라운 의미</span>가 있습니다.</p>
-
           <div class="two-path-scene">
             <div class="path-box life-box">
               <div class="path-box-title red">새 예루살렘</div>
@@ -2688,35 +3824,22 @@ body::before {
               <div class="path-box-desc">사탄의 영원한 감옥<br>유황불 못<br>(마 5:22, 25:41, 계 21:8, 22:15)</div>
             </div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">새 예루살렘 — 생명의 길의 종착지</div>
-            <div class="sub-point-text">
-              하나님의 생명의 길의 종착지는 <strong>하나님의 영원한 거처이자 생명수의 성인 새 예루살렘</strong>입니다(계 21:2, 11, 23, 22:1-2, 14). 새 예루살렘은 하나님의 갈망에 따라 하나님의 기쁨을 위해 생명의 길 안에서 행하는 모든 이들에게 <span class="hl">가장 높고 영광스러운 목표</span>이며, 그곳에서 그들은 영원토록 하나님과 함께 <strong>영원한 생명이신 그분의 모든 복에 참여</strong>합니다.
-            </div>
+            <div class="sub-point-text">하나님의 생명의 길의 종착지는 <strong>하나님의 영원한 거처이자 생명수의 성인 새 예루살렘</strong>입니다(계 21:2, 11, 23, 22:1-2, 14). 새 예루살렘은 하나님의 갈망에 따라 하나님의 기쁨을 위해 생명의 길 안에서 행하는 모든 이들에게 <span class="hl">가장 높고 영광스러운 목표</span>이며, 그곳에서 그들은 영원토록 하나님과 함께 <strong>영원한 생명이신 그분의 모든 복에 참여</strong>합니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">가장 영광스러운 완결 = <u>역동적 격려제</u></div>
-            <div class="sub-point-text">
-              하나님의 생명의 길의 최상의 완결이자 가장 영광스러운 완결인 새 예루살렘은, 우리가 <strong>하나님의 사랑과 은혜에 따라 가장 충만한 정도로 하나님을 얻을 때까지 그분을 추구할 수 있도록 하는</strong> <span class="hl">역동적인 격려제</span>입니다. 이것이 단순한 천국이 아니라 <strong>추구의 목표</strong>로 우리 앞에 놓여 있다는 사실은 놀랍습니다.
-            </div>
+            <div class="sub-point-text">하나님의 생명의 길의 최상의 완결이자 가장 영광스러운 완결인 새 예루살렘은, 우리가 <strong>하나님의 사랑과 은혜에 따라 가장 충만한 정도로 하나님을 얻을 때까지 그분을 추구할 수 있도록 하는</strong> <span class="hl">역동적인 격려제</span>입니다. 이것이 단순한 천국이 아니라 <strong>추구의 목표</strong>로 우리 앞에 놓여 있다는 사실은 놀랍습니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">불 못 — 죽음과 선악의 길의 종착지</div>
-            <div class="sub-point-text">
-              죽음과 선악의 길의 종착지는 <strong>사탄이 영원히 갇혀 있을 감옥인 유황 불 못 곧 게헨나 불</strong>입니다(마 5:22). 그곳은 사탄의 악한 책략에 따라 죽음의 길을 취한 모든 이들에게 <span class="hl">최악이자 가장 비참한 완결</span>로서, 그들은 사탄과 함께 <strong>영원한 심판과 영원한 멸망</strong>에 참여할 것입니다(요 16:11, 마 25:41, 계 21:8, 27, 22:15).
-            </div>
+            <div class="sub-point-text">죽음과 선악의 길의 종착지는 <strong>사탄이 영원히 갇혀 있을 감옥인 유황 불 못 곧 게헨나 불</strong>입니다(마 5:22). 그곳은 사탄의 악한 책략에 따라 죽음의 길을 취한 모든 이들에게 <span class="hl">최악이자 가장 비참한 완결</span>로서, 그들은 사탄과 함께 <strong>영원한 심판과 영원한 멸망</strong>에 참여할 것입니다(요 16:11, 마 25:41, 계 21:8, 27, 22:15).</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">가장 비참한 완결 = <u>엄중한 경고</u></div>
-            <div class="sub-point-text">
-              사탄의 길 곧 죽음과 선악의 길의 최악의 완결이자 가장 비참한 완결인 불 못은, <strong>사탄을 따라 하나님의 경륜을 반대하는 길을 가고 있는 사람들에게 주어지는</strong> <span class="hl">엄중한 경고</span>입니다. 그들은 이 경고에 따라서와 하나님의 의와 정의에 따라서 사탄이 받게 될 영원한 심판과 영원한 멸망에서 벗어나기 위해, <strong>죽음의 길에서 하나님의 생명의 길로 돌이켜야 합니다</strong>.
-            </div>
+            <div class="sub-point-text">사탄의 길 곧 죽음과 선악의 길의 최악의 완결이자 가장 비참한 완결인 불 못은, <strong>사탄을 따라 하나님의 경륜을 반대하는 길을 가고 있는 사람들에게 주어지는</strong> <span class="hl">엄중한 경고</span>입니다. 그들은 이 경고에 따라서와 하나님의 의와 정의에 따라서 사탄이 받게 될 영원한 심판과 영원한 멸망에서 벗어나기 위해, <strong>죽음의 길에서 하나님의 생명의 길로 돌이켜야 합니다</strong>.</div>
           </div>
-
           <p class="content-text">그러므로 창세기 2장에서 두 나무가 사람 앞에 놓였고, 요한계시록 21-22장에서 그 두 노선이 취한 결말이 드러납니다. <span class="hl">각 근원은 하나의 노선을 가져오고, 그 노선은 하나의 길이 되며, 그 길은 하나의 결론으로 완결됩니다</span>. 그러나 거룩한 성에는 <strong>오직 한 나무, 생명나무만</strong>이 있습니다 — 이것이 하나님의 최종 의도입니다.</p>
         </div>
       </div>
@@ -2724,7 +3847,6 @@ body::before {
 
     <div class="step-header" data-kicker="Ⅱ · 욥기 적용">욥에 대한 하나님의 의도 — 여섯 가지 목적</div>
 
-    <!-- 욥에 대한 하나님의 의도 6가지 -->
     <div class="accordion" id="acc-6">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">✦</div>
@@ -2738,9 +3860,7 @@ body::before {
             <div class="verse-text">[욥 1:1] 우스 땅에 욥이라는 이름을 가진 한 사람이 있었는데, 이 사람은 <b>온전하고 올곧았으며 하나님을 경외하고 악에서 떠난 사람</b>이었다.</div>
             <div class="verse-text">[욥 42:5-6] 제가 주님에 대해 귀로만 들어 왔으나 / <b>이제는 제 눈으로 주님을 뵈었습니다</b>. / 그러기에 <b>제 자신을 혐오하며 / 티끌과 재 가운데서 회개합니다</b>.</div>
           </div>
-
           <p class="content-text">욥기는 한 의로운 사람의 수난 이야기가 아닙니다. 이것은 하나님께서 <span class="hl">사랑하는 한 사람을 어떻게 생명나무의 노선으로 끌어오시는가</span>를 보여 주는 계시입니다. 하나님께서 욥을 다루신 데에는 여섯 가지 구체적인 의도가 있었습니다.</p>
-
           <div class="intent-grid">
             <div class="intent-card">
               <div class="intent-num">1</div>
@@ -2767,23 +3887,17 @@ body::before {
               <div class="intent-body"><strong>자기만족에서 구출 (Deliverance from Self-Satisfaction)</strong> — 하나님의 의도는 <b>인간 미덕들로 인해 자기만족에 빠진 욥에게서 그것들을 벗겨 내심으로써 욥이 오직 하나님 자신만을 추구하고 얻도록 하시려는 것</b>이었다.</div>
             </div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">핵심 원리 — 하나님을 더 사랑할수록, 자신을 더 혐오하게 됨</div>
-            <div class="sub-point-text">
-              욥 42:5-6에서 욥은 말했습니다: "제가 주님에 대해 귀로만 들어 왔으나 이제는 <strong>제 눈으로 주님을 뵈었습니다</strong>. 그러기에 <strong>제 자신을 혐오하며</strong> 티끌과 재 가운데서 회개합니다." <span class="hl">우리가 하나님을 더 사랑할수록, 하나님을 더 볼수록 우리는 자신을 더 혐오하게 됩니다. 우리가 하나님을 더 알수록, 우리는 자신을 더 부인하게 됩니다</span>.
-            </div>
+            <div class="sub-point-text">욥 42:5-6에서 욥은 말했습니다: "제가 주님에 대해 귀로만 들어 왔으나 이제는 <strong>제 눈으로 주님을 뵈었습니다</strong>. 그러기에 <strong>제 자신을 혐오하며</strong> 티끌과 재 가운데서 회개합니다." <span class="hl">우리가 하나님을 더 사랑할수록, 하나님을 더 볼수록 우리는 자신을 더 혐오하게 됩니다. 우리가 하나님을 더 알수록, 우리는 자신을 더 부인하게 됩니다</span>.</div>
           </div>
-
           <p class="content-text">욥과 그의 세 친구(엘리바스·빌닷·소발)는 모두 <strong>선과 악의 지식나무의 영역</strong>에 있었습니다. 그들에게 필요한 것은 <span class="hl">올바른 영역, 곧 생명나무의 영역으로 전환되는 것</span>이었습니다. 하나님께서 하셔야 했던 첫 번째 일은 욥을 벗겨 내시고 소모시키시고 허무심으로써, <strong>그를 고난을 받는 사람으로서 아무것도 아닌 존재가 되게 하시는 것</strong>이었습니다. 이것은 <span class="hl">하나님께서 욥을 신성한 삼일성으로 재건축하시는 기초</span>가 되었습니다.</p>
         </div>
       </div>
     </div>
 
-
     <div class="step-header" data-kicker="Ⅲ · 생명나무의 이상">우리는 생명나무의 이상이 필요하다</div>
 
-    <!-- 생명나무의 이상 — 3요소 -->
     <div class="accordion" id="acc-7">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">❖</div>
@@ -2797,61 +3911,44 @@ body::before {
             <div class="verse-text">[행 26:19] 아그립바왕이시여, 그러므로 내가 <b>하늘에 속한 그 이상을 거스르지 않고</b>, …</div>
             <div class="verse-text">[계 3:18] 그래서 나는 너에게 권면한다. … <b>안약을 사서 너의 눈에 발라서 보도록 하여라</b>.</div>
           </div>
-
           <p class="content-text">이상이란 무엇입니까? 이상은 <strong>매우 특별한 광경을 보는 것</strong>입니다 — 영적인 광경을 보는 것입니다. 이 이상을 보기 위해서는 <span class="hl">세 가지 요소</span>가 반드시 필요합니다.</p>
-
           <div class="vision-elements">
             <div class="vision-elem">
               <div class="vision-elem-icon">①</div>
               <div class="vision-elem-body">
                 <div class="vision-elem-title">계시 (Revelation) — 너울이 벗겨짐</div>
-                <div class="vision-elem-desc">
-                  여러분이 보는 것이 <b>계시되어야 합니다</b>. 그렇지 않으면 모든 것이 가려져 있습니다. 성경은 이스라엘 백성이 구약을 읽을 때 <b>너울이 덮여 있어서 보지 못한다</b>고 말합니다(고후 3:14-16). 계시를 얻으려면 그 덮는 너울이 벗겨져야 합니다. 우리의 마음이 하나님께로 돌이킬 때마다 너울이 벗겨집니다.
-                </div>
+                <div class="vision-elem-desc">여러분이 보는 것이 <b>계시되어야 합니다</b>. 그렇지 않으면 모든 것이 가려져 있습니다. 성경은 이스라엘 백성이 구약을 읽을 때 <b>너울이 덮여 있어서 보지 못한다</b>고 말합니다(고후 3:14-16). 계시를 얻으려면 그 덮는 너울이 벗겨져야 합니다. 우리의 마음이 하나님께로 돌이킬 때마다 너울이 벗겨집니다.</div>
               </div>
             </div>
             <div class="vision-elem">
               <div class="vision-elem-icon">②</div>
               <div class="vision-elem-body">
                 <div class="vision-elem-title">빛 (Light) — 위로부터 오는 하나님의 빛</div>
-                <div class="vision-elem-desc">
-                  어둠 속에서는 가려져 있지 않아도 볼 수 없습니다. 이 빛은 자연적인 빛이 아니라 <b>하나님의 빛</b>입니다. 하나님은 참 빛이시며, 참된 것들을 비추셔서 우리가 보게 하십니다. 우리는 <b>위로부터 오는 빛</b>이 필요합니다. 하나님께서 우리를 비추실 때 우리는 보아야 할 것을 보게 됩니다.
-                </div>
+                <div class="vision-elem-desc">어둠 속에서는 가려져 있지 않아도 볼 수 없습니다. 이 빛은 자연적인 빛이 아니라 <b>하나님의 빛</b>입니다. 하나님은 참 빛이시며, 참된 것들을 비추셔서 우리가 보게 하십니다. 우리는 <b>위로부터 오는 빛</b>이 필요합니다. 하나님께서 우리를 비추실 때 우리는 보아야 할 것을 보게 됩니다.</div>
               </div>
             </div>
             <div class="vision-elem">
               <div class="vision-elem-icon">③</div>
               <div class="vision-elem-body">
                 <div class="vision-elem-title">좋은 눈 (Good Eyes) — 안약을 사서 바름</div>
-                <div class="vision-elem-desc">
-                  눈이 멀었거나 병들었으면 당연히 볼 수 없습니다. 요한계시록 3장 18절에서 주님은 <b>"안약을 사서 너의 눈에 발라서 보도록 하여라"</b>라고 하셨습니다. 우리의 눈이 치료를 받고 열려야 합니다. 그렇지 않으면 계시가 임하고 빛이 비쳐도 우리는 그것을 볼 수 없습니다.
-                </div>
+                <div class="vision-elem-desc">눈이 멀었거나 병들었으면 당연히 볼 수 없습니다. 요한계시록 3장 18절에서 주님은 <b>"안약을 사서 너의 눈에 발라서 보도록 하여라"</b>라고 하셨습니다. 우리의 눈이 치료를 받고 열려야 합니다. 그렇지 않으면 계시가 임하고 빛이 비쳐도 우리는 그것을 볼 수 없습니다.</div>
               </div>
             </div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">바울의 다마스쿠스 — 하늘에 속한 이상의 본</div>
-            <div class="sub-point-text">
-              사도행전 26장에서 바울은 말했습니다. "나는 <strong>하늘에 속한 이상을 거스르지 않고</strong> …" 다마스쿠스로 가는 길에서 하늘의 음성이 그에게 말했고, 큰 빛이 그를 비추었습니다. 겉으로는 그의 눈이 멀어 며칠 동안 보지 못했지만, <span class="hl">속으로는 빛을 받아 보게 되었습니다</span>. 바울은 이전에는 율법만을 보았지만, 이제는 <strong>부활하신 예수님</strong>을 보았습니다. 바울은 인정했습니다 — "주님, 누구십니까?" 그는 이 분이 주님이심을 알게 되었습니다.
-            </div>
+            <div class="sub-point-text">사도행전 26장에서 바울은 말했습니다. "나는 <strong>하늘에 속한 이상을 거스르지 않고</strong> …" 다마스쿠스로 가는 길에서 하늘의 음성이 그에게 말했고, 큰 빛이 그를 비추었습니다. 겉으로는 그의 눈이 멀어 며칠 동안 보지 못했지만, <span class="hl">속으로는 빛을 받아 보게 되었습니다</span>. 바울은 이전에는 율법만을 보았지만, 이제는 <strong>부활하신 예수님</strong>을 보았습니다. 바울은 인정했습니다 — "주님, 누구십니까?" 그는 이 분이 주님이심을 알게 되었습니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">우리를 위한 적용</div>
-            <div class="sub-point-text">
-              첫째로 <strong>우리의 마음이 하나님께로 돌이켜야</strong> 이상을 볼 수 있습니다. 둘째로 우리는 하나님 앞에 나아가 <strong>하나님의 빛 비춤을 구해야</strong> 합니다. 셋째로 <strong>우리의 눈이 열려</strong> 눈먼 사람이 되지 않도록 해야 합니다. 이런 기도가 필요합니다. 이렇게 이상을 보게 될 때, <span class="hl">그것은 우리 일생을 통제하는 이상이 됩니다</span>.
-            </div>
+            <div class="sub-point-text">첫째로 <strong>우리의 마음이 하나님께로 돌이켜야</strong> 이상을 볼 수 있습니다. 둘째로 우리는 하나님 앞에 나아가 <strong>하나님의 빛 비춤을 구해야</strong> 합니다. 셋째로 <strong>우리의 눈이 열려</strong> 눈먼 사람이 되지 않도록 해야 합니다. 이런 기도가 필요합니다. 이렇게 이상을 보게 될 때, <span class="hl">그것은 우리 일생을 통제하는 이상이 됩니다</span>.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="step-connector">
-      그렇다면 우리가 보아야 할 <strong>생명나무의 이상</strong>은 무엇입니까? 세 가지 차원에서 그것을 봅시다.
-    </div>
+    <div class="step-connector">그렇다면 우리가 보아야 할 <strong>생명나무의 이상</strong>은 무엇입니까? 세 가지 차원에서 그것을 봅시다.</div>
 
-    <!-- 생명나무의 3차원 (A, B, C) -->
     <div class="accordion" id="acc-8">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">❖</div>
@@ -2865,30 +3962,19 @@ body::before {
             <div class="verse-text">[창 2:9] 여호와 하나님은 … 동산 한가운데 있는 <b>생명나무</b>와, 선과 악의 지식나무도 자라게 하셨다.</div>
             <div class="verse-text">[계 22:14] <b>생명나무에 이르는 권리</b>를 얻고 문들을 통하여 그 성안으로 들어가도록 자기의 겉옷을 빠는 사람들은 복이 있다.</div>
           </div>
-
           <p class="content-text">이제 우리는 초점을 전적으로 생명나무에 두겠습니다. 선과 악의 지식나무는 죽음의 길이며, 결국 불못에 이르는 길이기 때문입니다. 우리가 보아야 할 <span class="hl">생명나무의 이상</span>에는 세 가지 차원이 있습니다.</p>
-
           <div class="sub-point">
             <div class="sub-point-title">A. 생명나무 = 음식의 형태로 분배하시는 삼일 하나님</div>
-            <div class="sub-point-text">
-              생명나무는 생명이신 그분 자신을 <strong>음식의 형태로 그분께서 선택하신 사람들 안으로 분배하시는, 그리스도 안에 계신 삼일 하나님</strong>을 상징합니다(창 2:9). 음식은 곧 우리의 생명을 위한 것입니다. 주님은 "<span class="hl">나를 먹는 사람은 나로 말미암아 살 것입니다</span>"(요 6:57)라고 말씀하셨습니다. <strong>우리가 먹은 그것이 우리의 근원이 됩니다</strong>. 우리가 주님을 먹는 사람이라면 우리는 그분으로 말미암아 사는 사람이 됩니다.
-            </div>
+            <div class="sub-point-text">생명나무는 생명이신 그분 자신을 <strong>음식의 형태로 그분께서 선택하신 사람들 안으로 분배하시는, 그리스도 안에 계신 삼일 하나님</strong>을 상징합니다(창 2:9). 음식은 곧 우리의 생명을 위한 것입니다. 주님은 "<span class="hl">나를 먹는 사람은 나로 말미암아 살 것입니다</span>"(요 6:57)라고 말씀하셨습니다. <strong>우리가 먹은 그것이 우리의 근원이 됩니다</strong>. 우리가 주님을 먹는 사람이라면 우리는 그분으로 말미암아 사는 사람이 됩니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">B. 생명나무 = 우주의 중심</div>
-            <div class="sub-point-text">
-              창세기에서는 동산 한가운데 생명나무가 있다고 말합니다. 하나님의 목적에 따르면, <strong>우주의 중심은 땅이고, 땅의 중심은 에덴동산이며, 에덴동산의 중심은 생명나무</strong>입니다. 여기서 '중심'은 지리적 위치를 가리키는 것이 아닙니다. <span class="hl">중심은 중요성이 어디에 있느냐 하는 문제</span>입니다. 심장이 몸의 기하학적 중심에 위치해 있지는 않지만 가장 중요한 기관인 것과 같습니다. 하나님의 눈에 가장 중요한 장소, 하나님께서 말씀하시는 장소는 바로 <strong>생명나무가 있는 곳</strong>이었습니다. <span class="hl">하나님과 사람 모두에게 생명나무보다 더 중심적이고 중요한 것은 없습니다</span> — 창 3:22, 계 22:14.
-            </div>
+            <div class="sub-point-text">창세기에서는 동산 한가운데 생명나무가 있다고 말합니다. 하나님의 목적에 따르면, <strong>우주의 중심은 땅이고, 땅의 중심은 에덴동산이며, 에덴동산의 중심은 생명나무</strong>입니다. 여기서 '중심'은 지리적 위치를 가리키는 것이 아닙니다. <span class="hl">중심은 중요성이 어디에 있느냐 하는 문제</span>입니다. 심장이 몸의 기하학적 중심에 위치해 있지는 않지만 가장 중요한 기관인 것과 같습니다. 하나님의 눈에 가장 중요한 장소, 하나님께서 말씀하시는 장소는 바로 <strong>생명나무가 있는 곳</strong>이었습니다. <span class="hl">하나님과 사람 모두에게 생명나무보다 더 중심적이고 중요한 것은 없습니다</span> — 창 3:22, 계 22:14.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">C. 신약의 계시 — 그리스도께서 그 성취이심</div>
-            <div class="sub-point-text">
-              신약은 <strong>그리스도께서 생명나무라는 상징의 성취</strong>이심을 계시합니다(요 1:4, 15:5). "그분 안에 생명이 있었으며, 그 생명은 사람들의 빛이었다"(요 1:4). "나는 포도나무요, 여러분은 가지들입니다"(요 15:5). <span class="hl">하나님의 아들이 있는 사람에게는 생명이 있고, 하나님의 아들이 없는 사람에게는 생명이 없습니다</span>(요일 5:12). 하나님의 아들은 곧 그리스도입니다. 생명나무는 어디에 있습니까? <strong>그리스도께서 바로 그 생명나무</strong>이십니다.
-            </div>
+            <div class="sub-point-text">신약은 <strong>그리스도께서 생명나무라는 상징의 성취</strong>이심을 계시합니다(요 1:4, 15:5). "그분 안에 생명이 있었으며, 그 생명은 사람들의 빛이었다"(요 1:4). "나는 포도나무요, 여러분은 가지들입니다"(요 15:5). <span class="hl">하나님의 아들이 있는 사람에게는 생명이 있고, 하나님의 아들이 없는 사람에게는 생명이 없습니다</span>(요일 5:12). 하나님의 아들은 곧 그리스도입니다. 생명나무는 어디에 있습니까? <strong>그리스도께서 바로 그 생명나무</strong>이십니다.</div>
           </div>
-
           <p class="content-text">그분은 그 영이 되셔서 <strong>자신의 생명을 우리 안에 분배</strong>하셔서 우리가 그 생명을 얻게 하십니다. 오늘 우리가 참된 생명을 얻을 수 있는 곳은 <span class="hl">오직 그리스도뿐</span>입니다. 이것이 매우 중요한 일입니다.</p>
         </div>
       </div>
@@ -2896,7 +3982,6 @@ body::before {
 
     <div class="section-connector">· · ·</div>
 
-    <!-- 하나님-사람 -->
     <div class="accordion" id="acc-9">
       <div class="accordion-header" onclick="toggleAcc(this)">
         <div class="acc-number">♕</div>
@@ -2910,30 +3995,19 @@ body::before {
             <div class="verse-text">[요 14:10] 내가 너희에게 말하는 말들은 <b>내 자신에게서 말하는 것이 아니니</b>, 내 안에 거하시는 아버지께서 그분의 일들을 하시느니라.</div>
             <div class="verse-text">[갈 2:20] 이제는 더 이상 내가 사는 것이 아니라, <b>그리스도께서 내 안에 사십니다</b>.</div>
           </div>
-
           <p class="content-text">형제자매님들, 우리는 이 이상을 분명히 알아야 합니다. <span class="hl">하나님께서 원하시는 것은 단지 똑똑한 사람이 아닙니다. 능력 있는 사람도 아닙니다. 죄 없는 사람조차도 아닙니다</span>. 하나님께서 원하시는 것은 한 <strong>"하나님-사람"</strong>입니다 — 곧 <strong>하나님을 자신의 생명으로 삼는 사람</strong>입니다. 이것이 하나님의 영원한 뜻 안에서 그분께서 원하시는 것입니다.</p>
-
           <div class="sub-point">
             <div class="sub-point-title">아담의 경우 — 능력이 문제가 아니었다</div>
-            <div class="sub-point-text">
-              아담은 흙으로 지어진 사람이었지만, 하나님의 형상과 모양대로 지음 받았기에 <strong>매우 능력 있는 존재</strong>였습니다. 오늘날의 표현으로 말하자면 그는 <span class="hl">천재</span>였습니다. 그는 지혜와 능력뿐 아니라 체력과 모든 면에서 매우 뛰어났습니다. 그가 한 사람으로 온 동산을 관리했고, 모든 동물에게 이름을 지어 주었습니다 — 그는 분류학의 전문가였습니다. 그러나 <strong>아담이 죄를 짓지 않았더라도, 그런 능력이 있었어도 그는 하나님의 목적을 완성할 수 없었습니다</strong>. 그가 생명나무를 먹지 않는 한은 말입니다.
-            </div>
+            <div class="sub-point-text">아담은 흙으로 지어진 사람이었지만, 하나님의 형상과 모양대로 지음 받았기에 <strong>매우 능력 있는 존재</strong>였습니다. 오늘날의 표현으로 말하자면 그는 <span class="hl">천재</span>였습니다. 그는 지혜와 능력뿐 아니라 체력과 모든 면에서 매우 뛰어났습니다. 그가 한 사람으로 온 동산을 관리했고, 모든 동물에게 이름을 지어 주었습니다 — 그는 분류학의 전문가였습니다. 그러나 <strong>아담이 죄를 짓지 않았더라도, 그런 능력이 있었어도 그는 하나님의 목적을 완성할 수 없었습니다</strong>. 그가 생명나무를 먹지 않는 한은 말입니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">주 예수님 — 하나님-사람의 완전한 본</div>
-            <div class="sub-point-text">
-              주 예수님께서 이 땅에 오셨을 때, 그분은 <strong>죄가 없으셨습니다</strong>. 그분은 또한 사람이셨습니다. 그러나 그분은 할 수 있다고 해서 자신의 능력으로 행하지 않으셨습니다. 그분은 이렇게 말씀하셨습니다 — "<span class="hl">나는 아버지의 뜻대로만 행한다. 아버지가 하지 않으시면 나는 하지 않겠다. 아버지가 말씀하시지 않으시면, 나는 말하지 않겠다. 나는 아버지께서 말씀하신 것만 말한다</span>." 그분은 죄가 없는 완전한 사람이셨지만, 자신의 생명과 능력으로 말미암아 살지 않으셨습니다. <strong>항상 아버지의 생명에 의지하여 사셨습니다</strong>. 이것이 우리의 본입니다.
-            </div>
+            <div class="sub-point-text">주 예수님께서 이 땅에 오셨을 때, 그분은 <strong>죄가 없으셨습니다</strong>. 그분은 또한 사람이셨습니다. 그러나 그분은 할 수 있다고 해서 자신의 능력으로 행하지 않으셨습니다. 그분은 이렇게 말씀하셨습니다 — "<span class="hl">나는 아버지의 뜻대로만 행한다. 아버지가 하지 않으시면 나는 하지 않겠다. 아버지가 말씀하시지 않으시면, 나는 말하지 않겠다. 나는 아버지께서 말씀하신 것만 말한다</span>." 그분은 죄가 없는 완전한 사람이셨지만, 자신의 생명과 능력으로 말미암아 살지 않으셨습니다. <strong>항상 아버지의 생명에 의지하여 사셨습니다</strong>. 이것이 우리의 본입니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">우리가 추구해야 할 것</div>
-            <div class="sub-point-text">
-              우리가 추구하는 것은 <strong>사람의 선이 아닙니다. 사람의 아름다움도 아닙니다. 사람의 완전함도 아닙니다. 사람의 정직함도 아닙니다. 심지어 하나님을 경외하고 악을 떠나는 것조차도 아닙니다</strong>. 하나님께서 원하시는 것은 하나님-사람입니다. 우리는 <span class="hl">이 이상에 대해 반드시 분명해야 합니다. 이것은 우리를 통제하는 이상</span>입니다.
-            </div>
+            <div class="sub-point-text">우리가 추구하는 것은 <strong>사람의 선이 아닙니다. 사람의 아름다움도 아닙니다. 사람의 완전함도 아닙니다. 사람의 정직함도 아닙니다. 심지어 하나님을 경외하고 악을 떠나는 것조차도 아닙니다</strong>. 하나님께서 원하시는 것은 하나님-사람입니다. 우리는 <span class="hl">이 이상에 대해 반드시 분명해야 합니다. 이것은 우리를 통제하는 이상</span>입니다.</div>
           </div>
-
           <p class="content-text">욥은 당대 가장 '좋은 사람'이었습니다. 그러나 그는 하나님-사람은 아니었습니다. 하나님께서 욥을 심하게 다루신 것은, 그가 '좋은 사람'에서 <span class="hl">'하나님-사람'</span>이 되게 하시려는 것이었습니다 — 자신의 온전함과 올곧음이 아니라 <strong>하나님 자신을 생명으로 삼는 사람</strong>이 되게 하시려는 것이었습니다. 이것이 욥기 전체의 핵심 메시지입니다.</p>
         </div>
       </div>
@@ -2941,10 +4015,9 @@ body::before {
 
     <div class="section-connector">· · ·</div>
 
-    <!-- 오늘 우리 -->
     <div class="accordion" id="acc-10">
       <div class="accordion-header" onclick="toggleAcc(this)">
-        <div class="acc-number">✝</div>
+        <div class="acc-number">👥</div>
         <div class="acc-title-text">오늘 우리 — 선악의 원칙에서 생명의 원칙으로 완전히 전환</div>
         <div class="acc-chevron">▼</div>
       </div>
@@ -2955,37 +4028,24 @@ body::before {
             <div class="verse-text">[롬 8:6] <b>영에 둔 생각은 생명과 평안</b>입니다. 육체에 둔 생각은 죽음입니다.</div>
             <div class="verse-text">[갈 2:20] 나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, <b>그리스도께서 내 안에 사십니다</b>.</div>
           </div>
-
           <p class="content-text">우리는 거듭나기 전에는 모두 선과 악의 지식나무 노선 위에 있었습니다. 그러나 이제 우리는 거듭났고, <strong>그리스도께서 생명나무로서 우리 안에 심기셨습니다</strong>. 그런데 우리의 일상생활, 특히 가정생활 안에서의 실제 상태는 어떻습니까?</p>
-
           <div class="sub-point">
             <div class="sub-point-title">오락가락하는 우리의 현실</div>
-            <div class="sub-point-text">
-              <strong>우리는 종종 선과 악의 지식의 노선 안에 머물러 있습니다</strong>. 부부간 대화에서, 자녀를 훈육할 때, 동료를 판단할 때 — 우리는 옳고 그름의 저울질에서 벗어나지 못합니다. 우리는 강하게 다시 상기할 필요가 있습니다. 갈 2:20 — "<span class="hl">나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다</span>."
-            </div>
+            <div class="sub-point-text"><strong>우리는 종종 선과 악의 지식의 노선 안에 머물러 있습니다</strong>. 부부간 대화에서, 자녀를 훈육할 때, 동료를 판단할 때 — 우리는 옳고 그름의 저울질에서 벗어나지 못합니다. 우리는 강하게 다시 상기할 필요가 있습니다. 갈 2:20 — "<span class="hl">나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다</span>."</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">완전한 전환</div>
-            <div class="sub-point-text">
-              우리는 <strong>생명나무의 원칙 안으로 완전히 옮겨져야 하며, 선과 악의 지식의 원칙에서 완전히 구원받아 생명의 원칙 안으로 전환되어야 합니다</strong>. '부분적 전환'이 아니라 <span class="hl">완전한 전환</span>입니다. 그리하여 우리가 그리스도를 살고, 그리스도를 나타내며, 하나님께서 사람에게 가지신 <strong>영원한 목적을 성취</strong>해야 합니다.
-            </div>
+            <div class="sub-point-text">우리는 <strong>생명나무의 원칙 안으로 완전히 옮겨져야 하며, 선과 악의 지식의 원칙에서 완전히 구원받아 생명의 원칙 안으로 전환되어야 합니다</strong>. '부분적 전환'이 아니라 <span class="hl">완전한 전환</span>입니다. 그리하여 우리가 그리스도를 살고, 그리스도를 나타내며, 하나님께서 사람에게 가지신 <strong>영원한 목적을 성취</strong>해야 합니다.</div>
           </div>
-
           <div class="sub-point">
             <div class="sub-point-title">우리의 영과 혼 앞의 두 선택</div>
-            <div class="sub-point-text">
-              겉으로 볼 때 몸은 물질적인 필요를 가지고 있지만, 우리의 영과 혼 앞에는 사실상 <strong>두 가지 선택</strong>이 놓여 있습니다. 하나는 <span class="hl">선과 악의 지식나무</span>를 선택할 수 있고, 다른 하나는 <span class="hl">생명나무</span>를 선택할 수 있습니다. 여러분이 생명나무를 선택하면, 우리의 영과 함께 혼도 생명나무를 취하게 됩니다. <strong>혼은 영을 따라 생명을 얻게 됩니다</strong>. 롬 8:6은 말합니다 — "영에 둔 생각은 생명과 평안이요, 육체에 둔 생각은 죽음이다."
-            </div>
+            <div class="sub-point-text">겉으로 볼 때 몸은 물질적인 필요를 가지고 있지만, 우리의 영과 혼 앞에는 사실상 <strong>두 가지 선택</strong>이 놓여 있습니다. 하나는 <span class="hl">선과 악의 지식나무</span>를 선택할 수 있고, 다른 하나는 <span class="hl">생명나무</span>를 선택할 수 있습니다. 여러분이 생명나무를 선택하면, 우리의 영과 함께 혼도 생명나무를 취하게 됩니다. <strong>혼은 영을 따라 생명을 얻게 됩니다</strong>. 롬 8:6은 말합니다 — "영에 둔 생각은 생명과 평안이요, 육체에 둔 생각은 죽음이다."</div>
           </div>
-
           <p class="content-text">우리는 날마다 생명나무를 먹어야 합니다. 작은 것을 먹어 생명을 유지하듯이, <strong>낮은 자로 우리에게 오신 그리스도</strong>를 날마다 받아들여야 합니다. 그때 비로소 우리는 <span class="hl">살아 계신 그리스도를 나타내는 삶</span>을 살 수 있고, 하나님께서 사람에게 가지신 그 영원한 목적을 이룰 수 있습니다. 이것이 노아와 다니엘과 욥이 우리에게 남긴 본입니다.</p>
         </div>
       </div>
     </div>
   </div>
-
-
 
   <!-- RECAP -->
   <section class="recap-section" id="recap-section">
@@ -3347,20 +4407,151 @@ body::before {
     </div>
   </section>
 
-  <!-- PRAYER / CLOSING -->
+  <!-- PRAYER / CLOSING — 4 IMAGE VISUALIZATIONS + PRAYER -->
   <section class="prayer-section" id="prayer-section">
-    <div class="prayer-heading">'하나님-사람'이 되는 결단 — 생명나무의 이상을 보는 기도</div>
+    <div class="prayer-title">Today's Decision · 오늘의 결단과 기도</div>
+    <div class="prayer-heading">'하나님-사람'이 되는 결단 — 네 이미지로 보는 생명나무의 이상</div>
 
+    <!-- Image 1: 우주의 중심 -->
+    <div class="vision-image-card">
+      <div class="vic-label">① Center of the Universe · 우주의 중심</div>
+      <div class="vic-title">생명나무 — 온 우주가 초점 맞추어진 한 지점</div>
+
+      <div class="cosmos-wrapper">
+        <div class="cosmos-diagram">
+          <div class="cosmos-ring r1">
+            <div class="cosmos-ring r2">
+              <div class="cosmos-ring r3">
+                <div class="cosmos-core">생명<br>나무</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cosmos-labels">
+          <div class="cosmos-lbl-item">
+            <span class="cosmos-lbl-dot d1"></span>
+            <span class="cosmos-lbl-body"><b>1. 우주<span class="en">The Universe</span></b>하나님의 목적을 위한 공간</span>
+          </div>
+          <div class="cosmos-lbl-item">
+            <span class="cosmos-lbl-dot d2"></span>
+            <span class="cosmos-lbl-body"><b>2. 땅<span class="en">The Earth</span></b>우주의 중심</span>
+          </div>
+          <div class="cosmos-lbl-item">
+            <span class="cosmos-lbl-dot d3"></span>
+            <span class="cosmos-lbl-body"><b>3. 에덴동산<span class="en">Garden of Eden</span></b>땅의 중심</span>
+          </div>
+          <div class="cosmos-lbl-item">
+            <span class="cosmos-lbl-dot d4"></span>
+            <span class="cosmos-lbl-body"><b>4. 생명나무<span class="en">Tree of Life</span></b>에덴동산의 중심</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vic-caption">
+        하나님과 사람 모두에게 이 <strong>생명나무보다 더 중심적이고 중요한 것은 없습니다</strong>. 온 우주는 이 생명나무에 초점이 맞추어져 있습니다.
+      </div>
+    </div>
+
+    <!-- Image 2: 3 Conditions Funnel -->
+    <div class="vision-image-card">
+      <div class="vic-label">② 3 Conditions · 생명나무의 이상을 보는 3가지 조건</div>
+      <div class="vic-title">계시 + 빛 + 좋은 눈 → 통제하는 이상</div>
+
+      <div class="funnel-diagram">
+        <div class="funnel-inputs">
+          <div class="funnel-input">
+            <span class="fi-num">1</span>
+            <span class="fi-title">계시<small>Revelation</small></span>
+            <span class="fi-desc">덮여 있던 너울이 벗겨짐</span>
+          </div>
+          <div class="funnel-input">
+            <span class="fi-num">2</span>
+            <span class="fi-title">빛<small>Divine Light</small></span>
+            <span class="fi-desc">자연적인 빛이 아닌 하나님의 비춤</span>
+          </div>
+          <div class="funnel-input">
+            <span class="fi-num">3</span>
+            <span class="fi-title">좋은 눈<small>Good Eyes</small></span>
+            <span class="fi-desc">마음을 하나님께로 돌이키고 영적인 안약을 바름</span>
+          </div>
+        </div>
+
+        <div class="funnel-flow" style="height:20px;"></div>
+
+        <div class="funnel-output">
+          <div class="fo-title">통제하는 이상<span class="en">Controlling Vision</span></div>
+          <div class="fo-desc">일생을 이끄는 영적 청사진의 발견</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image 3: Moral Man → God-Man -->
+    <div class="vision-image-card">
+      <div class="vic-label">③ God's Ultimate Goal · 하나님의 최종 목표</div>
+      <div class="vic-title">도덕적 인간에서 '하나님-사람'으로의 전환</div>
+
+      <div class="godman-diagram">
+        <div class="gm-before">
+          <div class="gm-label">도덕적 인간</div>
+          <div class="gm-sub">Moral Man</div>
+        </div>
+        <div class="gm-arrow">→</div>
+        <div class="gm-after">
+          <div class="gm-label">하나님-사람</div>
+          <div class="gm-sub">God-Man</div>
+        </div>
+      </div>
+
+      <div class="vic-split">
+        <div class="vs-side">
+          <div class="vs-head">우리가 추구할 것</div>
+          <div class="vs-body">사람의 선이나 완벽함이 아닙니다. <strong>죄 없는 아담조차도 생명나무를 먹어야만 했습니다</strong>.</div>
+        </div>
+        <div class="vs-side">
+          <div class="vs-head">하나님께서 원하시는 것</div>
+          <div class="vs-body">똑똑함·능력·죄 없음이 아닌, 오직 <strong>하나님 자신을 생명으로 취하여 연합된 존재</strong> — '하나님-사람(God-Man)'입니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image 4: Two Endings -->
+    <div class="vision-image-card">
+      <div class="vic-label">④ Two Consummations · 두 길의 궁극적 완결</div>
+      <div class="vic-title">역동적 격려 vs 엄중한 경고</div>
+
+      <div class="two-ends-diagram">
+        <div class="te-box life">
+          <div class="te-icon">🌳</div>
+          <div class="te-head">새 예루살렘</div>
+          <div class="te-sub">하나님의 생명의 길의 종착지</div>
+          <div class="te-desc">하나님의 사랑과 은혜 안에서 그분과 영원히 연합하여 <strong>생명수를 누리는 영광스러운 역동적 격려</strong></div>
+        </div>
+        <div class="te-vs">VS</div>
+        <div class="te-box death">
+          <div class="te-icon">⚡</div>
+          <div class="te-head">유황 불못</div>
+          <div class="te-sub">죽음과 선악의 길의 완결</div>
+          <div class="te-desc">하나님의 경륜을 반대하는 자들을 향한 <strong>엄중한 경고이자 생명으로 돌이키라는 촉구</strong></div>
+        </div>
+      </div>
+
+      <div class="te-footer">
+        <strong>생명나무의 원칙으로 완전히 전환되어,</strong><br>하나님께서 사람에게 가지신 영원한 목적을 성취하십시오.
+      </div>
+    </div>
+
+    <!-- Divider between visualizations and prayer -->
+    <div class="prayer-divider"><span>Prayer · 결단의 기도</span></div>
+
+    <!-- Prayer Callbox -->
     <div class="prayer-callbox">
       <p>우리는 <span class="cb-house">생명나무</span>의 이상을 보아야 합니다.<br>계시 · 위로부터 오는 빛 · 안약으로 치료된 눈이 필요합니다.</p>
       <p>하나님께서 원하시는 것은 <span class="cb-house">하나님-사람</span>입니다.<br>똑똑함도, 능력도, 죄 없음도, 심지어 도덕적 경건함도 아닌 —<br>오직 <strong>하나님을 자신의 생명으로 삼는 사람</strong>입니다.</p>
     </div>
 
+    <!-- Amen Box -->
     <div class="prayer-amen-box">
-      <p>주 예수님, 우리는 오늘 욥이라는 '검은 배경' 앞에 서 있습니다. 겉으로 경건해 보였으나 하나님이 부족했던 욥과 그 친구들처럼, 우리도 종종 교통하지 못하고 논쟁만 하고 있습니다. 주님, 우리 안에서 선과 악의 지식나무가 자라지 않게 하소서.</p>
-      <p>주님, 우리에게 <strong>생명나무의 이상</strong>을 보여 주소서. 너울을 벗겨 주시고, 위로부터 빛을 비추어 주시며, 우리 눈에 안약을 발라 주소서. 바울이 다마스쿠스 길에서 보았던 그 이상 — 일생을 통제하는 하늘에 속한 이상을 우리도 보게 하소서.</p>
-      <p>주님, 우리를 욥처럼 다루어 주소서 — 우리를 소모시키시고 벗겨 내시고 허물어뜨리셔서, 주님의 본성과 속성들로 새롭게 건축해 주소서. 논리를 <strong>선악의 원칙에서 생명의 원칙으로</strong> 조정해 주시고, 자기만족에서 구출하셔서 오직 주님 자신만을 추구하게 하소서.</p>
-      <p>주님, 우리는 <strong>'하나님-사람'</strong>이 되기를 원합니다. 주 예수님께서 아버지를 의지하여 사셨던 그 본을 따라, 우리도 주님을 우리의 생명으로 삼게 하소서. 생명나무의 원칙 안으로 <strong>완전히</strong> 옮겨 주시고, 노아·다니엘·욥처럼 이기는 생활을 살아 <strong>새 예루살렘이라는 역동적 격려제</strong>를 향해 한 단계씩 나아가게 하소서.</p>
+      <p>주님, 주님께서 원하시는 것은 똑똑한 사람도 능력 있는 사람도, 심지어 죄 없는 사람도 아닙니다. 죄 없는 아담조차도 생명나무를 먹어야만 했습니다. 주님께서 원하시는 것은 오직 <strong>하나님-사람(God-Man)</strong> — 하나님 자신을 생명으로 취하여 연합된 존재입니다. 우리가 '하나님-사람'으로 조성되기 위해 날마다 생명나무이신 주님을 먹고 소화하고 동화시키기 원합니다.</p>
       <div class="prayer-amen-sig">— AMEN —</div>
     </div>
   </section>
@@ -3406,96 +4597,105 @@ function toggleKwTip(id) {
   if (!isShown) tip.classList.add('show');
 }
 
-/* ─── TODAY'S VERSE POPUP — Greek word lexicon (John 15:5) ─── */
+/* Hebrew word lexicon data */
 const TV_WORD_DATA = {
-  'ego': {
-    gk: 'ἐγώ',
-    pron: '에고',
-    strong: 'G1473',
-    grammar: '대명사 · 1인칭 · 주격 · 단수',
-    meaning: '나 <em>(I, myself — emphatic)</em>',
-    note: '헬라어에서 1인칭 대명사는 동사 어미에 이미 포함되므로, 명시적으로 ἐγώ를 쓸 때는 <b>강조적 의미</b>를 갖습니다. 요 15:5에서 예수님께서 "<b>ἐγώ</b> εἰμι"라고 말씀하신 것은 단순한 "나는 ~이다"가 아니라, <b>"바로 나, 오직 나만이"</b>라는 강한 자기 선언입니다.',
-    context: 'ἐγώ εἰμι ἡ ἄμπελος (바로 나, 내가 그 포도나무이다)'
+  'shema': {
+    gk: 'שֵׁמַע', pron: '쉐마', strong: 'H8088', lemma: 'שֵׁמַע',
+    grammar: '명사 · 남성 · 단수 절대형',
+    meaning: '들음, 소문, 보도 <em>(hearing, report, fame)</em>',
+    note: '동사 שָׁמַע(듣다)에서 파생된 명사형입니다. 뒤에 오는 <b>אֹזֶן(귀)</b>과 결합하여 <b>"귀로 듣는 행위"</b>를 이중 강조합니다. 단순한 정보 수신이 아니라, <b>간접적으로 전달받은 지식</b>의 특성을 나타냅니다.',
+    context: 'לְשֵׁמַע־אֹזֶן (귀의 들음으로 — 간접 지식의 한계)'
   },
-  'eimi': {
-    gk: 'εἰμι',
-    pron: '에이미',
-    strong: 'G1510',
-    grammar: '동사 · 현재 · 직설법 · 능동 · 1인칭 단수',
-    meaning: '~이다, 존재한다 <em>(I am, I exist)</em>',
-    note: '요한복음의 유명한 <b>"나는 ~이다(ἐγὼ εἰμι)"</b> 선언의 핵심 동사입니다. 이는 출 3:14의 "<b>스스로 있는 자</b>"(ἐγώ εἰμι ὁ ὤν, 70인역)를 상기시키는 <b>신적 자기 계시 공식</b>입니다. 예수님은 "나는 생명의 떡이다," "나는 빛이다," "나는 포도나무이다" 등 일곱 번의 "ἐγὼ εἰμι" 선언으로 자신을 드러내셨습니다.',
-    context: 'ἐγώ εἰμι ἡ ἄμπελος ἡ ἀληθινή (나는 참포도나무이다, 요 15:1)'
+  'ozen': {
+    gk: 'אֹזֶן', pron: '오젠', strong: 'H241', lemma: 'אֹזֶן',
+    grammar: '명사 · 여성 · 단수 절대형',
+    meaning: '귀 <em>(ear — the organ of hearing)</em>',
+    note: '신체 기관으로서의 귀를 나타내는 기본 명사입니다. 6절의 <b>עֵינִי(나의 눈)</b>와 <b>정확한 대칭</b>을 이룹니다. 욥기 전체에서 욥과 친구들은 수많은 말을 나누었지만, 그것은 모두 <b>"귀"의 영역</b>에 머무는 것이었습니다. 하나님의 신현(神現, theophany)만이 욥을 "귀"에서 "눈"의 영역으로 이동시켰습니다.',
+    context: 'לְשֵׁמַע־אֹזֶן (귀로 듣는 것 — 욥이 구속받던 영역)'
   },
-  'ampelos': {
-    gk: 'ἄμπελος',
-    pron: '암펠로스',
-    strong: 'G288',
-    grammar: '명사 · 주격 · 여성 · 단수',
-    meaning: '포도나무 <em>(vine, grapevine)</em>',
-    note: '구약에서 포도나무는 <b>이스라엘</b>을 상징하는 핵심 이미지였습니다(시 80:8, 사 5:1-7, 렘 2:21). 그러나 이스라엘은 실패하여 들포도를 맺었습니다. 요 15:1에서 예수님은 자신을 <b>"참(ἀληθινή) 포도나무"</b>라고 선언하심으로써, <b>참된 이스라엘, 진정한 생명나무</b>이심을 드러내십니다. 이것이 창 2:9의 생명나무가 신약에서 성취되는 모습입니다.',
-    context: 'ἡ ἄμπελος (그 포도나무 — 창 2:9 생명나무의 성취)'
+  'shamati': {
+    gk: 'שְׁמַעְתִּיךָ', pron: '쉐마티카', strong: 'H8085', lemma: 'שָׁמַע',
+    grammar: '동사 · 칼(Qal) · 완료형 · 1인칭 단수 + 2인칭 남성 단수 접미어',
+    meaning: '내가 당신을 들었다 <em>(I have heard You)</em>',
+    note: '원형 <b>שָׁמַע</b>는 "듣다, 경청하다"의 기본 동사입니다. 여기서는 <b>칼 완료형</b>으로, 과거의 완결된 사실을 나타냅니다. 욥이 하나님에 대해 <b>많이 알고 있었음</b>을 인정하는 동사이지만, 그것이 충분하지 않았음을 5절 전체가 선언합니다.',
+    context: 'שְׁמַעְתִּיךָ (내가 당신을 들어 알았었다 — 과거의 지식 체계)'
   },
-  'klemata': {
-    gk: 'κλήματα',
-    pron: '클레마타',
-    strong: 'G2814',
-    lemma: 'κλῆμα',
-    grammar: '명사 · 주격 · 중성 · 복수',
-    meaning: '가지들 <em>(branches — specifically of a vine)</em>',
-    note: '원형은 <b>κλῆμα</b>. 일반적인 "가지(κλάδος)"가 아니라, <b>포도나무의 가지</b>를 가리키는 특수한 단어입니다. 동사 κλάω(꺾다)에서 파생되어 <b>"꺾여 나온 것"</b>을 뜻합니다. 포도나무 가지는 그 자체로 독립적으로 자랄 수 없고, 반드시 <b>본줄기에 붙어 있어야만</b> 생명을 공급받습니다. 우리의 자급자족 불가능성을 잘 보여 주는 이미지입니다.',
-    context: 'ὑμεῖς τὰ κλήματα (여러분은 그 가지들입니다)'
+  'veatta': {
+    gk: 'וְעַתָּה', pron: '베아타', strong: 'H6258', lemma: 'עַתָּה',
+    grammar: '부사 · 접속사 וְ + 시간 부사 עַתָּה',
+    meaning: '그러나 이제는 <em>(but now — contrastive)</em>',
+    note: '시간 부사 <b>עַתָּה(이제)</b> 앞에 접속사 <b>וְ(그리고/그러나)</b>가 붙어, 강한 <b>대조적 전환</b>을 만들어 냅니다. 5절의 구조적 중심축으로, <b>과거의 "들음"과 현재의 "봄"</b>을 가르는 분기점입니다. 이 짧은 두 단어가 욥의 영적 여정 전체를 구획 짓습니다.',
+    context: 'וְעַתָּה עֵינִי רָאָתְךָ (그러나 이제는 — 신현 이후의 새로운 영역)'
   },
-  'menon': {
-    gk: 'μένων',
-    pron: '메논',
-    strong: 'G3306',
-    lemma: 'μένω',
-    grammar: '분사 · 현재 · 능동 · 주격 · 남성 · 단수',
-    meaning: '거하다, 머무르다, 지속하다 <em>(to abide, remain, dwell)</em>',
-    note: '원형은 <b>μένω</b>. 요한복음과 요한일서의 <b>핵심 신학 용어</b>로, 단순한 "머물기"가 아니라 <b>지속적이고 상호적인 거함</b>을 의미합니다. 현재분사 <b>μένων</b>은 "계속해서 거하고 있는 사람"을 나타내며, 순간적 경험이 아닌 <b>지속적 연합의 상태</b>를 강조합니다.',
-    context: 'ὁ μένων ἐν ἐμοί κἀγὼ ἐν αὐτῷ (내 안에 거하고, 나도 그 안에 거하는 사람)'
+  'eini': {
+    gk: 'עֵינִי', pron: '에이니', strong: 'H5869', lemma: 'עַיִן',
+    grammar: '명사 · 여성 · 단수 + 1인칭 단수 소유 접미어 (나의 눈)',
+    meaning: '나의 눈 <em>(my eye — direct personal vision)</em>',
+    note: '원형 <b>עַיִן</b>은 "눈" 또는 "샘"을 의미하는 이중적 단어입니다. 1인칭 소유 접미어 <b>-י</b>가 붙어 "나의 눈"이 되었습니다. אֹזֶן(귀)과의 대조에서 핵심은 <b>간접 → 직접</b>의 전환입니다. 욥의 "눈"이 하나님을 "보았다"는 것은 물리적 시각이 아니라, <b>영적 계시에 의한 직접 인식</b>을 가리킵니다.',
+    context: 'עֵינִי רָאָתְךָ (나의 눈이 당신을 보았습니다 — 직접 계시 경험)'
   },
-  'pherei': {
-    gk: 'φέρει',
-    pron: '페레이',
-    strong: 'G5342',
-    lemma: 'φέρω',
-    grammar: '동사 · 현재 · 직설법 · 능동 · 3인칭 단수',
-    meaning: '가져오다, 맺다, 산출하다 <em>(to bear, bring forth, produce)</em>',
-    note: '원형은 <b>φέρω</b>. 여기서는 <b>"열매를 맺다"</b>는 뜻으로 사용되었습니다. 주목할 점은 이 동사가 <b>능동태</b>이지만, 그 주체가 가지 자신의 노력이 아니라 <b>"내 안에 거하는"</b> 결과로 "자연히 맺어지는" 것이라는 점입니다. 가지는 열매를 "만들어 내는" 것이 아니라, 본줄기의 생명을 받아 <b>"내어 보낼"</b> 뿐입니다.',
-    context: 'οὗτος φέρει καρπὸν πολύν (그 사람은 많은 열매를 맺는다)'
+  'raatka': {
+    gk: 'רָאָתְךָ', pron: '라아트카', strong: 'H7200', lemma: 'רָאָה',
+    grammar: '동사 · 칼(Qal) · 완료형 · 3인칭 여성 단수(주어: עֵינִי, 눈) + 2인칭 남성 단수 접미어',
+    meaning: '(나의 눈이) 당신을 보았습니다 <em>(has seen You)</em>',
+    note: '원형 <b>רָאָה</b>는 "보다, 관찰하다, 경험하다"를 의미합니다. 주어인 <b>עֵינִי(나의 눈)</b>가 여성 명사이기 때문에 동사도 <b>3인칭 여성 단수 완료형</b>으로 일치합니다. 이 봄(seeing)은 욥의 자기 의로움의 전 체계를 무너뜨린 <b>하나님과의 직접적 만남</b>의 결과입니다.',
+    context: 'עֵינִי רָאָתְךָ (나의 눈이 당신을 보았다 — 욥의 변화의 기점)'
   },
-  'karpon': {
-    gk: 'καρπὸν',
-    pron: '카르폰',
-    strong: 'G2590',
-    lemma: 'καρπός',
-    grammar: '명사 · 목적격 · 남성 · 단수',
-    meaning: '열매 <em>(fruit, produce, outcome)</em>',
-    note: '원형은 <b>καρπός</b>. 문자 그대로의 열매뿐 아니라 <b>어떤 일이나 상태의 결과·산물</b>을 나타내는 비유적 의미로도 널리 쓰입니다(예: 성령의 열매, 갈 5:22). 요 15장에서 "많은 열매"는 <b>그리스도 생명의 표현</b>이며, 이는 곧 하나님께서 사람을 창조하신 영원한 목적 — <b>하나님의 형상을 지녀 그분을 표현함</b>과 연결됩니다.',
-    context: 'καρπὸν πολύν (많은 열매 — 그리스도의 생명의 표현)'
+  'alkken': {
+    gk: 'עַל־כֵּן', pron: '알-켄', strong: 'H5921 / H3651', lemma: 'עַל + כֵּן',
+    grammar: '전치사구 · 인과 접속 부사구',
+    meaning: '그러므로, 그런 까닭에 <em>(therefore, for this reason)</em>',
+    note: '전치사 <b>עַל(~위에/~때문에)</b>와 지시 부사 <b>כֵּן(그러하므로)</b>이 결합한 인과 접속 표현입니다. 5절의 신현(神現) 경험이 6절의 회개로 이어지는 <b>논리적 필연성</b>을 선언합니다. 하나님을 직접 보는 것은 필연적으로 자기 부인으로 이어집니다.',
+    context: 'עַל־כֵּן אֶמְאַס (그러므로 내가 철회합니다 — 신현의 논리적 결과)'
+  },
+  'emas': {
+    gk: 'אֶמְאַס', pron: '에마스', strong: 'H3988', lemma: 'מָאַס',
+    grammar: '동사 · 칼(Qal) · 미완료형 · 1인칭 단수 (목적어 없음)',
+    meaning: '내가 거절한다, 철회한다 <em>(I reject, despise, abhor)</em>',
+    note: '원형 <b>מָאַס</b>는 "거절하다, 멸시하다, 가치 없게 여겨 던져버리다"를 의미합니다. <b>문법적 주의점</b>: 히브리어 원문에는 이 동사의 <b>직접 목적어가 없습니다</b>. "내 자신을"이라는 목적어는 번역 과정에서 추가된 것입니다. 원문은 욥이 자기 자신뿐 아니라 <b>자신의 논리 전체</b>를 철회한다는 의미를 열어 둡니다.',
+    context: 'אֶמְאַס (내가 철회합니다 — 목적어 없는, 전면적 자기 부인)'
+  },
+  'venikhamti': {
+    gk: 'וְנִחַמְתִּי', pron: '베니함티', strong: 'H5162', lemma: 'נָחַם',
+    grammar: '동사 · 니팔(Niphal) · 완료형 · 1인칭 단수 (수동/재귀태)',
+    meaning: '내가 뉘우쳤습니다, 마음을 돌이켰습니다 <em>(I repent, I am comforted/changed)</em>',
+    note: '원형 <b>נָחַם</b>은 칼(Qal)형에서는 "후회하다, 뉘우치다", 피엘(Piel)형에서는 "위로하다", <b>니팔(Niphal)</b>형에서는 "스스로 돌이키다, 마음을 고치다"를 의미합니다. 여기서 사용된 <b>니팔 완료형</b>은 욥 자신이 능동적으로 돌이켰으되, 동시에 외부 경험(신현)에 의해 <b>변화를 받은</b> 재귀적 상태를 표현합니다.',
+    context: 'וְנִחַמְתִּי עַל־עָפָר וָאֵפֶר (티끌과 재 위에서 내가 돌이켰습니다)'
+  },
+  'afar': {
+    gk: 'עָפָר', pron: '아파르', strong: 'H6083', lemma: 'עָפָר',
+    grammar: '명사 · 남성 · 단수 절대형',
+    meaning: '티끌, 마른 흙, 먼지 <em>(dust, dry earth, powder)</em>',
+    note: '창세기 2:7 — "하나님이 땅의 <b>티끌(עָפָר)</b>로 사람을 지으시고"의 바로 그 단어입니다. 욥이 "티끌 위에서" 회개한다는 것은 자신의 <b>피조물 된 본질</b>을 인정하는 행위입니다. 창조주 앞에서 피조물로서의 자리를 회복하는 것 — 이것이 선악나무의 교만함을 내려놓고 생명나무 앞에 나아가는 자세입니다.',
+    context: 'עַל־עָפָר וָאֵפֶר (티끌과 재 가운데서 — 창 2:7의 공명)'
+  },
+  'efer': {
+    gk: 'אֵפֶר', pron: '에페르', strong: 'H665', lemma: 'אֵפֶר',
+    grammar: '명사 · 남성 · 단수 절대형',
+    meaning: '재 <em>(ashes — symbol of mourning and lowliness)</em>',
+    note: '<b>재(אֵפֶר)</b>는 구약에서 극심한 슬픔, 애도, 낮아짐을 나타내는 상징입니다(욥 2:8, 사 61:3 "재 대신 화관"). 욥은 이 책의 처음부터 <b>재 가운데 앉아</b>(욥 2:8) 있었지만, 이제 42:6에서 그 재는 더 이상 운명의 비극에 대한 항의의 자리가 아니라, <b>하나님 앞에서의 자발적 낮아짐</b>의 자리가 됩니다.',
+    context: 'עָפָר וָאֵפֶר (티끌과 재 — 욥의 자기 비움의 완성)'
   }
 };
 
 function tvShowWord(key) {
   const w = TV_WORD_DATA[key];
   if (!w) return;
-  const strongLine = w.lemma ? `${w.strong} · 원형 ${w.lemma}` : w.strong;
-  document.getElementById('tv-popup-meaning').innerHTML = `${w.gk} <span style="font-size:0.82rem;color:var(--ink-mute);font-style:italic;font-weight:400;">· ${w.pron}</span>`;
+  const strongLine = w.lemma ? w.strong + ' · 원형 ' + w.lemma : w.strong;
+  document.getElementById('tv-popup-meaning').innerHTML = w.gk + ' <span style="font-size:0.82rem;color:var(--ink-mute);font-style:italic;font-weight:400;">· ' + w.pron + '</span>';
   document.getElementById('tv-popup-greek').textContent = w.context || '';
   const bodyEl = document.getElementById('tv-popup-body');
-  bodyEl.innerHTML = `
-    <div class="tv-popup-word">
-      <div class="tv-popup-word-top">
-        <span class="tv-popup-word-gk">${w.gk}</span>
-        <span class="tv-popup-word-pron">${w.pron}</span>
-        <span class="tv-popup-word-strong">${strongLine}</span>
-      </div>
-      <div class="tv-popup-word-meaning">${w.meaning}</div>
-      <div style="font-size:0.78rem;color:var(--ink-mute);margin-bottom:6px;font-family:'Lora',serif;letter-spacing:0.02em;">${w.grammar}</div>
-      <div class="tv-popup-word-note">${w.note}</div>
-    </div>
-  `;
+  bodyEl.innerHTML =
+    '<div class="tv-popup-word">' +
+      '<div class="tv-popup-word-top">' +
+        '<span class="tv-popup-word-gk">' + w.gk + '</span>' +
+        '<span class="tv-popup-word-pron">' + w.pron + '</span>' +
+        '<span class="tv-popup-word-strong">' + strongLine + '</span>' +
+      '</div>' +
+      '<div class="tv-popup-word-meaning">' + w.meaning + '</div>' +
+      '<div style="font-size:0.78rem;color:var(--ink-mute);margin-bottom:6px;font-family:\'Lora\',serif;letter-spacing:0.02em;">' + w.grammar + '</div>' +
+      '<div class="tv-popup-word-note">' + w.note + '</div>' +
+    '</div>';
   document.getElementById('tv-popup-overlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -3730,7 +4930,7 @@ document.addEventListener('DOMContentLoaded', () => {
         voiceMsg.style.color = "#b84452";
         setTimeout(finishIntro, 800);
       } else {
-        voiceMsg.innerHTML = `다시 한번 또렷이 읽어주세요 🎤<br><span style='font-size:0.85rem;color:#b84452;'>현재 일치율: ${Math.round(maxSim * 100)}% (60% 이상 필요)</span>`;
+        voiceMsg.innerHTML = "다시 한번 또렷이 읽어주세요 🎤<br><span style='font-size:0.85rem;color:#b84452;'>현재 일치율: " + Math.round(maxSim * 100) + "% (60% 이상 필요)</span>";
         startBtn.style.display = 'block';
         startBtn.textContent = "다시 시도";
       }
