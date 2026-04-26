@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>생명나무 — 길·강·나무와 하나님-사람의 재건축</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Gowun+Batang:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--base-font-size:17px;--font-scale:1;--paper:#f5f0e6;--paper-card:#faf6ec;--paper-verse:#f0e8d4;--ink:#1a1410;--ink-soft:#4a3f36;--ink-mute:#8a7b6c;--line:#d9cfbc;--line-soft:#e8dfce;--accent:#8b1e2b;--accent-soft:#b84452;--marker:#f0d878;--topbar-h:48px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:var(--base-font-size);scroll-behavior:smooth;scroll-padding-top:60px}
+.container,.sidepanel,.word-modal-overlay{zoom:var(--font-scale)}
+body{font-family:'Noto Serif KR','Gowun Batang',serif;background:var(--paper);color:var(--ink);line-height:1.9;letter-spacing:-0.01em;padding-top:var(--topbar-h);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse at top left,rgba(139,30,43,0.025) 0%,transparent 50%),radial-gradient(ellipse at bottom right,rgba(74,63,54,0.02) 0%,transparent 50%);pointer-events:none;z-index:0}
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(245,240,230,0.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+.topbar-btn{flex-shrink:0;width:36px;height:36px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);transition:background .15s}
+.topbar-btn:hover{background:var(--line-soft)}
+.topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--ink-soft);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px}
+.topbar-title::-webkit-scrollbar{display:none}
+.font-controls{flex-shrink:0;display:flex;align-items:center;gap:2px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;padding:2px}
+.font-ctrl-btn{width:30px;height:30px;border:none;background:none;border-radius:3px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.font-ctrl-btn:hover{background:var(--line-soft)}
+.overlay{position:fixed;inset:0;background:rgba(26,20,16,0.35);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:var(--paper);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 28px rgba(26,20,16,.12);font-family:'Noto Sans KR',sans-serif}
+.sidepanel.open{transform:translateX(0)}
+.sidepanel-header{padding:0 22px 16px;border-bottom:1px solid var(--line);margin-bottom:12px;font-size:12px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+.sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--ink-mute);display:flex;align-items:center;justify-content:center}
+.sidepanel-close:hover{background:var(--line-soft);color:var(--ink)}
+.nav-item{display:block;padding:10px 22px;font-size:13px;color:var(--ink-soft);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:500;letter-spacing:-0.005em}
+.nav-item:hover{background:var(--paper-card);color:var(--ink)}
+.nav-item.sub{padding-left:38px;font-size:12.5px;font-weight:400;color:var(--ink-mute)}
+.nav-divider{height:1px;background:var(--line);margin:10px 22px}
+.keyword-tag{display:inline-block;padding:4px 12px;margin:3px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:3px;font-size:12px;color:var(--ink-soft);cursor:pointer;transition:all .2s;font-weight:500}
+.keyword-tag:hover,.keyword-tag.active{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.keyword-def{display:none;padding:12px 22px 14px 38px;font-size:12.5px;color:var(--ink-soft);line-height:1.75;background:var(--paper-card);border-left:2px solid var(--accent);margin:4px 22px;border-radius:0 3px 3px 0;font-family:'Noto Serif KR',serif}
+.keyword-def.show{display:block}
+.container{max-width:680px;margin:0 auto;padding:40px 22px 80px;position:relative;z-index:1}
+.hero{text-align:left;padding:8px 0 4px;border-bottom:1px solid var(--line);margin-bottom:40px;padding-bottom:40px}
+.hero-badge{display:inline-block;color:var(--ink-mute);font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:20px}
+.hero-badge::before{content:'— ';color:var(--accent);font-weight:700}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:900;line-height:1.4;color:var(--ink);letter-spacing:-0.025em;margin-bottom:22px}
+.hero h1 .highlight-word{background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 3px}
+.hero-sub{font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink-soft);font-weight:400;line-height:1.85;padding-left:18px;border-left:2px solid var(--line)}
+.two-trees-diagram{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tree-card{padding:22px 18px;border-radius:4px;border:1px solid var(--line-soft);text-align:center;position:relative;overflow:hidden;background:var(--paper-card)}
+.tree-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.tree-card.life::before{background:var(--accent)}
+.tree-card.death::before{background:var(--ink-mute)}
+.tree-icon{font-size:2.8rem;line-height:1;margin-bottom:12px;display:block}
+.tree-name{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;margin-bottom:8px}
+.tree-name.red{color:var(--accent)}
+.tree-name.gray{color:var(--ink-soft)}
+.tree-sub{font-family:'Noto Sans KR',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:600;letter-spacing:0.1em;margin-bottom:10px}
+.tree-desc{font-family:'Noto Serif KR',serif;font-size:13px;color:var(--ink-soft);line-height:1.75}
+.dashboard{margin:40px 0;padding:28px 26px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.dashboard-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.core-message{border-left:3px solid var(--accent);padding:6px 0 6px 22px;margin:0 0 28px;font-family:'Gowun Batang','Noto Serif KR',serif;font-size:17px;font-weight:400;font-style:italic;color:var(--ink-soft);line-height:1.8;letter-spacing:-0.01em}
+.core-message strong{color:var(--ink);font-weight:700;font-style:normal;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 2px}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}
+.dash-card{padding:0;background:transparent;border:none;text-align:left;display:block}
+.dash-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px}
+.dash-value{font-family:'Noto Serif KR',serif;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.55;letter-spacing:-0.01em}
+.flow-section{margin:56px 0}
+.flow-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.flow-steps{position:relative;padding-left:32px}
+.flow-steps::before{content:'';position:absolute;left:11px;top:14px;bottom:14px;width:1px;background:var(--line)}
+.flow-step{position:relative;padding:4px 0 22px}
+.flow-step:last-child{padding-bottom:0}
+.flow-dot{position:absolute;left:-32px;top:4px;width:22px;height:22px;border-radius:50%;background:var(--paper);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:11px;color:var(--accent);font-weight:700;z-index:1}
+.flow-step-label{font-family:'Noto Serif KR',serif;font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-0.015em;line-height:1.5}
+.flow-step-desc{font-family:'Noto Serif KR',serif;font-size:14px;color:var(--ink-soft);line-height:1.75}
+.keywords-section{margin:48px 0;padding:26px 24px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.keywords-section-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.kw-container{display:flex;flex-wrap:wrap;gap:8px}
+.kw-chip{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--paper);border:1px solid var(--line);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all .2s}
+.kw-chip:hover,.kw-chip.active{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.kw-tooltip{display:none;margin-top:14px;padding:16px 18px;background:var(--paper-verse);border-radius:3px;border-left:2px solid var(--accent);font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.kw-tooltip.show{display:block}
+.accordion-group{margin:48px 0}
+.accordion-group-title{font-family:'Noto Serif KR',serif;font-size:1.4rem;font-weight:800;color:var(--ink);margin:64px 0 28px;padding-bottom:20px;border-bottom:1px solid var(--line);display:block;letter-spacing:-0.025em;line-height:1.4;position:relative}
+.accordion-group-title::before{content:'CORE';display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;color:var(--accent);margin-bottom:10px}
+.accordion{margin-bottom:14px;border-radius:4px;overflow:hidden;background:var(--paper-card);border:1px solid var(--line-soft);transition:border-color .25s}
+.accordion:hover,.accordion.open{border-color:var(--line)}
+.accordion-header{display:flex;align-items:flex-start;gap:18px;padding:22px 24px;background:transparent;cursor:pointer;user-select:none;transition:background .2s}
+.accordion-header:hover{background:rgba(139,30,43,0.025)}
+.acc-number{flex-shrink:0;color:var(--accent);font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;letter-spacing:0.18em;padding-top:4px;min-width:36px;display:block;text-align:left;text-transform:uppercase}
+.acc-title-text{flex:1;font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.5;letter-spacing:-0.018em}
+.acc-chevron{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;transition:transform .3s;color:var(--ink-mute);font-size:11px;padding-top:4px}
+.accordion.open .acc-chevron{transform:rotate(180deg);color:var(--accent)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.accordion-content{padding:22px 24px 26px 78px;border-top:1px dashed var(--line)}
+.verse-block{position:relative;padding:22px 24px 22px 26px;background:var(--paper-verse);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;margin:22px 0}
+.verse-block::before{content:'"';position:absolute;top:-10px;left:18px;font-family:'Noto Serif KR',serif;font-size:3rem;color:var(--accent);opacity:0.28;line-height:1;font-weight:900}
+.verse-ref{display:flex;align-items:center;gap:6px;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.verse-text{font-family:'Noto Serif KR',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.85;letter-spacing:-0.01em}
+.verse-text b{color:var(--ink);font-weight:700}
+.verse-text + .verse-text{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.content-text{font-family:'Noto Serif KR',serif;font-size:17px;color:var(--ink);line-height:1.9;margin-bottom:20px;letter-spacing:-0.01em}
+.content-text:last-child{margin-bottom:0}
+.accordion-content > .content-text:first-child::first-letter{font-family:'Noto Serif KR',serif;font-size:3.4em;font-weight:900;float:left;line-height:0.88;margin:8px 8px -4px 0;color:var(--accent)}
+.hl{background:linear-gradient(180deg,transparent 55%,var(--marker) 55%,var(--marker) 92%,transparent 92%);padding:0 2px}
+.sub-point{padding:18px 22px;border-left:2px solid var(--ink-mute);margin:22px 0}
+.sub-point-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sub-point-text{font-family:'Noto Serif KR',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.85;letter-spacing:-0.01em}
+.sub-point-text strong{color:var(--ink);font-weight:700}
+.section-connector{text-align:center;padding:14px 0;color:var(--line);font-size:14px;letter-spacing:0.4em}
+.step-header{display:block;padding:0 0 22px !important;border-bottom:1px solid var(--line) !important;font-family:'Noto Serif KR',serif !important;font-size:1.5rem !important;font-weight:800 !important;letter-spacing:-0.02em !important;line-height:1.4 !important;margin:72px 0 28px !important;position:relative;color:var(--ink)}
+.step-header::before{content:attr(data-kicker);display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.step-connector{margin:28px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);font-family:'Gowun Batang',serif;font-size:1.1rem;font-style:italic;color:var(--ink-soft);text-align:left;line-height:1.75}
+.step-connector strong{color:var(--ink);font-weight:700;font-style:normal}
+.purpose-stages{display:grid;grid-template-columns:1fr;gap:12px;margin:22px 0}
+.purpose-stage{background:var(--paper);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;padding:16px 18px;display:flex;align-items:flex-start;gap:14px}
+.purpose-stage-num{flex-shrink:0;width:30px;height:30px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:13px;color:var(--accent);font-weight:700}
+.purpose-stage-body{flex:1}
+.purpose-stage-title{font-family:'Noto Serif KR',serif;font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:4px;letter-spacing:-0.01em}
+.purpose-stage-desc{font-family:'Noto Serif KR',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+.recap-section{margin:56px 0;padding:32px 26px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.recap-title{font-family:'Noto Serif KR',serif;font-size:1.3rem;font-weight:800;color:var(--ink);margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line);letter-spacing:-0.02em;display:block;position:relative}
+.recap-title::before{content:'REVIEW';display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;color:var(--accent);margin-bottom:8px}
+.recap-subtitle{font-family:'Noto Serif KR',serif;font-size:15.5px !important;font-weight:700 !important;color:var(--ink) !important;margin-bottom:10px;letter-spacing:-0.01em;line-height:1.55}
+.recap-subtitle.small{font-family:'Gowun Batang',serif !important;font-size:13px !important;font-weight:400 !important;color:var(--ink-soft) !important;font-style:italic;margin-bottom:14px;line-height:1.7}
+.recap-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.recap-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--paper);border-radius:3px;border:1px solid var(--line-soft);font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.75;letter-spacing:-0.01em}
+.recap-num{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:transparent;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:12px;font-weight:700}
+.recap-item.green .recap-num{border-color:var(--ink-soft);color:var(--ink-soft)}
+.recap-item.purple .recap-num{border-color:var(--ink-mute);color:var(--ink-mute)}
+.recap-item-text{flex:1;color:var(--ink-soft)}
+.recap-item-text strong{color:var(--ink);font-weight:700}
+.recap-anchor{margin:32px 0 12px;padding-top:20px;border-top:1px dashed var(--line)}
+.recap-anchor:first-of-type{padding-top:0;border-top:none;margin-top:4px}
+.recap-note{margin-top:22px;padding:18px 20px;background:var(--paper);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;font-family:'Gowun Batang',serif;font-size:14.5px;font-style:italic;line-height:1.8;color:var(--ink-soft)}
+.recap-note strong{color:var(--ink);font-weight:700;font-style:normal}
+.quiz-section{margin:64px 0 40px;padding:28px 24px 30px;background:var(--paper-card);border-radius:4px;border:1px solid var(--line-soft)}
+.quiz-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.quiz-item{display:none;margin-bottom:22px;padding:20px;background:var(--paper);border-radius:3px;border:1px solid var(--line-soft)}
+.quiz-item.active,.quiz-item.reviewed{display:block}
+.quiz-q{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.quiz-badge{flex-shrink:0;width:28px;height:28px;color:var(--accent);border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:700}
+.quiz-q-text{font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.55;padding-top:2px;letter-spacing:-0.015em}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:3px;cursor:pointer;transition:all .2s;font-family:'Noto Serif KR',serif;font-size:15px;color:var(--ink-soft);line-height:1.6;letter-spacing:-0.01em}
+.quiz-opt:hover{border-color:var(--accent-soft);background:var(--paper)}
+.quiz-opt.selected{border-color:var(--accent);background:var(--paper);color:var(--ink)}
+.quiz-opt.correct{border-color:var(--accent);background:var(--paper-verse);color:var(--ink)}
+.quiz-opt.wrong{border-color:var(--line);background:var(--paper-card);color:var(--ink-mute);text-decoration:line-through}
+.quiz-opt-marker{flex-shrink:0;width:22px;height:22px;border:1px solid var(--line);background:var(--paper);color:var(--ink-mute);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;transition:all .2s;margin-top:2px}
+.quiz-opt.selected .quiz-opt-marker{border-color:var(--accent);color:var(--accent);background:var(--paper)}
+.quiz-opt.correct .quiz-opt-marker{border-color:var(--accent);background:var(--accent);color:var(--paper)}
+.quiz-nav-btn{padding:14px;background:var(--paper-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;cursor:pointer;transition:all .2s}
+.quiz-nav-btn:hover:not(:disabled){background:var(--line-soft)}
+.quiz-nav-btn:disabled{opacity:0.5;cursor:not-allowed}
+.quiz-nav-btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.quiz-nav-btn.primary:hover:not(:disabled){background:#6e1622}
+.quiz-feedback{display:none;margin-top:10px;padding:11px 14px;border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0.04em;line-height:1.6}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct-fb{background:var(--paper-verse);color:var(--accent);border-left:2px solid var(--accent)}
+.quiz-feedback.wrong-fb{background:var(--paper-card);color:var(--ink-soft);border-left:2px solid var(--ink-mute)}
+.quiz-result{display:none;margin-top:20px;padding:26px;background:var(--paper);border:1px solid var(--line);border-radius:3px;text-align:center}
+.quiz-result.show{display:block}
+.quiz-score-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
+.quiz-score{font-family:'Noto Serif KR',serif;font-size:2.2rem;font-weight:900;color:var(--accent);letter-spacing:-0.02em}
+.quiz-result-msg{font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);margin-top:10px;line-height:1.75}
+.prayer-section{margin:64px 0 40px;padding:36px 28px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;position:relative}
+.prayer-heading{font-family:'Noto Serif KR',serif;font-size:1.55rem;font-weight:900;color:var(--ink);letter-spacing:-0.025em;margin-bottom:24px;line-height:1.45;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.prayer-callbox{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-bottom:26px;font-family:'Noto Serif KR',serif;font-size:15.5px;line-height:1.95;color:var(--ink);text-align:center;letter-spacing:-0.005em}
+.prayer-callbox p{margin:0}
+.prayer-callbox p + p{margin-top:12px;padding-top:14px;border-top:1px dashed var(--line)}
+.prayer-callbox .cb-house{color:var(--accent);font-weight:800;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 3px}
+.prayer-amen-box{background:var(--paper-verse);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;padding:20px 22px;font-family:'Gowun Batang',serif;font-size:15px;color:var(--ink);line-height:1.9;font-weight:500}
+.prayer-amen-box p{margin-bottom:14px;font-style:italic}
+.prayer-amen-box p:last-of-type{margin-bottom:0}
+.prayer-amen-box strong{color:var(--accent);font-weight:700;font-style:normal}
+.prayer-amen-sig{text-align:right;font-family:'Noto Sans KR',sans-serif;font-weight:700;color:var(--accent);letter-spacing:0.32em;font-size:12px;font-style:normal;margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
+.footer-note{text-align:center;padding:40px 16px 16px;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);letter-spacing:0.22em;text-transform:uppercase;border-top:1px solid var(--line);margin-top:56px}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeInUp .5s ease forwards}
+#intro-container{position:fixed;inset:0;z-index:10000;background:#1a1410;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif}
+#intro-reveal-text{text-align:center;color:var(--paper);z-index:1;padding:20px;width:90%;max-width:560px}
+.reveal-main{font-family:'Noto Serif KR',serif;font-size:1.5rem;font-weight:700;line-height:1.65;margin-bottom:24px;word-break:keep-all;letter-spacing:-0.02em;color:var(--paper)}
+.reveal-sub{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;color:var(--accent-soft);letter-spacing:0.3em;text-transform:uppercase}
+.voice-prompt-container{margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:16px;opacity:0;transform:translateY(15px);pointer-events:none;transition:opacity 0.8s ease,transform 0.8s ease}
+.voice-prompt-container.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.voice-msg{font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:500;color:var(--paper);text-align:center;line-height:1.7}
+.voice-btn-group{display:flex;gap:12px;margin-top:8px}
+.voice-action-btn{padding:12px 24px;background:var(--accent);color:var(--paper);border:1px solid var(--accent);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.15s}
+.voice-action-btn:hover{background:#6e1622;border-color:#6e1622}
+.skip-btn{padding:12px 24px;background:transparent;border:1px solid rgba(245,240,230,0.35);color:rgba(245,240,230,0.75);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.skip-btn:hover{background:rgba(245,240,230,0.08);color:var(--paper);border-color:rgba(245,240,230,0.6)}
+#intro-cover{position:absolute;inset:0;z-index:2}
+#intro-cover.cleared{pointer-events:none}
+#scratch-canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.intro-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;max-width:520px;text-align:center;color:var(--paper);pointer-events:none;font-family:'Noto Serif KR',serif;transition:opacity 0.8s ease}
+.intro-title{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:900;color:var(--paper);line-height:1.4;margin-bottom:24px;word-break:keep-all;letter-spacing:-0.025em}
+.intro-desc{font-family:'Gowun Batang',serif;font-size:1rem;color:rgba(245,240,230,0.72);line-height:1.75;margin-bottom:30px;word-break:keep-all;font-style:italic}
+.intro-pullquote{font-family:'Noto Serif KR',serif;font-size:0.95rem;font-weight:500;border-left:2px solid var(--accent-soft);padding-left:16px;text-align:left;margin:0 auto 36px;max-width:360px;line-height:1.75;color:rgba(245,240,230,0.9)}
+.intro-pullquote strong{color:var(--accent-soft);font-weight:700}
+.intro-pullquote .attrib{display:block;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);margin-top:10px;letter-spacing:0.2em;text-transform:uppercase;font-weight:500}
+.intro-instruction{font-family:'Noto Sans KR',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent-soft);animation:pulse 2.4s infinite;display:flex;flex-direction:column;align-items:center;gap:10px}
+.scratch-icon{font-size:2.2rem;animation:swipe 2s infinite;opacity:0.85}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.55}}
+@keyframes swipe{0%{transform:translateX(-18px) rotate(-12deg)}50%{transform:translateX(18px) rotate(12deg)}100%{transform:translateX(-18px) rotate(-12deg)}}
+@media (max-width:480px){.container{padding:24px 6px 60px}.hero h1{font-size:1.55rem}.two-trees-diagram{grid-template-columns:1fr}.accordion-content{padding:18px 10px 20px 10px}.dash-grid{grid-template-columns:1fr;gap:20px}}
+.todays-verse-section{margin:30px 0 40px 0;padding:34px 22px 28px 22px;background:linear-gradient(180deg,#fbf6ea 0%,#f5ecd8 100%);border:1px solid var(--line);border-radius:6px;box-shadow:0 2px 14px rgba(74,63,54,0.06);position:relative}
+.todays-verse-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-soft) 50%,var(--accent) 100%);border-radius:6px 6px 0 0}
+.tv-header{text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px dashed var(--line)}
+.tv-kicker{display:inline-block;font-family:'Lora',serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px;padding:4px 14px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,0.5)}
+.tv-ref{font-family:'Noto Serif KR',serif;font-size:1.7rem;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2}
+.tv-ref-en{font-family:'Lora',serif;font-size:0.82rem;color:var(--ink-mute);font-style:italic;margin-top:4px;letter-spacing:0.02em}
+.tv-greek-sentence{padding:26px 20px 22px 20px;background:rgba(255,255,255,0.85);border:1px solid var(--line);border-radius:5px;margin-bottom:18px}
+.tv-greek-title{font-family:'Lora',serif;font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:16px;font-weight:700;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.tv-greek-line{display:flex;flex-wrap:wrap;gap:4px 2px;align-items:flex-end;justify-content:center;padding:8px 0;line-height:1.2}
+.tv-greek-line + .tv-greek-line{border-top:1px dashed var(--line-soft);margin-top:4px;padding-top:14px}
+.tv-word{display:flex;flex-direction:column;align-items:center;padding:3px 5px;border-radius:3px;gap:2px;min-width:24px;transition:background 0.15s,transform 0.15s}
+.tv-word .w-gk{font-family:'Lora',serif;font-size:1.1rem;color:var(--ink);font-weight:500;line-height:1.15;white-space:nowrap}
+.tv-word .w-pr{font-size:0.66rem;color:var(--ink-mute);font-style:italic;line-height:1.15;letter-spacing:0.01em}
+.tv-word.key{cursor:pointer;background:rgba(139,30,43,0.06);border-bottom:2px solid var(--accent);padding:3px 7px 2px 7px;margin:0 1px;position:relative}
+.tv-word.key:hover{background:rgba(139,30,43,0.16);transform:translateY(-2px)}
+.tv-word.key .w-gk{color:var(--accent);font-weight:700}
+.tv-word.key .w-pr{color:var(--accent);font-weight:500;opacity:0.85}
+.tv-word.key::before{content:'';position:absolute;top:2px;right:3px;width:4px;height:4px;background:var(--accent);border-radius:50%;opacity:0.9}
+.tv-word.func .w-gk{color:var(--ink-mute);font-style:italic;font-weight:400;font-size:1rem}
+.tv-word.func .w-pr{opacity:0.55}
+.tv-punct{display:inline-flex;align-items:flex-end;padding-bottom:3px;font-family:'Lora',serif;color:var(--ink-soft);font-size:1.05rem;font-weight:500;margin:0 1px}
+.tv-trans-compact{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.tv-trans-row{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:baseline;padding:10px 14px;background:rgba(255,255,255,0.7);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:3px}
+.tv-trans-row.en{border-left-color:#6b7a8f}
+.tv-trans-tag{font-family:'Lora',serif;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:#fbf6ea;background:var(--accent);padding:2px 0;border-radius:2px;font-weight:700;text-align:center;line-height:1.3}
+.tv-trans-row.en .tv-trans-tag{background:#6b7a8f}
+.tv-trans-text{font-size:0.94rem;line-height:1.7;color:var(--ink)}
+.tv-trans-row.en .tv-trans-text{font-family:'Lora',serif;font-style:italic;font-size:0.9rem;color:var(--ink-soft)}
+.tv-trans-text b{color:var(--accent);font-weight:700}
+.tv-legend{display:flex;gap:14px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;font-size:0.78rem}
+.tv-legend-item{display:inline-flex;align-items:center;gap:5px;color:var(--ink-soft)}
+.tv-legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.tv-legend-dot.key{background:var(--accent)}
+.tv-legend-dot.func{background:var(--ink-mute)}
+.tv-summary{margin-top:24px;padding:20px 22px;background:var(--accent);color:#fbf6ea;border-radius:4px;position:relative}
+.tv-summary::before{content:'∴';position:absolute;top:-14px;left:20px;width:30px;height:30px;background:#fbf6ea;color:var(--accent);border:1px solid var(--accent);border-radius:50%;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif}
+.tv-summary-title{font-family:'Noto Serif KR',serif;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;opacity:0.7;margin-bottom:8px;font-weight:600}
+.tv-summary-text{font-size:0.94rem;line-height:1.8;color:#fbf6ea}
+.tv-summary-text b{color:#ffd878;font-weight:700}
+.tv-popup-overlay{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:2000;align-items:center;justify-content:center;padding:20px;animation:tvOverlayIn 0.2s ease-out}
+.tv-popup-overlay.active{display:flex}
+@keyframes tvOverlayIn{from{opacity:0}to{opacity:1}}
+.tv-popup{background:var(--paper-card);border-radius:6px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 18px 50px rgba(0,0,0,0.35);border:1px solid var(--line);border-top:4px solid var(--accent);animation:tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);position:relative}
+@keyframes tvPopIn{from{opacity:0;transform:translateY(16px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.tv-popup-close{position:absolute;top:10px;right:10px;width:32px;height:32px;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s,color 0.15s,border-color 0.15s;z-index:2}
+.tv-popup-close:hover{background:var(--accent);color:#fbf6ea;border-color:var(--accent)}
+.tv-popup-header{padding:24px 28px 16px 28px;border-bottom:1px dashed var(--line)}
+.tv-popup-kicker{font-family:'Lora',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+.tv-popup-meaning{font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.35}
+.tv-popup-greek{font-family:'Lora',serif;font-size:0.98rem;color:var(--ink-soft);font-style:italic;margin-top:4px}
+.tv-popup-body{padding:18px 22px 24px 22px;display:flex;flex-direction:column;gap:12px}
+.tv-popup-word{padding:14px 16px;background:rgba(255,255,255,0.7);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:3px}
+.tv-popup-word-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.tv-popup-word-gk{font-family:'Lora',serif;font-size:1.22rem;color:var(--accent);font-weight:600;line-height:1.1}
+.tv-popup-word-pron{font-size:0.84rem;color:var(--ink-soft);font-style:italic}
+.tv-popup-word-strong{font-size:0.65rem;color:var(--ink-mute);font-family:'Lora',serif;letter-spacing:0.04em;margin-left:auto}
+.tv-popup-word-meaning{font-size:0.95rem;color:var(--ink);font-weight:600;line-height:1.6;margin:6px 0}
+.tv-popup-word-meaning em{font-style:italic;color:var(--ink-soft);font-weight:400;font-size:0.85rem}
+.tv-popup-word-note{font-size:0.85rem;color:var(--ink-soft);line-height:1.7;padding-top:6px;border-top:1px dashed var(--line)}
+.tv-popup-word-note b{color:var(--accent);font-weight:600}
+@media (max-width:720px){.todays-verse-section{padding:24px 10px 22px 10px}.tv-ref{font-size:1.4rem}.tv-greek-sentence{padding:20px 10px 16px 10px}.tv-word .w-gk{font-size:1rem}.tv-word .w-pr{font-size:0.62rem}.tv-word.func .w-gk{font-size:0.9rem}.tv-summary{padding:16px}.tv-summary-text{font-size:0.88rem}}
+
+/* ===== TTS Reader (읽어주기) ===== */
+.tts-reader-overlay{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:2000;align-items:center;justify-content:center;padding:20px;animation:tvOverlayIn 0.2s ease-out}
+.tts-reader-overlay.active{display:flex}
+.tts-reader-modal{background:var(--paper-card);border-radius:6px;max-width:520px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 18px 50px rgba(0,0,0,0.35);border:1px solid var(--line);border-top:4px solid var(--accent);animation:tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);font-family:'Noto Sans KR',sans-serif}
+.tts-reader-header{padding:18px 22px 14px;border-bottom:1px dashed var(--line);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tts-reader-icon{flex-shrink:0;color:var(--accent)}
+.tts-reader-title{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--ink);flex:1}
+.tts-reader-close{width:30px;height:30px;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px}
+.tts-reader-close:hover{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.tts-reader-body{padding:14px 22px;overflow-y:auto;flex:1}
+.tts-form-label{font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;margin-top:14px;display:block}
+.tts-form-label:first-child{margin-top:0}
+.tts-voice-select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
+.tts-api-row{display:flex;gap:8px;align-items:center}
+.tts-api-row input{flex:1;padding:9px 11px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:12px;background:var(--paper);color:var(--ink)}
+.tts-api-row button{padding:9px 14px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer}
+.tts-api-row button:hover{background:#6e1622}
+.tts-section-list{border:1px solid var(--line-soft);border-radius:4px;background:var(--paper);max-height:240px;overflow-y:auto}
+.tts-section-item{display:flex;align-items:flex-start;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--ink-soft);transition:background 0.15s}
+.tts-section-item:last-child{border-bottom:none}
+.tts-section-item:hover{background:var(--paper-card)}
+.tts-section-item.all{font-weight:700;color:var(--ink);background:var(--paper-card)}
+.tts-section-item.playing{background:var(--paper-verse);color:var(--accent);font-weight:600}
+.tts-section-checkbox{flex-shrink:0;width:15px;height:15px;margin-top:2px;accent-color:var(--accent);cursor:pointer}
+.tts-section-label{flex:1;line-height:1.45}
+.tts-progress{margin-top:14px;padding:12px 14px;background:var(--paper);border:1px solid var(--line-soft);border-radius:4px;display:none}
+.tts-progress.active{display:block}
+.tts-progress-bar{height:6px;background:var(--line-soft);border-radius:3px;overflow:hidden}
+.tts-progress-fill{height:100%;background:var(--accent);width:0%;transition:width 0.3s}
+.tts-progress-text{font-size:12px;color:var(--ink-soft);margin-top:8px;line-height:1.5}
+.tts-progress-text strong{color:var(--ink)}
+.tts-status{font-size:11.5px;color:var(--ink-mute);margin-top:10px;font-style:italic;line-height:1.5}
+.tts-status.error{color:var(--accent);font-style:normal;font-weight:600}
+.tts-reader-footer{padding:14px 22px 18px;border-top:1px solid var(--line);display:flex;gap:10px;flex-shrink:0}
+.tts-btn{flex:1;padding:11px 16px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:4px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.06em;cursor:pointer;transition:all 0.15s}
+.tts-btn:hover:not(:disabled){background:var(--line-soft)}
+.tts-btn:disabled{opacity:0.45;cursor:not-allowed}
+.tts-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tts-btn.primary:hover:not(:disabled){background:#6e1622}
+@media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
+
+</style>
+</head>
+<body style="overflow:hidden;">
+
+<!-- INTRO -->
+<div id="intro-container">
+  <div id="intro-reveal-text">
+    <div class="reveal-main">"나는 포도나무요, 여러분은 가지들입니다.<br>그가 내 안에, 내가 그 안에 거하면,<br>그 사람은 열매를 많이 맺습니다."</div>
+    <div class="reveal-sub">— 요한복음 15:5 —</div>
+    <div class="voice-prompt-container" id="voice-prompt-container">
+      <div class="voice-msg" id="voice-msg">위 문장을 직접 소리 내어 읽어주세요</div>
+      <div class="voice-btn-group">
+        <button class="voice-action-btn" id="start-voice-btn">🎤 읽기 시작</button>
+        <button class="skip-btn" id="skip-intro-btn">건너뛰기</button>
+      </div>
+    </div>
+  </div>
+  <div id="intro-cover">
+    <canvas id="scratch-canvas"></canvas>
+    <div class="intro-content" id="intro-content">
+      <h1 class="intro-title">생명나무 — 길·강·나무<br>하나님-사람의 재건축</h1>
+      <div class="intro-desc">거듭났을 때 그리스도께서는 그분 자신을 <strong>생명나무로서 우리 안에 심으셨습니다</strong>.<br>그러나 실지 생활에서 우리는 여전히 선악 지식나무의 노선 위에 있을 수 있습니다.<br>하나님의 의도는 <b>허무심과 재건축</b>을 통해 우리를 '하나님-사람'이 되게 하시는 것입니다.</div>
+      <div class="intro-pullquote">하나님의 경륜 안에서 그분의 의도는 타락한 사람을 온전하게 만드시는 것이 아닙니다. 오히려 하나님의 의도는 <strong>우리를 허무시고 우리의 생명과 본성이신 그분 자신으로 우리를 재건축</strong>하시어, 우리를 그분과 완전히 하나인 사람들이 되게 하시는 것입니다.<span class="attrib">— 욥기 라이프 스타디 —</span></div>
+      <div class="intro-instruction"><div class="scratch-icon">👆</div>화면을 문질러 계시를 확인하세요</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <button class="topbar-btn" onclick="window.open('https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/','_blank')" aria-label="홈"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+  <div class="topbar-title">생명나무 · 길·강·나무 · 거듭남의 심기심 · 하나님-사람의 재건축</div>
+  <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="nav-item" onclick="goTo('hero-section')">제목 &amp; 주제</a>
+  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 갈 2:20</a>
+  <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
+  <a class="nav-item" onclick="goTo('flow-section')">다섯 단계의 흐름</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('keywords-section')" style="font-weight:700;color:var(--accent);">키워드</a>
+  <div style="padding:6px 20px;">
+    <span class="keyword-tag" onclick="showKwDef('kd1',this)">생명나무 = 그리스도</span>
+    <span class="keyword-tag" onclick="showKwDef('kd2',this)">길·강·나무</span>
+    <span class="keyword-tag" onclick="showKwDef('kd3',this)">거듭남의 심기심</span>
+    <span class="keyword-tag" onclick="showKwDef('kd4',this)">영원한 몫</span>
+    <span class="keyword-tag" onclick="showKwDef('kd5',this)">하나님-사람</span>
+  </div>
+  <div class="keyword-def" id="kd1">요한복음 15장에서 주님은 "나는 참 포도나무"라고 하셨습니다. 이 포도나무가 바로 생명나무이며, 곧 <b>그리스도 자신</b>입니다. 요한복음의 모든 방면 — 떡·빛·목자·부활·길 — 은 모두 이 한 생명나무의 결과입니다.</div>
+  <div class="keyword-def" id="kd2">계 22:1-2에는 세 항목이 함께 있습니다: 길·강·생명나무. 길 가운데 강이 있고, 강 양쪽 둑에 <b>덩굴나무처럼 뻗는 생명나무</b>가 있습니다. 그 영이 흐르는 곳마다 그리스도의 공급이 있습니다.</div>
+  <div class="keyword-def" id="kd3">거듭났을 때 그리스도는 그분 자신을 <b>생명나무로서 우리 안에 심으셨습니다</b>(요 1:12-13). 이로써 우리는 사탄의 왕국에서 하나님의 왕국으로 옮겨졌습니다. 그러나 실지 생활에서 여전히 선악 지식나무 노선에 있을 수 있습니다.</div>
+  <div class="keyword-def" id="kd4">생명나무의 열매는 영원토록 <b>구속받은 모든 이들의 음식</b>이 됩니다(계 22:2, 14). 달마다 맺혀 언제까지나 신선 — 일 년에 <b>열두 번</b>. 오늘부터 영원한 새 예루살렘까지 계속 먹습니다.</div>
+  <div class="keyword-def" id="kd5">하나님이 원하시는 것은 '선한 사람'이 아니라 <b>'하나님-사람'</b>입니다. 욥은 선한 사람이었지만 하나님-사람은 아니었습니다. 하나님은 그를 허무시고 그분 자신으로 재건축하여 <b>생명과 본성에서 그분과 하나인 사람</b>이 되게 하고자 하셨습니다.</div>
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:700;color:var(--ink);">핵심 요점</a>
+  <a class="nav-item sub" onclick="goTo('acc-0')">Ⅰ. 그리스도 = 생명나무</a>
+  <a class="nav-item sub" onclick="goTo('acc-1')">Ⅱ. 요한복음의 모든 방면</a>
+  <a class="nav-item sub" onclick="goTo('acc-2')">Ⅲ. 길·강·나무 — 일상의 누림</a>
+  <a class="nav-item sub" onclick="goTo('acc-3')">Ⅳ. 영원한 몫 — 달마다 새 열매</a>
+  <a class="nav-item sub" onclick="goTo('acc-4')">Ⅴ. 거듭남 — 심기심</a>
+  <a class="nav-item sub" onclick="goTo('acc-5')">Ⅵ. 실지 생활 — 두 노선 사이</a>
+  <a class="nav-item sub" onclick="goTo('acc-6')">Ⅶ. 욥의 윤리 → 하나님의 영역</a>
+  <a class="nav-item sub" onclick="goTo('acc-7')">Ⅷ. 허무심과 재건축</a>
+  <a class="nav-item sub" onclick="goTo('acc-8')">Ⅸ. 42:17 각주 — 위대한 답</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('recap-section')">전체 복습</a>
+  <a class="nav-item" onclick="goTo('quiz-section')">퀴즈</a>
+  <a class="nav-item" onclick="goTo('prayer-section')">오늘의 결단과 기도</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container" id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-section">
+    <div class="hero-badge">2026 국제중국어 4주 5,6일</div>
+    <h1>생명나무 — 길·강·나무<br>그리스도의 누림과<br><span class="highlight-word">하나님-사람의 재건축</span></h1>
+    <p class="hero-sub">요한복음 15장에서 주님은 "나는 포도나무요, 여러분은 가지들입니다"라고 하셨습니다. <b>그리스도께서 바로 그 생명나무</b>이십니다. 우리가 거듭났을 때 그분은 자신을 생명나무로서 우리 안에 심으셨습니다. 그러나 실지 생활에서 우리는 여전히 선악 지식나무 노선 위에 있을 수 있습니다. 하나님의 의도는 <b>우리를 허무시고 그분 자신으로 재건축</b>하시어, 우리를 생명과 본성에서 그분과 완전히 하나인 <b>'하나님-사람'</b>이 되게 하시는 것입니다.</p>
+
+  </section>
+
+  <!-- TODAY'S VERSE -->
+  <section class="todays-verse-section" id="todays-verse-section">
+    <div class="tv-header">
+      <div class="tv-kicker">오늘의 구절 · Today's Verse</div>
+      <div class="tv-ref">갈라디아서 2:20</div>
+      <div class="tv-ref-en">Galatians 2:20 · Recovery Version</div>
+    </div>
+    <div class="tv-trans-compact">
+      <div class="tv-trans-row kr"><span class="tv-trans-tag">한</span><span class="tv-trans-text">나는 <b>그리스도와 함께 십자가에 못 박혔습니다</b>. 그러므로 이제는 더 이상 내가 사는 것이 아니라, <b>그리스도께서 내 안에 사십니다</b>. 이제 내가 육체 안에서 사는 생명은 나를 사랑하시어 나를 위하여 자신을 버리신 하나님의 아들의 <b>믿음 안에서 사는 생명</b>입니다. <span style="color:var(--ink-mute);font-size:0.82rem;">— 회복역</span></span></div>
+      <div class="tv-trans-row en"><span class="tv-trans-tag">EN</span><span class="tv-trans-text">I am crucified with Christ; and it is no longer I who live, but it is Christ who lives in me; and the life which I now live in the flesh I live in faith, the faith of the Son of God, who loved me and gave Himself up for me.</span></div>
+    </div>
+    <div class="tv-greek-sentence">
+      <div class="tv-greek-title">ΕΛΛΗΝΙΚΗ · 헬라어 원문 (NA28)</div>
+      <div class="tv-greek-line">
+        <span class="tv-word func"><span class="w-gk">Χριστῷ</span><span class="w-pr">크리스토</span></span>
+        <span class="tv-word key" onclick="tvShowWord('synestaurōmai')"><span class="w-gk">συνεσταύρωμαι</span><span class="w-pr">쉬네스타우로마이</span></span>
+        <span class="tv-punct">·</span>
+      </div>
+      <div class="tv-greek-line">
+        <span class="tv-word key" onclick="tvShowWord('zō')"><span class="w-gk">ζῶ</span><span class="w-pr">조</span></span>
+        <span class="tv-word func"><span class="w-gk">δὲ</span><span class="w-pr">데</span></span>
+        <span class="tv-word key" onclick="tvShowWord('ouketi')"><span class="w-gk">οὐκέτι</span><span class="w-pr">우케티</span></span>
+        <span class="tv-word func"><span class="w-gk">ἐγώ</span><span class="w-pr">에고</span></span>
+        <span class="tv-punct">,</span>
+      </div>
+      <div class="tv-greek-line">
+        <span class="tv-word key" onclick="tvShowWord('zē')"><span class="w-gk">ζῇ</span><span class="w-pr">제</span></span>
+        <span class="tv-word func"><span class="w-gk">δὲ</span><span class="w-pr">데</span></span>
+        <span class="tv-word func"><span class="w-gk">ἐν</span><span class="w-pr">엔</span></span>
+        <span class="tv-word func"><span class="w-gk">ἐμοὶ</span><span class="w-pr">에모이</span></span>
+        <span class="tv-word func"><span class="w-gk">Χριστός</span><span class="w-pr">크리스토스</span></span>
+        <span class="tv-punct">·</span>
+      </div>
+      <div class="tv-greek-line">
+        <span class="tv-word func"><span class="w-gk">ὃ</span><span class="w-pr">호</span></span>
+        <span class="tv-word func"><span class="w-gk">δὲ</span><span class="w-pr">데</span></span>
+        <span class="tv-word func"><span class="w-gk">νῦν</span><span class="w-pr">뉜</span></span>
+        <span class="tv-word key" onclick="tvShowWord('zō')"><span class="w-gk">ζῶ</span><span class="w-pr">조</span></span>
+        <span class="tv-word func"><span class="w-gk">ἐν</span><span class="w-pr">엔</span></span>
+        <span class="tv-word key" onclick="tvShowWord('sarki')"><span class="w-gk">σαρκί</span><span class="w-pr">사르키</span></span>
+        <span class="tv-punct">,</span>
+      </div>
+      <div class="tv-greek-line">
+        <span class="tv-word func"><span class="w-gk">ἐν</span><span class="w-pr">엔</span></span>
+        <span class="tv-word key" onclick="tvShowWord('pistei')"><span class="w-gk">πίστει</span><span class="w-pr">피스테이</span></span>
+        <span class="tv-word key" onclick="tvShowWord('zō')"><span class="w-gk">ζῶ</span><span class="w-pr">조</span></span>
+        <span class="tv-word func"><span class="w-gk">τῇ</span><span class="w-pr">테</span></span>
+        <span class="tv-word key" onclick="tvShowWord('huiou')"><span class="w-gk">τοῦ υἱοῦ</span><span class="w-pr">투 휘우</span></span>
+        <span class="tv-word func"><span class="w-gk">τοῦ θεοῦ</span><span class="w-pr">투 테우</span></span>
+      </div>
+      <div class="tv-greek-line">
+        <span class="tv-word key" onclick="tvShowWord('agapēsantos')"><span class="w-gk">τοῦ ἀγαπήσαντός</span><span class="w-pr">투 아가페산토스</span></span>
+        <span class="tv-word func"><span class="w-gk">με</span><span class="w-pr">메</span></span>
+        <span class="tv-word func"><span class="w-gk">καὶ</span><span class="w-pr">카이</span></span>
+        <span class="tv-word key" onclick="tvShowWord('paradontos')"><span class="w-gk">παραδόντος</span><span class="w-pr">파라돈토스</span></span>
+        <span class="tv-word func"><span class="w-gk">ἑαυτὸν</span><span class="w-pr">헤아우톤</span></span>
+        <span class="tv-word func"><span class="w-gk">ὑπὲρ</span><span class="w-pr">휘페르</span></span>
+        <span class="tv-word func"><span class="w-gk">ἐμοῦ</span><span class="w-pr">에무</span></span>
+        <span class="tv-punct">.</span>
+      </div>
+    </div>
+    <div class="tv-legend">
+      <span class="tv-legend-item"><span class="tv-legend-dot key"></span>중요 단어 (클릭 가능)</span>
+      <span class="tv-legend-item"><span class="tv-legend-dot func"></span>관사 · 대명사 · 전치사</span>
+    </div>
+    <div class="tv-summary">
+      <div class="tv-summary-title">Structure · 구조의 핵심</div>
+      <div class="tv-summary-text">바울은 <b>완료 수동태</b>로 "συνεσταύρωμαι"라고 선언합니다 — <b>과거에 십자가에 못 박혔고, 그 상태가 지금도 지속된다</b>는 뜻입니다. 그래서 "더 이상 내가 사는 것이 아니라(οὐκέτι ἐγώ), 그리스도께서 내 안에 <b>사신다(ζῇ ἐν ἐμοί)</b>." 육체 안에서 사는 현재의 생명(ζῶ ἐν σαρκί)은 곧 <b>하나님의 아들의 믿음(πίστει τοῦ υἱοῦ) 안에서 사는 생명</b>입니다. 이것이 거듭난 이 안에 심기신 생명나무 — <b>하나님-사람</b>의 실지 생활의 비결입니다.</div>
+    </div>
+  </section>
+
+  <div class="tv-popup-overlay" id="tv-popup-overlay" onclick="tvClosePopupOnBg(event)">
+    <div class="tv-popup" id="tv-popup">
+      <button class="tv-popup-close" onclick="tvClosePopup()" aria-label="닫기">✕</button>
+      <div class="tv-popup-header">
+        <div class="tv-popup-kicker">헬라어 단어 사전 · BDAG · Thayer's · Strong's</div>
+        <div class="tv-popup-meaning" id="tv-popup-meaning"></div>
+        <div class="tv-popup-greek" id="tv-popup-greek"></div>
+      </div>
+      <div class="tv-popup-body" id="tv-popup-body"></div>
+    </div>
+  </div>
+
+  <!-- TTS READER MODAL -->
+  <div class="tts-reader-overlay" id="tts-reader-overlay" onclick="ttsCloseOnBg(event)">
+    <div class="tts-reader-modal" onclick="event.stopPropagation()">
+      <div class="tts-reader-header">
+        <svg class="tts-reader-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <div class="tts-reader-title">본문 듣기</div>
+        <button class="tts-reader-close" onclick="ttsCloseReader()" aria-label="닫기">✕</button>
+      </div>
+      <div class="tts-reader-body">
+        <label class="tts-form-label">API 키</label>
+        <div class="tts-api-row">
+          <input type="password" id="tts-api-key" placeholder="API 키를 입력하세요" />
+          <button onclick="ttsSaveApiKey()">저장</button>
+        </div>
+
+        <label class="tts-form-label">음성 선택</label>
+        <select class="tts-voice-select" id="tts-voice-select">
+          <option value="tk_voice">tk_voice</option>
+        </select>
+
+        <label class="tts-form-label">읽을 항목 (기본: 전체 선택)</label>
+        <div class="tts-section-list" id="tts-section-list"></div>
+
+        <div class="tts-progress" id="tts-progress">
+          <div class="tts-progress-bar">
+            <div class="tts-progress-fill" id="tts-progress-fill"></div>
+          </div>
+          <div class="tts-progress-text" id="tts-progress-text">대기 중...</div>
+        </div>
+
+        <div class="tts-status" id="tts-status">서버에서 음성 목록을 불러옵니다...</div>
+      </div>
+      <div class="tts-reader-footer">
+        <button class="tts-btn" id="tts-stop-btn" onclick="ttsStop()" disabled>⏹ 중지</button>
+        <button class="tts-btn primary" id="tts-play-btn" onclick="ttsPlay()">▶ 재생</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard" id="dashboard-section">
+    <div class="dashboard-title">메시지 전체 맥락 요약</div>
+    <div class="core-message">그리스도께서 바로 그 생명나무이십니다. 거듭날 때 그분은 자신을 <strong>우리 안에 심으셨고</strong>, 달마다 새 열매를 맺는 <strong>영원한 몫</strong>이 되셨습니다. 그러나 실지 생활에서 우리는 여전히 두 노선 사이에 있습니다 — 그러므로 하나님은 우리를 허무시고 재건축하시어 '하나님-사람'이 되게 하십니다.</div>
+    <div class="dash-grid">
+      <div class="dash-card"><div class="dash-label">생명나무의 정체</div><div class="dash-value">그리스도 자신<br>참 포도나무 (요 15:1, 5)</div></div>
+      <div class="dash-card"><div class="dash-label">거듭남의 결과</div><div class="dash-value">우리 안에 심기심<br>(요 1:12-13, 3:3)</div></div>
+      <div class="dash-card"><div class="dash-label">영원한 몫</div><div class="dash-value">달마다 새 열매<br>열두 번 (계 22:2)</div></div>
+      <div class="dash-card"><div class="dash-label">하나님의 방법</div><div class="dash-value">허무심과 재건축<br>하나님-사람으로</div></div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow-section" id="flow-section">
+    <div class="flow-title">다섯 단계의 흐름 — 생명나무에서 하나님-사람까지</div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-dot">A</div><div class="flow-step-label">그리스도 = 생명나무의 실재</div><div class="flow-step-desc">"나는 포도나무입니다"(요 15:5). 창 2:9 생명나무는 신약에서 그리스도로 성취. 요한복음의 모든 방면 — <b>떡(6:48)·빛(8:12)·목자(10:11)·부활이요 생명(11:25)·길(14:6)</b> — 이 모두 이 한 나무의 결과.</div></div>
+      <div class="flow-step"><div class="flow-dot">B</div><div class="flow-step-label">길·강·나무의 동행</div><div class="flow-step-desc">계 22:1-2에서 <b>순금 길</b> 가운데 <b>생명수의 강</b>이 있고, 강 양쪽 둑에 <b>생명나무</b>가 덩굴처럼 뻗어 있습니다. 신성한 본성 위에서 행할 때 그 영이 흐르고, 그 흐름을 따라 그리스도의 공급이 있습니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">C</div><div class="flow-step-label">영원한 몫 — 달마다 새 열매</div><div class="flow-step-desc">생명나무는 <b>일 년에 열두 번</b> 열매를 맺습니다. 언제까지나 신선하며, 새 예루살렘에서 구속받은 모든 이들의 영원한 음식이 됩니다(계 22:14).</div></div>
+      <div class="flow-step"><div class="flow-dot">D</div><div class="flow-step-label">거듭남 — 생명나무로 심기심</div><div class="flow-step-desc">우리가 거듭났을 때 그리스도는 그분 자신을 <b>생명나무로서 우리 안에 심으셨습니다</b>(요 1:12-13). 사탄의 왕국에서 하나님의 왕국으로 옮겨졌습니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">E</div><div class="flow-step-label">허무심과 재건축 → 하나님-사람</div><div class="flow-step-desc">그러나 실지 생활에서 우리는 여전히 두 노선 사이에 있습니다. 하나님의 의도는 <b>우리를 허무시고 그분 자신으로 재건축</b>하시어 생명과 본성에서 그분과 완전히 하나인 <b>'하나님-사람'</b>이 되게 하시는 것입니다(고후 1:9, 4:14).</div></div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS -->
+  <section class="keywords-section" id="keywords-section">
+    <div class="keywords-section-title">핵심 키워드</div>
+    <div class="kw-container">
+      <span class="kw-chip" onclick="toggleKwTip('kwt1')">그리스도 = 생명나무</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt2')">모든 방면의 결과</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt3')">덩굴나무처럼 뻗음</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt4')">백화점의 실제</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt5')">허무심과 재건축</span>
+    </div>
+    <div class="kw-tooltip" id="kwt1">요한복음 15장에서 주님은 "나는 참 포도나무"라고 하셨습니다. 이 포도나무가 바로 생명나무입니다. <b>그리스도께서 곧 생명나무이시며</b>, 주님이 곧 그 생명나무이십니다. "나를 먹는 사람은 나로 말미암아 살 것입니다"(요 6:57).</div>
+    <div class="kw-tooltip" id="kwt2">신약 안에 있는 하나님의 모든 풍성은 생명나무의 결과입니다. <b>생명의 떡(6:48), 세상의 빛(8:12), 선한 목자(10:11), 부활이요 생명(11:25), 길·실재·생명(14:6)</b>. 한 찬송 — "그리스도는 만유 가운데 유일한 실재이시다."</div>
+    <div class="kw-tooltip" id="kwt3">계 22:2에서 생명나무는 강 양쪽에서 자랍니다. 이는 <b>위로 자라지 않고 덩굴처럼 퍼져 나가는</b> 나무임을 보여 줍니다. 그래서 생명수의 흐름을 따라 어디서든 얻을 수 있습니다. 그 영이 흐르시는 곳에 그리스도의 생명 공급이 있습니다.</div>
+    <div class="kw-tooltip" id="kwt4">어떤 자매가 백화점에 들어가기도 전에 <b>내적 규제</b>가 시작됩니다. 물건을 집어 들 때 "내려놓아라"는 속삭임이 있습니다. 만일 <b>"아멘, 주님, 아멘"</b>이라고 말하면 즉시 금빛 길 위에서 걷게 되고, 내적 흐름이 강화되어 생명나무의 풍성을 누리게 됩니다.</div>
+    <div class="kw-tooltip" id="kwt5">하나님의 의도는 타락한 사람을 <b>온전하게 만드시는 것</b>이 아닙니다. 오히려 <b>우리를 허무시고 그분 자신으로 재건축</b>하시는 것입니다. 이를 위해 때로 추악한 도구인 사탄을 사용하셔서 <b>벗겨 내시고 소모시키십니다</b>. 우리가 오직 그분만 의지하게 하시려는 것입니다.</div>
+  </section>
+
+  <!-- ACCORDIONS -->
+  <div class="accordion-group">
+    <div class="accordion-group-title" id="keypoints-section">핵심 요점 — 생명나무·누림·재건축의 신성한 계시</div>
+
+    <div class="step-header" data-kicker="Part Ⅰ · 생명나무는 누구인가">그리스도는 곧 그 생명나무이시다</div>
+
+    <div class="accordion" id="acc-0">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅰ</div>
+        <div class="acc-title-text">그리스도께서 바로 그 생명나무이시다</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">요 15:1, 5 / 요 6:57</div>
+          <div class="verse-text">[요 15:1] 나는 <b>참포도나무</b>요, 나의 아버지는 농부이십니다.</div>
+          <div class="verse-text">[요 15:5] 나는 포도나무요, 여러분은 가지들입니다. 그가 내 안에, 내가 그 안에 거하면, 그 사람은 <b>열매를 많이 맺습니다</b>.</div>
+          <div class="verse-text">[요 6:57] 살아 계신 아버지께서 나를 보내셔서 내가 아버지로 말미암아 사는 것같이, <b>나를 먹는 그 사람도 나로 말미암아 살 것입니다</b>.</div>
+        </div>
+        <p class="content-text">우리는 반드시 한 가지 사실을 보아야 합니다. <span class="hl">그리스도께서 바로 그 생명나무이십니다</span>. 요한복음 15장에서 주님은 말씀하셨습니다 — "나는 참 포도나무요 내 아버지는 농부입니다." 우리는 그 나무의 <strong>가지</strong>라고 하셨습니다. 그러므로 이 생명나무는 바로 그 포도나무입니다. 할렐루야! 이 포도나무가 모든 것을 공급합니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">다시 말해야 할 한 가지</div>
+          <div class="sub-point-text">다시 말하겠습니다. <strong>그리스도께서 바로 생명나무이십니다</strong>. 주님이 곧 그 생명나무이십니다. 우리가 오늘 생명을 가질 수 있는 것은 그리스도께서 생명나무이시며 우리에게 생명을 주셨기 때문입니다. 생명나무를 먹으면 생명을 얻습니다. <span class="hl">"나를 먹는 사람은 나로 말미암아 살 것입니다."</span></div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">먼저 어린양, 그다음 생명나무</div>
+          <div class="sub-point-text">생명나무는 우리의 <strong>생명 공급</strong>이신 그리스도입니다. 먼저 그리스도는 우리의 구속을 위한 <span class="hl">하나님의 어린양</span>이셨고(요 1:29), 그런 다음에는 우리의 생명 공급을 위한 <span class="hl">생명나무</span>이십니다(요 6:35). 그리스도의 구속은 그분 자신을 생명 공급으로 우리 안에 나누어 주시기 위한 것입니다.</div>
+        </div>
+        <p class="content-text">우리는 오늘 이 포도나무 안에 있습니다. 이 나무는 곧 그리스도 자신입니다. <span class="hl">그리스도께서 바로 생명나무이십니다</span>. 주님이 곧 그 생명나무이십니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">그리스도가 생명나무이시라면, 요한복음에 계시된 그분의 <strong>모든 방면</strong>은 이 한 나무의 결과입니다.</div>
+
+    <div class="accordion" id="acc-1">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅱ</div>
+        <div class="acc-title-text">요한복음에 계시된 그리스도의 모든 방면은 생명나무의 결과이다</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">요 6:48 / 8:12 / 10:11 / 11:25 / 14:6</div>
+          <div class="verse-text">[요 6:48] 나는 <b>생명의 떡</b>입니다.</div>
+          <div class="verse-text">[요 8:12] 나는 <b>세상의 빛</b>이니, 나를 따르는 사람은 결코 어둠 속에 다니지 않고, 생명의 빛을 얻을 것입니다.</div>
+          <div class="verse-text">[요 10:11] 나는 <b>선한 목자</b>입니다.</div>
+          <div class="verse-text">[요 11:25] 나는 <b>부활이요 생명</b>이니, 나를 믿는 사람은 죽어도 살 것이고,</div>
+          <div class="verse-text">[요 14:6] 내가 곧 <b>길이요 실재요 생명</b>이니, 나를 통하지 않고서는 아무도 아버지께로 가지 못합니다.</div>
+        </div>
+        <p class="content-text"><span class="hl">신약 안에 있는 하나님의 모든 풍성은 생명나무의 결과</span>입니다. 요 6:48에서 주님은 "나는 생명의 떡이니 …"라고 말씀하셨습니다. 모든 생명은 양식의 공급이 필요합니다. 신진대사를 위해 공급이 필요합니다. <strong>생명 공급의 근원은 생명의 떡</strong>입니다. 그분이 바로 생명의 떡입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">모든 필요에 맞추어 — 모든 실재이신 그리스도</div>
+          <div class="sub-point-text">주님은 <strong>세상의 빛</strong>이시니, 따르는 사람은 어둠 속에 다니지 않습니다. <strong>선한 목자</strong>는 양들을 위하여 자기 목숨을 버립니다. 그분은 우리를 구원하시고 생명을 가져오셨습니다. <strong>부활이요 생명</strong>이시니 — 이 생명은 <span class="hl">죽음을 이기는 부활의 생명</span>입니다. 다른 모든 생명은 죽음이 끝이지만, 하나님의 생명은 죽음을 이깁니다. 요 14:6에서 "내가 곧 길이요 실재요 생명이니" — 그분은 생명의 길이십니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"그리스도는 만유 가운데 유일한 실재이시다"</div>
+          <div class="sub-point-text">우리는 한 찬송을 부릅니다 — "<strong>그리스도는 만유 가운데 유일한 실재이시다</strong>." 그분은 우리의 옷의 실재가 되시고, 빛의 실재, 음식의 실재가 되십니다. 세상의 것을 먹고 마시면 다시 배고프지만, <span class="hl">주님을 먹고 마시면 영원히 배고프지 않습니다</span>. 하나님께서 우리에게 주신 모든 실재는 생명나무 안에, 곧 <strong>그리스도 안에 있습니다</strong>.</div>
+        </div>
+        <p class="content-text">우리는 주님을 먹고 마시고 누려야 합니다. 어떻게 먹습니까? 말씀을 먹습니다. <span class="hl">영인 말씀</span>을 먹습니다. "생명을 주시는 분은 그 영이십니다. … 내가 여러분에게 한 말이 <strong>영이요 생명</strong>입니다"(요 6:63). 주님의 회복 안에서 우리가 가장 중요하게 여기는 것은 하나님의 말씀입니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">생명나무의 공급은 어떻게 전해지는가? 계 22:1-2의 <strong>길·강·나무</strong>의 그림을 보아야 합니다.</div>
+
+    <div class="accordion" id="acc-2">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅲ</div>
+        <div class="acc-title-text">길·강·나무 — 덩굴처럼 뻗는 생명나무와 일상의 누림</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">계 22:1-2</div>
+          <div class="verse-text">[1] 또 그 천사는 나에게 수정처럼 빛나는 <b>생명수의 강</b>을 보여 주었습니다. 그 강은 하나님과 어린양의 보좌에서 흘러나와 그 성의 <b>길 가운데</b>로 흐르고 있었습니다.</div>
+          <div class="verse-text">[2] <b>강의 이쪽과 저쪽에 생명나무가 있어서</b> 열두 번 열매를 맺는데, 달마다 열매를 맺었습니다. 그 나무의 잎들은 민족들을 치료하기 위해 있습니다.</div>
+        </div>
+        <p class="content-text">계 22:2은 "강의 이쪽과 저쪽에 생명나무가 있어서"라고 말합니다. <strong>하나의 생명나무가 강 양쪽에서 자란다는 것</strong>은, 생명나무가 생명수의 흐름을 따라 퍼지고 뻗어 나가는 <span class="hl">일종의 덩굴나무</span>라는 것을 의미합니다. 그러므로 그 영께서 흐르시는 곳에는 어디든지 그리스도의 생명 공급이 있습니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">길·강·나무는 하나로 연관되어 있다</div>
+          <div class="sub-point-text">길 가운데에 강이 있습니다. 따라서 <strong>그 길은 자연히 강의 양쪽 둑이 됩니다</strong>. 생명나무는 덩굴나무처럼 강의 양쪽 둑에서 자랍니다. <span class="hl">우리가 진주 문을 통해 들어가서 순금 길에 들어서고 나면 즉시 흐르는 강을 갖습니다. 생수의 흐름을 따라 생명나무가 있습니다</span>.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">백화점의 자매 — 부정적인 예</div>
+          <div class="sub-point-text">가령 어떤 자매가 백화점에 쇼핑을 하러 간다고 합시다. 그녀가 들어가기도 전에 <strong>내적인 길인 신성한 본성이 그녀를 규제</strong>합니다. 어떤 물건을 집어 들 때, 그 내적 규제는 <strong>'그것을 내려놓아라'</strong>라고 말합니다. 그러나 그녀가 변명하면 <span class="hl">바로 그 순간에 내적 흐름이 멈춥니다</span>. 집에 돌아온 후 그 자매는 자신이 기도할 수 없다는 것을 발견합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"아멘, 주님, 아멘" — 긍정적인 예</div>
+          <div class="sub-point-text">내적 규제가 그 물건을 사지 말라고 할 때, 그녀가 <strong>"아멘, 주님, 아멘"</strong>이라고 말한다 합시다. <span class="hl">즉시 그녀는 금으로 된 길 위에서 걷고 있는 자신을 발견할 것입니다</span>. 내적 흐름이 강화되어 더욱 힘차게 흐릅니다. <strong>이것이 생명나무에 대한 누림입니다</strong>. 백화점을 떠날 때 할렐루야를 외치고 싶어 할지도 모릅니다.</div>
+        </div>
+        <p class="content-text">이것이 바로 <span class="hl">금빛 길 위에서 행하고, 흐르는 강에 참여하며, 생명나무의 모든 풍성을 누리는 것</span>의 의미입니다. 우리의 일상 속 아주 작은 선택 하나가 이 모든 것의 시작이 됩니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-header" data-kicker="Part Ⅱ · 영원한 몫">달마다 맺히는 열두 번의 열매</div>
+
+    <div class="accordion" id="acc-3">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅳ</div>
+        <div class="acc-title-text">영원한 몫 — 달마다 새 열매를 맺는 생명나무</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">계 22:2, 14 / 창 1:26, 2:9</div>
+          <div class="verse-text">[계 22:2] … 열두 번 열매를 맺는데, <b>달마다 열매를 맺었습니다</b>. 그 나무의 잎들은 민족들을 치료하기 위해 있습니다.</div>
+          <div class="verse-text">[계 22:14] <b>생명나무에 이르는 권리</b>를 얻고 문들을 통하여 그 성안으로 들어가도록 자기의 겉옷을 빠는 사람들은 복이 있다.</div>
+        </div>
+        <p class="content-text">생명나무의 열매는 <span class="hl">영원토록 하나님께서 구속하신 사람들의 음식</span>이 될 것입니다. 이 나무는 하나님께서 사람에 대해 <strong>태초부터 의도하셨던 것(창 1:26, 2:9)을 영원히 이룹니다</strong>. 생명나무에 이르는 길은 사람의 타락 때문에 막혔지만(창 3:22-24), 그리스도의 구속을 통하여 믿는 이들에게 열렸습니다(히 10:19-20).</p>
+        <div class="sub-point">
+          <div class="sub-point-title">세 단계의 생명나무 누림</div>
+          <div class="sub-point-text"><strong>오늘</strong> 생명나무이신 그리스도를 누리는 것은 <span class="hl">믿는 이들의 공동 몫</span>입니다(요 6:35, 57). <strong>천년왕국에서</strong> 생명나무이신 그리스도를 누리는 것은 <span class="hl">이기는 믿는 이들에게 주는 시대적 보상</span>이 될 것입니다(계 2:7). <strong>최종적으로 새 하늘과 새 땅에서는</strong> 구속하신 모든 이들이 영원토록 생명나무이신 그리스도를 <span class="hl">영원한 몫으로 누릴 것</span>입니다(계 22:14, 19).</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">달마다 새 열매 — 언제까지나 신선</div>
+          <div class="sub-point-text">새 예루살렘 안에는 생명나무가 있습니다. <strong>겉옷을 빠는 이기는 이들은 생명나무에 나아갈 권리를 얻습니다</strong>. 영원 안에서 우리는 날마다 언제든지 생명나무를 누릴 수 있습니다. <span class="hl">새 예루살렘에서는 비료를 줄 필요도, 잡초를 뽑을 필요도 없습니다. 달마다 새 열매가 맺힙니다</span>. 할렐루야!</div>
+        </div>
+        <p class="content-text"><strong>지금부터 먹기 시작하여 계속 먹으며 자라 이기는 이가 되고, 결혼 잔치 안에서도 먹고, 천년왕국을 지나 영원한 새 하늘과 새 땅, 새 예루살렘에 이르기까지 계속 먹습니다</strong>. 우리의 구원도 사실은 주님을 <span class="hl">음식으로 받아들이는 것</span>입니다. 이 생명은 계속 먹음으로 자양분을 얻고, 조금씩 자라게 되며, 우리를 성숙하게 하고 건축되게 합니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-header" data-kicker="Part Ⅲ · 거듭남의 실제">그리스도께서 생명나무로 우리 안에 심기심</div>
+
+    <div class="accordion" id="acc-4">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅴ</div>
+        <div class="acc-title-text">거듭났을 때 — 그리스도께서 그분 자신을 생명나무로서 우리 안에 심으셨다</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">요 1:12-13 / 요 3:3, 5-6</div>
+          <div class="verse-text">[요 1:12] 그분을 받아들인 사람들, 곧 그분의 이름을 믿는 모든 사람에게는 <b>하나님의 자녀가 되는 권위</b>를 주셨다.</div>
+          <div class="verse-text">[요 1:13] 그들은 혈통에서나 육체의 뜻에서나 사람의 뜻에서 나지 않고, <b>하나님에게서 난 사람들</b>이다.</div>
+          <div class="verse-text">[요 3:5] 누구든지 <b>물과 그 영으로 나지 않으면</b>, 하나님의 왕국에 들어갈 수 없습니다.</div>
+        </div>
+        <p class="content-text">거듭날 때 우리는 <span class="hl">새 생명</span>을 얻습니다. 그리고 이 생명은 바로 <strong>그리스도 자신</strong>입니다. 그리스도께서 자신을, 생명나무이신 자신을 <strong>우리 안에 심으신 것</strong>입니다. 그래서 그분 자신이 생명나무로서 우리 안에 심기셨고, 우리는 그분의 생명을 얻었습니다. 이 생명이 우리 안에서 자라서 우리를 거듭나게 합니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">하나님의 자녀 — 하나님에게서 난 사람</div>
+          <div class="sub-point-text">요 1:12는 말합니다 — "<strong>그분을 받아들인 사람들에게는 하나님의 자녀가 되는 권위를 주셨다</strong>." 그들은 그분의 생명과 본성을 갖습니다. 그들은 <span class="hl">혈통에서나 육체의 뜻에서나 사람의 뜻에서 나지 않고, 하나님에게서 난 사람들</span>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">왕국의 전환 — 사탄에서 하나님께로</div>
+          <div class="sub-point-text">이 새로운 생명은 우리를 <strong>하나님의 왕국 안으로 들어가게 합니다</strong>. 사탄에게도 그의 왕국이 있고 하나님께도 그분의 왕국이 있습니다. 우리는 <span class="hl">거듭남으로 하나님의 왕국 안으로 들어갑니다</span>. 니고데모가 물었을 때 주님은 "거듭나지 않으면 하나님의 왕국에 들어갈 수 없다"라고 말씀하셨습니다.</div>
+        </div>
+        <p class="content-text">이제 우리 안에는 생명나무가 심기셨습니다. 이것은 <span class="hl">이미 일어난 사실</span>입니다. 그러나 심기신 씨앗이 자라서 우리 전존재를 지배하도록 하는 것은 또 다른 문제입니다. 바로 여기에 실지 생활의 현실이 있습니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">거듭난 우리 안에 생명나무가 심기셨습니다. 그런데 왜 우리의 일상은 여전히 다른 모습입니까?</div>
+
+    <div class="accordion" id="acc-5">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅵ</div>
+        <div class="acc-title-text">실지 생활 — 우리는 여전히 두 노선 사이에 있을 수 있다</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">잠 16:25 / 갈 2:20</div>
+          <div class="verse-text">[잠 16:25] 사람에게는 바른길로 보이나 / <b>그 끝은 죽음에 이르는 길</b>이 있다.</div>
+          <div class="verse-text">[갈 2:20] 나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, <b>그리스도께서 내 안에 사십니다</b>.</div>
+        </div>
+        <p class="content-text">거듭나기 전에 우리는 선과 악의 지식나무의 노선 안에 있었습니다. 우리가 거듭났을 때, <strong>그리스도는 그분 자신을 생명나무로서 우리 안에 심으셨습니다</strong>. 그러나 <span class="hl">실지적인 일상생활에서 우리는 선과 악의 지식나무의 노선에 있는가, 생명나무의 노선에 있는가?</span></p>
+        <div class="sub-point">
+          <div class="sub-point-title">결혼 생활의 실례</div>
+          <div class="sub-point-text">우리는 결혼 생활에서 지식나무의 노선에 있을 수 있으며, <strong>배우자와 대화하는 방식으로 이 나무를 자라게 할 뿐 아니라 이 나무에 물과 거름을 주고 있을지도 모릅니다</strong>. 그러면 어떻게 해야 합니까? 갈 2:20의 말씀을 기억해야 하며 — "<span class="hl">더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다</span>" — 지식나무에서 생명나무로 돌이켜야 합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">문제에 대응하는 비결 — 아무것도 하지 말라</div>
+          <div class="sub-point-text">여러분과 배우자 사이에 문제가 있다면 <strong>아무것도 하지 말아야 합니다</strong>. 여러분이 무엇을 하든 <span class="hl">선과 악의 지식나무의 영역 안에 있게 될 것</span>이기 때문입니다. 다만 갈 2:20을 기도로 읽어야 합니다. <span class="hl">문제나 자신의 분노에 주의하지 말고, 다만 그리스도께서 여러분 안에 사시는 것에 주의하십시오</span>. 이것이 모든 일에서 우리의 길이 되어야 합니다.</div>
+        </div>
+        <p class="content-text">그러므로 여기에는 여전히 하나의 <strong>과정</strong>이 있습니다. 우리는 <span class="hl">생각이 새로워짐과 변화</span>가 필요합니다. 오늘 하나님은 왜 우리를 처리하시고 응대하시며 이런 과정을 거치게 하십니까? 이는 새로운 생명이 우리 안에 <strong>완전히 세워지도록 하기 위함</strong>입니다. 이것이 바로 욥이 벗겨지심의 과정을 겪게 된 이유입니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-header" data-kicker="Part Ⅳ · 욥의 적용">윤리의 영역에서 하나님의 영역으로</div>
+
+    <div class="accordion" id="acc-6">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅶ</div>
+        <div class="acc-title-text">욥은 윤리의 영역을 추구했다 — 우리는 하나님의 영역을 추구해야 한다</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">고전 15:45 / 롬 8:2 / 엡 3:16-19</div>
+          <div class="verse-text">[고전 15:45] 첫 사람 아담은 산 혼이 되었지만, 마지막 아담은 <b>생명 주시는 영</b>이 되셨습니다.</div>
+          <div class="verse-text">[롬 8:2] 생명의 영의 법이 그리스도 예수님 안에서 나를 <b>죄와 죽음의 법에서 해방</b>하였기 때문입니다.</div>
+        </div>
+        <p class="content-text">욥은 사람의 <strong>완전함, 완전한 올곧음, 그리고 하나님을 경외하고 악에서 떠나는 것</strong>을 추구했습니다. <span class="hl">욥은 선한 사람이었지만 '하나님-사람'은 아니었습니다</span>. 하나님의 표준에는 미치지 못하였습니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">욥의 진정한 문제 — 영역</div>
+          <div class="sub-point-text">욥과 그의 친구들은 <strong>선과 악의 영역, 곧 인간의 순전함을 장려하는 영역</strong> 안에 있었습니다. 그들은 올바른 영역, 곧 <span class="hl">생명나무의 영역 안으로 들어갈 필요</span>가 있었습니다. <strong>생명나무가 그들의 해답이었습니다</strong>.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">추구의 방향 전환</div>
+          <div class="sub-point-text"><strong>순전함의 정점에 도달하려고 애쓰는 대신</strong>, 욥은 <span class="hl">최선을 다해 전적으로 하나님을 추구하고, 인격이신 그리스도를 추구</span>해야 했습니다. <strong>인간의 순전함의 정점은 그가 향했어야 하는 방향이 아니었습니다</strong>.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">우리의 영역 — 생명 주시는 영의 영역</div>
+          <div class="sub-point-text">우리는 일상에서 선악 지식나무의 영역이 아니라, <strong>생명 주시는 영의 영역</strong>에 있어야 합니다(고전 15:45하, 롬 8:2). 마지막 아담은 <span class="hl">생명 주시는 영</span>이 되셨으며, 생명의 영의 법이 우리를 죄와 죽음의 법에서 해방하였습니다.</div>
+        </div>
+        <p class="content-text">그러므로 우리는 성경 전체가 <span class="hl">하나님의 영원한 경륜에 관한 책</span>임을 알아야 합니다. 하나님의 경륜 안에서 그분의 의도는 그분 자신을 우리 안으로 분배하심으로 우리의 <strong>생명과 본성</strong>이 되시어, <strong>생명과 본성에서 그분과 똑같이 되게 하시는 것</strong>입니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-header" data-kicker="Part Ⅴ · 하나님의 의도">허물어뜨리시고 재건축하심</div>
+
+    <div class="accordion" id="acc-7">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅷ</div>
+        <div class="acc-title-text">하나님의 의도 — 우리를 허무시고 그분 자신으로 재건축하심</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">고후 1:9 / 고후 4:14 / 롬 8:28-29</div>
+          <div class="verse-text">[고후 1:9] 결국은 죽게 될 것이라고 스스로 단정하였습니다. 이것은 우리가 <b>자신을 신뢰하지 않고 죽은 사람들을 살리시는 하나님을 신뢰하도록</b> 하려는 것이었습니다.</div>
+          <div class="verse-text">[롬 8:28] 하나님을 사랑하는 사람들 … 에게는 <b>모든 것이 협력함으로써 선이 이루어진다</b>는 것을 압니다.</div>
+        </div>
+        <p class="content-text"><span class="hl">벗겨 내심과 소모시키심은 무엇인가?</span> 하나님의 벗겨 내심과 소모시키심은 우리를 <strong>허물어뜨리기 위한 것</strong>입니다. 우리는 타락하고 타고난 사람들입니다. 그러한 사람들인 우리는 <strong>허물어져야 합니다</strong>. 하나님은 반드시 우리를 허물어뜨리셔야 합니다. 그럴 때 하나님은 우리를 다시 건축하실 수 있는 <strong>기초와 길</strong>을 얻으실 수 있습니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">핵심 원리</div>
+          <div class="sub-point-text"><strong>하나님께서 그분의 경륜 안에서 가지신 의도는 타락한 사람을 온전하게 만드시는 것이 아닙니다</strong>. 오히려 하나님의 의도는 <span class="hl">우리를 허무시고 우리의 생명과 본성이신 그분 자신으로 우리를 재건축하시어, 우리를 그분과 완전히 하나인 사람들이 되게 하시는 것</span>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">욥기의 이중 사역 — 벗김과 소모</div>
+          <div class="sub-point-text">욥기는 하나님께서 <strong>추한 도구인 사탄을 통하여 두 가지 방식으로</strong>, 곧 <span class="hl">벗겨 내시고 소모시키심</span>으로 욥을 허물어뜨리고 계셨음을 보여 줍니다. 이는 <strong>하나님께서 그분 자신으로 욥을 재건축하실 수 있는 기초와 길을 얻으시어, 욥이 하나님-사람이 되게 하시려는 것</strong>이었습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">오늘의 사탄도 여전히 활발하게 — 그러나 지혜 아래서</div>
+          <div class="sub-point-text">오늘의 사탄도 여전히 활발하게 역사합니다. 그러나 <span class="hl">하나님의 영원한 지혜 아래서 하나님은 그 추악한 도구를 사용하십니다</span>. 무엇을 위해서입니까? <strong>우리를 온전하게 하기 위함</strong>입니다. 때때로 공격받고, 실패하고, 부끄러워 얼굴을 들 수 없다고 느끼기도 합니다. 그러나 이 모든 것은 우리의 타고남을 폭로합니다. 목적은 <strong>우리가 오직 그분만 의지하게 하려는 것</strong>입니다.</div>
+        </div>
+        <p class="content-text">어떤 형제님의 기도입니다 — <span class="hl">"주 예수님, 내가 살아 있는 동안 주께서 하시고자 하시는 모든 일을 내 안에서 하소서. 내가 주님 앞에서 성숙하게 자라고 주님의 마음을 완전히 만족하게 하소서."</span> 우리는 외적 성공과 실패, 건강함과 건강하지 않음을 너무 깊이 고려하지 말아야 합니다. "모든 것이 협력하여 하나님을 사랑하는 이들에게 선을 이룬다."</p>
+      </div></div>
+    </div>
+
+    <div class="section-connector">· · ·</div>
+
+    <div class="accordion" id="acc-8">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅸ</div>
+        <div class="acc-title-text">욥기 42:17 각주 — 두 부분의 위대한 질문과 답</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">욥기 42:17 회복역 각주 요약</div>
+          <div class="verse-text">"욥기의 마흔두 장은 우리에게 <b>두 부분으로 이루어진 한 가지 핵심적인 질문</b>을 던진다."</div>
+          <div class="verse-text">첫째, <b>하나님께서 사람을 창조하신 목적은 무엇인가?</b></div>
+          <div class="verse-text">둘째, <b>그분께 선택받은 백성을 다루시는 목적은 무엇인가?</b></div>
+        </div>
+        <p class="content-text">이 질문에 대답하기 위해서는 <strong>성경 전체가 필요합니다</strong>. 특별히 <span class="hl">신약은 욥기의 이 질문에 대한 장문의 답변</span>입니다. 그 답변은 <strong>하나님의 선한 기쁨에 따른 그분의 영원한 경륜</strong>입니다.</p>
+        <div class="purpose-stages">
+          <div class="purpose-stage">
+            <div class="purpose-stage-num">1</div>
+            <div class="purpose-stage-body">
+              <div class="purpose-stage-title">하나님의 분배 (Divine Dispensing)</div>
+              <div class="purpose-stage-desc">하나님의 경륜은 <b>신성한 삼일성 안에서 — 아버지 안에서, 아들 안에서, 그 영 안에서</b> — 육체 되심·인간 생활·십자가에 못 박히심·부활·승천을 통해 그 영의 부어지심으로 <b>선택하시고 구속하신 백성 안으로 그분 자신을 분배</b>하시는 것입니다.</div>
+            </div>
+          </div>
+          <div class="purpose-stage">
+            <div class="purpose-stage-num">2</div>
+            <div class="purpose-stage-body">
+              <div class="purpose-stage-title">그분과 똑같이 만드심 (Making Them the Same)</div>
+              <div class="purpose-stage-desc">그들 모두를 <b>신격에서는 아니지만 생명과 본성에서 그분과 똑같이</b> 만드심으로써 그들이 <b>그분의 복사판</b>이 되어 그분을 표현하게 하는 것입니다(롬 8:28-29).</div>
+            </div>
+          </div>
+          <div class="purpose-stage">
+            <div class="purpose-stage-num">3</div>
+            <div class="purpose-stage-body">
+              <div class="purpose-stage-title">새 예루살렘의 최종 완결</div>
+              <div class="purpose-stage-desc">이러한 신성한 분배의 산출물은 <b>그리스도의 몸이자 새사람이자 삼일 하나님의 유기체인 교회</b>입니다. 이 유기체는 <b>새 예루살렘으로 최종 완결</b>되는데, 새 예루살렘은 하나님의 육체 되심의 확대와 증가의 충만한 최종 완결입니다.</div>
+            </div>
+          </div>
+        </div>
+        <p class="content-text">이것이 바로 <span class="hl">신약 안에 있는 신성한 계시</span>로서, <strong>욥이 겪은 고난에 관한 그리고 하나님께서 사람을 창조하신 목적과 그분께서 선택하신 백성을 다루시는 목적에 관한 위대한 질문의 답변</strong>입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">우리도 예표적으로 욥과 같다</div>
+          <div class="sub-point-text">오늘날 우리는 원칙적으로 구약 시대에 살고 있지는 않지만, <strong>예표적으로는 욥과 같습니다</strong>. 우리는 모두 선한 사람·정직한 사람이 되고 싶어 하지만, 그것들이 여전히 <span class="hl">'외면적인 것'</span>임을 알아야 합니다. 가장 중요한 것은, 하나님께서 여러 환경을 허락하시고 심지어 사탄을 <strong>어떤 "추악한 도구"</strong>로 사용하셔서 우리를 온전하게 하신다는 것입니다.</div>
+        </div>
+        <p class="content-text">이 모든 것의 목적은 <strong>우리가 실제로 함께 건축되어 하나님의 몸이 되게 하려는 것</strong>입니다. 우리의 고백은 — <span class="hl">"우리에게는 영광스러운 이상이 있고, 우리가 가는 길은 십자가의 길이다."</span> 십자가는 우리를 죽이기 위해서가 아니라, <strong>우리의 타고난 사람을 감소시켜 부활 안에서 그분의 신성한 생명으로 우리를 재조성하시려는 것</strong>입니다.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- RECAP -->
+  <section class="recap-section" id="recap-section">
+    <div class="recap-title">전체 메시지 복습 — 생명나무·누림·재건축</div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅰ. <strong>그리스도 = 생명나무</strong></div>
+      <div class="recap-subtitle small">요 15:1,5 / 요 6:57</div>
+      <div class="recap-grid">
+        <div class="recap-item"><div class="recap-num">★</div><div class="recap-item-text"><strong>반드시 보아야 할 한 가지:</strong> 그리스도께서 바로 그 생명나무이시다. 요 15장 참 포도나무가 곧 창 2:9 생명나무의 성취</div></div>
+        <div class="recap-item"><div class="recap-num">🍞</div><div class="recap-item-text"><strong>순서:</strong> 먼저 구속의 어린양(요 1:29) → 그다음 생명 공급의 생명나무(요 6:35). 구속은 자신을 생명 공급으로 나누어 주시기 위한 것</div></div>
+      </div>
+    </div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅱ. <strong>요한복음의 모든 방면 = 생명나무의 결과</strong></div>
+      <div class="recap-subtitle small">신약 안에 있는 하나님의 모든 풍성</div>
+      <div class="recap-grid">
+        <div class="recap-item"><div class="recap-num">1</div><div class="recap-item-text"><strong>생명의 떡</strong>(6:48) — 신진대사를 위한 공급의 근원</div></div>
+        <div class="recap-item"><div class="recap-num">2</div><div class="recap-item-text"><strong>세상의 빛</strong>(8:12) — 어둠 속에 다니지 않고 생명의 빛을 얻음</div></div>
+        <div class="recap-item"><div class="recap-num">3</div><div class="recap-item-text"><strong>선한 목자</strong>(10:11) — 양들을 위하여 자기 목숨을 버림</div></div>
+        <div class="recap-item"><div class="recap-num">4</div><div class="recap-item-text"><strong>부활이요 생명</strong>(11:25) — 죽음을 이기는 부활의 생명</div></div>
+        <div class="recap-item"><div class="recap-num">5</div><div class="recap-item-text"><strong>길·실재·생명</strong>(14:6) — 오직 이 생명 안에서만 아버지께로</div></div>
+      </div>
+    </div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅲ. <strong>길·강·나무 — 일상의 누림</strong></div>
+      <div class="recap-subtitle small">계 22:1-2 / 덩굴처럼 퍼져 나감</div>
+      <div class="recap-grid">
+        <div class="recap-item green"><div class="recap-num">1</div><div class="recap-item-text"><strong>생명나무 = 덩굴나무:</strong> 위로 자라지 않고 생명수의 흐름을 따라 퍼져 나감. 그 영이 흐르는 곳에 그리스도의 생명 공급</div></div>
+        <div class="recap-item green"><div class="recap-num">2</div><div class="recap-item-text"><strong>셋의 연관:</strong> 길 가운데 강 → 길은 강의 둑 → 덩굴나무는 강변. 진주문 → 순금 길 → 흐르는 강 → 생명나무</div></div>
+        <div class="recap-item green"><div class="recap-num">3</div><div class="recap-item-text"><strong>백화점 부정적 예:</strong> 내적 규제를 거스르면 흐름이 멈추고 기도할 수 없게 됨</div></div>
+        <div class="recap-item green"><div class="recap-num">4</div><div class="recap-item-text"><strong>"아멘, 주님, 아멘":</strong> 내적 규제에 즉시 응하면 금빛 길 위에서 걷고, 흐름이 강화되며, 할렐루야를 외치고 싶어짐</div></div>
+      </div>
+    </div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅳ. <strong>영원한 몫 — 달마다 새 열매</strong></div>
+      <div class="recap-subtitle small">계 22:2, 14 / 새 예루살렘</div>
+      <div class="recap-grid">
+        <div class="recap-item"><div class="recap-num">1</div><div class="recap-item-text"><strong>오늘:</strong> 생명나무이신 그리스도를 누리는 것은 <strong>믿는 이들의 공동 몫</strong> (요 6:35, 57)</div></div>
+        <div class="recap-item"><div class="recap-num">2</div><div class="recap-item-text"><strong>천년왕국:</strong> <strong>이기는 믿는 이들에게 주는 시대적 보상</strong> (계 2:7)</div></div>
+        <div class="recap-item"><div class="recap-num">3</div><div class="recap-item-text"><strong>영원:</strong> 구속받은 <strong>모든 이들의 영원한 몫</strong> (계 22:14). 비료나 잡초 뽑을 필요 없이, 달마다 새 열매 — 일 년에 열두 번</div></div>
+      </div>
+    </div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅴ. <strong>거듭남 — 그리스도의 심기심</strong></div>
+      <div class="recap-subtitle small">요 1:12-13 / 요 3:3,5-6</div>
+      <div class="recap-grid">
+        <div class="recap-item purple"><div class="recap-num">1</div><div class="recap-item-text"><strong>심기신 새 생명:</strong> 거듭날 때 그리스도께서 생명나무로서 우리 안에 심기심 — 이 생명은 바로 그분 자신</div></div>
+        <div class="recap-item purple"><div class="recap-num">2</div><div class="recap-item-text"><strong>하나님의 자녀:</strong> 혈통이나 육체의 뜻에서 난 것이 아닌, 하나님에게서 난 사람들</div></div>
+        <div class="recap-item purple"><div class="recap-num">3</div><div class="recap-item-text"><strong>왕국의 이동:</strong> 사탄의 왕국에서 하나님의 왕국으로 옮겨짐</div></div>
+      </div>
+    </div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅵ. <strong>실지 생활 — 두 노선 사이</strong></div>
+      <div class="recap-subtitle small">잠 16:25 / 갈 2:20</div>
+      <div class="recap-grid">
+        <div class="recap-item"><div class="recap-num">!</div><div class="recap-item-text"><strong>냉정한 진단:</strong> 거듭났어도 실지 생활에서 선악 지식나무 노선에 있을 수 있음. 결혼 생활 대화 방식으로 이 나무에 물·거름을 주고 있을지도</div></div>
+        <div class="recap-item"><div class="recap-num">✓</div><div class="recap-item-text"><strong>대응 비결:</strong> 문제에 대해 <strong>아무것도 하지 말고</strong>, 갈 2:20을 기도로 읽어라. 문제·분노에 주의하지 말고 그리스도께서 내 안에 사시는 것에 주의하라</div></div>
+      </div>
+    </div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅶ. <strong>욥의 윤리 → 하나님의 영역</strong></div>
+      <div class="recap-subtitle small">고전 15:45 / 롬 8:2</div>
+      <div class="recap-grid">
+        <div class="recap-item green"><div class="recap-num">1</div><div class="recap-item-text"><strong>욥의 추구:</strong> 사람의 완전함·올곧음·하나님을 경외하고 악에서 떠남 — 선한 사람이었으나 '하나님-사람'이 아니었음</div></div>
+        <div class="recap-item green"><div class="recap-num">2</div><div class="recap-item-text"><strong>정점의 방향 전환:</strong> 순전함의 정점이 아니라 <strong>인격이신 그리스도</strong>를 향해야 했다</div></div>
+        <div class="recap-item green"><div class="recap-num">3</div><div class="recap-item-text"><strong>올바른 영역:</strong> 선악 지식나무 → <strong>생명 주시는 영</strong>의 영역 (마지막 아담 = 생명 주시는 영)</div></div>
+      </div>
+    </div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅷ. <strong>하나님의 의도 — 허무심과 재건축</strong></div>
+      <div class="recap-subtitle small">고후 1:9, 4:14 / 롬 8:28-29</div>
+      <div class="recap-grid">
+        <div class="recap-item purple"><div class="recap-num">✗</div><div class="recap-item-text"><strong>하나님의 의도가 아닌 것:</strong> 타락한 사람을 온전하게 만드시는 것 (아님)</div></div>
+        <div class="recap-item purple"><div class="recap-num">✓</div><div class="recap-item-text"><strong>하나님의 의도:</strong> 우리를 <strong>허무시고</strong> 그분 자신으로 <strong>재건축</strong>하시어, 생명과 본성에서 그분과 완전히 하나인 사람이 되게 하심</div></div>
+        <div class="recap-item purple"><div class="recap-num">⚒</div><div class="recap-item-text"><strong>두 가지 방식:</strong> 벗겨 내심 + 소모시키심. 때로 "추악한 도구"인 사탄까지 사용하여 타고남을 폭로하고 오직 주님만 의지하게 하심</div></div>
+      </div>
+    </div>
+    <div class="recap-anchor">
+      <div class="recap-subtitle">Ⅸ. <strong>욥기 42:17 각주 — 두 부분의 위대한 질문</strong></div>
+      <div class="recap-subtitle small">신약 전체가 답변</div>
+      <div class="recap-grid">
+        <div class="recap-item"><div class="recap-num">Q1</div><div class="recap-item-text">하나님께서 <strong>사람을 창조하신 목적</strong>은 무엇인가?</div></div>
+        <div class="recap-item"><div class="recap-num">Q2</div><div class="recap-item-text">그분께 <strong>선택받은 백성을 다루시는 목적</strong>은 무엇인가?</div></div>
+        <div class="recap-item"><div class="recap-num">A</div><div class="recap-item-text"><strong>답변 — 영원한 경륜:</strong> 신성한 삼일성 안에서(아버지·아들·영), 육체 되심·인간 생활·십자가·부활·승천을 통해 선택된 백성 안에 자신을 분배 → 생명과 본성에서 그분과 똑같이 → 새 예루살렘으로 최종 완결</div></div>
+      </div>
+    </div>
+    <div class="recap-note"><strong>이 메시지의 부담:</strong> 그리스도께서 바로 그 생명나무이시다. 거듭날 때 그분은 자신을 우리 안에 심으셨지만, 실지 생활에서 우리는 여전히 두 노선 사이에 있다. 갈 2:20 — "<strong>이제는 더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다</strong>." 문제에 대해 아무것도 하지 말고, 하나님의 허무심과 재건축하심에 맡기라. 외적 성공·실패가 아니라 <strong>'하나님-사람'</strong>이 되는 것이 우리의 몫이다. "주 예수님, 내가 살아 있는 동안 주께서 하시고자 하시는 모든 일을 내 안에서 하소서." 아멘.</div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-section" id="quiz-section">
+    <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto;color:var(--ink-mute);font-weight:500;">1 / 10</span></div>
+    <div id="quiz-container">
+      <div class="quiz-item" data-index="0" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">1</div><div class="quiz-q-text">요한복음 15장에서 주님께서 "나는 참 포도나무이다"라고 하신 말씀의 핵심 계시는 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 이스라엘이 하나님의 새 포도원임을 선언하신 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 농부이신 아버지의 전정 사역을 강조하신 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 그리스도께서 바로 그 생명나무이시며, 우리는 그 나무의 가지라는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 포도주 문화의 성별을 가르치신 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="1" data-correct="2">
+        <div class="quiz-q"><div class="quiz-badge">2</div><div class="quiz-q-text">요한복음의 "나는 ~이다" 선언들(떡·빛·목자·부활·길)은 무엇을 보여 줍니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 그리스도의 서로 다른 독립적 사역들</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 모든 방면이 한 생명나무의 결과 — 신약의 모든 풍성이 그리스도 안에 있음</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 구약 예언의 비유적 성취</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 제자들을 가르치시기 위한 교수법</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="2" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">3</div><div class="quiz-q-text">요한계시록 22:2에서 생명나무가 "강 양쪽에서 자란다"는 것은 무엇을 의미합니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 두 개의 서로 다른 생명나무가 존재한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 강이 나무를 둘로 나누었다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 생명나무는 위로 자라지 않고 덩굴처럼 퍼져 나가며, 생명수의 흐름을 따라 얻을 수 있다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 나무의 크기가 매우 거대했다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="3" data-correct="2">
+        <div class="quiz-q"><div class="quiz-badge">4</div><div class="quiz-q-text">백화점의 자매 예화에서 그녀가 "아멘, 주님, 아멘"이라고 말할 때 즉시 일어나는 일은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 그녀의 예산이 정확히 맞게 된다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 금빛 길 위에서 걷게 되고, 내적 흐름이 강화되며, 생명나무의 풍성을 누린다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 백화점의 직원들이 친절해진다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 그녀가 다시 기도할 수 있게 된다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="4" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">5</div><div class="quiz-q-text">생명나무의 열매가 "달마다 열매를 맺는다"(계 22:2)는 것이 의미하는 영원한 몫은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 천년왕국 동안만 주어지는 제한적 보상</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 그저 상징적 표현일 뿐 실제 누림이 아니다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 영원토록 언제까지나 신선한 열매 — 구속받은 모든 이들이 지금부터 영원까지 계속 누릴 몫</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 이기는 이들에게만 주어지는 독점적 특권</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="5" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">6</div><div class="quiz-q-text">우리가 거듭났을 때 그리스도께서 하신 일은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리의 죄를 지우시고 깨끗하게 만드셨다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우리를 윤리적으로 개선하셨다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 자신을 생명나무로서 우리 안에 심으셨다 — 새 생명은 바로 그리스도 자신</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 우리에게 새로운 계명을 주셨다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="6" data-correct="4">
+        <div class="quiz-q"><div class="quiz-badge">7</div><div class="quiz-q-text">배우자와 문제가 있을 때 본문이 제시하는 실제적 비결은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 먼저 자신을 살피고 구체적인 잘못을 찾아 회개한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 성경 말씀으로 상대방에게 권면한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 시간을 두고 감정이 가라앉기를 기다린다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 아무것도 하지 말고 갈 2:20을 기도로 읽으며 그리스도께서 내 안에 사시는 것에 주의한다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="7" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">8</div><div class="quiz-q-text">욥의 근본적 문제는 무엇이었습니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 그의 재산이 너무 많았다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 숨겨진 큰 죄가 있었다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 선한 사람이었으나 '하나님-사람'은 아니었다 — 순전함의 정점이 아닌 인격이신 그리스도를 향했어야 했다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 친구들의 조언을 듣지 않았다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="8" data-correct="2">
+        <div class="quiz-q"><div class="quiz-badge">9</div><div class="quiz-q-text">하나님께서 그분의 경륜 안에서 가지신 의도는 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 타락한 사람을 온전하게 만드시는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우리를 허무시고 그분 자신으로 재건축하시어 생명과 본성에서 그분과 완전히 하나인 사람이 되게 하심</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 우리에게 더 좋은 윤리를 가르치시는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 우리를 사탄으로부터 보호하시는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="9" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">10</div><div class="quiz-q-text">욥기 42:17 각주가 제시하는 두 부분의 위대한 질문에 대한 답은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 욥의 인내가 모범이 된다는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 고난은 복의 전조라는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 하나님의 영원한 경륜 — 삼일 하나님께서 선택된 백성 안에 자신을 분배하시어 생명과 본성에서 그분과 똑같이 만드시는 것, 새 예루살렘으로 완결</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 사탄의 권세에 대한 경고</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+    <div class="quiz-nav" id="quiz-nav" style="display:flex;gap:10px;margin-top:20px;">
+      <button class="quiz-nav-btn" id="quiz-prev-btn" onclick="navQuiz(-1)" style="flex:1;">이전</button>
+      <button class="quiz-nav-btn primary" id="quiz-next-btn" onclick="navQuiz(1)" style="flex:2;">다음 퀴즈</button>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-score-label">최종 점수</div>
+      <div class="quiz-score" id="quizScore">0 / 10</div>
+      <div class="quiz-result-msg" id="quizMsg"></div>
+    </div>
+  </section>
+
+  <!-- PRAYER -->
+  <section class="prayer-section" id="prayer-section">
+    <div class="prayer-heading">'하나님-사람'이 되는 결단 — 생명나무를 누리는 기도</div>
+    <div class="prayer-callbox">
+      <p>그리스도께서 바로 그 <span class="cb-house">생명나무</span>이십니다.<br>거듭날 때 그분은 자신을 우리 안에 심으셨습니다.</p>
+      <p>하나님께서 원하시는 것은 '선한 사람'이 아닌 <span class="cb-house">하나님-사람</span>입니다.<br>오직 <strong>하나님 자신이 우리의 생명과 본성</strong>이 되시어<br>우리를 그분과 완전히 하나 되게 하심입니다.</p>
+    </div>
+    <div class="prayer-amen-box">
+      <p>주 예수님, 우리는 오늘 당신께서 바로 그 생명나무이심을 봅니다. 요한복음의 모든 방면 — 떡·빛·목자·부활·길 — 이 모두 한 생명나무이신 당신의 결과임을 고백합니다. 거듭날 때 당신은 자신을 생명나무로서 우리 안에 심으셨습니다. 할렐루야!</p>
+      <p>주님, 그러나 우리는 여전히 <strong>두 노선 사이에</strong> 있습니다. 결혼 생활에서, 자녀 앞에서, 직장 동료와의 대화에서, 우리는 여전히 선악 지식나무에 물과 거름을 주고 있습니다. 우리를 용서하소서. 우리에게 <strong>금빛 길 위에서 행하고, 흐르는 강에 참여하며, 생명나무의 풍성을 누리는</strong> 비결을 가르쳐 주소서.</p>
+      <p>주님, 문제 앞에서 우리가 아무것도 하지 않게 하소서. 다만 <strong>"그리스도께서 내 안에 사신다"</strong>는 것에 주의하게 하소서. 백화점의 자매처럼 내적 규제에 즉시 <strong>"아멘, 주님, 아멘"</strong>이라고 응답하게 하소서.</p>
+      <p>주님, 우리를 욥처럼 다루어 주소서 — 허무시고 재건축하소서. 타고남을 폭로하시어 우리가 오직 당신만 의지하게 하소서. 외적 성공과 실패가 아니라 <strong>'하나님-사람'</strong>이 되는 것이 우리의 몫이 되게 하소서. "내가 살아 있는 동안 주께서 하시고자 하시는 모든 일을 내 안에서 하소서."</p>
+      <p>주님, 우리는 날마다 당신을 음식으로 먹기 원합니다. 달마다 새 열매를 맺으시는 생명나무이신 당신을 <strong>지금부터 영원한 새 예루살렘에 이르기까지 계속 먹고 누리며 자라</strong>, 마침내 하나님의 영원한 경륜 — 그분과 똑같이 된 아들들, 새사람, 새 예루살렘 — 을 이루게 하소서.</p>
+      <div class="prayer-amen-sig">— AMEN —</div>
+    </div>
+  </section>
+
+  <div class="footer-note">욥기 라이프 스타디 · 생명나무 결론 메시지 · 길·강·나무 · 하나님-사람의 재건축</div>
+</div>
+
+<script>
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+  else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+
+function togglePanel() {
+  document.getElementById('sidepanel').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function goTo(id) {
+  togglePanel();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 300);
+}
+
+function showKwDef(id, el) {
+  const def = document.getElementById(id);
+  const isShown = def.classList.contains('show');
+  document.querySelectorAll('.keyword-def').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.keyword-tag').forEach(t => t.classList.remove('active'));
+  if (!isShown) { def.classList.add('show'); el.classList.add('active'); }
+}
+
+function toggleKwTip(id) {
+  const tip = document.getElementById(id);
+  const isShown = tip.classList.contains('show');
+  document.querySelectorAll('.kw-tooltip').forEach(t => t.classList.remove('show'));
+  if (!isShown) tip.classList.add('show');
+}
+
+const TV_WORD_DATA = {
+  'synestaurōmai': {
+    gk: 'συνεσταύρωμαι', pron: '쉬네스타우로마이', strong: 'G4957', lemma: 'συσταυρόω',
+    grammar: '동사 · 직설법 · 완료 · 수동태 · 1인칭 단수',
+    meaning: '~와 함께 십자가에 못 박히다 <em>(to be crucified with)</em>',
+    note: '원형은 <b>συσταυρόω</b> (σύν "함께" + σταυρόω "십자가에 못 박다"). 헬라어에서 <b>완료형(Perfect)</b>은 단순한 과거의 사건이 아니라 <b>"과거에 일어난 동작의 결과가 현재까지 지속되는 상태"</b>를 나타냅니다. 즉, "과거에 십자가에 못 박혔고, <b>그 못 박혀 있는 상태가 지금도 여전히 지속되고 있다</b>"는 뜻입니다. 또한 <b>수동태</b>이므로 내가 한 일이 아니라 <b>이미 나에게 일어난 일</b>입니다. 이것이 거듭난 이의 위치적 진리입니다.',
+    context: 'Χριστῷ συνεσταύρωμαι (나는 그리스도와 함께 — [지금도 여전히] 십자가에 못 박혀 있다)'
+  },
+  'zō': {
+    gk: 'ζῶ', pron: '조', strong: 'G2198', lemma: 'ζάω',
+    grammar: '동사 · 직설법 · 현재 · 능동태 · 1인칭 단수',
+    meaning: '내가 산다 <em>(I live)</em>',
+    note: '원형은 <b>ζάω</b>. <b>현재형</b>으로 쓰여 <b>계속해서 진행되고 있는 현재의 생명 활동과 상태</b>를 의미합니다. 갈 2:20에서 ζῶ는 두 번 나타납니다 — 처음에는 부정되고("더 이상 내가 사는 것이 아니다"), 두 번째에는 <b>"육체 안에서 사는 현재의 생명"</b>을 가리킵니다. 그러나 이 두 번째 ζῶ도 결국 "<b>믿음 안에서 사는</b>" 생명입니다.',
+    context: 'ὃ δὲ νῦν ζῶ ἐν σαρκί (이제 내가 육체 안에서 사는 생명은)'
+  },
+  'zē': {
+    gk: 'ζῇ', pron: '제', strong: 'G2198', lemma: 'ζάω',
+    grammar: '동사 · 직설법 · 현재 · 능동태 · 3인칭 단수',
+    meaning: '그가 산다 <em>(He lives)</em>',
+    note: '원형은 <b>ζάω</b>로 ζῶ와 같습니다. 그러나 여기서는 <b>3인칭</b>으로 사용되어 <b>그리스도께서 사신다</b>는 것을 나타냅니다. 현재형이므로 <b>지속되는 그분의 살아 계심</b>입니다. <b>"내가 사는 것이 아니라 — 그가 내 안에 사신다"</b> — 주체의 결정적 전환을 보여 주는 핵심 동사입니다.',
+    context: 'ζῇ δὲ ἐν ἐμοὶ Χριστός (그러나 그리스도께서 내 안에 사신다)'
+  },
+  'ouketi': {
+    gk: 'οὐκέτι', pron: '우케티', strong: 'G3765',
+    grammar: '부사 (시간적 부정)',
+    meaning: '더 이상 ~아니다 <em>(no longer, no more)</em>',
+    note: '<b>시간적 단절</b>을 의미하는 부정 부사입니다. 단순히 "아니다"(οὐ)가 아니라 <b>"이전에는 그랬으나 이제는 더 이상 아니다"</b>라는 의미를 담습니다. "συνεσταύρωμαι"(완료 수동) 선언 직후에 "οὐκέτι ἐγώ"가 등장하는 것은 결정적 전환을 강조합니다 — <b>옛 사람의 삶은 십자가에서 종결되었다</b>.',
+    context: 'ζῶ δὲ οὐκέτι ἐγώ (산다, 그러나 더 이상 내가 — 아니다)'
+  },
+  'sarki': {
+    gk: 'σαρκί', pron: '사르키', strong: 'G4561', lemma: 'σάρξ',
+    grammar: '명사 · 여격 · 여성 · 단수',
+    meaning: '살, 육체, 몸 <em>(flesh, body)</em>',
+    note: '원형은 <b>σάρξ</b>. BDAG 사전에 따르면 <b>물리적인 신체</b>나 <b>지상에서의 물리적 삶의 영역</b>을 가리킵니다. 전치사 <b>ἐν(엔, ~안에서)</b>과 결합하여 "<b>물리적인 육체를 입고 살아가는 상태</b>"를 나타냅니다. 여기서 σάρξ는 <b>윤리적·부정적 의미의 "육신"</b>이 아니라 <b>중립적인 "현재의 지상 삶의 형태"</b>를 가리킵니다.',
+    context: 'ὃ νῦν ζῶ ἐν σαρκί (지금 육체 안에서 — 사는 그것)'
+  },
+  'pistei': {
+    gk: 'πίστει', pron: '피스테이', strong: 'G4102', lemma: 'πίστις',
+    grammar: '명사 · 여격 · 여성 · 단수',
+    meaning: '믿음, 신뢰, 신실함 <em>(faith, belief, trust, faithfulness)</em>',
+    note: '원형은 <b>πίστις</b>. 전치사 <b>ἐν(엔)</b>과 결합하여 <b>"믿음 안에서"</b>로 번역됩니다 — 이는 단순히 "믿음으로"가 아니라 <b>믿음을 영역·환경으로 삼고 그 안에서 살아간다</b>는 의미입니다. 그래서 회복역은 "by faith"가 아니라 <b>"in faith"</b>로 번역합니다. 이 믿음은 다음 구절에서 "하나님의 아들의 믿음(τῇ τοῦ υἱοῦ τοῦ θεοῦ)"으로 한정됩니다.',
+    context: 'ἐν πίστει ζῶ (믿음 안에서 — 나는 산다)'
+  },
+  'huiou': {
+    gk: 'τοῦ υἱοῦ', pron: '투 휘우', strong: 'G5207', lemma: 'υἱός',
+    grammar: '명사 · 속격 · 남성 · 단수 (관사 + 명사)',
+    meaning: '아들의 <em>(of the Son)</em>',
+    note: '원형은 <b>υἱός</b>. 본문의 "τοῦ υἱοῦ(아들의)"는 명사 πίστει(믿음)를 수식하는 <b>속격(genitive)</b>입니다. 헬라어 문법에서 이 구조는 두 가지로 해석될 수 있습니다 — <b>① 목적어적 속격(Objective Genitive):</b> "하나님의 아들을 <b>대상으로 하는</b> 믿음" → "아들을 믿는 믿음" / <b>② 주어적 속격(Subjective Genitive):</b> "하나님의 아들이 <b>주체가 되어</b> 가진 믿음" → "아들 자신의 믿음/신실함." 회복역의 <b>"아들의 믿음"</b>이라는 표현은 이 속격을 <b>주어적 속격</b>에 가깝게 문자 그대로 번역한 형태로, "<b>그리스도 자신의 신실함이 우리 안에서 작동하는 그 믿음</b>" 으로 이해할 수 있습니다.',
+    context: 'πίστει ... τῇ τοῦ υἱοῦ τοῦ θεοῦ (… 하나님의 아들의 믿음 안에서)'
+  },
+  'agapēsantos': {
+    gk: 'τοῦ ἀγαπήσαντός', pron: '투 아가페산토스', strong: 'G25', lemma: 'ἀγαπάω',
+    grammar: '동사 · 분사 · 부정과거(Aorist) · 능동태 · 속격 · 남성 · 단수',
+    meaning: '사랑하신 (분의) <em>(of the [One] who loved)</em>',
+    note: '원형은 <b>ἀγαπάω</b>. <b>부정과거(Aorist) 시제</b>는 지속성이 아닌 <b>"과거의 특정한 시점에 일어난 단회적이고 완전한 행위"</b>를 나타냅니다. 즉, 이 사랑은 추상적·일반적 사랑이 아니라 <b>십자가에서 결정적으로 표현된 한 번의 사랑</b>입니다. 또한 이 분사는 속격으로 "하나님의 아들"(τοῦ υἱοῦ)을 수식하므로, "<b>나를 사랑하신 그 아들의</b>"라는 구조를 이룹니다.',
+    context: 'τοῦ ἀγαπήσαντός με (나를 사랑하신 [분]의)'
+  },
+  'paradontos': {
+    gk: 'παραδόντος', pron: '파라돈토스', strong: 'G3860', lemma: 'παραδίδωμι',
+    grammar: '동사 · 분사 · 부정과거(Aorist) · 능동태 · 속격 · 남성 · 단수',
+    meaning: '넘겨주신, 내어주신 <em>(having handed over, having given up)</em>',
+    note: '원형은 <b>παραδίδωμι</b> (παρά "곁에" + δίδωμι "주다") — <b>"넘겨주다, 양도하다, 포기하다"</b>의 의미입니다. 여기서는 ἑαυτὸν(헤아우톤, "자신을")과 결합하여 <b>"자신을 내어주었다"</b>는 의미로 사용되었습니다. 부정과거(Aorist)로 쓰여 <b>단회적인 특정 사건 — 곧 십자가의 결정적 자기 내어줌</b>을 가리킵니다. 앞의 ἀγαπήσαντός(사랑하신)와 짝을 이루어, <b>"사랑하시고 자신을 내어주신"</b>이라는 두 부정과거 분사가 그리스도의 십자가 사건을 압축합니다.',
+    context: 'παραδόντος ἑαυτὸν ὑπὲρ ἐμοῦ (자신을 — 나를 위하여 내어주신 [분])'
+  }
+};
+
+function tvShowWord(key) {
+  const w = TV_WORD_DATA[key];
+  if (!w) return;
+  const strongLine = w.lemma ? `${w.strong} · 원형 ${w.lemma}` : w.strong;
+  document.getElementById('tv-popup-meaning').innerHTML = `${w.gk} <span style="font-size:0.82rem;color:var(--ink-mute);font-style:italic;font-weight:400;">· ${w.pron}</span>`;
+  document.getElementById('tv-popup-greek').textContent = w.context || '';
+  document.getElementById('tv-popup-body').innerHTML = `
+    <div class="tv-popup-word">
+      <div class="tv-popup-word-top">
+        <span class="tv-popup-word-gk">${w.gk}</span>
+        <span class="tv-popup-word-pron">${w.pron}</span>
+        <span class="tv-popup-word-strong">${strongLine}</span>
+      </div>
+      <div class="tv-popup-word-meaning">${w.meaning}</div>
+      <div style="font-size:0.78rem;color:var(--ink-mute);margin-bottom:6px;font-family:'Lora',serif;letter-spacing:0.02em;">${w.grammar}</div>
+      <div class="tv-popup-word-note">${w.note}</div>
+    </div>
+  `;
+  document.getElementById('tv-popup-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function tvClosePopup() {
+  document.getElementById('tv-popup-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function tvClosePopupOnBg(e) {
+  if (e.target.id === 'tv-popup-overlay') tvClosePopup();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const ov = document.getElementById('tv-popup-overlay');
+    if (ov && ov.classList.contains('active')) tvClosePopup();
+  }
+});
+
+function toggleAcc(header) {
+  const acc = header.parentElement;
+  const body = acc.querySelector('.accordion-body');
+  if (acc.classList.contains('open')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    void body.offsetHeight;
+    body.style.maxHeight = '0';
+    acc.classList.remove('open');
+  } else {
+    acc.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    setTimeout(() => { if (acc.classList.contains('open')) body.style.maxHeight = 'none'; }, 400);
+  }
+}
+
+function selectOpt(el) {
+  const item = el.closest('.quiz-item');
+  if (item.classList.contains('answered')) return;
+  item.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+let currentQuizIdx = 0;
+const totalQuizzes = 10;
+
+function navQuiz(dir) {
+  const items = document.querySelectorAll('.quiz-item');
+  items[currentQuizIdx].classList.remove('active');
+  currentQuizIdx += dir;
+  if (currentQuizIdx < 0) currentQuizIdx = 0;
+  if (currentQuizIdx >= totalQuizzes) { currentQuizIdx = totalQuizzes - 1; submitQuiz(); return; }
+  items[currentQuizIdx].classList.add('active');
+  updateQuizNav();
+}
+
+function updateQuizNav() {
+  document.getElementById('quiz-progress').textContent = (currentQuizIdx + 1) + ' / ' + totalQuizzes;
+  document.getElementById('quiz-prev-btn').disabled = currentQuizIdx === 0;
+  document.getElementById('quiz-next-btn').textContent = currentQuizIdx === totalQuizzes - 1 ? '결과 확인하기' : '다음 퀴즈';
+}
+
+function submitQuiz() {
+  let score = 0;
+  const items = document.querySelectorAll('.quiz-item');
+  items.forEach(item => {
+    item.classList.add('reviewed', 'answered');
+    item.classList.remove('active');
+    const correct = parseInt(item.dataset.correct) - 1;
+    const opts = item.querySelectorAll('.quiz-opt');
+    const fb = item.querySelector('.quiz-feedback');
+    let selectedIdx = -1;
+    opts.forEach((o, i) => { if (o.classList.contains('selected')) selectedIdx = i; });
+    if (selectedIdx === correct) {
+      score++;
+      opts[selectedIdx].classList.add('correct');
+      fb.className = 'quiz-feedback show correct-fb';
+      fb.textContent = '✓ 정답입니다';
+    } else {
+      if (selectedIdx >= 0) opts[selectedIdx].classList.add('wrong');
+      opts[correct].classList.add('correct');
+      fb.className = 'quiz-feedback show wrong-fb';
+      fb.textContent = '정답은 ' + ['A','B','C','D'][correct] + '입니다';
+    }
+  });
+  document.getElementById('quiz-nav').style.display = 'none';
+  document.getElementById('quiz-progress').textContent = '결과';
+  document.getElementById('quizScore').textContent = score + ' / ' + totalQuizzes;
+  const msgEl = document.getElementById('quizMsg');
+  if (score === 10) msgEl.textContent = '완벽합니다! 생명나무·누림·재건축의 모든 측면을 정확히 숙지하셨습니다.';
+  else if (score >= 7) msgEl.textContent = '훌륭합니다! 메시지의 핵심 요점들을 잘 이해하고 계십니다.';
+  else msgEl.textContent = '다시 한번 생명나무이신 그리스도와 재건축의 원리를 묵상해 보시길 권해드립니다.';
+  document.getElementById('quizResult').classList.add('show');
+  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const firstQuiz = document.querySelector('.quiz-item');
+  if (firstQuiz) firstQuiz.classList.add('active');
+  if (typeof updateQuizNav === 'function') updateQuizNav();
+
+  const container = document.getElementById('intro-container');
+  const canvas = document.getElementById('scratch-canvas');
+  const introCover = document.getElementById('intro-cover');
+  const introContent = document.getElementById('intro-content');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+  let isDrawing = false, lastX = 0, lastY = 0, cleared = false, isFirstTouch = true, checkInterval = null;
+
+  document.getElementById('start-voice-btn').addEventListener('click', startVoiceRecognition);
+  document.getElementById('skip-intro-btn').addEventListener('click', finishIntro);
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    fillCanvas();
+  }
+  function fillCanvas() {
+    let bg = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+    bg.addColorStop(0, '#2a1a10');
+    bg.addColorStop(1, '#0a0807');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+  resize();
+  window.addEventListener('resize', () => { if(!cleared) resize(); });
+
+  function getPos(e) {
+    let rect = canvas.getBoundingClientRect();
+    let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+    let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+    return { x: clientX - rect.left, y: clientY - rect.top };
+  }
+
+  function start(e) {
+    if (cleared) return;
+    if (isFirstTouch) { introContent.style.opacity = '0'; isFirstTouch = false; }
+    isDrawing = true;
+    let pos = getPos(e);
+    lastX = pos.x; lastY = pos.y;
+    scratch(e);
+    if (!checkInterval) checkInterval = setInterval(() => { if (isDrawing && !cleared) checkPercent(); }, 400);
+  }
+  function end() {
+    isDrawing = false;
+    if (checkInterval) { clearInterval(checkInterval); checkInterval = null; }
+    if (!cleared) checkPercent();
+  }
+  function scratch(e) {
+    if (!isDrawing || cleared) return;
+    if (e.cancelable) e.preventDefault();
+    let pos = getPos(e);
+    let brushSize = Math.max(120, Math.min(window.innerWidth, window.innerHeight) * 0.25);
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.lineWidth = brushSize;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+    lastX = pos.x; lastY = pos.y;
+  }
+  function checkPercent() {
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    let transPixels = 0;
+    const step = 4 * 200;
+    for (let i = 0; i < data.length; i += step) { if (data[i + 3] < 128) transPixels++; }
+    const percent = transPixels / (canvas.width * canvas.height / 200);
+    if (percent > 0.20 && !cleared) {
+      cleared = true;
+      if (checkInterval) clearInterval(checkInterval);
+      introCover.style.pointerEvents = 'none';
+      canvas.style.transition = 'opacity 1s ease';
+      canvas.style.opacity = '0';
+      setTimeout(() => {
+        canvas.style.display = 'none';
+        introCover.style.display = 'none';
+        introCover.classList.add('cleared');
+        document.getElementById('voice-prompt-container').classList.add('show');
+      }, 1000);
+    }
+  }
+
+  function getSimilarity(s1, s2) {
+    if (s1 === s2) return 1.0;
+    const len1 = s1.length, len2 = s2.length;
+    const matrix = Array(len1+1).fill(null).map(() => Array(len2+1).fill(null));
+    for (let i = 0; i <= len1; i++) matrix[i][0] = i;
+    for (let j = 0; j <= len2; j++) matrix[0][j] = j;
+    for (let i = 1; i <= len1; i++) {
+      for (let j = 1; j <= len2; j++) {
+        const cost = s1[i-1] === s2[j-1] ? 0 : 1;
+        matrix[i][j] = Math.min(matrix[i-1][j]+1, matrix[i][j-1]+1, matrix[i-1][j-1]+cost);
+      }
+    }
+    return (Math.max(len1,len2) - matrix[len1][len2]) / Math.max(len1,len2);
+  }
+
+  function startVoiceRecognition() {
+    const voiceMsg = document.getElementById('voice-msg');
+    const startBtn = document.getElementById('start-voice-btn');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      voiceMsg.innerHTML = "음성 인식을 지원하지 않는 브라우저입니다.<br>건너뛰기를 눌러주세요.";
+      voiceMsg.style.color = "#b84452";
+      startBtn.style.display = 'none';
+      return;
+    }
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'ko-KR';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.onstart = function() {
+      voiceMsg.innerHTML = "듣고 있습니다 🎤<br><span style='font-size:0.85rem;color:rgba(245,240,230,0.55);font-weight:400;'>(마이크 권한을 허용해주세요)</span>";
+      startBtn.style.display = 'none';
+    };
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript.replace(/[\s\.\,\"\-\']+/g, '');
+      const target1 = "나는포도나무요여러분은가지들입니다";
+      const target2 = "그가내안에내가그안에거하면그사람은열매를많이맺습니다";
+      const target3 = "나는포도나무요가지들입니다열매를많이맺습니다";
+      const sim1 = getSimilarity(target1, transcript);
+      const sim2 = getSimilarity(target2, transcript);
+      const sim3 = getSimilarity(target3, transcript);
+      const maxSim = Math.max(sim1, sim2, sim3);
+      if (maxSim >= 0.55) {
+        voiceMsg.innerHTML = "✓ 인식 완료";
+        voiceMsg.style.color = "#b84452";
+        setTimeout(finishIntro, 800);
+      } else {
+        voiceMsg.innerHTML = `다시 한번 또렷이 읽어주세요 🎤<br><span style='font-size:0.85rem;color:#b84452;'>현재 일치율: ${Math.round(maxSim * 100)}% (55% 이상 필요)</span>`;
+        startBtn.style.display = 'block';
+        startBtn.textContent = "다시 시도";
+      }
+    };
+    recognition.onerror = function(event) {
+      startBtn.style.display = 'block';
+      startBtn.textContent = "다시 시도";
+      if (event.error === 'not-allowed' || event.error === 'audio-capture') {
+        voiceMsg.innerHTML = "마이크 권한이 거부되었습니다.<br>건너뛰기를 눌러주세요.";
+        voiceMsg.style.color = "#b84452";
+      } else {
+        voiceMsg.innerHTML = "인식에 실패했습니다. 다시 시도해주세요";
+      }
+    };
+    try { recognition.start(); } catch(e) { console.error(e); }
+  }
+
+  function finishIntro() {
+    container.style.transition = 'opacity 1.5s ease, transform 1.5s ease';
+    container.style.opacity = '0';
+    container.style.transform = 'scale(1.05)';
+    setTimeout(() => { container.remove(); document.body.style.overflow = ''; }, 1500);
+  }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', scratch);
+  canvas.addEventListener('mouseup', end);
+  canvas.addEventListener('mouseleave', end);
+  canvas.addEventListener('touchstart', start, {passive: false});
+  canvas.addEventListener('touchmove', scratch, {passive: false});
+  canvas.addEventListener('touchend', end);
+  canvas.addEventListener('touchcancel', end);
+});
+
+// ============================================================
+// TTS Reader (Qwen3-TTS MLX 스트리밍)
+// ============================================================
+const TTS_CONFIG = {
+  serverUrl: 'https://qwen.tkhome.cloud',          // 서버 URL (필요시 수정)
+  apiKey: localStorage.getItem('qwen_tts_api_key') || '',
+  defaultVoice: 'tk_voice',
+  sampleRate: 24000,
+  pauseSec: 0.4,
+  chunkMaxLen: 200
+};
+
+const TTS_SECTIONS = [
+  { id: 'hero', title: '제목 & 주제' },
+  { id: 'todays-verse', title: '오늘의 구절 (갈 2:20)' },
+  { id: 'dashboard', title: '메시지 전체 맥락 요약' },
+  { id: 'flow', title: '다섯 단계의 흐름' },
+  { id: 'acc-0', title: 'Ⅰ. 그리스도 = 생명나무' },
+  { id: 'acc-1', title: 'Ⅱ. 요한복음의 모든 방면' },
+  { id: 'acc-2', title: 'Ⅲ. 길·강·나무' },
+  { id: 'acc-3', title: 'Ⅳ. 영원한 몫 — 달마다 새 열매' },
+  { id: 'acc-4', title: 'Ⅴ. 거듭남 — 심기심' },
+  { id: 'acc-5', title: 'Ⅵ. 실지 생활 — 두 노선 사이' },
+  { id: 'acc-6', title: 'Ⅶ. 욥의 윤리 → 하나님의 영역' },
+  { id: 'acc-7', title: 'Ⅷ. 허무심과 재건축' },
+  { id: 'acc-8', title: 'Ⅸ. 욥기 42:17 각주' },
+  { id: 'recap', title: '전체 복습' },
+  { id: 'prayer', title: '기도' }
+];
+
+function ttsCleanText(text) {
+  if (!text) return '';
+  return text.replace(/\s+/g, ' ').replace(/\[[^\]]*\]/g, '').trim();
+}
+
+const TTS_EXTRACTORS = {
+  'hero': () => {
+    const h1 = document.querySelector('#hero-section h1');
+    const sub = document.querySelector('#hero-section .hero-sub');
+    return ttsCleanText((h1 ? h1.textContent : '') + '. ' + (sub ? sub.textContent : ''));
+  },
+  'todays-verse': () => {
+    const kr = document.querySelector('#todays-verse-section .tv-trans-row.kr .tv-trans-text');
+    return '오늘의 구절. 갈라디아서 2장 20절. ' + ttsCleanText(kr ? kr.textContent : '');
+  },
+  'dashboard': () => {
+    const msg = document.querySelector('#dashboard-section .core-message');
+    return '메시지 전체 맥락 요약. ' + ttsCleanText(msg ? msg.textContent : '');
+  },
+  'flow': () => {
+    let text = '다섯 단계의 흐름. 생명나무에서 하나님 사람까지. ';
+    document.querySelectorAll('#flow-section .flow-step').forEach(s => {
+      const label = s.querySelector('.flow-step-label');
+      const desc = s.querySelector('.flow-step-desc');
+      text += (label ? label.textContent : '') + '. ' + (desc ? desc.textContent : '') + ' ';
+    });
+    return ttsCleanText(text);
+  },
+  'recap': () => {
+    let text = '전체 메시지 복습. ';
+    document.querySelectorAll('#recap-section .recap-anchor').forEach(anchor => {
+      const sub = anchor.querySelector('.recap-subtitle');
+      if (sub) text += ttsCleanText(sub.textContent.replace(/REVIEW/i, '')) + '. ';
+      anchor.querySelectorAll('.recap-item-text').forEach(item => {
+        text += ttsCleanText(item.textContent) + '. ';
+      });
+    });
+    const note = document.querySelector('#recap-section .recap-note');
+    if (note) text += '이 메시지의 부담. ' + ttsCleanText(note.textContent);
+    return text;
+  },
+  'prayer': () => {
+    const heading = document.querySelector('#prayer-section .prayer-heading');
+    const callbox = document.querySelector('#prayer-section .prayer-callbox');
+    const amen = document.querySelector('#prayer-section .prayer-amen-box');
+    let text = '';
+    if (heading) text += ttsCleanText(heading.textContent) + '. ';
+    if (callbox) text += ttsCleanText(callbox.textContent) + '. ';
+    if (amen) {
+      const clone = amen.cloneNode(true);
+      const sig = clone.querySelector('.prayer-amen-sig');
+      if (sig) sig.remove();
+      text += ttsCleanText(clone.textContent);
+    }
+    return text;
+  }
+};
+
+// 아코디언 항목 추출기 (acc-0 ~ acc-8)
+for (let i = 0; i <= 8; i++) {
+  const accId = 'acc-' + i;
+  TTS_EXTRACTORS[accId] = () => {
+    const acc = document.getElementById(accId);
+    if (!acc) return '';
+    const titleEl = acc.querySelector('.acc-title-text');
+    const titleText = titleEl ? titleEl.textContent : '';
+    const content = acc.querySelector('.accordion-content');
+    if (!content) return ttsCleanText(titleText);
+    const clone = content.cloneNode(true);
+    clone.querySelectorAll('.verse-block').forEach(v => v.remove());
+    return ttsCleanText(titleText + '. ' + clone.textContent);
+  };
+}
+
+// Audio context 상태
+let ttsAudioContext = null;
+let ttsNextPlayTime = 0;
+let ttsScheduledSources = [];
+let ttsCurrentReader = null;
+let ttsIsCanceled = false;
+let ttsIsPlaying = false;
+
+function ttsPcmToBuffer(int16Bytes, ctx) {
+  const evenLen = int16Bytes.byteLength - (int16Bytes.byteLength % 2);
+  if (evenLen === 0) return null;
+  const aligned = new Uint8Array(evenLen);
+  aligned.set(int16Bytes.subarray(0, evenLen));
+  const int16 = new Int16Array(aligned.buffer);
+  const float32 = new Float32Array(int16.length);
+  for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768;
+  const buffer = ctx.createBuffer(1, float32.length, TTS_CONFIG.sampleRate);
+  buffer.copyToChannel(float32, 0);
+  return buffer;
+}
+
+function ttsScheduleBuffer(buffer) {
+  if (!buffer || !ttsAudioContext) return;
+  const source = ttsAudioContext.createBufferSource();
+  source.buffer = buffer;
+  source.connect(ttsAudioContext.destination);
+  const now = ttsAudioContext.currentTime;
+  if (ttsNextPlayTime < now) ttsNextPlayTime = now;
+  source.start(ttsNextPlayTime);
+  ttsScheduledSources.push(source);
+  ttsNextPlayTime += buffer.duration;
+  source.onended = () => {
+    const idx = ttsScheduledSources.indexOf(source);
+    if (idx >= 0) ttsScheduledSources.splice(idx, 1);
+  };
+}
+
+function ttsStopPlayback() {
+  ttsScheduledSources.forEach(src => { try { src.stop(); } catch(e) {} });
+  ttsScheduledSources = [];
+  ttsNextPlayTime = 0;
+}
+
+function ttsOpenReader() {
+  document.getElementById('tts-reader-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  ttsInitSectionList();
+  if (TTS_CONFIG.apiKey) {
+    document.getElementById('tts-api-key').value = TTS_CONFIG.apiKey;
+  }
+  ttsLoadVoices();
+}
+
+function ttsCloseReader() {
+  if (ttsIsPlaying) {
+    if (!confirm('재생 중입니다. 정말 닫으시겠습니까?')) return;
+    ttsStop();
+  }
+  document.getElementById('tts-reader-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function ttsCloseOnBg(e) {
+  if (e.target.id === 'tts-reader-overlay') ttsCloseReader();
+}
+
+function ttsSaveApiKey() {
+  const input = document.getElementById('tts-api-key');
+  TTS_CONFIG.apiKey = input.value.trim();
+  localStorage.setItem('qwen_tts_api_key', TTS_CONFIG.apiKey);
+  ttsSetStatus(TTS_CONFIG.apiKey ? 'API 키가 저장되었습니다.' : 'API 키가 비워졌습니다.');
+  ttsLoadVoices();
+}
+
+function ttsInitSectionList() {
+  const list = document.getElementById('tts-section-list');
+  if (list.dataset.initialized === 'true') return;
+  list.innerHTML = '';
+  const allItem = document.createElement('label');
+  allItem.className = 'tts-section-item all';
+  allItem.innerHTML = '<input type="checkbox" class="tts-section-checkbox" id="tts-section-all" checked><span class="tts-section-label">전체 선택 / 해제</span>';
+  allItem.querySelector('input').addEventListener('change', function() { ttsToggleAll(this); });
+  list.appendChild(allItem);
+  TTS_SECTIONS.forEach(sec => {
+    const item = document.createElement('label');
+    item.className = 'tts-section-item';
+    item.dataset.sectionId = sec.id;
+    item.innerHTML = '<input type="checkbox" class="tts-section-checkbox" data-section="' + sec.id + '" checked><span class="tts-section-label">' + sec.title + '</span>';
+    list.appendChild(item);
+  });
+  list.dataset.initialized = 'true';
+}
+
+function ttsToggleAll(cb) {
+  document.querySelectorAll('#tts-section-list input[data-section]').forEach(c => c.checked = cb.checked);
+}
+
+async function ttsLoadVoices() {
+  const select = document.getElementById('tts-voice-select');
+  try {
+    const res = await fetch(TTS_CONFIG.serverUrl + '/voices');
+    if (!res.ok) throw new Error('서버 응답 ' + res.status);
+    const data = await res.json();
+    select.innerHTML = '';
+    if (!data.voices || data.voices.length === 0) {
+      const opt = document.createElement('option');
+      opt.textContent = '(등록된 음성 없음)';
+      select.appendChild(opt);
+      ttsSetStatus('등록된 음성이 없습니다.', true);
+      return;
+    }
+    data.voices.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v.name;
+      opt.textContent = v.name + (v.name === data.default ? ' (기본)' : '');
+      select.appendChild(opt);
+    });
+    if (data.default) select.value = data.default;
+    ttsSetStatus(data.voices.length + '개 음성 로드 완료. 항목을 선택하고 재생을 누르세요.');
+  } catch (e) {
+    select.innerHTML = '<option>tk_voice</option>';
+    ttsSetStatus('음성 목록 로드 실패: ' + e.message, true);
+  }
+}
+
+function ttsSetStatus(msg, isError) {
+  const el = document.getElementById('tts-status');
+  el.textContent = msg;
+  el.className = 'tts-status' + (isError ? ' error' : '');
+}
+
+function ttsUpdateProgress(current, total, sectionTitle) {
+  document.getElementById('tts-progress').classList.add('active');
+  document.getElementById('tts-progress-fill').style.width = (current / total * 100) + '%';
+  document.getElementById('tts-progress-text').innerHTML = '<strong>' + current + ' / ' + total + '</strong> · ' + sectionTitle;
+}
+
+function ttsHighlightSection(sectionId) {
+  document.querySelectorAll('#tts-section-list .tts-section-item').forEach(el => el.classList.remove('playing'));
+  if (sectionId) {
+    const item = document.querySelector('#tts-section-list .tts-section-item[data-section-id="' + sectionId + '"]');
+    if (item) item.classList.add('playing');
+  }
+}
+
+async function ttsPlay() {
+  if (!TTS_CONFIG.apiKey) {
+    ttsSetStatus('먼저 API 키를 입력하고 저장하세요.', true);
+    return;
+  }
+  const checked = document.querySelectorAll('#tts-section-list input[data-section]:checked');
+  if (checked.length === 0) {
+    ttsSetStatus('읽을 항목을 하나 이상 선택하세요.', true);
+    return;
+  }
+  const voice = document.getElementById('tts-voice-select').value;
+  const selectedIds = Array.from(checked).map(cb => cb.dataset.section);
+  const sectionsToRead = TTS_SECTIONS.filter(s => selectedIds.includes(s.id));
+
+  ttsIsCanceled = false;
+  ttsIsPlaying = true;
+  document.getElementById('tts-play-btn').disabled = true;
+  document.getElementById('tts-stop-btn').disabled = false;
+
+  if (!ttsAudioContext || ttsAudioContext.state === 'closed') {
+    ttsAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (ttsAudioContext.state === 'suspended') await ttsAudioContext.resume();
+
+  ttsStopPlayback();
+
+  try {
+    for (let i = 0; i < sectionsToRead.length; i++) {
+      if (ttsIsCanceled) break;
+      const sec = sectionsToRead[i];
+      const extractor = TTS_EXTRACTORS[sec.id];
+      if (!extractor) continue;
+      ttsUpdateProgress(i + 1, sectionsToRead.length, sec.title);
+      ttsHighlightSection(sec.id);
+      ttsSetStatus('재생 중: ' + sec.title);
+      const text = extractor();
+      if (!text || text.trim().length < 2) continue;
+      await ttsStreamText(text, voice);
+      if (ttsIsCanceled) break;
+    }
+    if (!ttsIsCanceled) {
+      const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
+      if (remaining > 0) {
+        ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
+        await new Promise(r => setTimeout(r, remaining * 1000 + 200));
+      }
+      ttsSetStatus('✅ 모든 항목 재생 완료');
+    } else {
+      ttsSetStatus('⏹ 중지됨');
+    }
+  } catch (e) {
+    ttsSetStatus('❌ 오류: ' + e.message, true);
+  } finally {
+    ttsIsPlaying = false;
+    ttsHighlightSection(null);
+    document.getElementById('tts-play-btn').disabled = false;
+    document.getElementById('tts-stop-btn').disabled = true;
+    ttsCurrentReader = null;
+  }
+}
+
+async function ttsStreamText(text, voice) {
+  const res = await fetch(TTS_CONFIG.serverUrl + '/tts/stream', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-Key': TTS_CONFIG.apiKey
+    },
+    body: JSON.stringify({
+      text: text,
+      voice: voice,
+      pause_sec: TTS_CONFIG.pauseSec,
+      chunk_max_len: TTS_CONFIG.chunkMaxLen
+    })
+  });
+  if (!res.ok) {
+    let errMsg = 'HTTP ' + res.status;
+    try { const err = await res.json(); errMsg = err.detail || errMsg; } catch(e) {}
+    throw new Error(errMsg);
+  }
+  const reader = res.body.getReader();
+  ttsCurrentReader = reader;
+  let buffer = new Uint8Array(0);
+  const MIN_DECODE = 24000;
+  while (true) {
+    let done, value;
+    try { ({ done, value } = await reader.read()); }
+    catch (e) { if (ttsIsCanceled) break; throw e; }
+    if (done || ttsIsCanceled) {
+      if (buffer.length >= 2 && !ttsIsCanceled) {
+        ttsScheduleBuffer(ttsPcmToBuffer(buffer, ttsAudioContext));
+      }
+      break;
+    }
+    const merged = new Uint8Array(buffer.length + value.length);
+    merged.set(buffer);
+    merged.set(value, buffer.length);
+    buffer = merged;
+    while (buffer.length >= MIN_DECODE && !ttsIsCanceled) {
+      const evenLen = MIN_DECODE - (MIN_DECODE % 2);
+      const audioBuffer = ttsPcmToBuffer(buffer.subarray(0, evenLen), ttsAudioContext);
+      if (audioBuffer) ttsScheduleBuffer(audioBuffer);
+      buffer = buffer.subarray(evenLen);
+    }
+  }
+}
+
+async function ttsStop() {
+  ttsIsCanceled = true;
+  if (ttsCurrentReader) { try { await ttsCurrentReader.cancel(); } catch(e) {} ttsCurrentReader = null; }
+  ttsStopPlayback();
+  ttsSetStatus('⏹ 중지됨');
+  document.getElementById('tts-play-btn').disabled = false;
+  document.getElementById('tts-stop-btn').disabled = true;
+  ttsIsPlaying = false;
+  ttsHighlightSection(null);
+}
+
+</script>
+</body>
+</html>
