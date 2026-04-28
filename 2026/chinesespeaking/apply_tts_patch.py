@@ -105,6 +105,7 @@ NEW_MODAL = '''  <!-- TTS READER MODAL -->
       </div>
       <div class="tts-reader-footer">
         <button class="tts-btn" id="tts-stop-btn" onclick="ttsStop()" disabled>⏹ 중지</button>
+        <button class="tts-btn" id="tts-pause-btn" onclick="ttsTogglePause()" disabled>⏸ 일시정지</button>
         <button class="tts-btn primary" id="tts-play-btn" onclick="ttsPlay()">▶ 재생</button>
       </div>
     </div>
@@ -227,6 +228,7 @@ let ttsScheduledSources = [];
 let ttsCurrentReader = null;
 let ttsIsCanceled = false;
 let ttsIsPlaying = false;
+let ttsIsPaused = false;
 
 function ttsPcmToBuffer(int16Bytes, ctx) {
   const evenLen = int16Bytes.byteLength - (int16Bytes.byteLength % 2);
@@ -383,11 +385,19 @@ async function ttsPlay() {
   ttsIsPlaying = true;
   document.getElementById('tts-play-btn').disabled = true;
   document.getElementById('tts-stop-btn').disabled = false;
+  document.getElementById('tts-pause-btn').disabled = false;
 
   if (!ttsAudioContext || ttsAudioContext.state === 'closed') {
-    ttsAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const Ctor = window.AudioContext || window.webkitAudioContext;
+    try {
+      ttsAudioContext = new Ctor({ sampleRate: TTS_CONFIG.sampleRate });
+    } catch (e) {
+      ttsAudioContext = new Ctor();
+    }
   }
   if (ttsAudioContext.state === 'suspended') await ttsAudioContext.resume();
+  ttsIsPaused = false;
+  ttsUpdatePauseBtn();
 
   ttsStopPlayback();
 
@@ -405,23 +415,28 @@ async function ttsPlay() {
       await ttsStreamText(text, voice);
       if (ttsIsCanceled) break;
     }
-    if (!ttsIsCanceled) {
-      const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
-      if (remaining > 0) {
-        ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
-        await new Promise(r => setTimeout(r, remaining * 1000 + 200));
+    while (!ttsIsCanceled) {
+      if (ttsAudioContext.state === 'suspended') {
+        await new Promise(r => setTimeout(r, 200));
+        continue;
       }
-      ttsSetStatus('✅ 모든 항목 재생 완료');
-    } else {
-      ttsSetStatus('⏹ 중지됨');
+      const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
+      if (remaining <= 0) break;
+      ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
+      await new Promise(r => setTimeout(r, Math.min(remaining * 1000 + 200, 1000)));
     }
+    if (!ttsIsCanceled) ttsSetStatus('✅ 모든 항목 재생 완료');
+    else ttsSetStatus('⏹ 중지됨');
   } catch (e) {
     ttsSetStatus('❌ 오류: ' + e.message, true);
   } finally {
     ttsIsPlaying = false;
+    ttsIsPaused = false;
     ttsHighlightSection(null);
     document.getElementById('tts-play-btn').disabled = false;
     document.getElementById('tts-stop-btn').disabled = true;
+    document.getElementById('tts-pause-btn').disabled = true;
+    ttsUpdatePauseBtn();
     ttsCurrentReader = null;
   }
 }
@@ -476,11 +491,37 @@ async function ttsStop() {
   ttsIsCanceled = true;
   if (ttsCurrentReader) { try { await ttsCurrentReader.cancel(); } catch(e) {} ttsCurrentReader = null; }
   ttsStopPlayback();
+  if (ttsAudioContext && ttsAudioContext.state === 'suspended') {
+    try { await ttsAudioContext.resume(); } catch(e) {}
+  }
+  ttsIsPaused = false;
   ttsSetStatus('⏹ 중지됨');
   document.getElementById('tts-play-btn').disabled = false;
   document.getElementById('tts-stop-btn').disabled = true;
+  document.getElementById('tts-pause-btn').disabled = true;
+  ttsUpdatePauseBtn();
   ttsIsPlaying = false;
   ttsHighlightSection(null);
+}
+
+async function ttsTogglePause() {
+  if (!ttsIsPlaying || !ttsAudioContext) return;
+  if (ttsIsPaused) {
+    try { await ttsAudioContext.resume(); } catch(e) {}
+    ttsIsPaused = false;
+    ttsSetStatus('▶ 재생 재개됨');
+  } else {
+    try { await ttsAudioContext.suspend(); } catch(e) {}
+    ttsIsPaused = true;
+    ttsSetStatus('⏸ 일시정지됨');
+  }
+  ttsUpdatePauseBtn();
+}
+
+function ttsUpdatePauseBtn() {
+  const btn = document.getElementById('tts-pause-btn');
+  if (!btn) return;
+  btn.textContent = ttsIsPaused ? '▶ 계속' : '⏸ 일시정지';
 }
 """
 
