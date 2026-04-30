@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>하나님의 변함없는 의도: 그리스도로 충만케 하사 참된 하나님-사람으로 재건축하심 (딤전 6:11, 딤후 3:17)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Gowun+Batang:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--base-font-size:17px;--font-scale:1;--paper:#f5f0e6;--paper-card:#faf6ec;--paper-verse:#f0e8d4;--ink:#1a1410;--ink-soft:#4a3f36;--ink-mute:#8a7b6c;--line:#d9cfbc;--line-soft:#e8dfce;--accent:#8b1e2b;--accent-soft:#b84452;--marker:#f0d878;--topbar-h:48px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:var(--base-font-size);scroll-behavior:smooth;scroll-padding-top:60px}
+.container,.sidepanel,.word-modal-overlay{zoom:var(--font-scale)}
+body{font-family:'Noto Serif KR','Gowun Batang',serif;background:var(--paper);color:var(--ink);line-height:1.9;letter-spacing:-0.01em;padding-top:var(--topbar-h);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse at top left,rgba(139,30,43,0.025) 0%,transparent 50%),radial-gradient(ellipse at bottom right,rgba(74,63,54,0.02) 0%,transparent 50%);pointer-events:none;z-index:0}
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(245,240,230,0.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+.topbar-btn{flex-shrink:0;width:36px;height:36px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);transition:background .15s}
+.topbar-btn:hover{background:var(--line-soft)}
+.topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--ink-soft);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px}
+.topbar-title::-webkit-scrollbar{display:none}
+.font-controls{flex-shrink:0;display:flex;align-items:center;gap:2px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;padding:2px}
+.font-ctrl-btn{width:30px;height:30px;border:none;background:none;border-radius:3px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.font-ctrl-btn:hover{background:var(--line-soft)}
+.overlay{position:fixed;inset:0;background:rgba(26,20,16,0.35);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:var(--paper);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 28px rgba(26,20,16,.12);font-family:'Noto Sans KR',sans-serif}
+.sidepanel.open{transform:translateX(0)}
+.sidepanel-header{padding:0 22px 16px;border-bottom:1px solid var(--line);margin-bottom:12px;font-size:12px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+.sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--ink-mute);display:flex;align-items:center;justify-content:center}
+.sidepanel-close:hover{background:var(--line-soft);color:var(--ink)}
+.nav-item{display:block;padding:10px 22px;font-size:13px;color:var(--ink-soft);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:500;letter-spacing:-0.005em}
+.nav-item:hover{background:var(--paper-card);color:var(--ink)}
+.nav-item.sub{padding-left:38px;font-size:12.5px;font-weight:400;color:var(--ink-mute)}
+.nav-divider{height:1px;background:var(--line);margin:10px 22px}
+.keyword-tag{display:inline-block;padding:4px 12px;margin:3px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:3px;font-size:12px;color:var(--ink-soft);cursor:pointer;transition:all .2s;font-weight:500}
+.keyword-tag:hover,.keyword-tag.active{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.keyword-def{display:none;padding:12px 22px 14px 38px;font-size:12.5px;color:var(--ink-soft);line-height:1.75;background:var(--paper-card);border-left:2px solid var(--accent);margin:4px 22px;border-radius:0 3px 3px 0;font-family:'Noto Serif KR',serif}
+.keyword-def.show{display:block}
+.container{max-width:680px;margin:0 auto;padding:40px 22px 80px;position:relative;z-index:1}
+.hero{text-align:left;padding:8px 0 4px;border-bottom:1px solid var(--line);margin-bottom:40px;padding-bottom:40px}
+.hero-badge{display:inline-block;color:var(--ink-mute);font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:20px}
+.hero-badge::before{content:'— ';color:var(--accent);font-weight:700}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:900;line-height:1.4;color:var(--ink);letter-spacing:-0.025em;margin-bottom:22px}
+.hero h1 .highlight-word{background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 3px}
+.hero-sub{font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink-soft);font-weight:400;line-height:1.85;padding-left:18px;border-left:2px solid var(--line)}
+.dashboard{margin:40px 0;padding:28px 26px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.dashboard-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.core-message{border-left:3px solid var(--accent);padding:6px 0 6px 22px;margin:0 0 28px;font-family:'Gowun Batang','Noto Serif KR',serif;font-size:17px;font-weight:400;font-style:italic;color:var(--ink-soft);line-height:1.8;letter-spacing:-0.01em}
+.core-message strong{color:var(--ink);font-weight:700;font-style:normal;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 2px}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}
+.dash-card{padding:0;background:transparent;border:none;text-align:left;display:block}
+.dash-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px}
+.dash-value{font-family:'Noto Serif KR',serif;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.55;letter-spacing:-0.01em}
+.flow-section{margin:56px 0}
+.flow-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.flow-steps{position:relative;padding-left:32px}
+.flow-steps::before{content:'';position:absolute;left:11px;top:14px;bottom:14px;width:1px;background:var(--line)}
+.flow-step{position:relative;padding:4px 0 22px}
+.flow-step:last-child{padding-bottom:0}
+.flow-dot{position:absolute;left:-32px;top:4px;width:22px;height:22px;border-radius:50%;background:var(--paper);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:11px;color:var(--accent);font-weight:700;z-index:1}
+.flow-step-label{font-family:'Noto Serif KR',serif;font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-0.015em;line-height:1.5}
+.flow-step-desc{font-family:'Noto Serif KR',serif;font-size:14px;color:var(--ink-soft);line-height:1.75}
+.keywords-section{margin:48px 0;padding:26px 24px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.keywords-section-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.kw-container{display:flex;flex-wrap:wrap;gap:8px}
+.kw-chip{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--paper);border:1px solid var(--line);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all .2s}
+.kw-chip:hover,.kw-chip.active{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.kw-tooltip{display:none;margin-top:14px;padding:16px 18px;background:var(--paper-verse);border-radius:3px;border-left:2px solid var(--accent);font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.kw-tooltip.show{display:block}
+.accordion-group{margin:48px 0}
+.accordion-group-title{font-family:'Noto Serif KR',serif;font-size:1.4rem;font-weight:800;color:var(--ink);margin:64px 0 28px;padding-bottom:20px;border-bottom:1px solid var(--line);display:block;letter-spacing:-0.025em;line-height:1.4;position:relative}
+.accordion-group-title::before{content:'CORE';display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;color:var(--accent);margin-bottom:10px}
+.accordion{margin-bottom:14px;border-radius:4px;overflow:hidden;background:var(--paper-card);border:1px solid var(--line-soft);transition:border-color .25s}
+.accordion:hover,.accordion.open{border-color:var(--line)}
+.accordion-header{display:flex;align-items:flex-start;gap:18px;padding:22px 24px;background:transparent;cursor:pointer;user-select:none;transition:background .2s}
+.accordion-header:hover{background:rgba(139,30,43,0.025)}
+.acc-number{flex-shrink:0;color:var(--accent);font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;letter-spacing:0.18em;padding-top:4px;min-width:36px;display:block;text-align:left;text-transform:uppercase}
+.acc-title-text{flex:1;font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.5;letter-spacing:-0.018em}
+.acc-chevron{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;transition:transform .3s;color:var(--ink-mute);font-size:11px;padding-top:4px}
+.accordion.open .acc-chevron{transform:rotate(180deg);color:var(--accent)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.accordion-content{padding:22px 24px 26px 78px;border-top:1px dashed var(--line)}
+.verse-block{position:relative;padding:22px 24px 22px 26px;background:var(--paper-verse);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;margin:22px 0}
+.verse-block::before{content:'"';position:absolute;top:-10px;left:18px;font-family:'Noto Serif KR',serif;font-size:3rem;color:var(--accent);opacity:0.28;line-height:1;font-weight:900}
+.verse-ref{display:flex;align-items:center;gap:6px;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.verse-text{font-family:'Noto Serif KR',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.85;letter-spacing:-0.01em}
+.verse-text b{color:var(--ink);font-weight:700}
+.verse-text + .verse-text{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.content-text{font-family:'Noto Serif KR',serif;font-size:17px;color:var(--ink);line-height:1.9;margin-bottom:20px;letter-spacing:-0.01em}
+.content-text:last-child{margin-bottom:0}
+.accordion-content > .content-text:first-child::first-letter{font-family:'Noto Serif KR',serif;font-size:3.4em;font-weight:900;float:left;line-height:0.88;margin:8px 8px -4px 0;color:var(--accent)}
+.hl{background:linear-gradient(180deg,transparent 55%,var(--marker) 55%,var(--marker) 92%,transparent 92%);padding:0 2px}
+.sub-point{padding:18px 22px;border-left:2px solid var(--ink-mute);margin:22px 0}
+.sub-point-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sub-point-text{font-family:'Noto Serif KR',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.85;letter-spacing:-0.01em}
+.sub-point-text strong{color:var(--ink);font-weight:700}
+.section-connector{text-align:center;padding:14px 0;color:var(--line);font-size:14px;letter-spacing:0.4em}
+.step-header{display:block;padding:0 0 22px !important;border-bottom:1px solid var(--line) !important;font-family:'Noto Serif KR',serif !important;font-size:1.5rem !important;font-weight:800 !important;letter-spacing:-0.02em !important;line-height:1.4 !important;margin:72px 0 28px !important;position:relative;color:var(--ink)}
+.step-header::before{content:attr(data-kicker);display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.step-connector{margin:28px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);font-family:'Gowun Batang',serif;font-size:1.1rem;font-style:italic;color:var(--ink-soft);text-align:left;line-height:1.75}
+.step-connector strong{color:var(--ink);font-weight:700;font-style:normal}
+.three-answers{display:grid;grid-template-columns:1fr;gap:12px;margin:22px 0}
+.three-answer{background:var(--paper);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;padding:16px 18px;display:flex;align-items:flex-start;gap:14px}
+.three-answer-num{flex-shrink:0;width:30px;height:30px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:13px;color:var(--accent);font-weight:700}
+.three-answer-body{flex:1}
+.three-answer-q{font-family:'Noto Sans KR',sans-serif;font-size:11px;color:var(--ink-mute);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+.three-answer-a{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:800;color:var(--accent);margin-bottom:4px;letter-spacing:-0.01em}
+.three-answer-a .hanja{font-family:'Noto Serif KR',serif;font-weight:700;color:var(--ink);margin-right:8px;letter-spacing:0.05em}
+.three-answer-desc{font-family:'Noto Serif KR',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+.recap-section{margin:56px 0;padding:32px 26px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.recap-title{font-family:'Noto Serif KR',serif;font-size:1.3rem;font-weight:800;color:var(--ink);margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line);letter-spacing:-0.02em;display:block;position:relative}
+.recap-title::before{content:'REVIEW';display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;color:var(--accent);margin-bottom:8px}
+.recap-subtitle{font-family:'Noto Serif KR',serif;font-size:15.5px !important;font-weight:700 !important;color:var(--ink) !important;margin-bottom:10px;letter-spacing:-0.01em;line-height:1.55}
+.recap-subtitle.small{font-family:'Gowun Batang',serif !important;font-size:13px !important;font-weight:400 !important;color:var(--ink-soft) !important;font-style:italic;margin-bottom:14px;line-height:1.7}
+.recap-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.recap-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--paper);border-radius:3px;border:1px solid var(--line-soft);font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.75;letter-spacing:-0.01em}
+.recap-num{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:transparent;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:12px;font-weight:700}
+.recap-item.green .recap-num{border-color:var(--ink-soft);color:var(--ink-soft)}
+.recap-item.purple .recap-num{border-color:var(--ink-mute);color:var(--ink-mute)}
+.recap-item-text{flex:1;color:var(--ink-soft)}
+.recap-item-text strong{color:var(--ink);font-weight:700}
+.recap-anchor{margin:32px 0 12px;padding-top:20px;border-top:1px dashed var(--line)}
+.recap-anchor:first-of-type{padding-top:0;border-top:none;margin-top:4px}
+.recap-note{margin-top:22px;padding:18px 20px;background:var(--paper);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;font-family:'Gowun Batang',serif;font-size:14.5px;font-style:italic;line-height:1.8;color:var(--ink-soft)}
+.recap-note strong{color:var(--ink);font-weight:700;font-style:normal}
+.quiz-section{margin:64px 0 40px;padding:28px 24px 30px;background:var(--paper-card);border-radius:4px;border:1px solid var(--line-soft)}
+.quiz-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.quiz-item{display:none;margin-bottom:22px;padding:20px;background:var(--paper);border-radius:3px;border:1px solid var(--line-soft)}
+.quiz-item.active,.quiz-item.reviewed{display:block}
+.quiz-q{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.quiz-badge{flex-shrink:0;width:28px;height:28px;color:var(--accent);border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:700}
+.quiz-q-text{font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.55;padding-top:2px;letter-spacing:-0.015em}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:3px;cursor:pointer;transition:all .2s;font-family:'Noto Serif KR',serif;font-size:15px;color:var(--ink-soft);line-height:1.6;letter-spacing:-0.01em}
+.quiz-opt:hover{border-color:var(--accent-soft);background:var(--paper)}
+.quiz-opt.selected{border-color:var(--accent);background:var(--paper);color:var(--ink)}
+.quiz-opt.correct{border-color:var(--accent);background:var(--paper-verse);color:var(--ink)}
+.quiz-opt.wrong{border-color:var(--line);background:var(--paper-card);color:var(--ink-mute);text-decoration:line-through}
+.quiz-opt-marker{flex-shrink:0;width:22px;height:22px;border:1px solid var(--line);background:var(--paper);color:var(--ink-mute);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;transition:all .2s;margin-top:2px}
+.quiz-opt.selected .quiz-opt-marker{border-color:var(--accent);color:var(--accent);background:var(--paper)}
+.quiz-opt.correct .quiz-opt-marker{border-color:var(--accent);background:var(--accent);color:var(--paper)}
+.quiz-nav-btn{padding:14px;background:var(--paper-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;cursor:pointer;transition:all .2s}
+.quiz-nav-btn:hover:not(:disabled){background:var(--line-soft)}
+.quiz-nav-btn:disabled{opacity:0.5;cursor:not-allowed}
+.quiz-nav-btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.quiz-nav-btn.primary:hover:not(:disabled){background:#6e1622}
+.quiz-feedback{display:none;margin-top:10px;padding:11px 14px;border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0.04em;line-height:1.6}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct-fb{background:var(--paper-verse);color:var(--accent);border-left:2px solid var(--accent)}
+.quiz-feedback.wrong-fb{background:var(--paper-card);color:var(--ink-soft);border-left:2px solid var(--ink-mute)}
+.quiz-result{display:none;margin-top:20px;padding:26px;background:var(--paper);border:1px solid var(--line);border-radius:3px;text-align:center}
+.quiz-result.show{display:block}
+.quiz-score-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
+.quiz-score{font-family:'Noto Serif KR',serif;font-size:2.2rem;font-weight:900;color:var(--accent);letter-spacing:-0.02em}
+.quiz-result-msg{font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);margin-top:10px;line-height:1.75}
+.prayer-section{margin:64px 0 40px;padding:36px 28px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;position:relative}
+.prayer-heading{font-family:'Noto Serif KR',serif;font-size:1.55rem;font-weight:900;color:var(--ink);letter-spacing:-0.025em;margin-bottom:24px;line-height:1.45;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.prayer-callbox{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-bottom:26px;font-family:'Noto Serif KR',serif;font-size:15.5px;line-height:1.95;color:var(--ink);text-align:center;letter-spacing:-0.005em}
+.prayer-callbox p{margin:0}
+.prayer-callbox p + p{margin-top:12px;padding-top:14px;border-top:1px dashed var(--line)}
+.prayer-callbox .cb-house{color:var(--accent);font-weight:800;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 3px}
+.prayer-amen-box{background:var(--paper-verse);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;padding:20px 22px;font-family:'Gowun Batang',serif;font-size:15px;color:var(--ink);line-height:1.9;font-weight:500}
+.prayer-amen-box p{margin-bottom:14px;font-style:italic}
+.prayer-amen-box p:last-of-type{margin-bottom:0}
+.prayer-amen-box strong{color:var(--accent);font-weight:700;font-style:normal}
+.prayer-amen-sig{text-align:right;font-family:'Noto Sans KR',sans-serif;font-weight:700;color:var(--accent);letter-spacing:0.32em;font-size:12px;font-style:normal;margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
+.footer-note{text-align:center;padding:40px 16px 16px;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);letter-spacing:0.22em;text-transform:uppercase;border-top:1px solid var(--line);margin-top:56px}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeInUp .5s ease forwards}
+#intro-container{position:fixed;inset:0;z-index:10000;background:#0c0b0e;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;overflow:hidden}
+#intro-container::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(245,240,230,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(245,240,230,0.035) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;opacity:0;animation:bpFadeIn 1.2s ease 0.1s forwards}
+#intro-container::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(12,11,14,0.85) 75%);pointer-events:none}
+.bp-frame{position:absolute;top:22px;left:22px;right:22px;bottom:22px;border:1px solid rgba(245,240,230,0.1);pointer-events:none;opacity:0;animation:bpFadeIn 1s ease 0.4s forwards;z-index:1}
+.bp-corner{position:absolute;width:16px;height:16px;border:1px solid rgba(245,240,230,0.45);pointer-events:none;z-index:2;opacity:0;animation:bpFadeIn 0.8s ease 0.7s forwards}
+.bp-corner.tl{top:22px;left:22px;border-right:none;border-bottom:none}
+.bp-corner.tr{top:22px;right:22px;border-left:none;border-bottom:none}
+.bp-corner.bl{bottom:22px;left:22px;border-right:none;border-top:none}
+.bp-corner.br{bottom:22px;right:22px;border-left:none;border-top:none}
+.bp-meta{position:absolute;font-family:'Lora',serif;font-size:9px;color:rgba(245,240,230,0.45);letter-spacing:0.32em;text-transform:uppercase;z-index:2;opacity:0;animation:bpFadeIn 1s ease 1.2s forwards}
+.bp-meta.tl{top:34px;left:42px}
+.bp-meta.br{bottom:34px;right:42px}
+.vessel-skip-top{position:absolute;top:34px;right:42px;background:transparent;border:1px solid rgba(245,240,230,0.22);color:rgba(245,240,230,0.6);padding:6px 14px;font-family:'Noto Sans KR',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;border-radius:2px;cursor:pointer;z-index:5;opacity:0;animation:bpFadeIn 1s ease 4s forwards;transition:all 0.2s}
+.vessel-skip-top:hover{background:rgba(245,240,230,0.06);color:var(--paper)}
+@keyframes bpFadeIn{to{opacity:1}}
+.vessel-wrap{position:relative;display:flex;flex-direction:column;align-items:center;width:100%;max-width:680px;padding:50px 18px;z-index:2}
+.vessel-stage{position:relative;width:100%;max-width:300px;margin:0 auto;opacity:0;animation:bpFadeIn 1s ease 0.7s forwards}
+.vessel-blueprint{display:block;width:100%;height:auto;filter:drop-shadow(0 0 28px rgba(0,0,0,0.7))}
+.vessel-blueprint .v-outer{stroke:rgba(245,240,230,0.92);stroke-width:1.4;fill:none;stroke-linejoin:round;stroke-dasharray:1700;stroke-dashoffset:1700;animation:vDraw 2.4s cubic-bezier(.4,0,.2,1) 1s forwards}
+.vessel-blueprint .v-inner{stroke:rgba(245,240,230,0.55);stroke-width:1;fill:none;stroke-linejoin:round;stroke-dasharray:1500;stroke-dashoffset:1500;animation:vDraw 2.4s cubic-bezier(.4,0,.2,1) 1.3s forwards}
+.vessel-blueprint .v-wall{fill:rgba(245,240,230,0.06);opacity:0;animation:bpFadeIn 1.2s ease 2.4s forwards}
+.vessel-blueprint .v-void{fill:#000;opacity:0;animation:voidIn 1.4s ease 2.8s forwards}
+@keyframes voidIn{0%{opacity:0}50%{opacity:1}100%{opacity:1}}
+.vessel-blueprint .v-mesh{stroke:rgba(245,240,230,0.18);stroke-width:0.5;fill:none;opacity:0;animation:bpFadeIn 1.4s ease 2s forwards}
+.vessel-blueprint .v-guide{stroke:rgba(245,240,230,0.2);stroke-width:0.5;stroke-dasharray:3 4;fill:none;opacity:0;animation:bpFadeIn 1s ease 0.6s forwards}
+.vessel-blueprint .v-tick{stroke:rgba(245,240,230,0.4);stroke-width:0.6;opacity:0;animation:bpFadeIn 1s ease 0.9s forwards}
+.vessel-blueprint .v-label{font-family:'Lora',serif;font-size:8.5px;fill:rgba(245,240,230,0.55);letter-spacing:0.08em;opacity:0;animation:bpFadeIn 1s ease 2.2s forwards}
+.vessel-fill-rect{fill:url(#fillGrad)}
+.vessel-stage.filled .vessel-fill-rect{animation:fillUp 1.6s cubic-bezier(.4,0,.2,1) forwards}
+.vessel-stage.filled .v-void{animation:voidFade 1.4s ease 0.3s forwards}
+@keyframes fillUp{from{y:446}to{y:85}}
+@keyframes voidFade{to{opacity:0.18}}
+.vessel-pulse{position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;opacity:0;animation:bpFadeIn 1s ease 3.4s forwards}
+.vessel-pulse-ring{width:46%;height:64%;border-radius:50% 50% 46% 46% / 38% 38% 60% 60%;border:1px solid rgba(184,68,82,0.5);animation:vesselPulse 3s ease-in-out infinite;margin-top:8%}
+@keyframes vesselPulse{0%,100%{box-shadow:inset 0 0 30px rgba(184,68,82,0.2);border-color:rgba(184,68,82,0.35)}50%{box-shadow:inset 0 0 60px rgba(184,68,82,0.55);border-color:rgba(184,68,82,0.75)}}
+.vessel-stage.filled .vessel-pulse{display:none}
+.vessel-readout{display:flex;justify-content:center;gap:8px;margin-top:18px;flex-wrap:wrap;opacity:0;animation:bpFadeIn 1s ease 3.6s forwards}
+.vs-chip{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border:1px solid rgba(245,240,230,0.18);border-radius:2px;font-family:'Noto Sans KR',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(245,240,230,0.7);background:rgba(245,240,230,0.025)}
+.vs-chip::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+.vs-chip.full{color:#f0d878;border-color:rgba(240,216,120,0.4)}
+.vs-chip.full::before{box-shadow:0 0 8px currentColor}
+.vs-chip.void{color:#d96878;border-color:rgba(217,104,120,0.55);background:rgba(184,68,82,0.08)}
+.vs-chip.void::before{animation:voidDot 2s ease-in-out infinite}
+@keyframes voidDot{0%,100%{opacity:0.5;box-shadow:0 0 0 currentColor}50%{opacity:1;box-shadow:0 0 12px currentColor}}
+.vessel-text{text-align:center;margin-top:26px;color:var(--paper);max-width:540px;opacity:0;animation:bpFadeIn 1.2s ease 3.9s forwards}
+.vessel-kicker{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:#d96878;margin-bottom:12px}
+.vessel-title{font-family:'Noto Serif KR',serif;font-size:1.85rem;font-weight:900;line-height:1.4;letter-spacing:-0.02em;margin-bottom:14px;color:var(--paper);word-break:keep-all}
+.vessel-title .vt-em{display:block;color:#fbf6ea}
+.vessel-title strong{background:linear-gradient(180deg,transparent 60%,rgba(184,68,82,0.55) 60%,rgba(184,68,82,0.55) 92%,transparent 92%);padding:0 4px;color:#fbf6ea;font-weight:900}
+.vessel-sub{font-family:'Gowun Batang',serif;font-size:13.5px;color:rgba(245,240,230,0.62);line-height:1.7;font-style:italic;letter-spacing:-0.005em;word-break:keep-all;max-width:440px;margin:0 auto}
+.vessel-quote{margin:22px auto 0;padding:14px 18px;border-left:2px solid #b84452;text-align:left;background:rgba(245,240,230,0.025);max-width:440px;opacity:0;animation:bpFadeIn 1s ease 4.8s forwards}
+.vessel-quote p{font-family:'Gowun Batang',serif;font-size:13.5px;color:rgba(245,240,230,0.78);line-height:1.85;margin:0;word-break:keep-all}
+.vessel-quote p+p{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(245,240,230,0.18)}
+.vessel-quote em{font-style:italic;color:#f0d878;font-weight:600}
+.vessel-quote strong{color:#fbf6ea;font-weight:700;font-style:normal;background:linear-gradient(180deg,transparent 60%,rgba(184,68,82,0.4) 60%,rgba(184,68,82,0.4) 92%,transparent 92%);padding:0 3px}
+.vessel-cta{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding:13px 26px;background:linear-gradient(135deg,#8b1e2b,#b84452);color:var(--paper);border:1px solid rgba(245,240,230,0.25);border-radius:3px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:transform 0.25s ease,box-shadow 0.25s ease,background 0.25s ease;box-shadow:0 4px 14px rgba(139,30,43,0.35);opacity:0;animation:bpFadeIn 1s ease 5.6s forwards,ctaPulse 2.6s ease-in-out 6.6s infinite}
+.vessel-cta:hover{background:linear-gradient(135deg,#a72433,#c95562);transform:translateY(-2px);box-shadow:0 8px 22px rgba(184,68,82,0.6)}
+.vessel-cta-icon{font-size:1.05rem;animation:ctaArrow 1.6s ease-in-out infinite;font-family:serif}
+.vessel-cta-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1.3}
+.vessel-cta-text .ct-main{font-size:13px;font-weight:700;letter-spacing:0.06em}
+.vessel-cta-text .ct-sub{font-family:'Lora',serif;font-size:9px;font-style:italic;letter-spacing:0.24em;opacity:0.75;text-transform:uppercase;margin-top:1px}
+@keyframes ctaArrow{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@keyframes ctaPulse{0%,100%{box-shadow:0 4px 14px rgba(139,30,43,0.35)}50%{box-shadow:0 4px 26px rgba(184,68,82,0.7)}}
+.vessel-wrap.fading{opacity:0;transform:translateY(-20px);transition:opacity 0.9s ease,transform 0.9s ease}
+#intro-reveal-text{text-align:center;color:var(--paper);z-index:3;padding:24px;width:90%;max-width:560px;display:none;opacity:0;transform:translateY(20px);transition:opacity 1s ease,transform 1s ease;position:relative}
+#intro-reveal-text.show{display:block;opacity:1;transform:translateY(0)}
+.reveal-main{font-family:'Noto Serif KR',serif;font-size:1.4rem;font-weight:700;line-height:1.7;margin-bottom:22px;word-break:keep-all;letter-spacing:-0.02em;color:var(--paper)}
+.reveal-sub{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;color:#d96878;letter-spacing:0.3em;text-transform:uppercase}
+.voice-prompt-container{margin-top:36px;display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0;transform:translateY(15px);pointer-events:none;transition:opacity 0.8s ease,transform 0.8s ease}
+.voice-prompt-container.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.voice-msg{font-family:'Noto Serif KR',serif;font-size:0.98rem;font-weight:500;color:var(--paper);text-align:center;line-height:1.7}
+.voice-btn-group{display:flex;gap:12px;margin-top:8px}
+.voice-action-btn{padding:12px 24px;background:var(--accent);color:var(--paper);border:1px solid var(--accent);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.15s}
+.voice-action-btn:hover{background:#6e1622;border-color:#6e1622}
+.skip-btn{padding:12px 24px;background:transparent;border:1px solid rgba(245,240,230,0.35);color:rgba(245,240,230,0.75);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.skip-btn:hover{background:rgba(245,240,230,0.08);color:var(--paper);border-color:rgba(245,240,230,0.6)}
+/* ===== Dust → Gold (옛 창조물 → 새 창조물) ===== */
+.d2g-stage{position:relative;width:100%;max-width:560px;margin:0 auto;opacity:0;animation:bpFadeIn 1s ease 0.7s forwards}
+.d2g-svg{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 40px rgba(0,0,0,0.55))}
+.d2g-svg .d2g-guide{stroke:rgba(245,240,230,0.14);stroke-width:0.5;stroke-dasharray:3 5;fill:none;opacity:0;animation:bpFadeIn 1s ease 0.6s forwards}
+.d2g-svg .d2g-mark{stroke:rgba(245,240,230,0.32);stroke-width:0.5;stroke-dasharray:2 3;fill:none;opacity:0;animation:bpFadeIn 1s ease 2s forwards}
+.d2g-svg .d2g-mark.gold{stroke:rgba(245,216,120,0.55)}
+.d2g-svg .d2g-curve{stroke:url(#d2g-curve-grad);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900;animation:d2gDraw 2.6s cubic-bezier(.4,0,.2,1) 1s forwards}
+.d2g-svg .d2g-curve-2{stroke-width:1.05;opacity:0.78;animation-delay:1.3s}
+.d2g-svg .d2g-curve-3{stroke-width:0.7;opacity:0.55;animation-delay:1.6s}
+@keyframes d2gDraw{to{stroke-dashoffset:0}}
+.d2g-svg .d2g-dust circle{fill:#b5b0a8;opacity:0;animation:d2gDustIn 1.4s ease 1.7s forwards}
+.d2g-svg .d2g-dust circle:nth-child(3n){fill:#9a948c;animation-delay:1.9s}
+.d2g-svg .d2g-dust circle:nth-child(3n+1){fill:#a8a39a;animation-delay:2.05s}
+@keyframes d2gDustIn{from{opacity:0;transform:translateY(2px)}to{opacity:0.78;transform:translateY(0)}}
+.d2g-svg .d2g-dust circle{animation-fill-mode:forwards}
+.d2g-svg .d2g-halo{opacity:0;animation:d2gHaloIn 2.6s ease-out 2.2s forwards,d2gHaloPulse 4.5s ease-in-out 5s infinite}
+@keyframes d2gHaloIn{to{opacity:1}}
+@keyframes d2gHaloPulse{0%,100%{opacity:0.85}50%{opacity:1}}
+.d2g-svg .d2g-gold > *{opacity:0;transform-box:fill-box;transform-origin:center;animation:d2gGoldIn 1.4s cubic-bezier(.3,1.5,.6,1) 2.5s forwards}
+.d2g-svg .d2g-gold > *:nth-child(2n){animation-delay:2.7s}
+.d2g-svg .d2g-gold > *:nth-child(3n){animation-delay:2.9s}
+.d2g-svg .d2g-gold > *:nth-child(4n){animation-delay:3.1s}
+.d2g-svg .d2g-gold > *:nth-child(5n){animation-delay:3.3s}
+@keyframes d2gGoldIn{from{opacity:0;transform:translateY(8px) scale(0.55)}to{opacity:1;transform:translateY(0) scale(1)}}
+.d2g-svg .d2g-gold polygon,.d2g-svg .d2g-gold path{fill:url(#d2g-gold-grad);stroke:rgba(245,216,120,0.35);stroke-width:0.4}
+.d2g-svg .d2g-gold circle{fill:#f5d878}
+.d2g-svg .d2g-arrow{font-family:'Lora',serif;font-size:22px;font-weight:300;fill:#f5d878;opacity:0;animation:d2gArrowIn 1s ease 3s forwards,d2gArrowGlow 3s ease-in-out 4s infinite}
+@keyframes d2gArrowIn{to{opacity:0.85}}
+@keyframes d2gArrowGlow{0%,100%{opacity:0.6;filter:drop-shadow(0 0 0 transparent)}50%{opacity:1;filter:drop-shadow(0 0 8px #f5d878)}}
+.d2g-svg .d2g-he{font-family:'Lora','Noto Serif KR',serif;font-size:18px;fill:#c5c0b8;opacity:0;animation:bpFadeIn 1.2s ease 2.5s forwards;letter-spacing:0.04em;font-weight:500}
+.d2g-svg .d2g-he.gold{fill:#f5d878;font-weight:600}
+.d2g-svg .d2g-tr{font-family:'Lora',serif;font-size:9px;fill:rgba(245,240,230,0.6);opacity:0;animation:bpFadeIn 1.2s ease 2.7s forwards;letter-spacing:0.22em;text-transform:uppercase;font-weight:700}
+.d2g-svg .d2g-tr.gold{fill:rgba(245,216,120,0.85)}
+.d2g-svg .d2g-tick-num{font-family:'Lora',serif;font-size:8px;fill:rgba(245,240,230,0.4);letter-spacing:0.06em;opacity:0;animation:bpFadeIn 1s ease 1.4s forwards}
+/* filled state — gold floods the dust */
+.vessel-stage.filled .d2g-dust circle{animation:d2gDustToGold 1.6s ease forwards}
+@keyframes d2gDustToGold{0%{fill:#b5b0a8}60%{fill:#d4a838}100%{fill:#f5d878;opacity:1}}
+.vessel-stage.filled .d2g-halo{animation:d2gHaloExpand 1.8s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes d2gHaloExpand{from{transform:scale(1);opacity:1}to{transform:scale(2.6);opacity:0.92;transform-origin:325px 105px}}
+.vessel-stage.filled .d2g-gold > *{filter:drop-shadow(0 0 10px rgba(245,216,120,0.85));transition:filter 0.6s ease}
+.vessel-stage.filled .d2g-arrow{animation:d2gArrowFinale 1.4s ease forwards}
+@keyframes d2gArrowFinale{to{opacity:1;filter:drop-shadow(0 0 14px #f5d878);transform:translateX(8px)}}
+/* Gold-themed title accent */
+.vessel-title .vt-gold{background:linear-gradient(180deg,#fde8a8 0%,#f5d878 35%,#d4a838 70%,#8a6724 100%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;text-shadow:0 0 24px rgba(245,216,120,0.35);padding:0 4px;font-style:normal}
+.vessel-title .vt-em strong.gold-em{background:linear-gradient(180deg,transparent 60%,rgba(245,216,120,0.45) 60%,rgba(245,216,120,0.45) 92%,transparent 92%);color:#fde8a8;padding:0 5px;font-weight:900}
+/* Chip variants for the new theme */
+.vs-chip.dust{color:#c5c0b8;border-color:rgba(197,192,184,0.4);background:rgba(197,192,184,0.05)}
+.vs-chip.transfer{color:#d96878;border-color:rgba(217,104,120,0.55);background:rgba(184,68,82,0.08)}
+.vs-chip.transfer::before{animation:voidDot 2s ease-in-out infinite}
+.vs-chip.gold{color:#f5d878;border-color:rgba(245,216,120,0.5);background:rgba(245,216,120,0.05)}
+.vs-chip.gold::before{box-shadow:0 0 10px currentColor;animation:goldDot 2.4s ease-in-out infinite}
+@keyframes goldDot{0%,100%{opacity:0.6;box-shadow:0 0 2px currentColor}50%{opacity:1;box-shadow:0 0 14px currentColor}}
+/* CTA gold-themed override */
+.vessel-cta.gold{background:linear-gradient(135deg,#8a6724,#d4a838);box-shadow:0 4px 14px rgba(212,168,56,0.4);animation:bpFadeIn 1s ease 5.6s forwards,ctaGoldPulse 2.6s ease-in-out 6.6s infinite}
+.vessel-cta.gold:hover{background:linear-gradient(135deg,#a8802c,#f5d878);box-shadow:0 8px 22px rgba(245,216,120,0.6)}
+@keyframes ctaGoldPulse{0%,100%{box-shadow:0 4px 14px rgba(212,168,56,0.4)}50%{box-shadow:0 4px 28px rgba(245,216,120,0.7)}}
+@media (max-width:560px){.vessel-stage{max-width:230px}.d2g-stage{max-width:380px}.vessel-title{font-size:1.4rem}.vessel-sub{font-size:12px}.vessel-quote p{font-size:12.5px}.bp-meta{display:none}.vessel-skip-top{top:14px;right:14px;padding:5px 11px;font-size:9.5px}.bp-corner.tl,.bp-corner.tr{top:14px}.bp-corner.bl,.bp-corner.br{bottom:14px}.bp-corner.tl,.bp-corner.bl{left:14px}.bp-corner.tr,.bp-corner.br{right:14px}.bp-frame{top:14px;left:14px;right:14px;bottom:14px}.reveal-main{font-size:1.05rem}.d2g-svg .d2g-he{font-size:15px}.d2g-svg .d2g-tr{font-size:8px;letter-spacing:0.16em}}
+@media (max-width:480px){.container{padding:24px 6px 60px}.hero h1{font-size:1.55rem}.accordion-content{padding:18px 10px 20px 10px}.dash-grid{grid-template-columns:1fr;gap:20px}}
+.todays-verse-section{margin:30px 0 40px 0;padding:34px 22px 28px 22px;background:linear-gradient(180deg,#fbf6ea 0%,#f5ecd8 100%);border:1px solid var(--line);border-radius:6px;box-shadow:0 2px 14px rgba(74,63,54,0.06);position:relative}
+.todays-verse-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-soft) 50%,var(--accent) 100%);border-radius:6px 6px 0 0}
+.tv-header{text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px dashed var(--line)}
+.tv-kicker{display:inline-block;font-family:'Lora',serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px;padding:4px 14px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,0.5)}
+.tv-ref{font-family:'Noto Serif KR',serif;font-size:1.7rem;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2}
+.tv-ref-en{font-family:'Lora',serif;font-size:0.82rem;color:var(--ink-mute);font-style:italic;margin-top:4px;letter-spacing:0.02em}
+.tv-greek-sentence{padding:26px 20px 22px 20px;background:rgba(255,255,255,0.85);border:1px solid var(--line);border-radius:5px;margin-bottom:18px}
+.tv-greek-title{font-family:'Lora',serif;font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:16px;font-weight:700;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.tv-greek-line{display:flex;flex-wrap:wrap;gap:4px 2px;align-items:flex-end;justify-content:center;padding:8px 0;line-height:1.2}
+.tv-greek-line + .tv-greek-line{border-top:1px dashed var(--line-soft);margin-top:4px;padding-top:14px}
+.tv-word{display:flex;flex-direction:column;align-items:center;padding:3px 5px;border-radius:3px;gap:2px;min-width:24px;transition:background 0.15s,transform 0.15s}
+.tv-word .w-gk{font-family:'Lora',serif;font-size:1.1rem;color:var(--ink);font-weight:500;line-height:1.15;white-space:nowrap}
+.tv-word .w-pr{font-size:0.66rem;color:var(--ink-mute);font-style:italic;line-height:1.15;letter-spacing:0.01em}
+.tv-word.key{cursor:pointer;background:rgba(139,30,43,0.06);border-bottom:2px solid var(--accent);padding:3px 7px 2px 7px;margin:0 1px;position:relative}
+.tv-word.key:hover{background:rgba(139,30,43,0.16);transform:translateY(-2px)}
+.tv-word.key .w-gk{color:var(--accent);font-weight:700}
+.tv-word.key .w-pr{color:var(--accent);font-weight:500;opacity:0.85}
+.tv-word.key::before{content:'';position:absolute;top:2px;right:3px;width:4px;height:4px;background:var(--accent);border-radius:50%;opacity:0.9}
+.tv-word.func .w-gk{color:var(--ink-mute);font-style:italic;font-weight:400;font-size:1rem}
+.tv-word.func .w-pr{opacity:0.55}
+.tv-punct{display:inline-flex;align-items:flex-end;padding-bottom:3px;font-family:'Lora',serif;color:var(--ink-soft);font-size:1.05rem;font-weight:500;margin:0 1px}
+.tv-trans-compact{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.tv-trans-row{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:baseline;padding:10px 14px;background:rgba(255,255,255,0.7);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:3px}
+.tv-trans-row.en{border-left-color:#6b7a8f}
+.tv-trans-row.gk{border-left-color:#8b1e2b;background:rgba(245,236,216,0.55)}
+.tv-trans-tag{font-family:'Lora',serif;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:#fbf6ea;background:var(--accent);padding:2px 0;border-radius:2px;font-weight:700;text-align:center;line-height:1.3}
+.tv-trans-row.en .tv-trans-tag{background:#6b7a8f}
+.tv-trans-row.gk .tv-trans-tag{background:#8b1e2b}
+.tv-trans-text{font-size:0.94rem;line-height:1.7;color:var(--ink)}
+.tv-trans-row.en .tv-trans-text{font-family:'Lora',serif;font-style:italic;font-size:0.9rem;color:var(--ink-soft)}
+.tv-trans-row.gk{align-items:start;padding:12px 14px}
+.tv-trans-row.gk .tv-trans-text{font-family:'Lora',serif;font-size:0.95rem;color:var(--ink);line-height:1.4;letter-spacing:0.005em;font-weight:500;display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px 2px;padding:2px 0}
+.tv-gk-word{display:inline-flex;flex-direction:column;align-items:center;padding:0 2px;line-height:1.18;gap:2px}
+.tv-gk-word .gw-gk{font-family:'Lora',serif;font-size:0.95rem;color:var(--ink);font-weight:500;white-space:nowrap}
+.tv-gk-word .gw-pr{font-family:'Noto Sans KR',sans-serif;font-size:0.62rem;color:var(--ink-mute);letter-spacing:0.01em;font-weight:400;line-height:1.1}
+.tv-gk-word.hl .gw-gk{color:var(--accent);font-weight:700}
+.tv-gk-word.hl .gw-pr{color:var(--accent);font-weight:600}
+.tv-gk-punct{display:inline-flex;align-items:flex-end;padding-bottom:11px;font-family:'Lora',serif;color:var(--ink-soft);font-weight:500;margin:0 1px;font-size:0.95rem}
+.tv-trans-text b{color:var(--accent);font-weight:700}
+.tv-legend{display:flex;gap:14px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;font-size:0.78rem}
+.tv-legend-item{display:inline-flex;align-items:center;gap:5px;color:var(--ink-soft)}
+.tv-legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.tv-legend-dot.key{background:var(--accent)}
+.tv-legend-dot.func{background:var(--ink-mute)}
+.tv-summary{margin-top:24px;padding:20px 22px;background:var(--accent);color:#fbf6ea;border-radius:4px;position:relative}
+.tv-summary::before{content:'∴';position:absolute;top:-14px;left:20px;width:30px;height:30px;background:#fbf6ea;color:var(--accent);border:1px solid var(--accent);border-radius:50%;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif}
+.tv-summary-title{font-family:'Noto Serif KR',serif;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;opacity:0.7;margin-bottom:8px;font-weight:600}
+.tv-summary-text{font-size:0.94rem;line-height:1.8;color:#fbf6ea}
+.tv-summary-text b{color:#ffd878;font-weight:700}
+.tv-popup-overlay{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:2000;align-items:center;justify-content:center;padding:20px;animation:tvOverlayIn 0.2s ease-out}
+.tv-popup-overlay.active{display:flex}
+@keyframes tvOverlayIn{from{opacity:0}to{opacity:1}}
+.tv-popup{background:var(--paper-card);border-radius:6px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 18px 50px rgba(0,0,0,0.35);border:1px solid var(--line);border-top:4px solid var(--accent);animation:tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);position:relative}
+@keyframes tvPopIn{from{opacity:0;transform:translateY(16px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.tv-popup-close{position:absolute;top:10px;right:10px;width:32px;height:32px;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s,color 0.15s,border-color 0.15s;z-index:2}
+.tv-popup-close:hover{background:var(--accent);color:#fbf6ea;border-color:var(--accent)}
+.tv-popup-header{padding:24px 28px 16px 28px;border-bottom:1px dashed var(--line)}
+.tv-popup-kicker{font-family:'Lora',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+.tv-popup-meaning{font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.35}
+.tv-popup-greek{font-family:'Lora',serif;font-size:0.98rem;color:var(--ink-soft);font-style:italic;margin-top:4px}
+.tv-popup-body{padding:18px 22px 24px 22px;display:flex;flex-direction:column;gap:12px}
+.tv-popup-word{padding:14px 16px;background:rgba(255,255,255,0.7);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:3px}
+.tv-popup-word-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.tv-popup-word-gk{font-family:'Lora',serif;font-size:1.22rem;color:var(--accent);font-weight:600;line-height:1.1}
+.tv-popup-word-pron{font-size:0.84rem;color:var(--ink-soft);font-style:italic}
+.tv-popup-word-strong{font-size:0.65rem;color:var(--ink-mute);font-family:'Lora',serif;letter-spacing:0.04em;margin-left:auto}
+.tv-popup-word-meaning{font-size:0.95rem;color:var(--ink);font-weight:600;line-height:1.6;margin:6px 0}
+.tv-popup-word-meaning em{font-style:italic;color:var(--ink-soft);font-weight:400;font-size:0.85rem}
+.tv-popup-word-note{font-size:0.85rem;color:var(--ink-soft);line-height:1.7;padding-top:6px;border-top:1px dashed var(--line)}
+.tv-popup-word-note b{color:var(--accent);font-weight:600}
+@media (max-width:720px){.todays-verse-section{padding:24px 10px 22px 10px}.tv-ref{font-size:1.4rem}.tv-greek-sentence{padding:20px 10px 16px 10px}.tv-word .w-gk{font-size:1rem}.tv-word .w-pr{font-size:0.62rem}.tv-word.func .w-gk{font-size:0.9rem}.tv-summary{padding:16px}.tv-summary-text{font-size:0.88rem}}
+.tv-words-section{margin-top:26px;padding-top:24px;border-top:1px dashed var(--line)}
+.tv-words-title{display:flex;flex-direction:column;align-items:center;gap:5px;margin-bottom:18px;text-align:center}
+.tv-words-title-en{font-family:'Lora',serif;font-size:0.66rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);font-weight:700;padding:3px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,0.5)}
+.tv-words-title-kr{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-0.005em;margin-top:6px}
+.tv-words-title-note{font-family:'Noto Sans KR',sans-serif;font-size:0.72rem;color:var(--ink-mute);font-style:italic;margin-top:1px;line-height:1.5;max-width:380px}
+.tv-words-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:9px}
+.tv-word-card{background:rgba(255,255,255,0.86);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;padding:13px 13px 11px;cursor:pointer;transition:transform 0.18s ease,box-shadow 0.18s ease,border-left-color 0.18s ease,background 0.18s ease;display:flex;flex-direction:column;gap:1px;text-align:left;font-family:inherit;width:100%;position:relative}
+.tv-word-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(74,63,54,0.13);background:rgba(255,255,255,1);border-left-width:4px}
+.tv-word-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tv-word-card .twc-gk{font-family:'Lora',serif;font-size:1.12rem;color:var(--accent);font-weight:700;line-height:1.25;letter-spacing:0.005em;word-break:break-word}
+.tv-word-card .twc-pr{font-family:'Lora',serif;font-size:0.74rem;color:var(--ink-mute);font-style:italic;letter-spacing:0.04em;line-height:1.2;margin-top:1px}
+.tv-word-card .twc-divider{border-bottom:1px dashed var(--line);margin:8px 0 7px}
+.tv-word-card .twc-kr{font-family:'Noto Serif KR',serif;font-size:0.92rem;color:var(--ink);font-weight:700;line-height:1.5;word-break:keep-all;letter-spacing:-0.01em}
+.tv-word-card .twc-en{font-family:'Lora',serif;font-size:0.76rem;color:var(--ink-soft);font-style:italic;line-height:1.4;letter-spacing:0.01em;margin-top:2px}
+.tv-word-card .twc-meta{display:flex;justify-content:space-between;align-items:center;margin-top:9px;padding-top:7px;border-top:1px dotted var(--line-soft);gap:6px}
+.tv-word-card .twc-strong{font-family:'Lora',serif;font-size:0.6rem;color:var(--ink-mute);letter-spacing:0.04em;flex:1;line-height:1.2}
+.tv-word-card .twc-cta{font-family:'Noto Sans KR',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.tv-word-card.cat-vocative{border-left-color:#a64d2e}
+.tv-word-card.cat-noun{border-left-color:#5a6e3d}
+.tv-word-card.cat-aor{border-left-color:#7a5238}
+.tv-word-card.cat-fut{border-left-color:#3d6e8e}
+.tv-word-card.cat-perf{border-left-color:#6e3d6e}
+.tv-word-card.cat-adj{border-left-color:#8b1e2b}
+.tv-word-card.cat-adv{border-left-color:#7a6e3d}
+.tv-popup-recov{margin:10px 0 4px;padding:10px 14px;background:rgba(245,236,216,0.5);border:1px solid var(--line-soft);border-radius:3px;display:flex;flex-direction:column;gap:3px}
+.tv-popup-recov-label{font-family:'Noto Sans KR',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.tv-popup-recov-kr{font-family:'Noto Serif KR',serif;font-size:0.92rem;color:var(--ink);font-weight:700;line-height:1.55;letter-spacing:-0.005em}
+.tv-popup-recov-en{font-family:'Lora',serif;font-size:0.78rem;color:var(--ink-soft);font-style:italic;line-height:1.45}
+@media (max-width:560px){.tv-words-grid{grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:7px}.tv-word-card{padding:11px 11px 9px}.tv-word-card .twc-gk{font-size:1rem}.tv-word-card .twc-kr{font-size:0.86rem}}
+.tts-reader-overlay{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:2000;align-items:center;justify-content:center;padding:20px;animation:tvOverlayIn 0.2s ease-out}
+.tts-reader-overlay.active{display:flex}
+.tts-reader-modal{background:var(--paper-card);border-radius:6px;max-width:520px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 18px 50px rgba(0,0,0,0.35);border:1px solid var(--line);border-top:4px solid var(--accent);animation:tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);font-family:'Noto Sans KR',sans-serif}
+.tts-reader-header{padding:18px 22px 14px;border-bottom:1px dashed var(--line);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tts-reader-icon{flex-shrink:0;color:var(--accent)}
+.tts-reader-title{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--ink);flex:1}
+.tts-reader-close{width:30px;height:30px;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px}
+.tts-reader-close:hover{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.tts-reader-body{padding:14px 22px;overflow-y:auto;flex:1}
+.tts-form-label{font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;margin-top:14px;display:block}
+.tts-form-label:first-child{margin-top:0}
+.tts-voice-select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
+.tts-api-row{display:flex;gap:8px;align-items:center}
+.tts-api-row input{flex:1;padding:9px 11px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:12px;background:var(--paper);color:var(--ink)}
+.tts-api-row button{padding:9px 14px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer}
+.tts-api-row button:hover{background:#6e1622}
+.tts-section-list{border:1px solid var(--line-soft);border-radius:4px;background:var(--paper);max-height:240px;overflow-y:auto}
+.tts-section-item{display:flex;align-items:flex-start;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--ink-soft);transition:background 0.15s}
+.tts-section-item:last-child{border-bottom:none}
+.tts-section-item:hover{background:var(--paper-card)}
+.tts-section-item.all{font-weight:700;color:var(--ink);background:var(--paper-card)}
+.tts-section-item.playing{background:var(--paper-verse);color:var(--accent);font-weight:600}
+.tts-section-checkbox{flex-shrink:0;width:15px;height:15px;margin-top:2px;accent-color:var(--accent);cursor:pointer}
+.tts-section-label{flex:1;line-height:1.45}
+.tts-progress{margin-top:14px;padding:12px 14px;background:var(--paper);border:1px solid var(--line-soft);border-radius:4px;display:none}
+.tts-progress.active{display:block}
+.tts-progress-bar{height:6px;background:var(--line-soft);border-radius:3px;overflow:hidden}
+.tts-progress-fill{height:100%;background:var(--accent);width:0%;transition:width 0.3s}
+.tts-progress-text{font-size:12px;color:var(--ink-soft);margin-top:8px;line-height:1.5}
+.tts-progress-text strong{color:var(--ink)}
+.tts-status{font-size:11.5px;color:var(--ink-mute);margin-top:10px;font-style:italic;line-height:1.5}
+.tts-status.error{color:var(--accent);font-style:normal;font-weight:600}
+.tts-reader-footer{padding:14px 22px 18px;border-top:1px solid var(--line);display:flex;gap:10px;flex-shrink:0}
+.tts-btn{flex:1;padding:11px 16px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:4px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.06em;cursor:pointer;transition:all 0.15s}
+.tts-btn:hover:not(:disabled){background:var(--line-soft)}
+.tts-btn:disabled{opacity:0.45;cursor:not-allowed}
+.tts-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tts-btn.primary:hover:not(:disabled){background:#6e1622}
+@media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
+</style>
+</head>
+<body style="overflow:hidden;">
+
+<!-- INTRO -->
+<style>
+/* ===== Sacred Blueprint — 신성한 청사진 ===== */
+.bp-svg{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 50px rgba(0,0,0,0.55))}
+.bp-svg .bp-frame-rect{stroke:rgba(245,216,120,0.18);stroke-width:0.7;stroke-dasharray:4 4;fill:none;opacity:0;animation:bpFadeIn 1.4s ease 0.5s forwards}
+.bp-svg .bp-axis-v,.bp-svg .bp-axis-h{stroke:rgba(245,216,120,0.32);stroke-width:0.55;fill:none;stroke-dasharray:540;stroke-dashoffset:540;animation:bpStroke 2.2s cubic-bezier(.4,0,.2,1) 0.9s forwards}
+.bp-svg .bp-axis-h{animation-delay:1.05s}
+.bp-svg .bp-ring{stroke:rgba(245,216,120,0.42);fill:none;stroke-dasharray:900;stroke-dashoffset:900;animation:bpStroke 2.4s cubic-bezier(.4,0,.2,1) forwards}
+.bp-svg .bp-ring.r1{stroke-width:0.55;animation-delay:1.3s;opacity:0.85}
+.bp-svg .bp-ring.r2{stroke-width:0.6;animation-delay:1.55s;opacity:0.7}
+.bp-svg .bp-ring.r3{stroke-width:0.65;animation-delay:1.8s;opacity:0.55}
+.bp-svg .bp-ring.r4{stroke-width:0.7;animation-delay:2.05s;opacity:0.4}
+.bp-svg .bp-tri{stroke:rgba(245,216,120,0.48);stroke-width:0.55;fill:none;stroke-dasharray:340;stroke-dashoffset:340;animation:bpStroke 2.6s cubic-bezier(.4,0,.2,1) 1.6s forwards}
+.bp-svg .bp-tri.t2{animation-delay:1.75s;opacity:0.78}
+.bp-svg .bp-tri.t3{animation-delay:1.9s;opacity:0.62}
+.bp-svg .bp-tri.t4{animation-delay:2.05s;opacity:0.46}
+.bp-svg .bp-ray{stroke:rgba(245,216,120,0.32);stroke-width:0.4;fill:none;stroke-dasharray:300;stroke-dashoffset:300;animation:bpStroke 2.4s cubic-bezier(.4,0,.2,1) 2.2s forwards}
+.bp-svg .bp-ray.r-fade{opacity:0.55}
+.bp-svg .bp-arc{stroke:rgba(245,216,120,0.28);stroke-width:0.5;fill:none;stroke-dasharray:260;stroke-dashoffset:260;animation:bpStroke 2.4s cubic-bezier(.4,0,.2,1) 2.4s forwards}
+.bp-svg .bp-vesica{stroke:rgba(245,216,120,0.22);stroke-width:0.5;fill:none;stroke-dasharray:480;stroke-dashoffset:480;animation:bpStroke 2.6s ease 2s forwards}
+.bp-svg .bp-tick{fill:rgba(245,216,120,0.85);opacity:0;animation:bpFadeIn 0.9s ease 2.6s forwards}
+.bp-svg .bp-tick.delay{animation-delay:2.85s}
+.bp-svg .bp-spark{fill:#fde8a8;opacity:0;animation:bpFadeIn 1s ease 3s forwards,bpSparkPulse 3.6s ease-in-out 4.5s infinite}
+.bp-svg .bp-spark:nth-of-type(2n){animation-delay:3.15s,4.65s}
+.bp-svg .bp-spark:nth-of-type(3n){animation-delay:3.3s,4.85s}
+.bp-svg .bp-spark:nth-of-type(4n){animation-delay:3.45s,5.05s}
+.bp-svg .bp-halo{opacity:0;animation:bpFadeIn 2.4s ease 2.6s forwards,bpHaloPulse 4.5s ease-in-out 5.2s infinite}
+.bp-svg .bp-drop-glow{opacity:0;animation:bpFadeIn 1.6s ease 3.0s forwards}
+.bp-svg .bp-drop{transform-box:fill-box;transform-origin:center;opacity:0;animation:bpDropIn 1.4s cubic-bezier(.3,1.6,.55,1) 3.0s forwards}
+.bp-svg .bp-drop-shine{opacity:0;animation:bpFadeIn 1.4s ease 3.6s forwards}
+.bp-svg .bp-label{font-family:'Lora',serif;font-size:8px;fill:rgba(245,216,120,0.6);letter-spacing:0.22em;text-transform:uppercase;font-weight:700;opacity:0;animation:bpFadeIn 1.2s ease 3.4s forwards}
+.bp-svg .bp-label.lr{font-style:italic;font-weight:500;letter-spacing:0.16em}
+@keyframes bpStroke{to{stroke-dashoffset:0}}
+@keyframes bpDropIn{0%{opacity:0;transform:translateY(-22px) scale(0.5)}55%{opacity:1;transform:translateY(3px) scale(1.08)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes bpHaloPulse{0%,100%{opacity:0.85}50%{opacity:1}}
+@keyframes bpSparkPulse{0%,100%{opacity:0.55}50%{opacity:1}}
+/* Filled state — 청사진이 황금으로 충만해지는 순간 */
+.vessel-stage.filled .bp-halo{animation:bpHaloExpand 1.8s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes bpHaloExpand{from{transform:scale(1);opacity:1}to{transform:scale(2.2);opacity:1;transform-origin:280px 165px}}
+.vessel-stage.filled .bp-drop{filter:drop-shadow(0 0 22px rgba(245,216,120,0.95));transition:filter 0.6s ease}
+.vessel-stage.filled .bp-ring,.vessel-stage.filled .bp-tri,.vessel-stage.filled .bp-axis-v,.vessel-stage.filled .bp-axis-h,.vessel-stage.filled .bp-ray,.vessel-stage.filled .bp-arc,.vessel-stage.filled .bp-vesica{stroke:rgba(245,216,120,0.85);transition:stroke 1.2s ease}
+.vessel-stage.filled .bp-spark,.vessel-stage.filled .bp-tick{fill:#fde8a8;filter:drop-shadow(0 0 6px rgba(245,216,120,0.85));transition:filter 0.8s ease}
+@media (max-width:560px){.bp-svg .bp-label{font-size:6.5px;letter-spacing:0.16em}}
+</style>
+<div id="intro-container">
+  <div class="bp-frame"></div>
+  <div class="bp-corner tl"></div><div class="bp-corner tr"></div>
+  <div class="bp-corner bl"></div><div class="bp-corner br"></div>
+  <div class="bp-meta tl">FIG. 욥 13:27-28 · DIVINE BLUEPRINT</div>
+  <div class="bp-meta br">SCALE 고난:경륜 · ETERNAL VIEW</div>
+  <button class="vessel-skip-top" id="vessel-skip-top">건너뛰기 SKIP</button>
+
+  <div class="vessel-wrap" id="vessel-wrap">
+    <div class="vessel-stage d2g-stage" id="vessel-stage">
+      <svg class="bp-svg" viewBox="0 0 560 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <defs>
+          <radialGradient id="bp-glow-grad" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#f5d878" stop-opacity="0.85"/>
+            <stop offset="35%" stop-color="#d4a838" stop-opacity="0.30"/>
+            <stop offset="70%" stop-color="#8a6724" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#8a6724" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="bp-drop-shine-grad" cx="0.4" cy="0.32" r="0.42">
+            <stop offset="0%" stop-color="rgba(255,250,230,0.95)"/>
+            <stop offset="60%" stop-color="rgba(255,250,230,0.25)"/>
+            <stop offset="100%" stop-color="rgba(255,250,230,0)"/>
+          </radialGradient>
+          <linearGradient id="bp-drop-grad" x1="0.5" y1="0" x2="0.5" y2="1">
+            <stop offset="0%" stop-color="#fde8a8"/>
+            <stop offset="38%" stop-color="#f5d878"/>
+            <stop offset="78%" stop-color="#d4a838"/>
+            <stop offset="100%" stop-color="#8a6724"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Outer blueprint frame -->
+        <rect class="bp-frame-rect" x="40" y="20" width="480" height="300"/>
+
+        <!-- Vertical and horizontal axes through droplet center (280, 165) -->
+        <line class="bp-axis-v" x1="280" y1="20" x2="280" y2="320"/>
+        <line class="bp-axis-h" x1="40" y1="165" x2="520" y2="165"/>
+
+        <!-- Concentric rings around droplet center -->
+        <circle class="bp-ring r1" cx="280" cy="165" r="48"/>
+        <circle class="bp-ring r2" cx="280" cy="165" r="86"/>
+        <circle class="bp-ring r3" cx="280" cy="165" r="124"/>
+        <circle class="bp-ring r4" cx="280" cy="165" r="158"/>
+
+        <!-- Triangular convergent rays from top apex toward base -->
+        <line class="bp-tri" x1="280" y1="20" x2="120" y2="320"/>
+        <line class="bp-tri t2" x1="280" y1="20" x2="200" y2="320"/>
+        <line class="bp-tri t3" x1="280" y1="20" x2="360" y2="320"/>
+        <line class="bp-tri t4" x1="280" y1="20" x2="440" y2="320"/>
+
+        <!-- Compass-rose diagonals (45°) through droplet center -->
+        <line class="bp-ray" x1="170" y1="55" x2="390" y2="275"/>
+        <line class="bp-ray" x1="390" y1="55" x2="170" y2="275"/>
+        <line class="bp-ray r-fade" x1="135" y1="100" x2="425" y2="230"/>
+        <line class="bp-ray r-fade" x1="425" y1="100" x2="135" y2="230"/>
+
+        <!-- Inner arcs / vesica-piscis-like curves -->
+        <path class="bp-arc" d="M 222 165 A 58 58 0 0 1 338 165"/>
+        <path class="bp-arc" d="M 222 165 A 58 58 0 0 0 338 165"/>
+        <path class="bp-vesica" d="M 280 80 A 100 100 0 0 1 280 250"/>
+        <path class="bp-vesica" d="M 280 80 A 100 100 0 0 0 280 250"/>
+
+        <!-- Tick markers at major intersections -->
+        <circle class="bp-tick" cx="280" cy="165" r="1.6"/>
+        <circle class="bp-tick" cx="280" cy="20" r="1.4"/>
+        <circle class="bp-tick" cx="280" cy="320" r="1.4"/>
+        <circle class="bp-tick" cx="40" cy="165" r="1.4"/>
+        <circle class="bp-tick" cx="520" cy="165" r="1.4"/>
+        <circle class="bp-tick delay" cx="232" cy="165" r="1.2"/>
+        <circle class="bp-tick delay" cx="328" cy="165" r="1.2"/>
+        <circle class="bp-tick delay" cx="280" cy="117" r="1.2"/>
+        <circle class="bp-tick delay" cx="280" cy="213" r="1.2"/>
+        <circle class="bp-tick delay" cx="280" cy="79" r="1.0"/>
+        <circle class="bp-tick delay" cx="280" cy="251" r="1.0"/>
+
+        <!-- Decorative sparks at sacred-geometry nodes -->
+        <circle class="bp-spark" cx="194" cy="165" r="1.3"/>
+        <circle class="bp-spark" cx="366" cy="165" r="1.3"/>
+        <circle class="bp-spark" cx="280" cy="41" r="1.0"/>
+        <circle class="bp-spark" cx="280" cy="289" r="1.0"/>
+        <circle class="bp-spark" cx="218" cy="103" r="0.9"/>
+        <circle class="bp-spark" cx="342" cy="103" r="0.9"/>
+        <circle class="bp-spark" cx="218" cy="227" r="0.9"/>
+        <circle class="bp-spark" cx="342" cy="227" r="0.9"/>
+        <circle class="bp-spark" cx="156" cy="165" r="0.8"/>
+        <circle class="bp-spark" cx="404" cy="165" r="0.8"/>
+        <circle class="bp-spark" cx="280" cy="7" r="0.7"/>
+
+        <!-- Radial glow halo behind droplet -->
+        <ellipse class="bp-halo" cx="280" cy="165" rx="78" ry="78" fill="url(#bp-glow-grad)"/>
+
+        <!-- Outer glow circle -->
+        <circle class="bp-drop-glow" cx="280" cy="165" r="34" fill="url(#bp-glow-grad)" opacity="0.7"/>
+
+        <!-- Central golden droplet (teardrop shape) -->
+        <path class="bp-drop" d="M 280 138 C 264 154, 260 174, 268 186 C 274 195, 286 195, 292 186 C 300 174, 296 154, 280 138 Z" fill="url(#bp-drop-grad)" stroke="rgba(254,232,168,0.55)" stroke-width="0.4"/>
+
+        <!-- Highlight on droplet -->
+        <ellipse class="bp-drop-shine" cx="274" cy="160" rx="3.2" ry="6.5" fill="url(#bp-drop-shine-grad)"/>
+
+        <!-- Labels -->
+        <text class="bp-label" x="40" y="14" text-anchor="start">FIG. ⅩⅢ — DIVINE BLUEPRINT</text>
+        <text class="bp-label" x="520" y="14" text-anchor="end">RATIO · ETERNAL : 1</text>
+        <text class="bp-label" x="40" y="334" text-anchor="start">ECONOMY · 하나님의 경륜</text>
+        <text class="bp-label lr" x="520" y="334" text-anchor="end">REBUILT IN HIM</text>
+      </svg>
+    </div>
+
+    <div class="vessel-readout">
+      <span class="vs-chip dust">FIG · 신성한 청사진</span>
+      <span class="vs-chip transfer">ECONOMY · 영원한 경륜</span>
+      <span class="vs-chip gold">DROP · 그리스도의 충만</span>
+    </div>
+
+    <div class="vessel-text">
+      <div class="vessel-kicker">2026 국제중국어 · 5주 4일 — Divine Blueprint</div>
+      <h1 class="vessel-title">신성한 <span class="vt-gold">청사진</span><br><span class="vt-em">고난과 <strong class="gold-em">하나님의 경륜</strong></span></h1>
+      <p class="vessel-sub">고통의 진정한 목적과 재건축의 비밀 — 모든 환난의 무게는 우연이 아닌, 영원 전부터 그려진 도면 안의 한 선입니다</p>
+      <div class="vessel-quote">
+        <p>"<em>제 발에 차꼬를 채우시고 / 제 모든 길을 주시하시며 / 제 발바닥에 제한을 두시니 말입니다 … 그러한 사람은 피폐해져 썩어 문드러진 어떤 것과 같고 / 좀이 먹은 옷과 같습니다</em>" — 욥 13:27-28</p>
+        <p>"<strong>오, 하나님, 당신은 지금 나를 무너뜨리는 것이 아니라 — 철저히 재건축하고 계십니다.</strong>"</p>
+      </div>
+      <button class="vessel-cta gold" id="vessel-cta">
+        <span class="vessel-cta-icon">▽</span>
+        <span class="vessel-cta-text"><span class="ct-main">청사진 안으로 들어가기</span><span class="ct-sub">ENTER · BLUEPRINT</span></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="intro-reveal-text">
+    <div class="reveal-main">"오, 하나님,<br>당신은 지금 나를<br><b style="color:#f5d878;">무너뜨리는 것이 아니라</b><br>철저히 <b style="color:#f5d878;">재건축</b>하고 계십니다.<br>나의 낡고 부패한 옛사람을 벗겨 내시고<br>영광스러운 새사람을<br>입혀 주고 계십니다."</div>
+    <div class="reveal-sub">— 신성한 청사진 안에서 —</div>
+    <div class="voice-prompt-container" id="voice-prompt-container">
+      <div class="voice-msg" id="voice-msg">위 고백을 직접 소리 내어 읽어주세요</div>
+      <div class="voice-btn-group">
+        <button class="voice-action-btn" id="start-voice-btn">🎤 읽기 시작</button>
+        <button class="skip-btn" id="skip-intro-btn">건너뛰기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <button class="topbar-btn" onclick="window.open('https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/','_blank')" aria-label="홈"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+  <div class="topbar-title">하나님의 변함없는 의도 · 그리스도로 채우시고 참된 하나님-사람으로 재건축하심 · 딤전 6:11</div>
+  <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="nav-item" onclick="goTo('hero-section')">제목 &amp; 주제</a>
+  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 딤전 6:11</a>
+  <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
+  <a class="nav-item" onclick="goTo('flow-section')">다섯 단계의 흐름</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('keywords-section')" style="font-weight:700;color:var(--accent);">키워드</a>
+  <div style="padding:6px 20px;">
+    <span class="keyword-tag" onclick="showKwDef('kd1',this)">하나님의 경륜</span>
+    <span class="keyword-tag" onclick="showKwDef('kd2',this)">신성한 분배하심</span>
+    <span class="keyword-tag" onclick="showKwDef('kd3',this)">신성한 조성·재건축</span>
+    <span class="keyword-tag" onclick="showKwDef('kd4',this)">하나님-사람</span>
+    <span class="keyword-tag" onclick="showKwDef('kd5',this)">단체적 표현·새 예루살렘</span>
+  </div>
+  <div class="keyword-def" id="kd1">하나님의 경륜은 <b>하나님의 마음의 갈망에 따른 영원한 의도</b>로서, 신성한 삼일성 안에서 그분 자신을 <b>아버지로서 아들 안에서 그 영에 의해</b> 그분의 선택받은 백성 안으로 분배하시어 그들의 <b>생명과 본성</b>이 되심으로써 그들이 그분의 <b>충만과 표현</b>이 되게 하시는 것입니다.</div>
+  <div class="keyword-def" id="kd2">하나님의 경륜은 <b>그분의 계획이자 안배</b>이며, 하나님께서 그분 자신의 <b>요소·생명·본성·미덕들과 그분이 성취하신 모든 것</b>을 그분께 선택받은 백성에게 <b>분배하심</b>으로, 우리가 신성한 근원의 신성한 요소 안에 있는 <b>신성한 본질로 조성</b>되어 신성한 어떤 것으로 재건축되게 하시는 것입니다.</div>
+  <div class="keyword-def" id="kd3">하나님의 분배하심을 받기 전에 우리는 단지 사람이었지만, 하나님께서 그분의 <b>신성한 조성으로 재건축</b>하신 후에 우리는 주 예수님과 같이 <b>신성하고 인간적이며 인간적이고 신성한</b> 사람이 됩니다 — 그리스도에 의해 거듭난 이후 우리는 그분의 일부분이 되었으며, 이제 우리는 그분과 똑같이 신성하고 인간적이며 인간적이고 신성합니다.</div>
+  <div class="keyword-def" id="kd4">"하나님의 사람"(딤전 6:11, ἄνθρωπος θεοῦ)은 <b>신격에서가 아니지만 생명과 본성에서</b> 하나님과 똑같아진 사람 — 그리스도의 형제이자 하나님의 아들로서, 마지막 아담이신 생명 주시는 영을 통해 거듭나 그분과 동일한 생명·본성을 공유하는 사람입니다. 욥에 대한 하나님의 변함없는 의도는 욥을 이러한 <b>참된 하나님-사람</b>으로 만드시는 것이었습니다.</div>
+  <div class="keyword-def" id="kd5">거듭난 이들은 자연스럽게 <b>유기체인 그리스도의 몸</b>이 되며, 이 몸은 <b>하나님의 새 창조물에 속한 새사람</b>으로서 삼일 하나님의 충만이자 표현을 위한 <b>그리스도의 몸을 건축</b>하는 일을 수행합니다. 이 충만은 <b>새 예루살렘</b>으로 완결될 것이며 — 이것이 신약의 주요 내용이자 욥에게 필요했던 답변이며, 욥이 겪은 고난의 목적에 관한 하나님의 답변입니다.</div>
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:700;color:var(--ink);">핵심 요점</a>
+  <a class="nav-item sub" onclick="goTo('acc-0')">Ⅰ. 딤전 6:11 — 하나님의 사람의 추구</a>
+  <a class="nav-item sub" onclick="goTo('acc-1')">Ⅱ. 딤후 3:17 — 성경이 온전케 함</a>
+  <a class="nav-item sub" onclick="goTo('acc-2')">Ⅲ. 욥 13:27-28 — 욥의 자기 인식</a>
+  <a class="nav-item sub" onclick="goTo('acc-3')">Ⅳ. 하나님의 영원한 경륜 — 분배하심</a>
+  <a class="nav-item sub" onclick="goTo('acc-4')">Ⅴ. 신성한 조성 — 재건축의 정의</a>
+  <a class="nav-item sub" onclick="goTo('acc-5')">Ⅵ. 그리스도 — 경륜의 중심과 전부</a>
+  <a class="nav-item sub" onclick="goTo('acc-6')">Ⅶ. 새사람과 그리스도의 몸</a>
+  <a class="nav-item sub" onclick="goTo('acc-7')">Ⅷ. 새 예루살렘 — 욥의 답변</a>
+  <a class="nav-item sub" onclick="goTo('acc-8')">Ⅸ. 개요 D·E — 변함없는 의도와 적용</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('recap-section')">전체 복습</a>
+  <a class="nav-item" onclick="goTo('quiz-section')">퀴즈</a>
+  <a class="nav-item" onclick="goTo('prayer-section')">오늘의 결단과 기도</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container" id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-section">
+    <div class="hero-badge">2026 국제중국어 5주 4일</div>
+    <h1>하나님의 변함없는 의도<br>그리스도로 채우시고<br><span class="highlight-word">재건축하심</span></h1>
+    <p class="hero-sub">한편으로 욥은 자신을 <b>피폐해져 썩어 문드러진 어떤 것</b>으로 여겼고(욥 13:28), 다른 한편으로는 여전히 자신에게 <b>아무 잘못이 없다</b>고 느꼈습니다 — 그는 하나님께 목적이 있으심은 알았지만 그 목적이 <b>무엇인지는 몰랐습니다</b>. 우리는 <b>하나님의 영원한 경륜</b>을 알아야 합니다. 하나님의 경륜은 그분의 마음의 갈망에 따른 영원한 의도로서, 신성한 삼일성 안에서 그분 자신을 <b>아버지로서 아들 안에서 그 영에 의해</b> 그분께서 선택하신 백성 안으로 <b>분배하시어 그들의 생명과 본성이 되심</b>으로써 그들이 그분의 <b>충만과 표현</b>이 되게 하시는 것입니다. 하나님의 변함없는 의도는 욥을 <b>하나님의 사람</b>(딤전 6:11) — 곧 하나님의 온전한 체현이신 그리스도로 충만히 채워진 사람 — 으로 만드시려는 것이었습니다. 천연적인 옛 욥을 완전히 허물어뜨리시고, 마침내 그분의 신성한 조성으로 <b>재건축</b>하시어, 욥이 신격에서는 아니지만 <b>생명과 본성에서 하나님과 똑같아져</b> 그리스도 안에서 하나님을 충만히 표현하는 <b>참된 하나님-사람</b>이 되게 하시려는 것입니다(딤전 6:11, 딤후 3:17, 욥 13:27-28, 엡 3:16-21).</p>
+  </section>
+
+  <!-- TODAY'S VERSE -->
+  <section class="todays-verse-section" id="todays-verse-section">
+    <div class="tv-header">
+      <div class="tv-kicker">오늘의 구절 · Today's Verse</div>
+      <div class="tv-ref">디모데전서 6:11</div>
+      <div class="tv-ref-en">1 Timothy 6:11 · Recovery Version</div>
+    </div>
+    <div class="tv-trans-compact">
+      <div class="tv-trans-row gk"><span class="tv-trans-tag">GK</span><span class="tv-trans-text"><span class="tv-gk-word"><span class="gw-gk">Σὺ δέ,</span><span class="gw-pr">쉬 데</span></span><span class="tv-gk-word hl"><span class="gw-gk">ὦ ἄνθρωπε θεοῦ,</span><span class="gw-pr">오 안트로페 테우</span></span><span class="tv-gk-word hl"><span class="gw-gk">ταῦτα</span><span class="gw-pr">타우타</span></span><span class="tv-gk-word hl"><span class="gw-gk">φεῦγε·</span><span class="gw-pr">페우게</span></span><span class="tv-gk-word hl"><span class="gw-gk">δίωκε δὲ</span><span class="gw-pr">디오케 데</span></span><span class="tv-gk-word"><span class="gw-gk">δικαιοσύνην,</span><span class="gw-pr">디카이오쉬넨</span></span><span class="tv-gk-word"><span class="gw-gk">εὐσέβειαν,</span><span class="gw-pr">유세베이안</span></span><span class="tv-gk-word"><span class="gw-gk">πίστιν,</span><span class="gw-pr">피스틴</span></span><span class="tv-gk-word"><span class="gw-gk">ἀγάπην,</span><span class="gw-pr">아가펜</span></span><span class="tv-gk-word"><span class="gw-gk">ὑπομονήν,</span><span class="gw-pr">휘포모넨</span></span><span class="tv-gk-word"><span class="gw-gk">πραϋπαθίαν.</span><span class="gw-pr">프라위파티안</span></span></span></div>
+      <div class="tv-trans-row kr"><span class="tv-trans-tag">한</span><span class="tv-trans-text">그러나 <b>하나님의 사람이여</b>, 그대는 <b>이러한 것들을 피하고</b>, <b>의와 경건과 믿음과 사랑과 인내와 온유</b>를 <b>힘을 다해 추구하십시오</b>.</span></div>
+      <div class="tv-trans-row en"><span class="tv-trans-tag">EN</span><span class="tv-trans-text">But you, O man of God, flee these things, and pursue righteousness, godliness, faith, love, endurance, meekness.</span></div>
+    </div>
+
+    <div class="tv-words-section">
+      <div class="tv-words-title">
+        <span class="tv-words-title-en">LEXICAL · GRAMMATICAL ANALYSIS</span>
+        <span class="tv-words-title-kr">사전적 · 문법적 분석</span>
+        <span class="tv-words-title-note">단어 카드를 클릭하면 BDAG · Thayer's · Strong's 사전 정의와 동사 활용 분석 팝업이 열립니다.</span>
+      </div>
+      <div class="tv-words-grid">
+        <button class="tv-word-card cat-vocative" onclick="tvShowWord('anthrope_theou')">
+          <div class="twc-gk">ἄνθρωπε θεοῦ</div>
+          <div class="twc-pr">안트로페 테우</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">하나님의 사람이여</div>
+          <div class="twc-en">O man of God</div>
+          <div class="twc-meta"><span class="twc-strong">G444+G2316 · 호격 명사구</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('tauta')">
+          <div class="twc-gk">ταῦτα</div>
+          <div class="twc-pr">타우타</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">이러한 것들을</div>
+          <div class="twc-en">these things</div>
+          <div class="twc-meta"><span class="twc-strong">G3778 · οὗτος · 지시대명사 중성·복수·대격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-aor" onclick="tvShowWord('pheuge')">
+          <div class="twc-gk">φεῦγε</div>
+          <div class="twc-pr">페우게</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">피하라</div>
+          <div class="twc-en">flee</div>
+          <div class="twc-meta"><span class="twc-strong">G5343 · φεύγω · 현재 명령 능동 2sg</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-aor" onclick="tvShowWord('dioke')">
+          <div class="twc-gk">δίωκε</div>
+          <div class="twc-pr">디오케</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">힘을 다해 추구하라</div>
+          <div class="twc-en">pursue</div>
+          <div class="twc-meta"><span class="twc-strong">G1377 · διώκω · 현재 명령 능동 2sg</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('dikaiosynen')">
+          <div class="twc-gk">δικαιοσύνην</div>
+          <div class="twc-pr">디카이오쉬넨</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">의를</div>
+          <div class="twc-en">righteousness</div>
+          <div class="twc-meta"><span class="twc-strong">G1343 · δικαιοσύνη · 명사 여성·단수·대격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('eusebeian')">
+          <div class="twc-gk">εὐσέβειαν</div>
+          <div class="twc-pr">유세베이안</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">경건을</div>
+          <div class="twc-en">godliness</div>
+          <div class="twc-meta"><span class="twc-strong">G2150 · εὐσέβεια · 명사 여성·단수·대격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('pistin')">
+          <div class="twc-gk">πίστιν</div>
+          <div class="twc-pr">피스틴</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">믿음을</div>
+          <div class="twc-en">faith</div>
+          <div class="twc-meta"><span class="twc-strong">G4102 · πίστις · 명사 여성·단수·대격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('agapen')">
+          <div class="twc-gk">ἀγάπην</div>
+          <div class="twc-pr">아가펜</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">사랑을</div>
+          <div class="twc-en">love</div>
+          <div class="twc-meta"><span class="twc-strong">G26 · ἀγάπη · 명사 여성·단수·대격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('hypomonen')">
+          <div class="twc-gk">ὑπομονήν</div>
+          <div class="twc-pr">휘포모넨</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">인내를</div>
+          <div class="twc-en">endurance</div>
+          <div class="twc-meta"><span class="twc-strong">G5281 · ὑπομονή · 명사 여성·단수·대격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('praypathian')">
+          <div class="twc-gk">πραϋπαθίαν</div>
+          <div class="twc-pr">프라위파티안</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">온유를</div>
+          <div class="twc-en">meekness</div>
+          <div class="twc-meta"><span class="twc-strong">G4239 · πραϋπάθεια · 명사 여성·단수·대격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="tv-summary">
+      <div class="tv-summary-title">Grammatical Structure · 본문의 문법적 구조</div>
+      <div class="tv-summary-text">본문의 핵심은 <b>두 명령형 동사의 대조</b>입니다 — <b>φεῦγε</b>(페우게, 현재 능동 명령 2인칭 단수 — "지속적으로 피하라")와 <b>δίωκε</b>(디오케, 현재 능동 명령 2인칭 단수 — "힘을 다해 끊임없이 추구하라"). 두 동사는 모두 <b>현재 시제 명령형</b>으로, 한 번의 행동이 아니라 <b>지속적·습관적 동작</b>을 명령합니다. 호격 명사구 <b>ὦ ἄνθρωπε θεοῦ</b>("오 하나님의 사람이여")는 그리스도인의 정체성을 정의하는 핵심 칭호이며 — 단순한 종교인이 아니라 <b>하나님께 속한 사람, 하나님이 그분의 생명·본성·요소·본질로 채워 빚으시는 사람</b>을 가리킵니다. 추구해야 할 여섯 미덕(δικαιοσύνη·εὐσέβεια·πίστις·ἀγάπη·ὑπομονή·πραϋπαθία)은 모두 <b>여성 단수 대격</b>으로 병렬되어, "하나님의 사람"이 마땅히 <b>그리스도 안에서 호흡하고 누려야 할 신성한 미덕들</b>을 정밀하게 펼쳐 보입니다.</div>
+    </div>
+  </section>
+
+  <div class="tv-popup-overlay" id="tv-popup-overlay" onclick="tvClosePopupOnBg(event)">
+    <div class="tv-popup" id="tv-popup">
+      <button class="tv-popup-close" onclick="tvClosePopup()" aria-label="닫기">✕</button>
+      <div class="tv-popup-header">
+        <div class="tv-popup-kicker">헬라어 단어 사전 · BDAG · Thayer's · Strong's</div>
+        <div class="tv-popup-meaning" id="tv-popup-meaning"></div>
+        <div class="tv-popup-greek" id="tv-popup-greek"></div>
+      </div>
+      <div class="tv-popup-body" id="tv-popup-body"></div>
+    </div>
+  </div>
+
+  <!-- TTS READER MODAL -->
+  <div class="tts-reader-overlay" id="tts-reader-overlay" onclick="ttsCloseOnBg(event)">
+    <div class="tts-reader-modal" onclick="event.stopPropagation()">
+      <div class="tts-reader-header">
+        <svg class="tts-reader-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <div class="tts-reader-title">본문 듣기</div>
+        <button class="tts-reader-close" onclick="ttsCloseReader()" aria-label="닫기">✕</button>
+      </div>
+      <div class="tts-reader-body">
+        <label class="tts-form-label">API 키</label>
+        <div class="tts-api-row">
+          <input type="password" id="tts-api-key" placeholder="API 키를 입력하세요" />
+          <button onclick="ttsSaveApiKey()">저장</button>
+        </div>
+        <label class="tts-form-label">음성 선택</label>
+        <select class="tts-voice-select" id="tts-voice-select">
+          <option value="tk_voice">tk_voice</option>
+        </select>
+        <label class="tts-form-label">읽을 항목 (기본: 전체 선택)</label>
+        <div class="tts-section-list" id="tts-section-list"></div>
+        <div class="tts-progress" id="tts-progress">
+          <div class="tts-progress-bar"><div class="tts-progress-fill" id="tts-progress-fill"></div></div>
+          <div class="tts-progress-text" id="tts-progress-text">대기 중...</div>
+        </div>
+        <div class="tts-status" id="tts-status">서버에서 음성 목록을 불러옵니다...</div>
+      </div>
+      <div class="tts-reader-footer">
+        <button class="tts-btn" id="tts-stop-btn" onclick="ttsStop()" disabled>⏹ 중지</button>
+        <button class="tts-btn" id="tts-pause-btn" onclick="ttsTogglePause()" disabled>⏸ 일시정지</button>
+        <button class="tts-btn primary" id="tts-play-btn" onclick="ttsPlay()">▶ 재생</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard" id="dashboard-section">
+    <div class="dashboard-title">메시지 전체 맥락 요약</div>
+    <div class="core-message">하나님의 변함없는 의도는 욥을 <strong>하나님의 사람</strong> — 곧 하나님의 온전한 체현이신 그리스도로 충만케 채워진 <strong>하나님의 거룩한 충만</strong> — 으로 만드시려는 것이었습니다. 이는 <strong>하나님의 영원한 경륜</strong>의 부분이며, 신성한 삼일성 안에서 그분 자신의 <strong>요소·생명·본성·미덕</strong>을 그분의 선택받은 백성 안에 <strong>분배</strong>하시어, 우리가 신성한 본질로 <strong>새롭게 조성·재건축</strong>되어 <strong>신성하고 인간적이며 인간적이고 신성한</strong> 한 사람이 되게 하시는 것입니다(딤전 6:11, 딤후 3:17, 욥기 라이프 스타디 메시지 9·10). 이것이 신약의 주요 내용이자, 욥이 겪은 고난의 목적에 관한 하나님의 답변이며 — 새 예루살렘 안에서 영원토록 완결될 것입니다.</div>
+    <div class="dash-grid">
+      <div class="dash-card"><div class="dash-label">변함없는 의도</div><div class="dash-value">욥을 그리스도로<br>충만케 채우심 (딤전 6:11)</div></div>
+      <div class="dash-card"><div class="dash-label">하나님의 경륜</div><div class="dash-value">분배하심<br>(생명·본성·요소)</div></div>
+      <div class="dash-card"><div class="dash-label">재건축의 본질</div><div class="dash-value">신성한 조성<br>= 신성한 어떤 것</div></div>
+      <div class="dash-card"><div class="dash-label">단체적 결말</div><div class="dash-value">새사람·그리스도의 몸<br>→ 새 예루살렘</div></div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow-section" id="flow-section">
+    <div class="flow-title">다섯 단계의 흐름 — 하나님의 변함없는 의도와 재건축의 경륜</div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-dot">A</div><div class="flow-step-label">옛 욥의 두 가지 자기 인식 (욥 13:27-28)</div><div class="flow-step-desc">한편으로 욥은 자신을 <b>피폐해져 썩어 문드러진 어떤 것 / 좀이 먹은 옷</b>과 같이 여겼고, 다른 한편으로는 <b>아무 잘못이 없다</b> 느꼈습니다. 그는 하나님께 <b>목적</b>이 있으심은 알았지만, 그 목적이 무엇인지 알지 못했습니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">B</div><div class="flow-step-label">하나님의 영원한 경륜 — 분배하심</div><div class="flow-step-desc">하나님의 경륜은 <b>마음의 갈망에 따른 영원한 의도</b>로서 — 신성한 삼일성 안에서 그분 자신을 <b>아버지로서 아들 안에서 그 영에 의해</b> 그분의 선택받은 백성 안으로 분배하시어 그들의 <b>생명과 본성</b>이 되심으로써 그분의 <b>충만과 표현</b>이 되게 하시는 것입니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">C</div><div class="flow-step-label">신성한 조성 = 재건축</div><div class="flow-step-desc">하나님의 경륜은 그분의 <b>요소·생명·본성·미덕·성취하신 모든 것</b>을 우리에게 분배하심으로, 우리가 신성한 근원의 신성한 요소 안에 있는 <b>신성한 본질로 조성</b>되어 — 단지 사람이었던 우리가 <b>신성한 어떤 것으로 재건축</b>되게 하시는 것입니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">D</div><div class="flow-step-label">변함없는 의도 — 하나님의 사람 (딤전 6:11, 딤후 3:17)</div><div class="flow-step-desc">하나님의 변함없는 의도는 욥을 <b>하나님의 사람</b>, 곧 <b>하나님의 온전한 체현이신 그리스도</b>로 충만히 채우시어 <b>하나님의 거룩한 충만</b>이 됨으로써, 오직 그리스도 안에서 하나님을 충만히 표현하는 사람으로 만드시려는 것입니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">E</div><div class="flow-step-label">결말 — 참된 하나님-사람과 새 예루살렘 (엡 3:16-21)</div><div class="flow-step-desc">하나님께서 욥을 낱낱이 벗겨 내시고 끝까지 소모되게 하신 깊은 이유는 — 그가 비록 신격에서는 아니지만 <b>생명과 본성에서 하나님과 똑같아져</b> 결국 하나님을 영광스럽게 표현할 수 있는 <b>참된 하나님-사람</b>이 되게 하시려는 것이었습니다. 이 단체적 표현은 <b>새 예루살렘</b>으로 완결됩니다.</div></div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS -->
+  <section class="keywords-section" id="keywords-section">
+    <div class="keywords-section-title">핵심 키워드</div>
+    <div class="kw-container">
+      <span class="kw-chip" onclick="toggleKwTip('kwt1')">하나님의 경륜</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt2')">신성한 분배하심</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt3')">신성한 조성·재건축</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt4')">하나님-사람</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt5')">단체적 표현·새 예루살렘</span>
+    </div>
+    <div class="kw-tooltip" id="kwt1">하나님의 경륜은 <b>하나님의 마음의 갈망에 따른 영원한 의도</b>로서, 신성한 삼일성 안에서 그분 자신을 <b>아버지로서 아들 안에서 그 영에 의해</b> 그분께서 선택하신 백성 안으로 분배하시어 그들의 <b>생명과 본성</b>이 되심으로써 그들이 그분의 <b>충만과 표현</b>이 되게 하시는 것입니다. 욥은 하나님께 목적이 있으심은 알았지만, 그 목적이 곧 <b>이 영원한 경륜</b>이라는 것은 알지 못했습니다.</div>
+    <div class="kw-tooltip" id="kwt2">하나님의 경륜은 <b>그분의 계획이자 안배</b>입니다 — 하나님께서 그분 자신의 <b>요소·생명·본성·미덕들과 그분이 성취하고 달성하신 모든 것</b>을 그분께 선택받은 백성에게 <b>분배하심</b>으로, 그분께서 선택하신 백성이 신성한 근원의 신성한 요소 안에 있는 <b>신성한 본질로 조성</b>되게 하시는 것입니다. 분배는 가르침이 아닌 — 그분 자신의 <b>실질적 옮기심</b>이 우리 존재 안으로 일어나는 일입니다.</div>
+    <div class="kw-tooltip" id="kwt3">하나님의 분배하심을 받기 전에 우리는 <b>단지 사람이었지만</b>, 하나님께서 그분의 신성한 조성으로 재건축하신 후에 우리는 <b>주 예수님과 같이 신성하고 인간적이며 인간적이고 신성</b>합니다. 그리스도에 의해 거듭난 이후 우리는 그분의 일부분이 되었으며, 이제 우리는 그분과 똑같이 신성하고 인간적이며 인간적이고 신성합니다 — 이것이 <b>"신성한 어떤 것으로 재건축"</b>의 정확한 의미입니다.</div>
+    <div class="kw-tooltip" id="kwt4">"하나님의 사람"(딤전 6:11, ἄνθρωπος θεοῦ)은 단순한 종교인이 아니라 <b>하나님께 속하고 하나님으로 채워진 사람</b>입니다. 신격에서는 아니지만 <b>생명과 본성에서 하나님과 똑같아진</b> 사람 — 그리스도의 형제이자 하나님의 아들로서, <b>마지막 아담</b>이신 생명 주시는 영(고전 15:45)을 통해 거듭나 그분과 동일한 생명·본성을 공유하는 사람입니다. 욥에 대한 하나님의 변함없는 의도는 욥을 이러한 <b>참된 하나님-사람</b>으로 빚으시는 것이었습니다.</div>
+    <div class="kw-tooltip" id="kwt5">거듭난 이들은 자연스럽게 <b>유기체인 그리스도의 몸</b>이 됩니다 — 이 몸은 <b>하나님의 새 창조물에 속한 새사람</b>으로서, 삼일 하나님의 <b>충만이자 표현</b>을 위한 그리스도의 몸을 건축하는 일을 수행합니다. 이 충만은 <b>새 예루살렘</b>으로 완결됩니다 — 성경은 창조하시는 하나님으로 시작되어 새 예루살렘 곧 <b>삼일 하나님과 세 부분으로 된 사람의 연합</b>으로 끝납니다. 이것이 욥에게 필요했던 답변이며, 욥이 겪은 고난의 목적에 관한 하나님의 답변입니다.</div>
+  </section>
+
+  <!-- ACCORDIONS -->
+  <div class="accordion-group">
+    <div class="accordion-group-title" id="keypoints-section">핵심 요점 — 하나님의 변함없는 의도와 영원한 경륜</div>
+
+    <div class="step-header" data-kicker="Part Ⅰ · 본문 — 하나님의 사람">하나님의 사람의 추구와 욥의 자기 인식</div>
+
+    <div class="accordion" id="acc-0">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅰ</div>
+        <div class="acc-title-text">딤전 6:11 — 하나님의 사람이여, 추구하라</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">디모데전서 6:11</div>
+          <div class="verse-text">[딤전 6:11] 그러나 <b>하나님의 사람이여</b>, 그대는 <b>이러한 것들을 피하고</b>, <b>의와 경건과 믿음과 사랑과 인내와 온유</b>를 <b>힘을 다해 추구하십시오</b>.</div>
+        </div>
+        <p class="content-text">이 한 절 안에 그리스도인의 정체성·소명·실천이 압축되어 있습니다 — "<strong>오 하나님의 사람이여</strong>"라는 호격으로 시작하여, "<span class="hl">피하라</span>"와 "<span class="hl">추구하라</span>"의 두 명령형 동사가 우리의 일생의 방향을 정의합니다. 본문은 윤리적 도덕률이 아니라, <strong>하나님의 사람이라는 새로운 종(species)이 마땅히 호흡해야 할 신성한 미덕들을 정밀하게 펼쳐 보입니다</strong>.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"오 하나님의 사람이여" — 정체성의 호명</div>
+          <div class="sub-point-text">헬라어 호격 <strong>ὦ ἄνθρωπε θεοῦ</strong>(오 안트로페 테우)는 단순한 호칭이 아닙니다. 이것은 <span class="hl">디모데(곧 모든 거듭난 이들)에게 그가 누구인지를 일깨우는 정체성의 호명</span>입니다. "하나님의 사람"은 신격에서는 아니지만 <strong>생명과 본성에서 하나님께 속하고 하나님으로 채워진 사람</strong>이며, 마지막 아담이신 생명 주시는 영을 통해 거듭나 그분과 동일한 생명·본성을 공유하는 사람입니다. 욥에 대한 하나님의 변함없는 의도는 욥을 이러한 하나님의 사람으로 빚으시는 것이었습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"이러한 것들을 피하라" — φεῦγε</div>
+          <div class="sub-point-text">헬라어 <strong>φεῦγε</strong>(페우게)는 <strong>현재 능동 명령 2인칭 단수</strong>로 — 한 번의 행동이 아니라 <span class="hl">지속적·습관적으로 도망하라</span>는 명령입니다. 본문 맥락(6장 전반부)에서 "이러한 것들"은 곧 <strong>돈을 사랑함, 자기 만족, 다툼, 시기, 헛된 논쟁, 진리에서 벗어난 가르침</strong> 등 — 하나님의 사람을 그분의 본질적 흐름에서 이탈시키는 모든 그릇된 영역을 가리킵니다. 욥의 자기 의·자기 자랑도 이 "이러한 것들"의 한 형태였습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"힘을 다해 추구하라" — δίωκε</div>
+          <div class="sub-point-text">헬라어 <strong>δίωκε</strong>(디오케)는 동일하게 <strong>현재 능동 명령</strong>으로 — 사냥꾼이 사냥감을 추격하듯 <span class="hl">끊임없이 돌진하라</span>는 강도 높은 명령입니다. φεῦγε(피하라)와 δίωκε(추구하라)는 <strong>한 동작의 양면</strong>입니다 — 그릇된 것에서 도망하는 발걸음이 곧 신성한 미덕을 향해 달려가는 발걸음과 동일해야 합니다. 한쪽만으로는 부족합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">여섯 미덕 — 신성한 한 묶음</div>
+          <div class="sub-point-text">추구의 대상은 여섯 명사가 모두 <strong>여성 단수 대격</strong>으로 병렬됩니다 — <strong>의(δικαιοσύνην)·경건(εὐσέβειαν)·믿음(πίστιν)·사랑(ἀγάπην)·인내(ὑπομονήν)·온유(πραϋπαθίαν)</strong>. 이는 단순한 도덕률 목록이 아니라 <span class="hl">그리스도 자신의 어떠하심이 우리 안에 펼쳐지는 신성한 미덕들</span>입니다. 의와 경건은 하나님과의 수직적 관계, 믿음과 사랑은 우리 안의 영적 흐름, 인내와 온유는 동료 인간을 향한 표현 — 이 여섯이 한 묶음으로 하나님의 사람의 호흡을 이룹니다.</div>
+        </div>
+        <p class="content-text">이 절은 디모데전서 전체의 핵심 적용입니다 — 하나님의 사람으로서 우리의 일생은 <strong>"피하라·추구하라"의 두 동사 위에서 펼쳐집니다</strong>. 이는 자기 개량의 윤리가 아니라, 우리 안에 거하시는 그리스도의 어떠하심이 매일 우리의 발걸음을 통해 표현되는 <span class="hl">신성한 살아남(divine living)</span>입니다. 욥에 대해서도 동일합니다 — 하나님은 그를 자기 의의 영역에서 끄집어 내시고, 그를 진정한 하나님의 사람으로 빚으시려 했습니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">하나님의 사람을 빚어내는 도구는 무엇입니까? — <strong>성경</strong>입니다.</div>
+
+    <div class="accordion" id="acc-1">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅱ</div>
+        <div class="acc-title-text">딤후 3:17 — 성경이 하나님의 사람을 온전케 함</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">디모데후서 3:16-17</div>
+          <div class="verse-text">[딤후 3:17] <b>성경은 하나님의 사람을 온전하게 하며, 온갖 선한 일을 위하여 충분히 준비되게 합니다</b>.</div>
+        </div>
+        <p class="content-text">디모데전서 6:11이 하나님의 사람의 <strong>호흡</strong>을 정의한다면, 디모데후서 3:17은 그 사람을 빚어내는 <strong>도구</strong>를 정의합니다 — <span class="hl">"성경은 하나님의 사람을 온전케 합니다"</span>. 동일한 두 서신서 안에서 <strong>"하나님의 사람"</strong>이 다시 등장합니다. 이는 우연이 아닙니다 — <strong>바울이 디모데를 부르는 핵심 칭호이자, 모든 거듭난 이들의 본질적 정체성</strong>입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"온전하게 하며" — ἄρτιος</div>
+          <div class="sub-point-text">헬라어 <strong>ἄρτιος</strong>(아르티오스)는 "<span class="hl">완전히 갖추어진, 어울리는, 적합한</span>"의 의미입니다. 단지 결함이 없다는 뜻이 아니라 — <strong>모든 부분이 서로 정확히 들어맞아 한 유기체로 작동하는 상태</strong>를 가리킵니다. 성경은 우리를 외적 율법으로 다듬는 것이 아니라, 우리의 모든 부분 — 영·혼·몸 — 이 <strong>그리스도 안에서 한 새사람으로 어울리도록</strong> 빚어 갑니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"충분히 준비되게" — ἐξηρτισμένος</div>
+          <div class="sub-point-text">"충분히 준비되게"는 <strong>ἐξηρτισμένος</strong>(엑세르티스메노스)로 — "<span class="hl">완전히 장비되다, 충분히 갖추어지다</span>"의 의미입니다. 군인이 전투를 위해 모든 무기를 갖추듯, 하나님의 사람은 성경을 통해 <strong>모든 선한 일을 감당할 수 있도록 완전히 무장됩니다</strong>. 이는 능력의 문제가 아니라 <strong>존재의 충만함</strong>의 문제입니다 — 그분 자신으로 채워진 사람은 자연스럽게 그분의 일을 감당하게 됩니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">성경의 두 기능 — 가르침과 분배</div>
+          <div class="sub-point-text">성경은 단지 정보를 전달하는 책이 아닙니다. 성경은 <strong>하나님 자신을 분배하는 도구</strong>입니다 — 우리가 성경을 읽고·기도하고·마음에 둘 때, 성경의 글자 너머에서 <span class="hl">살아 계신 하나님께서 그분 자신을 우리 안에 분배</span>하십니다. 욥에게는 이러한 신약의 계시가 부족했습니다 — 그러나 우리는 이미 기록된 신성한 계시 전체를 받았습니다. 문제는 우리가 그 계시를 통해 <strong>하나님 자신의 분배하심</strong>을 받고 있느냐는 것입니다.</div>
+        </div>
+        <p class="content-text">하나님의 사람은 <strong>성경을 통해 빚어집니다</strong>. 욥의 시대에는 신약이 없었기에 욥의 영적 사전에는 육체 되심·거듭남·변화 같은 용어가 없었습니다 — 그러나 욥의 고난 자체가 그를 위한 살아 있는 본문이었습니다. 오늘 우리에게 주어진 신성한 계시는 욥보다 훨씬 풍성합니다. 그러므로 우리는 <span class="hl">성경의 분배하심을 통해 진정한 하나님의 사람으로 온전케 되는 길</span> 위에 있어야 합니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">그러나 옛 욥은 자기 자신을 어떻게 보았는가? — <strong>두 가지 모순된 인식</strong>이 있었습니다.</div>
+
+    <div class="accordion" id="acc-2">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅲ</div>
+        <div class="acc-title-text">욥 13:27-28 — 욥의 자기 인식의 두 측면</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">욥 13:27-28</div>
+          <div class="verse-text">[욥 13:27] 제 발에 차꼬를 채우시고 / <b>제 모든 길을 주시하시며</b> / <b>제 발바닥에 제한을 두시니 말입니다</b>.</div>
+          <div class="verse-text">[욥 13:28] 그러한 사람은 <b>피폐해져 썩어 문드러진 어떤 것</b>과 같고 / <b>좀이 먹은 옷</b>과 같습니다.</div>
+        </div>
+        <p class="content-text">욥의 13장 마지막 두 절은 <strong>옛 욥의 모순된 자기 인식</strong>을 드러냅니다. 한편으로 그는 자신을 <span class="hl">"피폐해져 썩어 문드러진 것 / 좀이 먹은 옷"</span>으로 여겼고 — 다른 한편으로는 여전히 <span class="hl">자신에게 아무 잘못이 없다</span>고 느꼈습니다. 그는 하나님께 목적이 있으심은 알았지만, 그 목적이 무엇인지는 알지 못했습니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">자기 비하 — "피폐해져 썩어 문드러진 어떤 것"</div>
+          <div class="sub-point-text">욥 13:28에서 욥은 자신을 매우 강한 단어들로 묘사합니다 — <strong>피폐해진(decayed)·썩어 문드러진(rotting)·좀이 먹은 옷(garment moth-eaten)</strong>. 이는 단순한 자기 비하가 아닙니다. <span class="hl">고난의 무게 아래서 욥은 자신의 외적 영역이 무너져 가고 있음을 정확히 지각하고 있었습니다</span>. 그가 이전에 자랑했던 모든 것 — 가족·재산·건강·명성 — 이 좀이 먹은 옷처럼 무너져 가고 있었습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">자기 변호 — "아무 잘못이 없다"</div>
+          <div class="sub-point-text">그러나 욥의 자기 인식의 다른 측면은 매우 다릅니다 — <strong>그는 여전히 자신에게 아무 잘못이 없다고 느꼈습니다</strong>. 13장 전체와 친구들과의 모든 논쟁에서 욥은 자신의 결백을 변호합니다. <span class="hl">외적으로는 자신이 좀먹은 옷처럼 무너져 가고 있음을 인정하면서도, 내면 깊은 곳에서는 자신의 의를 결코 양보하지 않았습니다</span>. 이것이 옛 욥의 패러독스입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">하나님의 통제 — 차꼬·주시·제한</div>
+          <div class="sub-point-text">욥 13:27에서 욥은 하나님의 손길을 정확히 지각하고 있었습니다 — "제 <strong>발에 차꼬를 채우시고</strong>, 제 <strong>모든 길을 주시하시며</strong>, 제 <strong>발바닥에 제한을 두시니</strong> 말입니다." 욥은 자신이 <span class="hl">하나님의 강력한 손 아래 정밀하게 통제되고 있음</span>을 알았습니다. 그러나 그는 그 통제의 <strong>목적</strong>을 알지 못했습니다 — 이것이 욥의 깊은 답답함이었습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님께서 그에게 그 상황을 설명해 주시기를 원했다"</div>
+          <div class="sub-point-text">욥은 하나님의 통제는 인정하면서 그 의도는 모르는 자리에 있었습니다. 그래서 그는 <strong>하나님께서 그에게 그 상황을 설명해 주시기를 원했습니다</strong>. 이것이 욥기의 가장 절박한 요청이며 — <span class="hl">오늘 우리도 동일한 자리에 있을 수 있습니다</span>. 우리는 환난 속에서 하나님의 손길을 느끼지만, 그 손길의 의미를 알지 못하면 답답함만 깊어집니다. 답은 오직 하나 — <strong>하나님의 영원한 경륜에 대한 계시</strong>입니다.</div>
+        </div>
+        <p class="content-text">욥이 자신을 좀먹은 옷으로 보면서도 자기 의를 양보하지 못했던 이유는 — 그가 <strong>하나님의 영원한 경륜을 알지 못했기 때문</strong>입니다. 그는 자신의 옛 영역의 무너짐을 도덕적 결과로만 해석했고, 그 너머에 있는 <span class="hl">하나님의 재건축의 의도</span>를 보지 못했습니다. 이것이 우리가 다음으로 들어가야 할 핵심입니다 — 하나님의 영원한 경륜이란 무엇인가?</p>
+      </div></div>
+    </div>
+
+    <div class="step-header" data-kicker="Part Ⅱ · 하나님의 영원한 경륜">분배하심과 신성한 조성</div>
+
+    <div class="accordion" id="acc-3">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅳ</div>
+        <div class="acc-title-text">하나님의 영원한 경륜 — 마음의 갈망에 따른 분배하심</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">욥기 라이프 스타디 메시지 9, 68쪽</div>
+          <div class="verse-text">"우리는 <b>하나님의 영원한 경륜</b>을 알아야 한다. 하나님의 경륜은 하나님의 마음의 갈망에 따른 <b>하나님의 영원한 의도</b>로서, <b>신성한 삼일성 안에서 그분 자신을 아버지로서 아들 안에서 그 영에 의해 그분께서 선택하신 백성 안으로 분배하시어 그들의 생명과 본성이 되심으로써, 그들이 그분의 충만과 표현이 되게 하시는 것</b>이다."</div>
+        </div>
+        <p class="content-text">이 단락은 욥기 전체의 신학적 답을 한 문장에 압축합니다 — <strong>하나님의 영원한 경륜이란 무엇인가</strong>의 정확한 정의입니다. 이 정의는 다섯 가지 핵심 요소를 포함합니다 — ① <span class="hl">마음의 갈망</span>, ② <span class="hl">영원한 의도</span>, ③ <span class="hl">신성한 삼일성</span>, ④ <span class="hl">분배하심</span>, ⑤ <span class="hl">충만과 표현</span>.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"마음의 갈망에 따른" — 본질적 동기</div>
+          <div class="sub-point-text">하나님의 경륜은 그분의 <strong>마음의 갈망(heart's desire)</strong>에서 흘러 나옵니다. 이는 단지 의지의 결정이 아닙니다 — <span class="hl">하나님의 가장 깊은 정서적 갈망에 뿌리를 둔 본질적 동기</span>입니다. 그분은 외부의 필요나 의무에 의해 경륜을 가지신 것이 아니라, 그분 자신의 마음 안에서 <strong>"우리를 그분 자신과 함께 누리시기를 갈망하신 것"</strong>입니다. 이것이 하나님의 경륜의 출발점입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"신성한 삼일성 안에서" — 삼위일체적 흐름</div>
+          <div class="sub-point-text">분배는 추상적 개념이 아닙니다. 분배는 <strong>"아버지로서 아들 안에서 그 영에 의해"</strong> — 정확한 삼위일체적 통로를 따라 일어납니다. <span class="hl">아버지가 근원이시고, 아들이 체현이시며, 영이 적용이시기에</span> — 분배는 결코 한 위격만의 일이 아닙니다. 삼일 하나님 전체가 우리 안으로 흘러 들어 오십니다 — 이것이 이 분배의 깊이와 풍성함을 보장합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"그분 자신을 분배하시어" — 일이 아닌 자기</div>
+          <div class="sub-point-text">하나님이 우리에게 분배하시는 것은 <strong>"그분 자신"</strong>입니다 — 그분의 일이나 은사나 능력이 아닙니다. <span class="hl">하나님 자신이 우리 안으로 옮겨지시는 것</span> — 이것이 분배의 핵심입니다. 우리는 종종 일·사역·은사를 추구하지만, 하나님의 경륜의 실질은 <strong>그분 자신이 우리 존재 안으로 들어 오시는 것</strong>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"그들의 생명과 본성이 되심으로써"</div>
+          <div class="sub-point-text">분배의 결과는 무엇입니까? 하나님이 <strong>"그들의 생명과 본성이 되심"</strong>입니다. <span class="hl">생명(life)은 가장 안쪽 흐름이고, 본성(nature)은 그 흐름이 굳어진 본질</span>입니다. 우리의 옛 생명·옛 본성을 대치하시는 것이 아니라 — 하나님의 생명과 본성이 우리 존재 안에 <strong>실질적으로 더해지고 들어오심</strong>으로써, 우리가 점점 그분과 같이 되는 것입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"그분의 충만과 표현이 되게 하심"</div>
+          <div class="sub-point-text">분배의 궁극적 목적은 우리가 <strong>"그분의 충만과 표현"</strong>이 되는 것입니다. <span class="hl">충만(fullness)은 그분이 우리 안에 모이심이고, 표현(expression)은 그분이 우리를 통해 흘러 나오심</span>입니다. 한 입에 들어 온 강이 한 출구로 흘러 나가듯 — 우리는 하나님 자신의 단체적 그릇이 되어 그분을 담고 표현하는 사람이 됩니다. 이것이 하나님의 영원한 경륜의 도착점입니다.</div>
+        </div>
+        <p class="content-text">욥의 가장 깊은 답답함은 — 그가 <strong>이 경륜을 알지 못한 채로 고난을 겪었기 때문</strong>입니다. 그는 자신에게 일어나는 일의 의미를 알지 못했고, 그래서 끊임없이 친구들과 논쟁했습니다. 그러나 우리에게는 <span class="hl">신약의 계시 전체</span>가 주어졌습니다. 우리는 환난 속에서 즉시 알 수 있습니다 — "<strong>이것은 하나님이 그분 자신을 나에게 분배하시고, 나를 그분의 충만과 표현으로 빚으시는 일이다</strong>."</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">분배하심의 결과는 무엇입니까? — <strong>신성한 조성</strong>, 곧 신성한 어떤 것으로의 재건축입니다.</div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="step-header" data-kicker="Part Ⅱ (계속) · 신성한 조성과 그리스도">재건축의 본질과 경륜의 중심</div>
+
+    <div class="accordion" id="acc-4">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅴ</div>
+        <div class="acc-title-text">신성한 조성 = 재건축 — 신성한 어떤 것으로</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">욥기 라이프 스타디 메시지 9, 68-69쪽</div>
+          <div class="verse-text">"하나님의 경륜은 <b>하나님의 계획이자 하나님의 안배</b>이며, 이것은 하나님께서 그분 자신의 <b>요소와 생명과 본성과 미덕들과 그분이 성취하고 달성하신 모든 것</b>을 그분께 선택받은 백성에게 분배하심으로, 그분께서 선택하신 백성이 신성한 근원의 신성한 요소 안에 있는 <b>신성한 본질로 조성</b>되게 하시어 <b>신성한 어떤 것으로 재건축</b>되게 하시는 것이다."</div>
+          <div class="verse-text">"<b>하나님의 분배하심을 받기 전에 우리는 단지 사람이었지만, 하나님께서 그분의 신성한 조성으로 재건축하신 후에 우리는 주 예수님과 같이 신성하고 인간적이며 인간적이고 신성하다.</b> … 그리스도에 의해 거듭난 이후 우리는 그분의 일부분이 되었으며, 이제 우리는 그분과 똑같이 신성하고 인간적이며 인간적이고 신성하다."</div>
+        </div>
+        <p class="content-text">앞 단락이 경륜의 <strong>출발점·동기·통로·목적</strong>을 정의했다면, 이 단락은 <strong>경륜의 실질 — 곧 재건축의 정확한 의미</strong>를 정의합니다. 핵심 등식은 <span class="hl">"신성한 조성 = 재건축"</span>이며, 그 결말은 <strong>"신성하고 인간적이며 인간적이고 신성한"</strong> 사람입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님의 계획이자 하나님의 안배"</div>
+          <div class="sub-point-text">하나님의 경륜은 임의의 즉흥적 동작이 아닙니다. 그것은 <strong>"하나님의 계획(plan)이자 하나님의 안배(arrangement)"</strong>입니다. <span class="hl">계획은 그 안의 청사진이고, 안배는 그것이 시간과 공간 안에서 펼쳐지는 방식</span>입니다. 욥에게 일어난 모든 일 — 의회의 결정, 환난의 순서, 친구들의 등장, 회오리바람의 응답 — 은 우연이 아니라 하나님의 정밀한 계획과 안배의 일부였습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">분배되는 것 — 다섯 가지</div>
+          <div class="sub-point-text">하나님이 우리에게 분배하시는 것은 다섯 항목으로 펼쳐집니다 — <strong>① 요소(element), ② 생명(life), ③ 본성(nature), ④ 미덕들(virtues), ⑤ 그분이 성취하고 달성하신 모든 것(all that He has accomplished)</strong>. <span class="hl">앞의 셋은 그분 자신의 본질이고, 뒤의 둘은 그 본질의 표현과 그 표현의 산물</span>입니다. 우리는 단지 추상적인 영적 영향이 아니라 — 하나님의 모든 것을 받습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"신성한 본질로 조성됨"</div>
+          <div class="sub-point-text">분배의 결과는 <strong>"신성한 본질로 조성(constituted)"</strong>되는 것입니다. 헬라어 "콘스티튜어" 동사는 <span class="hl">"~로 짜여지다, 한 본질로 빚어지다"</span>의 의미를 가집니다. 이는 외부의 가공이 아니라 <strong>존재의 직물 자체가 새로 짜여지는 것</strong>입니다. 우리의 옛 직물은 인간적이지만, 그 위에 신성한 실들이 짜여 들어와 — 마침내 우리의 본질 자체가 신성한 어떤 것이 됩니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"신성한 어떤 것으로 재건축"</div>
+          <div class="sub-point-text">조성의 결과는 <strong>"신성한 어떤 것(something divine)으로 재건축"</strong>되는 것입니다. <span class="hl">우리는 더 이상 단지 인간이 아닙니다 — 우리는 신성한 어떤 것이 됩니다</span>. 이는 신격에서 그렇게 되는 것이 아니지만, 생명·본성·요소에서 그렇게 됩니다. 욥에게 일어난 일은 외적 두 배의 축복이 아니라 — 그가 진정으로 <strong>"신성한 어떤 것"</strong>으로 재건축된 것이었습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"신성하고 인간적이며 인간적이고 신성하다"</div>
+          <div class="sub-point-text">재건축의 결말은 매우 담대하게 정의됩니다 — <strong>"우리는 주 예수님과 같이 신성하고 인간적이며 인간적이고 신성하다"</strong>. 이 두 어순의 반복은 의도적입니다. <span class="hl">신성과 인간성이 완전히 교호되어, 어느 한 쪽도 다른 쪽 위에 있지 않고 한 사람 안에서 통일됩니다</span> — 이것이 그리스도가 되신 모범이며, 거듭난 이들에게 약속된 운명입니다. "그리스도에 의해 거듭난 이후 우리는 그분의 일부분이 되었으며" — 이것이 재건축의 본질입니다.</div>
+        </div>
+        <p class="content-text">이 단락이 욥기 라이프 스타디 메시지 9의 가장 결정적 진술입니다. 우리는 흔히 거듭남을 "죄 사함"이나 "구원"의 측면으로만 이해하지만, <strong>거듭남의 진정한 본질은 우리가 그리스도의 일부분이 되어 신성하고 인간적이며 인간적이고 신성한 사람이 되는 것</strong>입니다. <span class="hl">이것이 욥에 대한 하나님의 변함없는 의도였고, 오늘 우리에 대해서도 동일합니다</span>.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">이 모든 분배와 재건축의 <strong>중심과 전부</strong>는 누구이십니까? — 그리스도이십니다.</div>
+
+    <div class="accordion" id="acc-5">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅵ</div>
+        <div class="acc-title-text">그리스도 — 성경의 중심과 하나님의 경륜의 중심</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">욥기 라이프 스타디 메시지 9·10 / 고전 15:45 / 롬 8:29</div>
+          <div class="verse-text">"<b>그리스도는 성경의 중심이실 뿐만 아니라 하나님의 경륜의 중심과 전부이시다.</b> 바로 이 경륜 안에서 그리스도는 <b>육체가 되셨고</b>, 십자가로 가셔서 죽음을 통과하셨으며, 죽음에서 나와 부활 안으로 들어가셨고, 부활 안에서 <b>하나님에게서 태어나 하나님의 맏아들이 되시고</b>, 마지막 아담으로서 <b>생명 주시는 영이 되시어</b> 모든 믿는 이들을 거듭나게 하심으로써 <b>생명과 본성에서 그분과 똑같이 되게</b> 하시어 그분의 형제들과 하나님의 아들들이 되게 하셨다."</div>
+        </div>
+        <p class="content-text">하나님의 영원한 경륜은 추상적 계획이 아닙니다. 그것은 <strong>한 분 — 그리스도 — 안에서 시간과 공간 안으로 실행된 구체적 사건들의 연속</strong>입니다. 이 단락은 그 사건들의 흐름을 정밀하게 펼쳐 보입니다 — <span class="hl">육체 되심 → 십자가의 죽음 → 부활 → 맏아들 됨 → 생명 주시는 영 → 거듭나게 하심 → 형제들과 하나님의 아들들</span>.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"성경의 중심" + "경륜의 중심과 전부"</div>
+          <div class="sub-point-text">그리스도는 두 차원에서 중심이십니다 — <strong>성경의 중심(creation 창조부터 새 예루살렘까지)</strong>이시며, <strong>하나님의 경륜의 중심과 전부</strong>이십니다. <span class="hl">"중심과 전부(center and circumference)"</span>는 헬라어 사고에서 "처음과 끝, 시작과 결말 모두"를 가리킵니다. 그리스도 없이 경륜은 추상적 개념일 뿐 — 그분 안에서 모든 것이 구체적이고 실질적이 됩니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">육체 되심 → 십자가 → 부활</div>
+          <div class="sub-point-text">그리스도의 행로의 첫 세 단계 — <strong>① 육체가 되셨고(요 1:14), ② 십자가로 가셔서 죽음을 통과하셨으며, ③ 죽음에서 나와 부활 안으로 들어가셨다</strong>. <span class="hl">육체 되심은 신성이 인성과 결합된 사건이고, 십자가는 옛 창조물이 종결된 사건이며, 부활은 새 창조물이 시작된 사건</span>입니다. 이 셋은 분리된 것이 아니라 하나의 연속된 흐름입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님의 맏아들이 되시고"</div>
+          <div class="sub-point-text">부활 안에서 그리스도는 결정적인 사건을 겪으셨습니다 — <strong>"부활 안에서 하나님에게서 태어나 하나님의 맏아들이 되심"</strong>(롬 1:4 참조). 그분은 영원 전부터 이미 하나님의 독생자(only-begotten)이셨지만, <span class="hl">부활 안에서 새롭게 — 인성을 가지신 채로 — 하나님의 맏아들(firstborn)이 되셨습니다</span>. 이 맏아들 됨은 형제들이 따를 수 있는 길을 열기 위함이었습니다. 그분이 먼저 가셨기에, 우리도 그 길을 따를 수 있게 되었습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"마지막 아담으로서 생명 주시는 영이 되시어"</div>
+          <div class="sub-point-text">고전 15:45의 가장 결정적인 진술 — <strong>"마지막 아담은 생명 주시는 영이 되셨다"</strong>. 그리스도는 부활 안에서 한 차원 더 들어가셨습니다. 그분은 <span class="hl">우리에게 생명을 주실 수 있는 영(life-giving Spirit)</span>이 되셨습니다. 이는 그리스도가 영으로 변환되셨다는 뜻이 아니라, 그분이 <strong>우리에게 들어 오시고 우리 안에 거하실 수 있는 형태</strong>가 되셨다는 의미입니다. 이것이 욥에게는 부족했던 신약의 결정적 계시입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">결과 — 형제들과 하나님의 아들들</div>
+          <div class="sub-point-text">생명 주시는 영이 되신 그리스도는 <strong>"모든 믿는 이들을 거듭나게 하심으로써 생명과 본성에서 그분과 똑같이 되게 하시어 그분의 형제들과 하나님의 아들들이 되게 하셨다"</strong>(롬 8:29; 히 2:11). <span class="hl">우리는 그분의 형제(brothers)이며 동시에 하나님의 많은 아들들(many sons)</span>입니다. 같은 생명·같은 본성을 공유하기에 — 이것이 단순한 비유가 아니라 영원한 실재입니다. 욥이 알지 못한 이 진리가 오늘 우리에게는 명백히 계시되어 있습니다.</div>
+        </div>
+        <p class="content-text">"이 아들들과 맏아들이 합하여 모두 한 새사람이 됩니다. <span class="hl">머리는 그리스도이고 몸은 교회인 이 한 새사람</span>은 하나님의 영원한 목적을 수행하여 새 예루살렘을 완결할 것입니다." 그리스도의 모든 행로는 결국 <strong>한 단체적 새사람</strong>을 빚어내기 위함이었습니다 — 이것이 다음 단락의 주제입니다.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="step-header" data-kicker="Part Ⅲ · 결말과 적용">새사람·새 예루살렘과 변함없는 의도</div>
+
+    <div class="accordion" id="acc-6">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅶ</div>
+        <div class="acc-title-text">새사람과 그리스도의 몸 — 거듭난 이들의 단체적 결말</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">욥기 라이프 스타디 메시지 9, 69-70쪽 / 엡 2:15</div>
+          <div class="verse-text">"<b>거듭난 이들은 신성하고 인간적이며 인간적이고 신성한 이들로서, 자연스럽게 유기체인 그리스도의 몸이 된다.</b> 이 몸은 하나님의 교회이자 <b>하나님의 새 창조물에 속한 새사람</b>으로서, 하나님의 새로운 '과업' 곧 <b>삼일 하나님의 충만이자 하나님의 표현을 위한 그리스도의 몸을 건축하는 일</b>을 수행한다."</div>
+        </div>
+        <p class="content-text">앞 단락에서 보았듯, 그리스도의 모든 행로는 결국 <strong>한 단체적 새사람</strong>을 빚어내기 위함이었습니다. 이 단락은 그 유기체의 정체와 과업을 정의합니다 — 거듭난 이들은 단지 개인적으로 변화되는 것이 아니라, <span class="hl">"자연스럽게(naturally)" 유기체인 그리스도의 몸으로 조성됩니다.</span>. 한 사람의 재건축은 결코 고립된 사건이 아닙니다 — 그것은 한 유기체의 결말 안에서만 의미를 가집니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"자연스럽게" — 강제가 아닌 결과</div>
+          <div class="sub-point-text">거듭난 이들은 그리스도의 몸이 되기 위해 외부의 추가 단계를 거치지 않습니다. <strong>"자연스럽게(naturally)"</strong> 그리스도의 몸이 됩니다 — <span class="hl">그것은 거듭남 자체의 자연스러운 결과</span>입니다. 같은 신성한 생명을 받은 사람들이 자동적으로 한 유기체로 합쳐지듯, 같은 그리스도를 받아들인 사람들은 자연스럽게 한 몸을 이룹니다. 이는 가입의 문제가 아니라 출생의 문제입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"유기체인 그리스도의 몸"</div>
+          <div class="sub-point-text">그리스도의 몸은 <strong>유기체(organism)</strong>입니다 — 조직(organization)이 아닙니다. <span class="hl">유기체는 살아 있는 한 생명을 공유하는 통일체</span>이며, 모든 부분이 한 생명의 흐름 안에서 서로 의존합니다. 머리이신 그리스도와 몸인 우리는 같은 생명을 공유합니다 — 우리에게 흐르는 신성한 생명은 곧 그리스도의 생명입니다. 이것이 단순한 "교회 가입"이 아닌 그리스도의 몸의 본질입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님의 새 창조물에 속한 새사람"</div>
+          <div class="sub-point-text">동일한 유기체가 다른 각도에서 <strong>"하나님의 새 창조물에 속한 새사람(the new man)"</strong>으로 정의됩니다(엡 2:15). 그리스도의 몸은 생명의 측면이고, 새사람은 인격의 측면입니다. <span class="hl">한 새사람은 하나의 통일된 인격을 가지고 — 하나의 의지·하나의 정서·하나의 사고를 가집니다</span>. 우리는 더 이상 옛 아담의 새사람이 아닙니다 — 우리는 그리스도 안에서 한 새사람의 부분들입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">하나님의 새 과업 — 한 가지</div>
+          <div class="sub-point-text">새사람의 과업은 무엇입니까? <strong>"삼일 하나님의 충만이자 하나님의 표현을 위한 그리스도의 몸을 건축하는 일"</strong>입니다. <span class="hl">하나님의 새 과업은 단 하나입니다 — 그리스도의 몸을 건축하는 것</span>. 모든 다른 일들 — 봉사·복음전파·교통·기도·집회 — 은 이 한 과업의 부분일 뿐입니다. 욥의 옛 영역의 일은 자기를 건축하는 것이었습니다 — 새 영역의 일은 그리스도의 몸을 건축하는 것입니다.</div>
+        </div>
+        <p class="content-text">우리가 욥처럼 자기를 건축하는 자리에 있다면, 우리의 모든 노력은 결국 좀이 먹은 옷처럼 무너집니다. 그러나 우리가 <strong>그리스도의 몸을 건축하는 유기체에 합류</strong>한다면 — 우리의 모든 작은 봉사가 <span class="hl">영원하신 하나님의 충만이자 표현</span>으로 흘러 들어 갑니다. 이것이 거듭남의 자연스러운 결말이며, 욥에 대한 하나님의 변함없는 의도의 단체적 측면입니다.</p>
+      </div></div>
+    </div>
+
+    <div class="section-connector">· · ·</div>
+
+    <div class="accordion" id="acc-7">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅷ</div>
+        <div class="acc-title-text">새 예루살렘 — 욥에게 필요했던 답변</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">욥기 라이프 스타디 메시지 9, 69-70쪽 / 메시지 10, 76쪽</div>
+          <div class="verse-text">"삼일 하나님의 유기체인 이 충만은 <b>새 예루살렘으로 완결될 것이다</b>. 성경은 창조하시는 하나님을 기점으로 시작되고, 새 예루살렘 곧 <b>삼일 하나님과 그분께서 선택하시고 구속하시고 거듭나게 하시고 변화시키시고 같은 형상이 되게 하시고 영광스럽게 하신 세 부분으로 된 사람의 연합</b>으로 끝난다. 이처럼 새 예루살렘은 하나님과 사람으로 이루어진 구성체로서 영원토록 하나님을 표현할 것이다."</div>
+          <div class="verse-text">"이것들이 신약의 내용들이자 <b>욥에게 필요했던 답변</b>이다. <b>이것이 욥이 겪은 고난의 목적에 관한 하나님의 답변이다.</b>"</div>
+        </div>
+        <p class="content-text">하나님의 영원한 경륜의 마지막 도착점은 <strong>새 예루살렘</strong>입니다. 단지 한 도시가 아니라 — <span class="hl">하나님과 사람으로 이루어진 영원한 구성체(constitution)</span>입니다. 그리고 결정적으로, 이 모든 신약의 내용이 곧 <strong>욥에게 필요했던 답변, 욥의 고난의 목적에 관한 하나님의 답변</strong>이라고 메시지는 분명히 선언합니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">성경의 두 끝 — 창조부터 새 예루살렘까지</div>
+          <div class="sub-point-text">"<strong>성경은 창조하시는 하나님을 기점으로 시작되고, 새 예루살렘 … 으로 끝난다.</strong>" <span class="hl">성경 전체가 하나의 거대한 호(arc)</span>를 이룹니다 — 창조부터 새 예루살렘까지. 욥기를 포함한 모든 성경의 책들은 이 거대한 호의 한 지점을 차지합니다. 우리가 욥의 환난을 이 거대한 호 안에서 보지 않으면, 욥의 고난은 의미 없는 무작위 사건이 됩니다 — 그러나 이 호 안에서 보면 그것은 새 예루살렘을 향한 하나님의 정밀한 작업의 부분입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">새 예루살렘의 정의 — 두 부분의 연합</div>
+          <div class="sub-point-text">새 예루살렘은 추상적 영광이 아닙니다. 그것은 정확히 정의됩니다 — <strong>"삼일 하나님과 … 세 부분으로 된 사람의 연합"</strong>. <span class="hl">두 부분이 하나로 연합된 영원한 구성체</span>입니다. 그 사람은 다섯 단계를 통과한 사람입니다 — 선택받고(chosen)·구속받고(redeemed)·거듭나고(regenerated)·변화되고(transformed)·같은 형상이 되고(conformed)·영광스럽게 된(glorified) 사람. 욥에게 일어난 일은 이 다섯 단계의 일부였습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"영원토록 하나님을 표현할 것이다"</div>
+          <div class="sub-point-text">새 예루살렘의 영원한 기능은 <strong>"영원토록 하나님을 표현하는 것"</strong>입니다. 시간이 흐르고 사역이 변하고 전쟁이 끝나도 — 한 가지는 결코 변하지 않습니다. <span class="hl">새 예루살렘은 영원무궁히 하나님을 표현합니다</span>. 욥의 회복된 두 배의 축복은 한정된 시간 안의 한 그림자였지만, 욥이 진정으로 받은 것은 — <strong>그가 새 예루살렘 안에서 영원히 하나님을 표현하는 한 부분이 된 것</strong>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">신약의 주요 내용 — 한 문단 요약</div>
+          <div class="sub-point-text">메시지는 신약 전체를 한 문단으로 요약합니다 — <strong>"삼일 하나님은 그분의 선한 기쁨에 따라 영원한 경륜을 갖고 계시는데, 이 경륜은 그분께서 선택하시고 구속하신 백성 안으로 그분 자신의 생명과 본성을 분배하시어, 그들 모두를 생명과 본성에서 그분의 어떠하심과 똑같이 만드심으로써 그들이 그분의 복사판이 되어 그분을 표현하게 하는 것이다. 이러한 단체적인 표현은 새 예루살렘으로 완결될 것이다."</strong> <span class="hl">이 한 문단이 신약 전체이고, 욥에게 필요했던 답변입니다</span>.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"욥이 겪은 고난의 목적에 관한 하나님의 답변"</div>
+          <div class="sub-point-text">메시지의 결정적 진술 — <strong>"이것이 욥이 겪은 고난의 목적에 관한 하나님의 답변이다."</strong> 욥은 평생 답을 찾았습니다. "왜 이런 일이 나에게 일어나는가?" "하나님의 목적은 무엇인가?" 욥기는 이 질문에 대한 직접적 답을 주지 않은 채 끝납니다 — 욥은 다만 <span class="hl">"하나님 자신을 보고" 침묵</span>합니다. 그러나 욥이 신약의 빛 아래서 자신의 고난을 다시 본다면 — 그는 즉시 답을 알 것입니다. <strong>"내 모든 고난은 내가 새 예루살렘의 한 부분이 되도록, 하나님이 나를 그분의 신성한 조성으로 재건축하시려는 일이었다."</strong></div>
+        </div>
+        <p class="content-text">우리는 욥보다 훨씬 풍성한 계시를 받았습니다. 환난 가운데 답이 보이지 않는 시간에 우리는 곧바로 신약의 빛 아래서 우리의 자리를 볼 수 있습니다 — <strong>"이 모든 고난은 하나님이 나를 새 예루살렘의 한 부분으로 빚으시는 일이다."</strong> 이 한 줄의 답이 우리의 모든 답답함을 통과하게 합니다. <span class="hl">욥에게는 부족했던 이 답이 우리에게는 명백히 주어졌으니 — 우리는 침묵을 넘어 찬송으로 환난을 통과해야 합니다</span>.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">이제 우리는 욥에 대한 — 또한 우리에 대한 — <strong>하나님의 변함없는 의도</strong>의 정확한 정의에 도달합니다.</div>
+
+    <div class="accordion" id="acc-8">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅸ</div>
+        <div class="acc-title-text">개요 D·E — 변함없는 의도와 환난의 적용 (엡 3:16-21)</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">개요 D·E / 딤전 6:11, 딤후 3:17 / 엡 3:16-21</div>
+          <div class="verse-text"><b>D.</b> 하나님의 변함없는 의도는 욥을 하나님의 사람, 곧 하나님의 온전한 체현이신 그리스도로 충만하게 채우시어 <b>하나님의 거룩한 충만</b>이 됨으로써, 오직 그리스도 안에서 하나님을 충만히 표현하는 사람으로 만드시려는 것이었다 — 딤전 6:11, 딤후 3:17.</div>
+          <div class="verse-text"><b>E.</b> 하나님께서 욥을 낱낱이 벗겨 내시고 끝까지 소모되게 하신 <b>깊은 이유</b>는, 천연적인 옛 욥을 완전히 허물어뜨리심으로써 하나님께서 그분 자신으로 욥을 새롭게 재건축하실 수 있는 <b>온전한 기초와 생명의 길</b>을 얻으시어, 욥이 비록 신격에서는 아니지만 <b>생명과 본성에서 하나님과 똑같아져</b> 결국 하나님을 영광스럽게 표현할 수 있는 <b>참된 하나님-사람</b>이 되게 하시려는 것이었다 — 엡 3:16-21.</div>
+        </div>
+        <p class="content-text">개요 D·E는 메시지 9·10의 모든 계시를 한 인물 — 욥 — 에게 적용합니다. 그리고 이 적용은 단지 욥에 대한 것이 아니라 <strong>오늘 우리에 대한 것</strong>입니다. <span class="hl">하나님은 결코 변함없으십니다</span> — 그분의 의도는 욥에게서 그러했듯 우리에게서도 동일합니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">D. "변함없는 의도" — 그리스도로 충만케 하심</div>
+          <div class="sub-point-text">개요 D는 하나님의 의도를 매우 정밀한 다섯 항목으로 펼쳐 보입니다 — <strong>① 욥을 하나님의 사람으로 만드시고, ② 그를 하나님의 온전한 체현이신 그리스도로 충만하게 채우시며, ③ 그가 하나님의 거룩한 충만이 되게 하시고, ④ 오직 그리스도 안에서, ⑤ 하나님을 충만히 표현하게 하시는 것</strong>. <span class="hl">"변함없는(unchanging)"이라는 형용사가 결정적</span>입니다 — 환난의 어떤 격렬함도, 욥의 어떤 변호도, 친구들의 어떤 잘못된 가르침도 — 이 의도를 변경시킬 수 없었습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님의 거룩한 충만" — 한 비밀한 칭호</div>
+          <div class="sub-point-text">개요는 하나님의 사람을 또 다른 차원에서 정의합니다 — <strong>"하나님의 거룩한 충만(God's holy fullness)"</strong>. <span class="hl">충만은 그분이 우리 안에 모이심이고, 거룩함은 그분의 본질의 어떠하심</span>입니다. 우리는 단지 하나님의 일을 하는 종이 아니라 — 그분 자신의 거룩한 충만을 담는 그릇이 되도록 부름받았습니다. 이것이 욥에 대한 하나님의 변함없는 의도였고, 우리에 대해서도 동일합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">E. "깊은 이유" — 벗기심의 의도</div>
+          <div class="sub-point-text">개요 E는 욥기 1-2장의 모든 환난의 <strong>"깊은 이유(deep reason)"</strong>를 정의합니다 — 그것은 가혹함이 아닌 <span class="hl">하나님께서 그분 자신으로 욥을 새롭게 재건축하실 수 있는 온전한 기초와 생명의 길을 얻으시려는 것</span>이었습니다. 천연적인 욥은 그 자체로 죄악되지는 않았지만, 신성한 조성을 받기에는 너무 가득 차 있었습니다. 그래서 그분은 욥을 비우셔서 — 그 빈 자리에 그분 자신을 채우실 수 있게 하셨습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"신격에서는 아니지만 생명과 본성에서"</div>
+          <div class="sub-point-text">개요는 매우 정밀한 신학적 한계선을 설정합니다 — 욥은 <strong>"비록 신격(Godhead)에서는 아니지만 생명과 본성(life and nature)에서 하나님과 똑같아"</strong> 졌습니다. <span class="hl">신격은 하나님만의 영원한 위격적 본질이며, 우리는 결코 그것에 참여할 수 없습니다 — 그러나 그분의 생명과 본성에는 우리가 참여합니다</span>(벧후 1:4). 이 한계선 덕분에 우리는 안전하게 신성해질 수 있습니다 — 우상이 되지 않고, 진정한 하나님-사람이 됩니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">엡 3:16-21 — 결말의 영광송</div>
+          <div class="sub-point-text">바울의 결말의 영광송이 이 모든 것을 봉인합니다 — <strong>"아버지께서 그분의 영광의 풍성을 따라 그분의 영을 통하여 능력으로 여러분을 속사람에 이르도록 강하게 해 주시고, 믿음을 통하여 그리스도께서 여러분의 마음에 거처를 정하시게 하시며 … 이제 우리 안에서 운행하는 능력에 따라, 우리가 구하거나 생각하는 모든 것보다 더욱 넘치도록 해 주실 수 있으신 하나님께 교회 안에서와 그리스도 예수님 안에서 영광이 대대로 영원무궁히 있으시기를"</strong>(엡 3:16-21). <span class="hl">속사람의 강하게 됨, 그리스도의 거하심, 사랑의 광대함을 깨달음 — 이것이 욥에 대한, 또한 우리에 대한 하나님의 변함없는 의도의 정확한 실행</span>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">실천 — 환난 한가운데서의 응답</div>
+          <div class="sub-point-text">우리의 삶 가운데 피할 수 없는 환난과 고난으로 하나님의 강한 손이 우리 위에 무겁게 짓누를 때, 우리는 오히려 이렇게 엎드려 경배해야 합니다 — <strong>"오, 하나님, 당신은 지금 나를 무너뜨리는 것이 아니라 철저히 재건축하고 계십니다. 나의 낡고 부패한 옛사람을 벗겨내시고 영광스러운 새사람을 입혀 주고 계십니다."</strong> <span class="hl">이 한 마디 응답이 모든 환난의 의미를 변환시킵니다</span> — 무너짐이 재건축으로, 상실이 분배하심으로, 좀먹은 옷이 영광의 새사람으로.</div>
+        </div>
+        <p class="content-text">정리하면 — <strong>딤전 6:11은 하나님의 사람의 호흡을 정의합니다</strong>(Ⅰ). <strong>딤후 3:17은 그 사람을 빚는 도구가 성경임을 보여줍니다</strong>(Ⅱ). <strong>욥 13:27-28은 옛 욥의 모순된 자기 인식을 드러냅니다</strong>(Ⅲ). 그러나 욥이 알지 못한 답이 신약에 있습니다 — <strong>하나님의 영원한 경륜은 그분 자신을 분배하시는 것이며</strong>(Ⅳ), <strong>그 결과는 신성한 조성으로의 재건축</strong>(Ⅴ), 곧 <strong>그리스도 안에서의 신성하고 인간적인 사람</strong>입니다(Ⅵ). 이 유기체는 <strong>그리스도의 몸이자 한 새사람</strong>(Ⅶ)으로서 <strong>새 예루살렘으로 완결</strong>됩니다(Ⅷ). <span class="hl">개요 D·E의 결말 — 환난 한가운데서 우리는 응답합니다 — "당신은 나를 재건축하고 계십니다"</span>(Ⅸ). 아멘.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- RECAP -->
+  <section class="recap-section" id="recap-section">
+    <div class="recap-title">전체 메시지 복습 — 변함없는 의도와 신성한 재건축</div>
+    <div class="recap-grid">
+      <div class="recap-item"><div class="recap-num">1</div><div class="recap-item-text"><strong>본문 (딤전 6:11 / 딤후 3:17):</strong> "오 하나님의 사람이여" — φεῦγε(피하라)와 δίωκε(추구하라)의 두 명령형. 성경이 이 사람을 온전케 하고 충분히 준비되게 함</div></div>
+      <div class="recap-item"><div class="recap-num">2</div><div class="recap-item-text"><strong>옛 욥의 자기 인식 (욥 13:27-28):</strong> 자신을 "피폐해져 썩어 문드러진 / 좀먹은 옷"으로 봄 — 그러나 동시에 "아무 잘못이 없다"고 느낌. 하나님의 목적을 알지 못함</div></div>
+      <div class="recap-item"><div class="recap-num">3</div><div class="recap-item-text"><strong>하나님의 영원한 경륜:</strong> 마음의 갈망에 따른 영원한 의도 — 신성한 삼일성 안에서 그분 자신을 선택받은 백성 안으로 분배하시어 그들의 생명·본성이 되심으로써 그분의 충만과 표현이 되게 하심</div></div>
+      <div class="recap-item"><div class="recap-num">4</div><div class="recap-item-text"><strong>신성한 조성 = 재건축:</strong> 요소·생명·본성·미덕·성취하신 모든 것의 분배하심 → 신성한 본질로 조성됨 → "신성한 어떤 것"으로 재건축 — 주 예수님과 같이 신성하고 인간적이며 인간적이고 신성</div></div>
+      <div class="recap-item"><div class="recap-num">5</div><div class="recap-item-text"><strong>그리스도 — 경륜의 중심과 전부:</strong> 육체 되심 → 십자가 → 부활 → 맏아들 됨 → 마지막 아담으로서 생명 주시는 영 → 모든 믿는 이들을 거듭나게 하심으로써 그분의 형제·하나님의 아들들로</div></div>
+      <div class="recap-item"><div class="recap-num">6</div><div class="recap-item-text"><strong>새사람·그리스도의 몸 → 새 예루살렘:</strong> 거듭난 이들이 자연스럽게 유기체인 그리스도의 몸이 되어 한 새사람을 이룸 — 삼일 하나님의 충만이자 표현. 이것이 욥에게 필요했던 답변이자 욥의 고난의 목적에 관한 하나님의 답변</div></div>
+      <div class="recap-item"><div class="recap-num">7</div><div class="recap-item-text"><strong>개요 D·E — 변함없는 의도 (엡 3:16-21):</strong> 욥을 그리스도로 충만케 하사 하나님의 거룩한 충만이 되게 하심. 신격이 아니라 생명·본성에서 하나님과 똑같아진 참된 하나님-사람으로</div></div>
+    </div>
+    <div class="recap-note"><strong>환난의 응답:</strong> 우리의 삶 가운데 피할 수 없는 환난과 고난으로 하나님의 강한 손이 우리 위에 무겁게 짓누를 때, 우리는 오히려 이렇게 엎드려 경배해야 합니다 — <strong>"오, 하나님, 당신은 지금 나를 무너뜨리는 것이 아니라 철저히 재건축하고 계십니다. 나의 낡고 부패한 옛사람을 벗겨내시고 영광스러운 새사람을 입혀 주고 계십니다."</strong> 아멘.</div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-section" id="quiz-section">
+    <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto;color:var(--ink-mute);font-weight:500;">1 / 10</span></div>
+    <div id="quiz-container">
+      <div class="quiz-item" data-index="0" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">1</div><div class="quiz-q-text">딤전 6:11 "오 하나님의 사람이여, … 피하라 … 추구하라"의 두 헬라어 동사 φεῦγε와 δίωκε의 시제·법은?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 부정과거(aorist) 명령 — 한 번의 결단을 명령</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 미완료(imperfect) 직설법 — 과거의 습관적 행위 묘사</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 현재(present) 능동 명령 — 지속적·습관적 동작을 명령</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 완료(perfect) 직설법 — 이미 완성된 상태를 진술</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="1" data-correct="2">
+        <div class="quiz-q"><div class="quiz-badge">2</div><div class="quiz-q-text">딤후 3:17 "성경은 하나님의 사람을 온전하게 하며, 온갖 선한 일을 위하여 충분히 준비되게 합니다"가 의미하는 본질은?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 성경은 단지 도덕적 정보를 전달하는 책이며, 그 정보를 알면 자동적으로 성숙해진다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 성경은 살아 계신 하나님께서 그분 자신을 우리 안에 분배하시는 도구이며 — 그 분배를 통해 하나님의 사람이 빚어진다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 성경 암송 분량과 영적 성숙은 정비례한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 성경은 율법의 행위로 의로워지는 길을 보여 준다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="2" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">3</div><div class="quiz-q-text">욥 13:27-28에 나타난 옛 욥의 자기 인식의 두 측면은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 자신을 의롭다고 여기면서 동시에 친구들도 의롭다고 인정함</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 자신의 죄를 깊이 회개하면서 동시에 그 죄에 대한 형벌을 수용함</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 자신을 "피폐해져 썩어 문드러진 / 좀먹은 옷"으로 여기면서 — 동시에 자신에게 "아무 잘못이 없다"고 느낌. 하나님께 목적이 있으심은 알았으나 그 목적이 무엇인지는 알지 못함</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 자신은 의롭지만 친구들 때문에 고통받는다고 여김</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="3" data-correct="4">
+        <div class="quiz-q"><div class="quiz-badge">4</div><div class="quiz-q-text">메시지가 정의하는 "하나님의 영원한 경륜"의 핵심은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 모든 죄인을 형벌하시고 의인을 보상하시려는 영원한 결정</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우주 전체에 그분의 율법을 강제하시려는 통치 계획</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 그분의 백성에게 외적 축복과 번영을 주시려는 의도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 마음의 갈망에 따른 영원한 의도 — 신성한 삼일성 안에서 그분 자신을 아버지로서 아들 안에서 그 영에 의해 선택받은 백성 안으로 분배하시어 그들의 생명·본성이 되심으로써 그들이 그분의 충만과 표현이 되게 하시는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="4" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">5</div><div class="quiz-q-text">"신성한 조성으로 재건축"된 결과는 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리는 더 이상 인간이 아니라 완전한 신성한 존재가 된다 (신격에 참여)</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우리는 도덕적으로 흠 없는 사람이 되어 율법을 완전히 지킬 수 있다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 우리는 주 예수님과 같이 신성하고 인간적이며 인간적이고 신성한 사람이 된다 — 그분의 일부분이 되어, 신격에서는 아니지만 생명과 본성에서 그분과 똑같이 된다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 우리는 천사와 같은 영적 존재로 변화되어 더 이상 몸을 갖지 않는다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="5" data-correct="2">
+        <div class="quiz-q"><div class="quiz-badge">6</div><div class="quiz-q-text">메시지에 따르면 그리스도가 "하나님의 경륜의 중심과 전부"이심은 무엇으로 나타납니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 그리스도는 단지 천국 입장의 조건이며, 경륜의 나머지 부분은 우리의 행위로 채워진다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 육체 되심 → 십자가의 죽음 → 부활 → 부활 안에서 하나님의 맏아들이 되심 → 마지막 아담으로서 생명 주시는 영이 되심 → 모든 믿는 이들을 거듭나게 하심으로써 생명·본성에서 그분과 똑같이 만드심</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 그리스도는 율법 수여자로서 우리의 도덕적 모범이 되신다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 그리스도는 단지 우리의 죄를 사하시는 분이며, 하나님의 경륜과는 별개의 사역을 하신다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="6" data-correct="2">
+        <div class="quiz-q"><div class="quiz-badge">7</div><div class="quiz-q-text">거듭난 이들이 "자연스럽게" 그리스도의 몸이 되는 이유는?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 외적 의식과 가입 절차를 통해 한 조직으로 묶이기 때문</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 거듭남으로 같은 신성한 생명을 받은 사람들은 자동적으로 한 유기체로 합쳐지기 때문 — 같은 생명의 흐름이 한 몸을 이룸</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 같은 도덕적 표준을 추구하는 사람들이 한 운동체를 이루기 때문</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 사도들이 강제적으로 모든 믿는 이들을 한 조직으로 모았기 때문</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="7" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">8</div><div class="quiz-q-text">메시지에 따르면 새 예루살렘은 무엇으로 정의됩니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 의인들이 영원히 거주하는 천상의 물질적 도시</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 모든 죄가 정복된 후의 회복된 옛 예루살렘</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 삼일 하나님과 그분께서 선택하시고 구속하시고 거듭나게 하시고 변화시키시고 같은 형상이 되게 하시고 영광스럽게 하신 세 부분으로 된 사람의 연합 — 영원토록 하나님을 표현할 구성체</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 천국의 비밀스러운 영적 영역으로, 우리의 이해를 초월함</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="8" data-correct="4">
+        <div class="quiz-q"><div class="quiz-badge">9</div><div class="quiz-q-text">개요 D — 하나님의 변함없는 의도는 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 욥에게 두 배의 외적 축복을 회복시키시려는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 욥의 도덕성을 더 높이 다듬어 모범적인 인물로 만드시려는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 욥의 친구들의 잘못을 드러내어 욥을 옳다고 인정하시려는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 욥을 하나님의 사람, 곧 하나님의 온전한 체현이신 그리스도로 충만하게 채우시어 하나님의 거룩한 충만이 됨으로써 — 오직 그리스도 안에서 하나님을 충만히 표현하는 사람으로 만드시려는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="9" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">10</div><div class="quiz-q-text">개요 E — 환난 한가운데서 우리의 마땅한 응답은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> "주여, 왜 이런 일이 나에게 일어나게 하셨습니까?" 항의의 기도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 환난은 일종의 형벌이므로 침묵으로 견디며 이가 시리도록 참는다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> "오, 하나님, 당신은 지금 나를 무너뜨리는 것이 아니라 철저히 재건축하고 계십니다. 나의 낡고 부패한 옛사람을 벗겨내시고 영광스러운 새사람을 입혀 주고 계십니다" — 엎드려 경배하며 응답</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 자신의 의를 변호하면서 하나님께 그 부당함을 호소함</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+    <div class="quiz-nav" id="quiz-nav" style="display:flex;gap:10px;margin-top:20px;">
+      <button class="quiz-nav-btn" id="quiz-prev-btn" onclick="navQuiz(-1)" style="flex:1;">이전</button>
+      <button class="quiz-nav-btn primary" id="quiz-next-btn" onclick="navQuiz(1)" style="flex:2;">다음 퀴즈</button>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-score-label">최종 점수</div>
+      <div class="quiz-score" id="quizScore">0 / 10</div>
+      <div class="quiz-result-msg" id="quizMsg"></div>
+    </div>
+  </section>
+
+  <!-- PRAYER -->
+  <section class="prayer-section" id="prayer-section">
+    <div class="prayer-heading">오늘의 결단과 기도</div>
+    <div class="prayer-callbox">
+      <p>"오, <span class="cb-house">하나님의 사람이여</span>!"<br>주여, 당신은 저를 그렇게 부르셨습니다 — <strong>ὦ ἄνθρωπε θεοῦ</strong>.<br>제 본래의 모습이 어떠하든, 당신의 영원한 경륜 안에서 저는 <strong>당신께 속한 한 사람</strong>입니다.</p>
+      <p>주님의 <span class="cb-house">변함없는 의도</span>는 — 저를 그리스도로 충만히 채우시어<br>저로 <strong>하나님의 거룩한 충만</strong>이 되게 하시고<br>오직 그리스도 안에서 당신을 표현하는 <strong>참된 하나님-사람</strong>이 되게 하시는 것임을 고백합니다.</p>
+      <p>그러므로 환난과 고난으로 당신의 강한 손이 제 위에 무겁게 짓누를 때 — 저는 엎드려 경배합니다.<br>"오, 하나님, <strong>당신은 지금 나를 무너뜨리는 것이 아니라 철저히 재건축하고 계십니다.</strong><br>나의 낡고 부패한 옛사람을 벗겨 내시고 — <span class="cb-house">영광스러운 새사람</span>을 입혀 주고 계십니다."</p>
+      <p>주여, 저를 신성한 본질로 조성하사,<br>저로 주 예수님과 같이 <strong>신성하고 인간적이며 인간적이고 신성한</strong> 사람이 되게 하소서.<br>제 모든 작은 봉사가 — 그리스도의 몸을 건축하는 일을 수행하여,<br>마침내 <span class="cb-house">새 예루살렘</span> 안에서 영원토록 당신을 표현하게 하소서. 아멘.</p>
+    </div>
+  </section>
+
+  <div class="footer-note">욥기 라이프 스타디 · 메시지 9·10 · 하나님의 변함없는 의도 — 그리스도로 충만케 하사 참된 하나님-사람으로 재건축하심 (딤전 6:11, 딤후 3:17, 욥 13:27-28, 엡 3:16-21)</div>
+</div>
+<script>
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+  else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+
+function togglePanel() {
+  document.getElementById('sidepanel').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function goTo(id) {
+  togglePanel();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 300);
+}
+
+function showKwDef(id, el) {
+  const def = document.getElementById(id);
+  const isShown = def.classList.contains('show');
+  document.querySelectorAll('.keyword-def').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.keyword-tag').forEach(t => t.classList.remove('active'));
+  if (!isShown) { def.classList.add('show'); el.classList.add('active'); }
+}
+
+function toggleKwTip(id) {
+  const tip = document.getElementById(id);
+  const isShown = tip.classList.contains('show');
+  document.querySelectorAll('.kw-tooltip').forEach(t => t.classList.remove('show'));
+  if (!isShown) tip.classList.add('show');
+}
+
+const TV_WORD_DATA = {
+  'anthrope_theou': {
+    gk: 'ἄνθρωπε θεοῦ', pron: '안트로페 테우', strong: 'G444 + G2316', lemma: 'ἄνθρωπος · θεός',
+    kr: '하나님의 사람이여', en: 'O man of God',
+    grammar: '명사구 · 호격(Vocative) — ἄνθρωπε(남성 단수 호격) + θεοῦ(남성 단수 속격, "하나님의")',
+    meaning: '하나님께 속한 사람·하나님으로 채워진 사람 <em>(a man belonging to God, filled with God)</em>',
+    note: '<b>BDAG</b>(p. 81-82, §ἄνθρωπος): <b>ἄνθρωπος</b> — "사람·인간"의 가장 일반적 명사. 본문의 호격 ἄνθρωπε는 부름의 동작 — "오 사람이여."<br><br><b>Thayer\'s</b>(§444): 호격 ἄνθρωπε는 강한 부름·각성의 어법. 단순한 호칭이 아니라 듣는 이의 정체성을 일깨우는 호명.<br><br><b>"하나님의 사람" — 두 종류의 용례</b>:<br>• <b>구약(LXX)</b>: 모세(신 33:1), 다윗(느 12:24), 엘리야·엘리사 등 — 하나님의 특별한 종·예언자를 가리킴.<br>• <b>신약</b>: 디모데전서 6:11, 디모데후서 3:17의 두 곳에만 등장 — 디모데(곧 모든 거듭난 이들)에게 적용.<br><br><b>속격 θεοῦ의 기능</b>: <span style="font-style:italic">소유의 속격</span>(genitive of possession)으로, "하나님께 속한"의 의미. 그러나 욥기 라이프 스타디의 신학에서 이 속격은 더 깊은 의미를 가짐 — <strong>하나님 자신으로 구성된, 하나님 자신으로 채워진</strong> 사람. 즉 하나님이 자신의 생명·본성·요소·본질을 분배하시어 그 사람을 빚으심.<br><br><b>욥기적 의미</b>: 욥에 대한 하나님의 변함없는 의도는 욥을 <b>하나님의 사람</b>으로 빚으시는 것이었습니다 — 신격에서는 아니지만 생명과 본성에서 하나님과 똑같아져, 하나님의 거룩한 충만이자 표현이 되는 사람. 이것이 그리스도 예수님 안에서 신약의 모든 거듭난 이들에게 약속된 정체성입니다.',
+    context: 'Σὺ δέ, ὦ ἄνθρωπε θεοῦ, ταῦτα φεῦγε'
+  },
+  'tauta': {
+    gk: 'ταῦτα', pron: '타우타', strong: 'G3778', lemma: 'οὗτος',
+    kr: '이러한 것들을', en: 'these things',
+    grammar: '지시대명사 · 중성 · 복수 · 대격 (목적어)',
+    meaning: '이러한 것들 — 앞에서 언급한 일련의 것들을 가리킴 <em>(these things, the aforementioned)</em>',
+    note: '<b>BDAG</b>(p. 740, §οὗτος): <b>οὗτος, αὕτη, τοῦτο</b> — "이, 이것"의 지시대명사. 본문의 ταῦτα는 그 중성 복수 대격 형태로 — "이러한 것들을."<br><br><b>Thayer\'s</b>(§3778): 지시대명사로서 가까이 있는 대상이나 방금 언급된 것을 가리킴.<br><br><b>본문 맥락에서 "이러한 것들"의 지시 범위 (딤전 6:3-10)</b>:<br>• <b>다른 가르침(ἑτεροδιδασκαλέω)</b> — 6:3<br>• <b>건전한 말씀과 일치하지 않는 가르침</b> — 6:3<br>• <b>경건과 일치하지 않는 교훈</b> — 6:3<br>• <b>교만(τετύφωται)·아무것도 알지 못함</b> — 6:4<br>• <b>논쟁과 말다툼·시기·다툼·악담·악한 의심</b> — 6:4<br>• <b>마음이 부패하고 진리를 잃어버린 사람들의 끝없는 다툼</b> — 6:5<br>• <b>경건을 이익의 수단으로 여김</b> — 6:5<br>• <b>부유해지려고 함</b> — 6:9<br>• <b>돈을 사랑함(φιλαργυρία) — 모든 악의 뿌리</b> — 6:10<br><br><b>욥기적 의미</b>: 욥의 자기 의·자기 자랑·끝없는 변호도 결국 이 "이러한 것들"의 한 형태였습니다. 하나님의 사람은 이 모든 그릇된 영역에서 <strong>지속적으로 도망쳐야</strong> 합니다 — 다음의 동사 φεῦγε("피하라")가 명령하는 동작입니다.',
+    context: 'ταῦτα φεῦγε· δίωκε δὲ δικαιοσύνην'
+  },
+  'pheuge': {
+    gk: 'φεῦγε', pron: '페우게', strong: 'G5343', lemma: 'φεύγω',
+    kr: '피하라', en: 'flee',
+    grammar: '동사 · 현재(Present) · 능동(Active) · 명령법(Imperative) · 2인칭 단수',
+    meaning: '도망하다, 피하다, 달아나다 <em>(to flee, escape, run away from)</em>',
+    note: '<b>BDAG</b>(p. 1052, §φεύγω): <b>φεύγω</b> — "위험·악·죄에서 도망하다·피하다." 본래 군사적 의미("적에게서 도주하다")에서 발전하여 영적·윤리적 영역에 적용 — 그릇된 것에서 적극적으로 떨어져 나감.<br><br><b>Thayer\'s</b>(§5343): 신약에서 28회 등장. 영적 의미로는 "악·시험·죄에서 도망함." 마 24:16(예루살렘에서 도망), 고전 6:18(음행에서 도망), 고전 10:14(우상 숭배에서 도망), 딤후 2:22(청년의 정욕에서 도망) 등.<br><br><b>현재 시제 명령형의 함의</b>: <span style="font-style:italic">현재 시제 명령은 지속적·습관적 동작을 명령</span>. 한 번 피하고 끝나는 것이 아니라 <strong>계속해서·매번·습관적으로</strong> 피하라는 의미. 이는 환경이 우리에게 끊임없이 그릇된 것들을 제시하기 때문 — 그러므로 우리의 도망도 끊임없어야 합니다.<br><br><b>"도망"의 영적 의미</b>: φεύγω는 단순한 회피가 아닙니다. 그것은 <strong>적극적·신속한 거리 두기</strong>입니다 — 마치 사자에게 쫓기는 사슴처럼, 불에서 도망하는 사람처럼. 영적 위험은 토론이나 협상의 대상이 아닙니다 — 즉시 피해야 할 대상입니다.<br><br><b>두 동사의 짝 — φεῦγε와 δίωκε</b>: 두 명령은 <strong>한 동작의 양면</strong>입니다. 그릇된 것에서 도망하는 발걸음이 곧 신성한 미덕을 향해 달려가는 발걸음입니다. <span style="font-style:italic">한쪽만 있어서는 안 됨</span> — 단순한 회피는 공허하고, 단순한 추구는 불안정합니다.',
+    context: 'ταῦτα φεῦγε· δίωκε δὲ'
+  },
+  'dioke': {
+    gk: 'δίωκε', pron: '디오케', strong: 'G1377', lemma: 'διώκω',
+    kr: '힘을 다해 추구하라', en: 'pursue',
+    grammar: '동사 · 현재(Present) · 능동(Active) · 명령법(Imperative) · 2인칭 단수',
+    meaning: '추격하다, 추구하다, 따라가다 <em>(to pursue, chase, run after)</em>',
+    note: '<b>BDAG</b>(p. 254, §διώκω): <b>διώκω</b> — 본래 "사냥꾼이 사냥감을 추격하다, 군대가 적을 추격하다"의 의미. 영적·윤리적 의미로는 "어떤 목표·미덕을 끊임없이 추구함." 본문의 명령형은 사냥의 강도를 영적 추구에 적용한 강력한 어법.<br><br><b>Thayer\'s</b>(§1377): 두 가지 주요 의미 — (1) 박해하다(persecute), (2) 추구하다·따라가다(pursue·follow after). 본문에서는 (2)의 의미.<br><br><b>현재 시제 명령형의 함의</b>: φεῦγε와 동일하게 <strong>현재 시제 명령</strong>으로 — <span style="font-style:italic">지속적·집중적 추구</span>. 사냥꾼이 사냥감을 한 번 보고 그치지 않듯, 영적 미덕도 한 번 잡고 끝나는 것이 아니라 끊임없이 추격해야 합니다.<br><br><b>"추격"의 영적 의미</b>: διώκω는 단순한 "추구"가 아닙니다. 그것은 <strong>전심전력의 돌진</strong>입니다 — 빌립보서 3:14에서 바울은 같은 동사를 사용합니다: "표적을 향하여 좇아갑니다(διώκω)." 영적 미덕은 우연히 얻어지지 않습니다 — 사냥꾼의 집중과 군인의 결단으로 추격해야 합니다.<br><br><b>여섯 미덕 — 추구의 대상</b>: δίωκε에 이어지는 여섯 명사는 모두 <strong>여성 단수 대격</strong>으로 병렬 — 의·경건·믿음·사랑·인내·온유. 이 여섯이 한 묶음으로 하나님의 사람의 호흡을 이루는 신성한 미덕들입니다. 어느 하나만 추구해서는 안 되며, 여섯 모두를 동시에 추구해야 합니다.',
+    context: 'φεῦγε· δίωκε δὲ δικαιοσύνην, εὐσέβειαν'
+  },
+  'dikaiosynen': {
+    gk: 'δικαιοσύνην', pron: '디카이오쉬넨', strong: 'G1343', lemma: 'δικαιοσύνη',
+    kr: '의를', en: 'righteousness',
+    grammar: '명사 · 여성 · 단수 · 대격 (목적어)',
+    meaning: '의·정의·올바름 — 하나님의 표준에 맞는 어떠함 <em>(righteousness, justice)</em>',
+    note: '<b>BDAG</b>(p. 247-249, §δικαιοσύνη): <b>δικαιοσύνη</b> — "의로움·정의의 상태." 신약에서 약 92회 등장. 두 주요 차원: (1) 사람과 사람 사이의 정의·올바름, (2) 하나님과의 관계에서의 의로움.<br><br><b>Thayer\'s</b>(§1343): "올바름의 상태나 행동·법에 따라 행함." 바울 신학에서 핵심 개념으로 — 하나님이 우리에게 주시는 의(롬 3:21-22)이자 우리가 추구하는 살아남(딤전 6:11; 딤후 2:22).<br><br><b>본문의 διώκω+δικαιοσύνη — 추구의 대상</b>: 단지 외적 윤리 규범이 아닌 — <span style="font-style:italic">하나님 자신의 의로우심이 우리 안에서 표현되는 어떠함</span>. 욥의 옛 의는 자기 노력의 의였지만 — 하나님의 사람이 추구하는 의는 그리스도 안에서 우리에게 주어진 의이며, 동시에 그 주어진 의를 매일의 살아남으로 표현하는 것입니다.<br><br><b>여섯 미덕의 첫 번째</b>: 의는 여섯 미덕의 첫 자리에 있습니다 — 다른 모든 미덕의 토대. 의가 없는 경건은 위선이고, 의가 없는 사랑은 거짓이며, 의가 없는 인내는 헛됨입니다. 그러므로 추구의 출발점은 <strong>의</strong>입니다.',
+    context: 'δίωκε δὲ δικαιοσύνην, εὐσέβειαν'
+  },
+  'eusebeian': {
+    gk: 'εὐσέβειαν', pron: '유세베이안', strong: 'G2150', lemma: 'εὐσέβεια',
+    kr: '경건을', en: 'godliness',
+    grammar: '명사 · 여성 · 단수 · 대격 (목적어)',
+    meaning: '경건·하나님께 대한 합당한 경외와 헌신 <em>(godliness, piety, devotion to God)</em>',
+    note: '<b>BDAG</b>(p. 412-413, §εὐσέβεια): <b>εὐσέβεια</b> — "신성에 대한 경외심에서 나오는 합당한 살아남." 어원적으로 εὐ-(좋은) + σέβομαι(경외하다) — "올바르게 경외함." 신약에서 약 15회 등장하며, 목회서신(딤전·딤후·딛)에서 집중적으로 사용됨.<br><br><b>Thayer\'s</b>(§2150): "하나님께 대한 합당한 경외·예배·예배의 표현."<br><br><b>회복역의 핵심 정의</b>: 경건은 단지 외적 종교 행위가 아닙니다. 그것은 <strong>하나님의 살아남이 우리 안에서 표현되는 어떠함</strong>입니다 — 즉 하나님이 우리 안에서 살아 계심으로 인해 자연스럽게 흘러 나오는 거룩함. <span style="font-style:italic">경건의 비밀은 그리스도 자신</span>입니다(딤전 3:16).<br><br><b>"경건과 일치하지 않는 교훈"(딤전 6:3)과의 대조</b>: 본문의 "이러한 것들"(ταῦτα)에는 "경건과 일치하지 않는 교훈"이 포함되어 있습니다(6:3). 그러므로 경건의 추구는 <strong>그릇된 가르침에서 도망함과 동시에 일어나는 동작</strong>입니다 — 한 동작의 양면입니다.',
+    context: 'δικαιοσύνην, εὐσέβειαν, πίστιν'
+  },
+  'pistin': {
+    gk: 'πίστιν', pron: '피스틴', strong: 'G4102', lemma: 'πίστις',
+    kr: '믿음을', en: 'faith',
+    grammar: '명사 · 여성 · 단수 · 대격 (목적어)',
+    meaning: '믿음·신뢰·신실함 <em>(faith, trust, faithfulness)</em>',
+    note: '<b>BDAG</b>(p. 818-820, §πίστις): <b>πίστις</b> — 신약에서 가장 핵심적인 명사 중 하나로 약 243회 등장. 세 주요 의미: (1) 신뢰·확신, (2) 믿음의 행위, (3) 믿음의 내용(즉 복음의 진리).<br><br><b>Thayer\'s</b>(§4102): "확신, 신뢰; 신앙심·신실함; 신앙·복음의 내용."<br><br><b>본문에서의 함의</b>: 단순한 회심의 첫 믿음이 아니라 — <span style="font-style:italic">하나님의 사람이 매일 호흡해야 할 살아 있는 신뢰</span>. 욥의 모든 환난을 통과하며 욥이 알지 못한 채 추구한 것이 바로 이 믿음입니다 — 환경이 어떠하든 하나님 자신을 신뢰하는 것.<br><br><b>여섯 미덕에서의 위치</b>: 믿음은 의·경건 다음에, 사랑·인내·온유 앞에 있습니다. 이는 <strong>믿음이 미덕들의 중심</strong>이라는 신학적 함의 — 의와 경건은 믿음을 통해 우리 안에 들어 오고, 사랑·인내·온유는 믿음에서 흘러 나옵니다. 환난 한가운데서 욥에게 가장 필요했던 것이 바로 이 믿음입니다.',
+    context: 'εὐσέβειαν, πίστιν, ἀγάπην'
+  },
+  'agapen': {
+    gk: 'ἀγάπην', pron: '아가펜', strong: 'G26', lemma: 'ἀγάπη',
+    kr: '사랑을', en: 'love',
+    grammar: '명사 · 여성 · 단수 · 대격 (목적어)',
+    meaning: '사랑 — 가장 높은 차원의 거룩한 사랑 <em>(love, the highest divine love)</em>',
+    note: '<b>BDAG</b>(p. 6-7, §ἀγάπη): <b>ἀγάπη</b> — 헬라어의 네 가지 사랑 중 가장 높은 차원의 사랑. 신약에서 약 116회 등장. <span style="font-style:italic">희생적·언약적·하나님 자신의 본성에 속한 사랑</span> — 단순한 정서가 아닌 의지·결단·행동을 포함하는 총체.<br><br><b>네 가지 헬라어 사랑</b>:<br>• <b>στοργή</b>(스토르게) — 가족·자연적 애정<br>• <b>φιλία</b>(필리아) — 친구의 우정·유사한 자들 사이의 사랑<br>• <b>ἔρως</b>(에로스) — 욕망적 사랑<br>• <b>ἀγάπη</b>(아가페) — 신성한 사랑·자기 희생적 사랑<br><br><b>Thayer\'s</b>(§26): 신약에서 ἀγάπη는 거의 독점적으로 하나님의 사랑·하나님께서 주신 사랑·하나님으로 인한 사랑을 가리킴.<br><br><b>본문에서의 함의</b>: 추구의 대상으로서의 사랑은 단순한 정서가 아니라 <strong>하나님의 본성이 우리 안에서 표현되는 살아남</strong>입니다(요일 4:8 — "하나님은 사랑이심이라"). 욥에 대한 하나님의 변함없는 의도는 욥을 그분의 신성한 사랑으로 채우시는 것이었습니다 — 고난의 가장 깊은 곳에서도 하나님의 사랑이 욥을 붙드셨습니다.',
+    context: 'πίστιν, ἀγάπην, ὑπομονήν'
+  },
+  'hypomonen': {
+    gk: 'ὑπομονήν', pron: '휘포모넨', strong: 'G5281', lemma: 'ὑπομονή',
+    kr: '인내를', en: 'endurance',
+    grammar: '명사 · 여성 · 단수 · 대격 (목적어)',
+    meaning: '인내·견디어 냄·환경의 무게 아래서의 충성됨 <em>(endurance, steadfastness, perseverance)</em>',
+    note: '<b>BDAG</b>(p. 1039-1040, §ὑπομονή): <b>ὑπομονή</b> — 어원적으로 ὑπό-(아래에) + μονή(머무름) = "<span style="font-style:italic">아래에 머무름</span>" — 즉 환경의 무게 아래서 자리를 지킴. 단순한 수동적 견딤이 아니라 <strong>능동적·결단적 충성됨</strong>.<br><br><b>Thayer\'s</b>(§5281): "환경의 시련 아래서 흔들림 없이 자리를 지킴." 신약의 핵심 미덕 중 하나로 약 32회 등장.<br><br><b>욥과 ὑπομονή — 야고보서 5:11</b>: 야고보서 5:11은 욥을 가리키며 정확히 이 단어를 사용합니다 — "<b>욥의 인내(ὑπομονή)를 너희가 들었고</b>." 욥은 신약에서 <strong>인내의 모범</strong>으로 인용되는 인물입니다. 그의 모든 환난·논쟁·답답함을 통과하면서도 그는 자리를 지켰습니다 — 비록 그 의미를 알지 못한 채로도.<br><br><b>두 가지 인내 — 수동적 vs 능동적</b>:<br>• 수동적 견딤 — 단순히 이가 시리게 참기<br>• 능동적 ὑπομονή — 환난을 통과하며 그리스도가 우리 안에서 증가하기를 기대함<br>본문의 추구 대상은 후자입니다. 단순한 견딤이 아니라 — 환난의 용광로 속에서 그리스도가 더해지는 것을 적극적으로 추구하는 인내입니다.',
+    context: 'ἀγάπην, ὑπομονήν, πραϋπαθίαν'
+  },
+  'praypathian': {
+    gk: 'πραϋπαθίαν', pron: '프라위파티안', strong: 'G4239', lemma: 'πραϋπάθεια',
+    kr: '온유를', en: 'meekness',
+    grammar: '명사 · 여성 · 단수 · 대격 (목적어) — NA28/UBS5 본문',
+    meaning: '온유·낮아진 정서·다툼 없는 마음의 자세 <em>(meekness, gentleness of disposition)</em>',
+    note: '<b>BDAG</b>(p. 861, §πραϋπάθεια): <b>πραϋπάθεια</b> — 어원적으로 πραΰς(온유한) + πάθος(정서·기질) = <span style="font-style:italic">"온유한 정서·낮아진 마음의 어떠함"</span>. 신약에서 본 절(딤전 6:11)에만 한 번 등장하는 매우 희귀한 단어.<br><br><b>본문 비평 — 두 가지 독법</b>:<br>• <b>NA28/UBS5(현대 비평본문)</b>: πραϋπαθίαν (프라위파티안) — "온유한 정서"<br>• <b>Textus Receptus(전통 본문)</b>: πραότητα (프라오테타) — "온유함"<br>회복역(Recovery Version)은 NA28의 πραϋπαθίαν을 따릅니다. 두 단어는 같은 어근(πραΰς)에서 파생되었지만, πραϋπάθεια가 더 정밀한 의미 — <strong>마음의 정서적 차원에서의 온유함</strong>을 강조.<br><br><b>"온유함" vs "낮음"</b>: 온유는 약함이 아닙니다. 모세는 "지면의 모든 사람보다 온유한 자"였지만(민 12:3), 동시에 가장 강한 지도자였습니다. 그리스도 자신도 "마음이 온유하고 겸손하신" 분이셨습니다(마 11:29). <span style="font-style:italic">온유는 자기 권리를 양보할 수 있는 강함</span>입니다.<br><br><b>여섯 미덕의 마지막 — 결말의 자리</b>: 온유는 여섯 미덕의 마지막에 위치합니다. 의·경건이 토대이고, 믿음·사랑이 흐름이며, 인내가 견딤이라면 — 온유는 그 모든 추구의 <strong>최후의 향기</strong>입니다. 욥의 모든 환난의 결말이 욥 42:5-6의 자기 혐오와 회개였듯, 하나님의 사람이 도달하는 지점은 바로 이 온유입니다.',
+    context: 'ὑπομονήν, πραϋπαθίαν.'
+  }
+};
+
+function tvShowWord(key) {
+  const w = TV_WORD_DATA[key];
+  if (!w) return;
+  const strongLine = w.lemma ? `${w.strong} · 원형 ${w.lemma}` : w.strong;
+  const recovBlock = (w.kr || w.en) ? `
+    <div class="tv-popup-recov">
+      <span class="tv-popup-recov-label">회복역 · Recovery Version</span>
+      ${w.kr ? `<span class="tv-popup-recov-kr">${w.kr}</span>` : ''}
+      ${w.en ? `<span class="tv-popup-recov-en">${w.en}</span>` : ''}
+    </div>` : '';
+  document.getElementById('tv-popup-meaning').innerHTML = `${w.gk} <span style="font-size:0.82rem;color:var(--ink-mute);font-style:italic;font-weight:400;">· ${w.pron}</span>`;
+  document.getElementById('tv-popup-greek').textContent = w.context || '';
+  document.getElementById('tv-popup-body').innerHTML = `
+    <div class="tv-popup-word">
+      <div class="tv-popup-word-top">
+        <span class="tv-popup-word-gk">${w.gk}</span>
+        <span class="tv-popup-word-pron">${w.pron}</span>
+        <span class="tv-popup-word-strong">${strongLine}</span>
+      </div>
+      ${recovBlock}
+      <div class="tv-popup-word-meaning">${w.meaning}</div>
+      <div style="font-size:0.78rem;color:var(--ink-mute);margin-bottom:6px;font-family:'Lora',serif;letter-spacing:0.02em;">${w.grammar}</div>
+      <div class="tv-popup-word-note">${w.note}</div>
+    </div>
+  `;
+  document.getElementById('tv-popup-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function tvClosePopup() {
+  document.getElementById('tv-popup-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function tvClosePopupOnBg(e) {
+  if (e.target.id === 'tv-popup-overlay') tvClosePopup();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const ov = document.getElementById('tv-popup-overlay');
+    if (ov && ov.classList.contains('active')) tvClosePopup();
+  }
+});
+
+function toggleAcc(header) {
+  const acc = header.parentElement;
+  const body = acc.querySelector('.accordion-body');
+  if (acc.classList.contains('open')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    void body.offsetHeight;
+    body.style.maxHeight = '0';
+    acc.classList.remove('open');
+  } else {
+    acc.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    setTimeout(() => { if (acc.classList.contains('open')) body.style.maxHeight = 'none'; }, 400);
+  }
+}
+
+function selectOpt(el) {
+  const item = el.closest('.quiz-item');
+  if (item.classList.contains('answered')) return;
+  item.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+let currentQuizIdx = 0;
+const totalQuizzes = 10;
+
+function navQuiz(dir) {
+  const items = document.querySelectorAll('.quiz-item');
+  items[currentQuizIdx].classList.remove('active');
+  currentQuizIdx += dir;
+  if (currentQuizIdx < 0) currentQuizIdx = 0;
+  if (currentQuizIdx >= totalQuizzes) { currentQuizIdx = totalQuizzes - 1; submitQuiz(); return; }
+  items[currentQuizIdx].classList.add('active');
+  updateQuizNav();
+}
+
+function updateQuizNav() {
+  document.getElementById('quiz-progress').textContent = (currentQuizIdx + 1) + ' / ' + totalQuizzes;
+  document.getElementById('quiz-prev-btn').disabled = currentQuizIdx === 0;
+  document.getElementById('quiz-next-btn').textContent = currentQuizIdx === totalQuizzes - 1 ? '결과 확인하기' : '다음 퀴즈';
+}
+
+function submitQuiz() {
+  let score = 0;
+  const items = document.querySelectorAll('.quiz-item');
+  items.forEach(item => {
+    item.classList.add('reviewed', 'answered');
+    item.classList.remove('active');
+    const correct = parseInt(item.dataset.correct) - 1;
+    const opts = item.querySelectorAll('.quiz-opt');
+    const fb = item.querySelector('.quiz-feedback');
+    let selectedIdx = -1;
+    opts.forEach((o, i) => { if (o.classList.contains('selected')) selectedIdx = i; });
+    if (selectedIdx === correct) {
+      score++;
+      opts[selectedIdx].classList.add('correct');
+      fb.className = 'quiz-feedback show correct-fb';
+      fb.textContent = '✓ 정답입니다';
+    } else {
+      if (selectedIdx >= 0) opts[selectedIdx].classList.add('wrong');
+      opts[correct].classList.add('correct');
+      fb.className = 'quiz-feedback show wrong-fb';
+      fb.textContent = '정답은 ' + ['A','B','C','D'][correct] + '입니다';
+    }
+  });
+  document.getElementById('quiz-nav').style.display = 'none';
+  document.getElementById('quiz-progress').textContent = '결과';
+  document.getElementById('quizScore').textContent = score + ' / ' + totalQuizzes;
+  const msgEl = document.getElementById('quizMsg');
+  if (score === 10) msgEl.textContent = '완벽합니다! 하나님의 영원한 경륜·신성한 분배·신성한 조성으로의 재건축, 그리고 하나님-사람의 비밀을 정확히 숙지하셨습니다.';
+  else if (score >= 7) msgEl.textContent = '훌륭합니다! 메시지의 핵심 요점들을 잘 이해하고 계십니다.';
+  else msgEl.textContent = '다시 한번 딤전 6:11의 "하나님의 사람" 호명과 욥기 라이프 스타디 메시지 9·10의 "신성한 분배·신성한 조성"의 의미를 묵상해 보시길 권해드립니다.';
+  document.getElementById('quizResult').classList.add('show');
+  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const firstQuiz = document.querySelector('.quiz-item');
+  if (firstQuiz) firstQuiz.classList.add('active');
+  if (typeof updateQuizNav === 'function') updateQuizNav();
+
+  const container = document.getElementById('intro-container');
+  const vesselStage = document.getElementById('vessel-stage');
+  const vesselWrap = document.getElementById('vessel-wrap');
+  const introReveal = document.getElementById('intro-reveal-text');
+  const ctaBtn = document.getElementById('vessel-cta');
+  const startVoiceBtn = document.getElementById('start-voice-btn');
+  const skipTopBtn = document.getElementById('vessel-skip-top');
+  const skipIntroBtn = document.getElementById('skip-intro-btn');
+
+  if (!container) return;
+
+  if (ctaBtn) ctaBtn.addEventListener('click', fillAndAdvance);
+  if (startVoiceBtn) startVoiceBtn.addEventListener('click', startVoiceRecognition);
+  if (skipTopBtn) skipTopBtn.addEventListener('click', finishIntro);
+  if (skipIntroBtn) skipIntroBtn.addEventListener('click', finishIntro);
+
+  function fillAndAdvance() {
+    if (!vesselStage || vesselStage.classList.contains('filled')) return;
+    vesselStage.classList.add('filled');
+    if (ctaBtn) { ctaBtn.disabled = true; ctaBtn.style.pointerEvents = 'none'; ctaBtn.style.opacity = '0.7'; }
+    setTimeout(() => {
+      vesselWrap.classList.add('fading');
+      setTimeout(() => {
+        vesselWrap.style.display = 'none';
+        introReveal.classList.add('show');
+        setTimeout(() => {
+          document.getElementById('voice-prompt-container').classList.add('show');
+        }, 1300);
+      }, 900);
+    }, 1500);
+  }
+
+  function getSimilarity(s1, s2) {
+    if (s1 === s2) return 1.0;
+    const len1 = s1.length, len2 = s2.length;
+    const matrix = Array(len1+1).fill(null).map(() => Array(len2+1).fill(null));
+    for (let i = 0; i <= len1; i++) matrix[i][0] = i;
+    for (let j = 0; j <= len2; j++) matrix[0][j] = j;
+    for (let i = 1; i <= len1; i++) {
+      for (let j = 1; j <= len2; j++) {
+        const cost = s1[i-1] === s2[j-1] ? 0 : 1;
+        matrix[i][j] = Math.min(matrix[i-1][j]+1, matrix[i][j-1]+1, matrix[i-1][j-1]+cost);
+      }
+    }
+    return (Math.max(len1,len2) - matrix[len1][len2]) / Math.max(len1,len2);
+  }
+
+  function startVoiceRecognition() {
+    const voiceMsg = document.getElementById('voice-msg');
+    const startBtn = document.getElementById('start-voice-btn');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      voiceMsg.innerHTML = "음성 인식을 지원하지 않는 브라우저입니다.<br>건너뛰기를 눌러주세요.";
+      voiceMsg.style.color = "#b84452";
+      startBtn.style.display = 'none';
+      return;
+    }
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'ko-KR';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.onstart = function() {
+      voiceMsg.innerHTML = "듣고 있습니다 🎤<br><span style='font-size:0.85rem;color:rgba(245,240,230,0.55);font-weight:400;'>(마이크 권한을 허용해주세요)</span>";
+      startBtn.style.display = 'none';
+    };
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript.replace(/[\s\.\,\"\-\']+/g, '');
+      const target1 = "오하나님당신은지금나를무너뜨리는것이아니라철저히재건축하고계십니다";
+      const target2 = "나의낡고부패한옛사람을벗겨내시고영광스러운새사람을입혀주고계십니다";
+      const target3 = "오하나님당신은지금나를무너뜨리는것이아니라철저히재건축하고계십니다나의낡고부패한옛사람을벗겨내시고영광스러운새사람을입혀주고계십니다";
+      const sim1 = getSimilarity(target1, transcript);
+      const sim2 = getSimilarity(target2, transcript);
+      const sim3 = getSimilarity(target3, transcript);
+      const maxSim = Math.max(sim1, sim2, sim3);
+      if (maxSim >= 0.55) {
+        voiceMsg.innerHTML = "✓ 인식 완료";
+        voiceMsg.style.color = "#b84452";
+        setTimeout(finishIntro, 800);
+      } else {
+        voiceMsg.innerHTML = `다시 한번 또렷이 읽어주세요 🎤<br><span style='font-size:0.85rem;color:#b84452;'>현재 일치율: ${Math.round(maxSim * 100)}% (55% 이상 필요)</span>`;
+        startBtn.style.display = 'block';
+        startBtn.textContent = "다시 시도";
+      }
+    };
+    recognition.onerror = function(event) {
+      startBtn.style.display = 'block';
+      startBtn.textContent = "다시 시도";
+      if (event.error === 'not-allowed' || event.error === 'audio-capture') {
+        voiceMsg.innerHTML = "마이크 권한이 거부되었습니다.<br>건너뛰기를 눌러주세요.";
+        voiceMsg.style.color = "#b84452";
+      } else {
+        voiceMsg.innerHTML = "인식에 실패했습니다. 다시 시도해주세요";
+      }
+    };
+    try { recognition.start(); } catch(e) { console.error(e); }
+  }
+
+  function finishIntro() {
+    container.style.transition = 'opacity 1.5s ease, transform 1.5s ease';
+    container.style.opacity = '0';
+    container.style.transform = 'scale(1.05)';
+    setTimeout(() => { container.remove(); document.body.style.overflow = ''; }, 1500);
+  }
+});
+
+// ============================================================
+// TTS Reader
+// ============================================================
+const TTS_CONFIG = {
+  serverUrl: 'https://qwen.tkhome.cloud',
+  apiKey: localStorage.getItem('qwen_tts_api_key') || '',
+  defaultVoice: 'tk_voice',
+  sampleRate: 24000,
+  pauseSec: 0.4,
+  chunkMaxLen: 200
+};
+
+const TTS_SECTIONS = [
+  { id: 'hero', title: '제목 & 주제' },
+  { id: 'todays-verse', title: '오늘의 구절 (딤전 6:11)' },
+  { id: 'dashboard', title: '메시지 전체 맥락 요약' },
+  { id: 'flow', title: '다섯 단계의 흐름' },
+  { id: 'acc-0', title: 'Ⅰ. 딤전 6:11 — 하나님의 사람의 추구' },
+  { id: 'acc-1', title: 'Ⅱ. 딤후 3:17 — 성경이 온전케 함' },
+  { id: 'acc-2', title: 'Ⅲ. 욥 13:27-28 — 욥의 자기 인식' },
+  { id: 'acc-3', title: 'Ⅳ. 하나님의 영원한 경륜 — 분배하심' },
+  { id: 'acc-4', title: 'Ⅴ. 신성한 조성 — 재건축의 정의' },
+  { id: 'acc-5', title: 'Ⅵ. 그리스도 — 경륜의 중심과 전부' },
+  { id: 'acc-6', title: 'Ⅶ. 새사람과 그리스도의 몸' },
+  { id: 'acc-7', title: 'Ⅷ. 새 예루살렘 — 욥의 답변' },
+  { id: 'acc-8', title: 'Ⅸ. 개요 D·E — 변함없는 의도와 적용' },
+  { id: 'recap', title: '전체 복습' },
+  { id: 'prayer', title: '기도' }
+];
+
+function ttsCleanText(text) {
+  if (!text) return '';
+  return text.replace(/\s+/g, ' ').replace(/\[[^\]]*\]/g, '').trim();
+}
+
+const TTS_EXTRACTORS = {
+  'hero': () => {
+    const h1 = document.querySelector('#hero-section h1');
+    const sub = document.querySelector('#hero-section .hero-sub');
+    return ttsCleanText((h1 ? h1.textContent : '') + '. ' + (sub ? sub.textContent : ''));
+  },
+  'todays-verse': () => {
+    const kr = document.querySelector('#todays-verse-section .tv-trans-row.kr .tv-trans-text');
+    return '오늘의 구절. 디모데전서 6장 11절. ' + ttsCleanText(kr ? kr.textContent : '');
+  },
+  'dashboard': () => {
+    const msg = document.querySelector('#dashboard-section .core-message');
+    return '메시지 전체 맥락 요약. ' + ttsCleanText(msg ? msg.textContent : '');
+  },
+  'flow': () => {
+    let text = '다섯 단계의 흐름. 하나님의 변함없는 의도와 재건축의 경륜. ';
+    document.querySelectorAll('#flow-section .flow-step').forEach(s => {
+      const label = s.querySelector('.flow-step-label');
+      const desc = s.querySelector('.flow-step-desc');
+      text += (label ? label.textContent : '') + '. ' + (desc ? desc.textContent : '') + ' ';
+    });
+    return ttsCleanText(text);
+  },
+  'recap': () => {
+    let text = '전체 메시지 복습. 변함없는 의도와 신성한 재건축. ';
+    document.querySelectorAll('#recap-section .recap-item-text').forEach(item => {
+      text += ttsCleanText(item.textContent) + '. ';
+    });
+    const note = document.querySelector('#recap-section .recap-note');
+    if (note) text += '환난의 응답. ' + ttsCleanText(note.textContent);
+    return text;
+  },
+  'prayer': () => {
+    const heading = document.querySelector('#prayer-section .prayer-heading');
+    const callbox = document.querySelector('#prayer-section .prayer-callbox');
+    const amen = document.querySelector('#prayer-section .prayer-amen-box');
+    let text = '';
+    if (heading) text += ttsCleanText(heading.textContent) + '. ';
+    if (callbox) text += ttsCleanText(callbox.textContent) + '. ';
+    if (amen) {
+      const clone = amen.cloneNode(true);
+      const sig = clone.querySelector('.prayer-amen-sig');
+      if (sig) sig.remove();
+      text += ttsCleanText(clone.textContent);
+    }
+    return text;
+  }
+};
+
+for (let i = 0; i <= 8; i++) {
+  const accId = 'acc-' + i;
+  TTS_EXTRACTORS[accId] = () => {
+    const acc = document.getElementById(accId);
+    if (!acc) return '';
+    const titleEl = acc.querySelector('.acc-title-text');
+    const titleText = titleEl ? titleEl.textContent : '';
+    const content = acc.querySelector('.accordion-content');
+    if (!content) return ttsCleanText(titleText);
+    const clone = content.cloneNode(true);
+    clone.querySelectorAll('.verse-block').forEach(v => v.remove());
+    return ttsCleanText(titleText + '. ' + clone.textContent);
+  };
+}
+
+let ttsAudioContext = null;
+let ttsNextPlayTime = 0;
+let ttsScheduledSources = [];
+let ttsCurrentReader = null;
+let ttsIsCanceled = false;
+let ttsIsPlaying = false;
+let ttsIsPaused = false;
+
+function ttsPcmToBuffer(int16Bytes, ctx) {
+  const evenLen = int16Bytes.byteLength - (int16Bytes.byteLength % 2);
+  if (evenLen === 0) return null;
+  const aligned = new Uint8Array(evenLen);
+  aligned.set(int16Bytes.subarray(0, evenLen));
+  const int16 = new Int16Array(aligned.buffer);
+  const float32 = new Float32Array(int16.length);
+  for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768;
+  const buffer = ctx.createBuffer(1, float32.length, TTS_CONFIG.sampleRate);
+  buffer.copyToChannel(float32, 0);
+  return buffer;
+}
+
+function ttsScheduleBuffer(buffer) {
+  if (!buffer || !ttsAudioContext) return;
+  const source = ttsAudioContext.createBufferSource();
+  source.buffer = buffer;
+  source.connect(ttsAudioContext.destination);
+  const now = ttsAudioContext.currentTime;
+  if (ttsNextPlayTime < now) ttsNextPlayTime = now;
+  source.start(ttsNextPlayTime);
+  ttsScheduledSources.push(source);
+  ttsNextPlayTime += buffer.duration;
+  source.onended = () => {
+    const idx = ttsScheduledSources.indexOf(source);
+    if (idx >= 0) ttsScheduledSources.splice(idx, 1);
+  };
+}
+
+function ttsStopPlayback() {
+  ttsScheduledSources.forEach(src => { try { src.stop(); } catch(e) {} });
+  ttsScheduledSources = [];
+  ttsNextPlayTime = 0;
+}
+
+function ttsOpenReader() {
+  document.getElementById('tts-reader-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  ttsInitSectionList();
+  if (TTS_CONFIG.apiKey) document.getElementById('tts-api-key').value = TTS_CONFIG.apiKey;
+  ttsLoadVoices();
+}
+
+function ttsCloseReader() {
+  if (ttsIsPlaying) {
+    if (!confirm('재생 중입니다. 정말 닫으시겠습니까?')) return;
+    ttsStop();
+  }
+  document.getElementById('tts-reader-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function ttsCloseOnBg(e) {
+  if (e.target.id === 'tts-reader-overlay') ttsCloseReader();
+}
+
+function ttsSaveApiKey() {
+  const input = document.getElementById('tts-api-key');
+  TTS_CONFIG.apiKey = input.value.trim();
+  localStorage.setItem('qwen_tts_api_key', TTS_CONFIG.apiKey);
+  ttsSetStatus(TTS_CONFIG.apiKey ? 'API 키가 저장되었습니다.' : 'API 키가 비워졌습니다.');
+  ttsLoadVoices();
+}
+
+function ttsInitSectionList() {
+  const list = document.getElementById('tts-section-list');
+  if (list.dataset.initialized === 'true') return;
+  list.innerHTML = '';
+  const allItem = document.createElement('label');
+  allItem.className = 'tts-section-item all';
+  allItem.innerHTML = '<input type="checkbox" class="tts-section-checkbox" id="tts-section-all" checked><span class="tts-section-label">전체 선택 / 해제</span>';
+  allItem.querySelector('input').addEventListener('change', function() { ttsToggleAll(this); });
+  list.appendChild(allItem);
+  TTS_SECTIONS.forEach(sec => {
+    const item = document.createElement('label');
+    item.className = 'tts-section-item';
+    item.dataset.sectionId = sec.id;
+    item.innerHTML = '<input type="checkbox" class="tts-section-checkbox" data-section="' + sec.id + '" checked><span class="tts-section-label">' + sec.title + '</span>';
+    list.appendChild(item);
+  });
+  list.dataset.initialized = 'true';
+}
+
+function ttsToggleAll(cb) {
+  document.querySelectorAll('#tts-section-list input[data-section]').forEach(c => c.checked = cb.checked);
+}
+
+async function ttsLoadVoices() {
+  const select = document.getElementById('tts-voice-select');
+  try {
+    const res = await fetch(TTS_CONFIG.serverUrl + '/voices');
+    if (!res.ok) throw new Error('서버 응답 ' + res.status);
+    const data = await res.json();
+    select.innerHTML = '';
+    if (!data.voices || data.voices.length === 0) {
+      const opt = document.createElement('option');
+      opt.textContent = '(등록된 음성 없음)';
+      select.appendChild(opt);
+      ttsSetStatus('등록된 음성이 없습니다.', true);
+      return;
+    }
+    data.voices.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v.name;
+      opt.textContent = v.name + (v.name === data.default ? ' (기본)' : '');
+      select.appendChild(opt);
+    });
+    if (data.default) select.value = data.default;
+    ttsSetStatus(data.voices.length + '개 음성 로드 완료. 항목을 선택하고 재생을 누르세요.');
+  } catch (e) {
+    select.innerHTML = '<option>tk_voice</option>';
+    ttsSetStatus('음성 목록 로드 실패: ' + e.message, true);
+  }
+}
+
+function ttsSetStatus(msg, isError) {
+  const el = document.getElementById('tts-status');
+  el.textContent = msg;
+  el.className = 'tts-status' + (isError ? ' error' : '');
+}
+
+function ttsUpdateProgress(current, total, sectionTitle) {
+  document.getElementById('tts-progress').classList.add('active');
+  document.getElementById('tts-progress-fill').style.width = (current / total * 100) + '%';
+  document.getElementById('tts-progress-text').innerHTML = '<strong>' + current + ' / ' + total + '</strong> · ' + sectionTitle;
+}
+
+function ttsHighlightSection(sectionId) {
+  document.querySelectorAll('#tts-section-list .tts-section-item').forEach(el => el.classList.remove('playing'));
+  if (sectionId) {
+    const item = document.querySelector('#tts-section-list .tts-section-item[data-section-id="' + sectionId + '"]');
+    if (item) item.classList.add('playing');
+  }
+}
+
+async function ttsPlay() {
+  if (!TTS_CONFIG.apiKey) { ttsSetStatus('먼저 API 키를 입력하고 저장하세요.', true); return; }
+  const checked = document.querySelectorAll('#tts-section-list input[data-section]:checked');
+  if (checked.length === 0) { ttsSetStatus('읽을 항목을 하나 이상 선택하세요.', true); return; }
+  const voice = document.getElementById('tts-voice-select').value;
+  const selectedIds = Array.from(checked).map(cb => cb.dataset.section);
+  const sectionsToRead = TTS_SECTIONS.filter(s => selectedIds.includes(s.id));
+
+  ttsIsCanceled = false;
+  ttsIsPlaying = true;
+  document.getElementById('tts-play-btn').disabled = true;
+  document.getElementById('tts-stop-btn').disabled = false;
+  document.getElementById('tts-pause-btn').disabled = false;
+
+  if (!ttsAudioContext || ttsAudioContext.state === 'closed') {
+    const Ctor = window.AudioContext || window.webkitAudioContext;
+    try {
+      ttsAudioContext = new Ctor({ sampleRate: TTS_CONFIG.sampleRate });
+    } catch (e) {
+      ttsAudioContext = new Ctor();
+    }
+  }
+  if (ttsAudioContext.state === 'suspended') await ttsAudioContext.resume();
+  ttsIsPaused = false;
+  ttsUpdatePauseBtn();
+
+  ttsStopPlayback();
+
+  try {
+    for (let i = 0; i < sectionsToRead.length; i++) {
+      if (ttsIsCanceled) break;
+      const sec = sectionsToRead[i];
+      const extractor = TTS_EXTRACTORS[sec.id];
+      if (!extractor) continue;
+      ttsUpdateProgress(i + 1, sectionsToRead.length, sec.title);
+      ttsHighlightSection(sec.id);
+      ttsSetStatus('재생 중: ' + sec.title);
+      const text = extractor();
+      if (!text || text.trim().length < 2) continue;
+      await ttsStreamText(text, voice);
+      if (ttsIsCanceled) break;
+    }
+    while (!ttsIsCanceled) {
+      if (ttsAudioContext.state === 'suspended') {
+        await new Promise(r => setTimeout(r, 200));
+        continue;
+      }
+      const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
+      if (remaining <= 0) break;
+      ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
+      await new Promise(r => setTimeout(r, Math.min(remaining * 1000 + 200, 1000)));
+    }
+    if (!ttsIsCanceled) ttsSetStatus('✅ 모든 항목 재생 완료');
+    else ttsSetStatus('⏹ 중지됨');
+  } catch (e) {
+    ttsSetStatus('❌ 오류: ' + e.message, true);
+  } finally {
+    ttsIsPlaying = false;
+    ttsIsPaused = false;
+    ttsHighlightSection(null);
+    document.getElementById('tts-play-btn').disabled = false;
+    document.getElementById('tts-stop-btn').disabled = true;
+    document.getElementById('tts-pause-btn').disabled = true;
+    ttsUpdatePauseBtn();
+    ttsCurrentReader = null;
+  }
+}
+
+async function ttsStreamText(text, voice) {
+  const res = await fetch(TTS_CONFIG.serverUrl + '/tts/stream', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-API-Key': TTS_CONFIG.apiKey },
+    body: JSON.stringify({ text: text, voice: voice, pause_sec: TTS_CONFIG.pauseSec, chunk_max_len: TTS_CONFIG.chunkMaxLen })
+  });
+  if (!res.ok) {
+    let errMsg = 'HTTP ' + res.status;
+    try { const err = await res.json(); errMsg = err.detail || errMsg; } catch(e) {}
+    throw new Error(errMsg);
+  }
+  const reader = res.body.getReader();
+  ttsCurrentReader = reader;
+  let buffer = new Uint8Array(0);
+  const MIN_DECODE = 24000;
+  while (true) {
+    let done, value;
+    try { ({ done, value } = await reader.read()); }
+    catch (e) { if (ttsIsCanceled) break; throw e; }
+    if (done || ttsIsCanceled) {
+      if (buffer.length >= 2 && !ttsIsCanceled) ttsScheduleBuffer(ttsPcmToBuffer(buffer, ttsAudioContext));
+      break;
+    }
+    const merged = new Uint8Array(buffer.length + value.length);
+    merged.set(buffer);
+    merged.set(value, buffer.length);
+    buffer = merged;
+    while (buffer.length >= MIN_DECODE && !ttsIsCanceled) {
+      const evenLen = MIN_DECODE - (MIN_DECODE % 2);
+      const audioBuffer = ttsPcmToBuffer(buffer.subarray(0, evenLen), ttsAudioContext);
+      if (audioBuffer) ttsScheduleBuffer(audioBuffer);
+      buffer = buffer.subarray(evenLen);
+    }
+  }
+}
+
+async function ttsStop() {
+  ttsIsCanceled = true;
+  if (ttsCurrentReader) { try { await ttsCurrentReader.cancel(); } catch(e) {} ttsCurrentReader = null; }
+  ttsStopPlayback();
+  if (ttsAudioContext && ttsAudioContext.state === 'suspended') {
+    try { await ttsAudioContext.resume(); } catch(e) {}
+  }
+  ttsIsPaused = false;
+  ttsSetStatus('⏹ 중지됨');
+  document.getElementById('tts-play-btn').disabled = false;
+  document.getElementById('tts-stop-btn').disabled = true;
+  document.getElementById('tts-pause-btn').disabled = true;
+  ttsUpdatePauseBtn();
+  ttsIsPlaying = false;
+  ttsHighlightSection(null);
+}
+
+async function ttsTogglePause() {
+  if (!ttsIsPlaying || !ttsAudioContext) return;
+  if (ttsIsPaused) {
+    try { await ttsAudioContext.resume(); } catch(e) {}
+    ttsIsPaused = false;
+    ttsSetStatus('▶ 재생 재개됨');
+  } else {
+    try { await ttsAudioContext.suspend(); } catch(e) {}
+    ttsIsPaused = true;
+    ttsSetStatus('⏸ 일시정지됨');
+  }
+  ttsUpdatePauseBtn();
+}
+
+function ttsUpdatePauseBtn() {
+  const btn = document.getElementById('tts-pause-btn');
+  if (!btn) return;
+  btn.textContent = ttsIsPaused ? '▶ 계속' : '⏸ 일시정지';
+}
+</script>
+</body>
+</html>
