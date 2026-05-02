@@ -1,0 +1,1752 @@
+
+<!DOCTYPE html><html lang="ko"><head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <title>2026 봄 장로 훈련 - 말씀의 사역과 하나님의 분배</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1c2e2a;       /* deep forest */
+            --accent: #c9532e;        /* terracotta */
+            --accent-soft: #e89a7c;   /* soft terra */
+            --bg: #faf7f2;            /* off-white */
+            --bg-alt: #f0ebe1;        /* sand */
+            --bg-dark: #1c2e2a;       /* dark forest */
+            --ink: #2a2a2a;
+            --ink-soft: #5c5c5c;
+            --rule: #d4cdbf;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Serif KR', serif;
+            background-color: var(--bg);
+            color: var(--ink);
+            font-weight: 400;
+            line-height: 1.85;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle paper texture */
+        body::before {
+            content: "";
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6  0 0 0 0 0.55  0 0 0 0 0.45  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+            opacity: 0.55;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: multiply;
+        }
+        body > * { position: relative; z-index: 2; }
+
+        .ko-break { word-break: keep-all; overflow-wrap: break-word; }
+
+        .serif { font-family: 'Noto Serif KR', serif; }
+        .sans  { font-family: 'Noto Sans KR', sans-serif; }
+        .display { font-family: 'Cormorant Garamond', serif; }
+        .meta { font-family: 'Inter', sans-serif; font-feature-settings: "tnum"; }
+
+        .ink { color: var(--ink); }
+        .ink-soft { color: var(--ink-soft); }
+        .accent { color: var(--accent); }
+        .bg-bg { background-color: var(--bg); }
+        .bg-alt { background-color: var(--bg-alt); }
+        .bg-forest { background-color: var(--primary); }
+
+        .label-tag {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Hero meta box */
+        .meta-box {
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.4);
+        }
+
+        /* Drop cap */
+        .dropcap::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 5.4rem;
+            line-height: 0.95;
+            float: left;
+            padding: 0.35rem 0.65rem 0 0;
+            color: var(--accent);
+        }
+
+        /* Pull quote */
+        .pullquote {
+            position: relative;
+            border-left: 4px solid var(--accent);
+            padding: 0.5rem 1.5rem 0.5rem 2.25rem;
+        }
+        .pullquote::before {
+            content: "\201C";
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent-soft);
+            opacity: 0.45;
+            font-size: 7rem;
+            line-height: 1;
+            left: 1.4rem;
+            top: -1.6rem;
+            font-weight: 500;
+        }
+
+        /* Decorative diamond divider */
+        .ornate-rule {
+            display: flex; align-items: center; gap: 1rem;
+            color: var(--rule);
+        }
+        .ornate-rule::before,
+        .ornate-rule::after {
+            content: ""; flex: 1; height: 1px;
+            background-image: linear-gradient(to right, transparent, var(--rule), transparent);
+        }
+        .ornate-rule .diamond {
+            width: 7px; height: 7px; transform: rotate(45deg);
+            background: var(--accent);
+            box-shadow: -14px 0 0 var(--rule), 14px 0 0 var(--rule);
+        }
+
+        /* Bible link */
+        .bible-link {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: rgba(201,83,46,0.45);
+            text-underline-offset: 3px;
+            transition: background 0.15s;
+            padding: 0 1px;
+        }
+        .bible-link:hover {
+            background-color: rgba(232,154,124,0.2);
+        }
+
+        /* Accordion item */
+        details summary::-webkit-details-marker { display: none; }
+        details summary { list-style: none; }
+        details[open] .chev { transform: rotate(180deg); }
+
+        .article {
+            background: #fff;
+            border: 1px solid var(--rule);
+            border-top: 4px solid var(--rule);
+            transition: border-top-color 0.25s, box-shadow 0.25s, transform 0.25s;
+            position: relative;
+        }
+        .article:hover { border-top-color: var(--accent); box-shadow: 0 8px 24px -10px rgba(28,46,42,0.18); }
+        .article[open] {
+            border-top-color: var(--accent);
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 12px 36px -16px rgba(28,46,42,0.22);
+        }
+
+        /* Day buttons */
+        .day-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid var(--rule);
+            background: transparent;
+            color: var(--ink-soft);
+            transition: all 0.18s;
+            border-radius: 1px;
+            cursor: default;
+            user-select: none;
+        }
+        .day-active {
+            color: var(--primary);
+            border-color: var(--primary);
+            cursor: pointer;
+        }
+        .day-active:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .day-disabled { opacity: 0.5; }
+
+        .checking { position: relative; overflow: hidden; }
+        .checking::after {
+            content: "";
+            position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(201,83,46,0.18), transparent);
+            animation: skel 1.6s infinite;
+        }
+        @keyframes skel {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Roman numeral list */
+        .roman-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.4rem;
+            line-height: 1;
+            min-width: 2.6rem;
+            display: inline-block;
+            padding-top: 0.15rem;
+        }
+
+        /* Scripture box */
+        .scripture-box {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.25rem;
+        }
+
+        /* Key insight box */
+        .key-insight {
+            background: var(--primary);
+            color: #f3eddf;
+            padding: 1.5rem 1.75rem;
+        }
+
+        /* BGM ripple */
+        @keyframes ripple {
+            0% { box-shadow: 0 0 0 0 rgba(201,83,46,0.55); }
+            70% { box-shadow: 0 0 0 14px rgba(201,83,46,0); }
+            100% { box-shadow: 0 0 0 0 rgba(201,83,46,0); }
+        }
+        .is-playing { animation: ripple 2s infinite; }
+
+        /* Sidebar sticky */
+        @media (min-width: 1024px) {
+            .article-grid { display: grid; grid-template-columns: 8fr 4fr; gap: 2.5rem; }
+            .sticky-side { position: sticky; top: 80px; align-self: start; }
+        }
+
+        /* No scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Issue index row */
+        .issue-row {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            gap: 1.25rem;
+            padding: 1.4rem 0;
+            border-bottom: 1px dotted var(--rule);
+            align-items: baseline;
+            transition: padding-left 0.2s;
+        }
+        .issue-row:hover { padding-left: 0.5rem; }
+        .issue-row:hover .issue-num { color: var(--accent); }
+
+        .issue-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Hero typography */
+        .hero-title {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 500;
+            font-size: clamp(2.4rem, 6vw, 4.6rem);
+            line-height: 1.18;
+            letter-spacing: -0.01em;
+            color: var(--primary);
+        }
+
+        .hero-eng {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        body { padding-top: 40px; }
+
+        /* TOC menu */
+        #toc-menu a:hover { background: rgba(201,83,46,0.12); color: var(--accent); }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.relative{position:relative}.left-0{left:0px}.left-\[5px\]{left:5px}.top-0{top:0px}.top-\[40px\]{top:40px}.bottom-5{bottom:1.25rem}.left-5{left:1.25rem}.right-5{right:1.25rem}.z-\[55\]{z-index:55}.z-\[60\]{z-index:60}.z-40{z-index:40}.mx-3{margin-left:0.75rem;margin-right:0.75rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-5{margin-bottom:1.25rem}.mb-7{margin-bottom:1.75rem}.mb-8{margin-bottom:2rem}.mr-2{margin-right:0.5rem}.mr-4{margin-right:1rem}.mt-14{margin-top:3.5rem}.mt-5{margin-top:1.25rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-7{margin-top:1.75rem}.mb-2{margin-bottom:0.5rem}.mb-6{margin-bottom:1.5rem}.mt-10{margin-top:2.5rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-\[2px\]{height:2px}.h-\[3px\]{height:3px}.h-\[40px\]{height:40px}.h-full{height:100%}.h-px{height:1px}.h-12{height:3rem}.w-1{width:0.25rem}.w-16{width:4rem}.w-\[220px\]{width:220px}.w-\[28px\]{width:28px}.w-\[30px\]{width:30px}.w-\[36px\]{width:36px}.w-full{width:100%}.w-12{width:3rem}.w-8{width:2rem}.max-w-\[1280px\]{max-width:1280px}.max-w-\[680px\]{max-width:680px}.max-w-\[1100px\]{max-width:1100px}.max-w-\[860px\]{max-width:860px}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}.max-w-3xl{max-width:48rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.cursor-pointer{cursor:pointer}.scroll-mt-\[60px\]{scroll-margin-top:60px}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-2{gap:0.5rem}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.whitespace-nowrap{white-space:nowrap}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-\[\#2d3f3a\]{--tw-border-opacity:1;border-color:rgb(45 63 58 / var(--tw-border-opacity, 1))}.border-\[\#d4cdbf\]{--tw-border-opacity:1;border-color:rgb(212 205 191 / var(--tw-border-opacity, 1))}.border-\[\#3a4f4a\]{--tw-border-opacity:1;border-color:rgb(58 79 74 / var(--tw-border-opacity, 1))}.border-\[\#e8e0d2\]{--tw-border-opacity:1;border-color:rgb(232 224 210 / var(--tw-border-opacity, 1))}.bg-\[\#1c2e2a\]{--tw-bg-opacity:1;background-color:rgb(28 46 42 / var(--tw-bg-opacity, 1))}.bg-\[\#c9532e\]{--tw-bg-opacity:1;background-color:rgb(201 83 46 / var(--tw-bg-opacity, 1))}.bg-\[\#d4cdbf\]{--tw-bg-opacity:1;background-color:rgb(212 205 191 / var(--tw-bg-opacity, 1))}.bg-\[\#0f1c19\]{--tw-bg-opacity:1;background-color:rgb(15 28 25 / var(--tw-bg-opacity, 1))}.bg-\[\#2a3530\]{--tw-bg-opacity:1;background-color:rgb(42 53 48 / var(--tw-bg-opacity, 1))}.bg-\[\#faf7f2\]{--tw-bg-opacity:1;background-color:rgb(250 247 242 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-\[16px\]{padding-left:16px;padding-right:16px}.px-\[5px\]{padding-left:5px;padding-right:5px}.py-20{padding-top:5rem;padding-bottom:5rem}.py-\[12px\]{padding-top:12px;padding-bottom:12px}.px-8{padding-left:2rem;padding-right:2rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-16{padding-bottom:4rem}.pb-4{padding-bottom:1rem}.pr-2{padding-right:0.5rem}.pt-14{padding-top:3.5rem}.pl-1{padding-left:0.25rem}.text-center{text-align:center}.text-right{text-align:right}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[0\.85rem\]{font-size:0.85rem}.text-\[0\.95rem\]{font-size:0.95rem}.text-\[1\.02rem\]{font-size:1.02rem}.text-\[1\.1rem\]{font-size:1.1rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[13px\]{font-size:13px}.text-\[1rem\]{font-size:1rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[1\.05rem\]{font-size:1.05rem}.text-\[0\.98rem\]{font-size:0.98rem}.text-\[1\.25rem\]{font-size:1.25rem}.text-\[1\.35rem\]{font-size:1.35rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.not-italic{font-style:normal}.leading-\[2\]{line-height:2}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.leading-\[1\.5\]{line-height:1.5}.leading-\[1\.45\]{line-height:1.45}.leading-\[1\.85\]{line-height:1.85}.leading-\[1\.95\]{line-height:1.95}.leading-\[1\.9\]{line-height:1.9}.leading-snug{line-height:1.375}.tracking-\[0\.18em\]{letter-spacing:0.18em}.tracking-\[0\.25em\]{letter-spacing:0.25em}.tracking-\[0\.28em\]{letter-spacing:0.28em}.tracking-\[0\.2em\]{letter-spacing:0.2em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-\[0\.32em\]{letter-spacing:0.32em}.text-\[\#8a9a93\]{--tw-text-opacity:1;color:rgb(138 154 147 / var(--tw-text-opacity, 1))}.text-\[\#f0ebe1\]{--tw-text-opacity:1;color:rgb(240 235 225 / var(--tw-text-opacity, 1))}.text-\[\#a09686\]{--tw-text-opacity:1;color:rgb(160 150 134 / var(--tw-text-opacity, 1))}.text-\[\#e89a7c\]{--tw-text-opacity:1;color:rgb(232 154 124 / var(--tw-text-opacity, 1))}.text-\[\#f3eddf\]{--tw-text-opacity:1;color:rgb(243 237 223 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-\[\#5c5c5c\]{--tw-text-opacity:1;color:rgb(92 92 92 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.after\:absolute::after{content:var(--tw-content);position:absolute}.after\:bottom-\[10px\]::after{content:var(--tw-content);bottom:10px}.after\:right-0::after{content:var(--tw-content);right:0px}.after\:top-\[10px\]::after{content:var(--tw-content);top:10px}.after\:w-\[1px\]::after{content:var(--tw-content);width:1px}.after\:bg-\[\#3a4f4a\]::after{content:var(--tw-content);--tw-bg-opacity:1;background-color:rgb(58 79 74 / var(--tw-bg-opacity, 1))}.after\:content-\[\'\'\]::after{--tw-content:'';content:var(--tw-content)}.hover\:bg-\[\#2a4540\]:hover{--tw-bg-opacity:1;background-color:rgb(42 69 64 / var(--tw-bg-opacity, 1))}.hover\:bg-\[\#b04827\]:hover{--tw-bg-opacity:1;background-color:rgb(176 72 39 / var(--tw-bg-opacity, 1))}.hover\:bg-\[\#faf7f2\]:hover{--tw-bg-opacity:1;background-color:rgb(250 247 242 / var(--tw-bg-opacity, 1))}.hover\:text-\[\#e89a7c\]:hover{--tw-text-opacity:1;color:rgb(232 154 124 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-\[\#c9532e\]{--tw-text-opacity:1;color:rgb(201 83 46 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:inline{display:inline}}@media (min-width: 768px){.md\:bottom-8{bottom:2rem}.md\:left-8{left:2rem}.md\:right-8{right:2rem}.md\:mb-16{margin-bottom:4rem}.md\:mt-20{margin-top:5rem}.md\:block{display:block}.md\:h-14{height:3.5rem}.md\:w-14{width:3.5rem}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:gap-16{gap:4rem}.md\:gap-4{gap:1rem}.md\:space-y-7 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.75rem * var(--tw-space-y-reverse))}.md\:p-6{padding:1.5rem}.md\:p-8{padding:2rem}.md\:px-10{padding-left:2.5rem;padding-right:2.5rem}.md\:py-28{padding-top:7rem;padding-bottom:7rem}.md\:py-20{padding-top:5rem;padding-bottom:5rem}.md\:px-8{padding-left:2rem;padding-right:2rem}.md\:py-10{padding-top:2.5rem;padding-bottom:2.5rem}.md\:pb-24{padding-bottom:6rem}.md\:pt-20{padding-top:5rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-\[1\.08rem\]{font-size:1.08rem}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-\[1\.15rem\]{font-size:1.15rem}.md\:text-\[2rem\]{font-size:2rem}.md\:text-\[1\.02rem\]{font-size:1.02rem}.md\:text-\[1\.1rem\]{font-size:1.1rem}.md\:text-\[1\.55rem\]{font-size:1.55rem}.md\:text-\[1\.5rem\]{font-size:1.5rem}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:mt-0{margin-top:0px}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:gap-14{gap:3.5rem}.lg\:px-16{padding-left:4rem;padding-right:4rem}}</style></head>
+<body class="ko-break" style="font-size: 20px;">
+
+    <!-- ============ System Top Bar ============ -->
+    <div id="system-bar" class="fixed top-0 left-0 w-full bg-[#1c2e2a] text-[#f0ebe1] z-[60] flex items-center h-[40px] px-[5px] shadow-md sans">
+        <div class="flex items-center h-full flex-1 overflow-x-auto no-scrollbar whitespace-nowrap px-1">
+            <button onclick="toggleMenu(event)" aria-label="목차" class="flex items-center justify-center w-[36px] h-[40px] hover:text-[#e89a7c] transition relative after:content-[''] after:absolute after:right-0 after:top-[10px] after:bottom-[10px] after:w-[1px] after:bg-[#3a4f4a]">
+                <i class="fas fa-bars text-[13px]"></i>
+            </button>
+            <a href="#top" class="font-semibold text-[12px] tracking-[0.18em] uppercase hover:text-[#e89a7c] transition mx-3">
+                Spring Elders' Training · 2026
+            </a>
+            <a href="#editors-note" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition mr-4">서문</a>
+            <a href="#index" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition mr-4">목차</a>
+            <a href="#articles" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition mr-4">메시지</a>
+            <a href="#closing" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition pr-2">말씀카드</a>
+        </div>
+        <div class="flex items-center h-[40px] flex-shrink-0">
+            <span class="text-[10px] tracking-widest text-[#8a9a93] mr-2 hidden sm:inline">A A</span>
+            <button onclick="changeFontSize(-1)" class="w-[30px] h-[40px] flex items-center justify-center hover:text-[#e89a7c] transition text-[12px]" aria-label="글꼴 축소"><i class="fas fa-minus"></i></button>
+            <button onclick="changeFontSize(0)" class="w-[28px] h-[40px] flex items-center justify-center hover:text-[#e89a7c] transition font-bold text-[12px]" aria-label="글꼴 초기화">가</button>
+            <button onclick="changeFontSize(1)" class="w-[30px] h-[40px] flex items-center justify-center hover:text-[#e89a7c] transition text-[12px]" aria-label="글꼴 확대"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+
+    <!-- TOC Dropdown -->
+    <div id="toc-menu" class="fixed top-[40px] left-[5px] bg-[#1c2e2a] text-[#f0ebe1] shadow-xl z-[55] w-[220px] overflow-hidden hidden sans text-[12px] tracking-wider">
+        <a href="#top" class="block px-[16px] py-[12px] border-b border-[#2d3f3a] transition" onclick="toggleMenu()">표제 (Cover)</a>
+        <a href="#editors-note" class="block px-[16px] py-[12px] border-b border-[#2d3f3a] transition" onclick="toggleMenu()">EDITOR'S NOTE</a>
+        <a href="#index" class="block px-[16px] py-[12px] border-b border-[#2d3f3a] transition" onclick="toggleMenu()">ISSUE INDEX</a>
+        <a href="#articles" class="block px-[16px] py-[12px] border-b border-[#2d3f3a] transition" onclick="toggleMenu()">ARTICLES (8 메시지)</a>
+        <a href="#closing" class="block px-[16px] py-[12px] transition" onclick="toggleMenu()">CLOSING</a>
+    </div>
+
+    <!-- ============ Hero / Cover ============ -->
+    <header id="top" class="bg-alt scroll-mt-[60px]">
+        <div class="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-16 pt-14 md:pt-20 pb-16 md:pb-24">
+            <!-- Top metadata strip -->
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-10 md:mb-16 pb-4 border-b border-[#d4cdbf]">
+                <div class="flex items-center gap-3 sans text-[11px] tracking-[0.25em] uppercase ink-soft">
+                    <span class="display italic accent text-[1.1rem] leading-none">Vol. <span class="meta">XXVI</span></span>
+                    <span class="w-1 h-1 rounded-full bg-[#c9532e] inline-block"></span>
+                    <span class="meta">Spring 2026</span>
+                </div>
+                <div class="sans text-[11px] tracking-[0.25em] uppercase ink-soft meta">
+                    Korea Gospel Book Room
+                </div>
+            </div>
+
+            <!-- Main cover grid -->
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-end">
+                <!-- Left: Title (60%) -->
+                <div class="lg:col-span-7">
+                    <p class="label-tag mb-5">Issue 2026 · Elders' International Training</p>
+                    <h1 class="hero-title mb-7">
+                        말씀의 사역과<br>
+                        <span class="accent display italic font-medium" style="font-size:1.04em;">하나님의 경륜을 위한</span><br>
+                        하나님의 분배
+                    </h1>
+                    <div class="flex items-center gap-5">
+                        <span class="block w-16 h-[2px] bg-[#c9532e]"></span>
+                        <p class="hero-eng text-lg md:text-xl">The Ministry of the Word and God's Dispensing for God's Economy</p>
+                    </div>
+                </div>
+
+                <!-- Right: Meta box (40%) -->
+                <aside class="lg:col-span-5">
+                    <div class="meta-box">
+                        <dl class="space-y-4 sans text-[12px]">
+                            <div>
+                                <dt class="text-[10px] tracking-[0.28em] uppercase ink-soft mb-1">Issue</dt>
+                                <dd class="meta text-[1rem] font-medium ink">2026 / SPRING</dd>
+                            </div>
+                            <div>
+                                <dt class="text-[10px] tracking-[0.28em] uppercase ink-soft mb-1">Edition</dt>
+                                <dd class="meta text-[0.95rem] ink">Elders' &amp; Responsible Brothers'<br>International Training</dd>
+                            </div>
+                            <div>
+                                <dt class="text-[10px] tracking-[0.28em] uppercase ink-soft mb-1">Dates · Venue</dt>
+                                <dd class="meta text-[0.95rem] ink">March 20–22, 2026<br>Anaheim, California</dd>
+                            </div>
+                            <div>
+                                <dt class="text-[10px] tracking-[0.28em] uppercase ink-soft mb-1">Volume</dt>
+                                <dd class="meta text-[0.95rem] ink">8 Messages · 48 Daily Sections</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- Subscript -->
+                    <p class="serif italic ink-soft text-[0.85rem] mt-5 leading-relaxed">
+                        “주의 종은… 가르치기를 잘하며…”<br>
+                        <span class="meta not-italic accent">— 딤후 2:24</span>
+                    </p>
+                </aside>
+            </div>
+
+            <!-- Bottom rule + caption -->
+            <div class="mt-14 md:mt-20">
+                <div class="h-[3px] w-full bg-[#c9532e]"></div>
+                <p class="display italic text-center mt-5 text-base md:text-lg ink-soft">
+                    “Be a workman approved by God, accurately handling the word of the truth.”
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ Editor's Note ============ -->
+    <section id="editors-note" class="scroll-mt-[60px] py-20 md:py-28 px-6 md:px-10">
+        <div class="max-w-[680px] mx-auto">
+            <div class="mb-10 flex items-center gap-4">
+                <span class="label-tag">Editor's Note</span>
+                <span class="flex-1 h-px bg-[#d4cdbf]"></span>
+                <span class="meta text-[11px] tracking-[0.2em] ink-soft">003 / 064</span>
+            </div>
+
+            <h2 class="display italic text-3xl md:text-4xl mb-8 ink leading-tight">
+                A Conference on the Ministry &amp; the Dispensing
+            </h2>
+
+            <p class="serif text-[1.02rem] md:text-[1.08rem] leading-[2] dropcap ink mb-7">
+                이번 봄 훈련의 중심에는 한 가지 부담이 있습니다. 곧, 사도들이 “기도하는 것과 그리고 말씀의 사역을 꾸준히 계속할 것이다”라고 말한 것처럼 (<a href="#" class="bible-link">행 6:4</a>), 우리도 같은 기도와 같은 사역에 헌신해야 한다는 부담입니다. 말씀의 사역은 교리의 전달이 아니라, 삼일 하나님 자신을 그분의 백성 안으로 분배하는 통로입니다.
+            </p>
+
+            <p class="serif text-[1.02rem] md:text-[1.08rem] leading-[2] ink mb-7">
+                여덟 메시지에 걸쳐 우리는 기도, 화목, 생명의 공급, 분량의 한계, 신실한 청지기로서의 협력, 요한의 사역의 분배, 그리고 영원한 축복을 살펴봅니다. 모든 메시지는 한 강물을 따라 흐릅니다 — 그 강물은 “생명이신 삼일 하나님께서 세 부분으로 된 사람 안으로 분배되심” 입니다 (<a href="#" class="bible-link">엡 3:17-19</a>).
+            </p>
+
+            <p class="serif text-[1.02rem] md:text-[1.08rem] leading-[2] ink-soft italic">
+                이 저널은 본 훈련 자료를 매일 매일 묵상으로 따라가도록 편집되었습니다. 매주 개요와 일일 분배(Day 1 ~ Day 6), 그리고 핵심 성구를 함께 펼쳐 둡니다.
+            </p>
+
+            <div class="mt-12 ornate-rule"><span class="diamond"></span></div>
+        </div>
+    </section>
+
+    <!-- ============ Pull Quote 1 ============ -->
+    <section class="bg-alt py-20 md:py-28 px-6 md:px-10">
+        <div class="max-w-[860px] mx-auto pullquote">
+            <p class="display italic font-medium text-2xl md:text-[2rem] leading-[1.5] ink">
+                기도의 참된 의미는 우리의 영 안에서 하나님을 접촉하고
+                <span class="accent">하나님 자신을 흡수하는 것이다.</span>
+            </p>
+            <p class="meta text-[11px] tracking-[0.25em] uppercase mt-7 ink-soft">
+                — Message 1 · Outline II
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ Issue Index ============ -->
+    <section id="index" class="scroll-mt-[60px] py-20 md:py-28 px-6 md:px-10">
+        <div class="max-w-[1100px] mx-auto">
+            <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+                <div>
+                    <p class="label-tag mb-3">Inside this Issue</p>
+                    <h2 class="display italic text-4xl md:text-5xl ink">Eight Messages</h2>
+                </div>
+                <p class="meta text-[12px] tracking-[0.18em] uppercase ink-soft max-w-md text-right">
+                    Click any title below or scroll on to read each article in full.
+                </p>
+            </div>
+
+            <div id="issue-list">
+            <a href="#m-1" class="issue-row group">
+                <div class="issue-num">01</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week 01 · Article 01</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">기도하는 것과 그리고 말씀의 사역을 꾸준히 계속할 것입니다.</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">Continuing Steadfastly in Prayer and in the Ministry of the Word</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a>
+            <a href="#m-2" class="issue-row group">
+                <div class="issue-num">02</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week 02 · Article 02</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">화목의 사역</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">The Ministry of Reconciliation</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a>
+            <a href="#m-3" class="issue-row group">
+                <div class="issue-num">03</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week 03 · Article 03</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">그리스도의 몸을 위해 생명을 공급함</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">Supplying Life for the Body of Christ</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a>
+            <a href="#m-4" class="issue-row group">
+                <div class="issue-num">04</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week 04 · Article 04</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">하나님께서 나누어 주신 분량의 한계와 영적 전쟁을 수행하는 사역</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">The Limit of God's Apportioned Measure and the Ministry of Spiritual Warfare</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a>
+            <a href="#m-5" class="issue-row group">
+                <div class="issue-num">05</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week 05 · Article 05</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">주님의 신실한 청지기들이 됨으로써 주님과 협력하여 그분의 경륜을 수행함</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">Cooperating with the Lord as His Faithful Stewards to Carry Out His Economy</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a>
+            <a href="#m-6" class="issue-row group">
+                <div class="issue-num">06</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week 06 · Article 06</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">요한의 사역에 있는 삼일 하나님의 분배</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">The Dispensing of the Triune God in John's Ministry</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a>
+            <a href="#m-7" class="issue-row group">
+                <div class="issue-num">07</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week 07 · Article 07</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">우리의 누림과 하나님의 경륜의 성취를 위해 삼일 하나님께서 그분 자신을 우리 안으로 분배하시는 영원한 축복</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">The Eternal Blessing of the Triune God's Self-Dispensing</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a>
+            <a href="#m-8" class="issue-row group">
+                <div class="issue-num">08</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week 08 · Article 08</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">하나님의 의에 따라, 하나님의 거룩함을 통하여, 하나님의 영광에 이르도록 생명이신 삼일 하나님을 세 부분으로 된 사람 안으로 분배함</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">Dispensing the Triune God as Life into the Tripartite Man</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a></div>
+        </div>
+    </section>
+
+    <!-- ============ Articles ============ -->
+    <section id="articles" class="scroll-mt-[60px] bg-alt py-20 md:py-28 px-6 md:px-10">
+        <div class="max-w-[1280px] mx-auto">
+            <div class="text-center mb-16">
+                <p class="label-tag mb-3">Articles · Weekly Outlines</p>
+                <h2 class="display italic text-4xl md:text-5xl ink mb-4">The Eight Articles</h2>
+                <div class="ornate-rule max-w-md mx-auto"><span class="diamond"></span></div>
+                <p class="serif italic ink-soft text-base mt-5 max-w-xl mx-auto leading-relaxed">
+                    각 메시지의 제목을 클릭하면 한 주의 개요(Ⅰ–Ⅵ)와 일일 분배가 펼쳐집니다.
+                </p>
+            </div>
+
+            <div id="accordion-container" class="space-y-6">
+            <details id="m-1" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue 01</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week 01</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        기도하는 것과 그리고 말씀의 사역을 꾸준히 계속할 것입니다.
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        Continuing Steadfastly in Prayer and in the Ministry of the Word
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=5&amp;bibChapt=6&amp;bibVerse=4" target="_blank" rel="noopener" class="bible-link">행 6:4</a>, 유 20, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=2&amp;bibChapt=11&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">막 11:20-24</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=17" target="_blank" rel="noopener" class="bible-link">엡 3:17-19</a></p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        사도들의 결심처럼, 우리도 기도와 말씀의 사역을 꾸준히 계속하기 위해 영 안에서 하나님을 접촉하고 흡수해야 한다.
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week 01</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">하나님과 사람이 함께 연합되는 진정한 기도는, 영의 접촉을 통해 하나님 자신을 흡수하는 것이다.</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                <div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅰ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">“기도하는 것과 그리고 말씀의 사역을 꾸준히 계속할 것입니다.” — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=5&amp;bibChapt=6&amp;bibVerse=4" target="_blank" rel="noopener" class="bible-link">행 6:4</a>. 사도들의 결심은 모든 책임 형제들이 따라야 할 본이며, 사역의 두 날개이다.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅱ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">기도의 참된 의미는 우리의 영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것이다 — 유 20, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=6&amp;bibVerse=18" target="_blank" rel="noopener" class="bible-link">엡 6:18</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=4&amp;bibVerse=24" target="_blank" rel="noopener" class="bible-link">요 4:24</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅲ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리는 모든 일 가운데 기도해야 한다. 우리의 모든 행함에 기도를 결합시켜야 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=13&amp;bibChapt=5&amp;bibVerse=17" target="_blank" rel="noopener" class="bible-link">살전 5:17</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=12&amp;bibChapt=4&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">골 4:2</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=2&amp;bibChapt=11&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">막 11:20-24</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅳ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">말씀의 사역은 그리스도를 사람들 안으로 사역하는 것이다. 이는 단순한 가르침이 아닌, 그리스도 자신을 분배하는 것이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=12&amp;bibChapt=1&amp;bibVerse=25" target="_blank" rel="noopener" class="bible-link">골 1:25-29</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=3&amp;bibVerse=6" target="_blank" rel="noopener" class="bible-link">고후 3:6</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅴ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리가 말씀을 사역하기 위해서는, 그 말씀이 먼저 우리 안에서 충만하게 거해야 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=12&amp;bibChapt=3&amp;bibVerse=16" target="_blank" rel="noopener" class="bible-link">골 3:16</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=0&amp;bibOutline=&amp;bibleSelOp=19&amp;bibChapt=119&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">시 119:11</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=17" target="_blank" rel="noopener" class="bible-link">엡 3:17-19</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅵ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리는 기도와 말씀의 사역으로 그리스도의 몸을 세워, 새 예루살렘이라는 결말에 이르게 하는 사도들의 본을 따라야 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=21&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">계 21:2</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=4&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">엡 4:11-12</a>.</p>
+                </div>
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=5&amp;bibChapt=6&amp;bibVerse=4" target="_blank" rel="noopener" class="bible-link">행 6:4</a>, 유 20, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=2&amp;bibChapt=11&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">막 11:20-24</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=17" target="_blank" rel="noopener" class="bible-link">엡 3:17-19</a></p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M1Outline.html">개요</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M1Prayer.html">기도문</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M1D1.html">Day 1</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M1D2.html">Day 2</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M1D3.html">Day 3</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M1D4.html">Day 4</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M1D5.html">Day 5</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M1D6.html">Day 6</span>
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details>
+            <details id="m-2" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue 02</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week 02</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        화목의 사역
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        The Ministry of Reconciliation
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=5&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">고후 5:14-21</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=5&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">롬 5:10</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=12&amp;bibChapt=1&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">골 1:20-22</a></p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        그리스도의 사랑이 우리를 강권하여, 우리는 죄인들을 하나님께 화목시키고, 신자들을 하나님 자신과 더 깊이 화목시키는 사역에 부르심을 받는다.
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week 02</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">화목의 사역은 두 단계이다 — 죄인을 하나님께로, 그리고 신자를 하나님 자신 안으로.</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                <div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅰ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">화목의 사역은 그리스도 안에서 하나님께서 자신과 세상을 화목하게 하시는 신성한 일에서 비롯된다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=5&amp;bibVerse=18" target="_blank" rel="noopener" class="bible-link">고후 5:18-19</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅱ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">화목에는 두 단계가 있다. 첫째 단계는 죄인이 죄에서 하나님께 돌아오는 것이고, 둘째 단계는 신자가 하나님 자신 안으로 더 깊이 들어가는 것이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=5&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">롬 5:10</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=5&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">고후 5:20</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅲ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">화목의 직분을 받은 우리는 그리스도를 대신하는 대사이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=5&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">고후 5:20</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=6&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">엡 6:20</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅳ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">그리스도의 사랑이 우리를 강권하여, 우리가 더 이상 자신을 위하여 살지 않고 우리를 위해 죽으셨다가 다시 살아나신 분을 위해 살게 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=5&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">고후 5:14-15</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅴ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">화목의 결과는 하나님과의 친교, 곧 그분의 영광 안에서의 누림이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=13&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">고후 13:14</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=1&amp;bibVerse=3" target="_blank" rel="noopener" class="bible-link">요일 1:3</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅵ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리는 신성한 사랑의 강권 아래 화목의 말씀을 사람들 안에 사역해야 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=5&amp;bibVerse=19" target="_blank" rel="noopener" class="bible-link">고후 5:19</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=12&amp;bibChapt=1&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">골 1:20-22</a>.</p>
+                </div>
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=5&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">고후 5:14-21</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=5&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">롬 5:10</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=12&amp;bibChapt=1&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">골 1:20-22</a></p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M2Outline.html">개요</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M2Prayer.html">기도문</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M2D1.html">Day 1</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M2D2.html">Day 2</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M2D3.html">Day 3</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M2D4.html">Day 4</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M2D5.html">Day 5</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M2D6.html">Day 6</span>
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details>
+            <details id="m-3" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue 03</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week 03</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        그리스도의 몸을 위해 생명을 공급함
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        Supplying Life for the Body of Christ
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=11&amp;bibChapt=1&amp;bibVerse=19" target="_blank" rel="noopener" class="bible-link">빌 1:19-21</a>상, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=6&amp;bibVerse=57" target="_blank" rel="noopener" class="bible-link">요 6:57</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=12&amp;bibVerse=12" target="_blank" rel="noopener" class="bible-link">고전 12:12-27</a></p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        몸을 세우는 사역의 본질은 가르치는 것이 아니라, 그리스도라는 생명을 공급하는 것이다.
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week 03</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">몸을 세우는 일은 직분이 아니라 공급이며, 가르침이 아니라 생명이다.</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                <div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅰ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">그리스도의 몸은 그리스도 자신의 풍부함을 따라 자라며, 그 자라남은 생명의 공급에서 비롯된다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=4&amp;bibVerse=15" target="_blank" rel="noopener" class="bible-link">엡 4:15-16</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=12&amp;bibChapt=2&amp;bibVerse=19" target="_blank" rel="noopener" class="bible-link">골 2:19</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅱ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리는 먼저 그리스도를 우리 자신의 생명으로 누림으로 다른 이들에게 그리스도를 공급할 수 있다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=6&amp;bibVerse=57" target="_blank" rel="noopener" class="bible-link">요 6:57</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=11&amp;bibChapt=1&amp;bibVerse=19" target="_blank" rel="noopener" class="bible-link">빌 1:19-21</a>상.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅲ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">생명의 공급은 직분의 위치에서 오는 것이 아니라, 영 안에서 그리스도를 누림에서 오는 것이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=12&amp;bibVerse=12" target="_blank" rel="noopener" class="bible-link">고전 12:12-27</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=7&amp;bibVerse=37" target="_blank" rel="noopener" class="bible-link">요 7:37-39</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅳ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">모든 지체는 다른 지체들에게 생명을 공급할 의무와 능력을 가진다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=4&amp;bibVerse=16" target="_blank" rel="noopener" class="bible-link">엡 4:16</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=12&amp;bibVerse=4" target="_blank" rel="noopener" class="bible-link">롬 12:4-5</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅴ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">책임 형제들의 사역은 위에서 군림하는 것이 아니라, 본이 되어 생명을 풀어 주는 것이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=21&amp;bibChapt=5&amp;bibVerse=1" target="_blank" rel="noopener" class="bible-link">벧전 5:1-3</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=5&amp;bibChapt=20&amp;bibVerse=28" target="_blank" rel="noopener" class="bible-link">행 20:28</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅵ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">그리스도의 몸을 위해 생명을 공급하는 것이 모든 사역의 시금석이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=14&amp;bibVerse=4" target="_blank" rel="noopener" class="bible-link">고전 14:4-5</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=14&amp;bibVerse=26" target="_blank" rel="noopener" class="bible-link">26</a>.</p>
+                </div>
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=11&amp;bibChapt=1&amp;bibVerse=19" target="_blank" rel="noopener" class="bible-link">빌 1:19-21</a>상, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=6&amp;bibVerse=57" target="_blank" rel="noopener" class="bible-link">요 6:57</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=12&amp;bibVerse=12" target="_blank" rel="noopener" class="bible-link">고전 12:12-27</a></p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M3Outline.html">개요</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M3Prayer.html">기도문</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M3D1.html">Day 1</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M3D2.html">Day 2</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M3D3.html">Day 3</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M3D4.html">Day 4</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M3D5.html">Day 5</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M3D6.html">Day 6</span>
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details>
+            <details id="m-4" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue 04</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week 04</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        하나님께서 나누어 주신 분량의 한계와 영적 전쟁을 수행하는 사역
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        The Limit of God's Apportioned Measure and the Ministry of Spiritual Warfare
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=10&amp;bibVerse=13" target="_blank" rel="noopener" class="bible-link">고후 10:13-15</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=6&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">엡 6:10-18</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=12&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">계 12:11</a></p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        각 사람은 하나님께서 정해 주신 분량 안에서 사역하며, 그 분량 안에서 영적 전쟁이 효력을 발한다.
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week 04</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">분량을 넘는 사역은 자아의 확장이며, 분량 안의 사역만이 영적 권위를 갖는다.</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                <div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅰ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">하나님께서는 각 사람에게 분량을 정해 주셨다. 우리는 그 분량을 넘어 자랑하지 말아야 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=10&amp;bibVerse=13" target="_blank" rel="noopener" class="bible-link">고후 10:13-15</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=12&amp;bibVerse=3" target="_blank" rel="noopener" class="bible-link">롬 12:3</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅱ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">분량 안에 머무는 것은 권위에 복종하는 것이며, 몸의 질서를 보존하는 것이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=4&amp;bibVerse=16" target="_blank" rel="noopener" class="bible-link">엡 4:16</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=12&amp;bibVerse=18" target="_blank" rel="noopener" class="bible-link">고전 12:18</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅲ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">영적 전쟁은 자기 분량 안에서 성령의 무장으로 수행된다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=6&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">엡 6:10-18</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅳ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리는 어린 양의 피와 우리의 증언의 말씀과 죽기까지 자신의 혼-생명을 사랑하지 않음으로 사탄을 이긴다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=12&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">계 12:11</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅴ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">영적 전쟁의 목적은 하나님의 왕국을 가져오는 것이며, 결국에는 사탄을 무저갱에 던지는 것이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=1&amp;bibChapt=6&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">마 6:10</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=20&amp;bibVerse=1" target="_blank" rel="noopener" class="bible-link">계 20:1-3</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅵ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">책임 형제들은 자기 분량을 분별하고 다른 이들의 분량을 존중하며, 함께 영적 전쟁을 수행해야 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=10&amp;bibVerse=13" target="_blank" rel="noopener" class="bible-link">고후 10:13</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=6&amp;bibVerse=18" target="_blank" rel="noopener" class="bible-link">엡 6:18</a>.</p>
+                </div>
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=10&amp;bibVerse=13" target="_blank" rel="noopener" class="bible-link">고후 10:13-15</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=6&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">엡 6:10-18</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=12&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">계 12:11</a></p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M4Outline.html">개요</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M4Prayer.html">기도문</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M4D1.html">Day 1</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M4D2.html">Day 2</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M4D3.html">Day 3</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M4D4.html">Day 4</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M4D5.html">Day 5</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M4D6.html">Day 6</span>
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details>
+            <details id="m-5" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue 05</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week 05</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        주님의 신실한 청지기들이 됨으로써 주님과 협력하여 그분의 경륜을 수행함
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        Cooperating with the Lord as His Faithful Stewards to Carry Out His Economy
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=4&amp;bibVerse=1" target="_blank" rel="noopener" class="bible-link">고전 4:1-2</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=17&amp;bibChapt=1&amp;bibVerse=7" target="_blank" rel="noopener" class="bible-link">딛 1:7</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">엡 3:2</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=9" target="_blank" rel="noopener" class="bible-link">9</a></p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        주님에게서 부담을 받아 말씀을 공급하고, 한마음 한뜻으로 서로 동역하는 청지기들이 그분의 경륜을 수행한다.
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week 05</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">신실한 청지기는 자기 부담을 가진 자, 그리고 함께 동역하는 자이다.</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                <div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅰ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리는 그리스도의 종이며 하나님의 비밀들의 청지기로 여겨져야 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=4&amp;bibVerse=1" target="_blank" rel="noopener" class="bible-link">고전 4:1</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=17&amp;bibChapt=1&amp;bibVerse=7" target="_blank" rel="noopener" class="bible-link">딛 1:7</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅱ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">청지기에게 요구되는 것은 신실함이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=4&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">고전 4:2</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=1&amp;bibChapt=25&amp;bibVerse=21" target="_blank" rel="noopener" class="bible-link">마 25:21</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅲ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">신실한 청지기는 주님에게서 부담을 받아 그 부담대로 말씀을 공급한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=9&amp;bibVerse=16" target="_blank" rel="noopener" class="bible-link">고전 9:16-17</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=12&amp;bibChapt=1&amp;bibVerse=25" target="_blank" rel="noopener" class="bible-link">골 1:25</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅳ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리는 한마음 한뜻으로 함께 그리스도의 복음의 믿음을 위해 협력해야 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=11&amp;bibChapt=1&amp;bibVerse=27" target="_blank" rel="noopener" class="bible-link">빌 1:27</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=5&amp;bibChapt=4&amp;bibVerse=32" target="_blank" rel="noopener" class="bible-link">행 4:32</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅴ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">동역의 영은 자아 부인의 영이며, 다른 이들을 자기보다 더 낫게 여기는 영이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=11&amp;bibChapt=2&amp;bibVerse=3" target="_blank" rel="noopener" class="bible-link">빌 2:3-4</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅵ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">주님과 협력하여 그분의 경륜, 곧 그리스도와 교회의 경륜을 수행하는 것이 청지기들의 영광이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">엡 3:2</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=9" target="_blank" rel="noopener" class="bible-link">9</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=5&amp;bibVerse=32" target="_blank" rel="noopener" class="bible-link">5:32</a>.</p>
+                </div>
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=7&amp;bibChapt=4&amp;bibVerse=1" target="_blank" rel="noopener" class="bible-link">고전 4:1-2</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=17&amp;bibChapt=1&amp;bibVerse=7" target="_blank" rel="noopener" class="bible-link">딛 1:7</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">엡 3:2</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=9" target="_blank" rel="noopener" class="bible-link">9</a></p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M5Outline.html">개요</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M5Prayer.html">기도문</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M5D1.html">Day 1</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M5D2.html">Day 2</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M5D3.html">Day 3</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M5D4.html">Day 4</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M5D5.html">Day 5</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M5D6.html">Day 6</span>
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details>
+            <details id="m-6" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue 06</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week 06</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        요한의 사역에 있는 삼일 하나님의 분배
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        The Dispensing of the Triune God in John's Ministry
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=1&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">요 1:14</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=14&amp;bibVerse=23" target="_blank" rel="noopener" class="bible-link">14:23</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=1&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">요일 1:2-3</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=5&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">5:11-12</a></p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        요한의 사역은 삼일 하나님의 분배를 가장 깊이 드러내는 사역이며, 그 결과는 신성한 친교이다.
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week 06</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">요한의 사역의 본질은 분배 — 곧 삼일 하나님 자신이 신자들 안으로 부어지심이다.</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                <div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅰ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">요한의 복음은 말씀이 육신이 되심으로 시작되어 신성과 인성의 연합을 보인다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=1&amp;bibVerse=1" target="_blank" rel="noopener" class="bible-link">요 1:1</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=1&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">14</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=1&amp;bibVerse=18" target="_blank" rel="noopener" class="bible-link">18</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅱ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">아버지와 아들과 그 영은 신자들 안에 거처를 만드신다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=14&amp;bibVerse=23" target="_blank" rel="noopener" class="bible-link">요 14:23</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=14&amp;bibVerse=17" target="_blank" rel="noopener" class="bible-link">14:17</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=14&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">14:20</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅲ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">요한일서는 친교의 책이며, 친교는 삼일 하나님의 분배의 흐름이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=1&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">요일 1:2-3</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=1&amp;bibVerse=6" target="_blank" rel="noopener" class="bible-link">1:6-7</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅳ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">영원한 생명은 삼일 하나님 자신이며, 그것이 우리 안에 있다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=5&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">요일 5:11-12</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=5&amp;bibVerse=20" target="_blank" rel="noopener" class="bible-link">5:20</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅴ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">요한계시록은 분배의 완성이며, 새 예루살렘은 삼일 하나님과 사람의 영원한 연합이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=21&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">계 21:2-3</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=21&amp;bibVerse=22" target="_blank" rel="noopener" class="bible-link">21:22-23</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=22&amp;bibVerse=1" target="_blank" rel="noopener" class="bible-link">22:1-2</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅵ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">요한의 사역은 우리를 신성한 분배의 흐름 안으로 가져와 신성한 친교 안에 살게 한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=1&amp;bibVerse=3" target="_blank" rel="noopener" class="bible-link">요일 1:3</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=15&amp;bibVerse=4" target="_blank" rel="noopener" class="bible-link">요 15:4-5</a>.</p>
+                </div>
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=1&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">요 1:14</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=14&amp;bibVerse=23" target="_blank" rel="noopener" class="bible-link">14:23</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=1&amp;bibVerse=2" target="_blank" rel="noopener" class="bible-link">요일 1:2-3</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=23&amp;bibChapt=5&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">5:11-12</a></p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M6Outline.html">개요</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M6Prayer.html">기도문</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M6D1.html">Day 1</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M6D2.html">Day 2</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M6D3.html">Day 3</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M6D4.html">Day 4</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M6D5.html">Day 5</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M6D6.html">Day 6</span>
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details>
+            <details id="m-7" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue 07</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week 07</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        우리의 누림과 하나님의 경륜의 성취를 위해 삼일 하나님께서 그분 자신을 우리 안으로 분배하시는 영원한 축복
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        The Eternal Blessing of the Triune God's Self-Dispensing
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=13&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">고후 13:14</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=0&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=6&amp;bibVerse=22" target="_blank" rel="noopener" class="bible-link">민 6:22-27</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=0&amp;bibOutline=&amp;bibleSelOp=19&amp;bibChapt=36&amp;bibVerse=8" target="_blank" rel="noopener" class="bible-link">시 36:8-9</a></p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        삼일 하나님의 분배는 우리에게 영원한 축복이며, 동시에 그분의 경륜의 성취이다.
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week 07</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">우리가 누리는 모든 영적인 축복은 결국 한 가지 — 삼일 하나님 자신의 분배이다.</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                <div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅰ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">삼일 하나님의 분배는 영원한 축복이다. 이는 아버지의 사랑과 아들의 은혜와 그 영의 친교의 한 흐름이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=13&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">고후 13:14</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅱ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">옛 언약의 제사장적 축복은 신약의 삼일 하나님의 분배의 그림자이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=0&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=6&amp;bibVerse=22" target="_blank" rel="noopener" class="bible-link">민 6:22-27</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅲ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리는 하나님의 집의 풍부함을 누리며, 그분의 즐거움의 강에서 마신다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=0&amp;bibOutline=&amp;bibleSelOp=19&amp;bibChapt=36&amp;bibVerse=8" target="_blank" rel="noopener" class="bible-link">시 36:8-9</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=22&amp;bibVerse=1" target="_blank" rel="noopener" class="bible-link">계 22:1</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅳ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">분배는 우리의 누림임과 동시에 하나님의 경륜의 성취이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=1&amp;bibVerse=3" target="_blank" rel="noopener" class="bible-link">엡 1:3-14</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=9" target="_blank" rel="noopener" class="bible-link">3:9-11</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅴ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">영원토록 우리의 분깃은 삼일 하나님 자신이며, 그분 안에서 우리는 만족한다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=0&amp;bibOutline=&amp;bibleSelOp=19&amp;bibChapt=73&amp;bibVerse=26" target="_blank" rel="noopener" class="bible-link">시 73:26</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=21&amp;bibVerse=7" target="_blank" rel="noopener" class="bible-link">계 21:7</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅵ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">이 축복은 새 예루살렘에서 절정에 이르며, 거기서 하나님과 사람이 영원히 함께 거하신다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=21&amp;bibVerse=3" target="_blank" rel="noopener" class="bible-link">계 21:3</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=27&amp;bibChapt=22&amp;bibVerse=3" target="_blank" rel="noopener" class="bible-link">22:3-5</a>.</p>
+                </div>
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=8&amp;bibChapt=13&amp;bibVerse=14" target="_blank" rel="noopener" class="bible-link">고후 13:14</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=0&amp;bibOutline=&amp;bibleSelOp=4&amp;bibChapt=6&amp;bibVerse=22" target="_blank" rel="noopener" class="bible-link">민 6:22-27</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=0&amp;bibOutline=&amp;bibleSelOp=19&amp;bibChapt=36&amp;bibVerse=8" target="_blank" rel="noopener" class="bible-link">시 36:8-9</a></p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M7Outline.html">개요</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M7Prayer.html">기도문</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M7D1.html">Day 1</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M7D2.html">Day 2</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M7D3.html">Day 3</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M7D4.html">Day 4</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M7D5.html">Day 5</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M7D6.html">Day 6</span>
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details>
+            <details id="m-8" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue 08</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week 08</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        하나님의 의에 따라, 하나님의 거룩함을 통하여, 하나님의 영광에 이르도록 생명이신 삼일 하나님을 세 부분으로 된 사람 안으로 분배함
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        Dispensing the Triune God as Life into the Tripartite Man
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=5&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">롬 5:10-21</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=13&amp;bibChapt=5&amp;bibVerse=23" target="_blank" rel="noopener" class="bible-link">살전 5:23</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=16" target="_blank" rel="noopener" class="bible-link">엡 3:16-21</a></p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        삼일 하나님의 분배는 의를 따르고, 거룩함을 통과하며, 영광에 이르는 한 흐름이다.
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week 08</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">의 · 거룩 · 영광 — 이것이 분배의 세 단계요, 우리 영 · 혼 · 몸의 변화의 노선이다.</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                <div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅰ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">그리스도의 구속을 통한 칭의는 하나님의 의의 표현이며, 분배의 시작이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=3&amp;bibVerse=24" target="_blank" rel="noopener" class="bible-link">롬 3:24-26</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=5&amp;bibVerse=18" target="_blank" rel="noopener" class="bible-link">5:18</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅱ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">거룩함은 우리의 혼 안으로 침투해 들어오는 신성한 본성의 일이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=6&amp;bibVerse=19" target="_blank" rel="noopener" class="bible-link">롬 6:19</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=6&amp;bibVerse=22" target="_blank" rel="noopener" class="bible-link">22</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=13&amp;bibChapt=5&amp;bibVerse=23" target="_blank" rel="noopener" class="bible-link">살전 5:23</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅲ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">영광은 우리의 죽을 몸이 변형되어 그분의 영광의 몸과 같은 형상을 이루는 것이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=11&amp;bibChapt=3&amp;bibVerse=21" target="_blank" rel="noopener" class="bible-link">빌 3:21</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=8&amp;bibVerse=30" target="_blank" rel="noopener" class="bible-link">롬 8:30</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅳ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">사람은 영, 혼, 몸의 세 부분으로 되어 있으며, 분배는 영에서 시작하여 혼을 거쳐 몸에 이른다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=13&amp;bibChapt=5&amp;bibVerse=23" target="_blank" rel="noopener" class="bible-link">살전 5:23</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=8&amp;bibVerse=6" target="_blank" rel="noopener" class="bible-link">롬 8:6</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=8&amp;bibVerse=11" target="_blank" rel="noopener" class="bible-link">11</a>.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅴ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">우리의 속사람이 그 영을 통하여 능력으로 강화되어, 그리스도께서 우리 마음 안에 거하시는 것이 분배의 핵심이다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=16" target="_blank" rel="noopener" class="bible-link">엡 3:16-17</a>상.</p>
+                </div><div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">Ⅵ</span>
+                    <p class="flex-1 ko-break leading-[1.95]">이 모든 분배의 목표는 하나님의 영광이며, 교회 안에서 그리고 그리스도 예수 안에서 영광이 그분께 있을지어다 — <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=21" target="_blank" rel="noopener" class="bible-link">엡 3:21</a>.</p>
+                </div>
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break"><a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=6&amp;bibChapt=5&amp;bibVerse=10" target="_blank" rel="noopener" class="bible-link">롬 5:10-21</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=13&amp;bibChapt=5&amp;bibVerse=23" target="_blank" rel="noopener" class="bible-link">살전 5:23</a>, <a href="http://rv.or.kr/read_recovery.php?bibleVer=1&amp;bibOutline=&amp;bibleSelOp=10&amp;bibChapt=3&amp;bibVerse=16" target="_blank" rel="noopener" class="bible-link">엡 3:16-21</a></p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M8Outline.html">개요</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M8Prayer.html">기도문</span>
+                                    <span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M8D1.html">Day 1</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M8D2.html">Day 2</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M8D3.html">Day 3</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M8D4.html">Day 4</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M8D5.html">Day 5</span><span class="day-btn day-disabled" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M8D6.html">Day 6</span>
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details></div>
+        </div>
+    </section>
+
+    <!-- ============ Pull Quote 2 ============ -->
+    <section class="py-20 md:py-28 px-6 md:px-10">
+        <div class="max-w-[860px] mx-auto pullquote">
+            <p class="display italic font-medium text-2xl md:text-[2rem] leading-[1.5] ink">
+                생명이신 삼일 하나님께서 그분 자신을
+                <span class="accent">세 부분으로 된 사람 안으로 분배하심으로써,</span>
+                하나님의 의에 따라, 하나님의 거룩함을 통하여, 하나님의 영광에 이르도록 하신다.
+            </p>
+            <p class="meta text-[11px] tracking-[0.25em] uppercase mt-7 ink-soft">
+                — Message 8 · Theme
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ Closing ============ -->
+    <section id="closing" class="scroll-mt-[60px] bg-forest text-[#f3eddf] py-20 md:py-28 px-6 md:px-10">
+        <div class="max-w-[860px] mx-auto text-center">
+            <p class="label-tag mb-4" style="color:#e89a7c;">Closing</p>
+            <h2 class="display italic text-4xl md:text-5xl mb-8 leading-tight">신언 · 말씀 카드</h2>
+            <p class="serif text-[1.05rem] md:text-[1.15rem] leading-[2] mb-10" style="color:#e6dcc8;">
+                매일의 분배 후 기록되는 신언 (神言, Prophesying)은
+                훈련의 마지막 호흡입니다. 받은 말씀을 자신의 언어로 다시 빚어,
+                몸의 지체들에게 공급하십시오.
+            </p>
+            <div class="inline-block px-8 py-5 border border-[#3a4f4a]">
+                <p class="display italic text-2xl md:text-3xl" style="color:#e89a7c;">“Amen. Come, Lord Jesus!”</p>
+                <p class="meta text-[11px] tracking-[0.3em] uppercase mt-2" style="color:#8a9a93;">— Revelation 22:20</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ Audio Player ============ -->
+    <button id="play-pause-btn" class="fixed bottom-5 left-5 md:bottom-8 md:left-8 bg-[#c9532e] text-white w-12 h-12 md:w-14 md:h-14 text-base md:text-lg flex items-center justify-center shadow-lg hover:bg-[#b04827] transition z-40" aria-label="배경음악 재생/일시정지" style="border-radius: 2px;">
+        <i class="fas fa-play pl-1" id="play-icon"></i>
+        <audio id="bg-music" loop="" crossorigin="anonymous">
+            <source id="audio-source" src="https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/whatameeting.mp3" type="audio/mpeg">
+        </audio>
+    </button>
+
+    <!-- Back to top -->
+    <a href="#top" id="backToTop" class="fixed bottom-5 right-5 md:bottom-8 md:right-8 bg-[#1c2e2a] text-[#f3eddf] w-12 h-12 md:w-14 md:h-14 text-base md:text-lg flex items-center justify-center shadow-lg hover:bg-[#2a4540] transition z-40 opacity-0 pointer-events-none" aria-label="맨 위로" style="border-radius: 2px; opacity: 1; pointer-events: auto;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- ============ Footer ============ -->
+    <footer class="bg-[#0f1c19] text-[#a09686] py-16 md:py-20 px-6 md:px-10 sans">
+        <div class="max-w-[1100px] mx-auto">
+            <div class="grid md:grid-cols-3 gap-10 md:gap-16 mb-12">
+                <div>
+                    <p class="label-tag mb-3" style="color:#c9532e;">Colophon</p>
+                    <p class="display italic text-2xl text-[#f3eddf] leading-tight">2026 Spring International<br>Training for Elders<br>&amp; Responsible Brothers</p>
+                </div>
+                <div>
+                    <p class="label-tag mb-3" style="color:#c9532e;">Theme</p>
+                    <p class="serif text-[#f3eddf] text-[0.95rem] leading-relaxed">The Ministry of the Word and God's Dispensing for God's Economy</p>
+                </div>
+                <div>
+                    <p class="label-tag mb-3" style="color:#c9532e;">Publisher</p>
+                    <p class="meta text-[0.85rem] leading-relaxed">Korea Gospel Book Room<br>한국복음서원<br>Korean Copyright © 2026</p>
+                </div>
+            </div>
+            <div class="h-px bg-[#2a3530] mb-8"></div>
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <p class="display italic text-[#e89a7c] text-lg">“Amen. Come, Lord Jesus!” — Rev 22:20</p>
+                <p class="meta text-[10px] tracking-[0.25em] uppercase">For the building up of the Body of Christ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= SCRIPT ================= -->
+    <script>
+    /* ===== 성경 권수 매핑 ===== */
+    const bibleMap = {
+        // 구약 (0)
+        "창":[0,1],"출":[0,2],"레":[0,3],"민":[0,4],"신":[0,5],"수":[0,6],"삿":[0,7],"룻":[0,8],
+        "삼상":[0,9],"삼하":[0,10],"왕상":[0,11],"왕하":[0,12],"대상":[0,13],"대하":[0,14],"스":[0,15],"느":[0,16],
+        "에":[0,17],"욥":[0,18],"시":[0,19],"잠":[0,20],"전":[0,21],"아":[0,22],"사":[0,23],"렘":[0,24],
+        "애":[0,25],"겔":[0,26],"단":[0,27],"호":[0,28],"욜":[0,29],"암":[0,30],"옵":[0,31],"욘":[0,32],
+        "미":[0,33],"나":[0,34],"합":[0,35],"습":[0,36],"학":[0,37],"슥":[0,38],"말":[0,39],
+        // 신약 (1)
+        "마":[1,1],"막":[1,2],"눅":[1,3],"요":[1,4],"행":[1,5],"롬":[1,6],"고전":[1,7],"고후":[1,8],
+        "갈":[1,9],"엡":[1,10],"빌":[1,11],"골":[1,12],"살전":[1,13],"살후":[1,14],"딤전":[1,15],"딤후":[1,16],
+        "딛":[1,17],"몬":[1,18],"히":[1,19],"약":[1,20],"벧전":[1,21],"벧후":[1,22],"요일":[1,23],"요이":[1,24],
+        "요삼":[1,25],"유":[1,26],"계":[1,27]
+    };
+
+    /* ===== 8주 메시지 데이터 ===== */
+    const messages = [
+        { id:1,
+          titleKo:"기도하는 것과 그리고 말씀의 사역을 꾸준히 계속할 것입니다.",
+          titleEn:"Continuing Steadfastly in Prayer and in the Ministry of the Word",
+          scripture:"행 6:4, 유 20, 막 11:20-24, 엡 3:17-19",
+          excerpt:"사도들의 결심처럼, 우리도 기도와 말씀의 사역을 꾸준히 계속하기 위해 영 안에서 하나님을 접촉하고 흡수해야 한다.",
+          insight:"하나님과 사람이 함께 연합되는 진정한 기도는, 영의 접촉을 통해 하나님 자신을 흡수하는 것이다.",
+          outlines:[
+            "Ⅰ. “기도하는 것과 그리고 말씀의 사역을 꾸준히 계속할 것입니다.” — 행 6:4. 사도들의 결심은 모든 책임 형제들이 따라야 할 본이며, 사역의 두 날개이다.",
+            "Ⅱ. 기도의 참된 의미는 우리의 영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것이다 — 유 20, 엡 6:18, 요 4:24.",
+            "Ⅲ. 우리는 모든 일 가운데 기도해야 한다. 우리의 모든 행함에 기도를 결합시켜야 한다 — 살전 5:17, 골 4:2, 막 11:20-24.",
+            "Ⅳ. 말씀의 사역은 그리스도를 사람들 안으로 사역하는 것이다. 이는 단순한 가르침이 아닌, 그리스도 자신을 분배하는 것이다 — 골 1:25-29, 고후 3:6.",
+            "Ⅴ. 우리가 말씀을 사역하기 위해서는, 그 말씀이 먼저 우리 안에서 충만하게 거해야 한다 — 골 3:16, 시 119:11, 엡 3:17-19.",
+            "Ⅵ. 우리는 기도와 말씀의 사역으로 그리스도의 몸을 세워, 새 예루살렘이라는 결말에 이르게 하는 사도들의 본을 따라야 한다 — 계 21:2, 엡 4:11-12."
+          ]
+        },
+        { id:2,
+          titleKo:"화목의 사역",
+          titleEn:"The Ministry of Reconciliation",
+          scripture:"고후 5:14-21, 롬 5:10, 골 1:20-22",
+          excerpt:"그리스도의 사랑이 우리를 강권하여, 우리는 죄인들을 하나님께 화목시키고, 신자들을 하나님 자신과 더 깊이 화목시키는 사역에 부르심을 받는다.",
+          insight:"화목의 사역은 두 단계이다 — 죄인을 하나님께로, 그리고 신자를 하나님 자신 안으로.",
+          outlines:[
+            "Ⅰ. 화목의 사역은 그리스도 안에서 하나님께서 자신과 세상을 화목하게 하시는 신성한 일에서 비롯된다 — 고후 5:18-19.",
+            "Ⅱ. 화목에는 두 단계가 있다. 첫째 단계는 죄인이 죄에서 하나님께 돌아오는 것이고, 둘째 단계는 신자가 하나님 자신 안으로 더 깊이 들어가는 것이다 — 롬 5:10, 고후 5:20.",
+            "Ⅲ. 화목의 직분을 받은 우리는 그리스도를 대신하는 대사이다 — 고후 5:20, 엡 6:20.",
+            "Ⅳ. 그리스도의 사랑이 우리를 강권하여, 우리가 더 이상 자신을 위하여 살지 않고 우리를 위해 죽으셨다가 다시 살아나신 분을 위해 살게 한다 — 고후 5:14-15.",
+            "Ⅴ. 화목의 결과는 하나님과의 친교, 곧 그분의 영광 안에서의 누림이다 — 고후 13:14, 요일 1:3.",
+            "Ⅵ. 우리는 신성한 사랑의 강권 아래 화목의 말씀을 사람들 안에 사역해야 한다 — 고후 5:19, 골 1:20-22."
+          ]
+        },
+        { id:3,
+          titleKo:"그리스도의 몸을 위해 생명을 공급함",
+          titleEn:"Supplying Life for the Body of Christ",
+          scripture:"빌 1:19-21상, 요 6:57, 고전 12:12-27",
+          excerpt:"몸을 세우는 사역의 본질은 가르치는 것이 아니라, 그리스도라는 생명을 공급하는 것이다.",
+          insight:"몸을 세우는 일은 직분이 아니라 공급이며, 가르침이 아니라 생명이다.",
+          outlines:[
+            "Ⅰ. 그리스도의 몸은 그리스도 자신의 풍부함을 따라 자라며, 그 자라남은 생명의 공급에서 비롯된다 — 엡 4:15-16, 골 2:19.",
+            "Ⅱ. 우리는 먼저 그리스도를 우리 자신의 생명으로 누림으로 다른 이들에게 그리스도를 공급할 수 있다 — 요 6:57, 빌 1:19-21상.",
+            "Ⅲ. 생명의 공급은 직분의 위치에서 오는 것이 아니라, 영 안에서 그리스도를 누림에서 오는 것이다 — 고전 12:12-27, 요 7:37-39.",
+            "Ⅳ. 모든 지체는 다른 지체들에게 생명을 공급할 의무와 능력을 가진다 — 엡 4:16, 롬 12:4-5.",
+            "Ⅴ. 책임 형제들의 사역은 위에서 군림하는 것이 아니라, 본이 되어 생명을 풀어 주는 것이다 — 벧전 5:1-3, 행 20:28.",
+            "Ⅵ. 그리스도의 몸을 위해 생명을 공급하는 것이 모든 사역의 시금석이다 — 고전 14:4-5, 26."
+          ]
+        },
+        { id:4,
+          titleKo:"하나님께서 나누어 주신 분량의 한계와 영적 전쟁을 수행하는 사역",
+          titleEn:"The Limit of God's Apportioned Measure and the Ministry of Spiritual Warfare",
+          scripture:"고후 10:13-15, 엡 6:10-18, 계 12:11",
+          excerpt:"각 사람은 하나님께서 정해 주신 분량 안에서 사역하며, 그 분량 안에서 영적 전쟁이 효력을 발한다.",
+          insight:"분량을 넘는 사역은 자아의 확장이며, 분량 안의 사역만이 영적 권위를 갖는다.",
+          outlines:[
+            "Ⅰ. 하나님께서는 각 사람에게 분량을 정해 주셨다. 우리는 그 분량을 넘어 자랑하지 말아야 한다 — 고후 10:13-15, 롬 12:3.",
+            "Ⅱ. 분량 안에 머무는 것은 권위에 복종하는 것이며, 몸의 질서를 보존하는 것이다 — 엡 4:16, 고전 12:18.",
+            "Ⅲ. 영적 전쟁은 자기 분량 안에서 성령의 무장으로 수행된다 — 엡 6:10-18.",
+            "Ⅳ. 우리는 어린 양의 피와 우리의 증언의 말씀과 죽기까지 자신의 혼-생명을 사랑하지 않음으로 사탄을 이긴다 — 계 12:11.",
+            "Ⅴ. 영적 전쟁의 목적은 하나님의 왕국을 가져오는 것이며, 결국에는 사탄을 무저갱에 던지는 것이다 — 마 6:10, 계 20:1-3.",
+            "Ⅵ. 책임 형제들은 자기 분량을 분별하고 다른 이들의 분량을 존중하며, 함께 영적 전쟁을 수행해야 한다 — 고후 10:13, 엡 6:18."
+          ]
+        },
+        { id:5,
+          titleKo:"주님의 신실한 청지기들이 됨으로써 주님과 협력하여 그분의 경륜을 수행함",
+          titleEn:"Cooperating with the Lord as His Faithful Stewards to Carry Out His Economy",
+          scripture:"고전 4:1-2, 딛 1:7, 엡 3:2, 9",
+          excerpt:"주님에게서 부담을 받아 말씀을 공급하고, 한마음 한뜻으로 서로 동역하는 청지기들이 그분의 경륜을 수행한다.",
+          insight:"신실한 청지기는 자기 부담을 가진 자, 그리고 함께 동역하는 자이다.",
+          outlines:[
+            "Ⅰ. 우리는 그리스도의 종이며 하나님의 비밀들의 청지기로 여겨져야 한다 — 고전 4:1, 딛 1:7.",
+            "Ⅱ. 청지기에게 요구되는 것은 신실함이다 — 고전 4:2, 마 25:21.",
+            "Ⅲ. 신실한 청지기는 주님에게서 부담을 받아 그 부담대로 말씀을 공급한다 — 고전 9:16-17, 골 1:25.",
+            "Ⅳ. 우리는 한마음 한뜻으로 함께 그리스도의 복음의 믿음을 위해 협력해야 한다 — 빌 1:27, 행 4:32.",
+            "Ⅴ. 동역의 영은 자아 부인의 영이며, 다른 이들을 자기보다 더 낫게 여기는 영이다 — 빌 2:3-4.",
+            "Ⅵ. 주님과 협력하여 그분의 경륜, 곧 그리스도와 교회의 경륜을 수행하는 것이 청지기들의 영광이다 — 엡 3:2, 9, 5:32."
+          ]
+        },
+        { id:6,
+          titleKo:"요한의 사역에 있는 삼일 하나님의 분배",
+          titleEn:"The Dispensing of the Triune God in John's Ministry",
+          scripture:"요 1:14, 14:23, 요일 1:2-3, 5:11-12",
+          excerpt:"요한의 사역은 삼일 하나님의 분배를 가장 깊이 드러내는 사역이며, 그 결과는 신성한 친교이다.",
+          insight:"요한의 사역의 본질은 분배 — 곧 삼일 하나님 자신이 신자들 안으로 부어지심이다.",
+          outlines:[
+            "Ⅰ. 요한의 복음은 말씀이 육신이 되심으로 시작되어 신성과 인성의 연합을 보인다 — 요 1:1, 14, 18.",
+            "Ⅱ. 아버지와 아들과 그 영은 신자들 안에 거처를 만드신다 — 요 14:23, 14:17, 14:20.",
+            "Ⅲ. 요한일서는 친교의 책이며, 친교는 삼일 하나님의 분배의 흐름이다 — 요일 1:2-3, 1:6-7.",
+            "Ⅳ. 영원한 생명은 삼일 하나님 자신이며, 그것이 우리 안에 있다 — 요일 5:11-12, 5:20.",
+            "Ⅴ. 요한계시록은 분배의 완성이며, 새 예루살렘은 삼일 하나님과 사람의 영원한 연합이다 — 계 21:2-3, 21:22-23, 22:1-2.",
+            "Ⅵ. 요한의 사역은 우리를 신성한 분배의 흐름 안으로 가져와 신성한 친교 안에 살게 한다 — 요일 1:3, 요 15:4-5."
+          ]
+        },
+        { id:7,
+          titleKo:"우리의 누림과 하나님의 경륜의 성취를 위해 삼일 하나님께서 그분 자신을 우리 안으로 분배하시는 영원한 축복",
+          titleEn:"The Eternal Blessing of the Triune God's Self-Dispensing",
+          scripture:"고후 13:14, 민 6:22-27, 시 36:8-9",
+          excerpt:"삼일 하나님의 분배는 우리에게 영원한 축복이며, 동시에 그분의 경륜의 성취이다.",
+          insight:"우리가 누리는 모든 영적인 축복은 결국 한 가지 — 삼일 하나님 자신의 분배이다.",
+          outlines:[
+            "Ⅰ. 삼일 하나님의 분배는 영원한 축복이다. 이는 아버지의 사랑과 아들의 은혜와 그 영의 친교의 한 흐름이다 — 고후 13:14.",
+            "Ⅱ. 옛 언약의 제사장적 축복은 신약의 삼일 하나님의 분배의 그림자이다 — 민 6:22-27.",
+            "Ⅲ. 우리는 하나님의 집의 풍부함을 누리며, 그분의 즐거움의 강에서 마신다 — 시 36:8-9, 계 22:1.",
+            "Ⅳ. 분배는 우리의 누림임과 동시에 하나님의 경륜의 성취이다 — 엡 1:3-14, 3:9-11.",
+            "Ⅴ. 영원토록 우리의 분깃은 삼일 하나님 자신이며, 그분 안에서 우리는 만족한다 — 시 73:26, 계 21:7.",
+            "Ⅵ. 이 축복은 새 예루살렘에서 절정에 이르며, 거기서 하나님과 사람이 영원히 함께 거하신다 — 계 21:3, 22:3-5."
+          ]
+        },
+        { id:8,
+          titleKo:"하나님의 의에 따라, 하나님의 거룩함을 통하여, 하나님의 영광에 이르도록 생명이신 삼일 하나님을 세 부분으로 된 사람 안으로 분배함",
+          titleEn:"Dispensing the Triune God as Life into the Tripartite Man",
+          scripture:"롬 5:10-21, 살전 5:23, 엡 3:16-21",
+          excerpt:"삼일 하나님의 분배는 의를 따르고, 거룩함을 통과하며, 영광에 이르는 한 흐름이다.",
+          insight:"의 · 거룩 · 영광 — 이것이 분배의 세 단계요, 우리 영 · 혼 · 몸의 변화의 노선이다.",
+          outlines:[
+            "Ⅰ. 그리스도의 구속을 통한 칭의는 하나님의 의의 표현이며, 분배의 시작이다 — 롬 3:24-26, 5:18.",
+            "Ⅱ. 거룩함은 우리의 혼 안으로 침투해 들어오는 신성한 본성의 일이다 — 롬 6:19, 22, 살전 5:23.",
+            "Ⅲ. 영광은 우리의 죽을 몸이 변형되어 그분의 영광의 몸과 같은 형상을 이루는 것이다 — 빌 3:21, 롬 8:30.",
+            "Ⅳ. 사람은 영, 혼, 몸의 세 부분으로 되어 있으며, 분배는 영에서 시작하여 혼을 거쳐 몸에 이른다 — 살전 5:23, 롬 8:6, 11.",
+            "Ⅴ. 우리의 속사람이 그 영을 통하여 능력으로 강화되어, 그리스도께서 우리 마음 안에 거하시는 것이 분배의 핵심이다 — 엡 3:16-17상.",
+            "Ⅵ. 이 모든 분배의 목표는 하나님의 영광이며, 교회 안에서 그리고 그리스도 예수 안에서 영광이 그분께 있을지어다 — 엡 3:21."
+          ]
+        }
+    ];
+
+    /* ===== 성경 구절 → 회복역 링크 변환 ===== */
+    function linkifyBible(text){
+        const keys = Object.keys(bibleMap).sort((a,b)=>b.length-a.length);
+        const pattern = new RegExp(`(${keys.join('|')})\\s+(\\d+):(\\d+)(?:-(\\d+))?|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?|(?:,\\s*)(\\d+)(?:-(\\d+))?`, 'g');
+        let lastBook=null, lastChapter=null;
+        return text.replace(pattern, (match, book, chap, verse, endVerse, c2, v2, ev2, v3, ev3) => {
+            let b, c, v, display;
+            if (book) {
+                lastBook = book; lastChapter = chap;
+                b = book; c = chap; v = verse; display = match;
+            } else if (v2) {
+                b = lastBook; lastChapter = c2;
+                c = c2; v = v2;
+                display = match.replace(/^,\s*/, "");
+            } else if (v3) {
+                b = lastBook; c = lastChapter; v = v3;
+                display = match.replace(/^,\s*/, "");
+            }
+            if (bibleMap[b]) {
+                const [ver, op] = bibleMap[b];
+                const url = `http://rv.or.kr/read_recovery.php?bibleVer=${ver}&bibOutline=&bibleSelOp=${op}&bibChapt=${c}&bibVerse=${v}`;
+                const link = `<a href="${url}" target="_blank" rel="noopener" class="bible-link">${display}</a>`;
+                return match.startsWith(',') ? `, ${link}` : link;
+            }
+            return match;
+        });
+    }
+
+    /* ===== Issue Index 렌더 ===== */
+    function renderIssueIndex(){
+        const list = document.getElementById('issue-list');
+        list.innerHTML = messages.map(m => {
+            const num = String(m.id).padStart(2,'0');
+            return `
+            <a href="#m-${m.id}" class="issue-row group">
+                <div class="issue-num">${num}</div>
+                <div>
+                    <p class="meta text-[10px] tracking-[0.28em] uppercase ink-soft mb-2">Week ${num} · Article ${num}</p>
+                    <p class="serif text-[1.05rem] md:text-[1.15rem] ink leading-snug ko-break group-hover:text-[#c9532e] transition">${m.titleKo}</p>
+                    <p class="display italic text-[#5c5c5c] text-[0.95rem] mt-2">${m.titleEn}</p>
+                </div>
+                <div class="meta text-[11px] tracking-[0.2em] uppercase ink-soft hidden md:block">read →</div>
+            </a>`;
+        }).join('');
+    }
+
+    /* ===== Articles 아코디언 렌더 ===== */
+    function renderAccordion(){
+        const container = document.getElementById('accordion-container');
+        container.innerHTML = messages.map(m => {
+            const num = String(m.id).padStart(2,'0');
+            const dayButtons = Array.from({length:6}, (_,i) =>
+                `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M${m.id}D${i+1}.html">Day ${i+1}</span>`
+            ).join('');
+            const outlineBtn = `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M${m.id}Outline.html">개요</span>`;
+            const prayerBtn  = `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/spring_eldertraining/M${m.id}Prayer.html">기도문</span>`;
+
+            const outlinesHtml = m.outlines.map(line => {
+                const numMatch = line.match(/^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪ]+/);
+                const rn = numMatch ? numMatch[0] : "";
+                let text = line.replace(rn, "").trim().replace(/^[.\s]+/, "");
+                text = linkifyBible(text);
+                return `<div class="flex items-start gap-3 md:gap-4">
+                    <span class="roman-num">${rn}</span>
+                    <p class="flex-1 ko-break leading-[1.95]">${text}</p>
+                </div>`;
+            }).join('');
+
+            return `
+            <details id="m-${m.id}" class="article scroll-mt-[60px]">
+                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+                    <!-- meta strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex items-center gap-4">
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase ink-soft">Issue ${num}</span>
+                            <span class="w-8 h-px bg-[#d4cdbf]"></span>
+                            <span class="meta text-[10px] tracking-[0.32em] uppercase accent">Week ${num}</span>
+                        </div>
+                        <span class="meta text-[10px] tracking-[0.2em] uppercase ink-soft">Outlines · I–VI</span>
+                    </div>
+
+                    <!-- title -->
+                    <h3 class="serif text-[1.25rem] md:text-[1.55rem] font-medium leading-[1.45] ink ko-break mb-4">
+                        ${m.titleKo}
+                    </h3>
+                    <p class="display italic ink-soft text-[1rem] md:text-[1.1rem] leading-snug mb-5">
+                        ${m.titleEn}
+                    </p>
+
+                    <!-- scripture pill -->
+                    <p class="serif italic accent text-[0.95rem] mb-5">${linkifyBible(m.scripture)}</p>
+
+                    <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
+
+                    <!-- excerpt -->
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                        ${m.excerpt}
+                    </p>
+
+                    <!-- expand affordance -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
+                            <span class="chev-label">자세히 보기</span>
+                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
+                    <div class="article-grid">
+                        <!-- Main column -->
+                        <article>
+                            <!-- key insight -->
+                            <div class="key-insight mb-10">
+                                <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week ${num}</p>
+                                <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">${m.insight}</p>
+                            </div>
+
+                            <!-- outlines -->
+                            <div class="space-y-6 md:space-y-7 ink text-[0.98rem] md:text-[1.02rem]">
+                                ${outlinesHtml}
+                            </div>
+                        </article>
+
+                        <!-- Sidebar -->
+                        <aside class="sticky-side mt-10 lg:mt-0">
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6 mb-6" style="border-left:3px solid #c9532e;">
+                                <p class="label-tag mb-3">Scripture Reading</p>
+                                <p class="serif text-[0.95rem] leading-[1.9] ko-break">${linkifyBible(m.scripture)}</p>
+                            </div>
+                            <div class="bg-white border border-[#d4cdbf] p-5 md:p-6">
+                                <p class="label-tag mb-4">Daily Sections</p>
+                                <div class="flex flex-wrap gap-2">
+                                    ${outlineBtn}
+                                    ${prayerBtn}
+                                    ${dayButtons}
+                                </div>
+                                <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-4 leading-relaxed">
+                                    Active links update automatically when each day's material publishes.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </details>`;
+        }).join('');
+    }
+
+    /* ===== 링크 유효성 실시간 확인 ===== */
+    async function checkLinks(){
+        const buttons = document.querySelectorAll('.day-btn');
+        const checks = Array.from(buttons).map(async (btn) => {
+            const url = btn.getAttribute('data-url');
+            try {
+                const response = await fetch(url, { method: 'HEAD', mode: 'cors' });
+                btn.classList.remove('checking');
+                if (response.ok) {
+                    btn.classList.remove('day-disabled');
+                    btn.classList.add('day-active');
+                    btn.onclick = () => window.open(url, '_blank');
+                }
+            } catch(err) {
+                btn.classList.remove('checking');
+            }
+        });
+        await Promise.allSettled(checks);
+    }
+
+    /* ===== 오디오 플레이어 ===== */
+    function initAudioPlayer(){
+        const music = document.getElementById('bg-music');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const playIcon = document.getElementById('play-icon');
+        async function playMusic(){
+            try {
+                const p = music.play();
+                if (p !== undefined) {
+                    await p;
+                    playIcon.className = 'fas fa-pause';
+                    playPauseBtn.classList.add('is-playing');
+                }
+            } catch(err){
+                playIcon.className = 'fas fa-play pl-1';
+                playPauseBtn.classList.remove('is-playing');
+            }
+        }
+        playPauseBtn.addEventListener('click', () => {
+            if (music.paused) playMusic();
+            else {
+                music.pause();
+                playIcon.className = 'fas fa-play pl-1';
+                playPauseBtn.classList.remove('is-playing');
+            }
+        });
+    }
+
+    /* ===== Back to top ===== */
+    function initBackToTop(){
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            const show = window.pageYOffset > 400;
+            backToTopBtn.style.opacity = show ? '1' : '0';
+            backToTopBtn.style.pointerEvents = show ? 'auto' : 'none';
+        });
+    }
+
+    /* ===== 폰트 사이즈 컨트롤 ===== */
+    let currentFontScale = 1.0;
+    function changeFontSize(direction){
+        if (direction === 0) currentFontScale = 1.0;
+        else if (direction === 1 && currentFontScale < 1.5) currentFontScale += 0.1;
+        else if (direction === -1 && currentFontScale > 0.7) currentFontScale -= 0.1;
+        document.documentElement.style.fontSize = (16 * currentFontScale) + 'px';
+    }
+
+    /* ===== TOC 메뉴 토글 ===== */
+    function toggleMenu(e){
+        if (e) e.stopPropagation();
+        document.getElementById('toc-menu').classList.toggle('hidden');
+    }
+    document.addEventListener('click', (e) => {
+        const menu = document.getElementById('toc-menu');
+        const tocBtn = document.querySelector('button[aria-label="목차"]');
+        if (menu && !menu.classList.contains('hidden') && !menu.contains(e.target) && !(tocBtn && tocBtn.contains(e.target))) {
+            menu.classList.add('hidden');
+        }
+    });
+
+    /* ===== Init ===== */
+    window.addEventListener('load', () => {
+        renderIssueIndex();
+        renderAccordion();
+        checkLinks();
+        initAudioPlayer();
+        initBackToTop();
+    });
+    </script>
+
+
+</body></html>
