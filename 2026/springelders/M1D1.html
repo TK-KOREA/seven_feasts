@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>참된 기도 — 하나님과 사람 사이의 상호 접촉 (롬 8:26-27, 행 6:4)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Gowun+Batang:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--base-font-size:17px;--font-scale:1;--paper:#f5f0e6;--paper-card:#faf6ec;--paper-verse:#f0e8d4;--ink:#1a1410;--ink-soft:#4a3f36;--ink-mute:#8a7b6c;--line:#d9cfbc;--line-soft:#e8dfce;--accent:#8b1e2b;--accent-soft:#b84452;--marker:#f0d878;--topbar-h:48px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:var(--base-font-size);scroll-behavior:smooth;scroll-padding-top:60px}
+.container,.sidepanel,.word-modal-overlay{zoom:var(--font-scale)}
+body{font-family:'Noto Serif KR','Gowun Batang',serif;background:var(--paper);color:var(--ink);line-height:1.9;letter-spacing:-0.01em;padding-top:var(--topbar-h);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse at top left,rgba(139,30,43,0.025) 0%,transparent 50%),radial-gradient(ellipse at bottom right,rgba(74,63,54,0.02) 0%,transparent 50%);pointer-events:none;z-index:0}
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(245,240,230,0.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+.topbar-btn{flex-shrink:0;width:36px;height:36px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);transition:background .15s}
+.topbar-btn:hover{background:var(--line-soft)}
+.topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--ink-soft);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px}
+.topbar-title::-webkit-scrollbar{display:none}
+.font-controls{flex-shrink:0;display:flex;align-items:center;gap:2px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;padding:2px}
+.font-ctrl-btn{width:30px;height:30px;border:none;background:none;border-radius:3px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.font-ctrl-btn:hover{background:var(--line-soft)}
+.overlay{position:fixed;inset:0;background:rgba(26,20,16,0.35);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:var(--paper);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 28px rgba(26,20,16,.12);font-family:'Noto Sans KR',sans-serif}
+.sidepanel.open{transform:translateX(0)}
+.sidepanel-header{padding:0 22px 16px;border-bottom:1px solid var(--line);margin-bottom:12px;font-size:12px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+.sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--ink-mute);display:flex;align-items:center;justify-content:center}
+.sidepanel-close:hover{background:var(--line-soft);color:var(--ink)}
+.nav-item{display:block;padding:10px 22px;font-size:13px;color:var(--ink-soft);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:500;letter-spacing:-0.005em}
+.nav-item:hover{background:var(--paper-card);color:var(--ink)}
+.nav-item.sub{padding-left:38px;font-size:12.5px;font-weight:400;color:var(--ink-mute)}
+.nav-divider{height:1px;background:var(--line);margin:10px 22px}
+.keyword-tag{display:inline-block;padding:4px 12px;margin:3px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:3px;font-size:12px;color:var(--ink-soft);cursor:pointer;transition:all .2s;font-weight:500}
+.keyword-tag:hover,.keyword-tag.active{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.keyword-def{display:none;padding:12px 22px 14px 38px;font-size:12.5px;color:var(--ink-soft);line-height:1.75;background:var(--paper-card);border-left:2px solid var(--accent);margin:4px 22px;border-radius:0 3px 3px 0;font-family:'Noto Serif KR',serif}
+.keyword-def.show{display:block}
+.container{max-width:680px;margin:0 auto;padding:40px 22px 80px;position:relative;z-index:1}
+.hero{text-align:left;padding:8px 0 4px;border-bottom:1px solid var(--line);margin-bottom:40px;padding-bottom:40px}
+.hero-badge{display:inline-block;color:var(--ink-mute);font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:20px}
+.hero-badge::before{content:'— ';color:var(--accent);font-weight:700}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:900;line-height:1.4;color:var(--ink);letter-spacing:-0.025em;margin-bottom:22px}
+.hero h1 .highlight-word{background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 3px}
+.hero-sub{font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink-soft);font-weight:400;line-height:1.85;padding-left:18px;border-left:2px solid var(--line)}
+.dashboard{margin:40px 0;padding:28px 26px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.dashboard-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.core-message{border-left:3px solid var(--accent);padding:6px 0 6px 22px;margin:0 0 28px;font-family:'Gowun Batang','Noto Serif KR',serif;font-size:17px;font-weight:400;font-style:italic;color:var(--ink-soft);line-height:1.8;letter-spacing:-0.01em}
+.core-message strong{color:var(--ink);font-weight:700;font-style:normal;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 2px}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}
+.dash-card{padding:0;background:transparent;border:none;text-align:left;display:block}
+.dash-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px}
+.dash-value{font-family:'Noto Serif KR',serif;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.55;letter-spacing:-0.01em}
+.flow-section{margin:56px 0}
+.flow-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.flow-steps{position:relative;padding-left:32px}
+.flow-steps::before{content:'';position:absolute;left:11px;top:14px;bottom:14px;width:1px;background:var(--line)}
+.flow-step{position:relative;padding:4px 0 22px}
+.flow-step:last-child{padding-bottom:0}
+.flow-dot{position:absolute;left:-32px;top:4px;width:22px;height:22px;border-radius:50%;background:var(--paper);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:11px;color:var(--accent);font-weight:700;z-index:1}
+.flow-step-label{font-family:'Noto Serif KR',serif;font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-0.015em;line-height:1.5}
+.flow-step-desc{font-family:'Noto Serif KR',serif;font-size:14px;color:var(--ink-soft);line-height:1.75}
+.keywords-section{margin:48px 0;padding:26px 24px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.keywords-section-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.kw-container{display:flex;flex-wrap:wrap;gap:8px}
+.kw-chip{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--paper);border:1px solid var(--line);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all .2s}
+.kw-chip:hover,.kw-chip.active{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.kw-tooltip{display:none;margin-top:14px;padding:16px 18px;background:var(--paper-verse);border-radius:3px;border-left:2px solid var(--accent);font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.kw-tooltip.show{display:block}
+.accordion-group{margin:48px 0}
+.accordion-group-title{font-family:'Noto Serif KR',serif;font-size:1.4rem;font-weight:800;color:var(--ink);margin:64px 0 28px;padding-bottom:20px;border-bottom:1px solid var(--line);display:block;letter-spacing:-0.025em;line-height:1.4;position:relative}
+.accordion-group-title::before{content:'CORE';display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;color:var(--accent);margin-bottom:10px}
+.accordion{margin-bottom:14px;border-radius:4px;overflow:hidden;background:var(--paper-card);border:1px solid var(--line-soft);transition:border-color .25s}
+.accordion:hover,.accordion.open{border-color:var(--line)}
+.accordion-header{display:flex;align-items:flex-start;gap:18px;padding:22px 24px;background:transparent;cursor:pointer;user-select:none;transition:background .2s}
+.accordion-header:hover{background:rgba(139,30,43,0.025)}
+.acc-number{flex-shrink:0;color:var(--accent);font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;letter-spacing:0.18em;padding-top:4px;min-width:36px;display:block;text-align:left;text-transform:uppercase}
+.acc-title-text{flex:1;font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.5;letter-spacing:-0.018em}
+.acc-chevron{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;transition:transform .3s;color:var(--ink-mute);font-size:11px;padding-top:4px}
+.accordion.open .acc-chevron{transform:rotate(180deg);color:var(--accent)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.accordion-content{padding:22px 24px 26px 78px;border-top:1px dashed var(--line)}
+.verse-block{position:relative;padding:22px 24px 22px 26px;background:var(--paper-verse);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;margin:22px 0}
+.verse-block::before{content:'"';position:absolute;top:-10px;left:18px;font-family:'Noto Serif KR',serif;font-size:3rem;color:var(--accent);opacity:0.28;line-height:1;font-weight:900}
+.verse-ref{display:flex;align-items:center;gap:6px;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.verse-text{font-family:'Noto Serif KR',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.85;letter-spacing:-0.01em}
+.verse-text b{color:var(--ink);font-weight:700}
+.verse-text + .verse-text{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.content-text{font-family:'Noto Serif KR',serif;font-size:17px;color:var(--ink);line-height:1.9;margin-bottom:20px;letter-spacing:-0.01em}
+.content-text:last-child{margin-bottom:0}
+.accordion-content > .content-text:first-child::first-letter{font-family:'Noto Serif KR',serif;font-size:3.4em;font-weight:900;float:left;line-height:0.88;margin:8px 8px -4px 0;color:var(--accent)}
+.hl{background:linear-gradient(180deg,transparent 55%,var(--marker) 55%,var(--marker) 92%,transparent 92%);padding:0 2px}
+.sub-point{padding:18px 22px;border-left:2px solid var(--ink-mute);margin:22px 0}
+.sub-point-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sub-point-text{font-family:'Noto Serif KR',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.85;letter-spacing:-0.01em}
+.sub-point-text strong{color:var(--ink);font-weight:700}
+.section-connector{text-align:center;padding:14px 0;color:var(--line);font-size:14px;letter-spacing:0.4em}
+.step-header{display:block;padding:0 0 22px !important;border-bottom:1px solid var(--line) !important;font-family:'Noto Serif KR',serif !important;font-size:1.5rem !important;font-weight:800 !important;letter-spacing:-0.02em !important;line-height:1.4 !important;margin:72px 0 28px !important;position:relative;color:var(--ink)}
+.step-header::before{content:attr(data-kicker);display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.step-connector{margin:28px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);font-family:'Gowun Batang',serif;font-size:1.1rem;font-style:italic;color:var(--ink-soft);text-align:left;line-height:1.75}
+.step-connector strong{color:var(--ink);font-weight:700;font-style:normal}
+.three-answers{display:grid;grid-template-columns:1fr;gap:12px;margin:22px 0}
+.three-answer{background:var(--paper);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;padding:16px 18px;display:flex;align-items:flex-start;gap:14px}
+.three-answer-num{flex-shrink:0;width:30px;height:30px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:13px;color:var(--accent);font-weight:700}
+.three-answer-body{flex:1}
+.three-answer-q{font-family:'Noto Sans KR',sans-serif;font-size:11px;color:var(--ink-mute);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+.three-answer-a{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:800;color:var(--accent);margin-bottom:4px;letter-spacing:-0.01em}
+.three-answer-a .hanja{font-family:'Noto Serif KR',serif;font-weight:700;color:var(--ink);margin-right:8px;letter-spacing:0.05em}
+.three-answer-desc{font-family:'Noto Serif KR',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+.recap-section{margin:56px 0;padding:32px 26px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.recap-title{font-family:'Noto Serif KR',serif;font-size:1.3rem;font-weight:800;color:var(--ink);margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line);letter-spacing:-0.02em;display:block;position:relative}
+.recap-title::before{content:'REVIEW';display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;color:var(--accent);margin-bottom:8px}
+.recap-subtitle{font-family:'Noto Serif KR',serif;font-size:15.5px !important;font-weight:700 !important;color:var(--ink) !important;margin-bottom:10px;letter-spacing:-0.01em;line-height:1.55}
+.recap-subtitle.small{font-family:'Gowun Batang',serif !important;font-size:13px !important;font-weight:400 !important;color:var(--ink-soft) !important;font-style:italic;margin-bottom:14px;line-height:1.7}
+.recap-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.recap-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--paper);border-radius:3px;border:1px solid var(--line-soft);font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.75;letter-spacing:-0.01em}
+.recap-num{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:transparent;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:12px;font-weight:700}
+.recap-item.green .recap-num{border-color:var(--ink-soft);color:var(--ink-soft)}
+.recap-item.purple .recap-num{border-color:var(--ink-mute);color:var(--ink-mute)}
+.recap-item-text{flex:1;color:var(--ink-soft)}
+.recap-item-text strong{color:var(--ink);font-weight:700}
+.recap-anchor{margin:32px 0 12px;padding-top:20px;border-top:1px dashed var(--line)}
+.recap-anchor:first-of-type{padding-top:0;border-top:none;margin-top:4px}
+.recap-note{margin-top:22px;padding:18px 20px;background:var(--paper);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;font-family:'Gowun Batang',serif;font-size:14.5px;font-style:italic;line-height:1.8;color:var(--ink-soft)}
+.recap-note strong{color:var(--ink);font-weight:700;font-style:normal}
+.quiz-section{margin:64px 0 40px;padding:28px 24px 30px;background:var(--paper-card);border-radius:4px;border:1px solid var(--line-soft)}
+.quiz-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.quiz-item{display:none;margin-bottom:22px;padding:20px;background:var(--paper);border-radius:3px;border:1px solid var(--line-soft)}
+.quiz-item.active,.quiz-item.reviewed{display:block}
+.quiz-q{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.quiz-badge{flex-shrink:0;width:28px;height:28px;color:var(--accent);border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:700}
+.quiz-q-text{font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.55;padding-top:2px;letter-spacing:-0.015em}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:3px;cursor:pointer;transition:all .2s;font-family:'Noto Serif KR',serif;font-size:15px;color:var(--ink-soft);line-height:1.6;letter-spacing:-0.01em}
+.quiz-opt:hover{border-color:var(--accent-soft);background:var(--paper)}
+.quiz-opt.selected{border-color:var(--accent);background:var(--paper);color:var(--ink)}
+.quiz-opt.correct{border-color:var(--accent);background:var(--paper-verse);color:var(--ink)}
+.quiz-opt.wrong{border-color:var(--line);background:var(--paper-card);color:var(--ink-mute);text-decoration:line-through}
+.quiz-opt-marker{flex-shrink:0;width:22px;height:22px;border:1px solid var(--line);background:var(--paper);color:var(--ink-mute);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;transition:all .2s;margin-top:2px}
+.quiz-opt.selected .quiz-opt-marker{border-color:var(--accent);color:var(--accent);background:var(--paper)}
+.quiz-opt.correct .quiz-opt-marker{border-color:var(--accent);background:var(--accent);color:var(--paper)}
+.quiz-nav-btn{padding:14px;background:var(--paper-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;cursor:pointer;transition:all .2s}
+.quiz-nav-btn:hover:not(:disabled){background:var(--line-soft)}
+.quiz-nav-btn:disabled{opacity:0.5;cursor:not-allowed}
+.quiz-nav-btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.quiz-nav-btn.primary:hover:not(:disabled){background:#6e1622}
+.quiz-feedback{display:none;margin-top:10px;padding:11px 14px;border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0.04em;line-height:1.6}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct-fb{background:var(--paper-verse);color:var(--accent);border-left:2px solid var(--accent)}
+.quiz-feedback.wrong-fb{background:var(--paper-card);color:var(--ink-soft);border-left:2px solid var(--ink-mute)}
+.quiz-result{display:none;margin-top:20px;padding:26px;background:var(--paper);border:1px solid var(--line);border-radius:3px;text-align:center}
+.quiz-result.show{display:block}
+.quiz-score-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
+.quiz-score{font-family:'Noto Serif KR',serif;font-size:2.2rem;font-weight:900;color:var(--accent);letter-spacing:-0.02em}
+.quiz-result-msg{font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);margin-top:10px;line-height:1.75}
+.prayer-section{margin:64px 0 40px;padding:36px 28px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;position:relative}
+.prayer-heading{font-family:'Noto Serif KR',serif;font-size:1.55rem;font-weight:900;color:var(--ink);letter-spacing:-0.025em;margin-bottom:24px;line-height:1.45;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.prayer-callbox{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-bottom:26px;font-family:'Noto Serif KR',serif;font-size:15.5px;line-height:1.95;color:var(--ink);text-align:center;letter-spacing:-0.005em}
+.prayer-callbox p{margin:0}
+.prayer-callbox p + p{margin-top:12px;padding-top:14px;border-top:1px dashed var(--line)}
+.prayer-callbox .cb-house{color:var(--accent);font-weight:800;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 3px}
+.prayer-amen-box{background:var(--paper-verse);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;padding:20px 22px;font-family:'Gowun Batang',serif;font-size:15px;color:var(--ink);line-height:1.9;font-weight:500}
+.prayer-amen-box p{margin-bottom:14px;font-style:italic}
+.prayer-amen-box p:last-of-type{margin-bottom:0}
+.prayer-amen-box strong{color:var(--accent);font-weight:700;font-style:normal}
+.prayer-amen-sig{text-align:right;font-family:'Noto Sans KR',sans-serif;font-weight:700;color:var(--accent);letter-spacing:0.32em;font-size:12px;font-style:normal;margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
+.footer-note{text-align:center;padding:40px 16px 16px;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);letter-spacing:0.22em;text-transform:uppercase;border-top:1px solid var(--line);margin-top:56px}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeInUp .5s ease forwards}
+@media (max-width:480px){.container{padding:24px 6px 60px}.hero h1{font-size:1.55rem}.accordion-content{padding:18px 10px 20px 10px}.dash-grid{grid-template-columns:1fr;gap:20px}}
+.todays-verse-section{margin:30px 0 40px 0;padding:34px 22px 28px 22px;background:linear-gradient(180deg,#fbf6ea 0%,#f5ecd8 100%);border:1px solid var(--line);border-radius:6px;box-shadow:0 2px 14px rgba(74,63,54,0.06);position:relative}
+.todays-verse-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-soft) 50%,var(--accent) 100%);border-radius:6px 6px 0 0}
+.tv-header{text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px dashed var(--line)}
+.tv-kicker{display:inline-block;font-family:'Lora',serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px;padding:4px 14px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,0.5)}
+.tv-ref{font-family:'Noto Serif KR',serif;font-size:1.7rem;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2}
+.tv-ref-en{font-family:'Lora',serif;font-size:0.82rem;color:var(--ink-mute);font-style:italic;margin-top:4px;letter-spacing:0.02em}
+.tv-greek-sentence{padding:26px 20px 22px 20px;background:rgba(255,255,255,0.85);border:1px solid var(--line);border-radius:5px;margin-bottom:18px}
+.tv-greek-title{font-family:'Lora',serif;font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:16px;font-weight:700;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.tv-greek-line{display:flex;flex-wrap:wrap;gap:4px 2px;align-items:flex-end;justify-content:center;padding:8px 0;line-height:1.2}
+.tv-greek-line + .tv-greek-line{border-top:1px dashed var(--line-soft);margin-top:4px;padding-top:14px}
+.tv-word{display:flex;flex-direction:column;align-items:center;padding:3px 5px;border-radius:3px;gap:2px;min-width:24px;transition:background 0.15s,transform 0.15s}
+.tv-word .w-gk{font-family:'Lora',serif;font-size:1.1rem;color:var(--ink);font-weight:500;line-height:1.15;white-space:nowrap}
+.tv-word .w-pr{font-size:0.66rem;color:var(--ink-mute);font-style:italic;line-height:1.15;letter-spacing:0.01em}
+.tv-word.key{cursor:pointer;background:rgba(139,30,43,0.06);border-bottom:2px solid var(--accent);padding:3px 7px 2px 7px;margin:0 1px;position:relative}
+.tv-word.key:hover{background:rgba(139,30,43,0.16);transform:translateY(-2px)}
+.tv-word.key .w-gk{color:var(--accent);font-weight:700}
+.tv-word.key .w-pr{color:var(--accent);font-weight:500;opacity:0.85}
+.tv-word.key::before{content:'';position:absolute;top:2px;right:3px;width:4px;height:4px;background:var(--accent);border-radius:50%;opacity:0.9}
+.tv-word.func .w-gk{color:var(--ink-mute);font-style:italic;font-weight:400;font-size:1rem}
+.tv-word.func .w-pr{opacity:0.55}
+.tv-punct{display:inline-flex;align-items:flex-end;padding-bottom:3px;font-family:'Lora',serif;color:var(--ink-soft);font-size:1.05rem;font-weight:500;margin:0 1px}
+.tv-trans-compact{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.tv-trans-row{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:baseline;padding:10px 14px;background:rgba(255,255,255,0.7);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:3px}
+.tv-trans-row.en{border-left-color:#6b7a8f}
+.tv-trans-row.gk{border-left-color:#8b1e2b;background:rgba(245,236,216,0.55)}
+.tv-trans-tag{font-family:'Lora',serif;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:#fbf6ea;background:var(--accent);padding:2px 0;border-radius:2px;font-weight:700;text-align:center;line-height:1.3}
+.tv-trans-row.en .tv-trans-tag{background:#6b7a8f}
+.tv-trans-row.gk .tv-trans-tag{background:#8b1e2b}
+.tv-trans-text{font-size:0.94rem;line-height:1.7;color:var(--ink)}
+.tv-trans-row.en .tv-trans-text{font-family:'Lora',serif;font-style:italic;font-size:0.9rem;color:var(--ink-soft)}
+.tv-trans-row.gk{align-items:start;padding:12px 14px}
+.tv-trans-row.gk .tv-trans-text{font-family:'Lora',serif;font-size:0.95rem;color:var(--ink);line-height:1.4;letter-spacing:0.005em;font-weight:500;display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px 2px;padding:2px 0}
+.tv-gk-word{display:inline-flex;flex-direction:column;align-items:center;padding:0 2px;line-height:1.18;gap:2px}
+.tv-gk-word .gw-gk{font-family:'Lora',serif;font-size:0.95rem;color:var(--ink);font-weight:500;white-space:nowrap}
+.tv-gk-word .gw-pr{font-family:'Noto Sans KR',sans-serif;font-size:0.62rem;color:var(--ink-mute);letter-spacing:0.01em;font-weight:400;line-height:1.1}
+.tv-gk-word.hl .gw-gk{color:var(--accent);font-weight:700}
+.tv-gk-word.hl .gw-pr{color:var(--accent);font-weight:600}
+.tv-gk-punct{display:inline-flex;align-items:flex-end;padding-bottom:11px;font-family:'Lora',serif;color:var(--ink-soft);font-weight:500;margin:0 1px;font-size:0.95rem}
+.tv-trans-text b{color:var(--accent);font-weight:700}
+.tv-legend{display:flex;gap:14px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;font-size:0.78rem}
+.tv-legend-item{display:inline-flex;align-items:center;gap:5px;color:var(--ink-soft)}
+.tv-legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.tv-legend-dot.key{background:var(--accent)}
+.tv-legend-dot.func{background:var(--ink-mute)}
+.tv-summary{margin-top:24px;padding:20px 22px;background:var(--accent);color:#fbf6ea;border-radius:4px;position:relative}
+.tv-summary::before{content:'∴';position:absolute;top:-14px;left:20px;width:30px;height:30px;background:#fbf6ea;color:var(--accent);border:1px solid var(--accent);border-radius:50%;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif}
+.tv-summary-title{font-family:'Noto Serif KR',serif;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;opacity:0.7;margin-bottom:8px;font-weight:600}
+.tv-summary-text{font-size:0.94rem;line-height:1.8;color:#fbf6ea}
+.tv-summary-text b{color:#ffd878;font-weight:700}
+.tv-popup-overlay{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:2000;align-items:center;justify-content:center;padding:20px;animation:tvOverlayIn 0.2s ease-out}
+.tv-popup-overlay.active{display:flex}
+@keyframes tvOverlayIn{from{opacity:0}to{opacity:1}}
+.tv-popup{background:var(--paper-card);border-radius:6px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 18px 50px rgba(0,0,0,0.35);border:1px solid var(--line);border-top:4px solid var(--accent);animation:tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);position:relative}
+@keyframes tvPopIn{from{opacity:0;transform:translateY(16px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.tv-popup-close{position:absolute;top:10px;right:10px;width:32px;height:32px;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s,color 0.15s,border-color 0.15s;z-index:2}
+.tv-popup-close:hover{background:var(--accent);color:#fbf6ea;border-color:var(--accent)}
+.tv-popup-header{padding:24px 28px 16px 28px;border-bottom:1px dashed var(--line)}
+.tv-popup-kicker{font-family:'Lora',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+.tv-popup-meaning{font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.35}
+.tv-popup-greek{font-family:'Lora',serif;font-size:0.98rem;color:var(--ink-soft);font-style:italic;margin-top:4px}
+.tv-popup-body{padding:18px 22px 24px 22px;display:flex;flex-direction:column;gap:12px}
+.tv-popup-word{padding:14px 16px;background:rgba(255,255,255,0.7);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:3px}
+.tv-popup-word-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.tv-popup-word-gk{font-family:'Lora',serif;font-size:1.22rem;color:var(--accent);font-weight:600;line-height:1.1}
+.tv-popup-word-pron{font-size:0.84rem;color:var(--ink-soft);font-style:italic}
+.tv-popup-word-strong{font-size:0.65rem;color:var(--ink-mute);font-family:'Lora',serif;letter-spacing:0.04em;margin-left:auto}
+.tv-popup-word-meaning{font-size:0.95rem;color:var(--ink);font-weight:600;line-height:1.6;margin:6px 0}
+.tv-popup-word-meaning em{font-style:italic;color:var(--ink-soft);font-weight:400;font-size:0.85rem}
+.tv-popup-word-note{font-size:0.85rem;color:var(--ink-soft);line-height:1.7;padding-top:6px;border-top:1px dashed var(--line)}
+.tv-popup-word-note b{color:var(--accent);font-weight:600}
+@media (max-width:720px){.todays-verse-section{padding:24px 10px 22px 10px}.tv-ref{font-size:1.4rem}.tv-greek-sentence{padding:20px 10px 16px 10px}.tv-word .w-gk{font-size:1rem}.tv-word .w-pr{font-size:0.62rem}.tv-word.func .w-gk{font-size:0.9rem}.tv-summary{padding:16px}.tv-summary-text{font-size:0.88rem}}
+.tv-words-section{margin-top:26px;padding-top:24px;border-top:1px dashed var(--line)}
+.tv-words-title{display:flex;flex-direction:column;align-items:center;gap:5px;margin-bottom:18px;text-align:center}
+.tv-words-title-en{font-family:'Lora',serif;font-size:0.66rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);font-weight:700;padding:3px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,0.5)}
+.tv-words-title-kr{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-0.005em;margin-top:6px}
+.tv-words-title-note{font-family:'Noto Sans KR',sans-serif;font-size:0.72rem;color:var(--ink-mute);font-style:italic;margin-top:1px;line-height:1.5;max-width:380px}
+.tv-words-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:9px}
+.tv-word-card{background:rgba(255,255,255,0.86);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;padding:13px 13px 11px;cursor:pointer;transition:transform 0.18s ease,box-shadow 0.18s ease,border-left-color 0.18s ease,background 0.18s ease;display:flex;flex-direction:column;gap:1px;text-align:left;font-family:inherit;width:100%;position:relative}
+.tv-word-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(74,63,54,0.13);background:rgba(255,255,255,1);border-left-width:4px}
+.tv-word-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tv-word-card .twc-gk{font-family:'Lora',serif;font-size:1.12rem;color:var(--accent);font-weight:700;line-height:1.25;letter-spacing:0.005em;word-break:break-word}
+.tv-word-card .twc-pr{font-family:'Lora',serif;font-size:0.74rem;color:var(--ink-mute);font-style:italic;letter-spacing:0.04em;line-height:1.2;margin-top:1px}
+.tv-word-card .twc-divider{border-bottom:1px dashed var(--line);margin:8px 0 7px}
+.tv-word-card .twc-kr{font-family:'Noto Serif KR',serif;font-size:0.92rem;color:var(--ink);font-weight:700;line-height:1.5;word-break:keep-all;letter-spacing:-0.01em}
+.tv-word-card .twc-en{font-family:'Lora',serif;font-size:0.76rem;color:var(--ink-soft);font-style:italic;line-height:1.4;letter-spacing:0.01em;margin-top:2px}
+.tv-word-card .twc-meta{display:flex;justify-content:space-between;align-items:center;margin-top:9px;padding-top:7px;border-top:1px dotted var(--line-soft);gap:6px}
+.tv-word-card .twc-strong{font-family:'Lora',serif;font-size:0.6rem;color:var(--ink-mute);letter-spacing:0.04em;flex:1;line-height:1.2}
+.tv-word-card .twc-cta{font-family:'Noto Sans KR',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.tv-word-card.cat-vocative{border-left-color:#a64d2e}
+.tv-word-card.cat-noun{border-left-color:#5a6e3d}
+.tv-word-card.cat-aor{border-left-color:#7a5238}
+.tv-word-card.cat-fut{border-left-color:#3d6e8e}
+.tv-word-card.cat-perf{border-left-color:#6e3d6e}
+.tv-word-card.cat-adj{border-left-color:#8b1e2b}
+.tv-word-card.cat-adv{border-left-color:#7a6e3d}
+.tv-popup-recov{margin:10px 0 4px;padding:10px 14px;background:rgba(245,236,216,0.5);border:1px solid var(--line-soft);border-radius:3px;display:flex;flex-direction:column;gap:3px}
+.tv-popup-recov-label{font-family:'Noto Sans KR',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.tv-popup-recov-kr{font-family:'Noto Serif KR',serif;font-size:0.92rem;color:var(--ink);font-weight:700;line-height:1.55;letter-spacing:-0.005em}
+.tv-popup-recov-en{font-family:'Lora',serif;font-size:0.78rem;color:var(--ink-soft);font-style:italic;line-height:1.45}
+@media (max-width:560px){.tv-words-grid{grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:7px}.tv-word-card{padding:11px 11px 9px}.tv-word-card .twc-gk{font-size:1rem}.tv-word-card .twc-kr{font-size:0.86rem}}
+.tts-reader-overlay{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:2000;align-items:center;justify-content:center;padding:20px;animation:tvOverlayIn 0.2s ease-out}
+.tts-reader-overlay.active{display:flex}
+.tts-reader-modal{background:var(--paper-card);border-radius:6px;max-width:520px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 18px 50px rgba(0,0,0,0.35);border:1px solid var(--line);border-top:4px solid var(--accent);animation:tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);font-family:'Noto Sans KR',sans-serif}
+.tts-reader-header{padding:18px 22px 14px;border-bottom:1px dashed var(--line);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tts-reader-icon{flex-shrink:0;color:var(--accent)}
+.tts-reader-title{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--ink);flex:1}
+.tts-reader-close{width:30px;height:30px;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px}
+.tts-reader-close:hover{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.tts-reader-body{padding:14px 22px;overflow-y:auto;flex:1}
+.tts-form-label{font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;margin-top:14px;display:block}
+.tts-form-label:first-child{margin-top:0}
+.tts-voice-select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
+.tts-api-row{display:flex;gap:8px;align-items:center}
+.tts-api-row input{flex:1;padding:9px 11px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:12px;background:var(--paper);color:var(--ink)}
+.tts-api-row button{padding:9px 14px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer}
+.tts-api-row button:hover{background:#6e1622}
+.tts-section-list{border:1px solid var(--line-soft);border-radius:4px;background:var(--paper);max-height:240px;overflow-y:auto}
+.tts-section-item{display:flex;align-items:flex-start;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--ink-soft);transition:background 0.15s}
+.tts-section-item:last-child{border-bottom:none}
+.tts-section-item:hover{background:var(--paper-card)}
+.tts-section-item.all{font-weight:700;color:var(--ink);background:var(--paper-card)}
+.tts-section-item.playing{background:var(--paper-verse);color:var(--accent);font-weight:600}
+.tts-section-checkbox{flex-shrink:0;width:15px;height:15px;margin-top:2px;accent-color:var(--accent);cursor:pointer}
+.tts-section-label{flex:1;line-height:1.45}
+.tts-progress{margin-top:14px;padding:12px 14px;background:var(--paper);border:1px solid var(--line-soft);border-radius:4px;display:none}
+.tts-progress.active{display:block}
+.tts-progress-bar{height:6px;background:var(--line-soft);border-radius:3px;overflow:hidden}
+.tts-progress-fill{height:100%;background:var(--accent);width:0%;transition:width 0.3s}
+.tts-progress-text{font-size:12px;color:var(--ink-soft);margin-top:8px;line-height:1.5}
+.tts-progress-text strong{color:var(--ink)}
+.tts-status{font-size:11.5px;color:var(--ink-mute);margin-top:10px;font-style:italic;line-height:1.5}
+.tts-status.error{color:var(--accent);font-style:normal;font-weight:600}
+.tts-reader-footer{padding:14px 22px 18px;border-top:1px solid var(--line);display:flex;gap:10px;flex-shrink:0}
+.tts-btn{flex:1;padding:11px 16px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:4px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.06em;cursor:pointer;transition:all 0.15s}
+.tts-btn:hover:not(:disabled){background:var(--line-soft)}
+.tts-btn:disabled{opacity:0.45;cursor:not-allowed}
+.tts-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tts-btn.primary:hover:not(:disabled){background:#6e1622}
+@media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <button class="topbar-btn" onclick="window.open('https://tk-korea.github.io/seven_feasts/2026/chinesespeaking/','_blank')" aria-label="홈"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+  <div class="topbar-title">참된 기도 · 하나님과 사람의 상호 접촉 · 행 6:4, 롬 8:26-27</div>
+  <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="nav-item" onclick="goTo('hero-section')">제목 &amp; 주제</a>
+  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 롬 8:26-27</a>
+  <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
+  <a class="nav-item" onclick="goTo('flow-section')">기도의 흐름</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('keywords-section')" style="font-weight:700;color:var(--accent);">키워드</a>
+  <div style="padding:6px 20px;">
+    <span class="keyword-tag" onclick="showKwDef('kd1',this)">참된 자아 부인</span>
+    <span class="keyword-tag" onclick="showKwDef('kd2',this)">하나님의 뜻을 구함</span>
+    <span class="keyword-tag" onclick="showKwDef('kd3',this)">상호 접촉</span>
+    <span class="keyword-tag" onclick="showKwDef('kd4',this)">하나님을 들이쉼</span>
+    <span class="keyword-tag" onclick="showKwDef('kd5',this)">양편의 기도</span>
+  </div>
+  <div class="keyword-def" id="kd1">"기도한다는 것은 우리가 <b>아무것도 아니고 아무것도 할 수 없다</b>는 것을 깨달았음을 의미한다. 이것은 기도가 <b>참된 자아 부인</b>이라는 것을 함축한다"(개요 Ⅰ.A — 막 8:34, 9:29). 기도는 자기 능력의 끝에서 — 하나님께 의지하는 자리입니다.</div>
+  <div class="keyword-def" id="kd2">"기도의 사람은 <b>하나님과 하나님의 뜻을 구하는 사람</b>이어야 한다"(개요 Ⅰ.B — 마 26:39, 요 4:34, 5:30, 6:38). 우리의 뜻이 아니라 — 그분의 뜻을 구함이 기도의 사람의 표지입니다.</div>
+  <div class="keyword-def" id="kd3">"<b>참된 기도는 하나님과 사람 사이의 상호 접촉</b>이다. 기도는 사람이 하나님을 접촉하는 것만이 아니라, 하나님께서 사람을 접촉하시는 것이다." 그 결과 사람이 하나님과 연합되고 — 하나님도 사람과 연합되십니다.</div>
+  <div class="keyword-def" id="kd4">"참된 기도는 또한 <b>사람이 공기를 들이쉬는 것처럼 하나님을 들이쉬는 것</b>이다." 더 많이 기도할수록 우리는 더욱 하나님으로 채워집니다 — 하나님을 얻고, 하나님이 우리의 누림이 되시며, 우리의 온 존재가 그분께 굴복되고 그분께 얻어집니다.</div>
+  <div class="keyword-def" id="kd5">"참된 기도는 <b>양편을 포함하는 기도</b>이다 ... <b>외적으로는 사람이 기도하는 것이지만, 내적으로는 그 영께서 기도하시는 것</b>이다"(롬 8:26-27). 동일한 기도가 동시에 양편에 의해 표현되며 — 하나님 자신이 그분의 영을 통해 우리 안에서 기도하십니다.</div>
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:700;color:var(--ink);">핵심 요점</a>
+  <a class="nav-item sub" onclick="goTo('acc-0')">Ⅰ. 개요 Ⅰ · 행 6:4 — 기도하는 것을 꾸준히 계속함</a>
+  <a class="nav-item sub" onclick="goTo('acc-1')">Ⅱ. A. 기도 = 참된 자아 부인</a>
+  <a class="nav-item sub" onclick="goTo('acc-2')">Ⅲ. B. 하나님과 그분의 뜻을 구하는 사람</a>
+  <a class="nav-item sub" onclick="goTo('acc-3')">Ⅳ. C. 영 안에서 하나님 접촉, 하나님 흡수</a>
+  <a class="nav-item sub" onclick="goTo('acc-4')">Ⅴ. 일반적 오해 vs 참된 기도</a>
+  <a class="nav-item sub" onclick="goTo('acc-5')">Ⅵ. 참된 기도 = 상호 접촉</a>
+  <a class="nav-item sub" onclick="goTo('acc-6')">Ⅶ. 참된 기도 = 하나님을 들이쉼</a>
+  <a class="nav-item sub" onclick="goTo('acc-7')">Ⅷ. 양편의 기도 — 그 영과 사람 (롬 8:26-27)</a>
+  <a class="nav-item sub" onclick="goTo('acc-8')">Ⅸ. 결말 — 하나님과 협력, 그분의 목적 성취</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('recap-section')">전체 복습</a>
+  <a class="nav-item" onclick="goTo('quiz-section')">퀴즈</a>
+  <a class="nav-item" onclick="goTo('prayer-section')">오늘의 결단과 기도</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container" id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-section">
+    <div class="hero-badge">2026 봄 장로훈련 · M1D1</div>
+    <h1>참된 기도<br>하나님과 사람의<br><span class="highlight-word">상호 접촉</span></h1>
+    <p class="hero-sub">사도들의 결심은 <b>"기도하는 것 ... 을 꾸준히 계속할 것"</b>이었습니다(행 6:4). 그러나 많은 사람들은 기도를 — 사람이 자신의 부족·질병·문제를 위해 하나님 앞에 간청하는 것으로만 생각합니다. 지문은 단호히 진술합니다 — "<b>이것은 성경에 계시된 기도의 올바른 의미가 아니다</b>." 기도하는 것은 우리가 <b>아무것도 아니고 아무것도 할 수 없다는 것을 깨달았음</b>을 의미하며 — 곧 <b>참된 자아 부인</b>입니다(개요 Ⅰ.A). 기도의 사람은 <b>하나님과 하나님의 뜻을 구하는 사람</b>이어야 하며(B), 기도의 참된 의미는 <b>우리의 영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것</b>입니다(C). 참된 기도는 — <b>하나님과 사람 사이의 상호 접촉</b>이며, <b>하나님을 들이쉬는 것</b>이고, <b>양편을 포함하는 기도</b>(외적으로는 사람, 내적으로는 그 영)입니다(롬 8:26-27). 그 결과 우리가 하나님을 얻고, 하나님이 우리를 얻으시어 — 그분의 갈망이 우리 안에서, 우리를 통해 표현되며 그분의 목적이 성취됩니다.</p>
+  </section>
+
+  <!-- TODAY'S VERSE -->
+  <section class="todays-verse-section" id="todays-verse-section">
+    <div class="tv-header">
+      <div class="tv-kicker">오늘의 구절 · Today's Verse</div>
+      <div class="tv-ref">로마서 8:26-27</div>
+      <div class="tv-ref-en">Romans 8:26-27 · Recovery Version</div>
+    </div>
+    <div class="tv-trans-compact">
+      <div class="tv-trans-row gk"><span class="tv-trans-tag">GK</span><span class="tv-trans-text"><span class="tv-gk-word"><span class="gw-gk">ὡσαύτως</span><span class="gw-pr">호사우토스</span></span><span class="tv-gk-word"><span class="gw-gk">δὲ καὶ</span><span class="gw-pr">데 카이</span></span><span class="tv-gk-word hl"><span class="gw-gk">τὸ Πνεῦμα</span><span class="gw-pr">토 프뉴마</span></span><span class="tv-gk-word hl"><span class="gw-gk">συναντιλαμβάνεται</span><span class="gw-pr">쉰안티람바네타이</span></span><span class="tv-gk-word"><span class="gw-gk">τῇ ἀσθενείᾳ ἡμῶν·</span><span class="gw-pr">테 아스테네이아 헤몬</span></span><span class="tv-gk-word"><span class="gw-gk">τὸ γὰρ τί προσευξώμεθα</span><span class="gw-pr">토 가르 티 프로슈크소메타</span></span><span class="tv-gk-word"><span class="gw-gk">καθὸ δεῖ</span><span class="gw-pr">카토 데이</span></span><span class="tv-gk-word"><span class="gw-gk">οὐκ οἴδαμεν,</span><span class="gw-pr">우크 오이다멘</span></span><span class="tv-gk-word hl"><span class="gw-gk">ἀλλ' αὐτὸ τὸ Πνεῦμα</span><span class="gw-pr">알 아우토 토 프뉴마</span></span><span class="tv-gk-word hl"><span class="gw-gk">ὑπερεντυγχάνει</span><span class="gw-pr">휘페렌튕카네이</span></span><span class="tv-gk-word hl"><span class="gw-gk">στεναγμοῖς ἀλαλήτοις·</span><span class="gw-pr">스테나그모이스 알랄레토이스</span></span></span></div>
+      <div class="tv-trans-row kr"><span class="tv-trans-tag">한</span><span class="tv-trans-text"><b>이와 같이</b> <b>그 영도</b> 우리의 연약함을 <b>함께 짊어지심으로</b> 우리를 도우십니다. 우리는 마땅히 무엇을 위하여 기도해야 할지 알지 못하지만, <b>그 영께서 친히</b> <b>말할 수 없는 탄식으로</b> 우리를 위하여 <b>직접 중보기도 하십니다</b>. 사람의 마음을 살피시는 분은 <b>그 영의 생각</b>을 아십니다. 그 영께서 <b>하나님에 따라</b> 성도들을 위하여 중보기도 하시기 때문입니다.</span></div>
+      <div class="tv-trans-row en"><span class="tv-trans-tag">EN</span><span class="tv-trans-text">Moreover, in like manner the Spirit also joins in to help us in our weakness, for we do not know for what we should pray as is fitting, but the Spirit Himself intercedes for us with groanings which cannot be uttered. But He who searches the hearts knows what the mind of the Spirit is, because He intercedes for the saints according to God.</span></div>
+    </div>
+
+    <div class="tv-words-section">
+      <div class="tv-words-title">
+        <span class="tv-words-title-en">LEXICAL · GRAMMATICAL ANALYSIS</span>
+        <span class="tv-words-title-kr">사전적 · 문법적 분석</span>
+        <span class="tv-words-title-note">단어 카드를 클릭하면 BDAG · Thayer's · Strong's 사전 정의와 동사 활용 분석 팝업이 열립니다. 신학적 해석은 배제하고 순수하게 원문의 사전적·문법적 의미만 분석합니다.</span>
+      </div>
+      <div class="tv-words-grid">
+        <button class="tv-word-card cat-adv" onclick="tvShowWord('hosautos')">
+          <div class="twc-gk">ὡσαύτως</div>
+          <div class="twc-pr">호사우토스</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">이와 같이</div>
+          <div class="twc-en">in like manner</div>
+          <div class="twc-meta"><span class="twc-strong">G5615 · 부사 (불변화)</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('to_pneuma')">
+          <div class="twc-gk">τὸ Πνεῦμα</div>
+          <div class="twc-pr">토 프뉴마</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">그 영</div>
+          <div class="twc-en">the Spirit</div>
+          <div class="twc-meta"><span class="twc-strong">G4151 · πνεῦμα · 명사 중성·단수·주격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('synantilambanetai')">
+          <div class="twc-gk">συναντιλαμβάνεται</div>
+          <div class="twc-pr">쉰안티람바네타이</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">함께 짊어지심으로 도우십니다</div>
+          <div class="twc-en">joins in to help</div>
+          <div class="twc-meta"><span class="twc-strong">G4878 · 현재 중간 직설법 3sg</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('astheneia')">
+          <div class="twc-gk">τῇ ἀσθενείᾳ</div>
+          <div class="twc-pr">테 아스테네이아</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">연약함을</div>
+          <div class="twc-en">weakness</div>
+          <div class="twc-meta"><span class="twc-strong">G769 · ἀσθένεια · 명사 여성·단수·여격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-fut" onclick="tvShowWord('proseuxometha')">
+          <div class="twc-gk">προσευξώμεθα</div>
+          <div class="twc-pr">프로슈크소메타</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">기도해야 할지</div>
+          <div class="twc-en">we should pray</div>
+          <div class="twc-meta"><span class="twc-strong">G4336 · 부정과거 중간 가정법 1pl</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('oidamen')">
+          <div class="twc-gk">οὐκ οἴδαμεν</div>
+          <div class="twc-pr">우크 오이다멘</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">우리는 알지 못합니다</div>
+          <div class="twc-en">we do not know</div>
+          <div class="twc-meta"><span class="twc-strong">G3756 + G1492 · 완료(현재 의미)</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('hyperentygchanei')">
+          <div class="twc-gk">ὑπερεντυγχάνει</div>
+          <div class="twc-pr">휘페렌튕카네이</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">직접 중보기도 하십니다</div>
+          <div class="twc-en">intercedes for</div>
+          <div class="twc-meta"><span class="twc-strong">G5241 · 현재 능동 직설법 3sg</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('stenagmois')">
+          <div class="twc-gk">στεναγμοῖς</div>
+          <div class="twc-pr">스테나그모이스</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">탄식으로</div>
+          <div class="twc-en">with groanings</div>
+          <div class="twc-meta"><span class="twc-strong">G4726 · στεναγμός · 명사 남성·복수·여격</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-adj" onclick="tvShowWord('alaletois')">
+          <div class="twc-gk">ἀλαλήτοις</div>
+          <div class="twc-pr">알랄레토이스</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">말할 수 없는</div>
+          <div class="twc-en">cannot be uttered</div>
+          <div class="twc-meta"><span class="twc-strong">G215 · ἀλάλητος · 형용사</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-adv" onclick="tvShowWord('katho_theon')">
+          <div class="twc-gk">κατὰ Θεόν</div>
+          <div class="twc-pr">카타 테온</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">하나님에 따라</div>
+          <div class="twc-en">according to God</div>
+          <div class="twc-meta"><span class="twc-strong">G2596 + G2316 · 전치사구</span><span class="twc-cta">사전 →</span></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="tv-summary">
+      <div class="tv-summary-title">Grammatical Structure · 본문의 문법적 구조</div>
+      <div class="tv-summary-text">본문은 한 결정적 동사 + 인간의 무지의 진술 + 그 영의 중보기도의 두 가지 측면으로 구성됩니다.<br><br>① <b>핵심 동사 — συναντιλαμβάνεται</b>: 매우 풍부한 합성 동사로 <b>σύν(함께) + ἀντί(맞은편에서) + λαμβάνομαι(잡다)</b>의 결합. 한 짐의 반대편을 함께 잡고 짊어지는 동작 — "함께 짊어지심으로 도우심"의 정확한 그림. 현재 중간태 직설법(3인칭 단수)으로 — 그 영의 <b>지속적·반복적·자기-참여적</b> 도우심을 나타냄.<br><br>② <b>인간의 인식적 한계</b>: <b>τὸ τί προσευξώμεθα καθὸ δεῖ οὐκ οἴδαμεν</b> ("우리는 마땅히 무엇을 위하여 기도해야 할지 알지 못한다"). <b>οἴδαμεν</b>은 완료 시제이나 현재 의미 — "우리가 (지금) 알지 못한다"의 진술. 그리고 <b>προσευξώμεθα</b>는 부정과거 중간 가정법(1pl) — 의도적·미래적 기도 행위에 대한 무지.<br><br>③ <b>그 영의 중보기도 — ὑπερεντυγχάνει</b>: <b>ὑπέρ(위하여·대신하여) + ἐντυγχάνω(만나다·간청하다)</b>의 합성. <b>"우리를 위하여(또는 위에서) 직접 만나 간청하심"</b>. 현재 능동 직설법으로 — 지속적인 그 영의 중보 행위. 도구격 <b>στεναγμοῖς ἀλαλήτοις</b>("말할 수 없는 탄식들로") — 인간의 언어를 초월한 표현 수단.<br><br>④ <b>"αὐτὸ τὸ Πνεῦμα" (그 영 친히)</b>: 강조대명사 αὐτό + 관사 τό + 명사 Πνεῦμα. <b>"그 영 자신이 친히"</b> — 다른 누구가 아닌 그 영 자신의 직접 행위임을 강조.<br><br>⑤ <b>"κατὰ Θεόν" (하나님에 따라)</b>: 27절 끝의 결정적 전치사구. <b>κατά</b>(~에 따라·~을 따라) + 대격 Θεόν(하나님). 그 영의 중보기도가 <b>하나님 자신의 의도·갈망·목적과 정확히 일치</b>함을 보장하는 어구.</div>
+    </div>
+  </section>
+
+  <div class="tv-popup-overlay" id="tv-popup-overlay" onclick="tvClosePopupOnBg(event)">
+    <div class="tv-popup" id="tv-popup">
+      <button class="tv-popup-close" onclick="tvClosePopup()" aria-label="닫기">✕</button>
+      <div class="tv-popup-header">
+        <div class="tv-popup-kicker">헬라어 단어 사전 · BDAG · Thayer's · Strong's</div>
+        <div class="tv-popup-meaning" id="tv-popup-meaning"></div>
+        <div class="tv-popup-greek" id="tv-popup-greek"></div>
+      </div>
+      <div class="tv-popup-body" id="tv-popup-body"></div>
+    </div>
+  </div>
+
+  <!-- TTS READER MODAL -->
+  <div class="tts-reader-overlay" id="tts-reader-overlay" onclick="ttsCloseOnBg(event)">
+    <div class="tts-reader-modal" onclick="event.stopPropagation()">
+      <div class="tts-reader-header">
+        <svg class="tts-reader-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <div class="tts-reader-title">본문 듣기</div>
+        <button class="tts-reader-close" onclick="ttsCloseReader()" aria-label="닫기">✕</button>
+      </div>
+      <div class="tts-reader-body">
+        <label class="tts-form-label">API 키</label>
+        <div class="tts-api-row">
+          <input type="password" id="tts-api-key" placeholder="API 키를 입력하세요" />
+          <button onclick="ttsSaveApiKey()">저장</button>
+        </div>
+        <label class="tts-form-label">음성 선택</label>
+        <select class="tts-voice-select" id="tts-voice-select">
+          <option value="tk_voice">tk_voice</option>
+        </select>
+        <label class="tts-form-label">읽을 항목 (기본: 전체 선택)</label>
+        <div class="tts-section-list" id="tts-section-list"></div>
+        <div class="tts-progress" id="tts-progress">
+          <div class="tts-progress-bar"><div class="tts-progress-fill" id="tts-progress-fill"></div></div>
+          <div class="tts-progress-text" id="tts-progress-text">대기 중...</div>
+        </div>
+        <div class="tts-status" id="tts-status">서버에서 음성 목록을 불러옵니다...</div>
+      </div>
+      <div class="tts-reader-footer">
+        <button class="tts-btn" id="tts-stop-btn" onclick="ttsStop()" disabled>⏹ 중지</button>
+        <button class="tts-btn" id="tts-pause-btn" onclick="ttsTogglePause()" disabled>⏸ 일시정지</button>
+        <button class="tts-btn primary" id="tts-play-btn" onclick="ttsPlay()">▶ 재생</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard" id="dashboard-section">
+    <div class="dashboard-title">메시지 전체 맥락 요약</div>
+    <div class="core-message">사도들의 결심은 <strong>"기도하는 것 ... 을 꾸준히 계속할 것"</strong>이었습니다(행 6:4). 그러나 많은 사람들이 기도를 — 자기 부족·질병·문제를 위해 하나님께 간청하는 것으로만 생각합니다. 지문은 단언합니다 — "<strong>이것은 성경에 계시된 기도의 올바른 의미가 아니다</strong>." 기도한다는 것은 우리가 <strong>아무것도 아니고 아무것도 할 수 없다는 것</strong>을 깨달은 — 곧 <strong>참된 자아 부인</strong>입니다(A). 기도의 사람은 <strong>하나님과 그분의 뜻을 구하는 사람</strong>이며(B), 기도의 참된 의미는 <strong>우리의 영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것</strong>입니다(C). 곧 — <strong>하나님과 사람 사이의 상호 접촉</strong>이며, <strong>하나님을 들이쉬는 것</strong>이고, <strong>양편을 포함하는 기도</strong>(외적으로는 사람, 내적으로는 그 영 — 롬 8:26-27)입니다. 그 결과 우리가 하나님을 얻고 — 하나님이 우리를 얻으시어 그분의 갈망이 성취됩니다.</div>
+    <div class="dash-grid">
+      <div class="dash-card"><div class="dash-label">개요 Ⅰ · 행 6:4</div><div class="dash-value">기도를 꾸준히<br>계속할 것</div></div>
+      <div class="dash-card"><div class="dash-label">A · 자아 부인</div><div class="dash-value">아무것도 아님을 깨달음<br>(막 8:34, 9:29)</div></div>
+      <div class="dash-card"><div class="dash-label">B · C · D</div><div class="dash-value">생명-사람·금-사람·<br>온전히 하나님으로 조성됨</div></div>
+      <div class="dash-card"><div class="dash-label">E · 새 창조물</div><div class="dash-value">하나님의 의<br>(고후 5:17, 21)</div></div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow-section" id="flow-section">
+    <div class="flow-title">기도의 흐름 — 자아 부인에서 하나님과의 연합으로</div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-dot">A</div><div class="flow-step-label">참된 자아 부인 (막 8:34, 9:29)</div><div class="flow-step-desc">기도한다는 것은 우리가 — <b>아무것도 아니고 아무것도 할 수 없다</b>는 것을 깨달았음을 의미합니다. 이것은 기도가 <b>참된 자아 부인</b>이라는 것을 함축합니다(개요 Ⅰ.A).</div></div>
+      <div class="flow-step"><div class="flow-dot">B</div><div class="flow-step-label">하나님과 그분의 뜻을 구함 (마 26:39, 요 4:34, 5:30, 6:38)</div><div class="flow-step-desc">기도의 사람은 <b>하나님과 하나님의 뜻을 구하는 사람</b>이어야 합니다(개요 Ⅰ.B). "나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오"(마 26:39).</div></div>
+      <div class="flow-step"><div class="flow-dot">C</div><div class="flow-step-label">영 안에서 하나님 접촉, 하나님 흡수 (유 20, 요 14:13, 15:7)</div><div class="flow-step-desc">기도의 참된 의미는 — <b>우리의 영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것</b>입니다(개요 Ⅰ.C). 사람의 영이 신성한 영을 접촉하는 동안 우리는 하나님을 들이쉽니다(요 4:24).</div></div>
+      <div class="flow-step"><div class="flow-dot">D</div><div class="flow-step-label">하나님과 사람 사이의 상호 접촉</div><div class="flow-step-desc"><b>참된 기도는 하나님과 사람 사이의 상호 접촉</b>입니다 — 사람이 하나님을 접촉할 뿐 아니라 <b>하나님께서도 사람을 접촉</b>하시어, 사람이 하나님과 연합되고 하나님도 사람과 연합되십니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">E</div><div class="flow-step-label">하나님과 협력 → 그분의 목적 성취 (롬 8:26-27)</div><div class="flow-step-desc"><b>외적으로는 사람이 기도하지만, 내적으로는 그 영께서 기도하시는</b> 양편의 기도. 우리는 <b>하나님과 협력</b>하여 그분 자신과 그분의 갈망이 표현되도록 — 궁극적으로 <b>하나님의 목적이 성취</b>되게 합니다.</div></div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS -->
+  <section class="keywords-section" id="keywords-section">
+    <div class="keywords-section-title">핵심 키워드 — 지문과 개요의 단어 그대로</div>
+    <div class="kw-container">
+      <span class="kw-chip" onclick="toggleKwTip('kwt1')">참된 자아 부인</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt2')">하나님의 뜻을 구함</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt3')">상호 접촉</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt4')">하나님을 들이쉼</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt5')">양편의 기도</span>
+    </div>
+    <div class="kw-tooltip" id="kwt1">개요 Ⅰ.A의 직접 진술 — "<b>기도한다는 것은 우리가 아무것도 아니고 아무것도 할 수 없다는 것을 깨달았음을 의미한다. 이것은 기도가 참된 자아 부인이라는 것을 함축한다</b>"(막 8:34, 9:29). "이런 종류의 것은 기도 외에는 그 어떤 것으로도 쫓아낼 수 없다"(막 9:29) — 자아 부인의 자리에서만 기도가 효력을 발합니다.</div>
+    <div class="kw-tooltip" id="kwt2">개요 Ⅰ.B의 직접 진술 — "<b>기도의 사람은 하나님과 하나님의 뜻을 구하는 사람이어야 한다</b>"(마 26:39, 요 4:34, 5:30, 6:38). 주님의 본 — "나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오"(마 26:39); "내가 나의 뜻을 구하지 않고 나를 보내신 아버지의 뜻을 구한다"(요 5:30).</div>
+    <div class="kw-tooltip" id="kwt3">지문의 결정적 정의 — "<b>참된 기도는 하나님과 사람 사이의 상호 접촉이다. 기도는 사람이 하나님을 접촉하는 것만이 아니라, 하나님께서 사람을 접촉하시는 것이다</b>." 그 결과 <b>사람이 하나님과 연합되고, 하나님도 사람과 연합</b>되십니다 — "기도의 가장 높고 가장 정확한 의미는 하나님과 사람 사이의 상호 접촉이다."</div>
+    <div class="kw-tooltip" id="kwt4">지문의 결정적 비유 — "<b>참된 기도는 또한 사람이 공기를 들이쉬는 것처럼 하나님을 들이쉬는 것이다</b>." 더 많이 기도할수록 우리는 더욱 <b>하나님으로 채워질 것</b>입니다. 우리가 하나님을 얻고, 그분이 우리의 누림이 되시며, 우리의 온 존재가 그분께 굴복되고 그분께 온전히 얻어집니다.</div>
+    <div class="kw-tooltip" id="kwt5">지문의 핵심 표현 — "<b>참된 기도는 양편을 포함하는 기도이다 ... 외적으로는 사람이 기도하는 것이지만, 내적으로는 그 영께서 기도하시는 것이다. 이것은 동일한 기도가 동시에 양편에 의해 표현되는 것을 의미한다</b>"(롬 8:26-27). 즉 <b>하나님께서 그분의 영을 통해 우리 안에서 기도하시는 것</b>입니다.</div>
+  </section>
+
+  <!-- ACCORDIONS -->
+  <div class="accordion-group">
+    <div class="accordion-group-title" id="keypoints-section">핵심 요점 — 참된 기도의 의미</div>
+
+    <div class="step-header" data-kicker="Part Ⅰ · 개요 Ⅰ — 기도의 결심과 정의">기도하는 것을 꾸준히 계속함</div>
+
+    <div class="accordion" id="acc-0">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅰ</div>
+        <div class="acc-title-text">개요 Ⅰ · 행 6:4 — 기도하는 것을 꾸준히 계속할 것</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">행 6:4</div>
+          <div class="verse-text">[행 6:4] 우리는 <b>기도하는 것과 그리고 말씀의 사역을 꾸준히 계속할 것입니다</b>.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ은 사도들의 결심을 첫 자리에 놓습니다 — <strong>"기도하는 것 ... 을 꾸준히 계속할 것입니다"</strong>(행 6:4). 사도들의 사역의 두 날개는 <span class="hl">기도와 말씀</span>이었습니다. 그러나 기도란 정확히 무엇입니까? 지문은 단언합니다 — 많은 사람들이 생각하는 일반적 정의(자기 부족·문제 해결을 위한 간청)는 — <strong>"성경에 계시된 기도의 올바른 의미가 아니다."</strong></p>
+        <div class="sub-point">
+          <div class="sub-point-title">사도들의 결심 — "꾸준히 계속할 것"</div>
+          <div class="sub-point-text">사도행전 6장의 본문은 매우 정밀한 결심의 표현입니다. 사도들은 — 성도들의 일상 사역을 일곱 사람에게 위임한 후 — 자신들은 <strong>"기도하는 것과 그리고 말씀의 사역을 꾸준히 계속"</strong>하기로 결심했습니다. <span class="hl">기도가 사역의 첫 자리</span>를 차지함이 결정적입니다 — 말씀의 사역보다 먼저 기도가 옵니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">기도가 가장 먼저 — 모든 책임 형제의 본</div>
+          <div class="sub-point-text">사도들의 결심은 <strong>모든 책임 형제들이 따라야 할 본</strong>입니다. 그러나 사도들이 결심한 그 "기도"는 어떤 기도였습니까? 지문은 우리를 <span class="hl">참된 기도의 본질로</span> 인도합니다 — 표면적 정의가 아닌, 성경에 계시된 깊은 의미로.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">일반적 정의의 한계</div>
+          <div class="sub-point-text">지문은 일반적 기도 이해를 정직하게 짚습니다 — <strong>"많은 사람들은 '기도'라는 말을 들으면 곧바로 사람이 하나님 앞에 간청하기 위해 나오는 것이라고 생각한다 ... 그분께 자신에게 필요한 것을 공급해 주시고 병을 치료해 주시며 자신의 문제를 해결해 주시기를 구한다."</strong> 이는 일반적 이해이지만 — 지문은 단호히 평가합니다: <span class="hl">"이것은 성경에 계시된 기도의 올바른 의미가 아니다 ... 이 정의는 너무 피상적이고 깊이와 정확성이 부족하다."</span></div>
+        </div>
+        <p class="content-text">개요 Ⅰ은 우리에게 — 사도들이 꾸준히 계속한 그 기도, 곧 <strong>참된 기도의 깊은 의미</strong>를 발견하도록 부릅니다. A·B·C 항목은 그 본질을 세 차원에서 정의합니다 — <span class="hl">자아 부인 / 하나님과 그분의 뜻을 구함 / 영 안에서 하나님 접촉과 흡수</span>.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">기도의 첫 차원은 무엇입니까? — <strong>참된 자아 부인</strong>입니다.</div>
+
+    <div class="accordion" id="acc-1">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅱ</div>
+        <div class="acc-title-text">개요 Ⅰ.A — 기도 = 참된 자아 부인</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">막 8:34 / 막 9:29</div>
+          <div class="verse-text">[막 8:34] 무리와 제자들을 부르셔서 말씀하셨다. "누구든지 나를 따라오려거든, <b>자기를 부인하고</b> 자기 십자가를 지고 나를 따라오십시오."</div>
+          <div class="verse-text">[막 9:29] 예수님께서 말씀하셨다. "이런 종류의 것은 <b>기도 외에는 그 어떤 것으로도 쫓아낼 수 없습니다</b>."</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.A는 기도의 첫 차원을 정의합니다 — <strong>기도한다는 것은 <span class="hl">우리가 아무것도 아니고 아무것도 할 수 없다는 것을 깨달았음을 의미한다</span>. 이것은 기도가 <span class="hl">참된 자아 부인</span>이라는 것을 함축한다.</strong> 기도는 자기 능력의 끝에서 — 하나님께 의지하는 자리입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"아무것도 아니고 아무것도 할 수 없다는 것을 깨달았음"</div>
+          <div class="sub-point-text">기도의 시작점은 강한 선언이 아니라 <strong>깨달음</strong>입니다. 우리가 — 자기 자신을 의지할 자원이 없는 자, <span class="hl">아무것도 아니고 아무것도 할 수 없는 자</span>임을 깨닫는 자리. 이 깨달음 없이는 기도가 시작될 수 없습니다. 자기 능력으로 모든 것을 해결할 수 있다고 생각하는 사람은 — 진정으로 기도할 필요를 느끼지 못합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"기도 = 참된 자아 부인"</div>
+          <div class="sub-point-text">개요는 기도와 자아 부인을 한 짝으로 묶습니다 — 기도는 <strong>참된 자아 부인</strong>의 표현이며, 자아 부인 없는 기도는 진정한 기도가 아닙니다. 마가복음 8:34의 명령 — <strong>"자기를 부인하고 자기 십자가를 지고 나를 따라오십시오"</strong> — 이 따름의 길은 기도의 자리에서 시작됩니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"기도 외에는 쫓아낼 수 없다" (막 9:29)</div>
+          <div class="sub-point-text">제자들이 더러운 영을 쫓아내지 못한 후 주님께서 주신 말씀 — <strong>"이런 종류의 것은 기도 외에는 그 어떤 것으로도 쫓아낼 수 없습니다."</strong> <span class="hl">기도가 아닌 다른 무엇으로는 영적 능력이 발휘되지 않음</span>을 의미합니다. 자기 의지·재능·지식이 아닌 — 자아 부인의 자리에서 흘러 나오는 기도만이 영적 능력을 가집니다.</div>
+        </div>
+        <p class="content-text">기도는 — 우리가 자기 자리에서 일어나 하나님 앞으로 나오는 것이 아니라, <strong>자기 자리를 부인하고 하나님께 자기를 굴복시키는</strong> 것입니다. <span class="hl">"내가 아무것도 아님"의 깨달음이 기도의 첫 자리</span>이며 — 이 깨달음에서 모든 진정한 기도가 시작됩니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">자아 부인의 자리에 선 사람은 무엇을 구합니까? — <strong>하나님과 그분의 뜻</strong>입니다.</div>
+
+    <div class="accordion" id="acc-2">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅲ</div>
+        <div class="acc-title-text">개요 Ⅰ.B — 기도의 사람 = 하나님과 하나님의 뜻을 구하는 사람</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">마 26:39 / 요 4:34 / 5:30 / 6:38</div>
+          <div class="verse-text">[마 26:39] 조금 더 나아가시어, 얼굴을 땅에 대시고 엎드리셔서 기도하셨다. "나의 아버지, 하실 수만 있으시다면, 이 잔을 나에게서 지나가게 해 주십시오. 그러나 <b>나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오</b>."</div>
+          <div class="verse-text">[요 4:34] 예수님께서 그들에게 말씀하셨다. "<b>나의 음식은 나를 보내신 분의 뜻을 행하고 그분의 일을 완성하는 것</b>입니다."</div>
+          <div class="verse-text">[요 5:30] 나는 스스로 아무것도 할 수 없습니다 ... 왜냐하면 <b>내가 나의 뜻을 구하지 않고 나를 보내신 아버지의 뜻을 구하기 때문</b>입니다.</div>
+          <div class="verse-text">[요 6:38] 내가 하늘에서 내려온 것은 <b>내 뜻을 행하기 위한 것이 아니라, 나를 보내신 분의 뜻을 행하기 위한 것</b>입니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.B는 기도의 두 번째 차원을 정의합니다 — <strong>기도의 사람은 <span class="hl">하나님과 하나님의 뜻을 구하는 사람</span>이어야 한다</strong>(마 26:39, 요 4:34, 5:30, 6:38). 우리의 뜻이 아니라 — 하나님 자신과 그분의 뜻이 기도의 사람의 추구하는 대상입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오" (마 26:39)</div>
+          <div class="sub-point-text">겟세마네 동산에서의 주님의 기도는 — 모든 시대 모든 기도의 사람의 본입니다. <strong>"이 잔을 나에게서 지나가게 해 주십시오"</strong>는 사람으로서의 솔직한 간구이지만, 그 다음에 즉시 따라오는 것은 — <strong>"나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오."</strong> <span class="hl">나의 뜻에서 아버지의 뜻으로의 이동</span>이 곧 진정한 기도의 결정적 동작입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"나의 음식은 ... 그분의 뜻을 행하는 것" (요 4:34)</div>
+          <div class="sub-point-text">주님은 자신의 가장 깊은 갈망을 한 단어로 표현하셨습니다 — <strong>"나의 음식(my food, ἐμὸν βρῶμα)"</strong>. 음식은 우리를 살게 하는 가장 본질적 자원입니다. 주님께는 그 음식이 — <span class="hl">"나를 보내신 분의 뜻을 행하고 그분의 일을 완성하는 것"</span>이었습니다. 이것이 기도의 사람의 안쪽 갈망입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"나의 뜻을 구하지 않고 ... 아버지의 뜻을 구함" (요 5:30)</div>
+          <div class="sub-point-text">주님의 자기 정의 — <strong>"나는 스스로 아무것도 할 수 없습니다 ... 내가 나의 뜻을 구하지 않고 나를 보내신 아버지의 뜻을 구합니다."</strong> <span class="hl">자아 부인(A)과 하나님의 뜻을 구함(B)이 한 흐름</span>임이 분명히 드러납니다. 자기를 부인할 때 — 비로소 아버지의 뜻을 구할 수 있고, 아버지의 뜻을 구할 때 — 비로소 자기를 부인하는 길이 명확해집니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"내 뜻을 행하기 위한 것이 아니라" (요 6:38)</div>
+          <div class="sub-point-text">주님이 하늘에서 내려오신 목적의 정의 — <strong>"내 뜻을 행하기 위한 것이 아니라, 나를 보내신 분의 뜻을 행하기 위한 것"</strong>. <span class="hl">기도의 사람의 길은 주님의 길과 동일</span>합니다 — 우리는 우리 자신의 뜻을 행하기 위해 사는 것이 아니라, 우리를 보내신 분의 뜻을 행하기 위해 살고 기도합니다.</div>
+        </div>
+        <p class="content-text">기도의 사람은 — 자신의 부족·문제·소원을 가지고 하나님께 나아가는 사람이 아니라, <strong>하나님 자신과 그분의 뜻을 구하기 위해</strong> 나아가는 사람입니다. <span class="hl">"나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오"</span>는 — 모든 진정한 기도의 안쪽 흐름입니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-header" data-kicker="Part Ⅱ · 개요 Ⅰ.C — 영 안에서의 접촉">기도의 참된 의미 — 하나님 자신을 흡수하는 것</div>
+
+    <div class="accordion" id="acc-3">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅳ</div>
+        <div class="acc-title-text">개요 Ⅰ.C — 영 안에서 하나님 접촉, 하나님 자신을 흡수</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">유 20 / 요 14:13 / 15:7 / 4:24</div>
+          <div class="verse-text">[유 20] 그러나 사랑하는 여러분, 여러분은 가장 거룩한 믿음 위에 자신을 세우면서, <b>성령 안에서 기도하십시오</b>.</div>
+          <div class="verse-text">[요 14:13] 또 여러분이 <b>내 이름 안에서 무엇을 구하든지</b> 내가 다 이루어 주겠습니다 ...</div>
+          <div class="verse-text">[요 15:7] 여러분이 <b>내 안에 거하고 내 말이 여러분 안에 거하면</b>, 무엇이든지 여러분이 원하는 것을 구하십시오. 그러면 여러분에게 이루어질 것입니다.</div>
+          <div class="verse-text">[요 4:24] <b>하나님은 영이시니, 경배하는 사람들은 영 안에서 진실함으로 경배해야 합니다</b>."</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.C는 기도의 가장 본질적 차원을 정의합니다 — <strong>기도의 참된 의미는 <span class="hl">우리의 영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것</span></strong>(유 20, 요 14:13, 15:7). 그리고 그 하위 항목 1은 — <strong>"기도는 사람의 영이 신성한 영을 접촉하는 것이고, 이렇게 접촉하는 동안 우리는 하나님을 들이쉰다"</strong>(유 20, 요 4:24).</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"우리의 영 안에서 하나님을 접촉"</div>
+          <div class="sub-point-text">기도의 자리는 — 우리의 머리도, 감정도, 의지도 아닌 <strong>우리의 영</strong>입니다. 요한복음 4:24의 핵심 단언 — <span class="hl">"하나님은 영이시니, 경배하는 사람들은 영 안에서 진실함으로 경배해야 합니다."</span> 하나님이 영이시므로 — 그분과의 접촉은 우리의 영에서 일어납니다. <strong>사람의 영 ↔ 신성한 영</strong>의 만남이 기도의 자리입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님 자신을 흡수"</div>
+          <div class="sub-point-text">개요는 결정적인 동사를 사용합니다 — <strong>"하나님 자신을 흡수(absorb)"</strong>. 우리가 기도에서 받는 것은 어떤 것이 아니라 — <span class="hl">하나님 자신</span>입니다. 응답이나 자원이나 해결책 이전에 — 그분 자신을 우리 안으로 받아들이는 것이 기도의 본질입니다. 이것이 다음 항목(C-1)에서 "하나님을 들이쉼"으로 더 깊이 펼쳐집니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"성령 안에서 기도하라" (유 20)</div>
+          <div class="sub-point-text">유다서 20은 매우 정밀합니다 — <strong>"성령 안에서(ἐν Πνεύματι Ἁγίῳ) 기도하십시오."</strong> "성령으로(by)"가 아니라 <strong>"성령 안에서(in)"</strong>입니다. <span class="hl">기도는 성령이라는 영역(sphere) 안에서 일어나는 영적 행위</span>입니다 — 우리가 우리의 영 안에 들어가, 그 영 안에 거하시는 성령을 접촉할 때, 진정한 기도가 흐르기 시작합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"내 이름 안에서 ... 내 안에 거하면" (요 14:13, 15:7)</div>
+          <div class="sub-point-text">기도의 두 핵심 위치 — <strong>"내 이름 안에서(요 14:13) 무엇을 구하든지"</strong>와 <strong>"내 안에 거하고 내 말이 여러분 안에 거하면(요 15:7)"</strong>. <span class="hl">두 본문 모두 기도의 자리는 그리스도 안에 있을 때만 가능</span>함을 진술합니다. 그분의 이름·그분 안에·그분의 말씀 안에 — 우리가 거할 때 비로소 기도가 응답되고 효력을 발합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">C-1. "사람의 영이 신성한 영을 접촉, 하나님을 들이쉼"</div>
+          <div class="sub-point-text">개요 Ⅰ.C-1은 매우 정밀한 진술입니다 — <strong>"기도는 <span class="hl">사람의 영이 신성한 영을 접촉하는 것</span>이고, 이렇게 접촉하는 동안 <span class="hl">우리는 하나님을 들이쉰다</span>"</strong>(유 20, 요 4:24). 사람의 영(human spirit)과 신성한 영(divine Spirit) — 두 영의 만남이 기도이며, 그 결과 우리는 하나님을 호흡하듯 들이쉽니다.</div>
+        </div>
+        <p class="content-text">기도의 참된 의미는 — <strong>영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것</strong>입니다. 이는 단지 말의 행위가 아니라 — <span class="hl">사람의 영과 신성한 영 사이의 살아있는 접촉</span>이며, 그 접촉을 통해 하나님이 우리 안으로 들어오시는 일입니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">기도의 표면적 정의를 넘어서 — 지문은 <strong>참된 기도의 본질</strong>을 더 깊이 펼쳐 보입니다.</div>
+
+    <div class="accordion" id="acc-4">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅴ</div>
+        <div class="acc-title-text">일반적 오해 vs 참된 기도 — 피상적 정의의 한계</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">기도 레슨, 개정판, 1장, 18, 22쪽</div>
+          <div class="verse-text">"많은 사람들은 '기도'라는 말을 들으면 곧바로 사람이 하나님 앞에 <b>간청하기 위해 나오는 것</b>이라고 생각한다 ... 하나님 앞에 나아가 그분께 자신에게 필요한 것을 공급해 주시고 병을 치료해 주시며 자신의 문제를 해결해 주시기를 구한다."</div>
+          <div class="verse-text">"그러나 ... <b>이것은 성경에 계시된 기도의 올바른 의미가 아니다</b>. 우리는 감히 이러한 정의가 틀렸다고 말하지는 않지만, <b>이 정의는 너무 피상적이고 깊이와 정확성이 부족하다</b>."</div>
+        </div>
+        <p class="content-text">지문은 일반적 기도 이해를 정직하게 진단합니다. 우리는 — 부족이 있을 때, 병들었을 때, 문제가 있을 때 — 하나님께 나아가 공급·치료·해결책을 구합니다. 이것이 일반적인 기도 이해입니다. 그러나 지문은 단언합니다 — <span class="hl">"이것은 성경에 계시된 기도의 올바른 의미가 아니다."</span></p>
+        <div class="sub-point">
+          <div class="sub-point-title">"틀렸다"고는 하지 않지만 — "피상적이고 깊이가 부족"</div>
+          <div class="sub-point-text">지문의 신중한 표현 — <strong>"우리는 감히 이러한 정의가 틀렸다고 말하지는 않지만, 이 정의는 너무 피상적이고 깊이와 정확성이 부족하다."</strong> <span class="hl">간청으로서의 기도는 부분적 진리이지만 — 기도의 본질이 아닙니다</span>. 부분적인 정의에 머물면 — 우리는 평생을 기도의 표면에서만 살게 됩니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">왜 일반적 정의가 부족한가?</div>
+          <div class="sub-point-text">일반적 정의는 — <strong>일방적</strong>입니다. 사람이 하나님께 나아가는 한쪽 방향만을 봅니다. 그러나 지문이 다음에 펼치는 진리 — <span class="hl">참된 기도는 양방향(상호 접촉)</span>이며, 더 깊은 차원에서는 <span class="hl">하나님 자신이 우리 안에서 우리를 통해 기도</span>하시는 일입니다(롬 8:26-27). 일반적 정의는 이 깊이를 담지 못합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"기도의 껍데기나 장식"</div>
+          <div class="sub-point-text">지문은 더 강한 표현을 사용합니다 — <strong>"하나님을 떠나서 사람과 일과 사물을 두고 하는 기도는 모두 기도의 본질이 아니라 <span class="hl">그저 기도의 껍데기나 장식에 불과하다</span>."</strong> 우리의 일상의 많은 기도가 — 하나님을 중심에 두지 않고 사람과 일과 사물을 중심에 둘 수 있습니다. 이런 기도는 — 외형은 있지만 본질이 없습니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.C는 우리에게 — 피상적 정의를 넘어 <strong>참된 기도, 곧 기도의 본질</strong>로 들어가도록 부릅니다. 다음 단락은 지문의 가장 깊은 정의를 펼쳐 보입니다 — <span class="hl">참된 기도는 하나님과 사람 사이의 상호 접촉</span>입니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">그렇다면 — <strong>참된 기도의 본질</strong>은 무엇입니까?</div>
+
+    <div class="accordion" id="acc-5">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅵ</div>
+        <div class="acc-title-text">참된 기도 = 하나님과 사람 사이의 상호 접촉</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">기도 레슨, 개정판, 1장, 22쪽</div>
+          <div class="verse-text">"<b>참된 기도는 하나님과 사람 사이의 상호 접촉</b>이다. 기도는 사람이 하나님을 접촉하는 것만이 아니라, <b>하나님께서 사람을 접촉하시는 것</b>이다."</div>
+          <div class="verse-text">"참으로 표준에 이른 모든 기도에는 <b>하나님과 사람 사이에 상호 흐름</b>이 있다. 그 결과 사람이 실제로 하나님을 접촉할 뿐 아니라 하나님도 실제로 사람을 접촉하시어, <b>사람은 하나님과 연합되고 하나님도 사람과 연합</b>되신다."</div>
+          <div class="verse-text">"그러므로 <b>기도의 가장 높고 가장 정확한 의미는 하나님과 사람 사이의 상호 접촉</b>이다."</div>
+        </div>
+        <p class="content-text">지문은 참된 기도의 결정적 정의를 한 문장으로 진술합니다 — <strong><span class="hl">"참된 기도는 하나님과 사람 사이의 상호 접촉이다."</span></strong> 이 짧은 문장이 — 일반적 정의를 깊이로 끌어올립니다. 기도는 <span class="hl">일방적이 아니라 쌍방적</span>입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"사람이 하나님을 접촉" + "하나님께서 사람을 접촉하심"</div>
+          <div class="sub-point-text">참된 기도의 두 방향 — <strong>① 사람이 하나님을 접촉하는 것</strong>과 <strong>② 하나님께서 사람을 접촉하시는 것</strong>. 일반적 이해는 첫 번째 방향만을 봅니다. 그러나 지문은 두 번째 방향이 동등하게 중요함을 진술합니다 — <span class="hl">기도는 사람이 하나님을 접촉하는 것만이 아니라, 하나님께서 사람을 접촉하시는 것</span>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"표준에 이른 모든 기도에는 상호 흐름이"</div>
+          <div class="sub-point-text">지문은 한 가지 시금석을 제공합니다 — <strong>"참으로 표준에 이른 모든 기도에는 하나님과 사람 사이에 상호 흐름이 있다."</strong> <span class="hl">"상호 흐름(mutual flow)"</span>이 있는가가 — 기도가 표준에 이르렀는지를 가르는 기준입니다. 우리의 말만 흘러 나가는 기도가 아니라 — 하나님 자신이 우리 안으로 흘러 들어오시는 기도입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"사람은 하나님과 연합되고, 하나님도 사람과 연합"</div>
+          <div class="sub-point-text">상호 접촉의 결과는 단지 응답이 아닙니다 — <strong>연합(union)</strong>입니다. <span class="hl">"사람은 하나님과 연합되고, 하나님도 사람과 연합"</span>되십니다. 이 양방향의 연합이 — 참된 기도의 결과입니다. 우리가 그분 안에 있고, 그분이 우리 안에 계시는 자리.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"기도의 가장 높고 가장 정확한 의미"</div>
+          <div class="sub-point-text">지문은 단호히 진술합니다 — <strong>"기도의 <span class="hl">가장 높고 가장 정확한 의미는 하나님과 사람 사이의 상호 접촉</span>이다."</strong> 이는 어떤 부분적 정의가 아니라 — 기도의 가장 깊고 가장 정밀한 본질입니다. 모든 다른 기도의 정의는 — 이 정의 위에 세워지거나, 이 정의로 평가되어야 합니다.</div>
+        </div>
+        <p class="content-text">기도가 <strong>상호 접촉</strong>이라는 정의는 — 우리의 기도 생활 전체를 다시 보게 합니다. 단지 "하나님께 말하는 것"이 아니라 — <span class="hl">하나님과 우리 사이에 살아있는 흐름이 있는 것</span>입니다. 그분이 우리를 접촉하시도록 우리가 침묵하고 들어야 할 자리도, 우리가 그분을 접촉하기 위해 진정으로 깨어 있어야 할 자리도 — 모두 기도의 자리입니다.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="step-header" data-kicker="Part Ⅲ · 기도의 본질과 결말">하나님을 들이쉼 · 양편의 기도 · 그분의 목적 성취</div>
+
+    <div class="accordion" id="acc-6">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅶ</div>
+        <div class="acc-title-text">참된 기도 = 사람이 공기를 들이쉬듯 하나님을 들이쉼</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">기도 레슨, 개정판, 1장</div>
+          <div class="verse-text">"<b>참된 기도는 또한 사람이 공기를 들이쉬는 것처럼 하나님을 들이쉬는 것</b>이다. 공기를 들이쉴 때 우리가 자연스럽게 공기를 받아들이는 것처럼, <b>하나님을 들이쉬는 동안 우리는 자연스럽게 하나님을 얻는다</b>."</div>
+          <div class="verse-text">"그 결과 우리가 하나님을 얻어 그분께서 우리의 누림이 되실 뿐 아니라, <b>우리의 온 존재가 하나님께 굴복되고, 그분께 돌이켜지며, 그분께 온전히 얻어진다</b>. 더 많이 기도할수록, 우리는 더욱 하나님으로 채워질 것이다."</div>
+        </div>
+        <p class="content-text">지문은 참된 기도의 본질을 또 다른 결정적 비유로 펼쳐 보입니다 — <strong>"참된 기도는 또한 사람이 공기를 들이쉬는 것처럼 하나님을 들이쉬는 것이다."</strong> <span class="hl">호흡으로서의 기도</span> — 이는 단지 시적 비유가 아니라, 정밀한 영적 메커니즘입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"공기를 들이쉬듯 하나님을 들이쉼"</div>
+          <div class="sub-point-text">호흡은 — 의식적 노력이 아니라 <span class="hl">자연스러운 살아남의 동작</span>입니다. 우리가 공기를 들이쉬려 의식하지 않아도 — 살아 있는 동안 공기는 자연스럽게 우리 안으로 들어옵니다. <strong>참된 기도는 동일한 자연스러움으로 하나님을 들이쉬는 것</strong>입니다 — 영적 호흡으로서의 기도.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"자연스럽게 하나님을 얻는다"</div>
+          <div class="sub-point-text">지문의 결정적 결과 — <strong>"하나님을 들이쉬는 동안 우리는 자연스럽게 하나님을 얻는다."</strong> <span class="hl">기도의 결과는 응답이 아니라 하나님 자신을 얻는 것</span>입니다. 공기를 들이쉴 때 우리가 산소를 얻듯이 — 하나님을 들이쉴 때 우리는 하나님 자신을 얻습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"우리의 온 존재가 하나님께 굴복 ... 온전히 얻어진다"</div>
+          <div class="sub-point-text">하나님을 들이쉬는 결과는 더 깊이 펼쳐집니다 — <strong>① 그분께서 우리의 누림이 되심, ② 우리의 온 존재가 하나님께 굴복됨, ③ 그분께 돌이켜짐, ④ 그분께 온전히 얻어짐</strong>. 네 단계가 한 흐름입니다 — <span class="hl">우리가 하나님을 얻을 뿐 아니라, 하나님이 우리를 얻으십니다</span>.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"기도의 궁극적인 결과 — 우리도 하나님을 더 얻고 그분도 우리를 더 얻으심"</div>
+          <div class="sub-point-text">지문은 분명히 진술합니다 — <strong>"물론 하나님께 구한 것이 이루어질 수도 있지만, 기도의 궁극적인 결과는 <span class="hl">중보기도 하는 사람이 하나님을 더 얻고 하나님도 그를 더 얻으시는 것</span>이어야 한다."</strong> 응답은 부수적 결과이며, 본질적 결과는 — 양방향의 얻음입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"참된 기도, 곧 기도의 본질"</div>
+          <div class="sub-point-text">지문은 참된 기도의 본질을 종합 정의합니다 — <strong>"참된 기도, 곧 기도의 본질은 기도 안에서 우리가 <span class="hl">실지적으로 하나님을 접촉하고, 그분을 호흡하며, 그분을 누리고, 그분을 얻으며, 그분으로 채워지고, 그분께서 우리의 존재를 얻으시도록 허락해 드리는 것</span>이다."</strong> 여섯 동사가 한 흐름으로 묶여 있습니다 — 접촉·호흡·누림·얻음·채워짐·내어드림.</div>
+        </div>
+        <p class="content-text">"<strong>더 많이 기도할수록, 우리는 더욱 하나님으로 채워질 것이다.</strong>" 이 짧은 문장에 — 우리의 매일의 기도 생활의 약속이 담겨 있습니다. <span class="hl">기도는 우리를 단순히 하나님께 무엇을 받게 하는 일이 아니라, 우리 자신이 하나님으로 채워지는 일</span>입니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">참된 기도의 가장 깊은 차원은 — <strong>그 영과 사람이 함께 기도하는 것</strong>입니다(롬 8:26-27).</div>
+
+    <div class="accordion" id="acc-7">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅷ</div>
+        <div class="acc-title-text">양편의 기도 — 그 영과 사람의 연합 (롬 8:26-27)</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">롬 8:26-27</div>
+          <div class="verse-text">[롬 8:26] 이와 같이 그 영도 우리의 연약함을 함께 짊어지심으로 우리를 도우십니다. <b>우리는 마땅히 무엇을 위하여 기도해야 할지 알지 못하지만, 그 영께서 말할 수 없는 탄식으로 우리를 위하여 직접 중보기도 하십니다</b>.</div>
+          <div class="verse-text">[롬 8:27] 사람의 마음을 살피시는 분은 그 영의 생각을 아십니다. <b>그 영께서 하나님에 따라 성도들을 위하여 중보기도 하시기 때문</b>입니다.</div>
+        </div>
+        <p class="content-text">지문은 참된 기도의 가장 깊은 차원을 — 롬 8:26-27 위에 펼쳐 놓습니다 — <strong>"참된 기도는 사람 안에 계신 성령께서 사람을 통해 하나님의 갈망을 표현하시는 것이다. 바꾸어 말해서 <span class="hl">참된 기도는 양편을 포함하는 기도</span>이다."</strong></p>
+        <div class="sub-point">
+          <div class="sub-point-title">"우리는 어떻게 기도해야 할지 모른다"</div>
+          <div class="sub-point-text">로마서 8:26은 인간의 인식적 한계를 직접 진술합니다 — <strong>"우리는 마땅히 무엇을 위하여 기도해야 할지 알지 못하지만"</strong>. 지문도 단언합니다 — <strong>"사실 우리는 어떻게 기도해야 할지 모른다."</strong> <span class="hl">우리의 무지가 — 그 영의 중보기도가 시작되는 자리</span>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"양편을 포함하는 기도"</div>
+          <div class="sub-point-text">지문의 결정적 진술 — <strong>"참된 기도는 양편을 포함하는 기도이다. 참된 기도는 다만 사람이 홀로 하나님께 기도하는 것이 아니며, <span class="hl">그 영께서 기도 안에서 사람과 연합하시고 사람을 입으시며 사람과 연결되시는 것</span>이다."</strong> 그 영이 기도 안에서 — 사람과 연합하시고, 사람을 입으시며, 사람과 연결되십니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"외적으로는 사람이, 내적으로는 그 영께서 기도"</div>
+          <div class="sub-point-text">지문은 양편의 기도의 메커니즘을 정밀하게 진술합니다 — <strong>"<span class="hl">외적으로는 사람이 기도하는 것이지만, 내적으로는 그 영께서 기도하시는 것이다.</span> 이것은 동일한 기도가 동시에 양편에 의해 표현되는 것을 의미한다."</strong> 한 기도가 — 동시에 두 주체에 의해 표현됩니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님에 따라 ... 중보기도" (롬 8:27)</div>
+          <div class="sub-point-text">지문은 롬 8:27의 결정적 어구를 풀이합니다 — <strong>"'그 영께서 하나님에 따라 ... 중보기도 하시기 때문입니다'(롬 8:27). 이것은 성령께서 <span class="hl">하나님에 따라 우리 안에서 기도하신다</span>는 것을 의미한다. 즉 하나님께서 그분의 영을 통해 우리 안에서 기도하시는 것이다."</strong> 그러므로 이러한 기도는 — 하나님의 의도뿐 아니라 <strong>하나님 자신을 표현</strong>합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님과 협력 ... 그분의 갈망이 표현 ... 하나님의 목적이 성취"</div>
+          <div class="sub-point-text">참된 기도의 사람의 살아남 — <strong>"이렇게 기도하는 사람은 분명 <span class="hl">하나님과 협력하고, 하나님과 함께 일하고, 자신 안에서부터 그리고 자신을 통하여 하나님 자신과 그분의 갈망이 표현되도록 허락</span>해 드릴 것이며, 궁극적으로 <span class="hl">하나님의 목적이 성취</span>되게 할 것이다."</strong> 이것이 양편의 기도의 결과입니다.</div>
+        </div>
+        <p class="content-text">롬 8:26-27이 알려 주는 가장 깊은 진리 — 우리가 기도할 때, 우리만 기도하는 것이 아닙니다. <strong>그 영께서 하나님에 따라 우리 안에서 우리를 위하여 중보기도</strong>하십니다. 외적으로는 사람이 기도하나 내적으로는 그 영이 기도하심 — <span class="hl">하나님 자신이 그분의 영을 통해 우리 안에서 기도하시는 것</span>입니다. 그래서 그 기도는 — 하나님의 의도와 정확히 일치하며, 그분의 목적을 성취합니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">참된 기도의 <strong>궁극적 결말</strong>은 무엇입니까? — 하나님과의 협력과 그분의 목적의 성취입니다.</div>
+
+    <div class="accordion" id="acc-8">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅸ</div>
+        <div class="acc-title-text">결말 — 하나님과 협력, 그분의 목적 성취</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">기도 레슨, 개정판, 1장 / 롬 8:26-27</div>
+          <div class="verse-text">"<b>참된 기도는 하나님 자신을 들이쉬는 것이고, 하나님을 얻는 것이며, 하나님께서 우리를 얻으시는 것</b>이다."</div>
+          <div class="verse-text">"<b>참된 기도는 항상 성경과 일치한다</b>. 즉, 참된 기도는 하나님 앞에서 숨을 내쉬고 들이쉼으로써 우리와 하나님 그리고 하나님과 우리가 서로를 접촉하고 서로를 얻도록 하는 것이다. 그 결과 우리는 <b>온전히 하나님과 협력하고 그분과 함께 일하게 된다</b>. 또한 하나님은 우리를 통해 그분 자신과 그분의 갈망을 표현하시어, 궁극적으로 <b>그분의 목적을 성취</b>하신다."</div>
+        </div>
+        <p class="content-text">지문은 참된 기도의 결말을 — 한 사람의 영성이 아닌 <strong>우주적 협력의 차원</strong>으로 끌어올립니다. 참된 기도는 단지 우리의 영적 누림에 멈추지 않습니다. 그 결말은 <span class="hl">하나님과의 협력 + 그분의 목적의 성취</span>입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님 자신을 들이쉬는 것 + 하나님을 얻음 + 하나님께서 우리를 얻으심"</div>
+          <div class="sub-point-text">지문은 참된 기도의 본질을 세 동작으로 종합합니다 — <strong>"참된 기도는 ① <span class="hl">하나님 자신을 들이쉬는 것</span>이고 ② <span class="hl">하나님을 얻는 것</span>이며 ③ <span class="hl">하나님께서 우리를 얻으시는 것</span>이다."</strong> 들이쉼·얻음·얻어짐 — 이 세 흐름이 한 기도의 자리에서 함께 일어납니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"참된 기도는 항상 성경과 일치"</div>
+          <div class="sub-point-text">지문의 단언 — <strong>"참된 기도는 항상 성경과 일치한다."</strong> 우리의 기도가 성경과 일치하는지를 — 어떻게 알 수 있습니까? <span class="hl">성경의 가장 깊은 진리는 — 하나님과 사람의 상호 접촉과 연합</span>입니다. 우리의 기도가 그 흐름 안에 있다면, 그것은 성경적인 기도입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"우리가 온전히 하나님과 협력하고 그분과 함께 일함"</div>
+          <div class="sub-point-text">참된 기도의 결과는 — <strong>하나님과 협력</strong>입니다. 지문의 진술 — <strong>"이렇게 기도하는 사람은 분명 <span class="hl">하나님과 협력하고, 하나님과 함께 일하고, 자신 안에서부터 그리고 자신을 통하여 하나님 자신과 그분의 갈망이 표현되도록 허락</span>해 드릴 것이다."</strong> 우리는 단지 하나님께 무엇을 받는 자가 아니라 — 그분과 함께 일하는 동역자가 됩니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"하나님은 우리를 통해 그분 자신과 그분의 갈망을 표현"</div>
+          <div class="sub-point-text">참된 기도의 가장 깊은 결과는 — <strong>하나님이 우리를 통해 자신을 표현하심</strong>입니다. 우리의 기도가 표준에 이를 때, 그 기도는 <span class="hl">하나님 자신의 갈망을 우리 안에서 우리를 통하여 표현</span>합니다(롬 8:27 — "그 영께서 하나님에 따라 ... 중보기도 하시기 때문"). 이것이 양편의 기도의 우주적 의미입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"궁극적으로 그분의 목적을 성취"</div>
+          <div class="sub-point-text">참된 기도의 궁극적 결말 — <strong>"궁극적으로 <span class="hl">그분의 목적을 성취</span>하신다. 이것이 <span class="hl">성경에 있는 기도의 근원적인 의미</span>이다."</strong> 사도들이 "기도하는 것을 꾸준히 계속할 것"(행 6:4)이라고 결심한 그 기도 — 그것은 <span class="hl">하나님의 영원한 경륜을 성취하는 기도</span>였습니다.</div>
+        </div>
+        <p class="content-text">정리하면 — 사도들의 결심대로 <strong>기도하는 것을 꾸준히 계속함</strong>은(행 6:4) — 단지 무언가를 간청하는 것이 아닙니다. 그것은 <span class="hl">자아 부인(A) → 하나님과 그분의 뜻을 구함(B) → 영 안에서 하나님 접촉과 흡수(C)</span>이며, <span class="hl">하나님과 사람 사이의 상호 접촉, 하나님을 들이쉼, 양편의 기도</span>입니다(롬 8:26-27). 그 결과 우리는 — <strong>하나님과 협력하고, 하나님이 우리를 통해 자신을 표현하시며, 궁극적으로 그분의 목적이 성취</strong>됩니다. 이것이 성경에 있는 기도의 근원적인 의미입니다. 아멘.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- RECAP -->
+  <section class="recap-section" id="recap-section">
+    <div class="recap-title">전체 메시지 복습 — 한 알의 밀에서 많은 하나님-사람들로</div>
+    <div class="recap-grid">
+      <div class="recap-item"><div class="recap-num">1</div><div class="recap-item-text"><strong>오늘의 구절 (롬 8:26-27):</strong> "그 영도 우리의 연약함을 함께 짊어지심으로 우리를 도우십니다 ... 그 영께서 친히 말할 수 없는 탄식으로 우리를 위하여 직접 중보기도 하십니다 ... 그 영께서 하나님에 따라 성도들을 위하여 중보기도 하시기 때문입니다."</div></div>
+      <div class="recap-item"><div class="recap-num">2</div><div class="recap-item-text"><strong>개요 Ⅰ · 행 6:4 — 사도들의 결심:</strong> "우리는 기도하는 것 ... 을 꾸준히 계속할 것입니다." 모든 책임 형제들이 따라야 할 본 — 기도가 사역의 첫 자리를 차지함.</div></div>
+      <div class="recap-item"><div class="recap-num">3</div><div class="recap-item-text"><strong>개요 Ⅰ.A — 기도 = 참된 자아 부인 (막 8:34, 9:29):</strong> 기도한다는 것은 우리가 아무것도 아니고 아무것도 할 수 없다는 것을 깨달았음을 의미함. 자아 부인의 자리에서만 기도가 효력을 발함.</div></div>
+      <div class="recap-item"><div class="recap-num">4</div><div class="recap-item-text"><strong>개요 Ⅰ.B — 하나님과 그분의 뜻을 구함 (마 26:39, 요 4:34, 5:30, 6:38):</strong> 기도의 사람은 자신의 부족·문제·소원이 아닌 — 하나님 자신과 하나님의 뜻을 구하는 사람. "나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오."</div></div>
+      <div class="recap-item"><div class="recap-num">5</div><div class="recap-item-text"><strong>개요 Ⅰ.C — 영 안에서 하나님 접촉, 하나님 흡수 (유 20, 요 14:13, 15:7, 4:24):</strong> 기도의 참된 의미는 영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것. 사람의 영이 신성한 영을 접촉, 하나님을 들이쉼.</div></div>
+      <div class="recap-item"><div class="recap-num">6</div><div class="recap-item-text"><strong>일반적 정의의 한계:</strong> 사람이 자기 부족·질병·문제 해결을 위해 간청하는 일반적 이해는 — "성경에 계시된 기도의 올바른 의미가 아니다 ... 너무 피상적이고 깊이와 정확성이 부족하다."</div></div>
+      <div class="recap-item"><div class="recap-num">7</div><div class="recap-item-text"><strong>참된 기도 = 상호 접촉:</strong> "기도의 가장 높고 가장 정확한 의미는 하나님과 사람 사이의 상호 접촉이다." 사람이 하나님을 접촉할 뿐 아니라 — 하나님께서 사람을 접촉하시어 — 사람과 하나님이 서로 연합됨.</div></div>
+      <div class="recap-item"><div class="recap-num">8</div><div class="recap-item-text"><strong>참된 기도 = 하나님을 들이쉼:</strong> "사람이 공기를 들이쉬는 것처럼 하나님을 들이쉬는 것 ... 하나님을 들이쉬는 동안 우리는 자연스럽게 하나님을 얻는다." 더 많이 기도할수록 우리는 더욱 하나님으로 채워짐.</div></div>
+      <div class="recap-item"><div class="recap-num">9</div><div class="recap-item-text"><strong>양편의 기도 (롬 8:26-27):</strong> "참된 기도는 양편을 포함하는 기도이다 ... 외적으로는 사람이 기도하는 것이지만, 내적으로는 그 영께서 기도하시는 것 ... 동일한 기도가 동시에 양편에 의해 표현됨." 하나님께서 그분의 영을 통해 우리 안에서 기도하심.</div></div>
+      <div class="recap-item"><div class="recap-num">10</div><div class="recap-item-text"><strong>결말 — 협력과 그분의 목적 성취:</strong> 참된 기도의 결말은 — 우리가 온전히 하나님과 협력하고 그분과 함께 일하게 됨. 또한 하나님은 우리를 통해 그분 자신과 그분의 갈망을 표현하시어, 궁극적으로 그분의 목적을 성취하심.</div></div>
+    </div>
+    <div class="recap-note"><strong>이 메시지의 부담:</strong> 사도들의 결심대로 — <strong>"기도하는 것 ... 을 꾸준히 계속할 것"</strong>(행 6:4). 그러나 그 기도는 일반적 의미의 간청이 아닌, 성경에 계시된 참된 기도입니다. <strong>"기도한다는 것은 우리가 아무것도 아니고 아무것도 할 수 없다는 것을 깨달았음을 의미한다"</strong>(자아 부인). <strong>"기도의 사람은 하나님과 하나님의 뜻을 구하는 사람이어야 한다."</strong> <strong>"기도의 참된 의미는 우리의 영 안에서 하나님을 접촉하고 하나님 자신을 흡수하는 것이다."</strong> 곧 <strong>하나님과 사람 사이의 상호 접촉</strong>이며, <strong>공기를 들이쉬듯 하나님을 들이쉬는 것</strong>이고, <strong>외적으로는 사람이 내적으로는 그 영께서 기도하시는 양편의 기도</strong>(롬 8:26-27)입니다. 그 결과 <strong>우리가 하나님을 얻고, 하나님이 우리를 얻으시며 — 그분의 갈망이 우리 안에서 우리를 통해 표현되어 그분의 목적이 성취</strong>됩니다. 이것이 성경에 있는 기도의 근원적인 의미입니다. 아멘.</div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-section" id="quiz-section">
+    <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto;color:var(--ink-mute);font-weight:500;">1 / 5</span></div>
+    <div id="quiz-container">
+      <div class="quiz-item" data-index="0" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">1</div><div class="quiz-q-text">지문은 일반적인 기도 정의(자기 부족·질병·문제 해결을 위해 하나님께 간청하는 것)에 대해 어떻게 평가합니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 정확하고 충분한 기도의 정의이며, 다른 정의는 필요하지 않다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 완전히 잘못된 정의이므로 폐기해야 한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> "이것은 성경에 계시된 기도의 올바른 의미가 아니다 ... 우리는 감히 이러한 정의가 틀렸다고 말하지는 않지만, 이 정의는 너무 피상적이고 깊이와 정확성이 부족하다"</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 어린아이의 기도에는 적합하나 성숙한 신자에게는 부족하다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="1" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">2</div><div class="quiz-q-text">개요 Ⅰ.A에 따르면 "기도한다는 것"은 무엇을 깨달았음을 의미합니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리에게 충분한 능력이 있으나 하나님의 도움이 더 필요함을 깨달은 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 영적 은사가 부족함을 깨달은 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> "우리가 아무것도 아니고 아무것도 할 수 없다는 것을 깨달았음" — 이것은 기도가 참된 자아 부인이라는 것을 함축한다 (막 8:34, 9:29)</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 우리에게 더 많은 신학적 지식이 필요함을 깨달은 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="2" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">3</div><div class="quiz-q-text">지문이 정의하는 "기도의 가장 높고 가장 정확한 의미"는 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 사람이 자신의 모든 필요와 갈망을 하나님께 진솔하게 아뢰는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님의 약속을 굳게 붙잡고 응답을 받을 때까지 인내하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> "하나님과 사람 사이의 상호 접촉" — 사람이 하나님을 접촉할 뿐 아니라 하나님께서도 사람을 접촉하시어, 사람이 하나님과 연합되고 하나님도 사람과 연합되심</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 죄를 회개하고 의로운 삶을 위한 결단을 하는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="3" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">4</div><div class="quiz-q-text">지문이 비유하는 참된 기도의 자연스러움은 무엇과 같습니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 사람이 정해진 시간에 정해진 형식으로 식사하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 군인이 명령을 받고 일사분란하게 행동하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> "사람이 공기를 들이쉬는 것처럼 하나님을 들이쉬는 것" — 공기를 들이쉴 때 자연스럽게 받아들이는 것처럼, 하나님을 들이쉬는 동안 자연스럽게 하나님을 얻는다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 학생이 선생님께 질문하고 답을 받는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="4" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">5</div><div class="quiz-q-text">롬 8:26-27이 알려 주는 참된 기도(양편의 기도)의 정확한 의미는 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리가 기도할 때 하나님께서 우리의 말을 듣고 응답하시는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우리의 기도와 다른 성도들의 기도가 합쳐져 큰 능력이 되는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> "외적으로는 사람이 기도하는 것이지만, 내적으로는 그 영께서 기도하시는 것 ... 동일한 기도가 동시에 양편에 의해 표현되는 것" — 즉 하나님께서 그분의 영을 통해 우리 안에서 기도하심으로 그분 자신과 그분의 갈망이 표현되어 그분의 목적이 성취됨</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 우리가 외적인 기도와 내적인 묵상을 균형 있게 병행하는 것</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+    <div class="quiz-nav" id="quiz-nav" style="display:flex;gap:10px;margin-top:20px;">
+      <button class="quiz-nav-btn" id="quiz-prev-btn" onclick="navQuiz(-1)" style="flex:1;">이전</button>
+      <button class="quiz-nav-btn primary" id="quiz-next-btn" onclick="navQuiz(1)" style="flex:2;">다음 퀴즈</button>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-score-label">최종 점수</div>
+      <div class="quiz-score" id="quizScore">0 / 5</div>
+      <div class="quiz-result-msg" id="quizMsg"></div>
+    </div>
+  </section>
+
+  <!-- PRAYER -->
+  <section class="prayer-section" id="prayer-section">
+    <div class="prayer-heading">오늘의 결단과 기도</div>
+    <div class="prayer-callbox">
+      <p>주여, 사도들의 결심처럼 — <strong>"기도하는 것 ... 을 꾸준히 계속할 것"</strong>(행 6:4)을 저의 결심으로 받습니다.<br>그러나 그 기도는 — <span class="cb-house">간청의 표면</span>에 머무는 기도가 아니라 <span class="cb-house">참된 기도의 본질</span>로 들어가는 기도이기를 원합니다.</p>
+      <p>주여, 저는 — <strong>아무것도 아니고 아무것도 할 수 없는 자</strong>임을 고백합니다.<br>이 깨달음에서 저의 모든 기도가 시작되게 하소서. 자아 부인의 자리에서만 — 진정한 기도가 흐르기 때문입니다.<br>"<strong>나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오</strong>"(마 26:39) — 주님의 본을 따라, 저도 <span class="cb-house">하나님과 하나님의 뜻만</span>을 구하는 기도의 사람이 되기 원합니다.</p>
+      <p>주여, 저로 — 저의 <strong>영 안에서 신성한 영을 접촉</strong>하고, <strong>하나님 자신을 흡수</strong>하게 하소서(유 20, 요 4:24).<br>참된 기도는 <span class="cb-house">하나님과 사람 사이의 상호 접촉</span>이며, <span class="cb-house">공기를 들이쉬듯 하나님을 들이쉬는 것</span>임을 깨닫습니다.<br>"더 많이 기도할수록, 우리는 더욱 하나님으로 채워질 것이다" — 저로 매일 더 깊이 그분으로 채워지게 하소서.</p>
+      <p>주여, 저는 마땅히 무엇을 위하여 기도해야 할지 알지 못합니다.<br>그러나 <strong>그 영께서 친히 말할 수 없는 탄식으로 — 우리를 위하여 직접 중보기도</strong>하시며, <strong>하나님에 따라</strong> 성도들을 위하여 중보기도 하심을 압니다(롬 8:26-27).<br>외적으로는 제가 기도하나 내적으로는 그 영께서 기도하시는 — <span class="cb-house">양편의 기도</span> 안에 살게 하소서.<br>그리하여 저로 — <strong>하나님과 협력하고, 하나님이 저를 통해 그분 자신과 그분의 갈망을 표현하시며 — 궁극적으로 그분의 목적을 성취</strong>하는 자가 되게 하소서. 아멘.</p>
+    </div>
+  </section>
+
+  <div class="footer-note">2026 봄 장로훈련 · M1D1 · 참된 기도 — 하나님과 사람 사이의 상호 접촉 (행 6:4, 막 8:34·9:29, 마 26:39, 요 4:24·34, 5:30, 6:38, 14:13, 15:7, 유 20, 롬 8:26-27)</div>
+</div>
+<script>
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+  else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+
+function togglePanel() {
+  document.getElementById('sidepanel').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function goTo(id) {
+  togglePanel();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 300);
+}
+
+function showKwDef(id, el) {
+  const def = document.getElementById(id);
+  const isShown = def.classList.contains('show');
+  document.querySelectorAll('.keyword-def').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.keyword-tag').forEach(t => t.classList.remove('active'));
+  if (!isShown) { def.classList.add('show'); el.classList.add('active'); }
+}
+
+function toggleKwTip(id) {
+  const tip = document.getElementById(id);
+  const isShown = tip.classList.contains('show');
+  document.querySelectorAll('.kw-tooltip').forEach(t => t.classList.remove('show'));
+  if (!isShown) tip.classList.add('show');
+}
+
+const TV_WORD_DATA = {
+  'hosautos': {
+    gk: 'ὡσαύτως', pron: '호사우토스', strong: 'G5615', lemma: 'ὡσαύτως',
+    kr: '이와 같이, 마찬가지로', en: 'in like manner, likewise',
+    grammar: '부사(adverb) · 무변화 · 비교·유사성을 나타냄',
+    meaning: '같은 방식으로, 마찬가지로, 이와 같이 <em>(in the same way, likewise, in like manner)</em>',
+    note: '<b>BDAG</b>(p. 1106, §ὡσαύτως): <b>ὡσαύτως</b> — "같은 방식으로, 마찬가지로." 부사로서 한 행위·상태가 다른 것과 동일한 방식임을 나타냄.<br><br><b>Thayer\'s</b>(§5615): "마찬가지로, 같은 식으로." 신약에서 17회 등장.<br><br><b>어원 분석</b>: <b>ὡς</b>(~처럼·~과 같이) + <b>αὕτως</b>(같은 방식으로). 두 요소의 결합으로 <span style="font-style:italic">"이와 똑같은 방식으로"</span>의 강한 비교 의미를 형성.<br><br><b>본 절의 문맥적 기능</b>: 롬 8:26은 <b>"ὡσαύτως δὲ καὶ τὸ Πνεῦμα"</b>("이와 같이 그 영도")로 시작합니다. 이는 앞 절들(롬 8:18-25)에서 진술된 <span style="font-style:italic">피조물의 탄식과 우리의 탄식</span>과의 평행을 형성하는 부사입니다 — 우리가 탄식하는 것과 같은 방식으로(또는 같은 영역에서) 그 영도 우리를 위해 행동하심을 가리킵니다.<br><br><b>위치의 의미</b>: 헬라어에서 부사가 문장 첫머리에 오면 강조의 위치입니다. 본 절의 ὡσαύτως는 <strong>"바로 이런 식으로"</strong>의 강조와 함께 다음 진술(그 영의 도우심)을 도입합니다.',
+    context: 'ὡσαύτως δὲ καὶ τὸ Πνεῦμα συναντιλαμβάνεται'
+  },
+  'to_pneuma': {
+    gk: 'τὸ Πνεῦμα', pron: '토 프뉴마', strong: 'G4151', lemma: 'πνεῦμα',
+    kr: '그 영', en: 'the Spirit',
+    grammar: '관사 + 명사 · 중성 · 단수 · 주격(주어)',
+    meaning: '바람·숨·영·성령 <em>(wind, breath, spirit, the Spirit)</em>',
+    note: '<b>BDAG</b>(p. 832-836, §πνεῦμα): <b>πνεῦμα</b> — 매우 풍성한 의미의 명사. 기본 의미는 <span style="font-style:italic">"바람·숨"</span>이지만 신약에서는 주로 <strong>① 사람의 영(human spirit), ② 천사·악령, ③ 성령(the Spirit of God)</strong>의 의미로 사용됨. 신약에서 약 379회 등장.<br><br><b>Thayer\'s</b>(§4151): 다양한 차원의 의미 — 호흡·바람·생명·기질·영적 존재·성령.<br><br><b>관사 τό의 결정적 기능</b>: 헬라어 관사는 한정성을 표시합니다. <b>τὸ Πνεῦμα</b>(<span style="font-style:italic">"the Spirit"</span> — 그 영)는 단지 "어떤 영"이 아니라 <strong>"그 (특정한 한 분의) 영" — 곧 성령</strong>을 가리킵니다. 관사가 없는 πνεῦμα(공기·숨·인간의 영 등)와 구별됨이 결정적입니다.<br><br><b>로마서 8장의 중심 단어</b>: 롬 8장은 신약에서 πνεῦμα가 가장 집중적으로 등장하는 장 중 하나입니다(약 21회). 본 절(롬 8:26)에서 그 영은 — 한 인격적 행위자로서 <span style="font-style:italic">중보기도</span>의 주체입니다.<br><br><b>중성 명사 + 인격적 동사</b>: πνεῦμα는 문법적으로 중성이지만, 본 절에서 인격적 동사들(<b>συναντιλαμβάνεται</b> "도우신다", <b>ὑπερεντυγχάνει</b> "중보기도하신다")과 결합되어 — 그 영의 <strong>인격성</strong>을 분명히 드러냅니다. 인격적 행위는 인격적 주체를 전제하기 때문입니다.',
+    context: 'τὸ Πνεῦμα συναντιλαμβάνεται τῇ ἀσθενείᾳ ἡμῶν'
+  },
+  'synantilambanetai': {
+    gk: 'συναντιλαμβάνεται', pron: '쉰안티람바네타이', strong: 'G4878', lemma: 'συναντιλαμβάνομαι',
+    kr: '함께 짊어지심으로 도우십니다', en: 'joins in to help, takes hold together',
+    grammar: '동사 · 현재(Present) · 중간태(Middle) · 직설법(Indicative) · 3인칭 단수',
+    meaning: '함께 잡다·함께 짊어지다·돕다 <em>(to lay hold of together with, to help in carrying)</em>',
+    note: '<b>BDAG</b>(p. 965, §συναντιλαμβάνομαι): <b>συναντιλαμβάνομαι</b> — "(짐을) 반대편에서 함께 잡다·함께 짊어지다·돕다." 신약에서 단 2회 등장(눅 10:40 — 마르다가 마리아에게 "도와 달라"고 청함; 롬 8:26 — 본 절).<br><br><b>Thayer\'s</b>(§4878): "다른 사람과 함께 짐을 잡다·짐 지는 데 협력하다."<br><br><b>풍부한 합성 동사 — 세 요소의 결합</b>:<br>• <b>σύν-</b> (함께·동반): 협력의 의미.<br>• <b>ἀντί-</b> (맞은편에서): 한 짐을 양쪽에서 잡는 그림.<br>• <b>λαμβάνομαι</b> (잡다·움켜쥐다): 자기-참여적 잡음(중간태).<br>이 세 요소가 결합되어 — <span style="font-style:italic">"한 짐의 반대편에서 함께 잡고 짊어지심으로 도우심"</span>의 정밀한 그림을 형성합니다.<br><br><b>한 가지 정확한 그림</b>: 두 사람이 한 무거운 짐을 옮길 때, 한 사람이 한쪽 끝을 잡고 다른 사람이 반대편 끝을 잡습니다. 그 영은 — 우리의 연약함의 짐을 <strong>반대편에서 함께 잡고 짊어지심</strong>으로 우리를 도우십니다. 단지 "도와 주심"이 아니라 — 짐을 함께 짊어지시는 것입니다.<br><br><b>현재 시제 + 중간태</b>: 본 절의 동사는 <strong>현재 중간 직설법(3인칭 단수)</strong>입니다.<br>• <b>현재</b>: 지속적·반복적 동작 — 그 영이 늘 우리를 도우심.<br>• <b>중간태</b>: 자기 자신의 이익이나 자기-참여를 표현 — 그 영이 자기 자신의 의지로 능동적으로 참여하심.<br><br><b>롬 8:26의 ἀσθένεια와의 관계</b>: 본 동사는 우리의 <b>τῇ ἀσθενείᾳ ἡμῶν</b>("우리의 연약함을") 여격 목적어로 받습니다 — 우리의 연약함의 차원에서 함께 잡으심. 우리가 약함을 인정할 때, 그 영의 도우심이 가장 효과적으로 작용합니다.',
+    context: 'τὸ Πνεῦμα συναντιλαμβάνεται τῇ ἀσθενείᾳ ἡμῶν'
+  },
+  'astheneia': {
+    gk: 'τῇ ἀσθενείᾳ', pron: '테 아스테네이아', strong: 'G769', lemma: 'ἀσθένεια',
+    kr: '연약함을', en: 'weakness, infirmity',
+    grammar: '관사 + 명사 · 여성 · 단수 · 여격(dative)',
+    meaning: '연약함, 약함, 무력함 <em>(weakness, frailty, sickness, infirmity)</em>',
+    note: '<b>BDAG</b>(p. 142, §ἀσθένεια): <b>ἀσθένεια</b> — "연약함, 약함, 무력함, 질병." 어원적으로 <b>ἀ-</b>(부정 접두사) + <b>σθένος</b>(힘·능력)의 결합 = <span style="font-style:italic">"힘이 없는 상태, 능력의 결여"</span>.<br><br><b>Thayer\'s</b>(§769): 다양한 차원의 의미 — 신체적 질병·무력함, 정신적 약함, 도덕적 약함, 영적 한계.<br><br><b>본 절의 의미 범위</b>: 롬 8:26의 "우리의 연약함(τῇ ἀσθενείᾳ ἡμῶν)"은 — 단지 신체적 약함이 아니라 <strong>전인적 약함</strong>입니다. 다음 절이 그것을 정의합니다 — <strong>"우리는 마땅히 무엇을 위하여 기도해야 할지 알지 못한다."</strong> 우리의 연약함은 — <span style="font-style:italic">기도의 능력의 결여, 무엇을 어떻게 기도해야 할지 모름</span>입니다.<br><br><b>여격(dative) — 동사의 간접 목적어</b>: τῇ ἀσθενείᾳ는 여격으로, 동사 συναντιλαμβάνεται("함께 짊어지심으로 도우심")의 <strong>대상·영역</strong>을 나타냅니다. 그 영이 도우시는 그 차원이 — 곧 <span style="font-style:italic">우리의 연약함의 영역</span>입니다.<br><br><b>"우리의(ἡμῶν)"</b>: 1인칭 복수 인칭대명사 속격으로 — 이 연약함은 <strong>우리 모두가 공유</strong>하는 것입니다. 어떤 특별한 사람의 연약함이 아니라 — 모든 거듭난 자들의 공통된 연약함. 그러므로 그 영의 도우심도 — 모든 우리에게 공통적입니다.',
+    context: 'συναντιλαμβάνεται τῇ ἀσθενείᾳ ἡμῶν'
+  },
+  'proseuxometha': {
+    gk: 'προσευξώμεθα', pron: '프로슈크소메타', strong: 'G4336', lemma: 'προσεύχομαι',
+    kr: '기도해야 할지', en: 'we should pray',
+    grammar: '동사 · 부정과거(Aorist) · 중간태(Middle) · 가정법(Subjunctive) · 1인칭 복수',
+    meaning: '기도하다, 간구하다 <em>(to pray, to make supplication)</em>',
+    note: '<b>BDAG</b>(p. 879, §προσεύχομαι): <b>προσεύχομαι</b> — "기도하다·간구하다." 신약의 가장 일반적 기도 동사로 약 86회 등장.<br><br><b>어원 분석</b>: <b>πρός</b>(~을 향하여) + <b>εὔχομαι</b>(빌다·기도하다). 결합 의미는 <span style="font-style:italic">"~을 향하여(곧 하나님을 향하여) 기도하다"</span>.<br><br><b>중간태(middle voice)의 의미</b>: 본 동사는 <strong>중간태 결성 동사(deponent middle)</strong>입니다 — 형태는 중간태이나 의미는 능동. 그러나 중간태가 본질적으로 표현하는 — <span style="font-style:italic">자기-관여(self-involvement)·자기-이익(self-interest)</span>의 흔적을 가집니다. 기도는 — 단지 외적인 말이 아니라 <strong>기도자 자신이 깊이 관여되는 행위</strong>입니다.<br><br><b>부정과거 가정법</b>:<br>• <b>부정과거</b>: 한 점적·완결적 사건으로서의 기도 행위.<br>• <b>가정법</b>: 본 절은 의문사 <b>τί</b>("무엇을")와 결합한 <strong>심사숙고적 가정법(deliberative subjunctive)</strong> — "<span style="font-style:italic">우리가 무엇을 위해 기도해야 할지</span>"의 숙고적 의미.<br><br><b>전체 구문의 분석</b>: <b>τὸ τί προσευξώμεθα καθὸ δεῖ οὐκ οἴδαμεν</b><br>• <b>τὸ τί</b>: "무엇을" (관사 + 의문사 — 명사화된 의문문)<br>• <b>προσευξώμεθα</b>: "우리가 기도해야 할지" (심사숙고적 가정법)<br>• <b>καθὸ δεῖ</b>: "마땅히 ~ 해야 할 대로" (부사구)<br>• <b>οὐκ οἴδαμεν</b>: "우리는 알지 못한다"<br>합쳐서 — <strong>"우리는 마땅히 무엇을 위해 기도해야 할지 알지 못한다."</strong> 인간의 인식적 한계의 정확한 표현입니다.',
+    context: 'τὸ γὰρ τί προσευξώμεθα καθὸ δεῖ οὐκ οἴδαμεν'
+  },
+  'oidamen': {
+    gk: 'οὐκ οἴδαμεν', pron: '우크 오이다멘', strong: 'G3756 + G1492', lemma: 'οὐ + οἶδα',
+    kr: '우리는 알지 못합니다', en: 'we do not know',
+    grammar: '부정 부사 + 동사 · 완료(Perfect) · 능동 · 직설법 · 1인칭 복수 (현재의 의미)',
+    meaning: '우리는 ~을 알지 못한다 <em>(we do not know)</em>',
+    note: '<b>οὐ (G3756)</b>: 헬라어의 객관적 부정 부사 — "아니다·~ 않다." 사실의 부정을 표현. (가정·가능의 부정에는 μή 사용.)<br><br><b>οἶδα (G1492)</b>:<br><b>BDAG</b>(p. 693, §οἶδα): "알다·알아채다·인지하다·이해하다." 형태상 완료(perfect) 시제이지만 의미상 현재로 사용되는 결성 동사.<br><br><b>Thayer\'s</b>(§1492): "알다·이해하다·인지하다." 직관적·절대적 지식을 가리키는 데 사용되며, 점진적·획득된 지식을 표현하는 <b>γινώσκω</b>(G1097)와 종종 구별됨.<br><br><b>완료 시제이나 현재 의미</b>: 본래 의미 "<span style="font-style:italic">(과거에) 보았다</span>"(*εἴδω의 어근)에서 의미가 "<span style="font-style:italic">(보았으므로 지금) 알다</span>"로 굳어진 것. 헬라어 동사 체계에서 완료가 "현재 결과 상태"를 의미하기 때문에 발생한 자연스러운 의미 전이.<br><br><b>1인칭 복수의 의미</b>: <b>οἴδαμεν</b>("우리가 알다")의 부정 — <span style="font-style:italic">우리 모두가 공통적으로 알지 못한다</span>는 진술. 어떤 특별한 무지가 아니라 — 모든 거듭난 자들의 공통된 한계.<br><br><b>본 절의 결정적 진술</b>: <strong>"우리는 마땅히 무엇을 위하여 기도해야 할지 알지 못한다."</strong> 이는 — 인간의 기도의 모든 한계를 한 문장으로 압축한 진술입니다. 우리는 ① 무엇을 기도해야 할지 모르고, ② 어떻게 기도해야 할지 모르며, ③ 우리의 가장 깊은 필요가 무엇인지조차 모릅니다. 이 무지가 — 그 영의 중보기도가 들어오는 자리입니다.<br><br><b>지문과의 정확한 일치</b>: 지문의 진술 — <strong>"사실 우리는 어떻게 기도해야 할지 모른다"</strong> — 은 정확히 본 절의 그리스어 진술과 일치합니다.',
+    context: 'τὸ τί προσευξώμεθα καθὸ δεῖ οὐκ οἴδαμεν'
+  },
+  'hyperentygchanei': {
+    gk: 'ὑπερεντυγχάνει', pron: '휘페렌튕카네이', strong: 'G5241', lemma: 'ὑπερεντυγχάνω',
+    kr: '직접 중보기도 하십니다', en: 'intercedes for, pleads on behalf of',
+    grammar: '동사 · 현재(Present) · 능동(Active) · 직설법(Indicative) · 3인칭 단수',
+    meaning: '~을 위하여 (또는 위에서) 만나서 간청하다, 중보기도 하다 <em>(to intercede for, to plead on behalf of)</em>',
+    note: '<b>BDAG</b>(p. 1031, §ὑπερεντυγχάνω): <b>ὑπερεντυγχάνω</b> — "다른 사람을 위하여(또는 그를 대신하여) 간청하다·중보하다." 매우 희귀한 합성 동사로 — <strong>신약에서 단 1회</strong>(롬 8:26)만 등장.<br><br><b>Thayer\'s</b>(§5241): "어떤 사람을 대신하여 간청하다."<br><br><b>풍성한 합성 동사 — 두 요소</b>:<br>• <b>ὑπέρ-</b>(~을 위하여·~ 위에서·~을 대신하여): 중보·대리·옹호의 의미. 헬라어 전치사 ὑπέρ는 — 한 사람을 위하여 또는 한 사람의 자리에서 행동함을 나타냅니다.<br>• <b>ἐντυγχάνω</b>(만나다·접근하다·간청하다): 한 사람에게 가까이 가서 청원함의 의미.<br>두 요소의 결합 = <span style="font-style:italic">"우리를 위해 (혹은 우리 대신) 직접 만나 간청하심"</span>.<br><br><b>합성 동사의 강조</b>: ἐντυγχάνω 단독으로도 "중보기도하다"의 의미를 가집니다(예: 롬 8:34 — 그리스도의 중보기도). 그러나 본 절은 <strong>ὑπέρ를 강조 접두사</strong>로 더해 — "<span style="font-style:italic">우리를 위해 강력하고 직접적이며 깊이 관여하는 중보기도</span>"의 의미를 형성합니다.<br><br><b>현재 능동 직설법</b>:<br>• <b>현재</b>: 그 영의 중보기도는 <span style="font-style:italic">지속적·반복적</span>입니다. 한 번의 사건이 아니라 — 늘 진행되는 행위.<br>• <b>능동</b>: 그 영이 <span style="font-style:italic">자기 자신의 능동적 의지</span>로 행하시는 일.<br>• <b>직설법</b>: 사실의 진술 — 실제로 그러하다.<br><br><b>그 영의 중보기도의 도구 — στεναγμοῖς ἀλαλήτοις</b>: 본 절은 그 영의 중보기도가 <strong>"말할 수 없는 탄식들로(στεναγμοῖς ἀλαλήτοις)"</strong> 행해진다고 진술합니다. 인간의 언어를 초월한 표현 수단입니다.<br><br><b>그리스도의 중보기도와의 관계</b>: 롬 8:34는 — 그리스도께서 하나님 우편에서 우리를 위해 중보기도하심을 진술합니다(<b>ἐντυγχάνει</b>, ὑπέρ 없는 단순 형태). 본 절(8:26)은 — 그 영이 우리 안에서 우리를 위해 중보기도하심(<b>ὑπερεντυγχάνει</b>, ὑπέρ 강화 형태)을 진술합니다. <span style="font-style:italic">위에서는 그리스도, 안에서는 그 영 — 양쪽에서 우리를 위해 중보기도</span>가 일어나고 있습니다.',
+    context: 'αὐτὸ τὸ Πνεῦμα ὑπερεντυγχάνει στεναγμοῖς ἀλαλήτοις'
+  },
+  'stenagmois': {
+    gk: 'στεναγμοῖς', pron: '스테나그모이스', strong: 'G4726', lemma: 'στεναγμός',
+    kr: '탄식으로 (도구·수단)', en: 'with groanings',
+    grammar: '명사 · 남성 · 복수 · 여격(dative of means)',
+    meaning: '깊은 한숨·탄식·신음 <em>(a sighing, groaning, deep yearning)</em>',
+    note: '<b>BDAG</b>(p. 942, §στεναγμός): <b>στεναγμός</b> — "탄식·한숨·신음·내면의 깊은 갈망의 표현." 신약에서 단 2회 등장(행 7:34 — 이스라엘의 탄식을 들으심; 롬 8:26 — 본 절).<br><br><b>Thayer\'s</b>(§4726): "한숨·탄식." 깊은 정서적·영적 갈망의 비언어적 표현.<br><br><b>어근 στενάζω</b>: 동사 <b>στενάζω</b>(탄식하다·신음하다)에서 파생된 명사. 이 동사는 — 깊은 내적 고통이나 강렬한 갈망에서 비롯된 한숨을 가리킵니다.<br><br><b>롬 8장의 세 가지 탄식</b>: 로마서 8장에는 세 가지 탄식이 등장합니다:<br>• <b>롬 8:22</b> — 피조물의 탄식("ἡ κτίσις ... συστενάζει")<br>• <b>롬 8:23</b> — 우리(거듭난 자들)의 탄식("καὶ αὐτοὶ ... στενάζομεν")<br>• <b>롬 8:26</b> — 그 영의 탄식("στεναγμοῖς ἀλαλήτοις")<br>세 탄식이 — 한 우주적 갈망의 흐름을 형성합니다.<br><br><b>여격의 기능 — 도구·수단</b>: 본 절의 στεναγμοῖς(복수형 여격)는 <strong>도구의 여격(dative of means)</strong>으로 — 그 영이 중보기도하시는 <span style="font-style:italic">수단·방법</span>을 나타냅니다. "탄식들로(by means of groanings)" 중보기도 하심.<br><br><b>복수형의 의미</b>: στεναγμοῖς는 <strong>복수형</strong>입니다 — 한 번의 탄식이 아니라 <span style="font-style:italic">여러 차례의 깊은 탄식들</span>. 이는 — 그 영의 중보기도가 한 점이 아닌 지속적·반복적 흐름임을 시각적으로 보여 줍니다.',
+    context: 'ὑπερεντυγχάνει στεναγμοῖς ἀλαλήτοις'
+  },
+  'alaletois': {
+    gk: 'ἀλαλήτοις', pron: '알랄레토이스', strong: 'G215', lemma: 'ἀλάλητος',
+    kr: '말할 수 없는', en: 'cannot be uttered, unspoken',
+    grammar: '형용사 · 남성 · 복수 · 여격 (στεναγμοῖς를 수식)',
+    meaning: '말로 표현할 수 없는, 발설되지 않는 <em>(unutterable, inexpressible, that cannot be put into words)</em>',
+    note: '<b>BDAG</b>(p. 41, §ἀλάλητος): <b>ἀλάλητος</b> — "말로 표현할 수 없는, 발설되지 않는." 신약에서 — <strong>단 1회(롬 8:26)</strong>만 등장하는 매우 희귀한 형용사.<br><br><b>Thayer\'s</b>(§215): "말할 수 없는, 표현될 수 없는."<br><br><b>풍성한 어원 분석</b>:<br>• <b>ἀ-</b> (부정 접두사): "~ 아닌."<br>• <b>λαλέω</b> (말하다·발설하다): 입으로 말함의 동사.<br>• <b>-τος</b> (가능·동작 형용사 어미): "~ 할 수 있는·~ 된."<br>합쳐서 — <span style="font-style:italic">"말로 발설할 수 없는·언어로 표현될 수 없는"</span>의 의미를 형성합니다.<br><br><b>두 가지 가능한 의미</b>:<br>• <b>능동 의미</b>: "(그 영이) 말로 표현하지 않으시는." 그 영의 탄식이 — 인간의 언어로 발설되지 않음.<br>• <b>수동 의미</b>: "(인간이) 말로 표현할 수 없는." 그 영의 탄식이 — 인간이 받아 표현할 수 없는 차원의 것.<br>두 의미 모두 — 그 영의 중보기도가 <strong>인간 언어를 초월하는 차원</strong>임을 가리킵니다.<br><br><b>본 절에서의 의미</b>: στεναγμοῖς ἀλαλήτοις는 — <strong>"말할 수 없는 탄식들로"</strong>. 이 탄식은 인간의 어떤 언어로도 충분히 옮길 수 없는 — 신성한 차원의 갈망입니다. 우리가 기도할 단어를 찾지 못할 때 — 그 영은 우리 안에서 그 자신의 신성한 탄식으로 우리를 위해 간청하십니다.<br><br><b>27절과의 연결</b>: 그러므로 다음 절(롬 8:27)이 자연스럽게 따라옵니다 — <strong>"사람의 마음을 살피시는 분(하나님 아버지)은 그 영의 생각을 아십니다."</strong> 인간 언어로 표현되지 않은 그 영의 탄식을 — 마음을 살피시는 하나님께서는 정확히 아십니다. 언어를 거치지 않는 — 영적 인식의 차원입니다.',
+    context: 'στεναγμοῖς ἀλαλήτοις'
+  },
+  'katho_theon': {
+    gk: 'κατὰ Θεόν', pron: '카타 테온', strong: 'G2596 + G2316', lemma: 'κατά + Θεός',
+    kr: '하나님에 따라, 하나님의 뜻에 일치하여', en: 'according to God',
+    grammar: '전치사 + 명사 · κατά + 대격 — "~에 따라, ~을 따라, ~에 일치하여"',
+    meaning: '하나님에 따라, 하나님의 뜻과 일치되게 <em>(according to God, according to God\'s will)</em>',
+    note: '<b>κατά (G2596)</b>:<br><b>BDAG</b>(p. 511-513, §κατά): "~을 따라·~에 의거하여·~에 일치하여." 헬라어의 빈번한 전치사 중 하나로, 약 480회 등장. 두 가지 격을 지배:<br>• <b>속격(genitive)</b>: "~ 아래로·~을 거슬러"<br>• <b>대격(accusative)</b>: <strong>"~에 따라·~을 향하여·~과 일치하여"</strong> (본 절)<br><br><b>Θεόν (G2316)</b>: 명사 Θεός("하나님")의 대격 형태. 본 절에서 κατά의 목적어로 — 그 영의 중보기도의 <strong>기준·표준</strong>을 가리킵니다.<br><br><b>전치사구 κατὰ Θεόν의 정확한 의미</b>: 다음 세 차원을 모두 포함합니다:<br>• <b>일치(in accordance with)</b>: 하나님과 일치되게.<br>• <b>표준(according to)</b>: 하나님을 표준으로 삼아.<br>• <b>의도(in line with)</b>: 하나님의 의도·갈망과 정렬되어.<br>합쳐서 — <span style="font-style:italic">"하나님 자신·하나님의 뜻·하나님의 의도와 정확히 일치하여"</span>.<br><br><b>롬 8:27의 결정적 어구</b>: <strong>"그 영께서 하나님에 따라(κατὰ Θεόν) 성도들을 위하여 중보기도 하시기 때문이다."</strong> 이 어구가 — 그 영의 중보기도의 <span style="font-style:italic">정확성·완전성</span>을 보장합니다. 그 영은 — 우리가 무엇을 기도할지 모를 때조차도 — 하나님 자신의 의도와 정확히 일치된 기도를 우리를 위해 드리십니다.<br><br><b>지문과의 연결</b>: 지문은 이 어구를 직접 풀이합니다 — <strong>"이것은 성령께서 하나님에 따라 우리 안에서 기도하신다는 것을 의미한다. 즉 하나님께서 그분의 영을 통해 우리 안에서 기도하시는 것이다. 그러므로 이러한 기도는 확실히 하나님의 의도뿐 아니라 하나님 자신을 표현한다."</strong><br><br><b>왜 이 보장이 결정적인가?</b>: 인간의 기도는 — 자기 욕심·자기 의도·자기 한계로 오염될 수 있습니다. 그러나 그 영의 중보기도는 — <span style="font-style:italic">처음부터 끝까지 하나님 자신과 일치</span>합니다. 그러므로 우리 안의 그 영의 기도는 — 항상 응답되며, 항상 하나님의 목적을 성취합니다.',
+    context: 'κατὰ Θεόν ἐντυγχάνει ὑπὲρ ἁγίων'
+  }
+};
+
+function tvShowWord(key) {
+  const w = TV_WORD_DATA[key];
+  if (!w) return;
+  const strongLine = w.lemma ? `${w.strong} · 원형 ${w.lemma}` : w.strong;
+  const recovBlock = (w.kr || w.en) ? `
+    <div class="tv-popup-recov">
+      <span class="tv-popup-recov-label">회복역 · Recovery Version</span>
+      ${w.kr ? `<span class="tv-popup-recov-kr">${w.kr}</span>` : ''}
+      ${w.en ? `<span class="tv-popup-recov-en">${w.en}</span>` : ''}
+    </div>` : '';
+  document.getElementById('tv-popup-meaning').innerHTML = `${w.gk} <span style="font-size:0.82rem;color:var(--ink-mute);font-style:italic;font-weight:400;">· ${w.pron}</span>`;
+  document.getElementById('tv-popup-greek').textContent = w.context || '';
+  document.getElementById('tv-popup-body').innerHTML = `
+    <div class="tv-popup-word">
+      <div class="tv-popup-word-top">
+        <span class="tv-popup-word-gk">${w.gk}</span>
+        <span class="tv-popup-word-pron">${w.pron}</span>
+        <span class="tv-popup-word-strong">${strongLine}</span>
+      </div>
+      ${recovBlock}
+      <div class="tv-popup-word-meaning">${w.meaning}</div>
+      <div style="font-size:0.78rem;color:var(--ink-mute);margin-bottom:6px;font-family:'Lora',serif;letter-spacing:0.02em;">${w.grammar}</div>
+      <div class="tv-popup-word-note">${w.note}</div>
+    </div>
+  `;
+  document.getElementById('tv-popup-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function tvClosePopup() {
+  document.getElementById('tv-popup-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function tvClosePopupOnBg(e) {
+  if (e.target.id === 'tv-popup-overlay') tvClosePopup();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const ov = document.getElementById('tv-popup-overlay');
+    if (ov && ov.classList.contains('active')) tvClosePopup();
+  }
+});
+
+function toggleAcc(header) {
+  const acc = header.parentElement;
+  const body = acc.querySelector('.accordion-body');
+  if (acc.classList.contains('open')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    void body.offsetHeight;
+    body.style.maxHeight = '0';
+    acc.classList.remove('open');
+  } else {
+    acc.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    setTimeout(() => { if (acc.classList.contains('open')) body.style.maxHeight = 'none'; }, 400);
+  }
+}
+
+function selectOpt(el) {
+  const item = el.closest('.quiz-item');
+  if (item.classList.contains('answered')) return;
+  item.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+let currentQuizIdx = 0;
+const totalQuizzes = 5;
+
+function navQuiz(dir) {
+  const items = document.querySelectorAll('.quiz-item');
+  items[currentQuizIdx].classList.remove('active');
+  currentQuizIdx += dir;
+  if (currentQuizIdx < 0) currentQuizIdx = 0;
+  if (currentQuizIdx >= totalQuizzes) { currentQuizIdx = totalQuizzes - 1; submitQuiz(); return; }
+  items[currentQuizIdx].classList.add('active');
+  updateQuizNav();
+}
+
+function updateQuizNav() {
+  document.getElementById('quiz-progress').textContent = (currentQuizIdx + 1) + ' / ' + totalQuizzes;
+  document.getElementById('quiz-prev-btn').disabled = currentQuizIdx === 0;
+  document.getElementById('quiz-next-btn').textContent = currentQuizIdx === totalQuizzes - 1 ? '결과 확인하기' : '다음 퀴즈';
+}
+
+function submitQuiz() {
+  let score = 0;
+  const items = document.querySelectorAll('.quiz-item');
+  items.forEach(item => {
+    item.classList.add('reviewed', 'answered');
+    item.classList.remove('active');
+    const correct = parseInt(item.dataset.correct) - 1;
+    const opts = item.querySelectorAll('.quiz-opt');
+    const fb = item.querySelector('.quiz-feedback');
+    let selectedIdx = -1;
+    opts.forEach((o, i) => { if (o.classList.contains('selected')) selectedIdx = i; });
+    if (selectedIdx === correct) {
+      score++;
+      opts[selectedIdx].classList.add('correct');
+      fb.className = 'quiz-feedback show correct-fb';
+      fb.textContent = '✓ 정답입니다';
+    } else {
+      if (selectedIdx >= 0) opts[selectedIdx].classList.add('wrong');
+      opts[correct].classList.add('correct');
+      fb.className = 'quiz-feedback show wrong-fb';
+      fb.textContent = '정답은 ' + ['A','B','C','D'][correct] + '입니다';
+    }
+  });
+  document.getElementById('quiz-nav').style.display = 'none';
+  document.getElementById('quiz-progress').textContent = '결과';
+  document.getElementById('quizScore').textContent = score + ' / ' + totalQuizzes;
+  const msgEl = document.getElementById('quizMsg');
+  if (score === 10) msgEl.textContent = '완벽합니다! 한 알의 밀의 비유, 원형 그리스도와 많은 하나님-사람들의 재생산, 두 본성의 한 실체, 그리고 십자가의 발자취를 정확히 숙지하셨습니다.';
+  else if (score >= 7) msgEl.textContent = '훌륭합니다! 개요 Ⅳ의 핵심 요점들을 잘 이해하고 계십니다.';
+  else msgEl.textContent = '다시 한번 요 12:24의 한 알의 비유와 개요 Ⅳ.A-E (하나님-사람의 정의·출생·두 본성·절대성·새 창조물)를 묵상해 보시길 권해드립니다.';
+  document.getElementById('quizResult').classList.add('show');
+  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const firstQuiz = document.querySelector('.quiz-item');
+  if (firstQuiz) firstQuiz.classList.add('active');
+  if (typeof updateQuizNav === 'function') updateQuizNav();
+});
+
+// ============================================================
+// TTS Reader
+// ============================================================
+const TTS_CONFIG = {
+  serverUrl: 'https://qwen.tkhome.cloud',
+  apiKey: localStorage.getItem('qwen_tts_api_key') || '',
+  defaultVoice: 'tk_voice',
+  sampleRate: 24000,
+  pauseSec: 0.4,
+  chunkMaxLen: 200
+};
+
+const TTS_SECTIONS = [
+  { id: 'hero', title: '제목 & 주제' },
+  { id: 'todays-verse', title: '오늘의 구절 (롬 8:26-27)' },
+  { id: 'dashboard', title: '메시지 전체 맥락 요약' },
+  { id: 'flow', title: '기도의 흐름' },
+  { id: 'acc-0', title: 'Ⅰ. 개요 Ⅰ · 행 6:4 — 기도하는 것을 꾸준히 계속함' },
+  { id: 'acc-1', title: 'Ⅱ. A. 기도 = 참된 자아 부인' },
+  { id: 'acc-2', title: 'Ⅲ. B. 하나님과 그분의 뜻을 구하는 사람' },
+  { id: 'acc-3', title: 'Ⅳ. C. 영 안에서 하나님 접촉, 하나님 흡수' },
+  { id: 'acc-4', title: 'Ⅴ. 일반적 오해 vs 참된 기도' },
+  { id: 'acc-5', title: 'Ⅵ. 참된 기도 = 상호 접촉' },
+  { id: 'acc-6', title: 'Ⅶ. 참된 기도 = 하나님을 들이쉼' },
+  { id: 'acc-7', title: 'Ⅷ. 양편의 기도 — 그 영과 사람 (롬 8:26-27)' },
+  { id: 'acc-8', title: 'Ⅸ. 결말 — 하나님과 협력, 그분의 목적 성취' },
+  { id: 'recap', title: '전체 복습' },
+  { id: 'prayer', title: '기도' }
+];
+
+function ttsCleanText(text) {
+  if (!text) return '';
+  return text.replace(/\s+/g, ' ').replace(/\[[^\]]*\]/g, '').trim();
+}
+
+const TTS_EXTRACTORS = {
+  'hero': () => {
+    const h1 = document.querySelector('#hero-section h1');
+    const sub = document.querySelector('#hero-section .hero-sub');
+    return ttsCleanText((h1 ? h1.textContent : '') + '. ' + (sub ? sub.textContent : ''));
+  },
+  'todays-verse': () => {
+    const kr = document.querySelector('#todays-verse-section .tv-trans-row.kr .tv-trans-text');
+    return '오늘의 구절. 로마서 8장 26절에서 27절. ' + ttsCleanText(kr ? kr.textContent : '');
+  },
+  'dashboard': () => {
+    const msg = document.querySelector('#dashboard-section .core-message');
+    return '메시지 전체 맥락 요약. ' + ttsCleanText(msg ? msg.textContent : '');
+  },
+  'flow': () => {
+    let text = '기도의 흐름. 자아 부인에서 하나님과의 연합으로. ';
+    document.querySelectorAll('#flow-section .flow-step').forEach(s => {
+      const label = s.querySelector('.flow-step-label');
+      const desc = s.querySelector('.flow-step-desc');
+      text += (label ? label.textContent : '') + '. ' + (desc ? desc.textContent : '') + ' ';
+    });
+    return ttsCleanText(text);
+  },
+  'recap': () => {
+    let text = '전체 메시지 복습. 변함없는 의도와 신성한 재건축. ';
+    document.querySelectorAll('#recap-section .recap-item-text').forEach(item => {
+      text += ttsCleanText(item.textContent) + '. ';
+    });
+    const note = document.querySelector('#recap-section .recap-note');
+    if (note) text += '환난의 응답. ' + ttsCleanText(note.textContent);
+    return text;
+  },
+  'prayer': () => {
+    const heading = document.querySelector('#prayer-section .prayer-heading');
+    const callbox = document.querySelector('#prayer-section .prayer-callbox');
+    const amen = document.querySelector('#prayer-section .prayer-amen-box');
+    let text = '';
+    if (heading) text += ttsCleanText(heading.textContent) + '. ';
+    if (callbox) text += ttsCleanText(callbox.textContent) + '. ';
+    if (amen) {
+      const clone = amen.cloneNode(true);
+      const sig = clone.querySelector('.prayer-amen-sig');
+      if (sig) sig.remove();
+      text += ttsCleanText(clone.textContent);
+    }
+    return text;
+  }
+};
+
+for (let i = 0; i <= 8; i++) {
+  const accId = 'acc-' + i;
+  TTS_EXTRACTORS[accId] = () => {
+    const acc = document.getElementById(accId);
+    if (!acc) return '';
+    const titleEl = acc.querySelector('.acc-title-text');
+    const titleText = titleEl ? titleEl.textContent : '';
+    const content = acc.querySelector('.accordion-content');
+    if (!content) return ttsCleanText(titleText);
+    const clone = content.cloneNode(true);
+    clone.querySelectorAll('.verse-block').forEach(v => v.remove());
+    return ttsCleanText(titleText + '. ' + clone.textContent);
+  };
+}
+
+let ttsAudioContext = null;
+let ttsNextPlayTime = 0;
+let ttsScheduledSources = [];
+let ttsCurrentReader = null;
+let ttsIsCanceled = false;
+let ttsIsPlaying = false;
+let ttsIsPaused = false;
+
+function ttsPcmToBuffer(int16Bytes, ctx) {
+  const evenLen = int16Bytes.byteLength - (int16Bytes.byteLength % 2);
+  if (evenLen === 0) return null;
+  const aligned = new Uint8Array(evenLen);
+  aligned.set(int16Bytes.subarray(0, evenLen));
+  const int16 = new Int16Array(aligned.buffer);
+  const float32 = new Float32Array(int16.length);
+  for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768;
+  const buffer = ctx.createBuffer(1, float32.length, TTS_CONFIG.sampleRate);
+  buffer.copyToChannel(float32, 0);
+  return buffer;
+}
+
+function ttsScheduleBuffer(buffer) {
+  if (!buffer || !ttsAudioContext) return;
+  const source = ttsAudioContext.createBufferSource();
+  source.buffer = buffer;
+  source.connect(ttsAudioContext.destination);
+  const now = ttsAudioContext.currentTime;
+  if (ttsNextPlayTime < now) ttsNextPlayTime = now;
+  source.start(ttsNextPlayTime);
+  ttsScheduledSources.push(source);
+  ttsNextPlayTime += buffer.duration;
+  source.onended = () => {
+    const idx = ttsScheduledSources.indexOf(source);
+    if (idx >= 0) ttsScheduledSources.splice(idx, 1);
+  };
+}
+
+function ttsStopPlayback() {
+  ttsScheduledSources.forEach(src => { try { src.stop(); } catch(e) {} });
+  ttsScheduledSources = [];
+  ttsNextPlayTime = 0;
+}
+
+function ttsOpenReader() {
+  document.getElementById('tts-reader-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  ttsInitSectionList();
+  if (TTS_CONFIG.apiKey) document.getElementById('tts-api-key').value = TTS_CONFIG.apiKey;
+  ttsLoadVoices();
+}
+
+function ttsCloseReader() {
+  if (ttsIsPlaying) {
+    if (!confirm('재생 중입니다. 정말 닫으시겠습니까?')) return;
+    ttsStop();
+  }
+  document.getElementById('tts-reader-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function ttsCloseOnBg(e) {
+  if (e.target.id === 'tts-reader-overlay') ttsCloseReader();
+}
+
+function ttsSaveApiKey() {
+  const input = document.getElementById('tts-api-key');
+  TTS_CONFIG.apiKey = input.value.trim();
+  localStorage.setItem('qwen_tts_api_key', TTS_CONFIG.apiKey);
+  ttsSetStatus(TTS_CONFIG.apiKey ? 'API 키가 저장되었습니다.' : 'API 키가 비워졌습니다.');
+  ttsLoadVoices();
+}
+
+function ttsInitSectionList() {
+  const list = document.getElementById('tts-section-list');
+  if (list.dataset.initialized === 'true') return;
+  list.innerHTML = '';
+  const allItem = document.createElement('label');
+  allItem.className = 'tts-section-item all';
+  allItem.innerHTML = '<input type="checkbox" class="tts-section-checkbox" id="tts-section-all" checked><span class="tts-section-label">전체 선택 / 해제</span>';
+  allItem.querySelector('input').addEventListener('change', function() { ttsToggleAll(this); });
+  list.appendChild(allItem);
+  TTS_SECTIONS.forEach(sec => {
+    const item = document.createElement('label');
+    item.className = 'tts-section-item';
+    item.dataset.sectionId = sec.id;
+    item.innerHTML = '<input type="checkbox" class="tts-section-checkbox" data-section="' + sec.id + '" checked><span class="tts-section-label">' + sec.title + '</span>';
+    list.appendChild(item);
+  });
+  list.dataset.initialized = 'true';
+}
+
+function ttsToggleAll(cb) {
+  document.querySelectorAll('#tts-section-list input[data-section]').forEach(c => c.checked = cb.checked);
+}
+
+async function ttsLoadVoices() {
+  const select = document.getElementById('tts-voice-select');
+  try {
+    const res = await fetch(TTS_CONFIG.serverUrl + '/voices');
+    if (!res.ok) throw new Error('서버 응답 ' + res.status);
+    const data = await res.json();
+    select.innerHTML = '';
+    if (!data.voices || data.voices.length === 0) {
+      const opt = document.createElement('option');
+      opt.textContent = '(등록된 음성 없음)';
+      select.appendChild(opt);
+      ttsSetStatus('등록된 음성이 없습니다.', true);
+      return;
+    }
+    data.voices.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v.name;
+      opt.textContent = v.name + (v.name === data.default ? ' (기본)' : '');
+      select.appendChild(opt);
+    });
+    if (data.default) select.value = data.default;
+    ttsSetStatus(data.voices.length + '개 음성 로드 완료. 항목을 선택하고 재생을 누르세요.');
+  } catch (e) {
+    select.innerHTML = '<option>tk_voice</option>';
+    ttsSetStatus('음성 목록 로드 실패: ' + e.message, true);
+  }
+}
+
+function ttsSetStatus(msg, isError) {
+  const el = document.getElementById('tts-status');
+  el.textContent = msg;
+  el.className = 'tts-status' + (isError ? ' error' : '');
+}
+
+function ttsUpdateProgress(current, total, sectionTitle) {
+  document.getElementById('tts-progress').classList.add('active');
+  document.getElementById('tts-progress-fill').style.width = (current / total * 100) + '%';
+  document.getElementById('tts-progress-text').innerHTML = '<strong>' + current + ' / ' + total + '</strong> · ' + sectionTitle;
+}
+
+function ttsHighlightSection(sectionId) {
+  document.querySelectorAll('#tts-section-list .tts-section-item').forEach(el => el.classList.remove('playing'));
+  if (sectionId) {
+    const item = document.querySelector('#tts-section-list .tts-section-item[data-section-id="' + sectionId + '"]');
+    if (item) item.classList.add('playing');
+  }
+}
+
+async function ttsPlay() {
+  if (!TTS_CONFIG.apiKey) { ttsSetStatus('먼저 API 키를 입력하고 저장하세요.', true); return; }
+  const checked = document.querySelectorAll('#tts-section-list input[data-section]:checked');
+  if (checked.length === 0) { ttsSetStatus('읽을 항목을 하나 이상 선택하세요.', true); return; }
+  const voice = document.getElementById('tts-voice-select').value;
+  const selectedIds = Array.from(checked).map(cb => cb.dataset.section);
+  const sectionsToRead = TTS_SECTIONS.filter(s => selectedIds.includes(s.id));
+
+  ttsIsCanceled = false;
+  ttsIsPlaying = true;
+  document.getElementById('tts-play-btn').disabled = true;
+  document.getElementById('tts-stop-btn').disabled = false;
+  document.getElementById('tts-pause-btn').disabled = false;
+
+  if (!ttsAudioContext || ttsAudioContext.state === 'closed') {
+    const Ctor = window.AudioContext || window.webkitAudioContext;
+    try {
+      ttsAudioContext = new Ctor({ sampleRate: TTS_CONFIG.sampleRate });
+    } catch (e) {
+      ttsAudioContext = new Ctor();
+    }
+  }
+  if (ttsAudioContext.state === 'suspended') await ttsAudioContext.resume();
+  ttsIsPaused = false;
+  ttsUpdatePauseBtn();
+
+  ttsStopPlayback();
+
+  try {
+    for (let i = 0; i < sectionsToRead.length; i++) {
+      if (ttsIsCanceled) break;
+      const sec = sectionsToRead[i];
+      const extractor = TTS_EXTRACTORS[sec.id];
+      if (!extractor) continue;
+      ttsUpdateProgress(i + 1, sectionsToRead.length, sec.title);
+      ttsHighlightSection(sec.id);
+      ttsSetStatus('재생 중: ' + sec.title);
+      const text = extractor();
+      if (!text || text.trim().length < 2) continue;
+      await ttsStreamText(text, voice);
+      if (ttsIsCanceled) break;
+    }
+    while (!ttsIsCanceled) {
+      if (ttsAudioContext.state === 'suspended') {
+        await new Promise(r => setTimeout(r, 200));
+        continue;
+      }
+      const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
+      if (remaining <= 0) break;
+      ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
+      await new Promise(r => setTimeout(r, Math.min(remaining * 1000 + 200, 1000)));
+    }
+    if (!ttsIsCanceled) ttsSetStatus('✅ 모든 항목 재생 완료');
+    else ttsSetStatus('⏹ 중지됨');
+  } catch (e) {
+    ttsSetStatus('❌ 오류: ' + e.message, true);
+  } finally {
+    ttsIsPlaying = false;
+    ttsIsPaused = false;
+    ttsHighlightSection(null);
+    document.getElementById('tts-play-btn').disabled = false;
+    document.getElementById('tts-stop-btn').disabled = true;
+    document.getElementById('tts-pause-btn').disabled = true;
+    ttsUpdatePauseBtn();
+    ttsCurrentReader = null;
+  }
+}
+
+async function ttsStreamText(text, voice) {
+  const res = await fetch(TTS_CONFIG.serverUrl + '/tts/stream', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-API-Key': TTS_CONFIG.apiKey },
+    body: JSON.stringify({ text: text, voice: voice, pause_sec: TTS_CONFIG.pauseSec, chunk_max_len: TTS_CONFIG.chunkMaxLen })
+  });
+  if (!res.ok) {
+    let errMsg = 'HTTP ' + res.status;
+    try { const err = await res.json(); errMsg = err.detail || errMsg; } catch(e) {}
+    throw new Error(errMsg);
+  }
+  const reader = res.body.getReader();
+  ttsCurrentReader = reader;
+  let buffer = new Uint8Array(0);
+  const MIN_DECODE = 24000;
+  while (true) {
+    let done, value;
+    try { ({ done, value } = await reader.read()); }
+    catch (e) { if (ttsIsCanceled) break; throw e; }
+    if (done || ttsIsCanceled) {
+      if (buffer.length >= 2 && !ttsIsCanceled) ttsScheduleBuffer(ttsPcmToBuffer(buffer, ttsAudioContext));
+      break;
+    }
+    const merged = new Uint8Array(buffer.length + value.length);
+    merged.set(buffer);
+    merged.set(value, buffer.length);
+    buffer = merged;
+    while (buffer.length >= MIN_DECODE && !ttsIsCanceled) {
+      const evenLen = MIN_DECODE - (MIN_DECODE % 2);
+      const audioBuffer = ttsPcmToBuffer(buffer.subarray(0, evenLen), ttsAudioContext);
+      if (audioBuffer) ttsScheduleBuffer(audioBuffer);
+      buffer = buffer.subarray(evenLen);
+    }
+  }
+}
+
+async function ttsStop() {
+  ttsIsCanceled = true;
+  if (ttsCurrentReader) { try { await ttsCurrentReader.cancel(); } catch(e) {} ttsCurrentReader = null; }
+  ttsStopPlayback();
+  if (ttsAudioContext && ttsAudioContext.state === 'suspended') {
+    try { await ttsAudioContext.resume(); } catch(e) {}
+  }
+  ttsIsPaused = false;
+  ttsSetStatus('⏹ 중지됨');
+  document.getElementById('tts-play-btn').disabled = false;
+  document.getElementById('tts-stop-btn').disabled = true;
+  document.getElementById('tts-pause-btn').disabled = true;
+  ttsUpdatePauseBtn();
+  ttsIsPlaying = false;
+  ttsHighlightSection(null);
+}
+
+async function ttsTogglePause() {
+  if (!ttsIsPlaying || !ttsAudioContext) return;
+  if (ttsIsPaused) {
+    try { await ttsAudioContext.resume(); } catch(e) {}
+    ttsIsPaused = false;
+    ttsSetStatus('▶ 재생 재개됨');
+  } else {
+    try { await ttsAudioContext.suspend(); } catch(e) {}
+    ttsIsPaused = true;
+    ttsSetStatus('⏸ 일시정지됨');
+  }
+  ttsUpdatePauseBtn();
+}
+
+function ttsUpdatePauseBtn() {
+  const btn = document.getElementById('tts-pause-btn');
+  if (!btn) return;
+  btn.textContent = ttsIsPaused ? '▶ 계속' : '⏸ 일시정지';
+}
+</script>
+</body>
+</html>

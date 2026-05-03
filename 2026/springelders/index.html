@@ -137,23 +137,14 @@
             background-color: rgba(232,154,124,0.2);
         }
 
-        /* Accordion item */
-        details summary::-webkit-details-marker { display: none; }
-        details summary { list-style: none; }
-        details[open] .chev { transform: rotate(180deg); }
-
+        /* Article block (always expanded) */
         .article {
             background: #fff;
             border: 1px solid var(--rule);
-            border-top: 4px solid var(--rule);
-            transition: border-top-color 0.25s, box-shadow 0.25s, transform 0.25s;
-            position: relative;
-        }
-        .article:hover { border-top-color: var(--accent); box-shadow: 0 8px 24px -10px rgba(28,46,42,0.18); }
-        .article[open] {
-            border-top-color: var(--accent);
+            border-top: 4px solid var(--accent);
             border-left: 4px solid var(--accent);
             box-shadow: 0 12px 36px -16px rgba(28,46,42,0.22);
+            position: relative;
         }
 
         /* Day buttons */
@@ -301,6 +292,9 @@
     <!-- ============ System Top Bar ============ -->
     <div id="system-bar" class="fixed top-0 left-0 w-full bg-[#1c2e2a] text-[#f0ebe1] z-[60] flex items-center h-[40px] px-[5px] shadow-md sans">
         <div class="flex items-center h-full flex-1 overflow-x-auto no-scrollbar whitespace-nowrap px-1">
+            <a href="https://tk-korea.github.io/seven_feasts/" aria-label="홈" class="flex items-center justify-center w-[36px] h-[40px] hover:text-[#e89a7c] transition relative after:content-[''] after:absolute after:right-0 after:top-[10px] after:bottom-[10px] after:w-[1px] after:bg-[#3a4f4a]">
+                <i class="fas fa-home text-[13px]"></i>
+            </a>
             <button onclick="toggleMenu(event)" aria-label="목차" class="flex items-center justify-center w-[36px] h-[40px] hover:text-[#e89a7c] transition relative after:content-[''] after:absolute after:right-0 after:top-[10px] after:bottom-[10px] after:w-[1px] after:bg-[#3a4f4a]">
                 <i class="fas fa-bars text-[13px]"></i>
             </button>
@@ -338,9 +332,6 @@
                     <span class="display italic accent text-[1.1rem] leading-none">Vol. <span class="meta">XXVI</span></span>
                     <span class="w-1 h-1 rounded-full bg-[#c9532e] inline-block"></span>
                     <span class="meta">Spring 2026</span>
-                </div>
-                <div class="sans text-[11px] tracking-[0.25em] uppercase ink-soft meta">
-                    Korea Gospel Book Room
                 </div>
             </div>
 
@@ -545,8 +536,8 @@
             </div>
 
             <div id="accordion-container" class="space-y-6">
-            <details id="m-1" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            <div id="m-1" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -575,14 +566,7 @@
                         사도들의 결심처럼, 우리도 기도와 말씀의 사역을 꾸준히 계속하기 위해 영 안에서 하나님을 접촉하고 흡수해야 한다.
                     </p>
 
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -638,9 +622,9 @@
                         </aside>
                     </div>
                 </div>
-            </details>
-            <details id="m-2" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            </div>
+            <div id="m-2" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -669,14 +653,7 @@
                         그리스도의 사랑이 우리를 강권하여, 우리는 죄인들을 하나님께 화목시키고, 신자들을 하나님 자신과 더 깊이 화목시키는 사역에 부르심을 받는다.
                     </p>
 
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -732,9 +709,9 @@
                         </aside>
                     </div>
                 </div>
-            </details>
-            <details id="m-3" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            </div>
+            <div id="m-3" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -763,14 +740,7 @@
                         몸을 세우는 사역의 본질은 가르치는 것이 아니라, 그리스도라는 생명을 공급하는 것이다.
                     </p>
 
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -826,9 +796,9 @@
                         </aside>
                     </div>
                 </div>
-            </details>
-            <details id="m-4" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            </div>
+            <div id="m-4" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -857,14 +827,7 @@
                         각 사람은 하나님께서 정해 주신 분량 안에서 사역하며, 그 분량 안에서 영적 전쟁이 효력을 발한다.
                     </p>
 
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -920,9 +883,9 @@
                         </aside>
                     </div>
                 </div>
-            </details>
-            <details id="m-5" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            </div>
+            <div id="m-5" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -951,14 +914,7 @@
                         주님에게서 부담을 받아 말씀을 공급하고, 한마음 한뜻으로 서로 동역하는 청지기들이 그분의 경륜을 수행한다.
                     </p>
 
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -1014,9 +970,9 @@
                         </aside>
                     </div>
                 </div>
-            </details>
-            <details id="m-6" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            </div>
+            <div id="m-6" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -1045,14 +1001,7 @@
                         요한의 사역은 삼일 하나님의 분배를 가장 깊이 드러내는 사역이며, 그 결과는 신성한 친교이다.
                     </p>
 
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -1108,9 +1057,9 @@
                         </aside>
                     </div>
                 </div>
-            </details>
-            <details id="m-7" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            </div>
+            <div id="m-7" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -1139,14 +1088,7 @@
                         삼일 하나님의 분배는 우리에게 영원한 축복이며, 동시에 그분의 경륜의 성취이다.
                     </p>
 
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -1202,9 +1144,9 @@
                         </aside>
                     </div>
                 </div>
-            </details>
-            <details id="m-8" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            </div>
+            <div id="m-8" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -1233,14 +1175,7 @@
                         삼일 하나님의 분배는 의를 따르고, 거룩함을 통과하며, 영광에 이르는 한 흐름이다.
                     </p>
 
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -1296,7 +1231,7 @@
                         </aside>
                     </div>
                 </div>
-            </details></div>
+            </div></div>
         </div>
     </section>
 
@@ -1579,8 +1514,8 @@
             }).join('');
 
             return `
-            <details id="m-${m.id}" class="article scroll-mt-[60px]">
-                <summary class="cursor-pointer p-6 md:p-8 hover:bg-[#faf7f2] transition">
+            <div id="m-${m.id}" class="article is-open scroll-mt-[60px]">
+                <div class="p-6 md:p-8">
                     <!-- meta strip -->
                     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
                         <div class="flex items-center gap-4">
@@ -1605,18 +1540,10 @@
                     <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
 
                     <!-- excerpt -->
-                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break mb-6 max-w-3xl">
+                    <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break max-w-3xl">
                         ${m.excerpt}
                     </p>
-
-                    <!-- expand affordance -->
-                    <div class="flex items-center justify-between flex-wrap gap-3">
-                        <div class="flex items-center gap-2 meta text-[10px] tracking-[0.28em] uppercase accent">
-                            <span class="chev-label">자세히 보기</span>
-                            <i class="fas fa-chevron-down chev transition-transform text-[10px]"></i>
-                        </div>
-                    </div>
-                </summary>
+                </div>
 
                 <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
                     <div class="article-grid">
@@ -1654,7 +1581,7 @@
                         </aside>
                     </div>
                 </div>
-            </details>`;
+            </div>`;
         }).join('');
     }
 
