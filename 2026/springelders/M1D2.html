@@ -307,70 +307,118 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .tts-btn.primary:hover:not(:disabled){background:#6e1622}
 @media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
 
-/* Bible verse tooltip */
+/* Bible verse tooltip — Ink Note theme */
 .bible-tip{
-  border-bottom:1px dotted var(--accent);
+  border-bottom:1px dotted #A98545;
   cursor:help;
   color:inherit;
   text-decoration:none;
   white-space:nowrap;
+  transition:color 0.18s ease,background 0.18s ease;
 }
 .bible-tip:hover,.bible-tip:focus{
-  color:var(--accent);
-  background:rgba(139,30,43,0.05);
+  color:#7a4a14;
+  background:rgba(169,133,69,0.08);
   outline:none;
 }
 .bible-tooltip{
   position:fixed;
   z-index:9998;
-  background:var(--paper-card);
-  border:1px solid var(--line);
-  border-left:3px solid var(--accent);
-  box-shadow:0 14px 36px -8px rgba(28,46,42,0.22),0 4px 12px -4px rgba(28,46,42,0.12);
-  padding:14px 18px;
-  max-width:380px;
-  min-width:240px;
+  background:linear-gradient(180deg,#1d1610 0%,#15100a 100%);
+  border:1px solid #2a2218;
+  box-shadow:
+    0 22px 48px -10px rgba(0,0,0,0.55),
+    0 8px 18px -6px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  padding:18px 22px 16px;
+  max-width:400px;
+  min-width:260px;
   font-family:'Noto Serif KR','Gowun Batang',serif;
   font-size:14px;
-  line-height:1.7;
-  color:var(--ink);
+  line-height:1.75;
+  color:#e8dfce;
   display:none;
   visibility:hidden;
+  pointer-events:none;
+  border-radius:1px;
+  position:fixed;
+}
+.bible-tooltip::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:linear-gradient(180deg,#D4B36F 0%,#A98545 50%,#7a5e2f 100%);
+  box-shadow:0 0 12px rgba(169,133,69,0.25);
+}
+.bible-tooltip::after{
+  content:'';
+  position:absolute;
+  inset:6px;
+  border:1px solid rgba(169,133,69,0.12);
   pointer-events:none;
 }
 .bible-tooltip.show{display:block;visibility:visible}
 .bible-tooltip-ref{
-  font-family:'Lora','Noto Serif KR',serif;
+  position:relative;
+  font-family:'Lora','Cormorant Garamond',serif;
   font-style:italic;
   font-weight:600;
   font-size:0.78rem;
-  letter-spacing:0.08em;
-  color:var(--accent);
+  letter-spacing:0.18em;
+  color:#D4B36F;
   text-transform:uppercase;
-  margin-bottom:8px;
-  padding-bottom:6px;
-  border-bottom:1px solid var(--line-soft);
+  margin-bottom:12px;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(169,133,69,0.22);
 }
-.bible-tooltip-text{font-size:0.92rem;color:var(--ink-soft)}
-.bible-tooltip-verse{margin-bottom:4px}
+.bible-tooltip-ref::after{
+  content:'';
+  position:absolute;
+  left:0;bottom:-1px;
+  width:28px;
+  height:1px;
+  background:#D4B36F;
+}
+.bible-tooltip-text{
+  position:relative;
+  font-size:0.93rem;
+  color:#f0e8d4;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+.bible-tooltip-verse{margin-bottom:6px;padding-left:0}
 .bible-tooltip-verse:last-child{margin-bottom:0}
 .bible-tooltip-verse-num{
-  font-family:'Lora',serif;
+  display:inline-block;
+  font-family:'Lora','Cormorant Garamond',serif;
   font-style:italic;
   font-weight:600;
-  font-size:0.78rem;
-  color:var(--accent-soft);
-  margin-right:6px;
-  vertical-align:0.1em;
+  font-size:0.85rem;
+  color:#D4B36F;
+  margin-right:8px;
+  vertical-align:0.05em;
+  min-width:18px;
 }
-.bible-tooltip-missing{color:var(--ink-mute);font-style:italic;font-size:0.85rem}
+.bible-tooltip-missing{
+  color:#a09686;
+  font-style:italic;
+  font-size:0.88rem;
+  letter-spacing:0.02em;
+}
 @media (hover:none){
   .bible-tooltip{pointer-events:auto;max-width:calc(100vw - 24px)}
   .bible-tip{cursor:pointer;border-bottom-style:solid;border-bottom-width:0.5px}
 }
 @media (max-width:480px){
-  .bible-tooltip{max-width:calc(100vw - 24px);min-width:200px;font-size:13px;padding:12px 14px}
-  .bible-tooltip-text{font-size:0.88rem}
+  .bible-tooltip{
+    max-width:calc(100vw - 20px);
+    min-width:200px;
+    font-size:13px;
+    padding:15px 18px 14px;
+  }
+  .bible-tooltip-text{font-size:0.9rem}
+  .bible-tooltip-ref{font-size:0.72rem;letter-spacing:0.14em}
 }
 </style>
 </head>
