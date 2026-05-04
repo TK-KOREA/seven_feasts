@@ -1815,12 +1815,47 @@ function bibleLookup(book, chap, verseStart, verseEnd) {
   return list.length ? list : null;
 }
 
+function getFontScale() {
+  const v = getComputedStyle(document.documentElement).getPropertyValue('--font-scale').trim();
+  const z = parseFloat(v);
+  return (isNaN(z) || z <= 0) ? 1 : z;
+}
+
+let _zoomCBProbed = false;
+let _zoomCBIsZoomed = false;
+function detectZoomCB(tip, zoom) {
+  // Detects whether `position: fixed` inside the zoom host treats the host as
+  // its containing block (Chromium ≥ 108 behavior) or the viewport (older /
+  // some other browsers). Probes once per session.
+  if (_zoomCBProbed || zoom === 1) return _zoomCBIsZoomed;
+  const prevVis = tip.style.visibility;
+  const prevLeft = tip.style.left;
+  const prevTop = tip.style.top;
+  const wasShown = tip.classList.contains('show');
+  tip.style.visibility = 'hidden';
+  tip.style.left = '100px';
+  tip.style.top = '0px';
+  if (!wasShown) tip.classList.add('show');
+  const probe = tip.getBoundingClientRect();
+  // If left ≈ 100*zoom → zoom CB; if left ≈ 100 → viewport CB
+  _zoomCBIsZoomed = Math.abs(probe.left - 100 * zoom) < Math.abs(probe.left - 100);
+  _zoomCBProbed = true;
+  if (!wasShown) tip.classList.remove('show');
+  tip.style.visibility = prevVis;
+  tip.style.left = prevLeft;
+  tip.style.top = prevTop;
+  return _zoomCBIsZoomed;
+}
+
 function ensureBibleTooltipEl() {
   if (bibleTooltipEl) return bibleTooltipEl;
   bibleTooltipEl = document.createElement('div');
   bibleTooltipEl.className = 'bible-tooltip';
   bibleTooltipEl.setAttribute('role', 'tooltip');
-  document.body.appendChild(bibleTooltipEl);
+  // Append into the zoom host so the tooltip inherits the same scale as
+  // surrounding content. Falls back to body when host is missing.
+  const host = document.getElementById('main-content') || document.body;
+  host.appendChild(bibleTooltipEl);
   return bibleTooltipEl;
 }
 
@@ -1851,6 +1886,10 @@ function showBibleTooltip(trigger) {
   tip.style.top = '0px';
   tip.classList.add('show');
 
+  const zoom = getFontScale();
+  // rect/tr come back in *visual* viewport coords (Chromium accounts for
+  // ancestor `zoom` in getBoundingClientRect). Boundary checks use those
+  // visual coords against innerWidth/innerHeight which are CSS-pixel viewport.
   const rect = trigger.getBoundingClientRect();
   const tr = tip.getBoundingClientRect();
   const margin = 12;
@@ -1863,8 +1902,16 @@ function showBibleTooltip(trigger) {
     if (above >= margin) top = above;
     else top = Math.max(margin, window.innerHeight - tr.height - margin);
   }
-  tip.style.left = left + 'px';
-  tip.style.top = top + 'px';
+
+  // When the tooltip's containing block is the zoom host, `style.left` is
+  // interpreted in pre-zoom layout pixels and multiplied by `zoom` for the
+  // actual visual position. Convert visual coords back to pre-zoom so that
+  // visualLeft = (visualLeft / zoom) * zoom = visualLeft.
+  const cbZoomed = detectZoomCB(tip, zoom);
+  const styleLeft = cbZoomed ? left / zoom : left;
+  const styleTop  = cbZoomed ? top  / zoom : top;
+  tip.style.left = styleLeft + 'px';
+  tip.style.top = styleTop + 'px';
   tip.style.visibility = 'visible';
 }
 
