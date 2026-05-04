@@ -1204,13 +1204,19 @@
     ];
 
     /* ===== 성경 구절 → 회복역 링크 변환 ===== */
+    const SINGLE_CHAPTER_BOOKS = new Set(['옵','몬','요이','요삼','유']);
     function linkifyBible(text){
         const keys = Object.keys(bibleMap).sort((a,b)=>b.length-a.length);
-        const pattern = new RegExp(`(${keys.join('|')})\\s+(\\d+):(\\d+)(?:-(\\d+))?|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?|(?:,\\s*)(\\d+)(?:-(\\d+))?`, 'g');
+        // 단일장 책(유, 몬, 요이, 요삼, 옵)은 "유 20"처럼 장 없이도 매칭되도록 :장 부분을 옵셔널로
+        const pattern = new RegExp(`(${keys.join('|')})\\s+(?:(\\d+):)?(\\d+)(?:-(\\d+))?|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?|(?:,\\s*)(\\d+)(?:-(\\d+))?`, 'g');
         let lastBook=null, lastChapter=null;
         return text.replace(pattern, (match, book, chap, verse, endVerse, c2, v2, ev2, v3, ev3) => {
             let b, c, v, display;
             if (book) {
+                if (chap === undefined) {
+                    if (!SINGLE_CHAPTER_BOOKS.has(book)) return match;
+                    chap = '1';
+                }
                 lastBook = book; lastChapter = chap;
                 b = book; c = chap; v = verse; display = match;
             } else if (v2) {
