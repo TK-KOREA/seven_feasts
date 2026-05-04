@@ -307,8 +307,11 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .tts-btn.primary:hover:not(:disabled){background:#6e1622}
 @media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
 
-/* Bible verse tooltip — Ink Note theme */
+/* Bible verse tooltip — Ink Note theme (CSS-positioned, zoom-safe) */
 .bible-tip{
+  position:relative;
+  display:inline-block;
+  vertical-align:baseline;
   border-bottom:1px dotted #A98545;
   cursor:help;
   color:inherit;
@@ -322,7 +325,9 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   outline:none;
 }
 .bible-tooltip{
-  position:fixed;
+  position:absolute;
+  top:calc(100% + 4px);
+  left:0;
   z-index:9998;
   background:linear-gradient(180deg,#1d1610 0%,#15100a 100%);
   border:1px solid #2a2218;
@@ -331,17 +336,23 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
     0 8px 18px -6px rgba(0,0,0,0.35),
     inset 0 1px 0 rgba(255,255,255,0.04);
   padding:18px 22px 16px;
-  max-width:400px;
+  width:max-content;
+  max-width:min(400px,calc(100vw - 24px));
   min-width:260px;
   font-family:'Noto Serif KR','Gowun Batang',serif;
   font-size:14px;
   line-height:1.75;
   color:#e8dfce;
-  display:none;
-  visibility:hidden;
-  pointer-events:none;
   border-radius:1px;
-  position:fixed;
+  white-space:normal;
+  cursor:default;
+  display:none;
+}
+.bible-tip:hover > .bible-tooltip,
+.bible-tip:focus > .bible-tooltip,
+.bible-tip:focus-within > .bible-tooltip,
+.bible-tooltip.show{
+  display:block;
 }
 .bible-tooltip::before{
   content:'';
@@ -358,7 +369,14 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   border:1px solid rgba(169,133,69,0.12);
   pointer-events:none;
 }
-.bible-tooltip.show{display:block;visibility:visible}
+.bible-tooltip.align-right{
+  left:auto;
+  right:0;
+}
+.bible-tooltip.align-above{
+  top:auto;
+  bottom:calc(100% + 4px);
+}
 .bible-tooltip-ref{
   position:relative;
   font-family:'Lora','Cormorant Garamond',serif;
@@ -407,7 +425,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   letter-spacing:0.02em;
 }
 @media (hover:none){
-  .bible-tooltip{pointer-events:auto;max-width:calc(100vw - 24px)}
   .bible-tip{cursor:pointer;border-bottom-style:solid;border-bottom-width:0.5px}
 }
 @media (max-width:480px){
@@ -1051,53 +1068,53 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   <section class="quiz-section" id="quiz-section">
     <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto;color:var(--ink-mute);font-weight:500;">1 / 5</span></div>
     <div id="quiz-container">
-      <div class="quiz-item" data-index="0" data-correct="2">
-        <div class="quiz-q"><div class="quiz-badge">1</div><div class="quiz-q-text">엘리야의 기도(약 5:17)가 진정한 기도의 본보기로 인용된 가장 핵심적인 이유는 무엇입니까?</div></div>
+      <div class="quiz-item" data-index="0" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">1</div><div class="quiz-q-text">약 5:17에서 엘리야가 '간절히 기도하니'라는 표현의 헬라어 직역 의미는 무엇입니까?</div></div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 엘리야가 위대한 선지자로서 보통 사람과는 다른 특별한 영적 권위를 받았기 때문이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 엘리야가 평범한 사람이었으나 강한 결심과 의지로 끝까지 기도해 비를 멈추게 했기 때문이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 엘리야의 기도가 외적으로는 사람이 기도하였지만 내적으로는 그 영께서 함께 기도하신 양편의 기도였기 때문이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 엘리야가 정해진 기도의 형식과 자세를 정확히 따라 효과적으로 기도하는 법을 보여 주었기 때문이다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 금식하며 전심으로 기도하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 큰 소리로 부르짖으며 기도하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 오랜 시간 동안 반복하여 기도하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 기도로 기도하는 것 (또는 기도 안에서 기도하는 것)</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
-      <div class="quiz-item" data-index="1" data-correct="0">
-        <div class="quiz-q"><div class="quiz-badge">2</div><div class="quiz-q-text">앤드루 머리(Andrew Murray)가 진정한 기도를 묘사한 표현으로 가장 정확한 것은 무엇입니까?</div></div>
+      <div class="quiz-item" data-index="1" data-correct="1">
+        <div class="quiz-q"><div class="quiz-badge">2</div><div class="quiz-q-text">앤드루 머리(Andrew Murray)가 정의한 '진정한 기도'에 대한 설명으로 옳은 것은 무엇입니까?</div></div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리 안에 내주하시는 그리스도께서 보좌에 앉아 계신 그리스도께 기도하시는 것이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 보좌에 계신 그리스도께서 우리 안의 그리스도를 통하여 응답을 내려보내시는 것이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 우리가 그리스도의 이름을 의지하여 보좌에 계신 그리스도께 청원을 올리는 것이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 그리스도께서 우리의 부족한 기도를 가다듬어 보좌로 전달해 주시는 것이다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리의 필요를 정성껏 하나님께 간구하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 내주하시는 그리스도께서 보좌에 계신 그리스도께 기도하시는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 성령의 능력을 힘입어 인간이 하나님께 요청하는 것</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 인간의 의지를 하나님의 뜻에 굴복시키는 것</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
-      <div class="quiz-item" data-index="2" data-correct="3">
-        <div class="quiz-q"><div class="quiz-badge">3</div><div class="quiz-q-text">지문이 진술한 양편의 기도 — 우리와 하나님이 함께 기도한다는 말의 정확한 의미는 무엇입니까?</div></div>
+      <div class="quiz-item" data-index="2" data-correct="0">
+        <div class="quiz-q"><div class="quiz-badge">3</div><div class="quiz-q-text">지문에 따르면, 기도의 원칙에서 가장 먼저 고려해야 할 사항은 무엇입니까?</div></div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리가 먼저 기도를 시작하고 그 다음에 하나님께서 우리 안에서 응답으로 일하신다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 하나님께서 먼저 일으키시고 우리는 그 후에 그 음성을 받아 따라서 표현한다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 우리와 하나님이 서로 번갈아 가며 한쪽이 기도할 때 다른 쪽은 잠시 멈추신다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 하나님과 우리가 동시에 한 기도를 표현하며, 우리는 하나님 안에서 하나님은 우리 안에서 기도하신다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 기도는 사람이 아니라 하나님에 의해서 시작되어야 한다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 기도는 반드시 거룩한 장소에서 이루어져야 한다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 기도는 구체적인 목록을 작성하여 질서 있게 해야 한다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 기도는 믿음의 확신이 생길 때까지 계속해야 한다.</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
-      <div class="quiz-item" data-index="3" data-correct="1">
-        <div class="quiz-q"><div class="quiz-badge">4</div><div class="quiz-q-text">지문에 따르면, 표준에 이른 효능 있는 기도를 드릴 때 우리가 자주 갖게 되는 안쪽 느낌은 무엇입니까?</div></div>
+      <div class="quiz-item" data-index="3" data-correct="0">
+        <div class="quiz-q"><div class="quiz-badge">4</div><div class="quiz-q-text">엡 6:18에서 언급된 '항상 영 안에서 기도하십시오'의 '영'은 무엇을 의미합니까?</div></div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 응답이 분명하게 임하리라는 강한 확신과 평안이 우리를 가득 채우는 느낌</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 우리 자신과 우리의 말이 하나님을 통과해 그분 안에서 말해지고 있다는 느낌</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 깊은 영적 교제와 만족감으로 마음이 따뜻해지고 영혼이 평안해지는 느낌</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 영적 능력과 권위가 안에서 솟아오르며 강하고 담대해지는 듯한 느낌</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 성령과 우리 사람의 영이 연합된 영을 의미한다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 인간의 이성과 감정을 포함한 마음의 영을 의미한다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 천사들이 하나님을 찬양할 때 사용하는 신령한 영을 의미한다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 오직 거룩하신 성령만을 의미한다.</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
-      <div class="quiz-item" data-index="4" data-correct="2">
-        <div class="quiz-q"><div class="quiz-badge">5</div><div class="quiz-q-text">지문은 — 함께 기도하던 한 형제의 기도가 합당하다고 분별되는 결정적 표지를 무엇으로 진술합니까?</div></div>
+      <div class="quiz-item" data-index="4" data-correct="1">
+        <div class="quiz-q"><div class="quiz-badge">5</div><div class="quiz-q-text">지문에서 말하는 '표준에 도달한 기도'의 가장 두드러진 특징은 무엇입니까?</div></div>
         <div class="quiz-options">
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 그 사람이 큰 목소리로 또렷하게 부르짖으며 호소력 있게 기도하였기 때문이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 그 사람이 다양한 성경 구절을 정확히 연결해 풍부하게 인용하였기 때문이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 그의 말을 통해 우리가 하나님을 만졌고, 그에게서 하나님께서 나오셨기 때문이다</div>
-          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 그 사람이 오랜 시간 동안 끊김 없이 인내하며 끈질기게 기도하였기 때문이다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 기도하는 동안 인간의 감정이 완전히 배제되어야 한다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 기도자가 하나님을 통과하고 하나님이 기도자를 통과하는 느낌이 있다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 모든 기도 제목이 지체 없이 즉각적으로 응답받는다.</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 성경 구절을 토씨 하나 틀리지 않고 인용하며 기도해야 한다.</div>
         </div>
         <div class="quiz-feedback"></div>
       </div>
@@ -1815,47 +1832,12 @@ function bibleLookup(book, chap, verseStart, verseEnd) {
   return list.length ? list : null;
 }
 
-function getFontScale() {
-  const v = getComputedStyle(document.documentElement).getPropertyValue('--font-scale').trim();
-  const z = parseFloat(v);
-  return (isNaN(z) || z <= 0) ? 1 : z;
-}
-
-let _zoomCBProbed = false;
-let _zoomCBIsZoomed = false;
-function detectZoomCB(tip, zoom) {
-  // Detects whether `position: fixed` inside the zoom host treats the host as
-  // its containing block (Chromium ≥ 108 behavior) or the viewport (older /
-  // some other browsers). Probes once per session.
-  if (_zoomCBProbed || zoom === 1) return _zoomCBIsZoomed;
-  const prevVis = tip.style.visibility;
-  const prevLeft = tip.style.left;
-  const prevTop = tip.style.top;
-  const wasShown = tip.classList.contains('show');
-  tip.style.visibility = 'hidden';
-  tip.style.left = '100px';
-  tip.style.top = '0px';
-  if (!wasShown) tip.classList.add('show');
-  const probe = tip.getBoundingClientRect();
-  // If left ≈ 100*zoom → zoom CB; if left ≈ 100 → viewport CB
-  _zoomCBIsZoomed = Math.abs(probe.left - 100 * zoom) < Math.abs(probe.left - 100);
-  _zoomCBProbed = true;
-  if (!wasShown) tip.classList.remove('show');
-  tip.style.visibility = prevVis;
-  tip.style.left = prevLeft;
-  tip.style.top = prevTop;
-  return _zoomCBIsZoomed;
-}
-
 function ensureBibleTooltipEl() {
   if (bibleTooltipEl) return bibleTooltipEl;
   bibleTooltipEl = document.createElement('div');
   bibleTooltipEl.className = 'bible-tooltip';
   bibleTooltipEl.setAttribute('role', 'tooltip');
-  // Append into the zoom host so the tooltip inherits the same scale as
-  // surrounding content. Falls back to body when host is missing.
-  const host = document.getElementById('main-content') || document.body;
-  host.appendChild(bibleTooltipEl);
+  // Tooltip element will be moved into the active trigger on show.
   return bibleTooltipEl;
 }
 
@@ -1866,6 +1848,13 @@ function showBibleTooltip(trigger) {
   const vs = trigger.getAttribute('data-vs');
   const ve = trigger.getAttribute('data-ve');
   const tip = ensureBibleTooltipEl();
+
+  // Move tooltip into the trigger so CSS-relative positioning naturally
+  // shares the same zoom context. This avoids any coordinate math that
+  // breaks when CSS `zoom` is applied to ancestors.
+  if (tip.parentNode !== trigger) {
+    trigger.appendChild(tip);
+  }
 
   let bodyHtml;
   if (!BIBLE_DATA) {
@@ -1881,42 +1870,22 @@ function showBibleTooltip(trigger) {
     }
   }
   tip.innerHTML = '<div class="bible-tooltip-ref">' + ref + '</div>' + bodyHtml;
-  tip.style.visibility = 'hidden';
-  tip.style.left = '0px';
-  tip.style.top = '0px';
+
+  // Reset alignment classes, then make visible.
+  tip.classList.remove('align-right', 'align-above');
   tip.classList.add('show');
 
-  const zoom = getFontScale();
-  // rect/tr come back in *visual* viewport coords (Chromium accounts for
-  // ancestor `zoom` in getBoundingClientRect). Boundary checks use those
-  // visual coords against innerWidth/innerHeight which are CSS-pixel viewport.
-  const rect = trigger.getBoundingClientRect();
+  // Detect overflow against viewport and flip alignment if needed.
   const tr = tip.getBoundingClientRect();
-  const margin = 12;
-  let left = rect.left;
-  let top = rect.bottom + 8;
-  if (left + tr.width > window.innerWidth - margin) left = window.innerWidth - tr.width - margin;
-  if (left < margin) left = margin;
-  if (top + tr.height > window.innerHeight - margin) {
-    const above = rect.top - tr.height - 8;
-    if (above >= margin) top = above;
-    else top = Math.max(margin, window.innerHeight - tr.height - margin);
-  }
-
-  // When the tooltip's containing block is the zoom host, `style.left` is
-  // interpreted in pre-zoom layout pixels and multiplied by `zoom` for the
-  // actual visual position. Convert visual coords back to pre-zoom so that
-  // visualLeft = (visualLeft / zoom) * zoom = visualLeft.
-  const cbZoomed = detectZoomCB(tip, zoom);
-  const styleLeft = cbZoomed ? left / zoom : left;
-  const styleTop  = cbZoomed ? top  / zoom : top;
-  tip.style.left = styleLeft + 'px';
-  tip.style.top = styleTop + 'px';
-  tip.style.visibility = 'visible';
+  const margin = 8;
+  if (tr.right > window.innerWidth - margin) tip.classList.add('align-right');
+  if (tr.bottom > window.innerHeight - margin) tip.classList.add('align-above');
 }
 
 function hideBibleTooltip() {
-  if (bibleTooltipEl) bibleTooltipEl.classList.remove('show');
+  if (bibleTooltipEl) {
+    bibleTooltipEl.classList.remove('show', 'align-right', 'align-above');
+  }
   bibleActiveTip = null;
 }
 
@@ -2023,31 +1992,47 @@ function attachBibleTooltips(root) {
 function initBibleTooltips() {
   const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+  // Helper: locate the trigger from an event target. Because the tooltip is
+  // now a descendant of the active trigger, we must first check whether the
+  // target is inside the tooltip (in which case we ignore the trigger).
+  const triggerOf = (target) => {
+    if (!target || !target.closest) return null;
+    if (target.closest('.bible-tooltip')) return null;
+    return target.closest('.bible-tip');
+  };
+
   if (hasHover) {
     document.body.addEventListener('mouseover', e => {
-      const t = e.target.closest('.bible-tip');
+      const t = triggerOf(e.target);
       if (t) showBibleTooltip(t);
     });
     document.body.addEventListener('mouseout', e => {
-      const t = e.target.closest('.bible-tip');
+      const t = triggerOf(e.target);
       if (!t) return;
+      // Don't hide if the mouse is moving onto the tooltip (which is now a
+      // descendant of this trigger) or onto the same trigger from another part.
       const next = e.relatedTarget;
-      if (next && next.closest && next.closest('.bible-tip') === t) return;
+      if (next && next.closest) {
+        if (next.closest('.bible-tooltip')) return;
+        if (next.closest('.bible-tip') === t) return;
+      }
       hideBibleTooltip();
     });
     document.body.addEventListener('focusin', e => {
-      const t = e.target.closest('.bible-tip');
+      const t = triggerOf(e.target);
       if (t) showBibleTooltip(t);
     });
     document.body.addEventListener('focusout', e => {
-      const t = e.target.closest('.bible-tip');
+      const t = triggerOf(e.target);
       if (t) hideBibleTooltip();
     });
   }
 
-  // Click/tap toggle (works on both touch and as keyboard activation)
+  // Click/tap toggle (works on touch and keyboard activation)
   document.body.addEventListener('click', e => {
-    const t = e.target.closest('.bible-tip');
+    // Click inside the tooltip itself: do nothing (let user select / scroll text)
+    if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+    const t = e.target.closest && e.target.closest('.bible-tip');
     if (t) {
       e.preventDefault();
       e.stopPropagation();
@@ -2059,11 +2044,11 @@ function initBibleTooltips() {
       }
       return;
     }
-    if (e.target.closest('.bible-tooltip')) return;
     hideBibleTooltip();
   });
 
   document.body.addEventListener('keydown', e => {
+    if (e.target.closest && e.target.closest('.bible-tooltip')) return;
     const t = e.target.closest && e.target.closest('.bible-tip');
     if (t && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
@@ -2074,7 +2059,6 @@ function initBibleTooltips() {
     }
   });
 
-  let scrollTimer = null;
   window.addEventListener('scroll', () => {
     if (!bibleTooltipEl || !bibleTooltipEl.classList.contains('show')) return;
     hideBibleTooltip();
