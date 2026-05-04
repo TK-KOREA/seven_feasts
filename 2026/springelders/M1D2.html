@@ -307,114 +307,70 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .tts-btn.primary:hover:not(:disabled){background:#6e1622}
 @media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
 
-/* Bible reference inline tooltip */
-.bible-ref{
-  cursor:help;
+/* Bible verse tooltip */
+.bible-tip{
   border-bottom:1px dotted var(--accent);
-  text-decoration:none;
+  cursor:help;
   color:inherit;
-  transition:background 0.15s,color 0.15s;
-  padding:0 1px;
-  border-radius:2px;
+  text-decoration:none;
+  white-space:nowrap;
 }
-.bible-ref:hover,.bible-ref.active{
-  background:rgba(139,30,43,0.08);
+.bible-tip:hover,.bible-tip:focus{
   color:var(--accent);
+  background:rgba(139,30,43,0.05);
+  outline:none;
 }
 .bible-tooltip{
-  position:absolute;
-  z-index:9999;
-  max-width:min(420px,calc(100vw - 24px));
-  background:#1a1410;
-  color:#f5f0e6;
-  border-radius:6px;
-  padding:14px 16px 13px;
-  box-shadow:0 8px 28px rgba(0,0,0,0.32),0 2px 6px rgba(0,0,0,0.18);
+  position:fixed;
+  z-index:9998;
+  background:var(--paper-card);
+  border:1px solid var(--line);
+  border-left:3px solid var(--accent);
+  box-shadow:0 14px 36px -8px rgba(28,46,42,0.22),0 4px 12px -4px rgba(28,46,42,0.12);
+  padding:14px 18px;
+  max-width:380px;
+  min-width:240px;
   font-family:'Noto Serif KR','Gowun Batang',serif;
-  font-size:14.5px;
+  font-size:14px;
   line-height:1.7;
-  letter-spacing:-0.005em;
-  opacity:0;
+  color:var(--ink);
+  display:none;
   visibility:hidden;
-  transform:translateY(-4px);
-  transition:opacity 0.16s,transform 0.16s,visibility 0.16s;
   pointer-events:none;
 }
-.bible-tooltip.show{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-  pointer-events:auto;
-}
-.bible-tooltip::before{
-  content:'';
-  position:absolute;
-  top:-6px;
-  left:var(--bt-arrow-x,20px);
-  width:12px;height:12px;
-  background:#1a1410;
-  transform:rotate(45deg);
-  border-radius:1px;
-}
-.bible-tooltip[data-arrow="bottom"]::before{
-  top:auto;bottom:-6px;
-}
-.bt-ref{
-  font-size:11.5px;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  font-family:'Noto Sans KR',sans-serif;
-  font-weight:600;
-  color:#f0d878;
-  margin-bottom:6px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.bt-ref-close{
-  margin-left:auto;
-  background:none;border:none;
-  color:#f5f0e6;opacity:0.55;
-  font-size:16px;line-height:1;
-  cursor:pointer;
-  padding:2px 4px;
-  border-radius:3px;
-  transition:opacity 0.15s,background 0.15s;
-}
-.bt-ref-close:hover{opacity:1;background:rgba(255,255,255,0.08)}
-.bt-body{
-  font-size:14.5px;
-  line-height:1.78;
-  color:#f5f0e6;
-  word-break:keep-all;
-  overflow-wrap:break-word;
-  max-height:60vh;
-  overflow-y:auto;
-}
-.bt-body.loading{color:#a09080;font-style:italic}
-.bt-body.error{color:#e89a7c;font-style:italic;font-size:13.5px}
-.bt-verse-num{
-  display:inline-block;
-  font-family:'Cormorant Garamond',serif;
+.bible-tooltip.show{display:block;visibility:visible}
+.bible-tooltip-ref{
+  font-family:'Lora','Noto Serif KR',serif;
   font-style:italic;
-  font-size:0.9em;
-  color:#f0d878;
-  margin-right:4px;
   font-weight:600;
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  color:var(--accent);
+  text-transform:uppercase;
+  margin-bottom:8px;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--line-soft);
 }
-@media (max-width:560px){
-  .bible-tooltip{
-    max-width:calc(100vw - 16px);
-    font-size:14px;
-    padding:12px 14px 11px;
-  }
-  .bt-body{font-size:14px;max-height:55vh}
+.bible-tooltip-text{font-size:0.92rem;color:var(--ink-soft)}
+.bible-tooltip-verse{margin-bottom:4px}
+.bible-tooltip-verse:last-child{margin-bottom:0}
+.bible-tooltip-verse-num{
+  font-family:'Lora',serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:0.78rem;
+  color:var(--accent-soft);
+  margin-right:6px;
+  vertical-align:0.1em;
 }
-@media (hover:none) and (pointer:coarse){
-  .bible-ref{
-    background:rgba(139,30,43,0.05);
-    border-bottom:1px dashed var(--accent);
-  }
+.bible-tooltip-missing{color:var(--ink-mute);font-style:italic;font-size:0.85rem}
+@media (hover:none){
+  .bible-tooltip{pointer-events:auto;max-width:calc(100vw - 24px)}
+  .bible-tip{cursor:pointer;border-bottom-style:solid;border-bottom-width:0.5px}
+}
+@media (max-width:480px){
+  .bible-tooltip{max-width:calc(100vw - 24px);min-width:200px;font-size:13px;padding:12px 14px}
+  .bible-tooltip-text{font-size:0.88rem}
 }
 </style>
 </head>
@@ -1751,403 +1707,300 @@ function ttsUpdatePauseBtn() {
   btn.textContent = ttsIsPaused ? '▶ 계속' : '⏸ 일시정지';
 }
 
-// =====================================================================
-// Bible Reference Tooltip — getbibletext.py 로직을 브라우저에서 재현
-// 마우스 hover(데스크톱) / 터치(모바일)로 회복역 본문을 가져와 표시
-// =====================================================================
-const BIBLE_MAP = {
-  '창':[0,1],'창세기':[0,1],'출':[0,2],'출애굽기':[0,2],'레':[0,3],'레위기':[0,3],
-  '민':[0,4],'민수기':[0,4],'신':[0,5],'신명기':[0,5],'수':[0,6],'여호수아':[0,6],
-  '삿':[0,7],'사사기':[0,7],'룻':[0,8],'룻기':[0,8],
-  '삼상':[0,9],'사무엘상':[0,9],'삼하':[0,10],'사무엘하':[0,10],
-  '왕상':[0,11],'열왕기상':[0,11],'왕하':[0,12],'열왕기하':[0,12],
-  '대상':[0,13],'역대상':[0,13],'대하':[0,14],'역대하':[0,14],
-  '스':[0,15],'에스라':[0,15],'느':[0,16],'느헤미야':[0,16],
-  '에':[0,17],'에스더':[0,17],'욥':[0,18],'욥기':[0,18],
-  '시':[0,19],'시편':[0,19],'잠':[0,20],'잠언':[0,20],'전':[0,21],'전도서':[0,21],
-  '아':[0,22],'아가':[0,22],'사':[0,23],'이사야':[0,23],'렘':[0,24],'예레미야':[0,24],
-  '애':[0,25],'예레미야애가':[0,25],'겔':[0,26],'에스겔':[0,26],
-  '단':[0,27],'다니엘':[0,27],'호':[0,28],'호세아':[0,28],
-  '욜':[0,29],'요엘':[0,29],'암':[0,30],'아모스':[0,30],
-  '옵':[0,31],'오바댜':[0,31],'욘':[0,32],'요나':[0,32],
-  '미':[0,33],'미가':[0,33],'나':[0,34],'나훔':[0,34],
-  '합':[0,35],'하박국':[0,35],'습':[0,36],'스바냐':[0,36],
-  '학':[0,37],'학개':[0,37],'슥':[0,38],'스가랴':[0,38],
-  '말':[0,39],'말라기':[0,39],
-  '마':[1,1],'마태복음':[1,1],'막':[1,2],'마가복음':[1,2],
-  '눅':[1,3],'누가복음':[1,3],'요':[1,4],'요한복음':[1,4],
-  '행':[1,5],'사도행전':[1,5],'롬':[1,6],'로마서':[1,6],
-  '고전':[1,7],'고린도전서':[1,7],'고후':[1,8],'고린도후서':[1,8],
-  '갈':[1,9],'갈라디아서':[1,9],'엡':[1,10],'에베소서':[1,10],
-  '빌':[1,11],'빌립보서':[1,11],'골':[1,12],'골로새서':[1,12],
-  '살전':[1,13],'데살로니가전서':[1,13],'살후':[1,14],'데살로니가후서':[1,14],
-  '딤전':[1,15],'디모데전서':[1,15],'딤후':[1,16],'디모데후서':[1,16],
-  '딛':[1,17],'디도서':[1,17],'몬':[1,18],'빌레몬서':[1,18],
-  '히':[1,19],'히브리서':[1,19],'약':[1,20],'야고보서':[1,20],
-  '벧전':[1,21],'베드로전서':[1,21],'벧후':[1,22],'베드로후서':[1,22],
-  '요일':[1,23],'요한일서':[1,23],'요이':[1,24],'요한이서':[1,24],
-  '요삼':[1,25],'요한삼서':[1,25],'유':[1,26],'유다서':[1,26],'계':[1,27],'요한계시록':[1,27]
-};
-
-const SINGLE_CHAPTER_BOOKS = new Set(['옵','오바댜','몬','빌레몬서','요이','요한이서','요삼','요한삼서','유','유다서']);
-
-const BIBLE_HTML_CACHE = {};
-const BIBLE_VERSE_CACHE = {};
-const BIBLE_INFLIGHT = {};
-
-// CORS 프록시 — rv.or.kr이 HTTP-only이고 페이지가 HTTPS일 수 있으므로 우회 필요
-const CORS_PROXIES = [
-  url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-];
-
-async function bibleFetchChapterHTML(bibleVer, bibleSelOp, chapter){
-  const cacheKey = `${bibleVer}_${bibleSelOp}_${chapter}`;
-  if (BIBLE_HTML_CACHE[cacheKey]) return BIBLE_HTML_CACHE[cacheKey];
-  if (BIBLE_INFLIGHT[cacheKey]) return BIBLE_INFLIGHT[cacheKey];
-
-  const targetUrl = `http://rv.or.kr/read_recovery.php?bibleVer=${bibleVer}&bibOutline=&bibleSelOp=${bibleSelOp}&bibChapt=${chapter}`;
-
-  BIBLE_INFLIGHT[cacheKey] = (async () => {
-    // 1) 직접 fetch 시도 (브라우저 환경에서 mixed content면 실패할 수 있음)
-    try {
-      const resp = await fetch(targetUrl, {mode:'cors'});
-      if (resp.ok){
-        const html = await resp.text();
-        BIBLE_HTML_CACHE[cacheKey] = html;
-        return html;
-      }
-    } catch(e){ /* fall through */ }
-
-    // 2) CORS 프록시 순차 시도
-    for (const buildProxyUrl of CORS_PROXIES){
-      try {
-        const resp = await fetch(buildProxyUrl(targetUrl));
-        if (!resp.ok) continue;
-        const html = await resp.text();
-        if (html && html.length > 100){
-          BIBLE_HTML_CACHE[cacheKey] = html;
-          return html;
-        }
-      } catch(e){ /* 다음 프록시 */ }
-    }
-    return null;
-  })();
-
-  const html = await BIBLE_INFLIGHT[cacheKey];
-  delete BIBLE_INFLIGHT[cacheKey];
-  return html;
-}
-
-// HTML에서 한 절 텍스트 추출 — getbibletext.py의 extract_v 로직 재현
-function bibleExtractVerse(html, verse){
-  if (!html) return null;
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, 'text/html');
-  // <div class="num" id="{verse}"> 의 형제 <div class="text">에서 본문 추출
-  const numDiv = doc.querySelector(`div.num[id="${CSS.escape(String(verse))}"]`);
-  if (!numDiv || !numDiv.parentElement) return null;
-  const textDiv = numDiv.parentElement.querySelector('div.text');
-  if (!textDiv) return null;
-  const text = (textDiv.textContent || '').replace(/\s+/g,' ').trim();
-  return text || null;
-}
-
-async function bibleFetchVerse(book, chapter, verse){
-  const cacheKey = `${book}_${chapter}_${verse}`;
-  if (BIBLE_VERSE_CACHE[cacheKey] !== undefined) return BIBLE_VERSE_CACHE[cacheKey];
-  if (!BIBLE_MAP[book]) return null;
-  const [bv, bso] = BIBLE_MAP[book];
-  const html = await bibleFetchChapterHTML(bv, bso, chapter);
-  const text = bibleExtractVerse(html, verse);
-  BIBLE_VERSE_CACHE[cacheKey] = text;
-  return text;
-}
-
-async function bibleFetchVerseRange(book, chapter, startV, endV){
-  const verses = [];
-  for (let v = startV; v <= endV; v++){
-    const t = await bibleFetchVerse(book, chapter, v);
-    if (t) verses.push({n:v, text:t});
-  }
-  return verses;
-}
-
-// 텍스트 노드 순회: 성경 참조를 .bible-ref 로 자동 래핑
-const BIBLE_BOOK_KEYS = Object.keys(BIBLE_MAP).sort((a,b) => b.length - a.length);
-// 패턴: 책 + 공백 + (장:절[-끝]) | (책 + 공백 + 절(단일장책))
-const BIBLE_REF_REGEX = new RegExp(
-  `(${BIBLE_BOOK_KEYS.map(b => b.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')).join('|')})\\s+(\\d+)(?::(\\d+)(?:-(\\d+))?)?`,
-  'g'
-);
-
-const BIBLE_SKIP_TAGS = new Set(['SCRIPT','STYLE','NOSCRIPT','TEXTAREA','INPUT','BUTTON','A','CODE','PRE']);
-const BIBLE_SKIP_CLASSES = ['bible-ref','bible-tooltip','tv-popup','tv-word-card','tv-trans-row','tv-words-grid','sidepanel','topbar','tts-reader-modal','tts-reader-overlay'];
-
-function bibleShouldSkip(node){
-  let el = node.parentElement;
-  while (el){
-    if (BIBLE_SKIP_TAGS.has(el.tagName)) return true;
-    if (el.classList){
-      for (const cls of BIBLE_SKIP_CLASSES){
-        if (el.classList.contains(cls)) return true;
-      }
-    }
-    el = el.parentElement;
-  }
-  return false;
-}
-
-function bibleProcessTextNode(node){
-  const text = node.nodeValue;
-  if (!text || text.length < 3) return;
-  if (!BIBLE_REF_REGEX.test(text)) return;
-  BIBLE_REF_REGEX.lastIndex = 0;
-
-  const frag = document.createDocumentFragment();
-  let lastIdx = 0;
-  let m;
-  while ((m = BIBLE_REF_REGEX.exec(text)) !== null){
-    const [matched, book, n1, n2, n3] = m;
-    const isSingleChapter = SINGLE_CHAPTER_BOOKS.has(book);
-
-    let chapter, verseStart, verseEnd;
-    if (n2 !== undefined){
-      // book + chapter:verse[-end]
-      chapter = n1;
-      verseStart = n2;
-      verseEnd = n3 || null;
-    } else if (isSingleChapter){
-      // 유 20 → 장 1, 절 20
-      chapter = '1';
-      verseStart = n1;
-      verseEnd = null;
-    } else {
-      // book + 숫자(장만 명시) — 절 정보가 없어 정확한 본문을 알 수 없음 → 래핑 생략
-      continue;
-    }
-
-    if (m.index > lastIdx){
-      frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
-    }
-    const span = document.createElement('span');
-    span.className = 'bible-ref';
-    span.textContent = matched;
-    span.dataset.btBook = book;
-    span.dataset.btChapter = chapter;
-    span.dataset.btVerse = verseStart;
-    if (verseEnd) span.dataset.btVerseEnd = verseEnd;
-    span.setAttribute('role','button');
-    span.setAttribute('tabindex','0');
-    span.setAttribute('aria-label',`${matched} 본문 보기`);
-    frag.appendChild(span);
-
-    lastIdx = m.index + matched.length;
-  }
-  if (lastIdx < text.length){
-    frag.appendChild(document.createTextNode(text.slice(lastIdx)));
-  }
-  node.parentNode.replaceChild(frag, node);
-}
-
-function bibleWrapAllReferences(root){
-  if (!root) root = document.body;
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode(node){
-      if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-      if (bibleShouldSkip(node)) return NodeFilter.FILTER_REJECT;
-      return NodeFilter.FILTER_ACCEPT;
-    }
-  });
-  const nodes = [];
-  let n;
-  while ((n = walker.nextNode())) nodes.push(n);
-  for (const node of nodes) bibleProcessTextNode(node);
-}
-
-// ----- 툴팁 UI -----
+// ============================================================
+// Bible Verse Tooltips (Recovery Version XML)
+// ============================================================
+const BIBLE_XML_PATH = '../../recovery_bible_ko.xml';
+const BIBLE_BOOKS_KO = ['창','출','레','민','신','수','삿','룻','삼상','삼하','왕상','왕하','대상','대하','스','느','에','욥','시','잠','전','아','사','렘','애','겔','단','호','욜','암','옵','욘','미','나','합','습','학','슥','말','마','막','눅','요','행','롬','고전','고후','갈','엡','빌','골','살전','살후','딤전','딤후','딛','몬','히','약','벧전','벧후','요일','요이','요삼','유','계'];
+const BIBLE_SINGLE_CHAPTER = new Set(['옵','몬','요이','요삼','유']);
+let BIBLE_DATA = null;
 let bibleTooltipEl = null;
-let bibleActiveRef = null;
-let bibleHideTimer = null;
-const BIBLE_IS_TOUCH = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+let bibleActiveTip = null;
+let bibleLoadPromise = null;
 
-function bibleGetTooltip(){
+async function loadBibleXML() {
+  if (bibleLoadPromise) return bibleLoadPromise;
+  bibleLoadPromise = (async () => {
+    try {
+      const res = await fetch(BIBLE_XML_PATH);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const xml = new DOMParser().parseFromString(text, 'application/xml');
+      const data = {};
+      xml.querySelectorAll('Book').forEach(book => {
+        const abbrev = book.getAttribute('abbrevKo');
+        if (!abbrev) return;
+        const bk = data[abbrev] = {};
+        book.querySelectorAll('Chapter').forEach(chap => {
+          const cnum = chap.getAttribute('num');
+          const ch = bk[cnum] = {};
+          chap.querySelectorAll('Verse').forEach(v => {
+            ch[v.getAttribute('num')] = v.textContent;
+          });
+        });
+      });
+      BIBLE_DATA = data;
+      return true;
+    } catch (e) {
+      console.warn('[Bible] XML load failed:', e);
+      return false;
+    }
+  })();
+  return bibleLoadPromise;
+}
+
+function bibleLookup(book, chap, verseStart, verseEnd) {
+  if (!BIBLE_DATA) return null;
+  const bk = BIBLE_DATA[book];
+  if (!bk) return null;
+  const ch = bk[chap];
+  if (!ch) return null;
+  const list = [];
+  if (!verseEnd || verseStart === verseEnd) {
+    if (ch[verseStart]) list.push({ n: verseStart, t: ch[verseStart] });
+  } else {
+    const s = parseInt(verseStart, 10), e = parseInt(verseEnd, 10);
+    for (let i = s; i <= e; i++) {
+      if (ch[i]) list.push({ n: String(i), t: ch[i] });
+    }
+  }
+  return list.length ? list : null;
+}
+
+function ensureBibleTooltipEl() {
   if (bibleTooltipEl) return bibleTooltipEl;
   bibleTooltipEl = document.createElement('div');
   bibleTooltipEl.className = 'bible-tooltip';
-  bibleTooltipEl.innerHTML = '<div class="bt-ref"><span class="bt-ref-label"></span><button type="button" class="bt-ref-close" aria-label="닫기">✕</button></div><div class="bt-body loading">불러오는 중…</div>';
+  bibleTooltipEl.setAttribute('role', 'tooltip');
   document.body.appendChild(bibleTooltipEl);
-  bibleTooltipEl.querySelector('.bt-ref-close').addEventListener('click', e => {
-    e.stopPropagation();
-    bibleHideTooltip();
-  });
-  // hover 동안 툴팁 안에 들어와도 유지
-  bibleTooltipEl.addEventListener('mouseenter', () => {
-    if (bibleHideTimer) { clearTimeout(bibleHideTimer); bibleHideTimer = null; }
-  });
-  bibleTooltipEl.addEventListener('mouseleave', () => {
-    if (!BIBLE_IS_TOUCH) bibleHideTooltipDeferred();
-  });
   return bibleTooltipEl;
 }
 
-function biblePositionTooltip(refEl){
-  const tooltip = bibleGetTooltip();
-  const refRect = refEl.getBoundingClientRect();
-  // 먼저 표시해야 너비/높이를 측정할 수 있음
-  tooltip.style.top = '-9999px';
-  tooltip.style.left = '0';
-  tooltip.classList.add('show');
-  const tipRect = tooltip.getBoundingClientRect();
+function showBibleTooltip(trigger) {
+  const ref = trigger.getAttribute('data-bref');
+  const book = trigger.getAttribute('data-book');
+  const chap = trigger.getAttribute('data-chap');
+  const vs = trigger.getAttribute('data-vs');
+  const ve = trigger.getAttribute('data-ve');
+  const tip = ensureBibleTooltipEl();
 
-  const margin = 8;
-  let top = refRect.bottom + window.scrollY + margin;
-  let left = refRect.left + window.scrollX + (refRect.width / 2) - (tipRect.width / 2);
-  let arrow = 'top';
-
-  // 좌우 가둠
-  const minLeft = window.scrollX + margin;
-  const maxLeft = window.scrollX + window.innerWidth - tipRect.width - margin;
-  if (left < minLeft) left = minLeft;
-  if (left > maxLeft) left = maxLeft;
-
-  // 아래로 넘치면 위로
-  const willOverflowBottom = (refRect.bottom + tipRect.height + margin) > window.innerHeight;
-  if (willOverflowBottom){
-    top = refRect.top + window.scrollY - tipRect.height - margin;
-    arrow = 'bottom';
-  }
-
-  // 화살표 X 위치 — 참조 중심에 정렬
-  const arrowX = Math.max(14, Math.min(tipRect.width - 14, refRect.left + window.scrollX + (refRect.width/2) - left));
-  tooltip.style.setProperty('--bt-arrow-x', `${arrowX - 6}px`);
-  tooltip.dataset.arrow = arrow;
-  tooltip.style.top = top + 'px';
-  tooltip.style.left = left + 'px';
-}
-
-function bibleRenderVerses(verses, refLabel){
-  const tooltip = bibleGetTooltip();
-  const body = tooltip.querySelector('.bt-body');
-  body.classList.remove('loading','error');
-  if (!verses || verses.length === 0){
-    body.classList.add('error');
-    body.textContent = '본문을 불러올 수 없습니다. 잠시 후 다시 시도해 주세요.';
-    return;
-  }
-  body.innerHTML = verses.map(v =>
-    `<span class="bt-verse-num">${v.n}</span>${v.text.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}`
-  ).join(' ');
-}
-
-async function bibleShowTooltip(refEl){
-  if (bibleHideTimer){ clearTimeout(bibleHideTimer); bibleHideTimer = null; }
-
-  // 같은 참조에 다시 진입한 경우 스킵
-  if (bibleActiveRef === refEl && bibleTooltipEl && bibleTooltipEl.classList.contains('show')) return;
-
-  // 이전 활성화 제거
-  if (bibleActiveRef && bibleActiveRef !== refEl) bibleActiveRef.classList.remove('active');
-  bibleActiveRef = refEl;
-  refEl.classList.add('active');
-
-  const tooltip = bibleGetTooltip();
-  const refLabel = refEl.textContent;
-  tooltip.querySelector('.bt-ref-label').textContent = refLabel;
-  const body = tooltip.querySelector('.bt-body');
-  body.classList.add('loading');
-  body.classList.remove('error');
-  body.textContent = '불러오는 중…';
-  biblePositionTooltip(refEl);
-
-  const book = refEl.dataset.btBook;
-  const chapter = refEl.dataset.btChapter;
-  const vStart = parseInt(refEl.dataset.btVerse, 10);
-  const vEnd = refEl.dataset.btVerseEnd ? parseInt(refEl.dataset.btVerseEnd, 10) : null;
-
-  let verses;
-  if (vEnd && vEnd > vStart){
-    verses = await bibleFetchVerseRange(book, chapter, vStart, vEnd);
+  let bodyHtml;
+  if (!BIBLE_DATA) {
+    bodyHtml = '<div class="bible-tooltip-missing">성경 본문을 불러오는 중...</div>';
   } else {
-    const single = await bibleFetchVerse(book, chapter, vStart);
-    verses = single ? [{n: vStart, text: single}] : [];
-  }
-
-  // 사용자가 다른 참조로 이동했으면 결과 무시
-  if (bibleActiveRef !== refEl) return;
-  bibleRenderVerses(verses, refLabel);
-  // 본문 길이가 변했으니 위치 재조정
-  biblePositionTooltip(refEl);
-}
-
-function bibleHideTooltip(){
-  const tooltip = bibleGetTooltip();
-  tooltip.classList.remove('show');
-  if (bibleActiveRef){ bibleActiveRef.classList.remove('active'); bibleActiveRef = null; }
-}
-
-function bibleHideTooltipDeferred(){
-  if (bibleHideTimer) clearTimeout(bibleHideTimer);
-  bibleHideTimer = setTimeout(bibleHideTooltip, 220);
-}
-
-// 이벤트 위임 — 동적으로 추가된 .bible-ref도 자동 처리
-document.addEventListener('mouseover', e => {
-  if (BIBLE_IS_TOUCH) return;
-  const ref = e.target.closest && e.target.closest('.bible-ref');
-  if (!ref) return;
-  bibleShowTooltip(ref);
-});
-document.addEventListener('mouseout', e => {
-  if (BIBLE_IS_TOUCH) return;
-  const ref = e.target.closest && e.target.closest('.bible-ref');
-  if (!ref) return;
-  // 툴팁으로 이동하는 경우 유지
-  const to = e.relatedTarget;
-  if (to && (to.closest && (to.closest('.bible-ref') === ref || to.closest('.bible-tooltip')))) return;
-  bibleHideTooltipDeferred();
-});
-document.addEventListener('click', e => {
-  const ref = e.target.closest && e.target.closest('.bible-ref');
-  if (ref){
-    e.preventDefault();
-    e.stopPropagation();
-    if (bibleActiveRef === ref && bibleTooltipEl && bibleTooltipEl.classList.contains('show')){
-      bibleHideTooltip();
+    const verses = bibleLookup(book, chap, vs, ve);
+    if (!verses) {
+      bodyHtml = '<div class="bible-tooltip-missing">본문을 찾을 수 없습니다.</div>';
     } else {
-      bibleShowTooltip(ref);
+      bodyHtml = '<div class="bible-tooltip-text">' +
+        verses.map(v => '<div class="bible-tooltip-verse"><span class="bible-tooltip-verse-num">' + v.n + '</span>' + v.t + '</div>').join('') +
+        '</div>';
     }
-    return;
   }
-  // 툴팁 외부 클릭 시 닫기
-  if (bibleTooltipEl && bibleTooltipEl.classList.contains('show')){
-    if (!e.target.closest('.bible-tooltip')) bibleHideTooltip();
-  }
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && bibleTooltipEl && bibleTooltipEl.classList.contains('show')) bibleHideTooltip();
-  if ((e.key === 'Enter' || e.key === ' ') && document.activeElement && document.activeElement.classList.contains('bible-ref')){
-    e.preventDefault();
-    bibleShowTooltip(document.activeElement);
-  }
-});
-window.addEventListener('scroll', () => {
-  if (bibleActiveRef && bibleTooltipEl && bibleTooltipEl.classList.contains('show')){
-    biblePositionTooltip(bibleActiveRef);
-  }
-}, {passive:true});
-window.addEventListener('resize', () => {
-  if (bibleActiveRef && bibleTooltipEl && bibleTooltipEl.classList.contains('show')){
-    biblePositionTooltip(bibleActiveRef);
-  }
-});
+  tip.innerHTML = '<div class="bible-tooltip-ref">' + ref + '</div>' + bodyHtml;
+  tip.style.visibility = 'hidden';
+  tip.style.left = '0px';
+  tip.style.top = '0px';
+  tip.classList.add('show');
 
-// 페이지 로드 후 모든 성경 참조를 자동 래핑
-if (document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', () => bibleWrapAllReferences());
-} else {
-  bibleWrapAllReferences();
+  const rect = trigger.getBoundingClientRect();
+  const tr = tip.getBoundingClientRect();
+  const margin = 12;
+  let left = rect.left;
+  let top = rect.bottom + 8;
+  if (left + tr.width > window.innerWidth - margin) left = window.innerWidth - tr.width - margin;
+  if (left < margin) left = margin;
+  if (top + tr.height > window.innerHeight - margin) {
+    const above = rect.top - tr.height - 8;
+    if (above >= margin) top = above;
+    else top = Math.max(margin, window.innerHeight - tr.height - margin);
+  }
+  tip.style.left = left + 'px';
+  tip.style.top = top + 'px';
+  tip.style.visibility = 'visible';
 }
+
+function hideBibleTooltip() {
+  if (bibleTooltipEl) bibleTooltipEl.classList.remove('show');
+  bibleActiveTip = null;
+}
+
+function attachBibleTooltips(root) {
+  if (!root) return;
+  const keys = [...BIBLE_BOOKS_KO].sort((a, b) => b.length - a.length);
+  const pattern = new RegExp(
+    '(' + keys.join('|') + ')\\s+(?:(\\d+):)?(\\d+)(?:-(\\d+))?' +
+    '|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?' +
+    '|(?:,\\s*)(\\d+)(?:-(\\d+))?',
+    'g'
+  );
+
+  const SKIP_SELECTOR = '.bible-tip,.twc-gk,.twc-pr,.tv-trans-row.gk,.tv-popup-greek,.gw-gk,.gw-pr,.verse-ref,script,style';
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const p = node.parentElement;
+      if (!p) return NodeFilter.FILTER_REJECT;
+      if (p.closest(SKIP_SELECTOR)) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  const nodes = [];
+  let n;
+  while ((n = walker.nextNode())) nodes.push(n);
+
+  nodes.forEach(node => {
+    const text = node.nodeValue;
+    pattern.lastIndex = 0;
+    if (!pattern.test(text)) return;
+    pattern.lastIndex = 0;
+
+    let lastBook = null, lastChapter = null;
+    let lastIdx = 0;
+    let match;
+    let inserted = false;
+    const frag = document.createDocumentFragment();
+
+    while ((match = pattern.exec(text)) !== null) {
+      const full = match[0];
+      const book = match[1];
+      let chap = match[2];
+      const verse = match[3];
+      const endVerse = match[4];
+      const c2 = match[5], v2 = match[6], ev2 = match[7];
+      const v3 = match[8], ev3 = match[9];
+
+      let bk, ch, vs, ve, display, leadingComma = '';
+
+      if (book) {
+        if (chap === undefined) {
+          if (!BIBLE_SINGLE_CHAPTER.has(book)) continue;
+          chap = '1';
+        }
+        bk = book; ch = chap; vs = verse; ve = endVerse;
+        lastBook = book; lastChapter = chap;
+        display = full;
+      } else if (v2) {
+        if (!lastBook) continue;
+        bk = lastBook; ch = c2; vs = v2; ve = ev2;
+        lastChapter = c2;
+        const m = full.match(/^,\s*/);
+        leadingComma = m ? m[0] : '';
+        display = full.slice(leadingComma.length);
+      } else if (v3) {
+        if (!lastBook || !lastChapter) continue;
+        bk = lastBook; ch = lastChapter; vs = v3; ve = ev3;
+        const m = full.match(/^,\s*/);
+        leadingComma = m ? m[0] : '';
+        display = full.slice(leadingComma.length);
+      } else {
+        continue;
+      }
+
+      const prefix = text.slice(lastIdx, match.index) + leadingComma;
+      if (prefix) frag.appendChild(document.createTextNode(prefix));
+
+      const span = document.createElement('span');
+      span.className = 'bible-tip';
+      span.setAttribute('tabindex', '0');
+      span.setAttribute('role', 'button');
+      span.setAttribute('aria-label', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : '') + ' 본문 보기');
+      span.setAttribute('data-bref', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : ''));
+      span.setAttribute('data-book', bk);
+      span.setAttribute('data-chap', ch);
+      span.setAttribute('data-vs', vs);
+      if (ve) span.setAttribute('data-ve', ve);
+      span.textContent = display;
+      frag.appendChild(span);
+
+      lastIdx = match.index + full.length;
+      inserted = true;
+    }
+
+    if (!inserted) return;
+    if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+    node.parentNode.replaceChild(frag, node);
+  });
+}
+
+function initBibleTooltips() {
+  const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (hasHover) {
+    document.body.addEventListener('mouseover', e => {
+      const t = e.target.closest('.bible-tip');
+      if (t) showBibleTooltip(t);
+    });
+    document.body.addEventListener('mouseout', e => {
+      const t = e.target.closest('.bible-tip');
+      if (!t) return;
+      const next = e.relatedTarget;
+      if (next && next.closest && next.closest('.bible-tip') === t) return;
+      hideBibleTooltip();
+    });
+    document.body.addEventListener('focusin', e => {
+      const t = e.target.closest('.bible-tip');
+      if (t) showBibleTooltip(t);
+    });
+    document.body.addEventListener('focusout', e => {
+      const t = e.target.closest('.bible-tip');
+      if (t) hideBibleTooltip();
+    });
+  }
+
+  // Click/tap toggle (works on both touch and as keyboard activation)
+  document.body.addEventListener('click', e => {
+    const t = e.target.closest('.bible-tip');
+    if (t) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (bibleActiveTip === t) {
+        hideBibleTooltip();
+      } else {
+        showBibleTooltip(t);
+        bibleActiveTip = t;
+      }
+      return;
+    }
+    if (e.target.closest('.bible-tooltip')) return;
+    hideBibleTooltip();
+  });
+
+  document.body.addEventListener('keydown', e => {
+    const t = e.target.closest && e.target.closest('.bible-tip');
+    if (t && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      if (bibleActiveTip === t) hideBibleTooltip();
+      else { showBibleTooltip(t); bibleActiveTip = t; }
+    } else if (e.key === 'Escape') {
+      hideBibleTooltip();
+    }
+  });
+
+  let scrollTimer = null;
+  window.addEventListener('scroll', () => {
+    if (!bibleTooltipEl || !bibleTooltipEl.classList.contains('show')) return;
+    hideBibleTooltip();
+  }, { passive: true });
+
+  window.addEventListener('resize', () => hideBibleTooltip());
+}
+
+(function bootstrapBibleTooltips() {
+  const start = () => {
+    const root = document.getElementById('main-content') || document.body;
+    initBibleTooltips();
+    attachBibleTooltips(root);
+    loadBibleXML();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
 </script>
 </body>
 </html>
