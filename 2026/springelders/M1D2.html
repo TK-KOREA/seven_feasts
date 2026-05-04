@@ -147,11 +147,24 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .quiz-feedback.show{display:block}
 .quiz-feedback.correct-fb{background:var(--paper-verse);color:var(--accent);border-left:2px solid var(--accent)}
 .quiz-feedback.wrong-fb{background:var(--paper-card);color:var(--ink-soft);border-left:2px solid var(--ink-mute)}
-.quiz-result{display:none;margin-top:20px;padding:26px;background:var(--paper);border:1px solid var(--line);border-radius:3px;text-align:center}
-.quiz-result.show{display:block}
+.quiz-result{display:none;margin-top:20px;padding:30px 26px 26px;background:var(--paper);border:1px solid var(--line);border-radius:3px;text-align:center}
+.quiz-result.show{display:block;animation:quizFadeIn .35s ease both}
 .quiz-score-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
-.quiz-score{font-family:'Noto Serif KR',serif;font-size:2.2rem;font-weight:900;color:var(--accent);letter-spacing:-0.02em}
-.quiz-result-msg{font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);margin-top:10px;line-height:1.75}
+.quiz-score{font-family:'Noto Serif KR',serif;font-size:2.4rem;font-weight:900;color:var(--accent);letter-spacing:-0.02em;line-height:1.1}
+.quiz-score-pct{display:block;margin-top:4px;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;color:var(--ink-mute)}
+.quiz-result-msg{font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);margin-top:14px;line-height:1.75}
+.quiz-progress-bar{height:3px;background:var(--line-soft);border-radius:2px;overflow:hidden;margin:0 0 22px}
+.quiz-progress-fill{height:100%;width:20%;background:linear-gradient(90deg,var(--accent-soft),var(--accent));border-radius:2px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+.quiz-item.active{animation:quizFadeIn .28s ease both}
+@keyframes quizFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.quiz-opt.correct,.quiz-opt.wrong{position:relative}
+.quiz-opt.correct::after{content:'✓';margin-left:auto;flex-shrink:0;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;color:var(--accent);align-self:center}
+.quiz-opt.wrong::after{content:'✗';margin-left:auto;flex-shrink:0;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;color:var(--ink-mute);align-self:center}
+.quiz-warn{display:none;margin-top:14px;padding:11px 14px;background:var(--paper-verse);color:var(--accent);border:1px solid var(--accent-soft);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0.04em;line-height:1.5;text-align:center}
+.quiz-warn.show{display:block;animation:quizWarnShake .42s cubic-bezier(.36,.07,.19,.97)}
+@keyframes quizWarnShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.quiz-restart-btn{margin-top:20px;padding:11px 26px;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.quiz-restart-btn:hover{background:var(--accent);color:var(--paper)}
 .prayer-section{margin:64px 0 40px;padding:36px 28px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;position:relative}
 .prayer-heading{font-family:'Noto Serif KR',serif;font-size:1.55rem;font-weight:900;color:var(--ink);letter-spacing:-0.025em;margin-bottom:24px;line-height:1.45;padding-bottom:20px;border-bottom:1px solid var(--line)}
 .prayer-callbox{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-bottom:26px;font-family:'Noto Serif KR',serif;font-size:15.5px;line-height:1.95;color:var(--ink);text-align:center;letter-spacing:-0.005em}
@@ -307,11 +320,8 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 .tts-btn.primary:hover:not(:disabled){background:#6e1622}
 @media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
 
-/* Bible verse tooltip — Ink Note theme (CSS-positioned, zoom-safe) */
+/* Bible verse tooltip — Ink Note theme (body-level fixed, escapes ancestor overflow) */
 .bible-tip{
-  position:relative;
-  display:inline-block;
-  vertical-align:baseline;
   border-bottom:1px dotted #A98545;
   cursor:help;
   color:inherit;
@@ -325,10 +335,10 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   outline:none;
 }
 .bible-tooltip{
-  position:absolute;
-  top:calc(100% + 4px);
+  position:fixed;
+  top:0;
   left:0;
-  z-index:9998;
+  z-index:9999;
   background:linear-gradient(180deg,#1d1610 0%,#15100a 100%);
   border:1px solid #2a2218;
   box-shadow:
@@ -347,12 +357,11 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   white-space:normal;
   cursor:default;
   display:none;
+  visibility:hidden;
 }
-.bible-tip:hover > .bible-tooltip,
-.bible-tip:focus > .bible-tooltip,
-.bible-tip:focus-within > .bible-tooltip,
 .bible-tooltip.show{
   display:block;
+  visibility:visible;
 }
 .bible-tooltip::before{
   content:'';
@@ -368,14 +377,6 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   inset:6px;
   border:1px solid rgba(169,133,69,0.12);
   pointer-events:none;
-}
-.bible-tooltip.align-right{
-  left:auto;
-  right:0;
-}
-.bible-tooltip.align-above{
-  top:auto;
-  bottom:calc(100% + 4px);
 }
 .bible-tooltip-ref{
   position:relative;
@@ -1067,6 +1068,7 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
   <!-- QUIZ -->
   <section class="quiz-section" id="quiz-section">
     <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto;color:var(--ink-mute);font-weight:500;">1 / 5</span></div>
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
     <div id="quiz-container">
       <div class="quiz-item" data-index="0" data-correct="3">
         <div class="quiz-q"><div class="quiz-badge">1</div><div class="quiz-q-text">약 5:17에서 엘리야가 '간절히 기도하니'라는 표현의 헬라어 직역 의미는 무엇입니까?</div></div>
@@ -1119,14 +1121,16 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
         <div class="quiz-feedback"></div>
       </div>
     </div>
+    <div class="quiz-warn" id="quiz-warn">먼저 답을 선택해 주세요.</div>
     <div class="quiz-nav" id="quiz-nav" style="display:flex;gap:10px;margin-top:20px;">
       <button class="quiz-nav-btn" id="quiz-prev-btn" onclick="navQuiz(-1)" style="flex:1;">이전</button>
       <button class="quiz-nav-btn primary" id="quiz-next-btn" onclick="navQuiz(1)" style="flex:2;">다음 퀴즈</button>
     </div>
     <div class="quiz-result" id="quizResult">
       <div class="quiz-score-label">최종 점수</div>
-      <div class="quiz-score" id="quizScore">0 / 5</div>
+      <div class="quiz-score" id="quizScore">0 / 5<span class="quiz-score-pct" id="quizScorePct"></span></div>
       <div class="quiz-result-msg" id="quizMsg"></div>
+      <button class="quiz-restart-btn" id="quizRestartBtn" onclick="restartQuiz()">다시 풀기</button>
     </div>
   </section>
 
@@ -1323,71 +1327,217 @@ function toggleAcc(header) {
   }
 }
 
-function selectOpt(el) {
-  const item = el.closest('.quiz-item');
-  if (item.classList.contains('answered')) return;
-  item.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
+// ============================================================
+// Quiz — full state machine with validation and retry
+// ============================================================
+const QUIZ_STATE = {
+  currentIdx: 0,
+  total: 0,
+  selections: [],   // per-question: selected option index, -1 if none
+  submitted: false,
+};
+let _quizWarnTimer = null;
+
+function quizItems() { return document.querySelectorAll('.quiz-item'); }
+
+function initQuiz() {
+  const items = quizItems();
+  QUIZ_STATE.total = items.length;
+  QUIZ_STATE.selections = new Array(items.length).fill(-1);
+  QUIZ_STATE.currentIdx = 0;
+  QUIZ_STATE.submitted = false;
+
+  items.forEach(item => {
+    item.classList.remove('active', 'reviewed', 'answered');
+    item.querySelectorAll('.quiz-opt').forEach(o => {
+      o.classList.remove('selected', 'correct', 'wrong');
+    });
+    const fb = item.querySelector('.quiz-feedback');
+    if (fb) { fb.className = 'quiz-feedback'; fb.textContent = ''; }
+  });
+  if (items[0]) items[0].classList.add('active');
+
+  const nav = document.getElementById('quiz-nav');
+  if (nav) nav.style.display = 'flex';
+  const result = document.getElementById('quizResult');
+  if (result) result.classList.remove('show');
+  hideQuizWarn();
+
+  updateQuizNav();
 }
 
-let currentQuizIdx = 0;
-const totalQuizzes = 5;
+function selectOpt(el) {
+  if (QUIZ_STATE.submitted) return;
+  const item = el.closest('.quiz-item');
+  if (!item) return;
+  const idx = parseInt(item.dataset.index, 10);
+  if (isNaN(idx)) return;
+  const opts = item.querySelectorAll('.quiz-opt');
+  let selectedIdx = -1;
+  opts.forEach((o, i) => {
+    o.classList.remove('selected');
+    if (o === el) { o.classList.add('selected'); selectedIdx = i; }
+  });
+  QUIZ_STATE.selections[idx] = selectedIdx;
+  hideQuizWarn();
+}
 
 function navQuiz(dir) {
-  const items = document.querySelectorAll('.quiz-item');
-  items[currentQuizIdx].classList.remove('active');
-  currentQuizIdx += dir;
-  if (currentQuizIdx < 0) currentQuizIdx = 0;
-  if (currentQuizIdx >= totalQuizzes) { currentQuizIdx = totalQuizzes - 1; submitQuiz(); return; }
-  items[currentQuizIdx].classList.add('active');
+  if (QUIZ_STATE.submitted) return;
+  const items = quizItems();
+  if (!items.length) return;
+
+  if (dir > 0) {
+    // require selection before advancing
+    if (QUIZ_STATE.selections[QUIZ_STATE.currentIdx] < 0) {
+      showQuizWarn();
+      return;
+    }
+  }
+
+  items[QUIZ_STATE.currentIdx].classList.remove('active');
+  let nextIdx = QUIZ_STATE.currentIdx + dir;
+
+  if (nextIdx < 0) nextIdx = 0;
+  if (nextIdx >= QUIZ_STATE.total) {
+    submitQuiz();
+    return;
+  }
+
+  QUIZ_STATE.currentIdx = nextIdx;
+  items[nextIdx].classList.add('active');
   updateQuizNav();
 }
 
 function updateQuizNav() {
-  document.getElementById('quiz-progress').textContent = (currentQuizIdx + 1) + ' / ' + totalQuizzes;
-  document.getElementById('quiz-prev-btn').disabled = currentQuizIdx === 0;
-  document.getElementById('quiz-next-btn').textContent = currentQuizIdx === totalQuizzes - 1 ? '결과 확인하기' : '다음 퀴즈';
+  const total = QUIZ_STATE.total || quizItems().length;
+  const cur = QUIZ_STATE.currentIdx;
+
+  const progressEl = document.getElementById('quiz-progress');
+  if (progressEl) progressEl.textContent = (cur + 1) + ' / ' + total;
+
+  const prevBtn = document.getElementById('quiz-prev-btn');
+  if (prevBtn) prevBtn.disabled = cur === 0;
+
+  const nextBtn = document.getElementById('quiz-next-btn');
+  if (nextBtn) nextBtn.textContent = cur === total - 1 ? '결과 확인하기' : '다음 퀴즈';
+
+  const fill = document.getElementById('quiz-progress-fill');
+  if (fill) {
+    const pct = total > 0 ? ((cur + 1) / total) * 100 : 0;
+    fill.style.width = pct + '%';
+  }
+}
+
+function showQuizWarn() {
+  const el = document.getElementById('quiz-warn');
+  if (!el) return;
+  // restart animation
+  el.classList.remove('show');
+  void el.offsetWidth;
+  el.classList.add('show');
+  clearTimeout(_quizWarnTimer);
+  _quizWarnTimer = setTimeout(() => el.classList.remove('show'), 2400);
+}
+
+function hideQuizWarn() {
+  const el = document.getElementById('quiz-warn');
+  if (el) el.classList.remove('show');
+  clearTimeout(_quizWarnTimer);
 }
 
 function submitQuiz() {
+  const items = quizItems();
   let score = 0;
-  const items = document.querySelectorAll('.quiz-item');
-  items.forEach(item => {
-    item.classList.add('reviewed', 'answered');
-    item.classList.remove('active');
-    const correct = parseInt(item.dataset.correct) - 1;
-    const opts = item.querySelectorAll('.quiz-opt');
-    const fb = item.querySelector('.quiz-feedback');
-    let selectedIdx = -1;
-    opts.forEach((o, i) => { if (o.classList.contains('selected')) selectedIdx = i; });
-    if (selectedIdx === correct) {
-      score++;
-      opts[selectedIdx].classList.add('correct');
-      fb.className = 'quiz-feedback show correct-fb';
-      fb.textContent = '✓ 정답입니다';
-    } else {
-      if (selectedIdx >= 0) opts[selectedIdx].classList.add('wrong');
-      opts[correct].classList.add('correct');
-      fb.className = 'quiz-feedback show wrong-fb';
-      fb.textContent = '정답은 ' + ['A','B','C','D'][correct] + '입니다';
+
+  items.forEach((item, idx) => {
+    try {
+      item.classList.add('reviewed', 'answered');
+      item.classList.remove('active');
+
+      const correct = parseInt(item.dataset.correct, 10);
+      const opts = item.querySelectorAll('.quiz-opt');
+      const fb = item.querySelector('.quiz-feedback');
+      const selectedIdx = QUIZ_STATE.selections[idx];
+      const validCorrect = !isNaN(correct) && correct >= 0 && correct < opts.length;
+
+      // mark the correct option
+      if (validCorrect) opts[correct].classList.add('correct');
+
+      if (validCorrect && selectedIdx === correct) {
+        score++;
+        if (fb) {
+          fb.className = 'quiz-feedback show correct-fb';
+          fb.textContent = '✓ 정답입니다';
+        }
+      } else {
+        if (selectedIdx >= 0 && selectedIdx < opts.length && selectedIdx !== correct) {
+          opts[selectedIdx].classList.add('wrong');
+        }
+        if (fb) {
+          fb.className = 'quiz-feedback show wrong-fb';
+          if (!validCorrect) {
+            fb.textContent = '채점 오류 · 데이터를 확인해 주세요.';
+          } else if (selectedIdx < 0) {
+            fb.textContent = '미응답 · 정답은 ' + 'ABCD'[correct] + '입니다';
+          } else {
+            fb.textContent = '정답은 ' + 'ABCD'[correct] + '입니다';
+          }
+        }
+      }
+    } catch (err) {
+      // never let one item break the rest
+      console.warn('[Quiz] item ' + idx + ' processing failed:', err);
     }
   });
-  document.getElementById('quiz-nav').style.display = 'none';
-  document.getElementById('quiz-progress').textContent = '결과';
-  document.getElementById('quizScore').textContent = score + ' / ' + totalQuizzes;
+
+  QUIZ_STATE.submitted = true;
+  hideQuizWarn();
+
+  const nav = document.getElementById('quiz-nav');
+  if (nav) nav.style.display = 'none';
+
+  const total = QUIZ_STATE.total;
+  const progressEl = document.getElementById('quiz-progress');
+  if (progressEl) progressEl.textContent = '결과';
+
+  const fill = document.getElementById('quiz-progress-fill');
+  if (fill) fill.style.width = '100%';
+
+  const scoreEl = document.getElementById('quizScore');
+  if (scoreEl) {
+    const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+    scoreEl.innerHTML = score + ' / ' + total +
+      '<span class="quiz-score-pct" id="quizScorePct">' + pct + '%</span>';
+  }
+
   const msgEl = document.getElementById('quizMsg');
-  if (score === 10) msgEl.textContent = '완벽합니다! 한 알의 밀의 비유, 원형 그리스도와 많은 하나님-사람들의 재생산, 두 본성의 한 실체, 그리고 십자가의 발자취를 정확히 숙지하셨습니다.';
-  else if (score >= 7) msgEl.textContent = '훌륭합니다! 개요 Ⅳ의 핵심 요점들을 잘 이해하고 계십니다.';
-  else msgEl.textContent = '다시 한번 요 12:24의 한 알의 비유와 개요 Ⅳ.A-E (하나님-사람의 정의·출생·두 본성·절대성·새 창조물)를 묵상해 보시길 권해드립니다.';
-  document.getElementById('quizResult').classList.add('show');
-  document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (msgEl) {
+    if (total > 0 && score === total) {
+      msgEl.textContent = '완벽합니다 — 동족여격(προσευχῇ προσηύξατο), 두 그리스도(앤드루 머리), 하나님께서 시작하시는 기도, 두 영의 연합, 그리고 양편의 통과까지 정확히 파악하셨습니다.';
+    } else if (score >= total - 1) {
+      msgEl.textContent = '훌륭합니다 — 진정한 기도가 영 하나님과 연합된 양편의 기도임을 잘 이해하셨습니다.';
+    } else if (score >= Math.ceil(total / 2)) {
+      msgEl.textContent = '핵심은 파악하셨습니다. 약 5:17 엘리야의 기도와 롬 8:26 그 영의 중보기도를 다시 한번 음미해 보시길.';
+    } else {
+      msgEl.textContent = '지문을 다시 읽으며 — 양편의 기도, 두 영의 교통, 그리고 표준에 도달한 기도의 통과의 느낌을 묵상해 보시길 권해드립니다.';
+    }
+  }
+
+  const result = document.getElementById('quizResult');
+  if (result) {
+    result.classList.add('show');
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function restartQuiz() {
+  initQuiz();
   const firstQuiz = document.querySelector('.quiz-item');
-  if (firstQuiz) firstQuiz.classList.add('active');
-  if (typeof updateQuizNav === 'function') updateQuizNav();
-});
+  if (firstQuiz) firstQuiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.addEventListener('DOMContentLoaded', initQuiz);
 
 // ============================================================
 // TTS Reader
@@ -1837,7 +1987,9 @@ function ensureBibleTooltipEl() {
   bibleTooltipEl = document.createElement('div');
   bibleTooltipEl.className = 'bible-tooltip';
   bibleTooltipEl.setAttribute('role', 'tooltip');
-  // Tooltip element will be moved into the active trigger on show.
+  // Append directly to body so the tooltip escapes any ancestor overflow
+  // (e.g., .accordion / .accordion-body / .sub-point) that would clip it.
+  document.body.appendChild(bibleTooltipEl);
   return bibleTooltipEl;
 }
 
@@ -1848,13 +2000,9 @@ function showBibleTooltip(trigger) {
   const vs = trigger.getAttribute('data-vs');
   const ve = trigger.getAttribute('data-ve');
   const tip = ensureBibleTooltipEl();
-
-  // Move tooltip into the trigger so CSS-relative positioning naturally
-  // shares the same zoom context. This avoids any coordinate math that
-  // breaks when CSS `zoom` is applied to ancestors.
-  if (tip.parentNode !== trigger) {
-    trigger.appendChild(tip);
-  }
+  // Make sure tooltip lives in body (not stuck in a previous trigger from
+  // an earlier code path).
+  if (tip.parentNode !== document.body) document.body.appendChild(tip);
 
   let bodyHtml;
   if (!BIBLE_DATA) {
@@ -1871,20 +2019,58 @@ function showBibleTooltip(trigger) {
   }
   tip.innerHTML = '<div class="bible-tooltip-ref">' + ref + '</div>' + bodyHtml;
 
-  // Reset alignment classes, then make visible.
-  tip.classList.remove('align-right', 'align-above');
+  // Show with hidden visibility for measurement.
+  tip.style.visibility = 'hidden';
   tip.classList.add('show');
 
-  // Detect overflow against viewport and flip alignment if needed.
+  // Calibrate the relationship between style.left/top and the actual visual
+  // viewport position. This makes positioning robust against any CSS `zoom`
+  // semantics on ancestors that might shift the coordinate system.
+  tip.style.left = '0px';
+  tip.style.top = '0px';
+  const probe0 = tip.getBoundingClientRect();
+  tip.style.left = '100px';
+  tip.style.top = '100px';
+  const probe100 = tip.getBoundingClientRect();
+  const fx = (probe100.left - probe0.left) / 100 || 1;
+  const fy = (probe100.top - probe0.top) / 100 || 1;
+  // visual = probe0.left + style.left * fx
+  // → style.left = (visual - probe0.left) / fx
+
+  // Reset to measure tooltip's natural visual size.
+  tip.style.left = '0px';
+  tip.style.top = '0px';
   const tr = tip.getBoundingClientRect();
+  const tipW = tr.width;
+  const tipH = tr.height;
+
+  const triggerRect = trigger.getBoundingClientRect();
   const margin = 8;
-  if (tr.right > window.innerWidth - margin) tip.classList.add('align-right');
-  if (tr.bottom > window.innerHeight - margin) tip.classList.add('align-above');
+  const gap = 4;
+
+  // All viewport-space (visual) math.
+  let visualLeft = triggerRect.left;
+  let visualTop = triggerRect.bottom + gap;
+  if (visualLeft + tipW > window.innerWidth - margin) {
+    visualLeft = window.innerWidth - tipW - margin;
+  }
+  if (visualLeft < margin) visualLeft = margin;
+  if (visualTop + tipH > window.innerHeight - margin) {
+    const above = triggerRect.top - tipH - gap;
+    if (above >= margin) visualTop = above;
+    else visualTop = Math.max(margin, window.innerHeight - tipH - margin);
+  }
+
+  const styleLeft = (visualLeft - probe0.left) / fx;
+  const styleTop  = (visualTop  - probe0.top ) / fy;
+  tip.style.left = styleLeft + 'px';
+  tip.style.top = styleTop + 'px';
+  tip.style.visibility = 'visible';
 }
 
 function hideBibleTooltip() {
   if (bibleTooltipEl) {
-    bibleTooltipEl.classList.remove('show', 'align-right', 'align-above');
+    bibleTooltipEl.classList.remove('show');
   }
   bibleActiveTip = null;
 }
@@ -1992,9 +2178,9 @@ function attachBibleTooltips(root) {
 function initBibleTooltips() {
   const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // Helper: locate the trigger from an event target. Because the tooltip is
-  // now a descendant of the active trigger, we must first check whether the
-  // target is inside the tooltip (in which case we ignore the trigger).
+  // Helper: only treat events on .bible-tip as trigger events. Events that
+  // originate inside the tooltip itself are ignored (the tooltip lives in
+  // body so users can interact with its text without firing trigger logic).
   const triggerOf = (target) => {
     if (!target || !target.closest) return null;
     if (target.closest('.bible-tooltip')) return null;
@@ -2009,8 +2195,8 @@ function initBibleTooltips() {
     document.body.addEventListener('mouseout', e => {
       const t = triggerOf(e.target);
       if (!t) return;
-      // Don't hide if the mouse is moving onto the tooltip (which is now a
-      // descendant of this trigger) or onto the same trigger from another part.
+      // Don't hide while the mouse is still on this trigger or has moved onto
+      // the tooltip (so the user can read longer verses without it vanishing).
       const next = e.relatedTarget;
       if (next && next.closest) {
         if (next.closest('.bible-tooltip')) return;
