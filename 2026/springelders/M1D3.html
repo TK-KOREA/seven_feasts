@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>권위의 기도 — 이 산을 향하여 말하는 믿음</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Gowun+Batang:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--base-font-size:17px;--font-scale:1;--paper:#f5f0e6;--paper-card:#faf6ec;--paper-verse:#f0e8d4;--ink:#1a1410;--ink-soft:#4a3f36;--ink-mute:#8a7b6c;--line:#d9cfbc;--line-soft:#e8dfce;--accent:#8b1e2b;--accent-soft:#b84452;--marker:#f0d878;--topbar-h:48px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:var(--base-font-size);scroll-behavior:smooth;scroll-padding-top:60px}
+.container,.sidepanel,.word-modal-overlay{zoom:var(--font-scale)}
+body{font-family:'Noto Serif KR','Gowun Batang',serif;background:var(--paper);color:var(--ink);line-height:1.9;letter-spacing:-0.01em;padding-top:var(--topbar-h);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse at top left,rgba(139,30,43,0.025) 0%,transparent 50%),radial-gradient(ellipse at bottom right,rgba(74,63,54,0.02) 0%,transparent 50%);pointer-events:none;z-index:0}
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(245,240,230,0.92);backdrop-filter:saturate(140%) blur(8px);-webkit-backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+.topbar-btn{flex-shrink:0;width:36px;height:36px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);transition:background .15s}
+.topbar-btn:hover{background:var(--line-soft)}
+.topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--ink-soft);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px}
+.topbar-title::-webkit-scrollbar{display:none}
+.font-controls{flex-shrink:0;display:flex;align-items:center;gap:2px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;padding:2px}
+.font-ctrl-btn{width:30px;height:30px;border:none;background:none;border-radius:3px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;color:var(--ink-soft);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.font-ctrl-btn:hover{background:var(--line-soft)}
+.overlay{position:fixed;inset:0;background:rgba(26,20,16,0.35);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:var(--paper);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 28px rgba(26,20,16,.12);font-family:'Noto Sans KR',sans-serif}
+.sidepanel.open{transform:translateX(0)}
+.sidepanel-header{padding:0 22px 16px;border-bottom:1px solid var(--line);margin-bottom:12px;font-size:12px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+.sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--ink-mute);display:flex;align-items:center;justify-content:center}
+.sidepanel-close:hover{background:var(--line-soft);color:var(--ink)}
+.nav-item{display:block;padding:10px 22px;font-size:13px;color:var(--ink-soft);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:500;letter-spacing:-0.005em}
+.nav-item:hover{background:var(--paper-card);color:var(--ink)}
+.nav-item.sub{padding-left:38px;font-size:12.5px;font-weight:400;color:var(--ink-mute)}
+.nav-divider{height:1px;background:var(--line);margin:10px 22px}
+.nav-home{display:flex;align-items:center;gap:10px;color:var(--accent);font-weight:600;letter-spacing:0.005em}
+.nav-home:hover{background:var(--paper-card);color:var(--accent)}
+.nav-home-icon{flex-shrink:0;color:var(--accent)}
+.keyword-tag{display:inline-block;padding:4px 12px;margin:3px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:3px;font-size:12px;color:var(--ink-soft);cursor:pointer;transition:all .2s;font-weight:500}
+.keyword-tag:hover,.keyword-tag.active{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.keyword-def{display:none;padding:12px 22px 14px 38px;font-size:12.5px;color:var(--ink-soft);line-height:1.75;background:var(--paper-card);border-left:2px solid var(--accent);margin:4px 22px;border-radius:0 3px 3px 0;font-family:'Noto Serif KR',serif}
+.keyword-def.show{display:block}
+.container{max-width:680px;margin:0 auto;padding:40px 22px 80px;position:relative;z-index:1}
+.hero{text-align:left;padding:8px 0 4px;border-bottom:1px solid var(--line);margin-bottom:40px;padding-bottom:40px}
+.hero-badge{display:inline-block;color:var(--ink-mute);font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:20px}
+.hero-badge::before{content:'— ';color:var(--accent);font-weight:700}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:900;line-height:1.4;color:var(--ink);letter-spacing:-0.025em;margin-bottom:22px}
+.hero h1 .highlight-word{background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 3px}
+.hero-sub{font-family:'Noto Serif KR',serif;font-size:16px;color:var(--ink-soft);font-weight:400;line-height:1.85;padding-left:18px;border-left:2px solid var(--line)}
+.dashboard{margin:40px 0;padding:28px 26px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.dashboard-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.core-message{border-left:3px solid var(--accent);padding:6px 0 6px 22px;margin:0 0 28px;font-family:'Gowun Batang','Noto Serif KR',serif;font-size:17px;font-weight:400;font-style:italic;color:var(--ink-soft);line-height:1.8;letter-spacing:-0.01em}
+.core-message strong{color:var(--ink);font-weight:700;font-style:normal;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 2px}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 24px}
+.dash-card{padding:0;background:transparent;border:none;text-align:left;display:block}
+.dash-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px}
+.dash-value{font-family:'Noto Serif KR',serif;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.55;letter-spacing:-0.01em}
+.flow-section{margin:56px 0}
+.flow-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.flow-steps{position:relative;padding-left:32px}
+.flow-steps::before{content:'';position:absolute;left:11px;top:14px;bottom:14px;width:1px;background:var(--line)}
+.flow-step{position:relative;padding:4px 0 22px}
+.flow-step:last-child{padding-bottom:0}
+.flow-dot{position:absolute;left:-32px;top:4px;width:22px;height:22px;border-radius:50%;background:var(--paper);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:11px;color:var(--accent);font-weight:700;z-index:1}
+.flow-step-label{font-family:'Noto Serif KR',serif;font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-0.015em;line-height:1.5}
+.flow-step-desc{font-family:'Noto Serif KR',serif;font-size:14px;color:var(--ink-soft);line-height:1.75}
+.keywords-section{margin:48px 0;padding:26px 24px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.keywords-section-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.kw-container{display:flex;flex-wrap:wrap;gap:8px}
+.kw-chip{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--paper);border:1px solid var(--line);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all .2s}
+.kw-chip:hover,.kw-chip.active{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.kw-tooltip{display:none;margin-top:14px;padding:16px 18px;background:var(--paper-verse);border-radius:3px;border-left:2px solid var(--accent);font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.kw-tooltip.show{display:block}
+.accordion-group{margin:48px 0}
+.accordion-group-title{font-family:'Noto Serif KR',serif;font-size:1.4rem;font-weight:800;color:var(--ink);margin:64px 0 28px;padding-bottom:20px;border-bottom:1px solid var(--line);display:block;letter-spacing:-0.025em;line-height:1.4;position:relative}
+.accordion-group-title::before{content:'CORE';display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;color:var(--accent);margin-bottom:10px}
+.accordion{margin-bottom:14px;border-radius:4px;overflow:hidden;background:var(--paper-card);border:1px solid var(--line-soft);transition:border-color .25s}
+.accordion:hover,.accordion.open{border-color:var(--line)}
+.accordion-header{display:flex;align-items:flex-start;gap:18px;padding:22px 24px;background:transparent;cursor:pointer;user-select:none;transition:background .2s}
+.accordion-header:hover{background:rgba(139,30,43,0.025)}
+.acc-number{flex-shrink:0;color:var(--accent);font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;letter-spacing:0.18em;padding-top:4px;min-width:36px;display:block;text-align:left;text-transform:uppercase}
+.acc-title-text{flex:1;font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.5;letter-spacing:-0.018em}
+.acc-chevron{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;transition:transform .3s;color:var(--ink-mute);font-size:11px;padding-top:4px}
+.accordion.open .acc-chevron{transform:rotate(180deg);color:var(--accent)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.accordion-content{padding:22px 24px 26px 78px;border-top:1px dashed var(--line)}
+.verse-block{position:relative;padding:22px 24px 22px 26px;background:var(--paper-verse);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;margin:22px 0}
+.verse-block::before{content:'"';position:absolute;top:-10px;left:18px;font-family:'Noto Serif KR',serif;font-size:3rem;color:var(--accent);opacity:0.28;line-height:1;font-weight:900}
+.verse-ref{display:flex;align-items:center;gap:6px;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.verse-text{font-family:'Noto Serif KR',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.85;letter-spacing:-0.01em}
+.verse-text b{color:var(--ink);font-weight:700}
+.verse-text + .verse-text{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.content-text{font-family:'Noto Serif KR',serif;font-size:17px;color:var(--ink);line-height:1.9;margin-bottom:20px;letter-spacing:-0.01em}
+.content-text:last-child{margin-bottom:0}
+.accordion-content > .content-text:first-child::first-letter{font-family:'Noto Serif KR',serif;font-size:3.4em;font-weight:900;float:left;line-height:0.88;margin:8px 8px -4px 0;color:var(--accent)}
+.hl{background:linear-gradient(180deg,transparent 55%,var(--marker) 55%,var(--marker) 92%,transparent 92%);padding:0 2px}
+.sub-point{padding:18px 22px;border-left:2px solid var(--ink-mute);margin:22px 0}
+.sub-point-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sub-point-text{font-family:'Noto Serif KR',serif;font-size:15.5px;color:var(--ink-soft);line-height:1.85;letter-spacing:-0.01em}
+.sub-point-text strong{color:var(--ink);font-weight:700}
+.section-connector{text-align:center;padding:14px 0;color:var(--line);font-size:14px;letter-spacing:0.4em}
+.step-header{display:block;padding:0 0 22px !important;border-bottom:1px solid var(--line) !important;font-family:'Noto Serif KR',serif !important;font-size:1.5rem !important;font-weight:800 !important;letter-spacing:-0.02em !important;line-height:1.4 !important;margin:72px 0 28px !important;position:relative;color:var(--ink)}
+.step-header::before{content:attr(data-kicker);display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.step-connector{margin:28px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);font-family:'Gowun Batang',serif;font-size:1.1rem;font-style:italic;color:var(--ink-soft);text-align:left;line-height:1.75}
+.step-connector strong{color:var(--ink);font-weight:700;font-style:normal}
+.three-answers{display:grid;grid-template-columns:1fr;gap:12px;margin:22px 0}
+.three-answer{background:var(--paper);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;padding:16px 18px;display:flex;align-items:flex-start;gap:14px}
+.three-answer-num{flex-shrink:0;width:30px;height:30px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:13px;color:var(--accent);font-weight:700}
+.three-answer-body{flex:1}
+.three-answer-q{font-family:'Noto Sans KR',sans-serif;font-size:11px;color:var(--ink-mute);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+.three-answer-a{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:800;color:var(--accent);margin-bottom:4px;letter-spacing:-0.01em}
+.three-answer-a .hanja{font-family:'Noto Serif KR',serif;font-weight:700;color:var(--ink);margin-right:8px;letter-spacing:0.05em}
+.three-answer-desc{font-family:'Noto Serif KR',serif;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+.recap-section{margin:56px 0;padding:32px 26px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px}
+.recap-title{font-family:'Noto Serif KR',serif;font-size:1.3rem;font-weight:800;color:var(--ink);margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line);letter-spacing:-0.02em;display:block;position:relative}
+.recap-title::before{content:'REVIEW';display:block;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.3em;color:var(--accent);margin-bottom:8px}
+.recap-subtitle{font-family:'Noto Serif KR',serif;font-size:15.5px !important;font-weight:700 !important;color:var(--ink) !important;margin-bottom:10px;letter-spacing:-0.01em;line-height:1.55}
+.recap-subtitle.small{font-family:'Gowun Batang',serif !important;font-size:13px !important;font-weight:400 !important;color:var(--ink-soft) !important;font-style:italic;margin-bottom:14px;line-height:1.7}
+.recap-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.recap-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--paper);border-radius:3px;border:1px solid var(--line-soft);font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.75;letter-spacing:-0.01em}
+.recap-num{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:transparent;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:12px;font-weight:700}
+.recap-item.green .recap-num{border-color:var(--ink-soft);color:var(--ink-soft)}
+.recap-item.purple .recap-num{border-color:var(--ink-mute);color:var(--ink-mute)}
+.recap-item-text{flex:1;color:var(--ink-soft)}
+.recap-item-text strong{color:var(--ink);font-weight:700}
+.recap-anchor{margin:32px 0 12px;padding-top:20px;border-top:1px dashed var(--line)}
+.recap-anchor:first-of-type{padding-top:0;border-top:none;margin-top:4px}
+.recap-note{margin-top:22px;padding:18px 20px;background:var(--paper);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;font-family:'Gowun Batang',serif;font-size:14.5px;font-style:italic;line-height:1.8;color:var(--ink-soft)}
+.recap-note strong{color:var(--ink);font-weight:700;font-style:normal}
+.quiz-section{margin:64px 0 40px;padding:28px 24px 30px;background:var(--paper-card);border-radius:4px;border:1px solid var(--line-soft)}
+.quiz-title{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.quiz-item{display:none;margin-bottom:22px;padding:20px;background:var(--paper);border-radius:3px;border:1px solid var(--line-soft)}
+.quiz-item.active,.quiz-item.reviewed{display:block}
+.quiz-q{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.quiz-badge{flex-shrink:0;width:28px;height:28px;color:var(--accent);border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:700}
+.quiz-q-text{font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.55;padding-top:2px;letter-spacing:-0.015em}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:3px;cursor:pointer;transition:all .2s;font-family:'Noto Serif KR',serif;font-size:15px;color:var(--ink-soft);line-height:1.6;letter-spacing:-0.01em}
+.quiz-opt:hover{border-color:var(--accent-soft);background:var(--paper)}
+.quiz-opt.selected{border-color:var(--accent);background:var(--paper);color:var(--ink)}
+.quiz-opt.correct{border-color:var(--accent);background:var(--paper-verse);color:var(--ink)}
+.quiz-opt.wrong{border-color:var(--line);background:var(--paper-card);color:var(--ink-mute);text-decoration:line-through}
+.quiz-opt-marker{flex-shrink:0;width:22px;height:22px;border:1px solid var(--line);background:var(--paper);color:var(--ink-mute);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;transition:all .2s;margin-top:2px}
+.quiz-opt.selected .quiz-opt-marker{border-color:var(--accent);color:var(--accent);background:var(--paper)}
+.quiz-opt.correct .quiz-opt-marker{border-color:var(--accent);background:var(--accent);color:var(--paper)}
+.quiz-nav-btn{padding:14px;background:var(--paper-card);color:var(--ink-soft);border:1px solid var(--line);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;cursor:pointer;transition:all .2s}
+.quiz-nav-btn:hover:not(:disabled){background:var(--line-soft)}
+.quiz-nav-btn:disabled{opacity:0.5;cursor:not-allowed}
+.quiz-nav-btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.quiz-nav-btn.primary:hover:not(:disabled){background:#6e1622}
+.quiz-feedback{display:none;margin-top:10px;padding:11px 14px;border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0.04em;line-height:1.6}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct-fb{background:var(--paper-verse);color:var(--accent);border-left:2px solid var(--accent)}
+.quiz-feedback.wrong-fb{background:var(--paper-card);color:var(--ink-soft);border-left:2px solid var(--ink-mute)}
+.quiz-result{display:none;margin-top:20px;padding:30px 26px 26px;background:var(--paper);border:1px solid var(--line);border-radius:3px;text-align:center}
+.quiz-result.show{display:block;animation:quizFadeIn .35s ease both}
+.quiz-score-label{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
+.quiz-score{font-family:'Noto Serif KR',serif;font-size:2.4rem;font-weight:900;color:var(--accent);letter-spacing:-0.02em;line-height:1.1}
+.quiz-score-pct{display:block;margin-top:4px;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.22em;color:var(--ink-mute)}
+.quiz-result-msg{font-family:'Noto Serif KR',serif;font-size:14.5px;color:var(--ink-soft);margin-top:14px;line-height:1.75}
+.quiz-progress-bar{height:3px;background:var(--line-soft);border-radius:2px;overflow:hidden;margin:0 0 22px}
+.quiz-progress-fill{height:100%;width:20%;background:linear-gradient(90deg,var(--accent-soft),var(--accent));border-radius:2px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+.quiz-item.active{animation:quizFadeIn .28s ease both}
+@keyframes quizFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.quiz-opt.correct,.quiz-opt.wrong{position:relative}
+.quiz-opt.correct::after{content:'✓';margin-left:auto;flex-shrink:0;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;color:var(--accent);align-self:center}
+.quiz-opt.wrong::after{content:'✗';margin-left:auto;flex-shrink:0;font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;color:var(--ink-mute);align-self:center}
+.quiz-warn{display:none;margin-top:14px;padding:11px 14px;background:var(--paper-verse);color:var(--accent);border:1px solid var(--accent-soft);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:0.04em;line-height:1.5;text-align:center}
+.quiz-warn.show{display:block;animation:quizWarnShake .42s cubic-bezier(.36,.07,.19,.97)}
+@keyframes quizWarnShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.quiz-restart-btn{margin-top:20px;padding:11px 26px;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:3px;font-family:'Noto Sans KR',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.quiz-restart-btn:hover{background:var(--accent);color:var(--paper)}
+.prayer-section{margin:64px 0 40px;padding:36px 28px;background:var(--paper-card);border:1px solid var(--line-soft);border-radius:4px;position:relative}
+.prayer-heading{font-family:'Noto Serif KR',serif;font-size:1.55rem;font-weight:900;color:var(--ink);letter-spacing:-0.025em;margin-bottom:24px;line-height:1.45;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.prayer-callbox{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:22px 24px;margin-bottom:26px;font-family:'Noto Serif KR',serif;font-size:15.5px;line-height:1.95;color:var(--ink);text-align:center;letter-spacing:-0.005em}
+.prayer-callbox p{margin:0}
+.prayer-callbox p + p{margin-top:12px;padding-top:14px;border-top:1px dashed var(--line)}
+.prayer-callbox .cb-house{color:var(--accent);font-weight:800;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 92%,transparent 92%);padding:0 3px}
+.prayer-amen-box{background:var(--paper-verse);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;padding:20px 22px;font-family:'Gowun Batang',serif;font-size:15px;color:var(--ink);line-height:1.9;font-weight:500}
+.prayer-amen-box p{margin-bottom:14px;font-style:italic}
+.prayer-amen-box p:last-of-type{margin-bottom:0}
+.prayer-amen-box strong{color:var(--accent);font-weight:700;font-style:normal}
+.prayer-amen-sig{text-align:right;font-family:'Noto Sans KR',sans-serif;font-weight:700;color:var(--accent);letter-spacing:0.32em;font-size:12px;font-style:normal;margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
+.footer-note{text-align:center;padding:40px 16px 16px;font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-mute);letter-spacing:0.22em;text-transform:uppercase;border-top:1px solid var(--line);margin-top:56px}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeInUp .5s ease forwards}
+@media (max-width:480px){.container{padding:24px 6px 60px}.hero h1{font-size:1.55rem}.accordion-content{padding:18px 10px 20px 10px}.dash-grid{grid-template-columns:1fr;gap:20px}}
+.todays-verse-section{margin:30px 0 40px 0;padding:34px 22px 28px 22px;background:linear-gradient(180deg,#fbf6ea 0%,#f5ecd8 100%);border:1px solid var(--line);border-radius:6px;box-shadow:0 2px 14px rgba(74,63,54,0.06);position:relative}
+.todays-verse-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-soft) 50%,var(--accent) 100%);border-radius:6px 6px 0 0}
+.tv-header{text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px dashed var(--line)}
+.tv-kicker{display:inline-block;font-family:'Lora',serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px;padding:4px 14px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,0.5)}
+.tv-ref{font-family:'Noto Serif KR',serif;font-size:1.7rem;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2}
+.tv-ref-en{font-family:'Lora',serif;font-size:0.82rem;color:var(--ink-mute);font-style:italic;margin-top:4px;letter-spacing:0.02em}
+.tv-greek-sentence{padding:26px 20px 22px 20px;background:rgba(255,255,255,0.85);border:1px solid var(--line);border-radius:5px;margin-bottom:18px}
+.tv-greek-title{font-family:'Lora',serif;font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:16px;font-weight:700;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.tv-greek-line{display:flex;flex-wrap:wrap;gap:4px 2px;align-items:flex-end;justify-content:center;padding:8px 0;line-height:1.2}
+.tv-greek-line + .tv-greek-line{border-top:1px dashed var(--line-soft);margin-top:4px;padding-top:14px}
+.tv-word{display:flex;flex-direction:column;align-items:center;padding:3px 5px;border-radius:3px;gap:2px;min-width:24px;transition:background 0.15s,transform 0.15s}
+.tv-word .w-gk{font-family:'Lora',serif;font-size:1.1rem;color:var(--ink);font-weight:500;line-height:1.15;white-space:nowrap}
+.tv-word .w-pr{font-size:0.66rem;color:var(--ink-mute);font-style:italic;line-height:1.15;letter-spacing:0.01em}
+.tv-word.key{cursor:pointer;background:rgba(139,30,43,0.06);border-bottom:2px solid var(--accent);padding:3px 7px 2px 7px;margin:0 1px;position:relative}
+.tv-word.key:hover{background:rgba(139,30,43,0.16);transform:translateY(-2px)}
+.tv-word.key .w-gk{color:var(--accent);font-weight:700}
+.tv-word.key .w-pr{color:var(--accent);font-weight:500;opacity:0.85}
+.tv-word.key::before{content:'';position:absolute;top:2px;right:3px;width:4px;height:4px;background:var(--accent);border-radius:50%;opacity:0.9}
+.tv-word.func .w-gk{color:var(--ink-mute);font-style:italic;font-weight:400;font-size:1rem}
+.tv-word.func .w-pr{opacity:0.55}
+.tv-punct{display:inline-flex;align-items:flex-end;padding-bottom:3px;font-family:'Lora',serif;color:var(--ink-soft);font-size:1.05rem;font-weight:500;margin:0 1px}
+.tv-trans-compact{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.tv-trans-row{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:baseline;padding:10px 14px;background:rgba(255,255,255,0.7);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:3px}
+.tv-trans-row.en{border-left-color:#6b7a8f}
+.tv-trans-row.gk{border-left-color:#8b1e2b;background:rgba(245,236,216,0.55)}
+.tv-trans-tag{font-family:'Lora',serif;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:#fbf6ea;background:var(--accent);padding:2px 0;border-radius:2px;font-weight:700;text-align:center;line-height:1.3}
+.tv-trans-row.en .tv-trans-tag{background:#6b7a8f}
+.tv-trans-row.gk .tv-trans-tag{background:#8b1e2b}
+.tv-trans-text{font-size:0.94rem;line-height:1.7;color:var(--ink)}
+.tv-trans-row.en .tv-trans-text{font-family:'Lora',serif;font-style:italic;font-size:0.9rem;color:var(--ink-soft)}
+.tv-trans-row.gk{align-items:start;padding:12px 14px}
+.tv-trans-row.gk .tv-trans-text{font-family:'Lora',serif;font-size:0.95rem;color:var(--ink);line-height:1.4;letter-spacing:0.005em;font-weight:500;display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px 2px;padding:2px 0}
+.tv-gk-word{display:inline-flex;flex-direction:column;align-items:center;padding:0 2px;line-height:1.18;gap:2px}
+.tv-gk-word .gw-gk{font-family:'Lora',serif;font-size:0.95rem;color:var(--ink);font-weight:500;white-space:nowrap}
+.tv-gk-word .gw-pr{font-family:'Noto Sans KR',sans-serif;font-size:0.62rem;color:var(--ink-mute);letter-spacing:0.01em;font-weight:400;line-height:1.1}
+.tv-gk-word.hl .gw-gk{color:var(--accent);font-weight:700}
+.tv-gk-word.hl .gw-pr{color:var(--accent);font-weight:600}
+.tv-gk-punct{display:inline-flex;align-items:flex-end;padding-bottom:11px;font-family:'Lora',serif;color:var(--ink-soft);font-weight:500;margin:0 1px;font-size:0.95rem}
+.tv-trans-text b{color:var(--accent);font-weight:700}
+.tv-legend{display:flex;gap:14px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;font-size:0.78rem}
+.tv-legend-item{display:inline-flex;align-items:center;gap:5px;color:var(--ink-soft)}
+.tv-legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.tv-legend-dot.key{background:var(--accent)}
+.tv-legend-dot.func{background:var(--ink-mute)}
+.tv-summary{margin-top:24px;padding:20px 22px;background:var(--accent);color:#fbf6ea;border-radius:4px;position:relative}
+.tv-summary::before{content:'∴';position:absolute;top:-14px;left:20px;width:30px;height:30px;background:#fbf6ea;color:var(--accent);border:1px solid var(--accent);border-radius:50%;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif}
+.tv-summary-title{font-family:'Noto Serif KR',serif;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;opacity:0.7;margin-bottom:8px;font-weight:600}
+.tv-summary-text{font-size:0.94rem;line-height:1.8;color:#fbf6ea}
+.tv-summary-text b{color:#ffd878;font-weight:700}
+.tv-popup-overlay{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:2000;align-items:center;justify-content:center;padding:20px;animation:tvOverlayIn 0.2s ease-out}
+.tv-popup-overlay.active{display:flex}
+@keyframes tvOverlayIn{from{opacity:0}to{opacity:1}}
+.tv-popup{background:var(--paper-card);border-radius:6px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 18px 50px rgba(0,0,0,0.35);border:1px solid var(--line);border-top:4px solid var(--accent);animation:tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);position:relative}
+@keyframes tvPopIn{from{opacity:0;transform:translateY(16px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.tv-popup-close{position:absolute;top:10px;right:10px;width:32px;height:32px;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s,color 0.15s,border-color 0.15s;z-index:2}
+.tv-popup-close:hover{background:var(--accent);color:#fbf6ea;border-color:var(--accent)}
+.tv-popup-header{padding:24px 28px 16px 28px;border-bottom:1px dashed var(--line)}
+.tv-popup-kicker{font-family:'Lora',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+.tv-popup-meaning{font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.35}
+.tv-popup-greek{font-family:'Lora',serif;font-size:0.98rem;color:var(--ink-soft);font-style:italic;margin-top:4px}
+.tv-popup-body{padding:18px 22px 24px 22px;display:flex;flex-direction:column;gap:12px}
+.tv-popup-word{padding:14px 16px;background:rgba(255,255,255,0.7);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:3px}
+.tv-popup-word-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.tv-popup-word-gk{font-family:'Lora',serif;font-size:1.22rem;color:var(--accent);font-weight:600;line-height:1.1}
+.tv-popup-word-pron{font-size:0.84rem;color:var(--ink-soft);font-style:italic}
+.tv-popup-word-strong{font-size:0.65rem;color:var(--ink-mute);font-family:'Lora',serif;letter-spacing:0.04em;margin-left:auto}
+.tv-popup-word-meaning{font-size:0.95rem;color:var(--ink);font-weight:600;line-height:1.6;margin:6px 0}
+.tv-popup-word-meaning em{font-style:italic;color:var(--ink-soft);font-weight:400;font-size:0.85rem}
+.tv-popup-word-note{font-size:0.85rem;color:var(--ink-soft);line-height:1.7;padding-top:6px;border-top:1px dashed var(--line)}
+.tv-popup-word-note b{color:var(--accent);font-weight:600}
+@media (max-width:720px){.todays-verse-section{padding:24px 10px 22px 10px}.tv-ref{font-size:1.4rem}.tv-greek-sentence{padding:20px 10px 16px 10px}.tv-word .w-gk{font-size:1rem}.tv-word .w-pr{font-size:0.62rem}.tv-word.func .w-gk{font-size:0.9rem}.tv-summary{padding:16px}.tv-summary-text{font-size:0.88rem}}
+.tv-words-section{margin-top:26px;padding-top:24px;border-top:1px dashed var(--line)}
+.tv-words-title{display:flex;flex-direction:column;align-items:center;gap:5px;margin-bottom:18px;text-align:center}
+.tv-words-title-en{font-family:'Lora',serif;font-size:0.66rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);font-weight:700;padding:3px 12px;border:1px solid var(--accent);border-radius:999px;background:rgba(255,255,255,0.5)}
+.tv-words-title-kr{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-0.005em;margin-top:6px}
+.tv-words-title-note{font-family:'Noto Sans KR',sans-serif;font-size:0.72rem;color:var(--ink-mute);font-style:italic;margin-top:1px;line-height:1.5;max-width:380px}
+.tv-words-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:9px}
+.tv-word-card{background:rgba(255,255,255,0.86);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;padding:13px 13px 11px;cursor:pointer;transition:transform 0.18s ease,box-shadow 0.18s ease,border-left-color 0.18s ease,background 0.18s ease;display:flex;flex-direction:column;gap:1px;text-align:left;font-family:inherit;width:100%;position:relative}
+.tv-word-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(74,63,54,0.13);background:rgba(255,255,255,1);border-left-width:4px}
+.tv-word-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tv-word-card .twc-gk{font-family:'Lora',serif;font-size:1.12rem;color:var(--accent);font-weight:700;line-height:1.25;letter-spacing:0.005em;word-break:break-word}
+.tv-word-card .twc-pr{font-family:'Lora',serif;font-size:0.74rem;color:var(--ink-mute);font-style:italic;letter-spacing:0.04em;line-height:1.2;margin-top:1px}
+.tv-word-card .twc-divider{border-bottom:1px dashed var(--line);margin:8px 0 7px}
+.tv-word-card .twc-kr{font-family:'Noto Serif KR',serif;font-size:0.92rem;color:var(--ink);font-weight:700;line-height:1.5;word-break:keep-all;letter-spacing:-0.01em}
+.tv-word-card .twc-en{font-family:'Lora',serif;font-size:0.76rem;color:var(--ink-soft);font-style:italic;line-height:1.4;letter-spacing:0.01em;margin-top:2px}
+.tv-word-card .twc-meta{display:flex;justify-content:space-between;align-items:center;margin-top:9px;padding-top:7px;border-top:1px dotted var(--line-soft);gap:6px}
+.tv-word-card .twc-strong{font-family:'Lora',serif;font-size:0.6rem;color:var(--ink-mute);letter-spacing:0.04em;flex:1;line-height:1.2}
+.tv-word-card .twc-cta{font-family:'Noto Sans KR',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.tv-word-card.cat-vocative{border-left-color:#a64d2e}
+.tv-word-card.cat-noun{border-left-color:#5a6e3d}
+.tv-word-card.cat-aor{border-left-color:#7a5238}
+.tv-word-card.cat-fut{border-left-color:#3d6e8e}
+.tv-word-card.cat-perf{border-left-color:#6e3d6e}
+.tv-word-card.cat-adj{border-left-color:#8b1e2b}
+.tv-word-card.cat-adv{border-left-color:#7a6e3d}
+.tv-popup-recov{margin:10px 0 4px;padding:10px 14px;background:rgba(245,236,216,0.5);border:1px solid var(--line-soft);border-radius:3px;display:flex;flex-direction:column;gap:3px}
+.tv-popup-recov-label{font-family:'Noto Sans KR',sans-serif;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.tv-popup-recov-kr{font-family:'Noto Serif KR',serif;font-size:0.92rem;color:var(--ink);font-weight:700;line-height:1.55;letter-spacing:-0.005em}
+.tv-popup-recov-en{font-family:'Lora',serif;font-size:0.78rem;color:var(--ink-soft);font-style:italic;line-height:1.45}
+@media (max-width:560px){.tv-words-grid{grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:7px}.tv-word-card{padding:11px 11px 9px}.tv-word-card .twc-gk{font-size:1rem}.tv-word-card .twc-kr{font-size:0.86rem}}
+.tts-reader-overlay{display:none;position:fixed;inset:0;background:rgba(26,20,16,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:2000;align-items:center;justify-content:center;padding:20px;animation:tvOverlayIn 0.2s ease-out}
+.tts-reader-overlay.active{display:flex}
+.tts-reader-modal{background:var(--paper-card);border-radius:6px;max-width:520px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 18px 50px rgba(0,0,0,0.35);border:1px solid var(--line);border-top:4px solid var(--accent);animation:tvPopIn 0.22s cubic-bezier(.2,.9,.3,1.2);font-family:'Noto Sans KR',sans-serif}
+.tts-reader-header{padding:18px 22px 14px;border-bottom:1px dashed var(--line);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tts-reader-icon{flex-shrink:0;color:var(--accent)}
+.tts-reader-title{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:700;color:var(--ink);flex:1}
+.tts-reader-close{width:30px;height:30px;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px}
+.tts-reader-close:hover{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.tts-reader-body{padding:14px 22px;overflow-y:auto;flex:1}
+.tts-form-label{font-size:10.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;margin-top:14px;display:block}
+.tts-form-label:first-child{margin-top:0}
+.tts-voice-select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
+.tts-api-row{display:flex;gap:8px;align-items:center}
+.tts-api-row input{flex:1;padding:9px 11px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:12px;background:var(--paper);color:var(--ink)}
+.tts-api-row button{padding:9px 14px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer}
+.tts-api-row button:hover{background:#6e1622}
+.tts-section-list{border:1px solid var(--line-soft);border-radius:4px;background:var(--paper);max-height:240px;overflow-y:auto}
+.tts-section-item{display:flex;align-items:flex-start;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--line-soft);font-size:13px;color:var(--ink-soft);transition:background 0.15s}
+.tts-section-item:last-child{border-bottom:none}
+.tts-section-item:hover{background:var(--paper-card)}
+.tts-section-item.all{font-weight:700;color:var(--ink);background:var(--paper-card)}
+.tts-section-item.playing{background:var(--paper-verse);color:var(--accent);font-weight:600}
+.tts-section-checkbox{flex-shrink:0;width:15px;height:15px;margin-top:2px;accent-color:var(--accent);cursor:pointer}
+.tts-section-label{flex:1;line-height:1.45}
+.tts-progress{margin-top:14px;padding:12px 14px;background:var(--paper);border:1px solid var(--line-soft);border-radius:4px;display:none}
+.tts-progress.active{display:block}
+.tts-progress-bar{height:6px;background:var(--line-soft);border-radius:3px;overflow:hidden}
+.tts-progress-fill{height:100%;background:var(--accent);width:0%;transition:width 0.3s}
+.tts-progress-text{font-size:12px;color:var(--ink-soft);margin-top:8px;line-height:1.5}
+.tts-progress-text strong{color:var(--ink)}
+.tts-status{font-size:11.5px;color:var(--ink-mute);margin-top:10px;font-style:italic;line-height:1.5}
+.tts-status.error{color:var(--accent);font-style:normal;font-weight:600}
+.tts-reader-footer{padding:14px 22px 18px;border-top:1px solid var(--line);display:flex;gap:10px;flex-shrink:0}
+.tts-btn{flex:1;padding:11px 16px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:4px;font-family:'Noto Sans KR',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.06em;cursor:pointer;transition:all 0.15s}
+.tts-btn:hover:not(:disabled){background:var(--line-soft)}
+.tts-btn:disabled{opacity:0.45;cursor:not-allowed}
+.tts-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tts-btn.primary:hover:not(:disabled){background:#6e1622}
+@media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
+
+/* Bible verse tooltip — Ink Note theme (body-level fixed, escapes ancestor overflow) */
+.bible-tip{
+  border-bottom:1px dotted #A98545;
+  cursor:help;
+  color:inherit;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color 0.18s ease,background 0.18s ease;
+}
+.bible-tip:hover,.bible-tip:focus{
+  color:#7a4a14;
+  background:rgba(169,133,69,0.08);
+  outline:none;
+}
+.bible-tooltip{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9999;
+  background:linear-gradient(180deg,#1d1610 0%,#15100a 100%);
+  border:1px solid #2a2218;
+  box-shadow:
+    0 22px 48px -10px rgba(0,0,0,0.55),
+    0 8px 18px -6px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  padding:18px 22px 16px;
+  width:max-content;
+  max-width:min(400px,calc(100vw - 24px));
+  min-width:260px;
+  font-family:'Noto Serif KR','Gowun Batang',serif;
+  font-size:14px;
+  line-height:1.75;
+  color:#e8dfce;
+  border-radius:1px;
+  white-space:normal;
+  cursor:default;
+  display:none;
+  visibility:hidden;
+}
+.bible-tooltip.show{
+  display:block;
+  visibility:visible;
+}
+.bible-tooltip::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:linear-gradient(180deg,#D4B36F 0%,#A98545 50%,#7a5e2f 100%);
+  box-shadow:0 0 12px rgba(169,133,69,0.25);
+}
+.bible-tooltip::after{
+  content:'';
+  position:absolute;
+  inset:6px;
+  border:1px solid rgba(169,133,69,0.12);
+  pointer-events:none;
+}
+.bible-tooltip-ref{
+  position:relative;
+  font-family:'Lora','Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:0.78rem;
+  letter-spacing:0.18em;
+  color:#D4B36F;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(169,133,69,0.22);
+}
+.bible-tooltip-ref::after{
+  content:'';
+  position:absolute;
+  left:0;bottom:-1px;
+  width:28px;
+  height:1px;
+  background:#D4B36F;
+}
+.bible-tooltip-text{
+  position:relative;
+  font-size:0.93rem;
+  color:#f0e8d4;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+.bible-tooltip-verse{margin-bottom:6px;padding-left:0}
+.bible-tooltip-verse:last-child{margin-bottom:0}
+.bible-tooltip-verse-num{
+  display:inline-block;
+  font-family:'Lora','Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:0.85rem;
+  color:#D4B36F;
+  margin-right:8px;
+  vertical-align:0.05em;
+  min-width:18px;
+}
+.bible-tooltip-missing{
+  color:#a09686;
+  font-style:italic;
+  font-size:0.88rem;
+  letter-spacing:0.02em;
+}
+@media (hover:none){
+  .bible-tip{cursor:pointer;border-bottom-style:solid;border-bottom-width:0.5px}
+}
+@media (max-width:480px){
+  .bible-tooltip{
+    max-width:calc(100vw - 20px);
+    min-width:200px;
+    font-size:13px;
+    padding:15px 18px 14px;
+  }
+  .bible-tooltip-text{font-size:0.9rem}
+  .bible-tooltip-ref{font-size:0.72rem;letter-spacing:0.14em}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="topbar-title">권위의 기도 · 이 산을 향하여 말하는 믿음</div>
+  <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="nav-item nav-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="nav-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('hero-section')">제목 &amp; 주제</a>
+  <a class="nav-item" onclick="goTo('todays-verse-section')" style="color:var(--accent);font-weight:600;">✦ 오늘의 구절 — 막 11:23-24</a>
+  <a class="nav-item" onclick="goTo('dashboard-section')">대시보드</a>
+  <a class="nav-item" onclick="goTo('flow-section')">권위의 기도의 흐름</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('keywords-section')" style="font-weight:700;color:var(--accent);">키워드</a>
+  <div style="padding:6px 20px;">
+    <span class="keyword-tag" onclick="showKwDef('kd1',this)">권위의 기도</span>
+    <span class="keyword-tag" onclick="showKwDef('kd2',this)">묶고 푸는 기도</span>
+    <span class="keyword-tag" onclick="showKwDef('kd3',this)">이미 받은 줄로 믿음</span>
+    <span class="keyword-tag" onclick="showKwDef('kd4',this)">이 산을 향하여</span>
+    <span class="keyword-tag" onclick="showKwDef('kd5',this)">명령의 권한</span>
+  </div>
+  <div class="keyword-def" id="kd1">개요 Ⅰ.D는 성경에 — <b>가장 높고 영적인 기도인 권위의 기도</b>가 포함되어 있다고 진술합니다(마 18:18-19, 막 11:23-24, 엡 1:20-22, 2:6, 6:12-13, 18-19). 권위의 기도는 — 하나님께 무엇을 해 주시도록 청하는 것이 아니라, <b>그분의 권위를 사용하고 적용하여 제거되어야 할 문제와 일들을 처리하는</b> 기도입니다.</div>
+  <div class="keyword-def" id="kd2">개요 Ⅰ.D-2는 마 18:18에서 두 종류의 기도를 식별합니다 — <b>묶는 기도</b>와 <b>푸는 기도</b>. 묶고 푸는 이것이 권위의 기도이며, 우리는 그분께서 명령하신 것을 명령하고 그분께서 분부하신 것을 분부할 수 있는 권한을 받았습니다(마 17:20).</div>
+  <div class="keyword-def" id="kd3">개요 Ⅰ.E-1은 막 11:24의 결정적 정의를 제시합니다 — <b>믿음은 우리가 구한 것을 이미 받았음을 믿는 것</b>입니다. <b>받을 것</b>을 믿는 것이 아니라 <b>이미 받았음</b>을 믿는 것 — 헬라어 ἐλάβετε(부정과거 — "받았다")가 그 시제적 핵심입니다.</div>
+  <div class="keyword-def" id="kd4">개요 Ⅰ.E-2-4는 — <b>이기는 이들은 모두 '이 산'을 향하여 말하기를 배워야 한다</b>고 진술합니다(막 11:23). 권위의 기도는 하나님을 향한 간청이 아니라 — <b>제거되어야 할 그 산</b>을 향해 직접 말함으로써 하나님의 권위를 적용하는 일입니다.</div>
+  <div class="keyword-def" id="kd5">개요 Ⅰ.E-2-2는 — <b>하나님은 그분께서 명령하신 것을 우리도 명령하고, 그분께서 분부하신 것을 우리도 분부할 수 있는 권한을 우리에게 주셨다</b>고 진술합니다(마 17:20). 완전한 믿음과 의심 없음, 그리고 우리 일이 하나님의 뜻에 따른 것임을 분명히 인식할 때(마 6:10, 18:19-20), 교회는 권위의 기도를 행할 수 있습니다.</div>
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:700;color:var(--ink);">핵심 요점</a>
+  <a class="nav-item sub" onclick="goTo('acc-0')">Ⅰ. D · 가장 높고 영적인 기도 — 권위의 기도</a>
+  <a class="nav-item sub" onclick="goTo('acc-1')">Ⅱ. D-1 · 기도의 사람과 권위의 기도 (마 18:18)</a>
+  <a class="nav-item sub" onclick="goTo('acc-2')">Ⅲ. D-2 · 묶는 기도와 푸는 기도</a>
+  <a class="nav-item sub" onclick="goTo('acc-3')">Ⅳ. E · 막 11:23-24의 권위의 기도</a>
+  <a class="nav-item sub" onclick="goTo('acc-4')">Ⅴ. E-1 · 믿음 = 이미 받은 줄로 믿기</a>
+  <a class="nav-item sub" onclick="goTo('acc-5')">Ⅵ. E-2 · 막 11:20-24의 기도 (슥 4:7, 마 21:21)</a>
+  <a class="nav-item sub" onclick="goTo('acc-6')">Ⅶ. E-2-2 · 명령의 권한 (마 17:20)</a>
+  <a class="nav-item sub" onclick="goTo('acc-7')">Ⅷ. E-2-3 · 의심 없는 믿음 (마 6:10, 18:19-20)</a>
+  <a class="nav-item sub" onclick="goTo('acc-8')">Ⅸ. 향으로 올라가는 기도 (계 5:8, 8:3-4)</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('recap-section')">전체 복습</a>
+  <a class="nav-item" onclick="goTo('quiz-section')">퀴즈</a>
+  <a class="nav-item" onclick="goTo('prayer-section')">오늘의 결단과 기도</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container" id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-section">
+    <div class="hero-badge">2026 봄 장로훈련 · M1D3</div>
+    <h1>권위의 기도<br>이 산을 향하여<br><span class="highlight-word">말하는 믿음</span></h1>
+    <p class="hero-sub">개요 Ⅰ.D는 — <b>성경에 가장 높고 영적인 기도인 권위의 기도가 포함되어 있다</b>고 진술합니다(마 18:18-19, 막 11:23-24, 엡 1:20-22, 2:6, 6:12-13, 18-19). 이 기도는 — 마 18:18에서 주님께서 묘사하신 <b>묶는 기도와 푸는 기도</b>이며, 막 11:23-24에서 <b>'이 산'을 향하여 말하는 기도</b>로 펼쳐집니다. 권위의 기도는 — 하나님께 무엇을 해 주시도록 청하는 일이 아니라, <b>하나님의 권위를 사용하고 적용하여 제거되어야 할 문제와 일들을 처리하는</b> 일입니다(슥 4:7, 마 21:21). 하나님은 — 그분께서 명령하신 것을 우리도 명령하고, 그분께서 분부하신 것을 우리도 분부할 수 있는 권한을 우리에게 주셨습니다(마 17:20). 이 기도의 토대는 — <b>이미 받은 줄로 믿는 믿음</b>입니다(막 11:24). 헬라어 ἐλάβετε(엘라베테 — 부정과거)는 "받았다"라는 완결된 과거 — 우리는 받을 것을 믿는 것이 아니라 <b>이미 받았음</b>을 믿습니다. 이러한 권위의 기도는 — 완전한 믿음과 의심 없는 마음으로, 우리의 일이 하나님의 뜻에 따른 것임을 분명히 인식할 때 행해집니다(마 6:10, 18:19-20). <b>이기는 이들은 모두 '이 산'을 향하여 말하기를 배워야 합니다</b>(막 11:23).</p>
+  </section>
+
+  <!-- TODAY'S VERSE -->
+  <section class="todays-verse-section" id="todays-verse-section">
+    <div class="tv-header">
+      <div class="tv-kicker">오늘의 구절 · Today's Verse</div>
+      <div class="tv-ref">마가복음 11:23-24</div>
+      <div class="tv-ref-en">Mark 11:23-24 · Recovery Version</div>
+    </div>
+    <div class="tv-trans-compact">
+      <div class="tv-trans-row gk"><span class="tv-trans-tag">GK</span><span class="tv-trans-text"><span class="tv-gk-word"><span class="gw-gk">ἀμὴν λέγω ὑμῖν</span><span class="gw-pr">아멘 레고 휘민</span></span><span class="tv-gk-word"><span class="gw-gk">ὅτι ὃς ἂν εἴπῃ</span><span class="gw-pr">호티 호스 안 에이페</span></span><span class="tv-gk-word hl"><span class="gw-gk">τῷ ὄρει τούτῳ·</span><span class="gw-pr">토 오레이 투토</span></span><span class="tv-gk-word hl"><span class="gw-gk">ἄρθητι καὶ βλήθητι</span><span class="gw-pr">아르테티 카이 블레테티</span></span><span class="tv-gk-word"><span class="gw-gk">εἰς τὴν θάλασσαν,</span><span class="gw-pr">에이스 텐 탈라싼</span></span><span class="tv-gk-word hl"><span class="gw-gk">καὶ μὴ διακριθῇ</span><span class="gw-pr">카이 메 디아크리테</span></span><span class="tv-gk-word"><span class="gw-gk">ἐν τῇ καρδίᾳ αὐτοῦ</span><span class="gw-pr">엔 테 카르디아 아우투</span></span><span class="tv-gk-word hl"><span class="gw-gk">ἀλλὰ πιστεύῃ</span><span class="gw-pr">알라 피스튜에</span></span><span class="tv-gk-word"><span class="gw-gk">ὅτι ὃ λαλεῖ γίνεται,</span><span class="gw-pr">호티 호 랄레이 기네타이</span></span><span class="tv-gk-word"><span class="gw-gk">ἔσται αὐτῷ.</span><span class="gw-pr">에스타이 아우토</span></span><span class="tv-gk-word"><span class="gw-gk">διὰ τοῦτο λέγω ὑμῖν,</span><span class="gw-pr">디아 투토 레고 휘민</span></span><span class="tv-gk-word"><span class="gw-gk">πάντα ὅσα προσεύχεσθε καὶ αἰτεῖσθε,</span><span class="gw-pr">판타 호사 프로슈케스테 카이 아이테이스테</span></span><span class="tv-gk-word hl"><span class="gw-gk">πιστεύετε ὅτι ἐλάβετε,</span><span class="gw-pr">피스튜에테 호티 엘라베테</span></span><span class="tv-gk-word"><span class="gw-gk">καὶ ἔσται ὑμῖν.</span><span class="gw-pr">카이 에스타이 휘민</span></span></span></div>
+      <div class="tv-trans-row kr"><span class="tv-trans-tag">한</span><span class="tv-trans-text">[23] 내가 진실로 여러분에게 말합니다. 누구든지 <b>이 산을 향하여</b> '들려 올려져 바닷속으로 떨어져라.'라고 말하면서, <b>마음에 의심하지 않고</b> 말한 대로 된다고 <b>믿으면</b>, 그대로 이루어질 것입니다.<br>[24] 그러므로 내가 여러분에게 말합니다. 여러분이 기도하고 구하는 것은 무엇이든지 <b>이미 받은 줄로 믿으십시오</b>. 그리하면 여러분에게 그대로 이루어질 것입니다.</span></div>
+      <div class="tv-trans-row en"><span class="tv-trans-tag">EN</span><span class="tv-trans-text">[23] Truly I say to you that whoever says to this mountain, Be taken up and cast into the sea, and does not doubt in his heart, but believes that what he says happens, he will have it. [24] For this reason I say to you, All things that you pray and ask, believe that you have received them, and you will have them.</span></div>
+    </div>
+
+    <div class="tv-words-section">
+      <div class="tv-words-title">
+        <span class="tv-words-title-en">LEXICAL · GRAMMATICAL ANALYSIS</span>
+        <span class="tv-words-title-kr">사전적 · 문법적 분석</span>
+        <span class="tv-words-title-note">단어 카드를 클릭하면 BDAG · Thayer's · Strong's 사전 정의와 어형 분석 팝업이 열립니다. 본 분석은 신학적 해석을 배제하고, 원문이 지니는 사전적·문법적 의미만 다룹니다.</span>
+      </div>
+      <div class="tv-words-grid">
+        <button class="tv-word-card cat-adv" onclick="tvShowWord('amen')">
+          <div class="twc-gk">ἀμὴν λέγω ὑμῖν</div>
+          <div class="twc-pr">아멘 레고 휘민</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">진실로 내가 여러분에게 말합니다</div>
+          <div class="twc-en">Truly I say to you</div>
+          <div class="twc-meta"><span class="twc-strong">G281 · 셈어 차용 부사 · 엄숙한 단언의 도입</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-fut" onclick="tvShowWord('hos_an_eipei')">
+          <div class="twc-gk">ὃς ἂν εἴπῃ</div>
+          <div class="twc-pr">호스 안 에이페</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">누구든지 ~ 말하는 자</div>
+          <div class="twc-en">whoever should say</div>
+          <div class="twc-meta"><span class="twc-strong">관계대명사 + ἄν + 부정과거 가정법 3sg · 일반화 관계절</span><span class="twc-cta">분석 →</span></div>
+        </button>
+        <button class="tv-word-card cat-noun" onclick="tvShowWord('orei_touto')">
+          <div class="twc-gk">τῷ ὄρει τούτῳ</div>
+          <div class="twc-pr">토 오레이 투토</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">이 산을 향하여</div>
+          <div class="twc-en">to this mountain</div>
+          <div class="twc-meta"><span class="twc-strong">G3735 · ὄρος · 명사 중성·단수·여격 + 지시대명사</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('arthēti_blēthēti')">
+          <div class="twc-gk">ἄρθητι · βλήθητι</div>
+          <div class="twc-pr">아르테티 · 블레테티</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">들려 올려져라 · 떨어져라</div>
+          <div class="twc-en">be taken up · be cast</div>
+          <div class="twc-meta"><span class="twc-strong">G142 · G906 · 부정과거 수동 명령법 2sg (직접 명령)</span><span class="twc-cta">분석 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('diakrithei')">
+          <div class="twc-gk">μὴ διακριθῇ</div>
+          <div class="twc-pr">메 디아크리테</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">의심하지 (말고)</div>
+          <div class="twc-en">should not doubt</div>
+          <div class="twc-meta"><span class="twc-strong">G1252 · 부정과거 수동 가정법 3sg · μή 부정</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('pisteuei')">
+          <div class="twc-gk">πιστεύῃ</div>
+          <div class="twc-pr">피스튜에</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">믿으면 (지속)</div>
+          <div class="twc-en">should believe</div>
+          <div class="twc-meta"><span class="twc-strong">G4100 · 현재 능동 가정법 3sg · 지속 동작</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('lalei_ginetai')">
+          <div class="twc-gk">ὃ λαλεῖ γίνεται</div>
+          <div class="twc-pr">호 랄레이 기네타이</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">말한 대로 된다</div>
+          <div class="twc-en">what he says happens</div>
+          <div class="twc-meta"><span class="twc-strong">G2980 · G1096 · 현재 직설법 3sg 쌍 (말함과 됨이 동시 진행)</span><span class="twc-cta">분석 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('proseuchesthe_aiteisthe')">
+          <div class="twc-gk">προσεύχεσθε καὶ αἰτεῖσθε</div>
+          <div class="twc-pr">프로슈케스테 카이 아이테이스테</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">기도하고 구하는 (지속)</div>
+          <div class="twc-en">you pray and ask</div>
+          <div class="twc-meta"><span class="twc-strong">G4336 · G154 · 현재 중간 직설법 2pl (또는 명령법)</span><span class="twc-cta">사전 →</span></div>
+        </button>
+        <button class="tv-word-card cat-fut" onclick="tvShowWord('elabete')">
+          <div class="twc-gk">πιστεύετε ὅτι ἐλάβετε</div>
+          <div class="twc-pr">피스튜에테 호티 엘라베테</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">이미 받은 줄로 믿으십시오</div>
+          <div class="twc-en">believe that you have received</div>
+          <div class="twc-meta"><span class="twc-strong">G2983 · ἐλάβετε · 부정과거(과거 완결) — 본문의 핵심 시제</span><span class="twc-cta">분석 →</span></div>
+        </button>
+        <button class="tv-word-card cat-perf" onclick="tvShowWord('estai')">
+          <div class="twc-gk">ἔσται ὑμῖν</div>
+          <div class="twc-pr">에스타이 휘민</div>
+          <div class="twc-divider"></div>
+          <div class="twc-kr">여러분에게 그대로 이루어질 것입니다</div>
+          <div class="twc-en">it will be to you</div>
+          <div class="twc-meta"><span class="twc-strong">G1510 · εἰμί · 미래 중간 직설법 3sg</span><span class="twc-cta">사전 →</span></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="tv-summary">
+      <div class="tv-summary-title">Grammatical Structure · 본문의 문법적 구조</div>
+      <div class="tv-summary-text">본문은 두 절(23-24절)이 한 가르침으로 묶여 있습니다 — ① 23절: 산을 향한 직접 명령 + 의심 없는 믿음의 조건; ② 24절: 모든 기도에 적용되는 일반 원리.<br><br>① <b>ἀμὴν λέγω ὑμῖν</b>("진실로 내가 여러분에게 말합니다"): 셈어 אָמֵן(emet, 진실) + 그리스어 동사 — BDAG는 이를 <b>"a strong assertion of what is said"</b>로 정의. 마가복음에서 예수님의 가장 무게 있는 단언을 도입하는 정형구.<br><br>② <b>ὃς ἂν εἴπῃ</b>("누구든지 ~ 말하는 자"): 관계대명사 ὅς + 첨사 ἄν + 부정과거 가정법 εἴπῃ. ἄν과 가정법의 결합은 — Wallace(Greek Grammar Beyond the Basics): <b>"indefinite/generalizing relative clause"</b> — "어떤 사람이든지"의 일반화 관계절. 즉 특정인이 아니라 <b>모든 신자에게 열린 가능성</b>.<br><br>③ <b>ἄρθητι καὶ βλήθητι (부정과거 수동 명령법)</b>: 동사 αἴρω("들어 올리다") + βάλλω("던지다")의 부정과거 수동 명령법 2인칭 단수. 명령의 수신자는 — <b>산 자체</b>입니다(τῷ ὄρει τούτῳ). 이것이 본문의 결정적 어법 — 사람이 하나님께 드리는 청원이 아니라, <b>산을 향해 직접 발화하는 명령</b>입니다. 부정과거 명령법은 <b>한 점적·결연한 동작</b>을 명령합니다.<br><br>④ <b>μὴ διακριθῇ vs πιστεύῃ (부정과거 가정법 vs 현재 가정법)</b>: 의심함은 <b>μή + διακρίνω의 부정과거 수동 가정법</b>(점적 의심도 일어나지 않음); 믿음은 <b>πιστεύω의 현재 가정법</b>(지속적·진행적 믿음). διακρίνω(BDAG: "to be at variance with oneself, doubt, hesitate")는 어원적으로 <b>διά(둘로) + κρίνω(나누다)</b> — 마음이 둘로 갈라지는 상태. 단 한 번의 갈라짐도 없는 한 흐름의 믿음.<br><br>⑤ <b>ὃ λαλεῖ γίνεται (현재 동사 쌍)</b>: 관계절 ὃ("그것을") + λαλεῖ("말하다") + γίνεται("되다"). 두 동사 모두 <b>현재 직설법</b>으로 — 말함과 됨이 <b>동시 진행</b>의 한 흐름임을 어법으로 표현. "말하면 동시에 그렇게 된다"는 진리의 시제.<br><br>⑥ <b>πιστεύετε ὅτι ἐλάβετε (본문의 핵심 시제)</b>: 24절의 결정적 어법. 명령법(또는 직설법) 현재 πιστεύετε("믿으십시오") + ὅτι 절 + <b>부정과거 직설법</b> ἐλάβετε. λαμβάνω의 부정과거(<b>"이미 받았다"</b>)는 — Wallace: <b>"constative aorist viewing the action as a single completed event"</b>. 즉 받음이 <b>이미 일어난 과거 사실</b>로 진술됨. 한국어로는 흔히 <b>"이미 받은 줄로 믿으라"</b>로 번역되며 — 본문의 가장 결정적인 시제 — 받을 것이 아니라 <b>받았음</b>을 믿는 것.<br><br>⑦ <b>ἔσται ὑμῖν (확정된 미래)</b>: εἰμί의 미래 중간 직설법 3sg + 여격 ὑμῖν. 미래 직설법은 — <b>약속·확언의 시제</b>로, 미래에 일어날 일을 사실로 진술. <b>"여러분에게 (그대로) 있게 될 것이다 / 이루어질 것이다."</b></div>
+    </div>
+  </section>
+
+  <div class="tv-popup-overlay" id="tv-popup-overlay" onclick="tvClosePopupOnBg(event)">
+    <div class="tv-popup" id="tv-popup">
+      <button class="tv-popup-close" onclick="tvClosePopup()" aria-label="닫기">✕</button>
+      <div class="tv-popup-header">
+        <div class="tv-popup-kicker">헬라어 단어 사전 · BDAG · Thayer's · Strong's</div>
+        <div class="tv-popup-meaning" id="tv-popup-meaning"></div>
+        <div class="tv-popup-greek" id="tv-popup-greek"></div>
+      </div>
+      <div class="tv-popup-body" id="tv-popup-body"></div>
+    </div>
+  </div>
+
+  <!-- TTS READER MODAL -->
+  <div class="tts-reader-overlay" id="tts-reader-overlay" onclick="ttsCloseOnBg(event)">
+    <div class="tts-reader-modal" onclick="event.stopPropagation()">
+      <div class="tts-reader-header">
+        <svg class="tts-reader-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <div class="tts-reader-title">본문 듣기</div>
+        <button class="tts-reader-close" onclick="ttsCloseReader()" aria-label="닫기">✕</button>
+      </div>
+      <div class="tts-reader-body">
+        <label class="tts-form-label">API 키</label>
+        <div class="tts-api-row">
+          <input type="password" id="tts-api-key" placeholder="API 키를 입력하세요" />
+          <button onclick="ttsSaveApiKey()">저장</button>
+        </div>
+        <label class="tts-form-label">음성 선택</label>
+        <select class="tts-voice-select" id="tts-voice-select">
+          <option value="tk_voice">tk_voice</option>
+        </select>
+        <label class="tts-form-label">읽을 항목 (기본: 전체 선택)</label>
+        <div class="tts-section-list" id="tts-section-list"></div>
+        <div class="tts-progress" id="tts-progress">
+          <div class="tts-progress-bar"><div class="tts-progress-fill" id="tts-progress-fill"></div></div>
+          <div class="tts-progress-text" id="tts-progress-text">대기 중...</div>
+        </div>
+        <div class="tts-status" id="tts-status">서버에서 음성 목록을 불러옵니다...</div>
+      </div>
+      <div class="tts-reader-footer">
+        <button class="tts-btn" id="tts-stop-btn" onclick="ttsStop()" disabled>⏹ 중지</button>
+        <button class="tts-btn" id="tts-pause-btn" onclick="ttsTogglePause()" disabled>⏸ 일시정지</button>
+        <button class="tts-btn primary" id="tts-play-btn" onclick="ttsPlay()">▶ 재생</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard" id="dashboard-section">
+    <div class="dashboard-title">메시지 전체 맥락 요약</div>
+    <div class="core-message">개요 Ⅰ.D는 — <strong>성경에 가장 높고 영적인 기도인 권위의 기도가 포함되어 있다</strong>고 진술합니다(마 18:18-19, 막 11:23-24, 엡 1:20-22, 2:6, 6:12-13, 18-19). 이 기도는 마 18:18에서 주님께서 묘사하신 <strong>묶는 기도와 푸는 기도</strong>이며, 막 11:23-24에서는 <strong>'이 산'을 향해 직접 말하는 기도</strong>로 펼쳐집니다. 권위의 기도는 — 하나님께 무엇을 해 주시도록 청하는 일이 아니라, <strong>하나님의 권위를 사용하고 적용하여 제거되어야 할 문제와 일들을 처리하는</strong> 일입니다(슥 4:7, 마 21:21). 이 기도의 토대는 — <strong>이미 받은 줄로 믿는 믿음</strong>입니다(막 11:24). 헬라어 ἐλάβετε(부정과거)는 "받았다"의 완결된 과거 — 우리는 받을 것이 아니라 <strong>이미 받았음</strong>을 믿습니다. 완전한 믿음, 의심 없음, 우리 일이 하나님의 뜻에 따른 것이라는 인식 안에서(마 6:10, 18:19-20) — <strong>이기는 이들은 모두 '이 산'을 향하여 말하기를 배웁니다</strong>(막 11:23).</div>
+    <div class="dash-grid">
+      <div class="dash-card"><div class="dash-label">D · 가장 높은 기도</div><div class="dash-value">권위의 기도<br>(마 18:18-19, 막 11:23-24)</div></div>
+      <div class="dash-card"><div class="dash-label">D-2 · 마 18:18</div><div class="dash-value">묶는 기도 ·<br>푸는 기도</div></div>
+      <div class="dash-card"><div class="dash-label">E-1 · 막 11:24</div><div class="dash-value">이미 받은 줄로<br>믿음 (ἐλάβετε)</div></div>
+      <div class="dash-card"><div class="dash-label">E-2-4 · 막 11:23</div><div class="dash-value">이기는 이들 —<br>'이 산'을 향하여</div></div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow-section" id="flow-section">
+    <div class="flow-title">권위의 기도의 흐름 — 청원에서 명령으로, 미래에서 완료된 과거로</div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-dot">①</div><div class="flow-step-label">가장 높고 영적인 기도 (D · 막 11:23-24, 엡 1:20-22, 2:6)</div><div class="flow-step-desc">개요 Ⅰ.D는 권위의 기도를 — <b>가장 높고 영적인 기도</b>로 분류합니다. 이는 일반적인 청원 기도를 넘어, 그리스도의 승천과 우리의 함께 앉음(엡 2:6)에 근거한 차원의 기도입니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">②</div><div class="flow-step-label">묶는 기도 · 푸는 기도 (D-2 · 마 18:18)</div><div class="flow-step-desc">마 18:18에서 주님은 — <b>땅에서 묶는 것은 하늘에서도 묶일 것이고, 땅에서 푸는 것은 하늘에서도 풀릴 것</b>이라 말씀하셨습니다. 묶고 푸는 이것이 권위의 기도의 두 차원입니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">③</div><div class="flow-step-label">권위를 사용·적용함 (E-2-1 · 슥 4:7, 마 21:21)</div><div class="flow-step-desc">권위의 기도는 — 하나님께 청원하는 대신 <b>하나님의 권위를 사용하고 적용하여 제거되어야 할 문제와 일들을 처리</b>합니다. 슥 4:7의 '큰 산'과 마 21:21의 산이 옮겨지는 본문이 그 원리를 보입니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">④</div><div class="flow-step-label">명령의 권한 (E-2-2 · 마 17:20)</div><div class="flow-step-desc"><b>하나님께서 명령하신 것을 우리도 명령하고, 그분께서 분부하신 것을 우리도 분부할 수 있는 권한</b>이 우리에게 주어졌습니다(마 17:20). 권위의 기도는 청원이 아니라 권위의 행사입니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">⑤</div><div class="flow-step-label">완전한 믿음, 의심 없음 (E-2-3 · 마 6:10, 18:19-20)</div><div class="flow-step-desc">권위의 기도는 — <b>완전한 믿음, 조금도 의심하지 않음, 그리고 우리가 하는 일이 하나님의 뜻에 따른 것</b>이라는 분명한 인식 안에서 행해집니다. 막 11:23 — "마음에 의심하지 않고 말한 대로 된다고 믿으면."</div></div>
+      <div class="flow-step"><div class="flow-dot">⑥</div><div class="flow-step-label">이미 받은 줄로 믿음 (E-1 · 막 11:24)</div><div class="flow-step-desc">막 11:24의 결정적 어구 — <b>"이미 받은 줄로 믿으십시오."</b> 헬라어 ἐλάβετε(부정과거)는 완결된 과거 — 받을 것이 아니라 <b>이미 받았음</b>을 믿는 믿음이 권위의 기도의 토대입니다.</div></div>
+      <div class="flow-step"><div class="flow-dot">⑦</div><div class="flow-step-label">'이 산'을 향하여 (E-2-4 · 막 11:23)</div><div class="flow-step-desc"><b>이기는 이들은 모두 '이 산'을 향하여 말하기를 배워야 합니다</b>(막 11:23). 권위의 기도는 — 발화의 수신자가 하나님이 아니라 <b>제거되어야 할 그 산</b>입니다.</div></div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS -->
+  <section class="keywords-section" id="keywords-section">
+    <div class="keywords-section-title">핵심 키워드 — 개요의 용어 그대로</div>
+    <div class="kw-container">
+      <span class="kw-chip" onclick="toggleKwTip('kwt1')">권위의 기도</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt2')">묶는 · 푸는 기도</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt3')">이미 받은 줄로 믿음</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt4')">이 산을 향하여</span>
+      <span class="kw-chip" onclick="toggleKwTip('kwt5')">명령의 권한</span>
+    </div>
+    <div class="kw-tooltip" id="kwt1">개요 Ⅰ.D의 직접 진술 — <b>"성경에는 가장 높고 영적인 기도인 권위의 기도가 포함되어 있다"</b>(마 18:18-19, 막 11:23-24, 엡 1:20-22, 2:6, 6:12-13, 18-19). 권위의 기도는 — 하나님께 무엇을 해 달라고 청원하는 것이 아니라, <b>하나님의 권위를 사용하고 적용하여 제거되어야 할 문제와 일들을 처리</b>하는 기도입니다(E-2-1 — 슥 4:7, 마 21:21).</div>
+    <div class="kw-tooltip" id="kwt2">개요 Ⅰ.D-2의 직접 진술 — <b>"마태복음 18장 18절에는 묶는 기도라고 부를 수 있는 기도와 푸는 기도라고 부를 수 있는 기도가 나온다. 묶고 푸는 이것이 권위의 기도이다."</b> 마 18:18 — "여러분이 땅에서 무엇이든지 묶으면 하늘에서도 묶일 것이고, 여러분이 땅에서 무엇이든지 풀면 하늘에서도 풀릴 것입니다."</div>
+    <div class="kw-tooltip" id="kwt3">개요 Ⅰ.E-1의 직접 진술 — <b>"믿음은 우리가 구한 것을 이미 받았음을 믿는 것이다"</b>(막 11:24). 헬라어 ἐλάβετε(엘라베테)는 부정과거(Aorist) — <b>"이미 받았다"</b>의 완결된 과거 시제. <b>"바라는 것은 장래에 어떤 일이 일어나기를 기대하는 것이지만, 믿는 것은 무언가가 이미 이루어진 것으로 여기는 것이다"</b>(E-1-2).</div>
+    <div class="kw-tooltip" id="kwt4">개요 Ⅰ.E-2-4의 직접 진술 — <b>"권위의 기도는 이기는 이들과 많은 관련이 있다. 이기는 이들은 모두 '이 산'을 향하여 말하기를 배워야 한다"</b>(막 11:23). 발화의 수신 대상이 — 하나님이 아니라 <b>제거되어야 할 그 산</b>입니다. 헬라어 τῷ ὄρει τούτῳ — "이 (특정한) 산에게."</div>
+    <div class="kw-tooltip" id="kwt5">개요 Ⅰ.E-2-2의 직접 진술 — <b>"하나님은 그분께서 명령하신 것을 우리도 명령하고, 그분께서 분부하신 것을 우리도 분부할 수 있는 권한을 우리에게 주셨다"</b>(마 17:20). 권위의 기도는 — 청원이 아니라 <b>위임받은 권위의 행사</b>이며, 하나님의 뜻 안에서 행할 때(마 6:10, 18:19-20) 완전한 믿음으로 발화됩니다.</div>
+  </section>
+
+  <!-- ACCORDIONS -->
+  <div class="accordion-group">
+    <div class="accordion-group-title" id="keypoints-section">핵심 요점 — 권위의 기도</div>
+
+    <div class="step-header" data-kicker="Part Ⅰ · 개요 Ⅰ.D — 권위의 기도의 정의">가장 높고 영적인 기도</div>
+
+    <div class="accordion" id="acc-0">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅰ</div>
+        <div class="acc-title-text">개요 Ⅰ.D — 가장 높고 영적인 기도, 권위의 기도</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">마 18:18-19 / 막 11:23-24 / 엡 1:20-22, 2:6, 6:12-13, 18-19</div>
+          <div class="verse-text">[마 18:18] 내가 진실로 여러분에게 말합니다. 여러분이 땅에서 무엇이든지 <b>묶으면 하늘에서 묶인 것이 될 것</b>이고, 여러분이 땅에서 무엇이든지 <b>풀면 하늘에서 풀린 것이 될 것</b>입니다.</div>
+          <div class="verse-text">[엡 2:6] 그분께서는 우리를 그리스도 예수님 안에서 함께 살리셨고 함께 일으키셨으며 <b>함께 하늘들에 앉히셨습니다</b>.</div>
+          <div class="verse-text">[엡 6:18] 그리고 온갖 기도와 간구를 통하여, 모든 시기에 <b>영 안에서 기도하십시오</b>.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.D는 — <strong>"성경에는 <span class="hl">가장 높고 영적인 기도</span>인 권위의 기도가 포함되어 있다"</strong>고 단언합니다. 이 기도는 — 일반적인 청원 차원의 기도가 아니라, 그리스도와 함께 하늘들에 앉힌 자리(엡 2:6)에서 그분의 권위(엡 1:20-22)를 따라 행하는 영의 기도(엡 6:18)입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">"가장 높은" 기도의 자리</div>
+          <div class="sub-point-text">권위의 기도가 가장 높은 차원이라는 것은 — 그것이 일반적 청원의 자리를 넘어 <span class="hl">하늘의 자리에서</span> 행해지기 때문입니다. 우리가 승천한 그리스도와 함께 앉힌 자리(엡 2:6)에서만 — 그분의 권위가 우리를 통해 표현될 수 있습니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">묶고 푸는 권위 — 마 18:18</div>
+          <div class="sub-point-text">권위의 기도의 첫 번째 본문 — <strong>땅에서 묶고 푸는 것이 하늘에서 묶이고 풀린다</strong>(마 18:18). 땅의 결정이 하늘의 사실이 되는 — 권위의 양방향 통로.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">산을 향한 발화 — 막 11:23-24</div>
+          <div class="sub-point-text">권위의 기도의 두 번째 본문 — <strong>'이 산'을 향한 직접 명령 + 이미 받은 줄로 믿음</strong>(막 11:23-24). 발화의 수신자가 하나님이 아닌 산이며, 믿음의 대상은 미래가 아닌 이미 받은 과거.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">영적 전쟁의 자리 — 엡 6:12-13, 18</div>
+          <div class="sub-point-text">권위의 기도는 — <span class="hl">어둠의 권세에 맞서는 영적 전쟁의 일부</span>입니다(엡 6:12). 그래서 "온갖 기도와 간구를 통하여, 항상 영 안에서 기도하라"(엡 6:18)는 권면이 따라옵니다.</div>
+        </div>
+        <p class="content-text">권위의 기도의 토대는 — <span class="hl">그리스도의 승천(엡 1:20-22)과 우리의 함께 앉음(엡 2:6)</span>입니다. 다음 두 항목(D-1, D-2)은 마 18:18을 중심으로 권위의 기도의 종류를 분류합니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">기도의 사람이 되기 원한다면 — <strong>권위의 기도를 배워야 합니다</strong>.</div>
+
+    <div class="accordion" id="acc-1">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅱ</div>
+        <div class="acc-title-text">개요 Ⅰ.D-1 — 기도의 사람은 권위의 기도를 배운다 (마 18:18)</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">마 18:18</div>
+          <div class="verse-text">[마 18:18] 내가 진실로 여러분에게 말합니다. 여러분이 땅에서 무엇이든지 묶으면 하늘에서 <b>묶인 것이 될 것</b>이고, 여러분이 땅에서 무엇이든지 풀면 하늘에서 <b>풀린 것이 될 것</b>입니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.D-1의 직접 진술 — <strong>"우리가 기도의 사람이 되기 원한다면 권위의 기도를 배워야 한다. 마태복음 18장 18절에서 주님께서 묘사하신 기도가 바로 이런 종류의 기도이다."</strong> 권위의 기도는 — 자연스럽게 익히는 본능이 아니라 <span class="hl">의도적으로 배워야 하는 영적 기능</span>입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">기도의 사람의 표지</div>
+          <div class="sub-point-text">기도의 사람은 — 단지 자기 부족과 갈망을 청원할 줄 아는 사람이 아니라 <strong>권위의 기도를 배운 사람</strong>입니다. 일반 청원에 머무는 기도는 기도의 한 차원일 뿐, 가장 높은 차원이 아닙니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"배워야 한다" — 학습되는 기도</div>
+          <div class="sub-point-text">개요는 권위의 기도를 — <strong>"배워야 한다"</strong>고 진술합니다. 이는 권위의 기도가 <span class="hl">즉각적 직관이 아니라 점진적 훈련</span>을 통해 형성됨을 시사합니다. 기도의 사람은 평생 이 기도를 배워 갑니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">주님께서 직접 묘사하신 기도</div>
+          <div class="sub-point-text">마 18:18의 본문은 — 주님께서 친히 권위의 기도의 한 종류를 묘사하신 자리입니다. 일반 가르침이 아닌 — <strong>주님 자신의 정의</strong>이므로 우리가 따라야 할 표준입니다.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="step-connector">권위의 기도에는 — <strong>두 종류, 곧 묶는 기도와 푸는 기도</strong>가 있습니다.</div>
+
+    <div class="accordion" id="acc-2">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅲ</div>
+        <div class="acc-title-text">개요 Ⅰ.D-2 — 묶는 기도와 푸는 기도</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">마 18:18</div>
+          <div class="verse-text">[마 18:18] ... 여러분이 땅에서 무엇이든지 <b>묶으면(δήσητε)</b> 하늘에서 묶인 것이 될 것이고, 여러분이 땅에서 무엇이든지 <b>풀면(λύσητε)</b> 하늘에서 풀린 것이 될 것입니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.D-2의 직접 진술 — <strong>"마태복음 18장 18절에는 <span class="hl">묶는 기도라고 부를 수 있는 기도</span>와 <span class="hl">푸는 기도라고 부를 수 있는 기도</span>가 나온다. 묶고 푸는 이것이 권위의 기도이다."</strong> 한 권위의 두 적용 방향 — 제거(묶음)와 해방(품).</p>
+        <div class="sub-point">
+          <div class="sub-point-title">묶는 기도 (δέω)</div>
+          <div class="sub-point-text">헬라어 <b>δέω</b>(데오, BDAG: "to bind, tie, fasten") — <span class="hl">제거되어야 할 것·묶어 두어야 할 것을 결박하는 기도</span>. 사탄의 일, 죄의 권세, 영적 장애물을 묶음.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">푸는 기도 (λύω)</div>
+          <div class="sub-point-text">헬라어 <b>λύω</b>(뤼오, BDAG: "to loose, untie, set free") — <span class="hl">풀려야 할 것·해방되어야 할 것을 풀어 주는 기도</span>. 갇힌 영혼, 묶인 사역, 막힌 통로를 품.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">땅과 하늘의 일치</div>
+          <div class="sub-point-text">본문의 결정적 진술 — <strong>"땅에서 묶으면 하늘에서 묶일 것이고"</strong>. 땅의 권위 행사가 — 하늘의 결정이 됩니다. 이는 권위의 기도가 단지 청원이 아니라 <span class="hl">하늘과 땅을 잇는 통로</span>임을 의미합니다.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="step-header" data-kicker="Part Ⅱ · 개요 Ⅰ.E — 막 11:23-24의 권위의 기도">권위의 기도의 결정적 본문</div>
+
+    <div class="accordion" id="acc-3">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅳ</div>
+        <div class="acc-title-text">개요 Ⅰ.E — 막 11:23-24의 권위의 기도</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">막 11:20-24</div>
+          <div class="verse-text">[막 11:20] 아침에 그들이 지나가다가, 그 무화과나무가 <b>뿌리째 마른 것</b>을 보았다.</div>
+          <div class="verse-text">[막 11:22] 예수님께서 대답하여 그들에게 말씀하셨다. "<b>하나님을 향한 믿음</b>을 가지십시오."</div>
+          <div class="verse-text">[막 11:23] 내가 진실로 여러분에게 말합니다. 누구든지 <b>이 산을 향하여</b> '들려 올려져 바닷속으로 떨어져라.'라고 말하면서, <b>마음에 의심하지 않고</b> 말한 대로 된다고 믿으면, 그대로 이루어질 것입니다.</div>
+          <div class="verse-text">[막 11:24] 그러므로 ... 여러분이 기도하고 구하는 것은 무엇이든지 <b>이미 받은 줄로 믿으십시오</b>. 그리하면 여러분에게 그대로 이루어질 것입니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.E의 직접 진술 — <strong>"권위의 기도는 마가복음 11장 23절과 24절에 나오는 기도이다."</strong> 막 11장은 마른 무화과나무 사건(20-22절)에서 시작하여 — <span class="hl">하나님을 향한 믿음</span>이 권위의 기도의 토대임을 진술한 후, 23-24절의 결정적 가르침으로 이어집니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">23절의 외적 차원 — 산을 향한 발화</div>
+          <div class="sub-point-text">23절은 권위의 기도의 <strong>외적 모습</strong>을 진술합니다 — <span class="hl">"이 산을 향하여 ... 말하면"</span>. 발화의 수신자가 하나님이 아닌 산이며, 발화의 형태는 청원이 아닌 명령("들려 올려져라").</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">23절의 내적 차원 — 의심 없는 믿음</div>
+          <div class="sub-point-text">23절은 또한 권위의 기도의 <strong>내적 조건</strong>을 진술합니다 — <span class="hl">"마음에 의심하지 않고 말한 대로 된다고 믿으면"</span>. 외적 발화가 효력을 발하려면 내적 믿음이 흔들림 없이 통합되어야 합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">24절의 일반화 — 모든 기도에 적용</div>
+          <div class="sub-point-text">24절은 23절의 원리를 — <strong>모든 기도와 청원에 일반화</strong>합니다("기도하고 구하는 것은 무엇이든지"). 권위의 기도의 핵심 원리가 — <span class="hl">이미 받은 줄로 믿음</span>으로 응축됩니다.</div>
+        </div>
+        <p class="content-text">막 11:23-24의 두 절은 — <strong>권위의 기도의 외적 발화와 내적 토대</strong>를 한 가르침으로 묶어 진술합니다. 다음 항목(E-1)은 24절의 핵심인 믿음의 정의를 펼칩니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-connector">권위의 기도의 토대는 — <strong>이미 받은 줄로 믿는 믿음</strong>입니다.</div>
+
+    <div class="accordion" id="acc-4">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅴ</div>
+        <div class="acc-title-text">개요 Ⅰ.E-1 — 믿음 = 이미 받은 줄로 믿기 (막 11:24)</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">막 11:24</div>
+          <div class="verse-text">[막 11:24] 그러므로 내가 여러분에게 말합니다. 여러분이 기도하고 구하는 것은 무엇이든지 <b>이미 받은 줄로 믿으십시오</b>(πιστεύετε ὅτι ἐλάβετε). 그리하면 여러분에게 그대로 이루어질 것입니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.E-1의 직접 진술 — <strong>"믿음은 우리가 구한 것을 <span class="hl">이미 받았음을 믿는 것</span>이다."</strong> 헬라어 <b>ἐλάβετε</b>(엘라베테)는 부정과거(Aorist) — <span class="hl">"받았다"</span>의 완결된 과거 시제. 이 시제가 권위의 기도의 믿음의 본질을 어법적으로 정의합니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">E-1-1 · 받을 것이 아니라 이미 받았음</div>
+          <div class="sub-point-text">개요의 진술 — <strong>"주님의 말씀에 따라 우리는 <span class="hl">받을 것을 믿는 것이 아니라 이미 받았음</span>을 믿어야 한다."</strong> 시제의 차이가 결정적입니다 — 미래(받을 것)가 아닌 <strong>과거 완결(받았음)</strong>.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">E-1-2 · 바라는 것 vs 믿는 것</div>
+          <div class="sub-point-text">개요는 두 동작을 분명히 구별합니다 — <strong>"바라는 것은 장래에 어떤 일이 일어나기를 기대하는 것이지만, 믿는 것은 <span class="hl">무언가가 이미 이루어진 것으로 여기는 것</span>이다."</strong> 바람은 미래 지향, 믿음은 완결된 과거 지향입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">E-1-3 · 하나님이 이미 그 일을 하셨음</div>
+          <div class="sub-point-text">개요는 믿음의 가장 깊은 차원을 진술합니다 — <strong>"믿음은 하나님께서 어떤 일을 하실 수 있거나 하실 것임을 믿을 뿐 아니라, <span class="hl">하나님께서 이미 그 일을 하셨다는 것을 믿는 것</span>이다."</strong> 하나님의 능력과 의지뿐 아니라 — <strong>이미 행하신 사실</strong>을 믿는 것.</div>
+        </div>
+        <p class="content-text">권위의 기도의 믿음은 — <strong>시제적 역설</strong>입니다. 아직 보이지 않는 것을 <span class="hl">이미 일어난 사실</span>로 받아들이는 마음의 자리. 이러한 믿음 위에서만 산을 향한 발화가 효력을 발합니다.</p>
+      </div></div>
+    </div>
+
+    <div class="step-header" data-kicker="Part Ⅲ · 개요 Ⅰ.E-2 — 권위의 사용·명령·믿음·이기는 이들">권위의 기도의 적용</div>
+
+    <div class="accordion" id="acc-5">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅵ</div>
+        <div class="acc-title-text">개요 Ⅰ.E-2-1 — 권위의 사용·적용 (슥 4:7, 마 21:21)</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">슥 4:7 / 마 21:21</div>
+          <div class="verse-text">[슥 4:7] <b>큰 산아, 너는 무엇이냐?</b> 스룹바벨 앞에서 <b>평지가 될 것</b>이다. 그가 머릿돌을 가지고 나오면, 사람들이 "은혜로다, 은혜로다!"라고 외칠 것이다.</div>
+          <div class="verse-text">[마 21:21] ... 만일 여러분에게 믿음이 있고 의심하지 않는다면, 이 무화과나무에게 일어난 일을 할 뿐 아니라, <b>이 산에게 '들려 옮겨져 바닷속으로 떨어져라.'라고 말하더라도 그대로 일어날 것</b>입니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.E-2의 도입 — <strong>"마가복음 11장 20절부터 24절까지에 나오는 기도는 권위의 기도이다."</strong> 그 본질을 진술하는 E-2-1 — <strong>"권위의 기도는 하나님께 무언가를 하시도록 요청하기보다, <span class="hl">하나님의 권위를 사용하고 적용하여</span> 제거되어야 할 문제들과 일들을 처리한다."</strong></p>
+        <div class="sub-point">
+          <div class="sub-point-title">청원 vs 권위의 행사</div>
+          <div class="sub-point-text">일반적 기도는 — <strong>하나님께 ~을 해 주십시오</strong>의 청원입니다. 그러나 권위의 기도는 — <strong>이미 받은 권위를 직접 행사</strong>하는 일입니다. 청원의 자리에서 한 발 더 나아간 차원.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">슥 4:7의 본보기 — "큰 산아"</div>
+          <div class="sub-point-text">슥 4:7은 — 큰 산을 향한 직접 발화의 첫 본문입니다. <strong>"큰 산아, 너는 무엇이냐?"</strong> — 산을 의인화하여 직접 호출하고, <span class="hl">"평지가 될 것이다"</span>라고 선언합니다. 이 어법이 — 권위의 기도의 구약 원형입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">마 21:21의 평행 — 산을 들어 바다로</div>
+          <div class="sub-point-text">마 21:21은 막 11:23과 거의 동일한 어법으로 — <strong>"이 산에게 ... 들려 옮겨져 바닷속으로 떨어져라"</strong>라고 말하는 권위의 기도를 진술합니다. <span class="hl">믿음과 의심 없음의 두 조건</span>이 다시 강조됨.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="step-connector">하나님은 우리에게 — <strong>그분의 명령을 우리도 명령할 수 있는 권한</strong>을 주셨습니다.</div>
+
+    <div class="accordion" id="acc-6">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅶ</div>
+        <div class="acc-title-text">개요 Ⅰ.E-2-2 — 명령의 권한 (마 17:20)</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">마 17:20</div>
+          <div class="verse-text">[마 17:20] 예수님께서 그들에게 말씀하셨다. "여러분의 작은 믿음 때문입니다. 내가 진실로 여러분에게 말합니다. 만일 여러분에게 <b>겨자씨 한 알만한 믿음</b>이 있다면, <b>이 산에게 '여기서 저기로 옮겨져라.'라고 말해도 옮겨질 것</b>이며, <b>여러분에게 불가능한 일이 없을 것</b>입니다."</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.E-2-2의 직접 진술 — <strong>"하나님은 그분께서 명령하신 것을 우리도 명령하고, 그분께서 분부하신 것을 우리도 분부할 수 있는 <span class="hl">권한</span>을 우리에게 주셨다."</strong> 권위의 기도의 핵심 — 우리는 위임받은 권한을 행사합니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">위임받은 권한</div>
+          <div class="sub-point-text">권위의 기도는 — 우리가 만들어 내는 권위가 아니라 <span class="hl">하나님께서 위임하신 권한</span>의 행사입니다. 그분께서 명령하신 것을 우리가 명령하고, 그분께서 분부하신 것을 우리가 분부합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">겨자씨 한 알의 믿음</div>
+          <div class="sub-point-text">마 17:20의 핵심 — <strong>"겨자씨 한 알만한 믿음"</strong>이면 충분합니다. 권한의 행사에 필요한 것은 거대한 믿음이 아니라 — <span class="hl">참되고 흔들리지 않는 작은 믿음</span>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"불가능한 일이 없을 것"</div>
+          <div class="sub-point-text">본문의 약속 — <strong>"여러분에게 불가능한 일이 없을 것"</strong>. 권위의 기도가 행해지는 자리에서는 — 자연·환경·영적 장애물이 모두 그 권위 앞에 놓입니다.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="step-connector">권위의 기도의 조건은 — <strong>완전한 믿음, 의심 없음, 하나님의 뜻에 일치함</strong>입니다.</div>
+
+    <div class="accordion" id="acc-7">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅷ</div>
+        <div class="acc-title-text">개요 Ⅰ.E-2-3 — 의심 없는 믿음, 하나님의 뜻 (마 6:10, 18:19-20)</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">마 6:10 / 마 18:19-20</div>
+          <div class="verse-text">[마 6:10] 당신의 왕국이 오게 하시며, <b>당신의 뜻이 하늘에서 이루어진 것같이 땅에서도 이루어지게 하십시오</b>.</div>
+          <div class="verse-text">[마 18:19] 또 내가 진실로 여러분에게 말합니다. 여러분 가운데 <b>두 사람이 땅에서 무엇이든지 어떤 일을 두고 마음을 같이하면</b>, 하늘에 계신 나의 아버지에 의해 그들에게 이루어질 것입니다.</div>
+          <div class="verse-text">[마 18:20] <b>두세 사람이 내 이름 안으로 모인 곳</b>에는 거기에 내가 그들 가운데 있습니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.E-2-3의 직접 진술 — <strong>"교회는 <span class="hl">완전한 믿음</span>을 갖고 <span class="hl">조금도 의심하지 않으며</span>, 우리가 하는 일이 <span class="hl">완전히 하나님의 뜻에 따른 것</span>임을 분명히 인식함으로써, 이러한 권위의 기도를 할 수 있다."</strong> 세 가지 조건의 결합.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">완전한 믿음</div>
+          <div class="sub-point-text">권위의 기도는 — 부분적 믿음이 아닌 <strong>완전한 믿음</strong>을 요구합니다. 막 11:23의 πιστεύῃ(현재 가정법) — <span class="hl">한 흐름으로 지속되는 믿음</span>.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">조금도 의심하지 않음</div>
+          <div class="sub-point-text">막 11:23의 또 다른 조건 — <strong>μὴ διακριθῇ ἐν τῇ καρδίᾳ</strong>("마음에 의심하지 않고"). 헬라어 διακρίνω는 어원적으로 <span class="hl">"두 갈래로 나누다"</span> — 마음이 두 방향으로 갈라지지 않을 것.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">하나님의 뜻에 따른 것</div>
+          <div class="sub-point-text">마 6:10 — <strong>"뜻이 ... 땅에서도 이루어지게 하십시오."</strong> 권위의 기도는 — 우리의 욕구가 아닌 <span class="hl">하나님 자신의 뜻</span>을 땅에서 이루어 가는 일입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">교회의 동심한 합의 (마 18:19-20)</div>
+          <div class="sub-point-text">마 18:19-20 — <strong>두 사람이 마음을 같이하면 / 두세 사람이 내 이름 안으로 모이면</strong>. 권위의 기도는 — 개인의 자리를 넘어 <span class="hl">교회의 단체적 동심</span>에서 더욱 효력을 발합니다.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="step-connector">권위의 기도의 행하는 자들 — <strong>이기는 이들은 모두 '이 산'을 향하여 말하기를 배웁니다</strong>.</div>
+
+    <div class="accordion" id="acc-8">
+      <div class="accordion-header" onclick="toggleAcc(this)">
+        <div class="acc-number">Ⅸ</div>
+        <div class="acc-title-text">개요 Ⅰ.E-2-4 — 이기는 이들과 '이 산' (막 11:23)</div>
+        <div class="acc-chevron">▼</div>
+      </div>
+      <div class="accordion-body"><div class="accordion-content">
+        <div class="verse-block">
+          <div class="verse-ref">막 11:23</div>
+          <div class="verse-text">[막 11:23] ... 누구든지 <b>이 산을 향하여(τῷ ὄρει τούτῳ)</b> '들려 올려져 바닷속으로 떨어져라.'라고 말하면서, 마음에 의심하지 않고 말한 대로 된다고 믿으면, 그대로 이루어질 것입니다.</div>
+        </div>
+        <p class="content-text">개요 Ⅰ.E-2-4의 직접 진술 — <strong>"권위의 기도는 <span class="hl">이기는 이들과 많은 관련</span>이 있다. 이기는 이들은 모두 <span class="hl">'이 산'을 향하여 말하기를 배워야 한다</span>."</strong> 권위의 기도는 모든 신자에게 열려 있으나, 실제로 배우고 행하는 자들이 <strong>이기는 이들</strong>입니다.</p>
+        <div class="sub-point">
+          <div class="sub-point-title">이기는 이들 — 권위의 기도의 행하는 자</div>
+          <div class="sub-point-text">계시록의 일곱 교회에 대한 약속(계 2-3장)이 모두 <strong>"이기는 이에게"</strong>로 향합니다. 권위의 기도는 — <span class="hl">이기는 이들이 실제로 행하는 영적 기능</span>입니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">'이 산' — τῷ ὄρει τούτῳ</div>
+          <div class="sub-point-text">헬라어 <b>τῷ ὄρει τούτῳ</b>는 — 단순히 "산"이 아니라 <strong>"이 (특정한) 산"</strong>입니다. 화자가 보는 앞에 있는, 또는 마음에 품은 <span class="hl">구체적 장애물</span>을 가리킵니다. 추상적 산이 아닌 — 실제로 제거되어야 할 그 산.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">발화의 수신 대상 — 산 자체</div>
+          <div class="sub-point-text">권위의 기도의 가장 독특한 어법 — <strong>발화의 수신자가 하나님이 아니라 산</strong>입니다(τῷ ὄρει). 일반 기도는 하나님께 청원하지만, 권위의 기도는 <span class="hl">산을 향해 직접 명령</span>합니다.</div>
+        </div>
+        <div class="sub-point">
+          <div class="sub-point-title">"말하기를 배워야 한다"</div>
+          <div class="sub-point-text">개요는 — 이기는 이들이 <strong>"말하기를 배워야 한다"</strong>고 진술합니다. 산에게 직접 말하는 것은 자연스러운 본능이 아니라 — <span class="hl">의도적인 영적 훈련</span>을 통해 익혀집니다. 권위의 기도는 평생 배우는 기도의 가장 높은 차원입니다.</div>
+        </div>
+        <p class="content-text">정리하면 — 권위의 기도는 <span class="hl">가장 높고 영적인 기도(D) → 묶고 푸는 두 종류(D-2) → 막 11:23-24의 본문(E) → 이미 받은 줄로 믿음(E-1) → 권위의 사용·명령·의심 없음(E-2-1, 2, 3) → 이기는 이들이 '이 산'을 향해 말함(E-2-4)</span>입니다. 이 산을 향한 발화는 — 우리가 그리스도와 함께 승천한 자리(엡 2:6)에서 그분의 권위(엡 1:20-22)로 어둠의 권세를 처리하는 영적 전쟁의 핵심(엡 6:12-18)입니다. 아멘.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- RECAP -->
+  <section class="recap-section" id="recap-section">
+    <div class="recap-title">전체 메시지 복습 — 권위의 기도, 이 산을 향하여</div>
+    <div class="recap-grid">
+      <div class="recap-item"><div class="recap-num">1</div><div class="recap-item-text"><strong>오늘의 구절 (막 11:23-24):</strong> "내가 진실로 너희에게 말하는데, 누구든지 이 산을 향하여 '들려서 바다에 던져지라'고 말하고 그 마음에 의심하지 않고, 자기가 말한 것이 이루어지리라고 믿으면, 그에게 그대로 되리라 ... 그러므로 내가 너희에게 말하는데, 너희가 기도하며 구하는 모든 것은 이미 받은 줄로 믿으라. 그리하면 너희에게 그대로 되리라."</div></div>
+      <div class="recap-item"><div class="recap-num">2</div><div class="recap-item-text"><strong>개요 Ⅰ.D — 가장 높고 영적인 기도:</strong> "기도의 가장 높고 영적인 종류는 <span class="hl">권위의 기도</span>이다." 간구·교통의 기도를 넘어서는 — 사탄을 묶고 하나님의 뜻을 푸는, 그리스도의 권위를 행사하는 기도.</div></div>
+      <div class="recap-item"><div class="recap-num">3</div><div class="recap-item-text"><strong>D-1 — 권위의 기도를 배움 (마 18:18):</strong> "기도의 사람은 자신의 영을 단련하여 하나님과 함께 길게 일하기 위해 권위의 기도를 사용하는 법을 배운다." 권위는 — 학습되고 단련되는 영적 사용(use).</div></div>
+      <div class="recap-item"><div class="recap-num">4</div><div class="recap-item-text"><strong>D-2 — 묶고 푸는 두 종류 (마 18:18):</strong> "권위의 기도에는 두 종류가 있는데 — 그것은 <span class="hl">묶는 기도와 푸는 기도</span>이다." 사탄과 어둠의 일을 묶고 — 하나님과 그분의 뜻과 그리스도의 풍성함을 푼다.</div></div>
+      <div class="recap-item"><div class="recap-num">5</div><div class="recap-item-text"><strong>개요 Ⅰ.E — 막 11:23-24의 권위의 기도:</strong> "권위의 기도는 마가복음 11장 23-24절을 따라 행해야 한다." 본문 자체가 권위의 기도의 헌장 — '이 산을 향하여 말하는 믿음'.</div></div>
+      <div class="recap-item"><div class="recap-num">6</div><div class="recap-item-text"><strong>E-1 — 이미 받은 줄로 믿음 (막 11:24):</strong> 헬라어 — <span class="hl">πιστεύετε ὅτι ἐλάβετε</span>("너희가 받았음을 믿으라"). ἐλάβετε는 <strong>부정과거(aorist)</strong> — 이미 일어나 완료된 사건. "기도하며 구하는 모든 것은 — 받게 될 줄이 아니라 <strong>이미 받은 줄로 믿어라.</strong>"</div></div>
+      <div class="recap-item"><div class="recap-num">7</div><div class="recap-item-text"><strong>E-2-1 — 권위의 사용·적용 (슥 4:7, 마 21:21):</strong> "사탄과 어둠의 모든 권세에 대항하여 권위를 사용해야 한다." 큰 산을 향해 "은총, 은총이 그것에 있을지어다"(슥 4:7) — 무화과나무를 향해 명령하심(마 21:21). 권위는 — 사용해야 효력을 발한다.</div></div>
+      <div class="recap-item"><div class="recap-num">8</div><div class="recap-item-text"><strong>E-2-2 — 명령의 권한 (마 17:20):</strong> "이 산에게 '여기서 저기로 옮겨지라'고 <strong>명령</strong>해야 한다 — 그러면 그것이 옮겨지리라." 권위의 기도는 간구가 아니라 — <span class="hl">명령(command)</span>. 한 알의 겨자씨만 한 믿음이면 충분하다.</div></div>
+      <div class="recap-item"><div class="recap-num">9</div><div class="recap-item-text"><strong>E-2-3 — 의심 없는 믿음, 하나님의 뜻 (마 6:10, 18:19-20):</strong> "마음에 의심하지 않고"(막 11:23) 기도해야 한다. 그러나 권위의 기도는 — 자기 뜻이 아니라 <strong>하나님의 뜻이 이루어지기를</strong> 구하는 기도(마 6:10). 두세 사람이 그분의 이름 안에서 합심한 자리에 그분의 권위가 있다(마 18:19-20).</div></div>
+      <div class="recap-item"><div class="recap-num">10</div><div class="recap-item-text"><strong>E-2-4 — 이기는 이들과 '이 산' (막 11:23):</strong> "<strong>이기는 자들</strong>이 권위의 기도로 '이 산을 향하여 말하면' — 그 산이 들려서 바다에 던져진다." '이 산'은 — 하나님의 경륜을 가로막는 모든 장애물; '바다'는 사탄적 세계를 상징한다(단 7:2-3, 계 17:15).</div></div>
+    </div>
+    <div class="recap-note"><strong>이 메시지의 부담:</strong> 권위의 기도는 — <strong>가장 높고 영적인 기도</strong>입니다(개요 Ⅰ.D). 그것은 간구나 교통의 차원을 넘어 — <strong>그리스도의 권위로 사탄을 묶고 하나님의 뜻을 푸는 기도</strong>(D-2, 마 18:18)입니다. 주님은 막 11:23-24에서 그 본을 보여 주십니다(개요 Ⅰ.E) — "<strong>이 산을 향하여 말하라</strong>" 그리고 "<strong>이미 받은 줄로 믿으라</strong>". 헬라어 ἐλάβετε는 <strong>부정과거</strong>이며 — "받게 될 것이다"가 아니라 "<strong>이미 받았다</strong>"입니다(E-1). 그러므로 우리의 기도는 — 사탄과 어둠의 권세에 대해 <strong>권위를 사용하고</strong>(E-2-1, 슥 4:7), 산에 대해 <strong>명령하며</strong>(E-2-2, 마 17:20), <strong>의심하지 않고</strong>, 우리의 뜻이 아니라 <strong>하나님의 뜻이 이루어지기를</strong> 구하는 기도(E-2-3, 마 6:10)여야 합니다. 그리고 <strong>이기는 이들</strong>이 그분의 권위로 '이 산을 향하여' 말할 때 — 하나님의 경륜을 가로막는 모든 산이 바다에 던져집니다(E-2-4, 막 11:23). 아멘.</div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-section" id="quiz-section">
+    <div class="quiz-title" style="display:flex;">이해 점검 퀴즈 <span id="quiz-progress" style="margin-left:auto;color:var(--ink-mute);font-weight:500;">1 / 5</span></div>
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+    <div id="quiz-container">
+      <div class="quiz-item" data-index="0" data-correct="2">
+        <div class="quiz-q"><div class="quiz-badge">1</div><div class="quiz-q-text">개요 Ⅰ.D에 따르면, '기도의 가장 높고 영적인 종류'는 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 우리의 필요를 자세히 아뢰는 간구의 기도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 영 안에서 하나님과 누리는 교통의 기도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 권위의 기도 — 묶고 푸는 두 종류로 행사되는 기도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 합심하여 큰 소리로 부르짖는 기도</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="1" data-correct="3">
+        <div class="quiz-q"><div class="quiz-badge">2</div><div class="quiz-q-text">막 11:24에서 "이미 받은 줄로 믿으라"의 헬라어 동사 ἐλάβετε(엘라베테)의 시제와 그 의미로 가장 정확한 것은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 미래시제 — "장차 받게 될 것을 믿으라"</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 현재시제 — "지금 받고 있는 중임을 믿으라"</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 명령형 — "받으라고 끈질기게 구하라"</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 부정과거(aorist) — "이미 일어나 완료된 사건으로 받았음을 믿으라"</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="2" data-correct="1">
+        <div class="quiz-q"><div class="quiz-badge">3</div><div class="quiz-q-text">개요 Ⅰ.D-2에 따르면, 권위의 기도의 '두 종류'는 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 통회의 기도와 감사의 기도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 묶는 기도와 푸는 기도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 개인의 기도와 합심의 기도</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 짧은 기도와 긴 기도</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="3" data-correct="2">
+        <div class="quiz-q"><div class="quiz-badge">4</div><div class="quiz-q-text">막 11:23과 마 17:20에 따르면, 권위의 기도가 '산'을 향해 행사되는 방식은 무엇입니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 산이 옮겨지도록 하나님께 정중히 청원한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 산이 사라질 때까지 끈질기게 간구한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 산을 향해 직접 말하고 명령한다 — "옮겨지라"</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 산 앞에서 침묵하며 영적 묵상에 들어간다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+      <div class="quiz-item" data-index="4" data-correct="0">
+        <div class="quiz-q"><div class="quiz-badge">5</div><div class="quiz-q-text">개요 Ⅰ.E-2-4에 따르면, 막 11:23의 '이 산'을 향해 권위의 기도를 드리는 자는 누구이며, '이 산'은 무엇을 가리킵니까?</div></div>
+        <div class="quiz-options">
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">A</span> 이기는 이들이 — 하나님의 경륜을 가로막는 모든 장애물(산)을 향해 말한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">B</span> 모든 신자가 — 자기 인생의 개인적 문제(산)를 옮긴다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">C</span> 사도들만이 — 예루살렘 성전 산을 향해 명령한다</div>
+          <div class="quiz-opt" onclick="selectOpt(this)"><span class="quiz-opt-marker">D</span> 천사들이 — 시온 산을 향해 영광을 선포한다</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+    <div class="quiz-warn" id="quiz-warn">먼저 답을 선택해 주세요.</div>
+    <div class="quiz-nav" id="quiz-nav" style="display:flex;gap:10px;margin-top:20px;">
+      <button class="quiz-nav-btn" id="quiz-prev-btn" onclick="navQuiz(-1)" style="flex:1;">이전</button>
+      <button class="quiz-nav-btn primary" id="quiz-next-btn" onclick="navQuiz(1)" style="flex:2;">다음 퀴즈</button>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-score-label">최종 점수</div>
+      <div class="quiz-score" id="quizScore">0 / 5<span class="quiz-score-pct" id="quizScorePct"></span></div>
+      <div class="quiz-result-msg" id="quizMsg"></div>
+      <button class="quiz-restart-btn" id="quizRestartBtn" onclick="restartQuiz()">다시 풀기</button>
+    </div>
+  </section>
+
+  <!-- PRAYER -->
+  <section class="prayer-section" id="prayer-section">
+    <div class="prayer-heading">오늘의 결단과 기도</div>
+    <div class="prayer-callbox">
+      <p>주여, 가장 높고 영적인 기도는 — <span class="cb-house">권위의 기도</span>임을 깨닫습니다(개요 Ⅰ.D).</p>
+      <p>그리스도의 권위로 사탄과 어둠을 묶고, 하나님의 뜻과 그분의 풍성함을 푸는 기도를 배우게 하소서(D-2, 마 18:18).</p>
+      <p>막 11:23-24을 따라 — <span class="cb-house">"이 산을 향하여 말하며, 이미 받은 줄로 믿는"</span> 이기는 자가 되게 하소서. 아멘.</p>
+    </div>
+  </section>
+
+  <div class="footer-note">2026 봄 장로훈련 · M1D3 · 권위의 기도 — 이 산을 향하여 말하는 믿음 (막 11:23-24, 마 18:18·17:20·21:21·6:10·18:19-20, 슥 4:7, 단 7:2-3, 계 17:15)</div>
+</div>
+<script>
+let fontScale = 1;
+function adjustFont(dir) {
+  if (dir === 0) fontScale = 1;
+  else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+  else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+
+function togglePanel() {
+  document.getElementById('sidepanel').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function goTo(id) {
+  togglePanel();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 300);
+}
+
+function showKwDef(id, el) {
+  const def = document.getElementById(id);
+  const isShown = def.classList.contains('show');
+  document.querySelectorAll('.keyword-def').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.keyword-tag').forEach(t => t.classList.remove('active'));
+  if (!isShown) { def.classList.add('show'); el.classList.add('active'); }
+}
+
+function toggleKwTip(id) {
+  const tip = document.getElementById(id);
+  const isShown = tip.classList.contains('show');
+  document.querySelectorAll('.kw-tooltip').forEach(t => t.classList.remove('show'));
+  if (!isShown) tip.classList.add('show');
+}
+
+const TV_WORD_DATA = {
+  'amen': {
+    gk: 'ἀμὴν λέγω ὑμῖν', pron: '아멘 레고 휘민', strong: 'G281 + G3004 + G4771', lemma: 'ἀμήν + λέγω + ὑμῖν',
+    kr: '진실로 내가 여러분에게 말합니다', en: 'Truly I say to you',
+    grammar: '셈어 차용 부사 + 동사(현재 1sg) + 인칭대명사(여격 2pl) — 엄숙한 단언의 도입',
+    meaning: '진실로·확실히·아멘 (히브리어 אָמֵן의 그리스어 음역) <em>(truly, verily, amen)</em>',
+    note: '<b>BDAG</b>(p. 53, §ἀμήν): <b>ἀμήν</b> — "확실하다·참되다·견고하다"의 의미를 가진 히브리어 동사 어근 <b>אמן</b>(아만)에서 파생된 셈어 차용어. 사복음서에서 약 100회 등장.<br><br><b>Thayer\'s</b>(§281): "확실하다, 참되다 ... 사실의 확언이나 약속·축복·저주의 확정에 사용됨."<br><br><b>예수님의 독특한 어법</b>: 신약 이전에는 — 청자가 화자의 말에 대한 동의로 끝에 "아멘"을 붙였습니다(예: 시 41:13 — "아멘과 아멘"). 그러나 예수님은 — <strong>자신의 말을 시작할 때 "아멘"을 사용</strong>하는 독특한 어법을 가지고 계셨습니다. 마가복음에서만 13회, 마태복음 31회, 누가복음 6회, 요한복음 25회(요한복음에서는 항상 ἀμὴν ἀμὴν λέγω ὑμῖν 두 번 반복).<br><br><b>본 어구의 기능</b>: <b>ἀμὴν λέγω ὑμῖν</b>("진실로 내가 여러분에게 말합니다")는 — 예수님께서 <strong>가장 무게 있는·결정적인 단언</strong>을 도입하실 때 사용하시는 정형구. BDAG는 이를 <b>"a strong assertion of what is said"</b>(말하는 내용의 강력한 단언)으로 정의합니다.<br><br><b>어법적 효과</b>: 단순한 진술이 아니라 — <span style="font-style:italic">"내가 곧 말하려는 것은 절대적으로 참되다"</span>는 사전 단언. 청자에게 — 다음에 오는 말을 가벼이 여기지 말라는 어법적 신호.<br><br><b>본 절에서의 위치</b>: 막 11:23은 — 산을 향해 말하는 권위의 기도라는 매우 도전적인 가르침을 도입하기 위해 ἀμήν을 사용합니다. 곧 — 다음에 오는 진술이 <strong>비유나 과장이 아닌 절대적 진실</strong>임을 표시.',
+    context: 'ἀμὴν λέγω ὑμῖν ὅτι ὃς ἂν εἴπῃ τῷ ὄρει τούτῳ'
+  },
+  'hos_an_eipei': {
+    gk: 'ὃς ἂν εἴπῃ', pron: '호스 안 에이페', strong: '관계대명사 + ἄν + G3004', lemma: 'ὅς + ἄν + λέγω',
+    kr: '누구든지 ~ 말하는 자', en: 'whoever should say',
+    grammar: '관계대명사(주격) + 첨사 ἄν + 부정과거 능동 가정법 3sg — 일반화 관계절',
+    meaning: '누구든지 (관계의 일반화) ~ 말하는 자가 있다면 <em>(whoever should say — generalizing relative clause)</em>',
+    note: '<b>구문 분석 — 일반화 관계절(Generalizing Relative Clause)</b>:<br>• <b>ὅς</b>: 관계대명사 남성 단수 주격 — "그 자(who)"<br>• <b>ἄν</b>: 첨사(particle) — 가정·조건의 영역으로 끌어들이는 표지<br>• <b>εἴπῃ</b>: λέγω의 부정과거 능동 가정법 3인칭 단수 — "그가 말한다면"<br><br><b>Wallace, Greek Grammar Beyond the Basics</b>(p. 478, "Indefinite/Generalizing Relative Clause"): 관계대명사 + ἄν + 가정법의 결합은 — <strong>"누구든지(whoever)"의 일반화 의미</strong>를 형성합니다. 특정 인물이 아닌 — <span style="font-style:italic">조건을 만족하는 모든 사람에게 적용되는 일반 원리</span>를 진술.<br><br><b>BDF §380(2)</b>: ἄν + 가정법은 — 정해지지 않은(미래) 시점이나 사람을 가리키는 데 사용됨.<br><br><b>본 절의 의미</b>: 본 절은 <strong>특정한 한 사람이 아니라, 어떤 신자라도</strong>(이 조건을 만족하는 자)에게 적용되는 일반 원리를 진술합니다. 즉 — 권위의 기도는 특별한 사도나 선지자에게만 주어진 특권이 아니라, <span style="font-style:italic">모든 신자에게 열린 가능성</span>입니다.<br><br><b>부정과거 가정법(εἴπῃ)의 의미</b>: 부정과거(aorist)는 한 점적·결연한 동작을 표현. 가정법은 — 아직 일어나지 않은 가능성·미래를 나타냄. 두 시제·법의 결합 = "(아직 발생하지 않았으나) 누구든지 한 결연한 발화로 말한다면."<br><br><b>발화 동사 λέγω의 의미 폭</b>: BDAG에서 λέγω는 — 단순한 "말하기"가 아니라 <strong>의도적·집중적 발화</strong>를 가리킵니다. 즉 <b>εἴπῃ</b>는 우연히 떠오른 말이 아니라 — <span style="font-style:italic">결연한 의도로 말해진 단어</span>입니다.',
+    context: 'ὃς ἂν εἴπῃ τῷ ὄρει τούτῳ'
+  },
+  'orei_touto': {
+    gk: 'τῷ ὄρει τούτῳ', pron: '토 오레이 투토', strong: 'G3735 + G3778', lemma: 'ὄρος + οὗτος',
+    kr: '이 산을 향하여', en: 'to this mountain',
+    grammar: '관사 + 명사(중성·단수·여격) + 지시대명사(여격) · 발화의 수신 대상',
+    meaning: '이 산에게 (지시되는 특정한 산을 발화의 직접 수신자로 함) <em>(to this specific mountain — addressed)</em>',
+    note: '<b>BDAG</b>(p. 724, §ὄρος): <b>ὄρος</b> — "산, 산지." 신약에서 약 63회 등장. 일반적인 자연 지형을 가리키되, 본 절에서는 <strong>발화의 직접적 수신 대상</strong>으로서의 산.<br><br><b>Thayer\'s</b>(§3735): "산 — 평지보다 솟은 모든 지형."<br><br><b>지시대명사 τούτῳ의 결정적 기능</b>: <b>τοῦτο</b>(이것)의 여격 형태인 <b>τούτῳ</b>는 — 단순히 "산"을 일반적으로 가리키는 것이 아니라 <strong>"이 (특정한) 산"</strong>을 지시합니다. 이는 — 화자가 보는 앞에 있는, 또는 그가 마음에 품은 <span style="font-style:italic">특정한 장애물</span>을 가리키는 어법적 장치.<br><br><b>여격(dative)의 기능 — 발화의 수신 대상</b>: 헬라어에서 동사 λέγω("말하다")는 — 발화의 수신자를 <strong>여격</strong>으로 받습니다. 본 절의 <b>τῷ ὄρει τούτῳ</b>는 동사 εἴπῃ의 여격 목적어로 — <span style="font-style:italic">"이 산에게 말한다"</span>의 의미.<br><br><b>본 절의 어법적 결정성</b>: 일반적인 기도는 — 사람이 <strong>하나님께</strong>(τῷ θεῷ — 신성한 여격) 말합니다. 그러나 본 절은 — 사람이 <strong>이 산에게</strong>(τῷ ὄρει τούτῳ — 자연의 여격) 말합니다. <span style="font-style:italic">발화의 수신 대상이 하나님이 아니라 산</span>이라는 점이 — 본 절의 가장 결정적인 어법적 특징입니다.<br><br><b>"이 산"의 가능한 지시</b>: 막 11장의 문맥에서 — 예수님과 제자들이 베다니에서 예루살렘으로 가는 길에 있던 감람산(Mount of Olives)을 가리키는 것으로 흔히 이해됩니다. 그러나 본 어구의 어법적 강조는 — <span style="font-style:italic">"어떤 산이든지, 화자가 가리키는 그 특정한 산"</span>의 보편 원리를 향해 있음.<br><br><b>마 17:20과의 평행</b>: 마 17:20에서도 동일한 어법 — <b>ἐρεῖτε τῷ ὄρει τούτῳ</b>("이 산에게 말하라"). 두 본문 모두에서 — 산에게 직접 말하는 권위의 기도가 동일하게 진술됩니다.',
+    context: 'εἴπῃ τῷ ὄρει τούτῳ· ἄρθητι καὶ βλήθητι'
+  },
+  'arthēti_blēthēti': {
+    gk: 'ἄρθητι καὶ βλήθητι', pron: '아르테티 카이 블레테티', strong: 'G142 + G906', lemma: 'αἴρω + βάλλω',
+    kr: '들려 올려져라 · 던져져라', en: 'be taken up · be cast',
+    grammar: '부정과거 수동 명령법 2sg 쌍 — 산 자체에 대한 직접 명령',
+    meaning: '들어 올려지고 던져져라 (수동 명령) <em>(be lifted up and cast — direct command in passive voice)</em>',
+    note: '<b>αἴρω (G142)</b>:<br><b>BDAG</b>(p. 28-29, §αἴρω): "① 들어 올리다, 집어 들다, ② 옮기다, 제거하다, ③ 가져가다, 빼앗다." 매우 흔한 동사로 신약에서 약 100회 등장.<br><br><b>βάλλω (G906)</b>:<br><b>BDAG</b>(p. 162-163, §βάλλω): "① 던지다, 내던지다, ② 두다, 놓다, ③ (강한 동작으로) 보내다." 신약에서 약 122회 등장.<br><br><b>형태 분석 — 부정과거 수동 명령법(2인칭 단수)</b>:<br>• <b>ἄρθητι</b>: ἄρ-(어근) + -θη-(부정과거 수동 시제 표지) + -τι(명령법 2sg 어미) → "(너) 들려 올려져라!"<br>• <b>βλήθητι</b>: βλη-(어근, 모음 약화 형태) + -θη- + -τι → "(너) 던져져라!"<br><br><b>부정과거 명령법의 의미</b>: 헬라어 명령법은 — 부정과거(aorist)와 현재(present) 두 시제로 나뉩니다.<br>• <b>현재 명령법</b>: 지속·반복적 동작을 명령 ("계속 ~ 하라")<br>• <b>부정과거 명령법</b>: <strong>한 점적·결연한 동작을 명령</strong> ("한 번에 ~ 하라")<br>본 절의 두 명령은 모두 부정과거 — <span style="font-style:italic">한 결정적 동작을 단호하게 명령</span>합니다.<br><br><b>수동 명령법의 의미</b>: 헬라어 수동태는 — 주어가 동작의 대상이 됨을 표현합니다. <b>ἄρθητι</b>("들려 올려져라") + <b>βλήθητι</b>("던져져라") — 산이 자신의 의지로 움직이는 것이 아니라, <strong>외적 힘에 의해 들려 올려지고 던져지는 것</strong>을 명령. 누가 그 동작을 일으키는가는 — 어법상 명시되지 않으나 <span style="font-style:italic">암시적 행위자</span>가 전제됩니다.<br><br><b>명령법의 수신 대상 — 산 자체</b>: 본 절의 가장 독특한 어법 — 명령의 수신자가 <strong>사람이 아닌 산</strong>입니다. 사람에게 명령하는 것은 일반적이지만, 자연 사물에게 명령하는 어법은 — <span style="font-style:italic">권위가 자연 사물의 영역에 미치는 발화</span>를 표시합니다.<br><br><b>καί의 결합</b>: 두 명령이 καί("그리고")로 연결되어 — 한 흐름의 동작을 형성. <strong>"들려 올려지고 → 던져지라"</strong>의 두 단계 동작이 한 명령으로 결합됨.',
+    context: 'ἄρθητι καὶ βλήθητι εἰς τὴν θάλασσαν'
+  },
+  'diakrithei': {
+    gk: 'μὴ διακριθῇ', pron: '메 디아크리테', strong: 'G3361 + G1252', lemma: 'μή + διακρίνω',
+    kr: '의심하지 말고', en: 'should not doubt',
+    grammar: '부정 불변화사 + 부정과거 수동 가정법 3sg · 부정 조건',
+    meaning: '의심하지·동요하지·갈라지지 말 것 <em>(should not doubt, hesitate, or be divided)</em>',
+    note: '<b>διακρίνω (G1252)</b>:<br><b>BDAG</b>(p. 231, §διακρίνω): 두 가지 주요 의미군이 있는 동사 —<br>• <b>능동/타동</b>: ① 분별하다, 구별하다, ② 판단하다, 평가하다.<br>• <b>중간/수동</b>: ③ <strong>의심하다, 주저하다, 마음이 갈라지다</strong>, ④ 다투다, 논쟁하다.<br><br><b>Thayer\'s</b>(§1252): 중간/수동에서 — "자기 자신과 다투다, 마음에서 흔들리다, 의심하다, 주저하다."<br><br><b>풍성한 어원 분석</b>:<br>• <b>διά-</b> (둘로, 사이로): 분리·관통의 의미.<br>• <b>κρίνω</b> (G2919, "나누다·판단하다"): 헬라어 κρίνω의 어근.<br>합성하면 — <span style="font-style:italic">"두 갈래로 나누다, 두 방향으로 갈라지다"</span>의 의미. 중간/수동에서 — 한 사람의 마음이 <strong>두 방향으로 갈라지는 상태</strong>, 곧 의심.<br><br><b>본 형태 — 부정과거 수동 가정법 3sg</b>:<br>• <b>μή</b>: 직설법 외의 모든 법에 사용되는 부정 (가정법의 부정).<br>• <b>διακριθῇ</b>: 부정과거 수동 가정법 3인칭 단수.<br><br><b>Wallace, Greek Grammar Beyond the Basics</b>(p. 469): <strong>μή + 부정과거 가정법</strong>은 — 단호한 금지 또는 부정 조건을 표현합니다. 본 절은 — <span style="font-style:italic">"한 점의 의심도 일어나지 않을 것을"</span>의 의미.<br><br><b>부정과거 vs 현재의 대조</b>: 다음 절에서 πιστεύῃ는 <strong>현재</strong> 가정법(지속적 믿음)인 반면, διακριθῇ는 <strong>부정과거</strong> 가정법(점적 의심)입니다.<br>• 의심 — 한 점적 행위라도 일어나지 말 것 (부정과거)<br>• 믿음 — 지속적 흐름으로 유지될 것 (현재)<br>이 시제 대조가 — 권위의 기도의 결정적 조건입니다.<br><br><b>"마음에서(ἐν τῇ καρδίᾳ)" — 의심의 자리</b>: 본 절은 의심이 일어나는 자리를 — <strong>마음(καρδία, kardia)</strong>으로 정확히 지목합니다. 외적 망설임이 아니라 — <span style="font-style:italic">내적 마음 깊은 곳</span>에서의 갈라짐. 헬라어 καρδία는 — 단순한 감정의 자리가 아니라 <strong>의지·이성·감정이 통합된 중심</strong>을 가리킵니다(BDAG: "the seat of physical, spiritual, and mental life").<br><br><b>본 절의 어법적 결정성</b>: <b>μὴ διακριθῇ ἐν τῇ καρδίᾳ αὐτοῦ</b>("그가 마음에서 의심하지 말고") — 권위의 기도의 첫 번째 부정 조건. 마음 안쪽이 한 흐름으로 통합되어 두 갈래로 갈라지지 않을 때에만 — 권위의 기도가 효력을 발합니다.',
+    context: 'μὴ διακριθῇ ἐν τῇ καρδίᾳ αὐτοῦ ἀλλὰ πιστεύῃ'
+  },
+  'pisteuei': {
+    gk: 'πιστεύῃ', pron: '피스튜에', strong: 'G4100', lemma: 'πιστεύω',
+    kr: '믿으면 (지속적으로)', en: 'should believe',
+    grammar: '동사 · 현재 능동 가정법 3sg · 지속적 믿음',
+    meaning: '믿다·신뢰하다·신실하다 <em>(to believe, trust, have faith)</em>',
+    note: '<b>BDAG</b>(p. 816-820, §πιστεύω): <b>πιστεύω</b> — "① 무언가를 참되다고 여기고 따라서 그것에 대한 신뢰의 가치를 가짐, ② 신뢰하다·확신하다, ③ 위임하다." 신약에서 약 241회 등장하는 빈도 높은 동사.<br><br><b>Thayer\'s</b>(§4100): "참되다고 생각하다, 그러므로 ~을 신뢰하다·확신하다·신실하다."<br><br><b>어원 분석</b>: 명사 <b>πίστις</b>(G4102, "믿음·신뢰·신실함")의 동사 형태. 동사·명사가 한 어근(πιστ-)에서 형성된 짝.<br><br><b>현재 가정법의 의미</b>: 헬라어 가정법은 — 가능성·미래성을 나타냅니다.<br>• <b>현재 가정법</b>: <strong>지속·진행적 동작</strong>의 가능성<br>• <b>부정과거 가정법</b>: <strong>점적·결연한 동작</strong>의 가능성<br>본 절의 πιστεύῃ는 <strong>현재</strong> 가정법 — <span style="font-style:italic">"한 흐름으로 계속 믿어 가는 것"</span>의 지속적 믿음.<br><br><b>이전 동사 διακριθῇ(부정과거)와의 시제 대조</b>:<br>• 의심 (διακριθῇ): 부정과거 가정법 — 단 한 점도 일어나지 말 것<br>• 믿음 (πιστεύῃ): 현재 가정법 — 지속적 흐름으로 유지될 것<br>이 시제 대조가 — 권위의 기도의 핵심 어법입니다. <strong>의심은 한 점도 없이, 믿음은 한 흐름으로 계속</strong>.<br><br><b>믿음의 내용 — ὅτι 절</b>: 본 절은 <b>πιστεύῃ ὅτι ὃ λαλεῖ γίνεται</b>("그가 말하는 것이 (실제로) 일어난다고 믿으면")로 이어집니다. 믿음의 대상이 <strong>ὅτι(that)</strong> 절로 표시됨 — 즉 믿음의 내용이 명확히 진술됨.<br><br><b>접속법 ἀλλά의 대조</b>: 본 절은 <b>ἀλλά</b>("그러나")로 이전 부정문(μὴ διακριθῇ)과 대조됩니다. 부정과 긍정이 강한 대조를 이룸 — <span style="font-style:italic">"의심하지 말고 — 그러나 믿으면"</span>.<br><br><b>본 절의 어법적 핵심</b>: 권위의 기도는 — <strong>두 가지 마음의 상태</strong>를 동시에 요구합니다:<br>• <b>부정 조건</b>: 의심이 한 점도 없을 것 (μὴ διακριθῇ)<br>• <b>긍정 조건</b>: 믿음이 한 흐름으로 지속될 것 (πιστεύῃ)<br>이 두 조건이 만족될 때 — <b>ἔσται αὐτῷ</b>("그에게 그렇게 될 것이다")의 결과가 따릅니다.',
+    context: 'μὴ διακριθῇ ἐν τῇ καρδίᾳ αὐτοῦ ἀλλὰ πιστεύῃ ὅτι ὃ λαλεῖ γίνεται'
+  },
+  'lalei_ginetai': {
+    gk: 'ὃ λαλεῖ γίνεται', pron: '호 랄레이 기네타이', strong: 'G3739 + G2980 + G1096', lemma: 'ὅς + λαλέω + γίνομαι',
+    kr: '그가 말한 대로 된다', en: 'what he says happens',
+    grammar: '관계대명사(중성·대격) + 현재 능동 직설법 3sg + 현재 중간 직설법 3sg · 동시 진행 쌍',
+    meaning: '그가 말하는 것이 (그대로) 되어진다 (말함과 됨이 동시에 진행됨) <em>(what he speaks comes to be / happens)</em>',
+    note: '<b>구문 분석 — 두 현재 동사의 평행</b>:<br>• <b>ὅ</b>: 관계대명사 중성 단수 대격 — "그것을(을)"<br>• <b>λαλεῖ</b>: λαλέω의 현재 능동 직설법 3sg — "그가 말하다"<br>• <b>γίνεται</b>: γίνομαι의 현재 중간 직설법 3sg — "되어지다·일어나다"<br><br><b>λαλέω (G2980)</b>:<br><b>BDAG</b>(p. 582, §λαλέω): "① 소리를 내다, 말하다, ② 발화하다, 표현하다, ③ 가르치다·설교하다·계시하다." 신약에서 약 296회 등장. 단순한 발화 동사이며, λέγω("말하다·언급하다")보다 <span style="font-style:italic">발화의 행위 자체</span>에 더 초점을 둠.<br><br><b>γίνομαι (G1096)</b>:<br><b>BDAG</b>(p. 196-199, §γίνομαι): "① 존재하게 되다, ② 일어나다, 발생하다, ③ ~이 되다, 변화하다." 신약에서 약 670회 등장. 헬라어의 가장 기본적인 변화·생성 동사.<br><br><b>두 현재 동사의 동시 진행</b>: 이 어구의 결정적 어법은 — <strong>λαλεῖ(현재)와 γίνεται(현재)의 평행</strong>입니다. 두 동사가 모두 현재 시제로 — <span style="font-style:italic">"말하는 것"과 "되어지는 것"이 동시에 진행</span>되는 흐름을 표현합니다.<br><br><b>현재 직설법의 의미</b>: 헬라어 현재 직설법은 — 동작이 <strong>지금 진행 중이거나 일반적 진리</strong>임을 진술합니다. 본 절은 — <span style="font-style:italic">일반적 진리</span>로서: <strong>"말하면 그대로 된다"</strong>의 보편 원리.<br><br><b>γίνομαι의 중간태 의미</b>: γίνεται는 형태상 중간/수동이지만 의미상 자동 — "스스로 되어지다·일어나다." 외부 행위자의 동작이 아니라 — <span style="font-style:italic">사건이 자발적으로 발생함</span>을 표현. 즉 — 말한 그 일이 <strong>스스로 그렇게 된다</strong>.<br><br><b>본 절의 어법적 결정성</b>: <b>ὃ λαλεῖ γίνεται</b>("그가 말하는 것이 된다") — 권위의 기도의 본질을 진술하는 핵심 어구. <strong>발화와 발생의 동시성</strong>이 — 권위의 기도의 어법적 표지입니다. 일반적 기도(청원)는 시간적 거리가 있는 반면 — 권위의 기도는 <span style="font-style:italic">발화와 동시에 일어남</span>.',
+    context: 'πιστεύῃ ὅτι ὃ λαλεῖ γίνεται, ἔσται αὐτῷ'
+  },
+  'proseuchesthe_aiteisthe': {
+    gk: 'προσεύχεσθε καὶ αἰτεῖσθε', pron: '프로슈케스테 카이 아이테이스테', strong: 'G4336 + G154', lemma: 'προσεύχομαι + αἰτέω',
+    kr: '여러분이 기도하고 구하는', en: 'you pray and ask',
+    grammar: '두 동사 · 현재 중간 직설법 (또는 명령법) 2pl 쌍 — 지속적 행동',
+    meaning: '기도하고 구하다 (두 동사가 함께 — 지속적 흐름) <em>(to pray and ask — continuous action)</em>',
+    note: '<b>προσεύχομαι (G4336)</b>:<br><b>BDAG</b>(p. 879, §προσεύχομαι): "신에게 청원하다·기도하다." 신약의 가장 일반적 기도 동사로 약 86회 등장. 일상적 부탁이 아니라 — <span style="font-style:italic">하나님을 향한 종교적 기도</span>의 전문 용어.<br><br><b>αἰτέω (G154)</b>:<br><b>BDAG</b>(p. 30-31, §αἰτέω): "구하다, 청원하다, 요청하다." 신약에서 약 70회 등장. 사람·하나님 모두에게 사용되는 일반적 청원 동사.<br><br><b>두 동사의 의미 차이</b>: BDAG와 표준 사전들은 — προσεύχομαι와 αἰτέω의 미묘한 차이를 다음과 같이 설명합니다:<br>• <b>προσεύχομαι</b>: 기도의 <strong>전체 행위</strong> — 하나님과의 영적 교통을 포괄.<br>• <b>αἰτέω</b>: 기도 안의 <strong>구체적 청원</strong> — 무엇을 구함의 행위.<br>두 동사가 함께 사용됨은 — <span style="font-style:italic">기도의 영역(προσεύχομαι) 안에서 구체적 청원(αἰτέω)이 이루어진다</span>는 의미.<br><br><b>형태 분석 — 현재 중간 직설법(또는 명령법)</b>:<br>• 두 동사 모두 <strong>현재</strong> 시제로 — 지속·반복적 행동 표현.<br>• 두 동사 모두 <strong>중간태</strong> — 자기-관여(self-involvement)의 의미를 가짐.<br>• 형태가 직설법과 명령법이 동일(πάντα ὅσα 관계절 안에서 직설법으로 보는 것이 자연스러움): "여러분이 기도하고 구하는 무엇이든지."<br><br><b>πάντα ὅσα(모든 것·무엇이든지)와의 결합</b>: 본 절은 <b>πάντα ὅσα προσεύχεσθε καὶ αἰτεῖσθε</b>("여러분이 기도하고 구하는 모든 것")로 시작. <b>πάντα ὅσα</b>("all things whatsoever")는 <strong>제한 없는 포괄</strong>을 의미 — <span style="font-style:italic">"여러분이 기도하고 구하는 그 어떤 것이든지"</span>의 의미.<br><br><b>현재 시제의 의미</b>: 두 동사 모두 현재 — 한 점적 기도가 아니라 <strong>지속적·반복적 기도의 흐름</strong>을 가리킵니다. 본 절의 가르침은 — <span style="font-style:italic">한 번의 청원에 대한 기적적 응답</span>이 아니라, <strong>기도의 지속적 흐름 안에서의 받음</strong>을 다룹니다.<br><br><b>본 절의 어법적 의의</b>: <b>προσεύχεσθε καὶ αἰτεῖσθε</b>는 — 모든 정상적 기도의 행위(기도와 청원)를 포괄합니다. 그리고 <strong>다음 어구 πιστεύετε ὅτι ἐλάβετε</strong>("이미 받은 줄로 믿으십시오")가 그 행위에 대한 결정적 조건을 부여합니다.',
+    context: 'πάντα ὅσα προσεύχεσθε καὶ αἰτεῖσθε, πιστεύετε ὅτι ἐλάβετε'
+  },
+  'elabete': {
+    gk: 'πιστεύετε ὅτι ἐλάβετε', pron: '피스튜에테 호티 엘라베테', strong: 'G4100 + G3754 + G2983', lemma: 'πιστεύω + ὅτι + λαμβάνω',
+    kr: '이미 받은 줄로 믿으십시오', en: 'believe that you have received',
+    grammar: '명령법(또는 직설법) 현재 + 접속사 + 부정과거 직설법 — 본문의 핵심 시제 구조',
+    meaning: '믿으십시오 — 받은 것으로 (이미 발생한 과거 사실로) <em>(believe — that you received [past completed action])</em>',
+    note: '<b>구문 분석 — 본문의 가장 결정적 어법</b>:<br>• <b>πιστεύετε</b>: πιστεύω의 현재 능동 명령법(또는 직설법) 2pl — "(여러분은) 믿으십시오 / 믿습니다"<br>• <b>ὅτι</b>: 접속사 — 믿음의 내용을 도입하는 "that"<br>• <b>ἐλάβετε</b>: λαμβάνω의 <strong>부정과거(Aorist)</strong> 능동 직설법 2pl — "여러분이 받았다"<br><br><b>λαμβάνω (G2983)</b>:<br><b>BDAG</b>(p. 583-585, §λαμβάνω): "① 받다, 영접하다, ② 잡다, 취하다, ③ 가져가다." 헬라어의 가장 기본적인 받음·취함 동사. 신약에서 약 258회 등장.<br><br><b>핵심 — 부정과거(Aorist)의 시제적 의미</b>: 본 절의 <b>ἐλάβετε</b>는 — <strong>부정과거 능동 직설법</strong>입니다. 헬라어 부정과거는 동작을 <strong>완결된 과거 사건</strong>으로 진술합니다.<br><br><b>Wallace, Greek Grammar Beyond the Basics</b>(p. 557-558, "Constative Aorist"): 본 절의 부정과거는 <strong>"constative aorist"</strong>(요약적 부정과거)로 — 동작을 <span style="font-style:italic">"하나의 완결된 사건"</span>으로 보는 시각. <b>ἐλάβετε</b>("여러분이 받았다")는 — 받음이 <strong>이미 일어난 과거 사실</strong>로 진술됩니다.<br><br><b>본 어법의 시간적 역설</b>: 본 절의 가장 독특한 어법적 특징 — <strong>아직 응답되지 않은 미래의 청원에 대해 "이미 받았다"는 과거 시제로 믿으라</strong>는 명령. 이는 일반적 시간 논리를 거스르는 어법입니다:<br>• 일반 청원: "(미래에) 받을 것을 (현재) 믿으라"<br>• 본 절의 어법: "<strong>(과거에) 이미 받았음을 (현재) 믿으라</strong>"<br><br><b>한국어 회복역의 정확한 번역</b>: <b>ἐλάβετε</b>의 부정과거 시제를 — <strong>"이미 받은 줄로"</strong>로 정확히 옮김. 영어 회복역도 — <strong>"believe that you have received them"</strong>(현재완료로 과거 완결성 표현).<br><br><b>본문 해독상의 변형</b>: 일부 사본(서방본문)에서는 <b>λαμβάνετε</b>(현재 시제 — "여러분이 받습니다") 또는 <b>λήψεσθε</b>(미래 — "여러분이 받을 것입니다")로 변형되어 나타나기도 하지만 — <strong>가장 잘 입증된 본문은 ἐλάβετε(부정과거)</strong>입니다(Nestle-Aland 28판; UBS 5판). 이 부정과거 본문이 — 본 절의 어법적 핵심이며, 본 가르침의 시제적 역설을 보존합니다.<br><br><b>시제 대조의 어법적 효과</b>:<br>• <b>πιστεύετε</b>(현재): 지금·지속적으로 믿으라<br>• <b>ἐλάβετε</b>(부정과거): 이미·완결적으로 받았다<br>두 시제의 결합 = <span style="font-style:italic">"이미 받은 것을 — 지금 믿으라"</span>. 받음은 과거이고, 믿음은 현재입니다.<br><br><b>다른 신약 평행 구절 — 마 21:22</b>: 마태복음의 평행 구절은 — <b>πάντα ὅσα ἂν αἰτήσητε ἐν τῇ προσευχῇ πιστεύοντες λήμψεσθε</b>("기도 가운데 믿고 구하는 것은 무엇이든지 받을 것이다"). 마태에서는 <strong>미래</strong>(λήμψεσθε), 마가에서는 <strong>부정과거</strong>(ἐλάβετε)로 — 시제 차이를 통해 동일한 진리의 두 측면을 진술합니다.',
+    context: 'πιστεύετε ὅτι ἐλάβετε, καὶ ἔσται ὑμῖν'
+  },
+  'estai': {
+    gk: 'ἔσται ὑμῖν', pron: '에스타이 휘민', strong: 'G1510', lemma: 'εἰμί',
+    kr: '여러분에게 이루어질 것입니다', en: 'it will be to you',
+    grammar: '동사 · 미래 중간 직설법 3sg + 인칭대명사(여격 2pl) · 확정된 미래',
+    meaning: '여러분에게 (그것이) 있을 것이다·이루어질 것이다 <em>(it will be to you / it will come to pass for you)</em>',
+    note: '<b>BDAG</b>(p. 282-285, §εἰμί): <b>εἰμί</b> — 헬라어의 가장 기본적인 존재 동사. 본 절의 <b>ἔσται</b>는 미래 중간 직설법 3sg.<br><br><b>형태 분석 — 미래 중간 직설법</b>:<br>• <b>현재 1sg</b>: εἰμί ("나는 ~이다")<br>• <b>미래 1sg</b>: ἔσομαι ("나는 ~ 일 것이다")<br>• <b>미래 3sg</b>: <strong>ἔσται</strong> (본 절 — "그것이 ~ 일 것이다")<br>εἰμί는 미래에서 — 능동태가 없고 중간태/디포넌트로만 활용됩니다.<br><br><b>여격 ὑμῖν의 기능</b>: <b>ὑμῖν</b>("너희에게")은 인칭대명사 2인칭 복수 여격. 동사 εἰμί와 결합한 <strong>소유의 여격(Dative of Possession)</strong> 또는 <strong>이익의 여격(Dative of Advantage)</strong>으로 — "(그것이) 여러분에게 있게 될 것이다 / 여러분의 것이 될 것이다"의 의미.<br><br><b>미래 직설법의 의미</b>: 헬라어 미래 직설법은 — <strong>약속·확언·예언</strong>의 시제로, 미래에 일어날 사건을 <span style="font-style:italic">사실(fact)</span>로 진술합니다. 단순한 가능성이나 추측이 아니라 — <strong>확정된 결과로서의 미래</strong>.<br><br><b>본 절의 두 차례 등장</b>: 막 11:23-24에서 <b>ἔσται</b>는 두 번 등장 —<br>• <b>23절 끝</b>: <b>ἔσται αὐτῷ</b>("그에게 그렇게 될 것이다") — 산이 들려 옮겨지는 결과<br>• <b>24절 끝</b>: <b>ἔσται ὑμῖν</b>("여러분에게 그렇게 될 것이다") — 기도가 응답되는 결과<br>두 절 모두 <strong>동일한 결과 진술</strong>로 — 권위의 기도와 믿음의 기도가 같은 약속으로 묶여 있음을 어법으로 표현.<br><br><b>본 절의 어법적 결정성</b>: <b>ἔσται ὑμῖν</b> — 단지 "이루어질 수도 있다"가 아니라 <strong>"이루어질 것이다"</strong>의 확정된 미래. 미래 직설법이 — 권위의 기도와 믿음의 기도의 <span style="font-style:italic">필연적 결과</span>를 진술합니다.<br><br><b>조건문 구조의 종결</b>: 본 절은 — 조건절(ὃς ἂν εἴπῃ ... καὶ μὴ διακριθῇ ... ἀλλὰ πιστεύῃ)의 결과절(apodosis)로 기능. 조건이 만족되면 — <strong>반드시 결과가 따른다</strong>는 어법적 약속입니다.<br><br><b>두 본문의 평행 구조</b>:<br>• 23절: 조건 (산을 향해 말함 + 의심 없음 + 믿음) → <b>ἔσται αὐτῷ</b><br>• 24절: 조건 (기도하고 구함 + 이미 받았음을 믿음) → <b>ἔσται ὑμῖν</b><br>같은 미래 동사가 두 번 등장하여 — <span style="font-style:italic">권위의 기도와 믿음의 기도가 동일한 약속의 두 측면</span>임을 보여 줍니다.',
+    context: 'ὃ λαλεῖ γίνεται, ἔσται αὐτῷ ... ἐλάβετε, καὶ ἔσται ὑμῖν'
+  }
+};
+
+function tvShowWord(key) {
+  const w = TV_WORD_DATA[key];
+  if (!w) return;
+  const strongLine = w.lemma ? `${w.strong} · 원형 ${w.lemma}` : w.strong;
+  const recovBlock = (w.kr || w.en) ? `
+    <div class="tv-popup-recov">
+      <span class="tv-popup-recov-label">회복역 · Recovery Version</span>
+      ${w.kr ? `<span class="tv-popup-recov-kr">${w.kr}</span>` : ''}
+      ${w.en ? `<span class="tv-popup-recov-en">${w.en}</span>` : ''}
+    </div>` : '';
+  document.getElementById('tv-popup-meaning').innerHTML = `${w.gk} <span style="font-size:0.82rem;color:var(--ink-mute);font-style:italic;font-weight:400;">· ${w.pron}</span>`;
+  document.getElementById('tv-popup-greek').textContent = w.context || '';
+  document.getElementById('tv-popup-body').innerHTML = `
+    <div class="tv-popup-word">
+      <div class="tv-popup-word-top">
+        <span class="tv-popup-word-gk">${w.gk}</span>
+        <span class="tv-popup-word-pron">${w.pron}</span>
+        <span class="tv-popup-word-strong">${strongLine}</span>
+      </div>
+      ${recovBlock}
+      <div class="tv-popup-word-meaning">${w.meaning}</div>
+      <div style="font-size:0.78rem;color:var(--ink-mute);margin-bottom:6px;font-family:'Lora',serif;letter-spacing:0.02em;">${w.grammar}</div>
+      <div class="tv-popup-word-note">${w.note}</div>
+    </div>
+  `;
+  document.getElementById('tv-popup-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function tvClosePopup() {
+  document.getElementById('tv-popup-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function tvClosePopupOnBg(e) {
+  if (e.target.id === 'tv-popup-overlay') tvClosePopup();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const ov = document.getElementById('tv-popup-overlay');
+    if (ov && ov.classList.contains('active')) tvClosePopup();
+  }
+});
+
+function toggleAcc(header) {
+  const acc = header.parentElement;
+  const body = acc.querySelector('.accordion-body');
+  if (acc.classList.contains('open')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    void body.offsetHeight;
+    body.style.maxHeight = '0';
+    acc.classList.remove('open');
+  } else {
+    acc.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    setTimeout(() => { if (acc.classList.contains('open')) body.style.maxHeight = 'none'; }, 400);
+  }
+}
+
+// ============================================================
+// Quiz — full state machine with validation and retry
+// ============================================================
+const QUIZ_STATE = {
+  currentIdx: 0,
+  total: 0,
+  selections: [],   // per-question: selected option index, -1 if none
+  submitted: false,
+};
+let _quizWarnTimer = null;
+
+function quizItems() { return document.querySelectorAll('.quiz-item'); }
+
+function initQuiz() {
+  const items = quizItems();
+  QUIZ_STATE.total = items.length;
+  QUIZ_STATE.selections = new Array(items.length).fill(-1);
+  QUIZ_STATE.currentIdx = 0;
+  QUIZ_STATE.submitted = false;
+
+  items.forEach(item => {
+    item.classList.remove('active', 'reviewed', 'answered');
+    item.querySelectorAll('.quiz-opt').forEach(o => {
+      o.classList.remove('selected', 'correct', 'wrong');
+    });
+    const fb = item.querySelector('.quiz-feedback');
+    if (fb) { fb.className = 'quiz-feedback'; fb.textContent = ''; }
+  });
+  if (items[0]) items[0].classList.add('active');
+
+  const nav = document.getElementById('quiz-nav');
+  if (nav) nav.style.display = 'flex';
+  const result = document.getElementById('quizResult');
+  if (result) result.classList.remove('show');
+  hideQuizWarn();
+
+  updateQuizNav();
+}
+
+function selectOpt(el) {
+  if (QUIZ_STATE.submitted) return;
+  const item = el.closest('.quiz-item');
+  if (!item) return;
+  const idx = parseInt(item.dataset.index, 10);
+  if (isNaN(idx)) return;
+  const opts = item.querySelectorAll('.quiz-opt');
+  let selectedIdx = -1;
+  opts.forEach((o, i) => {
+    o.classList.remove('selected');
+    if (o === el) { o.classList.add('selected'); selectedIdx = i; }
+  });
+  QUIZ_STATE.selections[idx] = selectedIdx;
+  hideQuizWarn();
+}
+
+function navQuiz(dir) {
+  if (QUIZ_STATE.submitted) return;
+  const items = quizItems();
+  if (!items.length) return;
+
+  if (dir > 0) {
+    // require selection before advancing
+    if (QUIZ_STATE.selections[QUIZ_STATE.currentIdx] < 0) {
+      showQuizWarn();
+      return;
+    }
+  }
+
+  items[QUIZ_STATE.currentIdx].classList.remove('active');
+  let nextIdx = QUIZ_STATE.currentIdx + dir;
+
+  if (nextIdx < 0) nextIdx = 0;
+  if (nextIdx >= QUIZ_STATE.total) {
+    submitQuiz();
+    return;
+  }
+
+  QUIZ_STATE.currentIdx = nextIdx;
+  items[nextIdx].classList.add('active');
+  updateQuizNav();
+}
+
+function updateQuizNav() {
+  const total = QUIZ_STATE.total || quizItems().length;
+  const cur = QUIZ_STATE.currentIdx;
+
+  const progressEl = document.getElementById('quiz-progress');
+  if (progressEl) progressEl.textContent = (cur + 1) + ' / ' + total;
+
+  const prevBtn = document.getElementById('quiz-prev-btn');
+  if (prevBtn) prevBtn.disabled = cur === 0;
+
+  const nextBtn = document.getElementById('quiz-next-btn');
+  if (nextBtn) nextBtn.textContent = cur === total - 1 ? '결과 확인하기' : '다음 퀴즈';
+
+  const fill = document.getElementById('quiz-progress-fill');
+  if (fill) {
+    const pct = total > 0 ? ((cur + 1) / total) * 100 : 0;
+    fill.style.width = pct + '%';
+  }
+}
+
+function showQuizWarn() {
+  const el = document.getElementById('quiz-warn');
+  if (!el) return;
+  // restart animation
+  el.classList.remove('show');
+  void el.offsetWidth;
+  el.classList.add('show');
+  clearTimeout(_quizWarnTimer);
+  _quizWarnTimer = setTimeout(() => el.classList.remove('show'), 2400);
+}
+
+function hideQuizWarn() {
+  const el = document.getElementById('quiz-warn');
+  if (el) el.classList.remove('show');
+  clearTimeout(_quizWarnTimer);
+}
+
+function submitQuiz() {
+  const items = quizItems();
+  let score = 0;
+
+  items.forEach((item, idx) => {
+    try {
+      item.classList.add('reviewed', 'answered');
+      item.classList.remove('active');
+
+      const correct = parseInt(item.dataset.correct, 10);
+      const opts = item.querySelectorAll('.quiz-opt');
+      const fb = item.querySelector('.quiz-feedback');
+      const selectedIdx = QUIZ_STATE.selections[idx];
+      const validCorrect = !isNaN(correct) && correct >= 0 && correct < opts.length;
+
+      // mark the correct option
+      if (validCorrect) opts[correct].classList.add('correct');
+
+      if (validCorrect && selectedIdx === correct) {
+        score++;
+        if (fb) {
+          fb.className = 'quiz-feedback show correct-fb';
+          fb.textContent = '✓ 정답입니다';
+        }
+      } else {
+        if (selectedIdx >= 0 && selectedIdx < opts.length && selectedIdx !== correct) {
+          opts[selectedIdx].classList.add('wrong');
+        }
+        if (fb) {
+          fb.className = 'quiz-feedback show wrong-fb';
+          if (!validCorrect) {
+            fb.textContent = '채점 오류 · 데이터를 확인해 주세요.';
+          } else if (selectedIdx < 0) {
+            fb.textContent = '미응답 · 정답은 ' + 'ABCD'[correct] + '입니다';
+          } else {
+            fb.textContent = '정답은 ' + 'ABCD'[correct] + '입니다';
+          }
+        }
+      }
+    } catch (err) {
+      // never let one item break the rest
+      console.warn('[Quiz] item ' + idx + ' processing failed:', err);
+    }
+  });
+
+  QUIZ_STATE.submitted = true;
+  hideQuizWarn();
+
+  const nav = document.getElementById('quiz-nav');
+  if (nav) nav.style.display = 'none';
+
+  const total = QUIZ_STATE.total;
+  const progressEl = document.getElementById('quiz-progress');
+  if (progressEl) progressEl.textContent = '결과';
+
+  const fill = document.getElementById('quiz-progress-fill');
+  if (fill) fill.style.width = '100%';
+
+  const scoreEl = document.getElementById('quizScore');
+  if (scoreEl) {
+    const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+    scoreEl.innerHTML = score + ' / ' + total +
+      '<span class="quiz-score-pct" id="quizScorePct">' + pct + '%</span>';
+  }
+
+  const msgEl = document.getElementById('quizMsg');
+  if (msgEl) {
+    if (total > 0 && score === total) {
+      msgEl.textContent = '완벽합니다 — 권위의 기도, 부정과거 ἐλάβετε("이미 받았다"), 묶고 푸는 두 종류, 산을 향한 명령, 그리고 이기는 이들과 \'이 산\'까지 정확히 파악하셨습니다.';
+    } else if (score >= total - 1) {
+      msgEl.textContent = '훌륭합니다 — 권위의 기도, 곧 이 산을 향하여 말하며 이미 받은 줄로 믿는 기도의 핵심을 잘 이해하셨습니다.';
+    } else if (score >= Math.ceil(total / 2)) {
+      msgEl.textContent = '핵심은 파악하셨습니다. 막 11:23-24과 마 18:18(묶음·푸름)을 다시 한번 음미해 보시길.';
+    } else {
+      msgEl.textContent = '지문을 다시 읽으며 — 권위의 기도, 묶고 푸는 두 종류, 부정과거 ἐλάβετε의 의미, 그리고 \'이 산\'을 향한 명령의 권한을 묵상해 보시길 권해드립니다.';
+    }
+  }
+
+  const result = document.getElementById('quizResult');
+  if (result) {
+    result.classList.add('show');
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function restartQuiz() {
+  initQuiz();
+  const firstQuiz = document.querySelector('.quiz-item');
+  if (firstQuiz) firstQuiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.addEventListener('DOMContentLoaded', initQuiz);
+
+// ============================================================
+// TTS Reader
+// ============================================================
+const TTS_CONFIG = {
+  serverUrl: 'https://qwen.tkhome.cloud',
+  apiKey: localStorage.getItem('qwen_tts_api_key') || '',
+  defaultVoice: 'tk_voice',
+  sampleRate: 24000,
+  pauseSec: 0.4,
+  chunkMaxLen: 200
+};
+
+const TTS_SECTIONS = [
+  { id: 'hero', title: '제목 & 주제' },
+  { id: 'todays-verse', title: '오늘의 구절 (막 11:23-24)' },
+  { id: 'dashboard', title: '메시지 전체 맥락 요약' },
+  { id: 'flow', title: '권위의 기도의 흐름' },
+  { id: 'acc-0', title: 'Ⅰ. D · 가장 높고 영적인 기도 — 권위의 기도' },
+  { id: 'acc-1', title: 'Ⅱ. D-1 · 권위의 기도를 배움 (마 18:18)' },
+  { id: 'acc-2', title: 'Ⅲ. D-2 · 묶는 기도와 푸는 기도' },
+  { id: 'acc-3', title: 'Ⅳ. E · 막 11:23-24의 권위의 기도' },
+  { id: 'acc-4', title: 'Ⅴ. E-1 · 이미 받은 줄로 믿음 (막 11:24)' },
+  { id: 'acc-5', title: 'Ⅵ. E-2-1 · 권위의 사용·적용 (슥 4:7, 마 21:21)' },
+  { id: 'acc-6', title: 'Ⅶ. E-2-2 · 명령의 권한 (마 17:20)' },
+  { id: 'acc-7', title: 'Ⅷ. E-2-3 · 의심 없는 믿음, 하나님의 뜻 (마 6:10)' },
+  { id: 'acc-8', title: 'Ⅸ. E-2-4 · 이기는 이들과 \'이 산\' (막 11:23)' },
+  { id: 'recap', title: '전체 복습' },
+  { id: 'prayer', title: '기도' }
+];
+
+function ttsCleanText(text) {
+  if (!text) return '';
+  return text.replace(/\s+/g, ' ').replace(/\[[^\]]*\]/g, '').trim();
+}
+
+const TTS_EXTRACTORS = {
+  'hero': () => {
+    const h1 = document.querySelector('#hero-section h1');
+    const sub = document.querySelector('#hero-section .hero-sub');
+    return ttsCleanText((h1 ? h1.textContent : '') + '. ' + (sub ? sub.textContent : ''));
+  },
+  'todays-verse': () => {
+    const kr = document.querySelector('#todays-verse-section .tv-trans-row.kr .tv-trans-text');
+    return '오늘의 구절. 로마서 8장 26절에서 27절. ' + ttsCleanText(kr ? kr.textContent : '');
+  },
+  'dashboard': () => {
+    const msg = document.querySelector('#dashboard-section .core-message');
+    return '메시지 전체 맥락 요약. ' + ttsCleanText(msg ? msg.textContent : '');
+  },
+  'flow': () => {
+    let text = '기도의 흐름. 자아 부인에서 하나님과의 연합으로. ';
+    document.querySelectorAll('#flow-section .flow-step').forEach(s => {
+      const label = s.querySelector('.flow-step-label');
+      const desc = s.querySelector('.flow-step-desc');
+      text += (label ? label.textContent : '') + '. ' + (desc ? desc.textContent : '') + ' ';
+    });
+    return ttsCleanText(text);
+  },
+  'recap': () => {
+    let text = '전체 메시지 복습. 변함없는 의도와 신성한 재건축. ';
+    document.querySelectorAll('#recap-section .recap-item-text').forEach(item => {
+      text += ttsCleanText(item.textContent) + '. ';
+    });
+    const note = document.querySelector('#recap-section .recap-note');
+    if (note) text += '환난의 응답. ' + ttsCleanText(note.textContent);
+    return text;
+  },
+  'prayer': () => {
+    const heading = document.querySelector('#prayer-section .prayer-heading');
+    const callbox = document.querySelector('#prayer-section .prayer-callbox');
+    const amen = document.querySelector('#prayer-section .prayer-amen-box');
+    let text = '';
+    if (heading) text += ttsCleanText(heading.textContent) + '. ';
+    if (callbox) text += ttsCleanText(callbox.textContent) + '. ';
+    if (amen) {
+      const clone = amen.cloneNode(true);
+      const sig = clone.querySelector('.prayer-amen-sig');
+      if (sig) sig.remove();
+      text += ttsCleanText(clone.textContent);
+    }
+    return text;
+  }
+};
+
+for (let i = 0; i <= 8; i++) {
+  const accId = 'acc-' + i;
+  TTS_EXTRACTORS[accId] = () => {
+    const acc = document.getElementById(accId);
+    if (!acc) return '';
+    const titleEl = acc.querySelector('.acc-title-text');
+    const titleText = titleEl ? titleEl.textContent : '';
+    const content = acc.querySelector('.accordion-content');
+    if (!content) return ttsCleanText(titleText);
+    const clone = content.cloneNode(true);
+    clone.querySelectorAll('.verse-block').forEach(v => v.remove());
+    return ttsCleanText(titleText + '. ' + clone.textContent);
+  };
+}
+
+let ttsAudioContext = null;
+let ttsNextPlayTime = 0;
+let ttsScheduledSources = [];
+let ttsCurrentReader = null;
+let ttsIsCanceled = false;
+let ttsIsPlaying = false;
+let ttsIsPaused = false;
+
+function ttsPcmToBuffer(int16Bytes, ctx) {
+  const evenLen = int16Bytes.byteLength - (int16Bytes.byteLength % 2);
+  if (evenLen === 0) return null;
+  const aligned = new Uint8Array(evenLen);
+  aligned.set(int16Bytes.subarray(0, evenLen));
+  const int16 = new Int16Array(aligned.buffer);
+  const float32 = new Float32Array(int16.length);
+  for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768;
+  const buffer = ctx.createBuffer(1, float32.length, TTS_CONFIG.sampleRate);
+  buffer.copyToChannel(float32, 0);
+  return buffer;
+}
+
+function ttsScheduleBuffer(buffer) {
+  if (!buffer || !ttsAudioContext) return;
+  const source = ttsAudioContext.createBufferSource();
+  source.buffer = buffer;
+  source.connect(ttsAudioContext.destination);
+  const now = ttsAudioContext.currentTime;
+  if (ttsNextPlayTime < now) ttsNextPlayTime = now;
+  source.start(ttsNextPlayTime);
+  ttsScheduledSources.push(source);
+  ttsNextPlayTime += buffer.duration;
+  source.onended = () => {
+    const idx = ttsScheduledSources.indexOf(source);
+    if (idx >= 0) ttsScheduledSources.splice(idx, 1);
+  };
+}
+
+function ttsStopPlayback() {
+  ttsScheduledSources.forEach(src => { try { src.stop(); } catch(e) {} });
+  ttsScheduledSources = [];
+  ttsNextPlayTime = 0;
+}
+
+function ttsOpenReader() {
+  document.getElementById('tts-reader-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  ttsInitSectionList();
+  if (TTS_CONFIG.apiKey) document.getElementById('tts-api-key').value = TTS_CONFIG.apiKey;
+  ttsLoadVoices();
+}
+
+function ttsCloseReader() {
+  if (ttsIsPlaying) {
+    if (!confirm('재생 중입니다. 정말 닫으시겠습니까?')) return;
+    ttsStop();
+  }
+  document.getElementById('tts-reader-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function ttsCloseOnBg(e) {
+  if (e.target.id === 'tts-reader-overlay') ttsCloseReader();
+}
+
+function ttsSaveApiKey() {
+  const input = document.getElementById('tts-api-key');
+  TTS_CONFIG.apiKey = input.value.trim();
+  localStorage.setItem('qwen_tts_api_key', TTS_CONFIG.apiKey);
+  ttsSetStatus(TTS_CONFIG.apiKey ? 'API 키가 저장되었습니다.' : 'API 키가 비워졌습니다.');
+  ttsLoadVoices();
+}
+
+function ttsInitSectionList() {
+  const list = document.getElementById('tts-section-list');
+  if (list.dataset.initialized === 'true') return;
+  list.innerHTML = '';
+  const allItem = document.createElement('label');
+  allItem.className = 'tts-section-item all';
+  allItem.innerHTML = '<input type="checkbox" class="tts-section-checkbox" id="tts-section-all" checked><span class="tts-section-label">전체 선택 / 해제</span>';
+  allItem.querySelector('input').addEventListener('change', function() { ttsToggleAll(this); });
+  list.appendChild(allItem);
+  TTS_SECTIONS.forEach(sec => {
+    const item = document.createElement('label');
+    item.className = 'tts-section-item';
+    item.dataset.sectionId = sec.id;
+    item.innerHTML = '<input type="checkbox" class="tts-section-checkbox" data-section="' + sec.id + '" checked><span class="tts-section-label">' + sec.title + '</span>';
+    list.appendChild(item);
+  });
+  list.dataset.initialized = 'true';
+}
+
+function ttsToggleAll(cb) {
+  document.querySelectorAll('#tts-section-list input[data-section]').forEach(c => c.checked = cb.checked);
+}
+
+async function ttsLoadVoices() {
+  const select = document.getElementById('tts-voice-select');
+  try {
+    const res = await fetch(TTS_CONFIG.serverUrl + '/voices');
+    if (!res.ok) throw new Error('서버 응답 ' + res.status);
+    const data = await res.json();
+    select.innerHTML = '';
+    if (!data.voices || data.voices.length === 0) {
+      const opt = document.createElement('option');
+      opt.textContent = '(등록된 음성 없음)';
+      select.appendChild(opt);
+      ttsSetStatus('등록된 음성이 없습니다.', true);
+      return;
+    }
+    data.voices.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v.name;
+      opt.textContent = v.name + (v.name === data.default ? ' (기본)' : '');
+      select.appendChild(opt);
+    });
+    if (data.default) select.value = data.default;
+    ttsSetStatus(data.voices.length + '개 음성 로드 완료. 항목을 선택하고 재생을 누르세요.');
+  } catch (e) {
+    select.innerHTML = '<option>tk_voice</option>';
+    ttsSetStatus('음성 목록 로드 실패: ' + e.message, true);
+  }
+}
+
+function ttsSetStatus(msg, isError) {
+  const el = document.getElementById('tts-status');
+  el.textContent = msg;
+  el.className = 'tts-status' + (isError ? ' error' : '');
+}
+
+function ttsUpdateProgress(current, total, sectionTitle) {
+  document.getElementById('tts-progress').classList.add('active');
+  document.getElementById('tts-progress-fill').style.width = (current / total * 100) + '%';
+  document.getElementById('tts-progress-text').innerHTML = '<strong>' + current + ' / ' + total + '</strong> · ' + sectionTitle;
+}
+
+function ttsHighlightSection(sectionId) {
+  document.querySelectorAll('#tts-section-list .tts-section-item').forEach(el => el.classList.remove('playing'));
+  if (sectionId) {
+    const item = document.querySelector('#tts-section-list .tts-section-item[data-section-id="' + sectionId + '"]');
+    if (item) item.classList.add('playing');
+  }
+}
+
+async function ttsPlay() {
+  if (!TTS_CONFIG.apiKey) { ttsSetStatus('먼저 API 키를 입력하고 저장하세요.', true); return; }
+  const checked = document.querySelectorAll('#tts-section-list input[data-section]:checked');
+  if (checked.length === 0) { ttsSetStatus('읽을 항목을 하나 이상 선택하세요.', true); return; }
+  const voice = document.getElementById('tts-voice-select').value;
+  const selectedIds = Array.from(checked).map(cb => cb.dataset.section);
+  const sectionsToRead = TTS_SECTIONS.filter(s => selectedIds.includes(s.id));
+
+  ttsIsCanceled = false;
+  ttsIsPlaying = true;
+  document.getElementById('tts-play-btn').disabled = true;
+  document.getElementById('tts-stop-btn').disabled = false;
+  document.getElementById('tts-pause-btn').disabled = false;
+
+  if (!ttsAudioContext || ttsAudioContext.state === 'closed') {
+    const Ctor = window.AudioContext || window.webkitAudioContext;
+    try {
+      ttsAudioContext = new Ctor({ sampleRate: TTS_CONFIG.sampleRate });
+    } catch (e) {
+      ttsAudioContext = new Ctor();
+    }
+  }
+  if (ttsAudioContext.state === 'suspended') await ttsAudioContext.resume();
+  ttsIsPaused = false;
+  ttsUpdatePauseBtn();
+
+  ttsStopPlayback();
+
+  try {
+    for (let i = 0; i < sectionsToRead.length; i++) {
+      if (ttsIsCanceled) break;
+      const sec = sectionsToRead[i];
+      const extractor = TTS_EXTRACTORS[sec.id];
+      if (!extractor) continue;
+      ttsUpdateProgress(i + 1, sectionsToRead.length, sec.title);
+      ttsHighlightSection(sec.id);
+      ttsSetStatus('재생 중: ' + sec.title);
+      const text = extractor();
+      if (!text || text.trim().length < 2) continue;
+      await ttsStreamText(text, voice);
+      if (ttsIsCanceled) break;
+    }
+    while (!ttsIsCanceled) {
+      if (ttsAudioContext.state === 'suspended') {
+        await new Promise(r => setTimeout(r, 200));
+        continue;
+      }
+      const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
+      if (remaining <= 0) break;
+      ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
+      await new Promise(r => setTimeout(r, Math.min(remaining * 1000 + 200, 1000)));
+    }
+    if (!ttsIsCanceled) ttsSetStatus('✅ 모든 항목 재생 완료');
+    else ttsSetStatus('⏹ 중지됨');
+  } catch (e) {
+    ttsSetStatus('❌ 오류: ' + e.message, true);
+  } finally {
+    ttsIsPlaying = false;
+    ttsIsPaused = false;
+    ttsHighlightSection(null);
+    document.getElementById('tts-play-btn').disabled = false;
+    document.getElementById('tts-stop-btn').disabled = true;
+    document.getElementById('tts-pause-btn').disabled = true;
+    ttsUpdatePauseBtn();
+    ttsCurrentReader = null;
+  }
+}
+
+async function ttsStreamText(text, voice) {
+  const res = await fetch(TTS_CONFIG.serverUrl + '/tts/stream', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-API-Key': TTS_CONFIG.apiKey },
+    body: JSON.stringify({ text: text, voice: voice, pause_sec: TTS_CONFIG.pauseSec, chunk_max_len: TTS_CONFIG.chunkMaxLen })
+  });
+  if (!res.ok) {
+    let errMsg = 'HTTP ' + res.status;
+    try { const err = await res.json(); errMsg = err.detail || errMsg; } catch(e) {}
+    throw new Error(errMsg);
+  }
+  const reader = res.body.getReader();
+  ttsCurrentReader = reader;
+  let buffer = new Uint8Array(0);
+  const MIN_DECODE = 24000;
+  while (true) {
+    let done, value;
+    try { ({ done, value } = await reader.read()); }
+    catch (e) { if (ttsIsCanceled) break; throw e; }
+    if (done || ttsIsCanceled) {
+      if (buffer.length >= 2 && !ttsIsCanceled) ttsScheduleBuffer(ttsPcmToBuffer(buffer, ttsAudioContext));
+      break;
+    }
+    const merged = new Uint8Array(buffer.length + value.length);
+    merged.set(buffer);
+    merged.set(value, buffer.length);
+    buffer = merged;
+    while (buffer.length >= MIN_DECODE && !ttsIsCanceled) {
+      const evenLen = MIN_DECODE - (MIN_DECODE % 2);
+      const audioBuffer = ttsPcmToBuffer(buffer.subarray(0, evenLen), ttsAudioContext);
+      if (audioBuffer) ttsScheduleBuffer(audioBuffer);
+      buffer = buffer.subarray(evenLen);
+    }
+  }
+}
+
+async function ttsStop() {
+  ttsIsCanceled = true;
+  if (ttsCurrentReader) { try { await ttsCurrentReader.cancel(); } catch(e) {} ttsCurrentReader = null; }
+  ttsStopPlayback();
+  if (ttsAudioContext && ttsAudioContext.state === 'suspended') {
+    try { await ttsAudioContext.resume(); } catch(e) {}
+  }
+  ttsIsPaused = false;
+  ttsSetStatus('⏹ 중지됨');
+  document.getElementById('tts-play-btn').disabled = false;
+  document.getElementById('tts-stop-btn').disabled = true;
+  document.getElementById('tts-pause-btn').disabled = true;
+  ttsUpdatePauseBtn();
+  ttsIsPlaying = false;
+  ttsHighlightSection(null);
+}
+
+async function ttsTogglePause() {
+  if (!ttsIsPlaying || !ttsAudioContext) return;
+  if (ttsIsPaused) {
+    try { await ttsAudioContext.resume(); } catch(e) {}
+    ttsIsPaused = false;
+    ttsSetStatus('▶ 재생 재개됨');
+  } else {
+    try { await ttsAudioContext.suspend(); } catch(e) {}
+    ttsIsPaused = true;
+    ttsSetStatus('⏸ 일시정지됨');
+  }
+  ttsUpdatePauseBtn();
+}
+
+function ttsUpdatePauseBtn() {
+  const btn = document.getElementById('tts-pause-btn');
+  if (!btn) return;
+  btn.textContent = ttsIsPaused ? '▶ 계속' : '⏸ 일시정지';
+}
+
+// ============================================================
+// Bible Verse Tooltips (Recovery Version XML)
+// ============================================================
+const BIBLE_XML_PATH = '../../recovery_bible_ko.xml';
+const BIBLE_BOOKS_KO = ['창','출','레','민','신','수','삿','룻','삼상','삼하','왕상','왕하','대상','대하','스','느','에','욥','시','잠','전','아','사','렘','애','겔','단','호','욜','암','옵','욘','미','나','합','습','학','슥','말','마','막','눅','요','행','롬','고전','고후','갈','엡','빌','골','살전','살후','딤전','딤후','딛','몬','히','약','벧전','벧후','요일','요이','요삼','유','계'];
+const BIBLE_SINGLE_CHAPTER = new Set(['옵','몬','요이','요삼','유']);
+let BIBLE_DATA = null;
+let bibleTooltipEl = null;
+let bibleActiveTip = null;
+let bibleLoadPromise = null;
+
+async function loadBibleXML() {
+  if (bibleLoadPromise) return bibleLoadPromise;
+  bibleLoadPromise = (async () => {
+    try {
+      const res = await fetch(BIBLE_XML_PATH);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const xml = new DOMParser().parseFromString(text, 'application/xml');
+      const data = {};
+      xml.querySelectorAll('Book').forEach(book => {
+        const abbrev = book.getAttribute('abbrevKo');
+        if (!abbrev) return;
+        const bk = data[abbrev] = {};
+        book.querySelectorAll('Chapter').forEach(chap => {
+          const cnum = chap.getAttribute('num');
+          const ch = bk[cnum] = {};
+          chap.querySelectorAll('Verse').forEach(v => {
+            ch[v.getAttribute('num')] = v.textContent;
+          });
+        });
+      });
+      BIBLE_DATA = data;
+      return true;
+    } catch (e) {
+      console.warn('[Bible] XML load failed:', e);
+      return false;
+    }
+  })();
+  return bibleLoadPromise;
+}
+
+function bibleLookup(book, chap, verseStart, verseEnd) {
+  if (!BIBLE_DATA) return null;
+  const bk = BIBLE_DATA[book];
+  if (!bk) return null;
+  const ch = bk[chap];
+  if (!ch) return null;
+  const list = [];
+  if (!verseEnd || verseStart === verseEnd) {
+    if (ch[verseStart]) list.push({ n: verseStart, t: ch[verseStart] });
+  } else {
+    const s = parseInt(verseStart, 10), e = parseInt(verseEnd, 10);
+    for (let i = s; i <= e; i++) {
+      if (ch[i]) list.push({ n: String(i), t: ch[i] });
+    }
+  }
+  return list.length ? list : null;
+}
+
+function ensureBibleTooltipEl() {
+  if (bibleTooltipEl) return bibleTooltipEl;
+  bibleTooltipEl = document.createElement('div');
+  bibleTooltipEl.className = 'bible-tooltip';
+  bibleTooltipEl.setAttribute('role', 'tooltip');
+  // Append directly to body so the tooltip escapes any ancestor overflow
+  // (e.g., .accordion / .accordion-body / .sub-point) that would clip it.
+  document.body.appendChild(bibleTooltipEl);
+  return bibleTooltipEl;
+}
+
+function showBibleTooltip(trigger) {
+  const ref = trigger.getAttribute('data-bref');
+  const book = trigger.getAttribute('data-book');
+  const chap = trigger.getAttribute('data-chap');
+  const vs = trigger.getAttribute('data-vs');
+  const ve = trigger.getAttribute('data-ve');
+  const tip = ensureBibleTooltipEl();
+  // Make sure tooltip lives in body (not stuck in a previous trigger from
+  // an earlier code path).
+  if (tip.parentNode !== document.body) document.body.appendChild(tip);
+
+  let bodyHtml;
+  if (!BIBLE_DATA) {
+    bodyHtml = '<div class="bible-tooltip-missing">성경 본문을 불러오는 중...</div>';
+  } else {
+    const verses = bibleLookup(book, chap, vs, ve);
+    if (!verses) {
+      bodyHtml = '<div class="bible-tooltip-missing">본문을 찾을 수 없습니다.</div>';
+    } else {
+      bodyHtml = '<div class="bible-tooltip-text">' +
+        verses.map(v => '<div class="bible-tooltip-verse"><span class="bible-tooltip-verse-num">' + v.n + '</span>' + v.t + '</div>').join('') +
+        '</div>';
+    }
+  }
+  tip.innerHTML = '<div class="bible-tooltip-ref">' + ref + '</div>' + bodyHtml;
+
+  // Show with hidden visibility for measurement.
+  tip.style.visibility = 'hidden';
+  tip.classList.add('show');
+
+  // Calibrate the relationship between style.left/top and the actual visual
+  // viewport position. This makes positioning robust against any CSS `zoom`
+  // semantics on ancestors that might shift the coordinate system.
+  tip.style.left = '0px';
+  tip.style.top = '0px';
+  const probe0 = tip.getBoundingClientRect();
+  tip.style.left = '100px';
+  tip.style.top = '100px';
+  const probe100 = tip.getBoundingClientRect();
+  const fx = (probe100.left - probe0.left) / 100 || 1;
+  const fy = (probe100.top - probe0.top) / 100 || 1;
+  // visual = probe0.left + style.left * fx
+  // → style.left = (visual - probe0.left) / fx
+
+  // Reset to measure tooltip's natural visual size.
+  tip.style.left = '0px';
+  tip.style.top = '0px';
+  const tr = tip.getBoundingClientRect();
+  const tipW = tr.width;
+  const tipH = tr.height;
+
+  const triggerRect = trigger.getBoundingClientRect();
+  const margin = 8;
+  const gap = 4;
+
+  // All viewport-space (visual) math.
+  let visualLeft = triggerRect.left;
+  let visualTop = triggerRect.bottom + gap;
+  if (visualLeft + tipW > window.innerWidth - margin) {
+    visualLeft = window.innerWidth - tipW - margin;
+  }
+  if (visualLeft < margin) visualLeft = margin;
+  if (visualTop + tipH > window.innerHeight - margin) {
+    const above = triggerRect.top - tipH - gap;
+    if (above >= margin) visualTop = above;
+    else visualTop = Math.max(margin, window.innerHeight - tipH - margin);
+  }
+
+  const styleLeft = (visualLeft - probe0.left) / fx;
+  const styleTop  = (visualTop  - probe0.top ) / fy;
+  tip.style.left = styleLeft + 'px';
+  tip.style.top = styleTop + 'px';
+  tip.style.visibility = 'visible';
+}
+
+function hideBibleTooltip() {
+  if (bibleTooltipEl) {
+    bibleTooltipEl.classList.remove('show');
+  }
+  bibleActiveTip = null;
+}
+
+function attachBibleTooltips(root) {
+  if (!root) return;
+  const keys = [...BIBLE_BOOKS_KO].sort((a, b) => b.length - a.length);
+  const pattern = new RegExp(
+    '(' + keys.join('|') + ')\\s+(?:(\\d+):)?(\\d+)(?:-(\\d+))?' +
+    '|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?' +
+    '|(?:,\\s*)(\\d+)(?:-(\\d+))?',
+    'g'
+  );
+
+  const SKIP_SELECTOR = '.bible-tip,.twc-gk,.twc-pr,.tv-trans-row.gk,.tv-popup-greek,.gw-gk,.gw-pr,.verse-ref,script,style';
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const p = node.parentElement;
+      if (!p) return NodeFilter.FILTER_REJECT;
+      if (p.closest(SKIP_SELECTOR)) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  const nodes = [];
+  let n;
+  while ((n = walker.nextNode())) nodes.push(n);
+
+  nodes.forEach(node => {
+    const text = node.nodeValue;
+    pattern.lastIndex = 0;
+    if (!pattern.test(text)) return;
+    pattern.lastIndex = 0;
+
+    let lastBook = null, lastChapter = null;
+    let lastIdx = 0;
+    let match;
+    let inserted = false;
+    const frag = document.createDocumentFragment();
+
+    while ((match = pattern.exec(text)) !== null) {
+      const full = match[0];
+      const book = match[1];
+      let chap = match[2];
+      const verse = match[3];
+      const endVerse = match[4];
+      const c2 = match[5], v2 = match[6], ev2 = match[7];
+      const v3 = match[8], ev3 = match[9];
+
+      let bk, ch, vs, ve, display, leadingComma = '';
+
+      if (book) {
+        if (chap === undefined) {
+          if (!BIBLE_SINGLE_CHAPTER.has(book)) continue;
+          chap = '1';
+        }
+        bk = book; ch = chap; vs = verse; ve = endVerse;
+        lastBook = book; lastChapter = chap;
+        display = full;
+      } else if (v2) {
+        if (!lastBook) continue;
+        bk = lastBook; ch = c2; vs = v2; ve = ev2;
+        lastChapter = c2;
+        const m = full.match(/^,\s*/);
+        leadingComma = m ? m[0] : '';
+        display = full.slice(leadingComma.length);
+      } else if (v3) {
+        if (!lastBook || !lastChapter) continue;
+        bk = lastBook; ch = lastChapter; vs = v3; ve = ev3;
+        const m = full.match(/^,\s*/);
+        leadingComma = m ? m[0] : '';
+        display = full.slice(leadingComma.length);
+      } else {
+        continue;
+      }
+
+      const prefix = text.slice(lastIdx, match.index) + leadingComma;
+      if (prefix) frag.appendChild(document.createTextNode(prefix));
+
+      const span = document.createElement('span');
+      span.className = 'bible-tip';
+      span.setAttribute('tabindex', '0');
+      span.setAttribute('role', 'button');
+      span.setAttribute('aria-label', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : '') + ' 본문 보기');
+      span.setAttribute('data-bref', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : ''));
+      span.setAttribute('data-book', bk);
+      span.setAttribute('data-chap', ch);
+      span.setAttribute('data-vs', vs);
+      if (ve) span.setAttribute('data-ve', ve);
+      span.textContent = display;
+      frag.appendChild(span);
+
+      lastIdx = match.index + full.length;
+      inserted = true;
+    }
+
+    if (!inserted) return;
+    if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+    node.parentNode.replaceChild(frag, node);
+  });
+}
+
+function initBibleTooltips() {
+  const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Helper: only treat events on .bible-tip as trigger events. Events that
+  // originate inside the tooltip itself are ignored (the tooltip lives in
+  // body so users can interact with its text without firing trigger logic).
+  const triggerOf = (target) => {
+    if (!target || !target.closest) return null;
+    if (target.closest('.bible-tooltip')) return null;
+    return target.closest('.bible-tip');
+  };
+
+  if (hasHover) {
+    document.body.addEventListener('mouseover', e => {
+      const t = triggerOf(e.target);
+      if (t) showBibleTooltip(t);
+    });
+    document.body.addEventListener('mouseout', e => {
+      const t = triggerOf(e.target);
+      if (!t) return;
+      // Don't hide while the mouse is still on this trigger or has moved onto
+      // the tooltip (so the user can read longer verses without it vanishing).
+      const next = e.relatedTarget;
+      if (next && next.closest) {
+        if (next.closest('.bible-tooltip')) return;
+        if (next.closest('.bible-tip') === t) return;
+      }
+      hideBibleTooltip();
+    });
+    document.body.addEventListener('focusin', e => {
+      const t = triggerOf(e.target);
+      if (t) showBibleTooltip(t);
+    });
+    document.body.addEventListener('focusout', e => {
+      const t = triggerOf(e.target);
+      if (t) hideBibleTooltip();
+    });
+  }
+
+  // Click/tap toggle (works on touch and keyboard activation)
+  document.body.addEventListener('click', e => {
+    // Click inside the tooltip itself: do nothing (let user select / scroll text)
+    if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+    const t = e.target.closest && e.target.closest('.bible-tip');
+    if (t) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (bibleActiveTip === t) {
+        hideBibleTooltip();
+      } else {
+        showBibleTooltip(t);
+        bibleActiveTip = t;
+      }
+      return;
+    }
+    hideBibleTooltip();
+  });
+
+  document.body.addEventListener('keydown', e => {
+    if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+    const t = e.target.closest && e.target.closest('.bible-tip');
+    if (t && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      if (bibleActiveTip === t) hideBibleTooltip();
+      else { showBibleTooltip(t); bibleActiveTip = t; }
+    } else if (e.key === 'Escape') {
+      hideBibleTooltip();
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    if (!bibleTooltipEl || !bibleTooltipEl.classList.contains('show')) return;
+    hideBibleTooltip();
+  }, { passive: true });
+
+  window.addEventListener('resize', () => hideBibleTooltip());
+}
+
+(function bootstrapBibleTooltips() {
+  const start = () => {
+    const root = document.getElementById('main-content') || document.body;
+    initBibleTooltips();
+    attachBibleTooltips(root);
+    loadBibleXML();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>
