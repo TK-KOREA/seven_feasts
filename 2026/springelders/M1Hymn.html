@@ -445,6 +445,213 @@ body::after {
   font-variation-settings: 'opsz' 14, 'SOFT' 50;
 }
 
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(168, 133, 69, 0.18);
+  gap: 10px;
+}
+
+.player-ctrl-group {
+  display: flex;
+  gap: 6px;
+}
+
+.player-ctrl {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  outline: none;
+}
+
+.player-ctrl:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.player-ctrl:focus-visible {
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(168, 133, 69, 0.18);
+}
+.player-ctrl:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+.player-ctrl svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+}
+
+.player-ctrl.loop-active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(168, 133, 69, 0.06);
+}
+
+.player-loop {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.player-loop-label {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 14, 'SOFT' 50;
+}
+
+.player-ctrl.loop-active + .player-loop-label,
+.player-loop:has(.loop-active) .player-loop-label {
+  color: var(--gold);
+}
+
+/* Playlist */
+.playlist {
+  max-width: 640px;
+  margin: 18px auto 0;
+  padding: 0 40px;
+  text-align: left;
+  position: relative;
+  z-index: 3;
+}
+
+.playlist-title {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 14, 'SOFT' 50;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.playlist-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.35;
+}
+
+.playlist-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.playlist-item {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  font-family: var(--gowun);
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.playlist-item:hover:not(.unavailable) {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.playlist-item.active {
+  background: var(--paper);
+  border-color: var(--line);
+  color: var(--ink);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.playlist-item.unavailable {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+.playlist-item-num {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  font-variation-settings: 'opsz' 14;
+}
+.playlist-item.active .playlist-item-num,
+.playlist-item:hover:not(.unavailable) .playlist-item-num {
+  color: var(--gold);
+}
+
+.playlist-item-label {
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.playlist-item-status {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-variation-settings: 'opsz' 14, 'SOFT' 50;
+}
+
+.playlist-item.active .playlist-item-status {
+  color: var(--gold);
+}
+
+.playlist-item.playing .playlist-item-num::before {
+  content: '▸ ';
+  color: var(--gold);
+  margin-right: 2px;
+}
+
+.playlist-empty {
+  padding: 14px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  border: 1px dashed var(--line);
+}
+
 /* ===================================================
    Journey section
    =================================================== */
@@ -893,6 +1100,16 @@ body::after {
   .player-title { font-size: 0.94rem; }
   .player-sub { font-size: 0.74rem; margin-bottom: 12px; }
   .player-time { font-size: 0.7rem; }
+  .player-controls { padding-top: 10px; margin-top: 12px; gap: 8px; }
+  .player-ctrl { width: 28px; height: 28px; }
+  .player-ctrl svg { width: 11px; height: 11px; }
+  .player-loop { gap: 6px; }
+  .player-loop-label { font-size: 0.65rem; letter-spacing: 0.14em; }
+  .playlist { padding: 0 22px; margin-top: 14px; }
+  .playlist-title { font-size: 0.62rem; letter-spacing: 0.3em; margin-bottom: 10px; }
+  .playlist-item { padding: 9px 12px; font-size: 0.88rem; gap: 10px; grid-template-columns: 24px 1fr auto; }
+  .playlist-item-num { font-size: 0.88rem; }
+  .playlist-item-status { font-size: 0.62rem; letter-spacing: 0.14em; }
 
   /* Journey */
   .journey { 
@@ -1156,8 +1373,8 @@ body::after {
       </svg>
     </button>
     <div class="player-body">
-      <div class="player-title">주님은 기도의 알파</div>
-      <div class="player-sub">Hymnal 551 · Α — Ω</div>
+      <div class="player-title" id="player-title">주님은 기도의 알파</div>
+      <div class="player-sub" id="player-sub">Hymnal · Message 1</div>
       <div class="player-progress" id="player-progress" role="slider" aria-label="재생 위치" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
         <div class="player-track"></div>
         <div class="player-fill" id="player-fill"></div>
@@ -1167,9 +1384,33 @@ body::after {
         <span id="player-current">0:00</span>
         <span id="player-total">—:—</span>
       </div>
+      <div class="player-controls">
+        <div class="player-ctrl-group">
+          <button class="player-ctrl" id="prev-btn" type="button" aria-label="이전 곡" title="이전 곡">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6zM18 6L9.5 12 18 18z"/></svg>
+          </button>
+          <button class="player-ctrl" id="next-btn" type="button" aria-label="다음 곡" title="다음 곡">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/></svg>
+          </button>
+        </div>
+        <div class="player-loop">
+          <button class="player-ctrl" id="loop-btn" type="button" aria-label="반복 모드" title="반복 모드">
+            <svg class="icon-loop" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/></svg>
+            <svg class="icon-loop-one" viewBox="0 0 24 24" aria-hidden="true" style="display:none"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2zm-4-3v-4h-1l-2 1v1h1.5v6H13z"/></svg>
+          </button>
+          <span class="player-loop-label" id="loop-label">No Loop</span>
+        </div>
+      </div>
     </div>
-    <audio id="player-audio" preload="metadata" src="M1Hymn.mp3"></audio>
+    <audio id="player-audio" preload="metadata"></audio>
   </div>
+</section>
+
+<section class="playlist" id="playlist-section">
+  <div class="playlist-title">Playlist · 재생목록</div>
+  <ul class="playlist-items" id="playlist-items">
+    <li class="playlist-empty">트랙을 검색하는 중...</li>
+  </ul>
 </section>
 
 <!-- ============================================
@@ -1335,15 +1576,31 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Audio player
+// Audio player — auto-discover MxHymn.mp3, playlist, loop modes
 (function() {
   const audio = document.getElementById('player-audio');
-  const btn = document.getElementById('play-btn');
+  const playBtn = document.getElementById('play-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const loopBtn = document.getElementById('loop-btn');
+  const loopLabel = document.getElementById('loop-label');
+  const titleEl = document.getElementById('player-title');
+  const subEl = document.getElementById('player-sub');
   const progress = document.getElementById('player-progress');
   const fill = document.getElementById('player-fill');
   const knob = document.getElementById('player-knob');
   const cur = document.getElementById('player-current');
   const tot = document.getElementById('player-total');
+  const listEl = document.getElementById('playlist-items');
+
+  if (!audio) return;
+
+  const MAX_TRACKS = 12;          // probe M1Hymn.mp3 .. M12Hymn.mp3
+  const LOOP_LABELS = ['No Loop', 'Loop All', 'Loop One'];
+
+  let tracks = [];                // [{n, src, label}]
+  let currentIdx = 0;
+  let loopMode = 0;               // 0=off, 1=all, 2=one
 
   function fmt(s) {
     if (!isFinite(s) || s < 0) return '—:—';
@@ -1352,26 +1609,203 @@ document.addEventListener('click', (e) => {
     return m + ':' + (r < 10 ? '0' + r : r);
   }
 
-  btn.addEventListener('click', () => {
+  function pageNumberFromUrl() {
+    const m = location.pathname.match(/M(\d+)Hymn\.html$/i);
+    return m ? parseInt(m[1], 10) : 1;
+  }
+
+  function pageOwnTitle() {
+    const t = document.title || '';
+    return t.split(/[·|]/)[0].trim() || t.trim();
+  }
+
+  async function probeTrack(n) {
+    const src = 'M' + n + 'Hymn.mp3';
+    try {
+      const r = await fetch(src, { method: 'HEAD' });
+      return r.ok ? { n: n, src: src } : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function fetchHymnTitle(n) {
+    try {
+      const r = await fetch('M' + n + 'Hymn.html');
+      if (!r.ok) return null;
+      const text = await r.text();
+      const m = text.match(/<title>([^<]+)<\/title>/i);
+      if (!m) return null;
+      // Strip suffix after '·' or '|' for a clean label.
+      return m[1].split(/[·|]/)[0].trim() || null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function renderPlaylist() {
+    if (!listEl) return;
+    if (tracks.length === 0) {
+      listEl.innerHTML = '<li class="playlist-empty">사용 가능한 트랙이 없습니다.</li>';
+      return;
+    }
+    listEl.innerHTML = tracks.map((t, i) => {
+      const num = String(t.n).padStart(2, '0');
+      const isActive = i === currentIdx;
+      const isPlaying = isActive && audio && !audio.paused;
+      const status = isActive ? (isPlaying ? 'Now playing' : 'Selected') : 'Hymn';
+      return '<li class="playlist-item' + (isActive ? ' active' : '') + (isPlaying ? ' playing' : '') +
+        '" data-idx="' + i + '" tabindex="0" role="button">' +
+        '<span class="playlist-item-num">' + num + '</span>' +
+        '<span class="playlist-item-label">' + (t.label || ('Message ' + t.n + ' Hymn')) + '</span>' +
+        '<span class="playlist-item-status">' + status + '</span>' +
+        '</li>';
+    }).join('');
+
+    listEl.querySelectorAll('.playlist-item').forEach(item => {
+      const handler = () => {
+        const i = parseInt(item.dataset.idx, 10);
+        if (isNaN(i) || i === currentIdx) return;
+        loadTrack(i, true);
+      };
+      item.addEventListener('click', handler);
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); }
+      });
+    });
+  }
+
+  function updateNavButtons() {
+    if (prevBtn) prevBtn.disabled = tracks.length <= 1;
+    if (nextBtn) nextBtn.disabled = tracks.length <= 1;
+  }
+
+  function loadTrack(idx, autoplay) {
+    if (idx < 0 || idx >= tracks.length) return;
+    currentIdx = idx;
+    const t = tracks[idx];
+    audio.src = t.src;
+    if (titleEl) titleEl.textContent = t.label || ('Message ' + t.n + ' Hymn');
+    if (subEl) subEl.textContent = 'M' + t.n + 'Hymn · Message ' + t.n;
+    if (cur) cur.textContent = '0:00';
+    if (tot) tot.textContent = '—:—';
+    if (fill) fill.style.width = '0%';
+    if (knob) knob.style.left = '0%';
+    if (progress) progress.setAttribute('aria-valuenow', '0');
+    renderPlaylist();
+    updateNavButtons();
+    if (autoplay) audio.play().catch(() => {});
+  }
+
+  function next() {
+    if (tracks.length === 0) return;
+    const i = (currentIdx + 1) % tracks.length;
+    loadTrack(i, true);
+  }
+
+  function prev() {
+    if (tracks.length === 0) return;
+    const i = (currentIdx - 1 + tracks.length) % tracks.length;
+    loadTrack(i, true);
+  }
+
+  function setLoopMode(mode) {
+    loopMode = ((mode % 3) + 3) % 3;
+    audio.loop = (loopMode === 2);
+    if (loopBtn) {
+      loopBtn.classList.toggle('loop-active', loopMode > 0);
+      const all = loopBtn.querySelector('.icon-loop');
+      const one = loopBtn.querySelector('.icon-loop-one');
+      if (all && one) {
+        if (loopMode === 2) { all.style.display = 'none'; one.style.display = 'block'; }
+        else { all.style.display = 'block'; one.style.display = 'none'; }
+      }
+    }
+    if (loopLabel) loopLabel.textContent = LOOP_LABELS[loopMode];
+  }
+
+  // --- Probe and initialize playlist ---
+  async function init() {
+    const startN = pageNumberFromUrl();
+    const probes = [];
+    for (let i = 1; i <= MAX_TRACKS; i++) probes.push(probeTrack(i));
+    const results = await Promise.all(probes);
+    tracks = results.filter(Boolean).sort((a, b) => a.n - b.n);
+
+    if (tracks.length === 0) {
+      renderPlaylist();
+      updateNavButtons();
+      if (titleEl) titleEl.textContent = '재생할 트랙이 없습니다';
+      if (subEl) subEl.textContent = '';
+      return;
+    }
+
+    // Default labels first so the playlist appears immediately.
+    tracks.forEach(t => { t.label = 'Message ' + t.n + ' Hymn'; });
+    // For the current page, use its own <title> as a richer label.
+    const ownN = startN;
+    if (tracks.some(t => t.n === ownN)) {
+      const ownLabel = pageOwnTitle();
+      if (ownLabel) {
+        const t = tracks.find(t => t.n === ownN);
+        if (t) t.label = ownLabel;
+      }
+    }
+
+    // Pick starting index: current page's track if available, else first.
+    const startIdx = Math.max(0, tracks.findIndex(t => t.n === startN));
+    loadTrack(startIdx, false);
+    updateNavButtons();
+
+    // Enrich other tracks with their page <title> in the background.
+    tracks.forEach(async (t) => {
+      if (t.n === ownN) return;
+      const title = await fetchHymnTitle(t.n);
+      if (title) {
+        t.label = title;
+        // Update DOM if entry still exists.
+        if (currentIdx === tracks.indexOf(t) && titleEl) titleEl.textContent = title;
+        renderPlaylist();
+      }
+    });
+  }
+
+  // --- Wire events ---
+  playBtn.addEventListener('click', () => {
     if (audio.paused) audio.play().catch(() => {});
     else audio.pause();
   });
 
-  audio.addEventListener('play', () => btn.classList.add('playing'));
-  audio.addEventListener('pause', () => btn.classList.remove('playing'));
-  audio.addEventListener('ended', () => btn.classList.remove('playing'));
+  if (prevBtn) prevBtn.addEventListener('click', prev);
+  if (nextBtn) nextBtn.addEventListener('click', next);
+  if (loopBtn) loopBtn.addEventListener('click', () => setLoopMode(loopMode + 1));
+
+  audio.addEventListener('play', () => {
+    playBtn.classList.add('playing');
+    renderPlaylist();
+  });
+  audio.addEventListener('pause', () => {
+    playBtn.classList.remove('playing');
+    renderPlaylist();
+  });
+  audio.addEventListener('ended', () => {
+    playBtn.classList.remove('playing');
+    renderPlaylist();
+    // Loop One is handled natively via audio.loop=true (no 'ended' fires).
+    if (loopMode === 1) next();
+  });
 
   audio.addEventListener('loadedmetadata', () => {
-    tot.textContent = fmt(audio.duration);
+    if (tot) tot.textContent = fmt(audio.duration);
   });
 
   audio.addEventListener('timeupdate', () => {
     if (!audio.duration) return;
     const pct = (audio.currentTime / audio.duration) * 100;
-    fill.style.width = pct + '%';
-    knob.style.left = pct + '%';
-    cur.textContent = fmt(audio.currentTime);
-    progress.setAttribute('aria-valuenow', Math.round(pct));
+    if (fill) fill.style.width = pct + '%';
+    if (knob) knob.style.left = pct + '%';
+    if (cur) cur.textContent = fmt(audio.currentTime);
+    if (progress) progress.setAttribute('aria-valuenow', Math.round(pct));
   });
 
   function seekFromEvent(clientX) {
@@ -1381,14 +1815,18 @@ document.addEventListener('click', (e) => {
     audio.currentTime = pct * audio.duration;
   }
 
-  progress.addEventListener('click', (e) => seekFromEvent(e.clientX));
+  if (progress) {
+    progress.addEventListener('click', (e) => seekFromEvent(e.clientX));
+    progress.addEventListener('keydown', (e) => {
+      if (!audio.duration) return;
+      if (e.key === 'ArrowRight') { audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); e.preventDefault(); }
+      else if (e.key === 'ArrowLeft') { audio.currentTime = Math.max(0, audio.currentTime - 5); e.preventDefault(); }
+      else if (e.key === ' ' || e.key === 'Enter') { playBtn.click(); e.preventDefault(); }
+    });
+  }
 
-  progress.addEventListener('keydown', (e) => {
-    if (!audio.duration) return;
-    if (e.key === 'ArrowRight') { audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); e.preventDefault(); }
-    else if (e.key === 'ArrowLeft') { audio.currentTime = Math.max(0, audio.currentTime - 5); e.preventDefault(); }
-    else if (e.key === ' ' || e.key === 'Enter') { btn.click(); e.preventDefault(); }
-  });
+  // Kick off discovery
+  init();
 })();
 </script>
 

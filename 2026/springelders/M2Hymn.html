@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>할렐루야 어린양 — 안으로 향하는 여정</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:    #06071a;
+    --bg-1:    #0a0d24;
+    --bg-2:    #11163a;
+    --ring-1:  #232a55;   /* outer court */
+    --ring-2:  #4d2238;   /* holy place */
+    --ring-3:  #8a5e1e;   /* most holy */
+    --core:    #f5d782;
+    --core-hi: #fef3c7;
+    --ruby:    #b32d44;
+    --gold:    #d4a843;
+    --gold-hi: #f0c95a;
+    --ivory:   #ede4cc;
+    --cream:   #f6efd9;
+    --muted:   #7d7866;
+    --line:    #1d2244;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html, body{
+    background: var(--bg-0);
+    color: var(--ivory);
+    font-family: 'Gowun Batang', 'Nanum Myeongjo', serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 30%, rgba(245,215,130,0.10), transparent 65%),
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(35,42,85,0.4), transparent 70%);
+    pointer-events:none; z-index:0;
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events:none; z-index:1; mix-blend-mode:overlay;
+  }
+
+  main{
+    position:relative; z-index:2;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 90px 28px 120px;
+  }
+
+  /* =================== HEADER =================== */
+  header{
+    text-align:center;
+    margin-bottom: 70px;
+  }
+  .kicker{
+    font-family:'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.55em;
+    color: var(--gold);
+    margin-bottom: 26px;
+  }
+  .kicker .dot{
+    display:inline-block; width:4px; height:4px;
+    background: var(--gold); border-radius:50%;
+    margin: 0 14px; vertical-align: middle;
+  }
+  h1{
+    font-family:'Nanum Myeongjo', serif;
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 64px);
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    line-height: 1.15;
+  }
+  h1 em{
+    font-style: normal;
+    color: var(--gold);
+  }
+  .deck{
+    margin-top: 24px;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: rgba(237,228,204,0.7);
+    letter-spacing: 0.04em;
+  }
+  .deck-kr{
+    margin-top: 6px;
+    font-family:'Nanum Myeongjo', serif;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.25em;
+  }
+
+  /* =================== MANDALA HERO =================== */
+  .mandala-hero{
+    position:relative;
+    margin: 70px auto 80px;
+    width: min(100%, 720px);
+    aspect-ratio: 1 / 1;
+  }
+  .mandala-hero svg{ width:100%; height:100%; display:block; overflow:visible; }
+
+  /* legend grid below hero */
+  .legend{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 30px auto 0;
+    max-width: 720px;
+  }
+  .legend-item{
+    text-align:center;
+    padding: 18px 8px;
+    border-top: 1px solid var(--line);
+  }
+  .legend-swatch{
+    width: 14px; height: 14px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+  }
+  .swatch-1{ background: var(--ring-1); }
+  .swatch-2{ background: var(--ring-2); }
+  .swatch-3{ background: var(--ring-3); }
+  .swatch-c{ background: var(--core); box-shadow: 0 0 14px var(--core-hi); }
+
+  .legend-roman{
+    font-family:'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .legend-kr{
+    font-family:'Nanum Myeongjo', serif;
+    font-size: 14px;
+    color: var(--ivory);
+    letter-spacing: 0.18em;
+    margin-bottom: 4px;
+  }
+  .legend-en{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* =================== SECTION DIVIDER =================== */
+  .divider{
+    text-align:center;
+    margin: 90px 0 50px;
+  }
+  .divider-line{
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto 16px;
+  }
+  .divider-text{
+    font-family:'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.6em;
+    color: var(--gold);
+  }
+
+  /* =================== VERSE CARDS =================== */
+  .verses{
+    display:flex;
+    flex-direction: column;
+    gap: 28px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .verse-card{
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 36px;
+    align-items: center;
+    padding: 40px 44px;
+    background: linear-gradient(180deg, rgba(17,22,58,0.6), rgba(10,13,36,0.4));
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .verse-card::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--gold-hi), transparent);
+    opacity: 0.5;
+  }
+
+  .mini-mandala{
+    width: 180px; height: 180px;
+    flex-shrink: 0;
+  }
+  .mini-mandala svg{ width:100%; height:100%; display:block; }
+
+  .verse-content{
+    min-width: 0;
+  }
+
+  .verse-meta{
+    display:flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .verse-num{
+    font-family:'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    line-height: 1;
+  }
+  .verse-station{
+    font-family:'Nanum Myeongjo', serif;
+    font-size: 16px;
+    color: var(--ivory);
+    letter-spacing: 0.3em;
+  }
+  .verse-en{
+    margin-left: auto;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .verse-key{
+    font-family:'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: var(--gold-hi);
+    margin-bottom: 16px;
+  }
+  .lyrics{
+    font-family:'Nanum Myeongjo', serif;
+    font-size: 16px;
+    line-height: 2.0;
+    color: var(--cream);
+    letter-spacing: 0.01em;
+  }
+  .lyrics .halle{
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .lyrics-block{ margin-bottom: 8px; }
+
+  /* per-verse refrain */
+  .verse-refrain{
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(212,168,67,0.35);
+    position: relative;
+  }
+  .verse-refrain::before{
+    content:"";
+    position:absolute;
+    top:-5px; left:50%;
+    transform: translateX(-50%);
+    width: 8px; height: 8px;
+    background: var(--bg-1);
+    border: 1px solid var(--gold);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  .refrain-label{
+    font-family:'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.55em;
+    color: var(--gold);
+    margin-bottom: 12px;
+    opacity: 0.85;
+  }
+  .refrain-text{
+    font-family:'Nanum Myeongjo', serif;
+    font-size: 15px;
+    line-height: 2.0;
+    color: var(--gold-hi);
+    letter-spacing: 0.04em;
+  }
+  .refrain-text .halle-pair{
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--gold-hi);
+    text-shadow: 0 0 14px rgba(245,215,130,0.35);
+  }
+  .refrain-text .king{
+    color: var(--cream);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  /* =================== CHORUS =================== */
+  .chorus{
+    margin: 80px auto;
+    max-width: 720px;
+    padding: 60px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(212,168,67,0.4);
+    border-bottom: 1px solid rgba(212,168,67,0.4);
+    background:
+      radial-gradient(ellipse at center, rgba(245,215,130,0.06), transparent 70%);
+    position: relative;
+  }
+  .chorus-label{
+    font-family:'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.6em;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+  .chorus-title{
+    font-family:'Nanum Myeongjo', serif;
+    font-weight: 700;
+    font-size: clamp(22px, 3.4vw, 30px);
+    color: var(--gold-hi);
+    letter-spacing: 0.25em;
+    line-height: 1.6;
+    text-shadow: 0 0 24px rgba(245,215,130,0.4);
+    margin-bottom: 24px;
+  }
+  .chorus-body{
+    font-family:'Nanum Myeongjo', serif;
+    font-size: 18px;
+    color: var(--cream);
+    line-height: 2.1;
+  }
+  .chorus-body strong{
+    color: var(--gold-hi);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  /* =================== FOOTER =================== */
+  footer{
+    text-align:center;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-mark{
+    width: 50px; height: 50px;
+    margin: 0 auto 22px;
+  }
+  .footer-en{
+    font-family:'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+  }
+  .footer-kr{
+    margin-top: 12px;
+    font-family:'Nanum Myeongjo', serif;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.3em;
+  }
+
+  /* =================== ANIMATIONS =================== */
+  @keyframes core-pulse {
+    0%, 100% { filter: drop-shadow(0 0 50px rgba(245,215,130,0.55))
+                       drop-shadow(0 0 100px rgba(245,215,130,0.25)); }
+    50%      { filter: drop-shadow(0 0 80px rgba(245,215,130,0.8))
+                       drop-shadow(0 0 150px rgba(245,215,130,0.45)); }
+  }
+  .core-anim{ animation: core-pulse 5s ease-in-out infinite; transform-origin: center; }
+
+  @keyframes journey-flow {
+    0%   { stroke-dashoffset: 305; opacity: 0; }
+    20%  { opacity: 1; }
+    100% { stroke-dashoffset: 0;   opacity: 1; }
+  }
+  .journey-line{
+    stroke-dasharray: 305;
+    animation: journey-flow 3.5s ease-out forwards;
+    filter: drop-shadow(0 0 4px rgba(245,215,130,0.8));
+  }
+
+  /* =================== RESPONSIVE =================== */
+  @media (max-width: 760px){
+    main{ padding: 56px 18px 80px; }
+    header{ margin-bottom: 50px; }
+    .kicker{ font-size: 10px; letter-spacing: 0.4em; }
+    .kicker .dot{ margin: 0 10px; }
+    .deck{ padding: 0 12px; }
+    .deck-kr{ letter-spacing: 0.18em; font-size: 12px; }
+
+    .mandala-hero{ margin: 50px auto 60px; }
+
+    .legend{ grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 20px; }
+    .legend-item{ padding: 16px 6px; }
+    .legend-roman{ letter-spacing: 0.3em; }
+    .legend-kr{ letter-spacing: 0.14em; font-size: 13px; }
+
+    .divider{ margin: 60px 0 36px; }
+
+    .verses{ gap: 24px; }
+    .verse-card{
+      grid-template-columns: 1fr;
+      padding: 36px 22px 32px;
+      gap: 22px;
+      text-align: center;
+    }
+    .mini-mandala{ width: 150px; height: 150px; margin: 0 auto; }
+    .verse-meta{
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 14px;
+    }
+    .verse-num{ font-size: 24px; }
+    .verse-station{ font-size: 15px; letter-spacing: 0.25em; }
+    .verse-en{ margin-left: 0; font-size: 12px; }
+    .verse-key{ letter-spacing: 0.4em; font-size: 9px; }
+    .lyrics{ font-size: 15px; line-height: 1.95; }
+
+    .verse-refrain{ margin-top: 18px; padding-top: 18px; }
+    .refrain-label{ letter-spacing: 0.4em; font-size: 9px; }
+    .refrain-text{ font-size: 14px; line-height: 1.95; }
+    .refrain-text .halle-pair{ letter-spacing: 0.14em; }
+
+    footer{ margin-top: 60px; padding-top: 32px; }
+  }
+
+  @media (max-width: 460px){
+    main{ padding: 44px 14px 64px; }
+    header{ margin-bottom: 40px; }
+    .kicker{ font-size: 9px; letter-spacing: 0.32em; margin-bottom: 18px; }
+    h1{ letter-spacing: 0.01em; }
+    .deck{ font-size: 13px; }
+
+    .mandala-hero{ margin: 36px auto 44px; }
+    .legend-item{ padding: 12px 4px; }
+    .legend-en{ font-size: 11px; }
+
+    .divider{ margin: 50px 0 28px; }
+    .divider-line{ height: 36px; }
+
+    .verses{ gap: 20px; }
+    .verse-card{ padding: 28px 18px 26px; gap: 18px; }
+    .mini-mandala{ width: 130px; height: 130px; }
+    .verse-meta{ margin-bottom: 10px; padding-bottom: 12px; }
+    .verse-num{ font-size: 22px; }
+    .verse-station{ font-size: 14px; }
+    .verse-key{ font-size: 9px; letter-spacing: 0.34em; margin-bottom: 12px; }
+    .lyrics{ font-size: 14px; line-height: 1.9; }
+    .lyrics-block{ margin-bottom: 6px; }
+
+    .verse-refrain{ margin-top: 16px; padding-top: 16px; }
+    .refrain-text{ font-size: 13px; line-height: 1.9; }
+  }
+
+  /* =================== AUDIO PLAYER =================== */
+  .listen{
+    max-width: 720px;
+    margin: 0 auto 50px;
+    padding: 0 8px;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+  }
+  .listen-eyebrow{
+    font-family:'Cinzel', serif;
+    font-size: 10.5px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .listen-eyebrow::before,
+  .listen-eyebrow::after{
+    content:'';
+    width: 26px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.55;
+  }
+  .player{
+    background: linear-gradient(180deg, rgba(17,22,58,0.78) 0%, rgba(10,13,36,0.85) 100%);
+    border: 1px solid rgba(212,168,67,0.18);
+    box-shadow:
+      0 22px 48px -10px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(245,215,130,0.06);
+    padding: 26px 30px 22px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    position: relative;
+    text-align: left;
+    border-radius: 1px;
+  }
+  .player::before{
+    content:'';
+    position: absolute;
+    top: -1px;
+    left: 26px;
+    right: 26px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.55;
+  }
+  .player-btn{
+    flex-shrink: 0;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--bg-0);
+    color: var(--gold);
+    border: 1px solid rgba(212,168,67,0.55);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+    position: relative;
+    outline: none;
+  }
+  .player-btn::before{
+    content:'';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: all 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .player-btn:hover{
+    transform: scale(1.04);
+    color: var(--gold-hi);
+    background: var(--bg-1);
+  }
+  .player-btn:hover::before,
+  .player-btn:focus-visible::before,
+  .player-btn.playing::before{
+    border-color: var(--gold);
+    inset: -7px;
+    box-shadow: 0 0 18px rgba(212,168,67,0.25);
+  }
+  .player-btn svg{
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    margin-left: 2px;
+  }
+  .player-btn.playing svg{ margin-left: 0; }
+  .player-btn .icon-pause{ display: none; }
+  .player-btn.playing .icon-play{ display: none; }
+  .player-btn.playing .icon-pause{ display: block; }
+
+  .player-body{ flex: 1; min-width: 0; }
+  .player-title{
+    font-family:'Nanum Myeongjo', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.005em;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .player-sub{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(237,228,204,0.55);
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+  .player-progress{
+    position: relative;
+    width: 100%;
+    height: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .player-track{
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    background: rgba(212,168,67,0.22);
+  }
+  .player-fill{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-hi) 100%);
+    width: 0;
+    box-shadow: 0 0 6px rgba(212,168,67,0.45);
+  }
+  .player-knob{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold-hi);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 3px rgba(212,168,67,0.22), 0 0 8px rgba(245,215,130,0.4);
+    transition: box-shadow 0.3s ease;
+  }
+  .player-progress:hover .player-knob{
+    box-shadow: 0 0 0 5px rgba(212,168,67,0.3), 0 0 10px rgba(245,215,130,0.5);
+  }
+  .player-time{
+    display: flex;
+    justify-content: space-between;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.76rem;
+    color: rgba(237,228,204,0.55);
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+  }
+  .player-controls{
+    display: flex;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(212,168,67,0.18);
+    gap: 10px;
+  }
+  .player-ctrl-group{ display: flex; gap: 6px; }
+  .player-ctrl{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(212,168,67,0.32);
+    color: rgba(237,228,204,0.7);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+    outline: none;
+  }
+  .player-ctrl:hover{
+    border-color: var(--gold);
+    color: var(--gold-hi);
+    background: rgba(212,168,67,0.08);
+  }
+  .player-ctrl:focus-visible{
+    border-color: var(--gold);
+    color: var(--gold-hi);
+    box-shadow: 0 0 0 3px rgba(212,168,67,0.22);
+  }
+  .player-ctrl:disabled{
+    opacity: 0.32;
+    cursor: not-allowed;
+  }
+  .player-ctrl svg{
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+  }
+  .player-ctrl.loop-active{
+    border-color: var(--gold);
+    color: var(--gold-hi);
+    background: rgba(212,168,67,0.12);
+    box-shadow: 0 0 12px rgba(212,168,67,0.18);
+  }
+  .player-loop{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .player-loop-label{
+    font-family:'Cinzel', serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    color: rgba(237,228,204,0.5);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .player-loop:has(.loop-active) .player-loop-label{ color: var(--gold-hi); }
+
+  /* Playlist */
+  .playlist{
+    max-width: 720px;
+    margin: 14px auto 0;
+    padding: 0 8px;
+    text-align: left;
+    position: relative;
+    z-index: 3;
+  }
+  .playlist-title{
+    font-family:'Cinzel', serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin: 0 0 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .playlist-title::after{
+    content:'';
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.32;
+  }
+  .playlist-items{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .playlist-item{
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 14px;
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    font-family:'Gowun Batang','Nanum Myeongjo', serif;
+    font-size: 0.94rem;
+    color: rgba(237,228,204,0.65);
+  }
+  .playlist-item:hover:not(.unavailable){
+    background: rgba(17,22,58,0.55);
+    color: var(--cream);
+    border-color: rgba(212,168,67,0.22);
+  }
+  .playlist-item.active{
+    background: rgba(17,22,58,0.7);
+    border-color: rgba(212,168,67,0.35);
+    color: var(--cream);
+    box-shadow: inset 3px 0 0 var(--gold);
+  }
+  .playlist-item.unavailable{
+    opacity: 0.32;
+    cursor: not-allowed;
+  }
+  .playlist-item-num{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(237,228,204,0.55);
+  }
+  .playlist-item.active .playlist-item-num,
+  .playlist-item:hover:not(.unavailable) .playlist-item-num{
+    color: var(--gold-hi);
+  }
+  .playlist-item-label{
+    letter-spacing: 0.005em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .playlist-item-status{
+    font-family:'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(237,228,204,0.45);
+  }
+  .playlist-item.active .playlist-item-status{ color: var(--gold-hi); }
+  .playlist-item.playing .playlist-item-num::before{
+    content:'▸ ';
+    color: var(--gold-hi);
+    margin-right: 2px;
+  }
+  .playlist-empty{
+    padding: 14px;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(237,228,204,0.45);
+    text-align: center;
+    border: 1px dashed rgba(212,168,67,0.22);
+  }
+
+  @media (max-width: 720px){
+    .player{ padding: 22px 22px 20px; gap: 16px; }
+    .player::before{ left: 22px; right: 22px; }
+    .player-btn{ width: 52px; height: 52px; }
+    .player-btn svg{ width: 14px; height: 14px; }
+    .player-title{ font-size: 0.96rem; }
+    .player-sub{ font-size: 0.78rem; margin-bottom: 12px; }
+    .player-time{ font-size: 0.72rem; }
+    .player-controls{ padding-top: 10px; margin-top: 12px; gap: 8px; }
+    .player-ctrl{ width: 28px; height: 28px; }
+    .player-ctrl svg{ width: 11px; height: 11px; }
+    .player-loop{ gap: 6px; }
+    .player-loop-label{ font-size: 0.6rem; letter-spacing: 0.18em; }
+    .playlist{ padding: 0; margin-top: 12px; }
+    .playlist-title{ font-size: 0.6rem; letter-spacing: 0.32em; margin-bottom: 10px; }
+    .playlist-item{ padding: 9px 12px; font-size: 0.9rem; gap: 10px; grid-template-columns: 24px 1fr auto; }
+    .playlist-item-num{ font-size: 0.92rem; }
+    .playlist-item-status{ font-size: 0.56rem; letter-spacing: 0.18em; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <!-- ============== HEADER ============== -->
+  <header>
+    <div class="kicker">TABERNACLE<span class="dot"></span>성막의 여정</div>
+    <h1>할렐루야 <em>어린양</em></h1>
+    <div class="deck">An inward journey from the outer court to the throne</div>
+    <div class="deck-kr">바깥에서 — 보좌까지</div>
+  </header>
+
+  <!-- ============== MANDALA HERO ============== -->
+  <section class="mandala-hero">
+    <svg viewBox="-400 -400 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Tabernacle concentric diagram">
+      <defs>
+        <!-- core: brilliant white-gold center -->
+        <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#ffffff"/>
+          <stop offset="18%"  stop-color="#fef3c7"/>
+          <stop offset="50%"  stop-color="#f5d782"/>
+          <stop offset="85%"  stop-color="#d4a843"/>
+          <stop offset="100%" stop-color="#8a5e1e"/>
+        </radialGradient>
+        <!-- ring 3 (innermost ring) — warm, glowing gold -->
+        <radialGradient id="ring3-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="40%"  stop-color="#c8881f"/>
+          <stop offset="80%"  stop-color="#8a5e1e"/>
+          <stop offset="100%" stop-color="#4a3010"/>
+        </radialGradient>
+        <!-- ring 2 — deep wine, slightly warmer at inner edge -->
+        <radialGradient id="ring2-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="40%"  stop-color="#5a2b40"/>
+          <stop offset="80%"  stop-color="#3a1828"/>
+          <stop offset="100%" stop-color="#220e18"/>
+        </radialGradient>
+        <!-- ring 1 — coldest, dimmest blue -->
+        <radialGradient id="ring1-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="40%"  stop-color="#1d2348"/>
+          <stop offset="80%"  stop-color="#0e1230"/>
+          <stop offset="100%" stop-color="#06081a"/>
+        </radialGradient>
+
+        <!-- top light overlay: unifies the light source -->
+        <radialGradient id="light-overlay" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#fef3c7" stop-opacity="0.35"/>
+          <stop offset="22%"  stop-color="#f5d782" stop-opacity="0.16"/>
+          <stop offset="50%"  stop-color="#d4a843" stop-opacity="0.05"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- ray gradient -->
+        <linearGradient id="ray-grad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%"  stop-color="#fef3c7" stop-opacity="0"/>
+          <stop offset="55%" stop-color="#f5d782" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#fef3c7" stop-opacity="0.85"/>
+        </linearGradient>
+
+        <!-- journey trail: gradient from cool to incandescent -->
+        <linearGradient id="journey-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#7d7866" stop-opacity="0.4"/>
+          <stop offset="30%"  stop-color="#d4a843" stop-opacity="0.7"/>
+          <stop offset="70%"  stop-color="#f5d782" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="1"/>
+        </linearGradient>
+
+        <!-- glow filters -->
+        <filter id="glow-soft" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4"/>
+        </filter>
+        <filter id="glow-mid" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="8"/>
+        </filter>
+        <filter id="glow-big" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="18"/>
+        </filter>
+
+        <!-- circular text paths -->
+        <path id="ring1-top" d="M -355 0 A 355 355 0 0 1 355 0"/>
+        <path id="ring1-bot" d="M 355 0 A 355 355 0 0 1 -355 0"/>
+        <path id="ring2-top" d="M -255 0 A 255 255 0 0 1 255 0"/>
+        <path id="ring2-bot" d="M 255 0 A 255 255 0 0 1 -255 0"/>
+        <path id="ring3-top" d="M -150 0 A 150 150 0 0 1 150 0"/>
+        <path id="ring3-bot" d="M 150 0 A 150 150 0 0 1 -150 0"/>
+      </defs>
+
+      <!-- subtle ambient ring outside -->
+      <circle r="395" fill="none" stroke="#1d2244" stroke-width="1" stroke-dasharray="2 6" opacity="0.5"/>
+
+      <!-- ===== LAYER 1: ring fills ===== -->
+      <circle r="380" fill="url(#ring1-grad)" stroke="#000" stroke-width="1.5"/>
+      <circle r="280" fill="url(#ring2-grad)" stroke="#000" stroke-width="1.2"/>
+      <circle r="180" fill="url(#ring3-grad)" stroke="#000" stroke-width="1"/>
+
+      <!-- ===== LAYER 2: rim glows at each veil boundary (intensifying inward) ===== -->
+      <!-- veil 1 rim: subtle warm hint at ring1/ring2 boundary -->
+      <circle r="280" fill="none" stroke="#7a4530" stroke-width="6"
+              opacity="0.45" filter="url(#glow-mid)"/>
+      <!-- veil 2 rim: stronger gold at ring2/ring3 boundary -->
+      <circle r="180" fill="none" stroke="#e8b850" stroke-width="10"
+              opacity="0.7" filter="url(#glow-mid)"/>
+      <!-- veil 3 rim: brilliant white-gold at ring3/core boundary -->
+      <circle r="90" fill="none" stroke="#fef3c7" stroke-width="14"
+              opacity="0.9" filter="url(#glow-mid)"/>
+
+      <!-- ===== LAYER 3: 12 light rays emanating from center ===== -->
+      <g opacity="0.4">
+        <line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="3"/>
+        <g transform="rotate(30)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2"/></g>
+        <g transform="rotate(60)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2"/></g>
+        <g transform="rotate(90)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2.5"/></g>
+        <g transform="rotate(120)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2"/></g>
+        <g transform="rotate(150)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2"/></g>
+        <g transform="rotate(180)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="3"/></g>
+        <g transform="rotate(210)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2"/></g>
+        <g transform="rotate(240)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2"/></g>
+        <g transform="rotate(270)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2.5"/></g>
+        <g transform="rotate(300)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2"/></g>
+        <g transform="rotate(330)"><line x1="0" y1="0" x2="0" y2="-380" stroke="url(#ray-grad)" stroke-width="2"/></g>
+      </g>
+
+      <!-- ===== LAYER 4: top light overlay — brightens the whole composition toward center ===== -->
+      <circle r="380" fill="url(#light-overlay)" pointer-events="none"/>
+
+      <!-- ===== LAYER 5: ring labels (curved) — readable on mobile ===== -->
+      <text font-family="Cinzel, serif" font-size="22" letter-spacing="7" fill="#a8997d" font-weight="500">
+        <textPath href="#ring1-top" startOffset="50%" text-anchor="middle">·  OUTER  COURT  ·  바깥  마당  ·</textPath>
+      </text>
+      <text font-family="Cormorant Garamond, serif" font-style="italic" font-size="16" fill="#7d7866" letter-spacing="3">
+        <textPath href="#ring1-bot" startOffset="50%" text-anchor="middle">through the blood of the Lamb · 보혈</textPath>
+      </text>
+
+      <text font-family="Cinzel, serif" font-size="20" letter-spacing="6" fill="#d4a843" font-weight="500">
+        <textPath href="#ring2-top" startOffset="50%" text-anchor="middle">·  HOLY  PLACE  ·  성  소  ·</textPath>
+      </text>
+      <text font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#a09076" letter-spacing="3">
+        <textPath href="#ring2-bot" startOffset="50%" text-anchor="middle">reconciled at the altar · 화목</textPath>
+      </text>
+
+      <text font-family="Cinzel, serif" font-size="18" letter-spacing="5" fill="#fef3c7" font-weight="600">
+        <textPath href="#ring3-top" startOffset="50%" text-anchor="middle">·  HOLY  OF  HOLIES  ·  지성소  ·</textPath>
+      </text>
+      <text font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#d4a843" letter-spacing="2">
+        <textPath href="#ring3-bot" startOffset="50%" text-anchor="middle">the throne of grace · 보좌</textPath>
+      </text>
+
+      <!-- ===== LAYER 6: core with multi-layer glow halos ===== -->
+      <g class="core-anim">
+        <!-- outermost diffuse halo -->
+        <circle r="150" fill="#fef3c7" opacity="0.18" filter="url(#glow-big)"/>
+        <!-- mid halo -->
+        <circle r="115" fill="#f5d782" opacity="0.5" filter="url(#glow-mid)"/>
+        <!-- main core -->
+        <circle r="90" fill="url(#core-glow)" stroke="#a07020" stroke-width="0.8"/>
+        <!-- inner radiance -->
+        <circle r="55" fill="#fef3c7" opacity="0.55" filter="url(#glow-soft)"/>
+        <!-- center bright spot -->
+        <circle r="22" fill="#ffffff" opacity="0.85" filter="url(#glow-soft)"/>
+        <!-- center pinpoint -->
+        <circle r="6" fill="#ffffff"/>
+        <!-- 12-pointed star burst inside core -->
+        <g stroke="#fef3c7" stroke-width="0.8" opacity="0.55">
+          <line x1="0" y1="-90" x2="0" y2="90"/>
+          <line x1="-90" y1="0" x2="90" y2="0"/>
+          <line x1="-64" y1="-64" x2="64" y2="64"/>
+          <line x1="-64" y1="64" x2="64" y2="-64"/>
+          <line x1="-78" y1="-45" x2="78" y2="45"/>
+          <line x1="-45" y1="-78" x2="45" y2="78"/>
+          <line x1="78" y1="-45" x2="-78" y2="45"/>
+          <line x1="45" y1="-78" x2="-45" y2="78"/>
+        </g>
+      </g>
+
+      <!-- center label -->
+      <text x="0" y="-6" text-anchor="middle"
+            font-family="Nanum Myeongjo, serif" font-weight="800" font-size="38"
+            fill="#06081a" letter-spacing="6">영광</text>
+      <text x="0" y="22" text-anchor="middle"
+            font-family="Cinzel, serif" font-size="11" letter-spacing="5"
+            fill="#5a3d12" font-weight="600">GLORY</text>
+
+      <!-- ===== LAYER 7: journey path with gradient glow ===== -->
+      <!-- soft outer glow of the trail -->
+      <line x1="0" y1="-395" x2="0" y2="-90" stroke="#f5d782"
+            stroke-width="8" opacity="0.35" filter="url(#glow-mid)"/>
+      <!-- main trail (animated draw-in) -->
+      <line class="journey-line" x1="0" y1="-395" x2="0" y2="-90"
+            stroke="url(#journey-grad)" stroke-width="2.5"/>
+
+      <!-- ===== LAYER 8: veil markers — increasingly luminous ===== -->
+      <!-- veil 1 marker (outermost / dimmest) -->
+      <circle cx="0" cy="-380" r="9" fill="#d4a843" opacity="0.45" filter="url(#glow-soft)"/>
+      <polygon points="0,-386 5,-380 0,-374 -5,-380" fill="#d4a843" stroke="#000" stroke-width="0.4"/>
+
+      <!-- veil 2 marker (middle / brighter) -->
+      <circle cx="0" cy="-280" r="13" fill="#f5d782" opacity="0.7" filter="url(#glow-soft)"/>
+      <polygon points="0,-288 6,-280 0,-272 -6,-280" fill="#fef3c7" stroke="#000" stroke-width="0.4"/>
+
+      <!-- veil 3 marker (innermost / brilliant) -->
+      <circle cx="0" cy="-180" r="18" fill="#fef3c7" opacity="0.9" filter="url(#glow-soft)"/>
+      <polygon points="0,-190 8,-180 0,-170 -8,-180" fill="#ffffff" stroke="#000" stroke-width="0.4"/>
+
+      <!-- start marker label -->
+      <text x="18" y="-378" font-family="Cormorant Garamond, serif" font-style="italic"
+            font-size="14" fill="#a09076">enter</text>
+    </svg>
+
+    <!-- legend -->
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch swatch-1"></div>
+        <div class="legend-roman">I</div>
+        <div class="legend-kr">바깥 마당</div>
+        <div class="legend-en">Outer Court</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch swatch-2"></div>
+        <div class="legend-roman">II</div>
+        <div class="legend-kr">성 소</div>
+        <div class="legend-en">Holy Place</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch swatch-3"></div>
+        <div class="legend-roman">III</div>
+        <div class="legend-kr">지 성 소</div>
+        <div class="legend-en">Holy of Holies</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch swatch-c"></div>
+        <div class="legend-roman">·</div>
+        <div class="legend-kr">영 광</div>
+        <div class="legend-en">Glory · Throne</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== LISTEN ============== -->
+  <section class="listen">
+    <div class="listen-eyebrow">Listen · 청음</div>
+    <div class="player">
+      <button class="player-btn" id="play-btn" type="button" aria-label="재생/일시정지">
+        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 5v14l12-7z"/>
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 5h4v14H6zM14 5h4v14h-4z"/>
+        </svg>
+      </button>
+      <div class="player-body">
+        <div class="player-title" id="player-title">할렐루야 어린양</div>
+        <div class="player-sub" id="player-sub">M2Hymn · Message 2</div>
+        <div class="player-progress" id="player-progress" role="slider" aria-label="재생 위치" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+          <div class="player-track"></div>
+          <div class="player-fill" id="player-fill"></div>
+          <div class="player-knob" id="player-knob"></div>
+        </div>
+        <div class="player-time">
+          <span id="player-current">0:00</span>
+          <span id="player-total">—:—</span>
+        </div>
+        <div class="player-controls">
+          <div class="player-ctrl-group">
+            <button class="player-ctrl" id="prev-btn" type="button" aria-label="이전 곡" title="이전 곡">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6zM18 6L9.5 12 18 18z"/></svg>
+            </button>
+            <button class="player-ctrl" id="next-btn" type="button" aria-label="다음 곡" title="다음 곡">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/></svg>
+            </button>
+          </div>
+          <div class="player-loop">
+            <button class="player-ctrl" id="loop-btn" type="button" aria-label="반복 모드" title="반복 모드">
+              <svg class="icon-loop" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/></svg>
+              <svg class="icon-loop-one" viewBox="0 0 24 24" aria-hidden="true" style="display:none"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2zm-4-3v-4h-1l-2 1v1h1.5v6H13z"/></svg>
+            </button>
+            <span class="player-loop-label" id="loop-label">No Loop</span>
+          </div>
+        </div>
+      </div>
+      <audio id="player-audio" preload="metadata"></audio>
+    </div>
+  </section>
+
+  <section class="playlist" id="playlist-section">
+    <div class="playlist-title">Playlist · 재생목록</div>
+    <ul class="playlist-items" id="playlist-items">
+      <li class="playlist-empty">트랙을 검색하는 중...</li>
+    </ul>
+  </section>
+
+  <!-- ============== DIVIDER ============== -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-text">— FOUR MOVEMENTS —</div>
+  </div>
+
+  <!-- ============== VERSE CARDS ============== -->
+  <section class="verses">
+
+    <!-- VERSE 1 -->
+    <article class="verse-card">
+      <div class="mini-mandala">
+        <svg viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- dim rings -->
+          <circle r="95" fill="none" stroke="#232a55" stroke-width="14" opacity="1"/>
+          <circle r="70" fill="none" stroke="#1c1f3d" stroke-width="14" opacity="0.45"/>
+          <circle r="45" fill="none" stroke="#2a1d22" stroke-width="14" opacity="0.45"/>
+          <circle r="22" fill="#3a3322" opacity="0.5"/>
+          <!-- highlight outer ring -->
+          <circle r="95" fill="none" stroke="#d4a843" stroke-width="2"/>
+          <circle r="88" fill="none" stroke="#d4a843" stroke-width="0.5" opacity="0.5"/>
+          <!-- progress dot at top -->
+          <circle cx="0" cy="-95" r="4" fill="#f0c95a" stroke="#000" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="verse-content">
+        <div class="verse-meta">
+          <div class="verse-num">I</div>
+          <div class="verse-station">바깥 마당</div>
+          <div class="verse-en">Outer Court</div>
+        </div>
+        <div class="verse-key">BLOOD · 보혈</div>
+        <div class="lyrics">
+          <div class="lyrics-block">
+            참된 사실 믿은 나<br/>
+            주의 죽음 누리며<br/>
+            바깥 마당 거쳤네 <span class="halle">할렐루야 찬미해</span>
+          </div>
+          <div class="lyrics-block">
+            속죄하는 보혈로<br/>
+            나는 주께 드려져<br/>
+            거룩하게 되었네 <span class="halle">할렐루야 어린양</span>
+          </div>
+        </div>
+        <div class="verse-refrain">
+          <div class="refrain-label">— REFRAIN · 후렴 —</div>
+          <div class="refrain-text">
+            <span class="halle-pair">할렐루야 · 할렐루야</span><br/>
+            열린 휘장 지나니 항상 영광 충만해<br/>
+            <span class="halle-pair">할렐루야 · 할렐루야</span><br/>
+            <span class="king">이젠 왕 앞에서 생활한다네</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- VERSE 2 -->
+    <article class="verse-card">
+      <div class="mini-mandala">
+        <svg viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="mini2-glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2"/>
+            </filter>
+          </defs>
+          <circle r="95" fill="none" stroke="#1a1d3a" stroke-width="14" opacity="0.55"/>
+          <circle r="70" fill="none" stroke="#4d2238" stroke-width="14"/>
+          <circle r="45" fill="none" stroke="#2a1d22" stroke-width="14" opacity="0.45"/>
+          <circle r="22" fill="#3a3322" opacity="0.5"/>
+          <!-- highlight middle ring with subtle glow -->
+          <circle r="70" fill="none" stroke="#e8b850" stroke-width="3" opacity="0.6" filter="url(#mini2-glow)"/>
+          <circle r="70" fill="none" stroke="#e8b850" stroke-width="1.5"/>
+          <circle r="63" fill="none" stroke="#e8b850" stroke-width="0.5" opacity="0.5"/>
+          <!-- progress dot at boundary, with glow -->
+          <circle cx="0" cy="-70" r="6" fill="#f5d782" opacity="0.5" filter="url(#mini2-glow)"/>
+          <circle cx="0" cy="-70" r="3.5" fill="#f5d782" stroke="#000" stroke-width="0.4"/>
+          <!-- subtle trail from outer to current position -->
+          <line x1="0" y1="-95" x2="0" y2="-70" stroke="#d4a843" stroke-width="0.8" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="verse-content">
+        <div class="verse-meta">
+          <div class="verse-num">II</div>
+          <div class="verse-station">성 소</div>
+          <div class="verse-en">Holy Place</div>
+        </div>
+        <div class="verse-key">RECONCILIATION · 화목</div>
+        <div class="lyrics">
+          <div class="lyrics-block">
+            밖의 휘장 지나서<br/>
+            성소 안에 들어가<br/>
+            주의 공급 누리네 <span class="halle">할렐루야 찬미해</span>
+          </div>
+          <div class="lyrics-block">
+            하나님과 화목돼<br/>
+            제단 거쳐 성결해<br/>
+            세상 영영 버리네 <span class="halle">할렐루야 어린양</span>
+          </div>
+        </div>
+        <div class="verse-refrain">
+          <div class="refrain-label">— REFRAIN · 후렴 —</div>
+          <div class="refrain-text">
+            <span class="halle-pair">할렐루야 · 할렐루야</span><br/>
+            열린 휘장 지나니 항상 영광 충만해<br/>
+            <span class="halle-pair">할렐루야 · 할렐루야</span><br/>
+            <span class="king">이젠 왕 앞에서 생활한다네</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- VERSE 3 -->
+    <article class="verse-card">
+      <div class="mini-mandala">
+        <svg viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="mini3-glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3"/>
+            </filter>
+          </defs>
+          <circle r="95" fill="none" stroke="#1a1d3a" stroke-width="14" opacity="0.55"/>
+          <circle r="70" fill="none" stroke="#2e1924" stroke-width="14" opacity="0.55"/>
+          <circle r="45" fill="none" stroke="#c8881f" stroke-width="14"/>
+          <circle r="22" fill="#3a3322" opacity="0.5"/>
+          <!-- highlight inner ring with strong glow -->
+          <circle r="45" fill="none" stroke="#fef3c7" stroke-width="4" opacity="0.7" filter="url(#mini3-glow)"/>
+          <circle r="45" fill="none" stroke="#fef3c7" stroke-width="1.5"/>
+          <circle r="38" fill="none" stroke="#fef3c7" stroke-width="0.6" opacity="0.6"/>
+          <!-- progress dot with strong glow -->
+          <circle cx="0" cy="-45" r="8" fill="#fef3c7" opacity="0.6" filter="url(#mini3-glow)"/>
+          <circle cx="0" cy="-45" r="3.5" fill="#ffffff" stroke="#000" stroke-width="0.4"/>
+          <!-- trail from outer down to current position -->
+          <line x1="0" y1="-95" x2="0" y2="-45" stroke="#f5d782" stroke-width="1" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="verse-content">
+        <div class="verse-meta">
+          <div class="verse-num">III</div>
+          <div class="verse-station">지 성 소</div>
+          <div class="verse-en">Holy of Holies</div>
+        </div>
+        <div class="verse-key">THRONE OF GRACE · 은혜 보좌</div>
+        <div class="lyrics">
+          <div class="lyrics-block">
+            안의 휘장 지나서<br/>
+            지성소에 들어가<br/>
+            은혜 보좌 누리네 <span class="halle">할렐루야 찬미해</span>
+          </div>
+          <div class="lyrics-block">
+            주의 앞에 생활해<br/>
+            나는 주의 거처 돼<br/>
+            죄와 자아 없다네 <span class="halle">할렐루야 어린양</span>
+          </div>
+        </div>
+        <div class="verse-refrain">
+          <div class="refrain-label">— REFRAIN · 후렴 —</div>
+          <div class="refrain-text">
+            <span class="halle-pair">할렐루야 · 할렐루야</span><br/>
+            열린 휘장 지나니 항상 영광 충만해<br/>
+            <span class="halle-pair">할렐루야 · 할렐루야</span><br/>
+            <span class="king">이젠 왕 앞에서 생활한다네</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- VERSE 4 -->
+    <article class="verse-card">
+      <div class="mini-mandala">
+        <svg viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="mini-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#ffffff"/>
+              <stop offset="35%"  stop-color="#fef3c7"/>
+              <stop offset="75%"  stop-color="#f5d782"/>
+              <stop offset="100%" stop-color="#a07020"/>
+            </radialGradient>
+            <filter id="mini-glow-filter" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="4"/>
+            </filter>
+          </defs>
+          <!-- all rings dimmed -->
+          <circle r="95" fill="none" stroke="#1a1d3a" stroke-width="14" opacity="0.45"/>
+          <circle r="70" fill="none" stroke="#2e1924" stroke-width="14" opacity="0.45"/>
+          <circle r="45" fill="none" stroke="#5a3d12" stroke-width="14" opacity="0.5"/>
+          <!-- diffuse halo around core -->
+          <circle r="38" fill="#fef3c7" opacity="0.35" filter="url(#mini-glow-filter)"/>
+          <!-- core highlighted (glory) -->
+          <circle r="22" fill="url(#mini-glow)" stroke="#a07020" stroke-width="0.5"/>
+          <!-- inner bright spot -->
+          <circle r="8" fill="#ffffff" opacity="0.9"/>
+          <!-- journey complete: glowing trail from edge to center -->
+          <line x1="0" y1="-95" x2="0" y2="-22" stroke="#fef3c7" stroke-width="2.5"
+                opacity="0.4" filter="url(#mini-glow-filter)"/>
+          <line x1="0" y1="-95" x2="0" y2="-22" stroke="#fef3c7" stroke-width="1" opacity="0.95"/>
+          <!-- markers along journey -->
+          <circle cx="0" cy="-95" r="2" fill="#d4a843"/>
+          <circle cx="0" cy="-70" r="2" fill="#f5d782"/>
+          <circle cx="0" cy="-45" r="2.2" fill="#fef3c7"/>
+        </svg>
+      </div>
+      <div class="verse-content">
+        <div class="verse-meta">
+          <div class="verse-num">IV</div>
+          <div class="verse-station">제 사 장</div>
+          <div class="verse-en">Royal Priesthood</div>
+        </div>
+        <div class="verse-key">IDENTITY · 신분</div>
+        <div class="lyrics">
+          <div class="lyrics-block">
+            구속 거친 나 이제<br/>
+            하나님의 제사장<br/>
+            나의 신분 확실해 <span class="halle">할렐루야 찬미해</span>
+          </div>
+          <div class="lyrics-block">
+            주의 영광 앞에서<br/>
+            영 안에서 산다네<br/>
+            날이 가도 변찮네 <span class="halle">할렐루야 어린양</span>
+          </div>
+        </div>
+        <div class="verse-refrain">
+          <div class="refrain-label">— REFRAIN · 후렴 —</div>
+          <div class="refrain-text">
+            <span class="halle-pair">할렐루야 · 할렐루야</span><br/>
+            열린 휘장 지나니 항상 영광 충만해<br/>
+            <span class="halle-pair">할렐루야 · 할렐루야</span><br/>
+            <span class="king">이젠 왕 앞에서 생활한다네</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <svg class="footer-mark" viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle r="42" fill="none" stroke="#1d2244" stroke-width="1"/>
+      <circle r="30" fill="none" stroke="#4d2238" stroke-width="1"/>
+      <circle r="18" fill="none" stroke="#8a5e1e" stroke-width="1"/>
+      <circle r="6"  fill="#f0c95a"/>
+    </svg>
+    <div class="footer-en">SOLI DEO GLORIA</div>
+    <div class="footer-kr">오직 어린양께 영광</div>
+  </footer>
+
+</main>
+
+<script>
+// Audio player — auto-discover MxHymn.mp3, playlist, loop modes
+(function() {
+  const audio = document.getElementById('player-audio');
+  const playBtn = document.getElementById('play-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const loopBtn = document.getElementById('loop-btn');
+  const loopLabel = document.getElementById('loop-label');
+  const titleEl = document.getElementById('player-title');
+  const subEl = document.getElementById('player-sub');
+  const progress = document.getElementById('player-progress');
+  const fill = document.getElementById('player-fill');
+  const knob = document.getElementById('player-knob');
+  const cur = document.getElementById('player-current');
+  const tot = document.getElementById('player-total');
+  const listEl = document.getElementById('playlist-items');
+
+  if (!audio) return;
+
+  const MAX_TRACKS = 12;
+  const LOOP_LABELS = ['No Loop', 'Loop All', 'Loop One'];
+
+  let tracks = [];
+  let currentIdx = 0;
+  let loopMode = 0;
+
+  function fmt(s) {
+    if (!isFinite(s) || s < 0) return '—:—';
+    const m = Math.floor(s / 60);
+    const r = Math.floor(s % 60);
+    return m + ':' + (r < 10 ? '0' + r : r);
+  }
+
+  function pageNumberFromUrl() {
+    const m = location.pathname.match(/M(\d+)Hymn\.html$/i);
+    return m ? parseInt(m[1], 10) : 1;
+  }
+
+  function pageOwnTitle() {
+    const t = document.title || '';
+    return t.split(/[—·|]/)[0].trim() || t.trim();
+  }
+
+  async function probeTrack(n) {
+    const src = 'M' + n + 'Hymn.mp3';
+    try {
+      const r = await fetch(src, { method: 'HEAD' });
+      return r.ok ? { n: n, src: src } : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function fetchHymnTitle(n) {
+    try {
+      const r = await fetch('M' + n + 'Hymn.html');
+      if (!r.ok) return null;
+      const text = await r.text();
+      const m = text.match(/<title>([^<]+)<\/title>/i);
+      if (!m) return null;
+      return m[1].split(/[—·|]/)[0].trim() || null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function renderPlaylist() {
+    if (!listEl) return;
+    if (tracks.length === 0) {
+      listEl.innerHTML = '<li class="playlist-empty">사용 가능한 트랙이 없습니다.</li>';
+      return;
+    }
+    listEl.innerHTML = tracks.map((t, i) => {
+      const num = String(t.n).padStart(2, '0');
+      const isActive = i === currentIdx;
+      const isPlaying = isActive && audio && !audio.paused;
+      const status = isActive ? (isPlaying ? 'Now playing' : 'Selected') : 'Hymn';
+      return '<li class="playlist-item' + (isActive ? ' active' : '') + (isPlaying ? ' playing' : '') +
+        '" data-idx="' + i + '" tabindex="0" role="button">' +
+        '<span class="playlist-item-num">' + num + '</span>' +
+        '<span class="playlist-item-label">' + (t.label || ('Message ' + t.n + ' Hymn')) + '</span>' +
+        '<span class="playlist-item-status">' + status + '</span>' +
+        '</li>';
+    }).join('');
+
+    listEl.querySelectorAll('.playlist-item').forEach(item => {
+      const handler = () => {
+        const i = parseInt(item.dataset.idx, 10);
+        if (isNaN(i) || i === currentIdx) return;
+        loadTrack(i, true);
+      };
+      item.addEventListener('click', handler);
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); }
+      });
+    });
+  }
+
+  function updateNavButtons() {
+    if (prevBtn) prevBtn.disabled = tracks.length <= 1;
+    if (nextBtn) nextBtn.disabled = tracks.length <= 1;
+  }
+
+  function loadTrack(idx, autoplay) {
+    if (idx < 0 || idx >= tracks.length) return;
+    currentIdx = idx;
+    const t = tracks[idx];
+    audio.src = t.src;
+    if (titleEl) titleEl.textContent = t.label || ('Message ' + t.n + ' Hymn');
+    if (subEl) subEl.textContent = 'M' + t.n + 'Hymn · Message ' + t.n;
+    if (cur) cur.textContent = '0:00';
+    if (tot) tot.textContent = '—:—';
+    if (fill) fill.style.width = '0%';
+    if (knob) knob.style.left = '0%';
+    if (progress) progress.setAttribute('aria-valuenow', '0');
+    renderPlaylist();
+    updateNavButtons();
+    if (autoplay) audio.play().catch(() => {});
+  }
+
+  function next() {
+    if (tracks.length === 0) return;
+    const i = (currentIdx + 1) % tracks.length;
+    loadTrack(i, true);
+  }
+
+  function prev() {
+    if (tracks.length === 0) return;
+    const i = (currentIdx - 1 + tracks.length) % tracks.length;
+    loadTrack(i, true);
+  }
+
+  function setLoopMode(mode) {
+    loopMode = ((mode % 3) + 3) % 3;
+    audio.loop = (loopMode === 2);
+    if (loopBtn) {
+      loopBtn.classList.toggle('loop-active', loopMode > 0);
+      const all = loopBtn.querySelector('.icon-loop');
+      const one = loopBtn.querySelector('.icon-loop-one');
+      if (all && one) {
+        if (loopMode === 2) { all.style.display = 'none'; one.style.display = 'block'; }
+        else { all.style.display = 'block'; one.style.display = 'none'; }
+      }
+    }
+    if (loopLabel) loopLabel.textContent = LOOP_LABELS[loopMode];
+  }
+
+  async function init() {
+    const startN = pageNumberFromUrl();
+    const probes = [];
+    for (let i = 1; i <= MAX_TRACKS; i++) probes.push(probeTrack(i));
+    const results = await Promise.all(probes);
+    tracks = results.filter(Boolean).sort((a, b) => a.n - b.n);
+
+    if (tracks.length === 0) {
+      renderPlaylist();
+      updateNavButtons();
+      if (titleEl) titleEl.textContent = '재생할 트랙이 없습니다';
+      if (subEl) subEl.textContent = '';
+      return;
+    }
+
+    tracks.forEach(t => { t.label = 'Message ' + t.n + ' Hymn'; });
+    const ownN = startN;
+    if (tracks.some(t => t.n === ownN)) {
+      const ownLabel = pageOwnTitle();
+      if (ownLabel) {
+        const t = tracks.find(t => t.n === ownN);
+        if (t) t.label = ownLabel;
+      }
+    }
+
+    const startIdx = Math.max(0, tracks.findIndex(t => t.n === startN));
+    loadTrack(startIdx, false);
+    updateNavButtons();
+
+    tracks.forEach(async (t) => {
+      if (t.n === ownN) return;
+      const title = await fetchHymnTitle(t.n);
+      if (title) {
+        t.label = title;
+        if (currentIdx === tracks.indexOf(t) && titleEl) titleEl.textContent = title;
+        renderPlaylist();
+      }
+    });
+  }
+
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) audio.play().catch(() => {});
+    else audio.pause();
+  });
+
+  if (prevBtn) prevBtn.addEventListener('click', prev);
+  if (nextBtn) nextBtn.addEventListener('click', next);
+  if (loopBtn) loopBtn.addEventListener('click', () => setLoopMode(loopMode + 1));
+
+  audio.addEventListener('play', () => {
+    playBtn.classList.add('playing');
+    renderPlaylist();
+  });
+  audio.addEventListener('pause', () => {
+    playBtn.classList.remove('playing');
+    renderPlaylist();
+  });
+  audio.addEventListener('ended', () => {
+    playBtn.classList.remove('playing');
+    renderPlaylist();
+    if (loopMode === 1) next();
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    if (tot) tot.textContent = fmt(audio.duration);
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    if (fill) fill.style.width = pct + '%';
+    if (knob) knob.style.left = pct + '%';
+    if (cur) cur.textContent = fmt(audio.currentTime);
+    if (progress) progress.setAttribute('aria-valuenow', Math.round(pct));
+  });
+
+  function seekFromEvent(clientX) {
+    if (!audio.duration) return;
+    const rect = progress.getBoundingClientRect();
+    const pct = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+    audio.currentTime = pct * audio.duration;
+  }
+
+  if (progress) {
+    progress.addEventListener('click', (e) => seekFromEvent(e.clientX));
+    progress.addEventListener('keydown', (e) => {
+      if (!audio.duration) return;
+      if (e.key === 'ArrowRight') { audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); e.preventDefault(); }
+      else if (e.key === 'ArrowLeft') { audio.currentTime = Math.max(0, audio.currentTime - 5); e.preventDefault(); }
+      else if (e.key === ' ' || e.key === 'Enter') { playBtn.click(); e.preventDefault(); }
+    });
+  }
+
+  init();
+})();
+</script>
+
+</body>
+</html>
