@@ -1,0 +1,2663 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>산을 옮기는 기도 — 막 11:23-24 묵상</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deepest: #08111F;
+    --navy-deep: #0E1B3A;
+    --navy: #1A2B4F;
+    --navy-soft: #2A3A66;
+    --gold-deep: #8B6F2D;
+    --gold: #C8A24A;
+    --gold-light: #E0BD66;
+    --cream: #F4ECD8;
+    --cream-warm: #EFE4C8;
+    --paper: #FAF5E8;
+    --wine: #6B1A2E;
+    --ink: #1A1A1A;
+    --ink-soft: #3A3A3A;
+    --serif: 'Noto Serif KR', serif;
+    --sans: 'Noto Sans KR', sans-serif;
+    --latin: 'EB Garamond', serif;
+    --display: 'Cormorant Garamond', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--navy-deepest);
+    color: var(--cream);
+    line-height: 1.7;
+    overflow-x: hidden;
+    font-weight: 300;
+    letter-spacing: -0.005em;
+  }
+
+  /* ───── Grain texture overlay ───── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  /* ───── Section base ───── */
+  .scene {
+    position: relative;
+    min-height: 100vh;
+    padding: 8vh 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .scene-marker {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .scene-marker::before {
+    content: '';
+    width: 2.5rem;
+    height: 1px;
+    background: currentColor;
+  }
+  .scene-marker .num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* ════════════════════════════════════════
+     SCENE 1 — 산 앞에 서다 (Today's Verse)
+     ════════════════════════════════════════ */
+  .scene-verse {
+    background: radial-gradient(ellipse at 50% 100%, var(--navy) 0%, var(--navy-deep) 40%, var(--navy-deepest) 90%);
+    color: var(--cream);
+    text-align: center;
+    align-items: center;
+    padding-top: 12vh;
+  }
+
+  .verse-mountain {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  .verse-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.9; }
+  }
+
+  .verse-eyebrow {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.3s forwards;
+  }
+  .verse-eyebrow::before, .verse-eyebrow::after {
+    content: '◆';
+    font-size: 0.6rem;
+    margin: 0 1.5rem;
+    vertical-align: middle;
+    opacity: 0.6;
+  }
+
+  .verse-title {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(2rem, 5.5vw, 4.5rem);
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .verse-title .line {
+    display: block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1.5s ease-out forwards;
+  }
+  .verse-title .line:nth-child(1) { animation-delay: 0.8s; }
+  .verse-title .line:nth-child(2) { animation-delay: 1.4s; }
+  .verse-title .line:nth-child(3) { animation-delay: 2.0s; }
+  .verse-title .line:nth-child(4) { animation-delay: 2.6s; }
+  .verse-title .emphasis {
+    color: var(--gold-light);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .verse-citation {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-top: 4rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 3.2s forwards;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    opacity: 0;
+    animation: fadeUp 1s ease-out 3.8s forwards, bob 2.5s ease-in-out 4.5s infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ════════════════════════════════════════
+     SCENE 2 — 헬라어 광맥 (Greek Words)
+     ════════════════════════════════════════ */
+  .scene-greek {
+    background: linear-gradient(180deg, var(--navy-deepest) 0%, var(--navy-deep) 50%, var(--navy) 100%);
+    color: var(--cream);
+  }
+
+  .greek-header {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+  .greek-header h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .greek-header h2 .latin {
+    font-family: var(--latin);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+  }
+  .greek-header p {
+    font-size: 0.95rem;
+    color: var(--cream);
+    opacity: 0.65;
+    max-width: 50ch;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .greek-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .greek-card {
+    border: 1px solid rgba(200, 162, 74, 0.25);
+    background: linear-gradient(135deg, rgba(26, 43, 79, 0.4) 0%, rgba(14, 27, 58, 0.6) 100%);
+    padding: 2rem 1.75rem;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .greek-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--gold);
+    transition: height 0.5s ease;
+  }
+  .greek-card:hover, .greek-card.expanded {
+    background: linear-gradient(135deg, rgba(200, 162, 74, 0.08) 0%, rgba(26, 43, 79, 0.6) 100%);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+  .greek-card:hover::before, .greek-card.expanded::before {
+    height: 100%;
+  }
+
+  .greek-card .greek-word {
+    font-family: var(--latin);
+    font-size: 2rem;
+    color: var(--gold-light);
+    margin-bottom: 0.1rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .greek-card .greek-pron-ko {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--cream);
+    opacity: 0.55;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+    font-weight: 300;
+  }
+  .greek-card .greek-pron-ko::before {
+    content: '⟨ ';
+    color: var(--gold);
+    opacity: 0.55;
+    font-style: italic;
+  }
+  .greek-card .greek-pron-ko::after {
+    content: ' ⟩';
+    color: var(--gold);
+    opacity: 0.55;
+    font-style: italic;
+  }
+  .greek-card .translit {
+    font-family: var(--latin);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--gold);
+    opacity: 0.75;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.05em;
+  }
+  .greek-card .meaning {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--cream);
+  }
+  .greek-card .quick {
+    font-size: 0.85rem;
+    color: var(--cream);
+    opacity: 0.6;
+    line-height: 1.7;
+  }
+  .greek-card .deep {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, margin-top 0.4s ease;
+  }
+  .greek-card.expanded .deep {
+    max-height: 400px;
+    margin-top: 1.25rem;
+  }
+  .greek-card .deep-inner {
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(200, 162, 74, 0.2);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--cream);
+    opacity: 0.85;
+  }
+  .greek-card .deep-label {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .greek-card .toggle {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 0.2em;
+  }
+  .greek-card.expanded .toggle::after { content: '−'; }
+  .greek-card:not(.expanded) .toggle::after { content: '+ MORE'; }
+  .greek-card.expanded .toggle::after { content: '− CLOSE'; }
+
+  /* ════════════════════════════════════════
+     SCENE 3 — 메시지의 심장 (Summary)
+     ════════════════════════════════════════ */
+  .scene-summary {
+    background: var(--navy-deepest);
+    text-align: center;
+    color: var(--cream);
+    align-items: center;
+    min-height: 90vh;
+  }
+
+  .summary-glow {
+    position: absolute;
+    width: 80vw;
+    height: 80vw;
+    max-width: 900px;
+    max-height: 900px;
+    background: radial-gradient(circle, rgba(200, 162, 74, 0.12) 0%, transparent 60%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: pulse 6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .summary-divider {
+    width: 1px;
+    height: 4rem;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto 3rem;
+  }
+
+  .summary-text {
+    font-family: var(--serif);
+    font-weight: 200;
+    font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+    line-height: 1.7;
+    max-width: 28ch;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -0.01em;
+  }
+  .summary-text .accent {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  .summary-text .climax {
+    display: block;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(200, 162, 74, 0.3);
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .summary-pull {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0.7;
+  }
+
+  /* ════════════════════════════════════════
+     SCENE 4 — 세 개의 문 (Detail)
+     ════════════════════════════════════════ */
+  .scene-detail {
+    background: linear-gradient(180deg, var(--navy-deepest) 0%, var(--navy-deep) 25%, var(--navy) 60%, #2D3F65 100%);
+    padding: 12vh 6vw;
+  }
+
+  .detail-header {
+    max-width: 1100px;
+    margin: 0 auto 5rem;
+    text-align: center;
+  }
+  .detail-header h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.01em;
+  }
+  .detail-header h2 em {
+    font-family: var(--latin);
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .gates {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .gate {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+    position: relative;
+  }
+  @media (max-width: 768px) {
+    .gate { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  .gate-visual {
+    position: sticky;
+    top: 6rem;
+    aspect-ratio: 3/4;
+    border: 1px solid rgba(200, 162, 74, 0.3);
+    background: var(--navy-deepest);
+    overflow: hidden;
+    position: relative;
+  }
+  @media (max-width: 768px) {
+    .gate-visual { aspect-ratio: 16/9; position: relative; top: 0; }
+  }
+
+  .gate-visual svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .gate-num {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    z-index: 2;
+  }
+  .gate-num strong {
+    font-size: 3.5rem;
+    font-weight: 300;
+    display: block;
+    line-height: 1;
+    color: var(--gold-light);
+  }
+
+  .gate-body h3 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .gate-body h3 .label {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .gate-body .body-text {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: var(--cream);
+    opacity: 0.9;
+    margin-top: 1.5rem;
+  }
+  .gate-body .body-text p + p {
+    margin-top: 1.25rem;
+  }
+
+  .quote-block {
+    border-left: 2px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    margin: 1.75rem 0;
+    background: rgba(200, 162, 74, 0.04);
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--gold-light);
+  }
+  .quote-block .ref {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-top: 1rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+  }
+
+  /* Reference tooltip system */
+  .ref-link {
+    color: var(--gold-light);
+    border-bottom: 1px dashed var(--gold);
+    cursor: help;
+    position: relative;
+    font-style: normal;
+    text-decoration: none;
+    padding: 0 1px;
+    transition: color 0.2s;
+  }
+  .ref-link:hover { color: var(--gold); }
+  .ref-link::before {
+    content: '✦';
+    font-size: 0.65em;
+    margin-right: 2px;
+    color: var(--gold);
+    vertical-align: super;
+  }
+  .tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: var(--cream);
+    color: var(--ink);
+    padding: 1rem 1.25rem;
+    width: max-content;
+    max-width: min(320px, calc(100vw - 4rem));
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 50;
+    pointer-events: none;
+    text-align: left;
+  }
+  .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--cream);
+  }
+  .tooltip .tip-ref {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--wine);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .ref-link:hover .tooltip,
+  .ref-link:focus .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Dual comparison box for Gate 2 & 3 */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(200, 162, 74, 0.3);
+    border: 1px solid rgba(200, 162, 74, 0.3);
+    margin: 2rem 0;
+  }
+  @media (max-width: 540px) {
+    .compare { grid-template-columns: 1fr; }
+  }
+  .compare-cell {
+    background: var(--navy-deep);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+  }
+  .compare-cell.against {
+    opacity: 0.55;
+  }
+  .compare-cell.toward {
+    background: linear-gradient(180deg, var(--navy-deep) 0%, rgba(200, 162, 74, 0.08) 100%);
+  }
+  .compare-cell .label {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .compare-cell .phrase {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--cream);
+  }
+  .compare-cell.toward .phrase {
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+  .compare-arrow {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 0.75rem;
+    background: var(--navy-deep);
+    color: var(--gold);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+  }
+
+  /* ════════════════════════════════════════
+     SCENE 6 — 퀴즈 (Self-Examination)
+     ════════════════════════════════════════ */
+  .scene-quiz {
+    background: linear-gradient(180deg, #2D3F65 0%, #4A5A7E 50%, #7A8294 100%);
+    padding: 12vh 6vw;
+    color: var(--ink);
+  }
+
+  .quiz-header {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+    color: var(--paper);
+  }
+  .quiz-header h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .quiz-header h2 em {
+    font-family: var(--latin);
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .quiz-header p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.8;
+    opacity: 0.85;
+    max-width: 48ch;
+    margin: 0 auto;
+  }
+
+  .quiz-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .quiz-card {
+    background: var(--paper);
+    margin-bottom: 1.5rem;
+    padding: 2.25rem 2rem;
+    border: 1px solid rgba(11, 27, 58, 0.1);
+    box-shadow: 0 8px 30px rgba(8, 17, 31, 0.15);
+    position: relative;
+  }
+
+  .quiz-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    color: var(--wine);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .quiz-num strong {
+    font-size: 2.5rem;
+    color: var(--navy-deep);
+    font-weight: 400;
+    font-style: italic;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  .quiz-question {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.005em;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .quiz-option {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(11, 27, 58, 0.15);
+    background: white;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    text-align: left;
+    width: 100%;
+  }
+  .quiz-option:hover:not(.locked) {
+    border-color: var(--navy);
+    background: var(--cream-warm);
+  }
+  .quiz-option .opt-letter {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--wine);
+    margin-right: 1rem;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .quiz-option.correct {
+    background: linear-gradient(90deg, rgba(200, 162, 74, 0.12) 0%, transparent 100%);
+    border-color: var(--gold-deep);
+    color: var(--ink);
+  }
+  .quiz-option.correct .opt-letter { color: var(--gold-deep); }
+  .quiz-option.incorrect {
+    background: rgba(107, 26, 46, 0.05);
+    border-color: var(--wine);
+    opacity: 0.7;
+  }
+  .quiz-option.locked { cursor: default; }
+
+  .quiz-feedback {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, margin-top 0.3s ease;
+  }
+  .quiz-card.answered .quiz-feedback {
+    max-height: 300px;
+    margin-top: 1.25rem;
+  }
+  .feedback-inner {
+    background: var(--navy-deep);
+    color: var(--cream);
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--gold);
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .feedback-inner .feedback-label {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  /* ════════════════════════════════════════
+     SCENE 7 — 오늘의 기도 (Prayer)
+     ════════════════════════════════════════ */
+  .scene-prayer {
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(200, 162, 74, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(244, 236, 216, 0.6) 0%, transparent 60%),
+      linear-gradient(180deg, var(--cream-warm) 0%, var(--paper) 100%);
+    color: var(--navy-deepest);
+    padding: 14vh 6vw;
+    align-items: center;
+    text-align: center;
+  }
+
+  .prayer-eyebrow {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.5em;
+    color: var(--wine);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .prayer-eyebrow::before, .prayer-eyebrow::after {
+    content: '◆';
+    font-size: 0.5rem;
+    margin: 0 1rem;
+    vertical-align: middle;
+    opacity: 0.5;
+  }
+
+  .prayer-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .prayer-subtitle {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--navy-soft);
+    margin-bottom: 4rem;
+    opacity: 0.8;
+  }
+
+  .prayer-stack {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .prayer-block {
+    background: white;
+    padding: 2.5rem 2rem;
+    position: relative;
+    border: 1px solid rgba(8, 17, 31, 0.08);
+    box-shadow: 0 8px 30px rgba(8, 17, 31, 0.08);
+  }
+  .prayer-block::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 40%;
+    height: 3px;
+    background: var(--wine);
+  }
+  .prayer-block.authority::before {
+    background: var(--gold-deep);
+  }
+
+  .prayer-stage {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    color: var(--wine);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .prayer-block.authority .prayer-stage { color: var(--gold-deep); }
+  .prayer-stage .stage-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: inherit;
+    line-height: 1;
+  }
+
+  .prayer-heading {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+    color: var(--navy-deep);
+    letter-spacing: -0.01em;
+  }
+
+  .prayer-body {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: var(--ink);
+  }
+  .prayer-body em {
+    font-style: italic;
+    color: var(--wine);
+  }
+  .prayer-block.authority .prayer-body em {
+    color: var(--gold-deep);
+  }
+
+  .prayer-amen {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.4em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    text-align: right;
+  }
+
+  .mountain-input-wrap {
+    margin: 1rem 0 1.25rem;
+    position: relative;
+  }
+  .mountain-input-label {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--navy-soft);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .mountain-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--navy-soft);
+    padding: 0.5rem 0;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--navy-deep);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .mountain-input:focus {
+    border-bottom-color: var(--gold-deep);
+  }
+  .mountain-input::placeholder {
+    color: var(--navy-soft);
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  .mountain-token {
+    background: rgba(200, 162, 74, 0.18);
+    padding: 0 6px;
+    border-bottom: 2px solid var(--gold-deep);
+    font-weight: 500;
+    color: var(--navy-deep);
+    transition: background 0.3s;
+  }
+
+  /* ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ */
+  .footer {
+    background: var(--paper);
+    color: var(--navy-deep);
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    border-top: 1px solid rgba(8, 17, 31, 0.1);
+  }
+  .footer .ornament {
+    font-family: var(--display);
+    color: var(--gold-deep);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+  .footer .footer-text {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    opacity: 0.8;
+    max-width: 36ch;
+    margin: 0 auto;
+  }
+  .footer .footer-meta {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--wine);
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  /* ════════════════════════════════════════
+     REVEAL ON SCROLL
+     ════════════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal-stagger.in > *:nth-child(1) { transition-delay: 0.1s; }
+  .reveal-stagger.in > *:nth-child(2) { transition-delay: 0.25s; }
+  .reveal-stagger.in > *:nth-child(3) { transition-delay: 0.4s; }
+  .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.55s; }
+  .reveal-stagger.in > * { /* inherit */ }
+  .reveal-stagger.in > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 540px) {
+    .scene { padding: 6vh 1.5rem; }
+    .scene-detail, .scene-quiz, .scene-prayer { padding: 8vh 1.5rem; }
+    .quiz-card { padding: 1.75rem 1.25rem; }
+    .prayer-block { padding: 2rem 1.5rem; }
+    .greek-card { padding: 1.75rem 1.5rem; }
+  }
+
+  /* Selection */
+  ::selection { background: var(--gold); color: var(--navy-deepest); }
+
+  /* ═════════════════════════════════════════════════════════
+     PORTED FEATURES — Topbar, Side Panel, Bible Tooltip, TTS
+     (themed to navy/gold to match M1D4)
+     ═════════════════════════════════════════════════════════ */
+  :root { --topbar-h: 44px; --font-scale: 1; }
+  html { font-size: calc(16px * var(--font-scale)); }
+  body { padding-top: var(--topbar-h); }
+
+  /* Top bar */
+  .topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(8,17,31,0.85);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(200,162,74,0.25);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+  .topbar-btn{flex-shrink:0;width:34px;height:34px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--cream);opacity:0.85;transition:background .15s, opacity .15s}
+  .topbar-btn:hover{background:rgba(200,162,74,0.12);opacity:1;color:var(--gold-light)}
+  .topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:var(--display);font-style:italic;font-size:13px;font-weight:500;letter-spacing:0.12em;color:var(--gold);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px;text-transform:uppercase}
+  .topbar-title::-webkit-scrollbar{display:none}
+  .font-controls{display:flex;align-items:center;gap:2px;border:1px solid rgba(200,162,74,0.25);border-radius:4px;padding:2px;margin-left:4px}
+  .font-ctrl-btn{width:26px;height:26px;border:none;background:transparent;color:var(--cream);font-size:14px;cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center}
+  .font-ctrl-btn:hover{background:rgba(200,162,74,0.18);color:var(--gold-light)}
+
+  /* Overlay & Side panel */
+  .overlay{position:fixed;inset:0;background:rgba(8,17,31,0.6);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy-deepest) 100%);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 32px rgba(0,0,0,.5);font-family:var(--sans);border-right:1px solid rgba(200,162,74,0.2)}
+  .sidepanel.open{transform:translateX(0)}
+  .sidepanel-header{padding:0 22px 16px;border-bottom:1px solid rgba(200,162,74,0.18);margin-bottom:12px;font-family:var(--display);font-style:italic;font-size:13px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px}
+  .sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--cream);opacity:0.7;display:flex;align-items:center;justify-content:center}
+  .sidepanel-close:hover{background:rgba(200,162,74,0.15);color:var(--gold-light);opacity:1}
+  .nav-item{display:block;padding:10px 22px;font-size:13px;color:var(--cream);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:400;letter-spacing:-0.005em;opacity:0.85}
+  .nav-item:hover{background:rgba(200,162,74,0.08);color:var(--gold-light);opacity:1}
+  .nav-item.sub{padding-left:38px;font-size:12.5px;font-weight:300;color:var(--cream);opacity:0.65}
+  .nav-divider{height:1px;background:rgba(200,162,74,0.15);margin:10px 22px}
+  .nav-home{display:flex;align-items:center;gap:8px;color:var(--gold);opacity:0.95}
+  .nav-home-icon{flex-shrink:0;color:var(--gold)}
+
+  /* Bible verse tooltip (auto-attached) */
+  .bible-tip{
+    border-bottom:1px dotted var(--gold);
+    cursor:help;
+    color:inherit;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:color 0.18s ease,background 0.18s ease;
+  }
+  .bible-tip:hover,.bible-tip:focus{
+    color:var(--gold-light);
+    background:rgba(200,162,74,0.10);
+    outline:none;
+  }
+  .bible-tooltip{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:9999;
+    background:linear-gradient(180deg,#0E1B3A 0%,#08111F 100%);
+    border:1px solid rgba(200,162,74,0.4);
+    box-shadow:
+      0 22px 48px -10px rgba(0,0,0,0.7),
+      0 8px 18px -6px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(200,162,74,0.08);
+    padding:18px 22px 16px;
+    width:max-content;
+    max-width:min(400px,calc(100vw - 24px));
+    min-width:260px;
+    font-family:var(--serif);
+    font-size:14px;
+    line-height:1.75;
+    color:var(--cream);
+    border-radius:1px;
+    white-space:normal;
+    cursor:default;
+    display:none;
+    visibility:hidden;
+  }
+  .bible-tooltip.show{display:block;visibility:visible}
+  .bible-tooltip::before{
+    content:'';
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:3px;
+    background:linear-gradient(180deg,var(--gold-light) 0%,var(--gold) 50%,var(--gold-deep) 100%);
+    box-shadow:0 0 12px rgba(200,162,74,0.4);
+  }
+  .bible-tooltip::after{
+    content:'';
+    position:absolute;
+    inset:6px;
+    border:1px solid rgba(200,162,74,0.18);
+    pointer-events:none;
+  }
+  .bible-tooltip-ref{
+    position:relative;
+    font-family:var(--display);
+    font-style:italic;
+    font-weight:600;
+    font-size:0.78rem;
+    letter-spacing:0.18em;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    margin-bottom:12px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(200,162,74,0.28);
+  }
+  .bible-tooltip-ref::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:-1px;
+    width:28px;
+    height:1px;
+    background:var(--gold);
+  }
+  .bible-tooltip-text{
+    position:relative;
+    font-size:0.93rem;
+    color:var(--cream);
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    opacity:0.95;
+  }
+  .bible-tooltip-verse{margin-bottom:6px;padding-left:0}
+  .bible-tooltip-verse:last-child{margin-bottom:0}
+  .bible-tooltip-verse-num{
+    display:inline-block;
+    font-family:var(--display);
+    font-style:italic;
+    font-weight:600;
+    font-size:0.85rem;
+    color:var(--gold-light);
+    margin-right:8px;
+    vertical-align:0.05em;
+    min-width:18px;
+  }
+  .bible-tooltip-missing{
+    color:var(--cream);
+    font-style:italic;
+    font-size:0.88rem;
+    letter-spacing:0.02em;
+    opacity:0.55;
+  }
+  @media (hover:none){
+    .bible-tip{cursor:pointer;border-bottom-style:solid;border-bottom-width:0.5px}
+  }
+  @media (max-width:480px){
+    .bible-tooltip{
+      max-width:calc(100vw - 20px);
+      min-width:200px;
+      font-size:13px;
+      padding:15px 18px 14px;
+    }
+    .bible-tooltip-text{font-size:0.9rem}
+    .bible-tooltip-ref{font-size:0.72rem;letter-spacing:0.14em}
+  }
+
+  /* TTS Reader modal */
+  .tts-reader-overlay{display:none;position:fixed;inset:0;background:rgba(8,17,31,0.78);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:2000;align-items:center;justify-content:center;padding:20px}
+  .tts-reader-overlay.active{display:flex}
+  .tts-reader-modal{background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy-deepest) 100%);border-radius:6px;max-width:520px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 22px 60px rgba(0,0,0,0.6);border:1px solid rgba(200,162,74,0.3);border-top:3px solid var(--gold);font-family:var(--sans);color:var(--cream)}
+  .tts-reader-header{padding:18px 22px 14px;border-bottom:1px dashed rgba(200,162,74,0.22);display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .tts-reader-icon{flex-shrink:0;color:var(--gold)}
+  .tts-reader-title{font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--cream);flex:1}
+  .tts-reader-close{width:30px;height:30px;background:transparent;border:1px solid rgba(200,162,74,0.3);border-radius:50%;color:var(--cream);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;opacity:0.8}
+  .tts-reader-close:hover{background:var(--gold);color:var(--navy-deepest);border-color:var(--gold);opacity:1}
+  .tts-reader-body{padding:14px 22px;overflow-y:auto;flex:1}
+  .tts-form-label{font-family:var(--display);font-style:italic;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;margin-top:14px;display:block}
+  .tts-form-label:first-child{margin-top:0}
+  .tts-voice-select{width:100%;padding:10px 12px;border:1px solid rgba(200,162,74,0.3);border-radius:4px;font-family:inherit;font-size:13px;background:var(--navy-deepest);color:var(--cream)}
+  .tts-api-row{display:flex;gap:8px;align-items:center}
+  .tts-api-row input{flex:1;padding:9px 11px;border:1px solid rgba(200,162,74,0.3);border-radius:4px;font-family:inherit;font-size:12px;background:var(--navy-deepest);color:var(--cream)}
+  .tts-api-row button{padding:9px 14px;border:1px solid var(--gold);background:var(--gold);color:var(--navy-deepest);border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer}
+  .tts-api-row button:hover{background:var(--gold-light)}
+  .tts-section-list{border:1px solid rgba(200,162,74,0.2);border-radius:4px;background:rgba(8,17,31,0.5);max-height:240px;overflow-y:auto}
+  .tts-section-item{display:flex;align-items:flex-start;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid rgba(200,162,74,0.12);font-size:13px;color:var(--cream);transition:background 0.15s}
+  .tts-section-item:last-child{border-bottom:none}
+  .tts-section-item:hover{background:rgba(200,162,74,0.06)}
+  .tts-section-item.all{font-weight:600;color:var(--gold-light);background:rgba(200,162,74,0.08)}
+  .tts-section-item.playing{background:rgba(200,162,74,0.18);color:var(--gold-light);font-weight:500}
+  .tts-section-checkbox{flex-shrink:0;width:15px;height:15px;margin-top:2px;accent-color:var(--gold);cursor:pointer}
+  .tts-section-label{flex:1;line-height:1.45}
+  .tts-progress{margin-top:14px;padding:12px 14px;background:rgba(8,17,31,0.5);border:1px solid rgba(200,162,74,0.2);border-radius:4px;display:none}
+  .tts-progress.active{display:block}
+  .tts-progress-bar{height:6px;background:rgba(200,162,74,0.15);border-radius:3px;overflow:hidden}
+  .tts-progress-fill{height:100%;background:var(--gold);width:0%;transition:width 0.3s}
+  .tts-progress-text{font-size:12px;color:var(--cream);margin-top:8px;line-height:1.5;opacity:0.85}
+  .tts-progress-text strong{color:var(--gold-light)}
+  .tts-status{font-size:11.5px;color:var(--cream);margin-top:10px;font-style:italic;line-height:1.5;opacity:0.65}
+  .tts-status.error{color:var(--gold-light);font-style:normal;font-weight:600;opacity:1}
+  .tts-reader-footer{padding:14px 22px 18px;border-top:1px solid rgba(200,162,74,0.18);display:flex;gap:10px;flex-shrink:0}
+  .tts-btn{flex:1;padding:11px 16px;border:1px solid rgba(200,162,74,0.3);background:transparent;color:var(--cream);border-radius:4px;font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:0.06em;cursor:pointer;transition:all 0.15s}
+  .tts-btn:hover:not(:disabled){background:rgba(200,162,74,0.12);color:var(--gold-light)}
+  .tts-btn:disabled{opacity:0.4;cursor:not-allowed}
+  .tts-btn.primary{background:var(--gold);border-color:var(--gold);color:var(--navy-deepest)}
+  .tts-btn.primary:hover:not(:disabled){background:var(--gold-light);color:var(--navy-deepest)}
+  @media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="topbar-title">산을 옮기는 기도 · 막 11:23-24</div>
+  <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="nav-item nav-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="nav-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('scene-1')" style="color:var(--gold-light);font-weight:500;">✦ 오늘의 구절 — 막 11:23</a>
+  <a class="nav-item" onclick="goTo('scene-2')">단어의 광맥 · 헬라어 분석</a>
+  <a class="nav-item" onclick="goTo('scene-3')">메시지의 심장</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:600;color:var(--gold);">세 개의 문 — Three Gates</a>
+  <a class="nav-item sub" onclick="goTo('scene-4')">전체 보기</a>
+  <a class="nav-item sub" onclick="goToGate(0)">Ⅰ. 단일함 — 하나님을 위한 기도</a>
+  <a class="nav-item sub" onclick="goToGate(1)">Ⅱ. 이미 받았음 — 믿음의 본질</a>
+  <a class="nav-item sub" onclick="goToGate(2)">Ⅲ. 명령 — 권위의 기도</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('scene-6')">자기 성찰 · 퀴즈</a>
+  <a class="nav-item" onclick="goTo('scene-7')">오늘의 기도 — 두 호흡의 기도</a>
+</div>
+
+<!-- TTS READER MODAL -->
+<div class="tts-reader-overlay" id="tts-reader-overlay" onclick="ttsCloseOnBg(event)">
+  <div class="tts-reader-modal" onclick="event.stopPropagation()">
+    <div class="tts-reader-header">
+      <svg class="tts-reader-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      <div class="tts-reader-title">본문 듣기</div>
+      <button class="tts-reader-close" onclick="ttsCloseReader()" aria-label="닫기">✕</button>
+    </div>
+    <div class="tts-reader-body">
+      <label class="tts-form-label">API 키</label>
+      <div class="tts-api-row">
+        <input type="password" id="tts-api-key" placeholder="API 키를 입력하세요" />
+        <button onclick="ttsSaveApiKey()">저장</button>
+      </div>
+      <label class="tts-form-label">음성 선택</label>
+      <select class="tts-voice-select" id="tts-voice-select">
+        <option value="tk_voice">tk_voice</option>
+      </select>
+      <label class="tts-form-label">읽을 항목 (기본: 전체 선택)</label>
+      <div class="tts-section-list" id="tts-section-list"></div>
+      <div class="tts-progress" id="tts-progress">
+        <div class="tts-progress-bar"><div class="tts-progress-fill" id="tts-progress-fill"></div></div>
+        <div class="tts-progress-text" id="tts-progress-text">대기 중...</div>
+      </div>
+      <div class="tts-status" id="tts-status">서버에서 음성 목록을 불러옵니다...</div>
+    </div>
+    <div class="tts-reader-footer">
+      <button class="tts-btn" id="tts-stop-btn" onclick="ttsStop()" disabled>⏹ 중지</button>
+      <button class="tts-btn" id="tts-pause-btn" onclick="ttsTogglePause()" disabled>⏸ 일시정지</button>
+      <button class="tts-btn primary" id="tts-play-btn" onclick="ttsPlay()">▶ 재생</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SCENE 1 — TODAY'S VERSE
+     ════════════════════════════════════════ -->
+<section class="scene scene-verse" id="scene-1">
+  <div class="verse-stars" id="stars"></div>
+
+  <svg class="verse-mountain" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="mtnGrad1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0E1B3A" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#08111F" stop-opacity="1"/>
+      </linearGradient>
+      <linearGradient id="mtnGrad2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1A2B4F" stop-opacity="0.4"/>
+        <stop offset="100%" stop-color="#08111F" stop-opacity="1"/>
+      </linearGradient>
+    </defs>
+    <!-- Far range -->
+    <path d="M0,500 L0,260 L180,180 L320,240 L500,150 L680,210 L860,130 L1040,200 L1220,160 L1440,220 L1440,500 Z"
+          fill="url(#mtnGrad2)" opacity="0.6"/>
+    <!-- Mid range -->
+    <path d="M0,500 L0,340 L120,280 L260,330 L420,240 L580,310 L760,220 L920,300 L1100,250 L1280,310 L1440,270 L1440,500 Z"
+          fill="url(#mtnGrad1)" opacity="0.85"/>
+    <!-- Near range -->
+    <path d="M0,500 L0,420 L160,360 L320,400 L480,330 L640,390 L800,340 L960,400 L1120,350 L1280,400 L1440,360 L1440,500 Z"
+          fill="#08111F"/>
+  </svg>
+
+  <div class="verse-eyebrow">오늘의 구절</div>
+
+  <h1 class="verse-title">
+    <span class="line">"누구든지 이 산을 향하여</span>
+    <span class="line"><span class="emphasis">'들려 올려져 바닷속으로 떨어져라.'</span>라고 말하면서,</span>
+    <span class="line">마음에 의심하지 않고 말한 대로 된다고 믿으면,</span>
+    <span class="line">그대로 이루어질 것입니다."</span>
+  </h1>
+
+  <div class="verse-citation">— 마가복음 11 : 23 —</div>
+
+  <div class="scroll-cue">scroll ↓</div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SCENE 2 — GREEK ANALYSIS
+     ════════════════════════════════════════ -->
+<section class="scene scene-greek" id="scene-2">
+  <div class="scene-marker reveal"><span class="num">II</span> 단어의 광맥 · The Greek Vein</div>
+
+  <div class="greek-header reveal">
+    <h2>한국어 번역에 가려진 <span class="latin">네 단어의 무게</span></h2>
+    <p>이 구절을 떠받치는 헬라어 동사와 명사의 시제·태(態)는, 우리가 흔히 읽어 넘기는 자리에서 메시지의 진짜 무게를 드러냅니다. 카드를 눌러 단어의 광맥 안으로 들어가 보세요.</p>
+  </div>
+
+  <div class="greek-grid">
+
+    <article class="greek-card reveal" tabindex="0">
+      <span class="toggle"></span>
+      <div class="greek-word">πίστιν</div>
+      <div class="greek-pron-ko">피스틴</div>
+      <div class="translit">pistin · 믿음</div>
+      <div class="meaning">이미 받았음을 아는 확신</div>
+      <div class="quick">장래에 받을 것을 기대하는 마음이 아니라, 하나님 안에서 산출된 한 가지 기능.</div>
+      <div class="deep"><div class="deep-inner">
+        <span class="deep-label">Etymology</span>
+        헬라어 πίστις(pistis)에서 온 대격 형태. 단순한 정신적 동의(believing that)가 아니라 인격적 신뢰(trust in)를 함의합니다. 24절의 "이미 받은 줄로 믿으십시오"라는 명령은, 믿음이 미래형이 아닌 <em>완료된 사실에 대한 인식</em>임을 보여 줍니다. 본문은 이를 "우리 안에 계신 하나님 자신이 곧 믿음"이라고 표현합니다.
+      </div></div>
+    </article>
+
+    <article class="greek-card reveal" tabindex="0">
+      <span class="toggle"></span>
+      <div class="greek-word">διακριθῇ</div>
+      <div class="greek-pron-ko">디아크리테</div>
+      <div class="translit">diakrithē · 의심하다</div>
+      <div class="meaning">둘로 갈라지다, 마음이 나뉘다</div>
+      <div class="quick">단순한 의심이 아닌, 내적으로 두 갈래로 분열된 상태.</div>
+      <div class="deep"><div class="deep-inner">
+        <span class="deep-label">Grammar</span>
+        διά(둘로) + κρίνω(나누다)의 합성어. 가정법 부정과거 수동태로, "마음이 둘로 갈라지지 않는다면"이라는 조건을 표현합니다. 본문이 말하는 "단일하고 순수함"은 바로 이 διακριθῇ의 반대 — 즉 하나님 외의 다른 것을 갈망하지 않는 <em>단일성</em>입니다.
+      </div></div>
+    </article>
+
+    <article class="greek-card reveal" tabindex="0">
+      <span class="toggle"></span>
+      <div class="greek-word">εἴπῃ</div>
+      <div class="greek-pron-ko">에이페</div>
+      <div class="translit">eipē · 말하다·명령하다</div>
+      <div class="meaning">간청이 아닌 선포</div>
+      <div class="quick">하나님께가 아니라 산을 향해 직접 발화하는 명령형 부정과거.</div>
+      <div class="deep"><div class="deep-inner">
+        <span class="deep-label">Syntax</span>
+        본문에서 발화의 대상은 하나님이 아닌 <em>τῷ ὄρει τούτῳ</em>(이 산을 향하여)입니다. 즉 권위의 기도는 "하나님, 산을 옮겨 주십시오"가 아니라 "산아, 옮겨져라"의 어법을 취합니다. 이것은 본문이 말하는 "묶고 푸는 권세"의 문법적 형태입니다.
+      </div></div>
+    </article>
+
+    <article class="greek-card reveal" tabindex="0">
+      <span class="toggle"></span>
+      <div class="greek-word">γενήσεται</div>
+      <div class="greek-pron-ko">게네세타이</div>
+      <div class="translit">genēsetai · 이루어지리라</div>
+      <div class="meaning">되어지게 되리라</div>
+      <div class="quick">미래 수동태. 행위자는 명시되지 않지만 — 하나님이심을 전제합니다.</div>
+      <div class="deep"><div class="deep-inner">
+        <span class="deep-label">Voice</span>
+        γίνομαι의 미래 수동(혹은 중간) 직설법. 능동이 아닌 수동인 점이 중요합니다 — 명령하는 자는 우리이지만 <em>이루시는 분은 하나님</em>입니다. 이것이 본문의 핵심 협력 구도: "사람이 하나님과 협력하여, 그분의 목적을 이 땅에서 성취하도록 허락해 드림."
+      </div></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SCENE 3 — ONE-LINE SUMMARY
+     ════════════════════════════════════════ -->
+<section class="scene scene-summary" id="scene-3">
+  <div class="summary-glow"></div>
+  <div class="summary-pull reveal">메시지의 심장</div>
+  <div class="summary-divider reveal"></div>
+  <p class="summary-text reveal">
+    참된 기도는 <span class="accent">하나님께서 시작하시고,</span><br>
+    우리의 동의를 얻어,<br>
+    그분의 목적을 이루신다.
+    <span class="climax">그 절정은 — <em>이미 이루어졌음을 믿고</em><br>산을 향해 명령하는 것이다.</span>
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════
+     SCENE 4 — THREE GATES
+     ════════════════════════════════════════ -->
+<section class="scene scene-detail" id="scene-4">
+  <div class="scene-marker reveal" style="justify-content:center;"><span class="num">IV</span> 세 개의 문 · Three Gates</div>
+  <div class="detail-header reveal">
+    <h2>"내"에서 "하나님"으로 — <em>중심이 옮겨지는 여정</em></h2>
+  </div>
+
+  <div class="gates">
+
+    <!-- ───── GATE 1 — Gethsemane ───── -->
+    <article class="gate reveal">
+      <div class="gate-visual">
+        <span class="gate-num"><strong>01</strong>Gate One</span>
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="g1bg" cx="50%" cy="20%" r="80%">
+              <stop offset="0%" stop-color="#6B1A2E" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#08111F" stop-opacity="1"/>
+            </radialGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#g1bg)"/>
+          <!-- Olive trees silhouette -->
+          <path d="M0,400 L0,330 Q40,310 60,335 Q80,300 110,330 L110,400 Z" fill="#08111F"/>
+          <path d="M200,400 L200,320 Q230,290 260,325 Q280,300 300,330 L300,400 Z" fill="#08111F"/>
+          <!-- Kneeling figure -->
+          <g transform="translate(150, 250)">
+            <!-- Head -->
+            <circle cx="0" cy="-30" r="14" fill="#1A2B4F"/>
+            <!-- Body bowed forward -->
+            <path d="M-22,-15 Q-25,20 -10,40 L10,40 Q25,20 22,-15 Q15,-25 0,-22 Q-15,-25 -22,-15 Z" fill="#0E1B3A"/>
+            <!-- Folded arms -->
+            <path d="M-18,5 Q-5,15 0,12 Q5,15 18,5" stroke="#1A2B4F" stroke-width="3" fill="none"/>
+            <!-- Ground -->
+            <ellipse cx="0" cy="42" rx="40" ry="3" fill="#08111F" opacity="0.6"/>
+          </g>
+          <!-- Single shaft of light from above -->
+          <path d="M150,0 L130,250 L170,250 Z" fill="#C8A24A" opacity="0.06"/>
+          <circle cx="150" cy="60" r="3" fill="#C8A24A" opacity="0.6"/>
+          <circle cx="150" cy="60" r="8" fill="#C8A24A" opacity="0.15"/>
+        </svg>
+      </div>
+      <div class="gate-body">
+        <h3>
+          <span class="label">Gate I — 단일함</span>
+          하나님을 위한 기도
+        </h3>
+        <div class="body-text">
+          <p>겟세마네에서 주 예수님은 자신의 죽음에 관해 하나님과 교통하시면서 "하실 수만 있으시다면, 이 잔을 나에게서 지나가게 해 주십시오"라고 말씀드린 후, 곧이어 결정적인 한 마디를 더하셨습니다.</p>
+          <div class="quote-block">
+            "그러나 나의 뜻대로 마시고, 아버지의 뜻대로 하옵소서."
+            <span class="ref">마 26:39 · 세 번 반복하신 기도</span>
+          </div>
+          <p>일반적으로 우리는 자신의 갈망을 따라 기도하고, 그것이 이루어지기를 구합니다. 그러나 주 예수님이 보여주신 본은 정반대입니다 — <em>"제가 구하는 것은 당신의 뜻이 이루어지는 것입니다. 저의 유일한 갈망은 당신께서 유익을 얻으시는 것입니다."</em></p>
+          <p>주님께서 제자들에게 가르치신 기도의 첫 호흡도 동일합니다 — <a href="#" class="ref-link" tabindex="0">"아버지의 이름이 거룩히 여겨지도록 하시며, 왕국이 오게 하시며, 뜻이 하늘에서 이루어진 것같이 땅에서도 이루어지게 하십시오"<span class="tooltip"><span class="tip-ref">마 6:9-10</span>주기도문의 첫 세 간구. 사람의 필요(일용할 양식)보다 먼저 등장하는 것은 하나님의 이름·왕국·뜻입니다.</span></a>. 단지 자신의 생계와 사업과 가족만을 위해 기도할 줄 안다면, 그 기도는 표준에 미치지 못한 것이며, 우리가 하나님 앞에서 단일하지 않다는 — 즉 <em>하나님 외의 다른 것을 갈망한다</em>는 — 것을 입증합니다.</p>
+          <p>기도의 사람이 원하는 전부는 오직 하나님과 하나님의 뜻입니다.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ───── GATE 2 — Faith ───── -->
+    <article class="gate reveal">
+      <div class="gate-visual">
+        <span class="gate-num"><strong>02</strong>Gate Two</span>
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <radialGradient id="g2bg" cx="50%" cy="50%" r="70%">
+              <stop offset="0%" stop-color="#1A2B4F" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#08111F" stop-opacity="1"/>
+            </radialGradient>
+            <radialGradient id="g2fill" cx="50%" cy="100%" r="80%">
+              <stop offset="0%" stop-color="#E0BD66" stop-opacity="1"/>
+              <stop offset="50%" stop-color="#C8A24A" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#C8A24A" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#g2bg)"/>
+          <!-- Empty vessel being filled with light -->
+          <g transform="translate(150, 200)">
+            <!-- Vessel outline -->
+            <path d="M-60,-80 L-60,-70 Q-60,-50 -50,-30 L-50,60 Q-50,90 0,95 Q50,90 50,60 L50,-30 Q60,-50 60,-70 L60,-80 Z"
+                  fill="none" stroke="#C8A24A" stroke-width="2" opacity="0.7"/>
+            <!-- Light filling -->
+            <path d="M-50,60 Q-50,90 0,95 Q50,90 50,60 L50,-10 Q0,-15 -50,-10 Z"
+                  fill="url(#g2fill)" opacity="0.9"/>
+            <!-- Light rays from above -->
+            <path d="M0,-150 L-15,-80 L15,-80 Z" fill="#E0BD66" opacity="0.3"/>
+            <path d="M0,-160 L-30,-85 L30,-85 Z" fill="#E0BD66" opacity="0.15"/>
+            <!-- Source light -->
+            <circle cx="0" cy="-150" r="6" fill="#FAF5E8"/>
+            <circle cx="0" cy="-150" r="14" fill="#E0BD66" opacity="0.5"/>
+            <circle cx="0" cy="-150" r="28" fill="#C8A24A" opacity="0.2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="gate-body">
+        <h3>
+          <span class="label">Gate II — 이미 받았음</span>
+          믿음의 본질
+        </h3>
+        <div class="body-text">
+          <p>어떤 사람들은 기도에 믿음이 필요하다고 말합니다. 그러나 믿음은 우리가 원한다고 해서 가질 수 있는 것이 아닙니다. 사실 믿음은 우리 안에 계신 하나님에게서 나오는 한 가지 기능입니다. 우리가 하나님 안에 거하고 그분께서 우리 안에서 지위를 가지시도록 허락해 드릴 때, 그분은 우리 안에서 한 가지 기능을 산출하시는데 — <em>곧 믿음입니다.</em></p>
+          <p>그러므로 단지 사람들에게 믿음을 가지라고 권면하는 것은 아무 쓸모가 없습니다. 하나님으로 충만한 사람만이 믿음으로 충만합니다. 믿음은 우리에게서 나오지 않습니다. <a href="#" class="ref-link" tabindex="0">우리는 믿음이 하나님 자신이라고도 말할 수 있습니다<span class="tooltip"><span class="tip-ref">엡 2:6</span>"그리스도 예수 안에서 우리를 함께 일으키시고 함께 하늘에 앉히셨으니" — 우리 안에 계신 그리스도가 곧 우리의 믿음의 근거입니다.</span></a>.</p>
+
+          <div class="compare">
+            <div class="compare-cell against">
+              <span class="label">바라는 것</span>
+              <p class="phrase">장래에 어떤 일이<br>일어나기를 기대함</p>
+            </div>
+            <div class="compare-cell toward">
+              <span class="label">믿는 것</span>
+              <p class="phrase">무언가가 이미<br>이루어진 것으로 여김</p>
+            </div>
+            <div class="compare-arrow">↓ 막 11:24의 결정적 차이 ↓</div>
+          </div>
+
+          <p><a href="#" class="ref-link" tabindex="0">주님의 말씀에 따라<span class="tooltip"><span class="tip-ref">막 11:24</span>"여러분이 기도하고 구하는 것은 무엇이든지 이미 받은 줄로 믿으십시오. 그리하면 여러분에게 그대로 이루어질 것입니다."</span></a> 우리는 받을 것을 믿는 것이 아니라 <em>이미 받았음</em>을 믿어야 합니다. 믿음은 하나님께서 어떤 일을 하실 수 있거나 하실 것임을 믿을 뿐 아니라, 하나님께서 <em>이미 그 일을 하셨다</em>는 것을 믿는 것입니다.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ───── GATE 3 — Authority ───── -->
+    <article class="gate reveal">
+      <div class="gate-visual">
+        <span class="gate-num"><strong>03</strong>Gate Three</span>
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="g3bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#F4ECD8" stop-opacity="1"/>
+              <stop offset="60%" stop-color="#E0BD66" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#1A2B4F" stop-opacity="1"/>
+            </linearGradient>
+            <linearGradient id="g3sea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1A2B4F" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#08111F" stop-opacity="1"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#g3bg)"/>
+          <!-- Sun -->
+          <circle cx="150" cy="120" r="38" fill="#FAF5E8" opacity="0.9"/>
+          <circle cx="150" cy="120" r="55" fill="#E0BD66" opacity="0.4"/>
+          <circle cx="150" cy="120" r="80" fill="#C8A24A" opacity="0.15"/>
+          <!-- Sea -->
+          <path d="M0,400 L0,290 Q150,275 300,290 L300,400 Z" fill="url(#g3sea)"/>
+          <!-- Mountain being lifted (in motion, tilted) -->
+          <g transform="translate(200, 230) rotate(-15)" opacity="0.85">
+            <path d="M-40,40 L-25,-30 L0,-50 L20,-20 L40,40 Z" fill="#08111F"/>
+            <!-- Motion lines -->
+            <path d="M-50,-40 L-30,-60" stroke="#C8A24A" stroke-width="1.5" opacity="0.6"/>
+            <path d="M-55,-20 L-35,-40" stroke="#C8A24A" stroke-width="1.5" opacity="0.5"/>
+          </g>
+          <!-- Standing figure pointing/commanding -->
+          <g transform="translate(80, 280)">
+            <circle cx="0" cy="-55" r="10" fill="#08111F"/>
+            <!-- Body upright -->
+            <path d="M-10,-45 L-12,15 L-3,15 L0,-15 L3,15 L12,15 L10,-45 Z" fill="#08111F"/>
+            <!-- Arm extended toward mountain -->
+            <path d="M5,-35 L40,-50 L42,-45 L8,-30 Z" fill="#08111F"/>
+            <!-- Hand point -->
+            <circle cx="42" cy="-48" r="3" fill="#C8A24A"/>
+          </g>
+          <!-- Beam from hand to mountain -->
+          <path d="M125,228 L175,210" stroke="#C8A24A" stroke-width="1" opacity="0.5" stroke-dasharray="2,3"/>
+        </svg>
+      </div>
+      <div class="gate-body">
+        <h3>
+          <span class="label">Gate III — 명령</span>
+          권위의 기도
+        </h3>
+        <div class="body-text">
+          <p>마가복음 11장 20절부터 24절까지에 나오는 기도는 <em>권위의 기도</em>입니다. 이것은 가장 높고 영적인 기도이며, 하나님께 무언가를 하시도록 요청하기보다 <a href="#" class="ref-link" tabindex="0">하나님의 권위를 사용하고 적용하여<span class="tooltip"><span class="tip-ref">슥 4:7</span>"큰 산아, 네가 무엇이냐. 네가 스룹바벨 앞에서 평지가 되리라" — 산을 향한 직접 명령의 구약적 원형.</span></a> 제거되어야 할 문제들과 일들을 처리합니다.</p>
+
+          <div class="compare">
+            <div class="compare-cell against">
+              <span class="label">간청의 기도</span>
+              <p class="phrase">"주여,<br>이 산을 옮겨 주십시오"</p>
+            </div>
+            <div class="compare-cell toward">
+              <span class="label">권위의 기도</span>
+              <p class="phrase">"산아,<br>옮겨져 바다에 빠져라"</p>
+            </div>
+            <div class="compare-arrow">↓ 발화의 대상이 바뀐다 ↓</div>
+          </div>
+
+          <p><a href="#" class="ref-link" tabindex="0">하나님은 그분께서 명령하신 것을 우리도 명령하고<span class="tooltip"><span class="tip-ref">마 17:20</span>"너희에게 겨자씨 한 알 만한 믿음이라도 있으면, 이 산을 명하여 여기서 저기로 옮기라 하여도 옮길 것이요" — 권위의 기도의 직접적 약속.</span></a>, 그분께서 분부하신 것을 우리도 분부할 수 있는 권한을 우리에게 주셨습니다. <a href="#" class="ref-link" tabindex="0">교회는 묶고 푸는 권세를 받았으며<span class="tooltip"><span class="tip-ref">마 18:18-19</span>"무엇이든지 너희가 땅에서 매면 하늘에서도 매일 것이요, 무엇이든지 너희가 땅에서 풀면 하늘에서도 풀리리라."</span></a>, 완전한 믿음으로 조금도 의심하지 않으며 하나님의 뜻에 따른 것임을 분명히 인식할 때 이러한 권위의 기도를 할 수 있습니다.</p>
+
+          <div class="quote-block">
+            "이기는 이들은 모두 '이 산'을 향하여<br>말하기를 배워야 한다."
+            <span class="ref">막 11:23 · 권위의 기도의 부르심</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SCENE 6 — QUIZ
+     ════════════════════════════════════════ -->
+<section class="scene scene-quiz" id="scene-6">
+  <div class="quiz-header reveal">
+    <div class="scene-marker" style="color:var(--paper);justify-content:center;"><span class="num">VI</span>생활 점검</div>
+    <h2>내 기도는 <em>어디에 있는가</em></h2>
+    <p>정답을 맞히기 위한 시험이 아닙니다. 다섯 개의 거울 앞에서, 오늘 나의 기도가 어느 자리에 서 있는지를 천천히 점검해 보세요.</p>
+  </div>
+
+  <div class="quiz-container" id="quiz-container">
+    <!-- Quiz cards inserted by JS -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SCENE 7 — TODAY'S PRAYER
+     ════════════════════════════════════════ -->
+<section class="scene scene-prayer" id="scene-7">
+  <div class="reveal">
+    <div class="prayer-eyebrow">오늘의 기도</div>
+    <h2 class="prayer-title">이기는 자의 기도</h2>
+    <p class="prayer-subtitle">주님의 뜻을 구하고, 권위로 산을 향하여 말한다.</p>
+  </div>
+
+  <div class="prayer-stack">
+
+    <div class="prayer-block authority reveal">
+      <p class="prayer-body" style="font-size:1.1rem; line-height:1.95;">
+        주님, 제 자신의 뜻과 필요를 구하는 것을 넘어 <em>오직 주님의 유익과 뜻만이 이루어지기를 원합니다.</em>
+        제 안을 주님 자신과 참된 믿음으로 가득 채워 주셔서,
+        어떤 방해물 앞에서도 두려워하지 않고
+        <em>권위의 기도로 제거되어야 할 문제와 일들을 처리하는,</em>
+        이기는 자가 되게 하소서.
+      </p>
+      <div class="prayer-amen">아 멘 · ἀμήν</div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ornament">✦ ◆ ✦</div>
+  <p class="footer-text">"여러분이 기도하고 구하는 것은 무엇이든지<br>이미 받은 줄로 믿으십시오."</p>
+  <div class="footer-meta">막 11:24</div>
+</footer>
+
+<script>
+  // ─────── Stars ───────
+  (function makeStars() {
+    const stars = document.getElementById('stars');
+    for (let i = 0; i < 60; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 60 + '%';
+      s.style.animationDelay = (Math.random() * 4) + 's';
+      s.style.opacity = Math.random() * 0.6 + 0.2;
+      if (Math.random() > 0.7) {
+        s.style.width = '3px';
+        s.style.height = '3px';
+      }
+      stars.appendChild(s);
+    }
+  })();
+
+  // ─────── Greek card expansion ───────
+  document.querySelectorAll('.greek-card').forEach(card => {
+    const toggle = () => card.classList.toggle('expanded');
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
+  // ─────── Reveal on scroll ───────
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ─────── Quiz ───────
+  const QUIZ = [
+    {
+      q: "지문에 따르면 '참된 기도'의 가장 핵심적인 목적은 무엇입니까?",
+      options: [
+        "정해진 기도문을 반복함으로써 자신의 경건함을 증명하는 것",
+        "사람이 하나님과 연합하여 그분의 목적을 이 땅에서 성취하도록 협력하는 것",
+        "개인적인 갈망과 필요를 하나님께 설득하여 얻어내는 것",
+        "어려운 상황을 벗어나기 위해 하나님의 능력을 빌려오는 것"
+      ],
+      correct: 1,
+      feedback: "참된 기도란 사람이 하나님과 연합되고 이 땅에서 그분과 협력하여, 그분께서 자신을 표현하시고 사람을 통해 그분의 목적을 성취하시도록 허락해 드리는 것입니다. 처음부터 하나님이 시작하시고, 우리는 협력하는 사람일 뿐이며, 궁극적으로 그분의 영광을 위한 것입니다."
+    },
+    {
+      q: "주 예수님께서 겟세마네에서 하신 기도를 통해 알 수 있는 '기도의 사람'의 특징은 무엇입니까?",
+      options: [
+        "하나님께서 자신의 계획을 바꾸시도록 세 번 이상 간절히 요청하는 것",
+        "자신의 유익이나 뜻보다 오직 하나님의 뜻이 이루어지는 것만을 갈망하는 태도",
+        "자신의 고통을 피하기 위해 최선을 다해 간구하는 태도",
+        "어떤 갈망도 갖지 않고 아무것도 구하지 않는 무소유의 상태"
+      ],
+      correct: 1,
+      feedback: "주 예수님은 \"나의 뜻대로 하지 마시고 아버지의 뜻대로 하옵소서\"라고 세 번 기도하시며, 자신의 유일한 갈망이 아버지께서 유익을 얻으시는 것과 그분의 뜻이 이루어지는 것임을 보이셨습니다. 기도의 사람은 온 우주 가운데 오직 하나님과 그분의 뜻만을 주의하는 단일한 사람입니다."
+    },
+    {
+      q: "지문에서 설명하는 '믿음'의 본질에 대한 설명으로 옳은 것은 무엇입니까?",
+      options: [
+        "미래에 어떤 일이 일어날 것을 간절히 바라는 마음의 상태",
+        "사람이 의지력을 동원하여 무언가를 강하게 확신하려고 애쓰는 것",
+        "하나님께서 우리 안에서 지위를 얻으실 때 그분 자신에 의해 산출되는 기능",
+        "인간의 긍정적인 사고방식이나 낙관적인 기대감"
+      ],
+      correct: 2,
+      feedback: "믿음은 우리에게서 나오지 않습니다. 우리가 하나님 안에 거하고 그분께서 우리 안에서 지위를 가지시도록 허락해 드릴 때, 그분이 우리 안에서 산출하시는 한 가지 기능 — 그것이 믿음입니다. 하나님으로 충만한 사람만이 믿음으로 충만하며, 우리는 믿음이 곧 하나님 자신이라고도 말할 수 있습니다."
+    },
+    {
+      q: "마가복음 11장 24절에 근거하여, 응답받는 기도를 하기 위한 '믿음'의 태도는 어떠해야 합니까?",
+      options: [
+        "구하는 것을 이미 받은 줄로 믿어야 한다.",
+        "하나님께서 미래에 언젠가 응답하실 것을 기대하며 기다려야 한다.",
+        "하나님께서 하실 수 있는 능력만 믿으면 충분하다.",
+        "자신의 정성이 부족하지 않았는지 끊임없이 의심하며 점검해야 한다."
+      ],
+      correct: 0,
+      feedback: "주님의 말씀에 따라 우리는 받을 것을 믿는 것이 아니라 이미 받았음을 믿어야 합니다. 바라는 것은 장래에 어떤 일이 일어나기를 기대하는 것이지만, 믿는 것은 무언가가 이미 이루어진 것으로 여기는 것입니다. 믿음은 하나님께서 이미 그 일을 하셨다는 것을 믿는 것입니다."
+    },
+    {
+      q: "마가복음 11장 23절에서 언급된 '권위의 기도'의 특징은 무엇입니까?",
+      options: [
+        "하나님께 산을 옮겨 달라고 간절히 반복해서 간청하는 것",
+        "하나님의 권위를 사용하여 제거되어야 할 문제(산)를 향해 직접 명령하는 것",
+        "산이 옮겨지지 않을 경우를 대비해 대안을 마련해 두는 기도",
+        "산이 스스로 옮겨질 때까지 아무것도 하지 않고 침묵하는 기도"
+      ],
+      correct: 1,
+      feedback: "권위의 기도는 가장 높고 영적인 기도이며, 하나님께 무언가를 하시도록 요청하기보다 그분의 권위를 사용하고 적용하여 제거되어야 할 문제들을 처리합니다. 발화의 대상이 하나님이 아닌 '산'으로 바뀌며, 묶고 푸는 권세를 통해 직접 명령하는 형태를 취합니다."
+    }
+  ];
+
+  const container = document.getElementById('quiz-container');
+  const letters = ['A', 'B', 'C', 'D'];
+
+  QUIZ.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'quiz-card reveal';
+
+    const num = document.createElement('span');
+    num.className = 'quiz-num';
+    num.innerHTML = `<strong>0${idx + 1}</strong>QUESTION`;
+
+    const q = document.createElement('p');
+    q.className = 'quiz-question';
+    q.textContent = item.q;
+
+    const opts = document.createElement('div');
+    opts.className = 'quiz-options';
+
+    item.options.forEach((text, oi) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-option';
+      btn.type = 'button';
+      btn.innerHTML = `<span class="opt-letter">${letters[oi]}</span><span>${text}</span>`;
+      btn.addEventListener('click', () => {
+        if (card.classList.contains('answered')) return;
+        card.classList.add('answered');
+        opts.querySelectorAll('.quiz-option').forEach((b, bi) => {
+          b.classList.add('locked');
+          if (bi === item.correct) b.classList.add('correct');
+          else if (bi === oi) b.classList.add('incorrect');
+        });
+      });
+      opts.appendChild(btn);
+    });
+
+    const fb = document.createElement('div');
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = `<div class="feedback-inner"><span class="feedback-label">묵상</span>${item.feedback}</div>`;
+
+    card.appendChild(num);
+    card.appendChild(q);
+    card.appendChild(opts);
+    card.appendChild(fb);
+    container.appendChild(card);
+    io.observe(card);
+  });
+
+  // ─────── Mountain input → prayer (optional, only if present) ───────
+  const mountainInput = document.getElementById('mountain');
+  if (mountainInput) {
+    const token1 = document.getElementById('token-1');
+    const token2 = document.getElementById('token-2');
+    mountainInput.addEventListener('input', (e) => {
+      const v = e.target.value.trim();
+      const display = v ? v : '이 산';
+      if (token1) token1.textContent = display;
+      if (token2) token2.textContent = display;
+    });
+  }
+
+  // ============================================================
+  // PORTED FROM M1D3 — Font scale, Side panel, Bible tooltip, TTS
+  // ============================================================
+  let fontScale = 1;
+  function adjustFont(dir) {
+    if (dir === 0) fontScale = 1;
+    else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+    else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+    document.documentElement.style.setProperty('--font-scale', fontScale);
+  }
+  function togglePanel() {
+    document.getElementById('sidepanel').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+  function goTo(id) {
+    togglePanel();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  }
+  function goToGate(idx) {
+    togglePanel();
+    setTimeout(() => {
+      const gates = document.querySelectorAll('#scene-4 .gate');
+      if (gates[idx]) gates[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+
+  // ============================================================
+  // Bible Verse Tooltips (Recovery Version XML)
+  // ============================================================
+  const BIBLE_XML_PATH = '../../recovery_bible_ko.xml';
+  const BIBLE_BOOKS_KO = ['창','출','레','민','신','수','삿','룻','삼상','삼하','왕상','왕하','대상','대하','스','느','에','욥','시','잠','전','아','사','렘','애','겔','단','호','욜','암','옵','욘','미','나','합','습','학','슥','말','마','막','눅','요','행','롬','고전','고후','갈','엡','빌','골','살전','살후','딤전','딤후','딛','몬','히','약','벧전','벧후','요일','요이','요삼','유','계'];
+  const BIBLE_SINGLE_CHAPTER = new Set(['옵','몬','요이','요삼','유']);
+  let BIBLE_DATA = null;
+  let bibleTooltipEl = null;
+  let bibleActiveTip = null;
+  let bibleLoadPromise = null;
+
+  async function loadBibleXML() {
+    if (bibleLoadPromise) return bibleLoadPromise;
+    bibleLoadPromise = (async () => {
+      try {
+        const res = await fetch(BIBLE_XML_PATH);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        const xml = new DOMParser().parseFromString(text, 'application/xml');
+        const data = {};
+        xml.querySelectorAll('Book').forEach(book => {
+          const abbrev = book.getAttribute('abbrevKo');
+          if (!abbrev) return;
+          const bk = data[abbrev] = {};
+          book.querySelectorAll('Chapter').forEach(chap => {
+            const cnum = chap.getAttribute('num');
+            const ch = bk[cnum] = {};
+            chap.querySelectorAll('Verse').forEach(v => {
+              ch[v.getAttribute('num')] = v.textContent;
+            });
+          });
+        });
+        BIBLE_DATA = data;
+        return true;
+      } catch (e) {
+        console.warn('[Bible] XML load failed:', e);
+        return false;
+      }
+    })();
+    return bibleLoadPromise;
+  }
+
+  function bibleLookup(book, chap, verseStart, verseEnd) {
+    if (!BIBLE_DATA) return null;
+    const bk = BIBLE_DATA[book];
+    if (!bk) return null;
+    const ch = bk[chap];
+    if (!ch) return null;
+    const list = [];
+    if (!verseEnd || verseStart === verseEnd) {
+      if (ch[verseStart]) list.push({ n: verseStart, t: ch[verseStart] });
+    } else {
+      const s = parseInt(verseStart, 10), e = parseInt(verseEnd, 10);
+      for (let i = s; i <= e; i++) {
+        if (ch[i]) list.push({ n: String(i), t: ch[i] });
+      }
+    }
+    return list.length ? list : null;
+  }
+
+  function ensureBibleTooltipEl() {
+    if (bibleTooltipEl) return bibleTooltipEl;
+    bibleTooltipEl = document.createElement('div');
+    bibleTooltipEl.className = 'bible-tooltip';
+    bibleTooltipEl.setAttribute('role', 'tooltip');
+    document.body.appendChild(bibleTooltipEl);
+    return bibleTooltipEl;
+  }
+
+  function showBibleTooltip(trigger) {
+    const ref = trigger.getAttribute('data-bref');
+    const book = trigger.getAttribute('data-book');
+    const chap = trigger.getAttribute('data-chap');
+    const vs = trigger.getAttribute('data-vs');
+    const ve = trigger.getAttribute('data-ve');
+    const tip = ensureBibleTooltipEl();
+    if (tip.parentNode !== document.body) document.body.appendChild(tip);
+
+    let bodyHtml;
+    if (!BIBLE_DATA) {
+      bodyHtml = '<div class="bible-tooltip-missing">성경 본문을 불러오는 중...</div>';
+    } else {
+      const verses = bibleLookup(book, chap, vs, ve);
+      if (!verses) {
+        bodyHtml = '<div class="bible-tooltip-missing">본문을 찾을 수 없습니다.</div>';
+      } else {
+        bodyHtml = '<div class="bible-tooltip-text">' +
+          verses.map(v => '<div class="bible-tooltip-verse"><span class="bible-tooltip-verse-num">' + v.n + '</span>' + v.t + '</div>').join('') +
+          '</div>';
+      }
+    }
+    tip.innerHTML = '<div class="bible-tooltip-ref">' + ref + '</div>' + bodyHtml;
+
+    tip.style.visibility = 'hidden';
+    tip.classList.add('show');
+
+    tip.style.left = '0px';
+    tip.style.top = '0px';
+    const probe0 = tip.getBoundingClientRect();
+    tip.style.left = '100px';
+    tip.style.top = '100px';
+    const probe100 = tip.getBoundingClientRect();
+    const fx = (probe100.left - probe0.left) / 100 || 1;
+    const fy = (probe100.top - probe0.top) / 100 || 1;
+
+    tip.style.left = '0px';
+    tip.style.top = '0px';
+    const tr = tip.getBoundingClientRect();
+    const tipW = tr.width;
+    const tipH = tr.height;
+
+    const triggerRect = trigger.getBoundingClientRect();
+    const margin = 8;
+    const gap = 4;
+
+    let visualLeft = triggerRect.left;
+    let visualTop = triggerRect.bottom + gap;
+    if (visualLeft + tipW > window.innerWidth - margin) {
+      visualLeft = window.innerWidth - tipW - margin;
+    }
+    if (visualLeft < margin) visualLeft = margin;
+    if (visualTop + tipH > window.innerHeight - margin) {
+      const above = triggerRect.top - tipH - gap;
+      if (above >= margin) visualTop = above;
+      else visualTop = Math.max(margin, window.innerHeight - tipH - margin);
+    }
+
+    const styleLeft = (visualLeft - probe0.left) / fx;
+    const styleTop  = (visualTop  - probe0.top ) / fy;
+    tip.style.left = styleLeft + 'px';
+    tip.style.top = styleTop + 'px';
+    tip.style.visibility = 'visible';
+  }
+
+  function hideBibleTooltip() {
+    if (bibleTooltipEl) {
+      bibleTooltipEl.classList.remove('show');
+    }
+    bibleActiveTip = null;
+  }
+
+  function attachBibleTooltips(root) {
+    if (!root) return;
+    const keys = [...BIBLE_BOOKS_KO].sort((a, b) => b.length - a.length);
+    const pattern = new RegExp(
+      '(' + keys.join('|') + ')\\s+(?:(\\d+):)?(\\d+)(?:-(\\d+))?' +
+      '|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?' +
+      '|(?:,\\s*)(\\d+)(?:-(\\d+))?',
+      'g'
+    );
+
+    // Skip selectors include M1D4's existing static tooltip elements + chrome (topbar, sidepanel, modals).
+    const SKIP_SELECTOR = '.bible-tip,.ref-link,.tooltip,.tip-ref,.greek-card,.scene-marker,.verse-citation,.topbar,.sidepanel,.tts-reader-modal,.bible-tooltip,script,style';
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const p = node.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        if (p.closest(SKIP_SELECTOR)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    nodes.forEach(node => {
+      const text = node.nodeValue;
+      pattern.lastIndex = 0;
+      if (!pattern.test(text)) return;
+      pattern.lastIndex = 0;
+
+      let lastBook = null, lastChapter = null;
+      let lastIdx = 0;
+      let match;
+      let inserted = false;
+      const frag = document.createDocumentFragment();
+
+      while ((match = pattern.exec(text)) !== null) {
+        const full = match[0];
+        const book = match[1];
+        let chap = match[2];
+        const verse = match[3];
+        const endVerse = match[4];
+        const c2 = match[5], v2 = match[6], ev2 = match[7];
+        const v3 = match[8], ev3 = match[9];
+
+        let bk, ch, vs, ve, display, leadingComma = '';
+
+        if (book) {
+          if (chap === undefined) {
+            if (!BIBLE_SINGLE_CHAPTER.has(book)) continue;
+            chap = '1';
+          }
+          bk = book; ch = chap; vs = verse; ve = endVerse;
+          lastBook = book; lastChapter = chap;
+          display = full;
+        } else if (v2) {
+          if (!lastBook) continue;
+          bk = lastBook; ch = c2; vs = v2; ve = ev2;
+          lastChapter = c2;
+          const m = full.match(/^,\s*/);
+          leadingComma = m ? m[0] : '';
+          display = full.slice(leadingComma.length);
+        } else if (v3) {
+          if (!lastBook || !lastChapter) continue;
+          bk = lastBook; ch = lastChapter; vs = v3; ve = ev3;
+          const m = full.match(/^,\s*/);
+          leadingComma = m ? m[0] : '';
+          display = full.slice(leadingComma.length);
+        } else {
+          continue;
+        }
+
+        const prefix = text.slice(lastIdx, match.index) + leadingComma;
+        if (prefix) frag.appendChild(document.createTextNode(prefix));
+
+        const span = document.createElement('span');
+        span.className = 'bible-tip';
+        span.setAttribute('tabindex', '0');
+        span.setAttribute('role', 'button');
+        span.setAttribute('aria-label', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : '') + ' 본문 보기');
+        span.setAttribute('data-bref', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : ''));
+        span.setAttribute('data-book', bk);
+        span.setAttribute('data-chap', ch);
+        span.setAttribute('data-vs', vs);
+        if (ve) span.setAttribute('data-ve', ve);
+        span.textContent = display;
+        frag.appendChild(span);
+
+        lastIdx = match.index + full.length;
+        inserted = true;
+      }
+
+      if (!inserted) return;
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function initBibleTooltips() {
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    const triggerOf = (target) => {
+      if (!target || !target.closest) return null;
+      if (target.closest('.bible-tooltip')) return null;
+      return target.closest('.bible-tip');
+    };
+
+    if (hasHover) {
+      document.body.addEventListener('mouseover', e => {
+        const t = triggerOf(e.target);
+        if (t) showBibleTooltip(t);
+      });
+      document.body.addEventListener('mouseout', e => {
+        const t = triggerOf(e.target);
+        if (!t) return;
+        const next = e.relatedTarget;
+        if (next && next.closest) {
+          if (next.closest('.bible-tooltip')) return;
+          if (next.closest('.bible-tip') === t) return;
+        }
+        hideBibleTooltip();
+      });
+      document.body.addEventListener('focusin', e => {
+        const t = triggerOf(e.target);
+        if (t) showBibleTooltip(t);
+      });
+      document.body.addEventListener('focusout', e => {
+        const t = triggerOf(e.target);
+        if (t) hideBibleTooltip();
+      });
+    }
+
+    document.body.addEventListener('click', e => {
+      if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+      const t = e.target.closest && e.target.closest('.bible-tip');
+      if (t) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (bibleActiveTip === t) {
+          hideBibleTooltip();
+        } else {
+          showBibleTooltip(t);
+          bibleActiveTip = t;
+        }
+        return;
+      }
+      hideBibleTooltip();
+    });
+
+    document.body.addEventListener('keydown', e => {
+      if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+      const t = e.target.closest && e.target.closest('.bible-tip');
+      if (t && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        if (bibleActiveTip === t) hideBibleTooltip();
+        else { showBibleTooltip(t); bibleActiveTip = t; }
+      } else if (e.key === 'Escape') {
+        hideBibleTooltip();
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      if (!bibleTooltipEl || !bibleTooltipEl.classList.contains('show')) return;
+      hideBibleTooltip();
+    }, { passive: true });
+
+    window.addEventListener('resize', () => hideBibleTooltip());
+  }
+
+  (function bootstrapBibleTooltips() {
+    const start = () => {
+      // Run after quiz cards are created so their text gets scanned too.
+      requestAnimationFrame(() => {
+        initBibleTooltips();
+        attachBibleTooltips(document.body);
+        loadBibleXML();
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start);
+    } else {
+      start();
+    }
+  })();
+
+  // ============================================================
+  // TTS Reader (M1D4 sections)
+  // ============================================================
+  const TTS_CONFIG = {
+    serverUrl: 'https://qwen.tkhome.cloud',
+    apiKey: localStorage.getItem('qwen_tts_api_key') || '',
+    defaultVoice: 'tk_voice',
+    sampleRate: 24000,
+    pauseSec: 0.4,
+    chunkMaxLen: 200
+  };
+
+  const TTS_SECTIONS = [
+    { id: 'scene-1',  title: '오늘의 구절 — 막 11:23' },
+    { id: 'scene-2',  title: '단어의 광맥 · 헬라어 분석' },
+    { id: 'scene-3',  title: '메시지의 심장' },
+    { id: 'gate-1',   title: 'Gate Ⅰ — 단일함, 하나님을 위한 기도' },
+    { id: 'gate-2',   title: 'Gate Ⅱ — 이미 받았음, 믿음의 본질' },
+    { id: 'gate-3',   title: 'Gate Ⅲ — 명령, 권위의 기도' },
+    { id: 'scene-6',  title: '자기 성찰 · 퀴즈' },
+    { id: 'scene-7',  title: '오늘의 기도 — 두 호흡의 기도' }
+  ];
+
+  function ttsCleanText(text) {
+    if (!text) return '';
+    return text.replace(/\s+/g, ' ').replace(/\[[^\]]*\]/g, '').trim();
+  }
+
+  function ttsExtractGate(idx) {
+    const gates = document.querySelectorAll('#scene-4 .gate');
+    const g = gates[idx];
+    if (!g) return '';
+    const body = g.querySelector('.gate-body');
+    if (!body) return '';
+    const clone = body.cloneNode(true);
+    // Replace tooltip refs (link text + tip-ref) with plain text only — drop the inner tooltip explanation.
+    clone.querySelectorAll('.tooltip').forEach(t => t.remove());
+    return ttsCleanText(clone.textContent);
+  }
+
+  const TTS_EXTRACTORS = {
+    'scene-1': () => {
+      const title = document.querySelector('#scene-1 .verse-title');
+      const cite = document.querySelector('#scene-1 .verse-citation');
+      return ttsCleanText('오늘의 구절. ' + (title ? title.textContent : '') + '. ' + (cite ? cite.textContent : ''));
+    },
+    'scene-2': () => {
+      let text = '단어의 광맥. 헬라어 네 단어의 무게. ';
+      const header = document.querySelector('#scene-2 .greek-header p');
+      if (header) text += ttsCleanText(header.textContent) + '. ';
+      document.querySelectorAll('#scene-2 .greek-card').forEach(card => {
+        const word = card.querySelector('.greek-word');
+        const translit = card.querySelector('.translit');
+        const meaning = card.querySelector('.meaning');
+        const quick = card.querySelector('.quick');
+        const deep = card.querySelector('.deep .deep-inner');
+        text += (translit ? ttsCleanText(translit.textContent) : '') + '. ';
+        text += (meaning ? ttsCleanText(meaning.textContent) : '') + '. ';
+        text += (quick ? ttsCleanText(quick.textContent) : '') + ' ';
+        if (deep) text += ttsCleanText(deep.textContent) + ' ';
+      });
+      return ttsCleanText(text);
+    },
+    'scene-3': () => {
+      const pull = document.querySelector('#scene-3 .summary-pull');
+      const txt = document.querySelector('#scene-3 .summary-text');
+      return ttsCleanText('메시지의 심장. ' + (pull ? pull.textContent : '') + '. ' + (txt ? txt.textContent : ''));
+    },
+    'gate-1': () => '게이트 일, 단일함. 하나님을 위한 기도. ' + ttsExtractGate(0),
+    'gate-2': () => '게이트 이, 이미 받았음. 믿음의 본질. ' + ttsExtractGate(1),
+    'gate-3': () => '게이트 삼, 명령. 권위의 기도. ' + ttsExtractGate(2),
+    'scene-6': () => {
+      let text = '자기 성찰 퀴즈. ';
+      const intro = document.querySelector('#scene-6 .quiz-header p');
+      if (intro) text += ttsCleanText(intro.textContent) + '. ';
+      document.querySelectorAll('#scene-6 .quiz-card').forEach((card, i) => {
+        const q = card.querySelector('.quiz-question');
+        const fb = card.querySelector('.feedback-inner');
+        text += '문항 ' + (i + 1) + '. ' + (q ? ttsCleanText(q.textContent) : '') + '. ';
+        if (fb) text += '묵상. ' + ttsCleanText(fb.textContent.replace(/^묵상/, '')) + '. ';
+      });
+      return text;
+    },
+    'scene-7': () => {
+      const title = document.querySelector('#scene-7 .prayer-title');
+      const subtitle = document.querySelector('#scene-7 .prayer-subtitle');
+      let text = '오늘의 기도. ';
+      if (title) text += ttsCleanText(title.textContent) + '. ';
+      if (subtitle) text += ttsCleanText(subtitle.textContent) + '. ';
+      document.querySelectorAll('#scene-7 .prayer-block').forEach(block => {
+        const stage = block.querySelector('.prayer-stage');
+        const heading = block.querySelector('.prayer-heading');
+        if (stage) text += ttsCleanText(stage.textContent) + '. ';
+        if (heading) text += ttsCleanText(heading.textContent) + '. ';
+        block.querySelectorAll('.prayer-body').forEach(p => {
+          text += ttsCleanText(p.textContent) + ' ';
+        });
+        text += '아멘. ';
+      });
+      return ttsCleanText(text);
+    }
+  };
+
+  let ttsAudioContext = null;
+  let ttsNextPlayTime = 0;
+  let ttsScheduledSources = [];
+  let ttsCurrentReader = null;
+  let ttsIsCanceled = false;
+  let ttsIsPlaying = false;
+  let ttsIsPaused = false;
+
+  function ttsPcmToBuffer(int16Bytes, ctx) {
+    const evenLen = int16Bytes.byteLength - (int16Bytes.byteLength % 2);
+    if (evenLen === 0) return null;
+    const aligned = new Uint8Array(evenLen);
+    aligned.set(int16Bytes.subarray(0, evenLen));
+    const int16 = new Int16Array(aligned.buffer);
+    const float32 = new Float32Array(int16.length);
+    for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768;
+    const buffer = ctx.createBuffer(1, float32.length, TTS_CONFIG.sampleRate);
+    buffer.copyToChannel(float32, 0);
+    return buffer;
+  }
+
+  function ttsScheduleBuffer(buffer) {
+    if (!buffer || !ttsAudioContext) return;
+    const source = ttsAudioContext.createBufferSource();
+    source.buffer = buffer;
+    source.connect(ttsAudioContext.destination);
+    const now = ttsAudioContext.currentTime;
+    if (ttsNextPlayTime < now) ttsNextPlayTime = now;
+    source.start(ttsNextPlayTime);
+    ttsScheduledSources.push(source);
+    ttsNextPlayTime += buffer.duration;
+    source.onended = () => {
+      const idx = ttsScheduledSources.indexOf(source);
+      if (idx >= 0) ttsScheduledSources.splice(idx, 1);
+    };
+  }
+
+  function ttsStopPlayback() {
+    ttsScheduledSources.forEach(src => { try { src.stop(); } catch(e) {} });
+    ttsScheduledSources = [];
+    ttsNextPlayTime = 0;
+  }
+
+  function ttsOpenReader() {
+    document.getElementById('tts-reader-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    ttsInitSectionList();
+    if (TTS_CONFIG.apiKey) document.getElementById('tts-api-key').value = TTS_CONFIG.apiKey;
+    ttsLoadVoices();
+  }
+
+  function ttsCloseReader() {
+    if (ttsIsPlaying) {
+      if (!confirm('재생 중입니다. 정말 닫으시겠습니까?')) return;
+      ttsStop();
+    }
+    document.getElementById('tts-reader-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function ttsCloseOnBg(e) {
+    if (e.target.id === 'tts-reader-overlay') ttsCloseReader();
+  }
+
+  function ttsSaveApiKey() {
+    const input = document.getElementById('tts-api-key');
+    TTS_CONFIG.apiKey = input.value.trim();
+    localStorage.setItem('qwen_tts_api_key', TTS_CONFIG.apiKey);
+    ttsSetStatus(TTS_CONFIG.apiKey ? 'API 키가 저장되었습니다.' : 'API 키가 비워졌습니다.');
+    ttsLoadVoices();
+  }
+
+  function ttsInitSectionList() {
+    const list = document.getElementById('tts-section-list');
+    if (list.dataset.initialized === 'true') return;
+    list.innerHTML = '';
+    const allItem = document.createElement('label');
+    allItem.className = 'tts-section-item all';
+    allItem.innerHTML = '<input type="checkbox" class="tts-section-checkbox" id="tts-section-all" checked><span class="tts-section-label">전체 선택 / 해제</span>';
+    allItem.querySelector('input').addEventListener('change', function() { ttsToggleAll(this); });
+    list.appendChild(allItem);
+    TTS_SECTIONS.forEach(sec => {
+      const item = document.createElement('label');
+      item.className = 'tts-section-item';
+      item.dataset.sectionId = sec.id;
+      item.innerHTML = '<input type="checkbox" class="tts-section-checkbox" data-section="' + sec.id + '" checked><span class="tts-section-label">' + sec.title + '</span>';
+      list.appendChild(item);
+    });
+    list.dataset.initialized = 'true';
+  }
+
+  function ttsToggleAll(cb) {
+    document.querySelectorAll('#tts-section-list input[data-section]').forEach(c => c.checked = cb.checked);
+  }
+
+  async function ttsLoadVoices() {
+    const select = document.getElementById('tts-voice-select');
+    try {
+      const res = await fetch(TTS_CONFIG.serverUrl + '/voices');
+      if (!res.ok) throw new Error('서버 응답 ' + res.status);
+      const data = await res.json();
+      select.innerHTML = '';
+      if (!data.voices || data.voices.length === 0) {
+        const opt = document.createElement('option');
+        opt.textContent = '(등록된 음성 없음)';
+        select.appendChild(opt);
+        ttsSetStatus('등록된 음성이 없습니다.', true);
+        return;
+      }
+      data.voices.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v.name;
+        opt.textContent = v.name + (v.name === data.default ? ' (기본)' : '');
+        select.appendChild(opt);
+      });
+      if (data.default) select.value = data.default;
+      ttsSetStatus(data.voices.length + '개 음성 로드 완료. 항목을 선택하고 재생을 누르세요.');
+    } catch (e) {
+      select.innerHTML = '<option>tk_voice</option>';
+      ttsSetStatus('음성 목록 로드 실패: ' + e.message, true);
+    }
+  }
+
+  function ttsSetStatus(msg, isError) {
+    const el = document.getElementById('tts-status');
+    el.textContent = msg;
+    el.className = 'tts-status' + (isError ? ' error' : '');
+  }
+
+  function ttsUpdateProgress(current, total, sectionTitle) {
+    document.getElementById('tts-progress').classList.add('active');
+    document.getElementById('tts-progress-fill').style.width = (current / total * 100) + '%';
+    document.getElementById('tts-progress-text').innerHTML = '<strong>' + current + ' / ' + total + '</strong> · ' + sectionTitle;
+  }
+
+  function ttsHighlightSection(sectionId) {
+    document.querySelectorAll('#tts-section-list .tts-section-item').forEach(el => el.classList.remove('playing'));
+    if (sectionId) {
+      const item = document.querySelector('#tts-section-list .tts-section-item[data-section-id="' + sectionId + '"]');
+      if (item) item.classList.add('playing');
+    }
+  }
+
+  async function ttsPlay() {
+    if (!TTS_CONFIG.apiKey) { ttsSetStatus('먼저 API 키를 입력하고 저장하세요.', true); return; }
+    const checked = document.querySelectorAll('#tts-section-list input[data-section]:checked');
+    if (checked.length === 0) { ttsSetStatus('읽을 항목을 하나 이상 선택하세요.', true); return; }
+    const voice = document.getElementById('tts-voice-select').value;
+    const selectedIds = Array.from(checked).map(cb => cb.dataset.section);
+    const sectionsToRead = TTS_SECTIONS.filter(s => selectedIds.includes(s.id));
+
+    ttsIsCanceled = false;
+    ttsIsPlaying = true;
+    document.getElementById('tts-play-btn').disabled = true;
+    document.getElementById('tts-stop-btn').disabled = false;
+    document.getElementById('tts-pause-btn').disabled = false;
+
+    if (!ttsAudioContext || ttsAudioContext.state === 'closed') {
+      const Ctor = window.AudioContext || window.webkitAudioContext;
+      try {
+        ttsAudioContext = new Ctor({ sampleRate: TTS_CONFIG.sampleRate });
+      } catch (e) {
+        ttsAudioContext = new Ctor();
+      }
+    }
+    if (ttsAudioContext.state === 'suspended') await ttsAudioContext.resume();
+    ttsIsPaused = false;
+    ttsUpdatePauseBtn();
+
+    ttsStopPlayback();
+
+    try {
+      for (let i = 0; i < sectionsToRead.length; i++) {
+        if (ttsIsCanceled) break;
+        const sec = sectionsToRead[i];
+        const extractor = TTS_EXTRACTORS[sec.id];
+        if (!extractor) continue;
+        ttsUpdateProgress(i + 1, sectionsToRead.length, sec.title);
+        ttsHighlightSection(sec.id);
+        ttsSetStatus('재생 중: ' + sec.title);
+        const text = extractor();
+        if (!text || text.trim().length < 2) continue;
+        await ttsStreamText(text, voice);
+        if (ttsIsCanceled) break;
+      }
+      while (!ttsIsCanceled) {
+        if (ttsAudioContext.state === 'suspended') {
+          await new Promise(r => setTimeout(r, 200));
+          continue;
+        }
+        const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
+        if (remaining <= 0) break;
+        ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
+        await new Promise(r => setTimeout(r, Math.min(remaining * 1000 + 200, 1000)));
+      }
+      if (!ttsIsCanceled) ttsSetStatus('✅ 모든 항목 재생 완료');
+      else ttsSetStatus('⏹ 중지됨');
+    } catch (e) {
+      ttsSetStatus('❌ 오류: ' + e.message, true);
+    } finally {
+      ttsIsPlaying = false;
+      ttsIsPaused = false;
+      ttsHighlightSection(null);
+      document.getElementById('tts-play-btn').disabled = false;
+      document.getElementById('tts-stop-btn').disabled = true;
+      document.getElementById('tts-pause-btn').disabled = true;
+      ttsUpdatePauseBtn();
+      ttsCurrentReader = null;
+    }
+  }
+
+  async function ttsStreamText(text, voice) {
+    const res = await fetch(TTS_CONFIG.serverUrl + '/tts/stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': TTS_CONFIG.apiKey },
+      body: JSON.stringify({ text: text, voice: voice, pause_sec: TTS_CONFIG.pauseSec, chunk_max_len: TTS_CONFIG.chunkMaxLen })
+    });
+    if (!res.ok) {
+      let errMsg = 'HTTP ' + res.status;
+      try { const err = await res.json(); errMsg = err.detail || errMsg; } catch(e) {}
+      throw new Error(errMsg);
+    }
+    const reader = res.body.getReader();
+    ttsCurrentReader = reader;
+    let buffer = new Uint8Array(0);
+    const MIN_DECODE = 24000;
+    while (true) {
+      let done, value;
+      try { ({ done, value } = await reader.read()); }
+      catch (e) { if (ttsIsCanceled) break; throw e; }
+      if (done || ttsIsCanceled) {
+        if (buffer.length >= 2 && !ttsIsCanceled) ttsScheduleBuffer(ttsPcmToBuffer(buffer, ttsAudioContext));
+        break;
+      }
+      const merged = new Uint8Array(buffer.length + value.length);
+      merged.set(buffer);
+      merged.set(value, buffer.length);
+      buffer = merged;
+      while (buffer.length >= MIN_DECODE && !ttsIsCanceled) {
+        const evenLen = MIN_DECODE - (MIN_DECODE % 2);
+        const audioBuffer = ttsPcmToBuffer(buffer.subarray(0, evenLen), ttsAudioContext);
+        if (audioBuffer) ttsScheduleBuffer(audioBuffer);
+        buffer = buffer.subarray(evenLen);
+      }
+    }
+  }
+
+  async function ttsStop() {
+    ttsIsCanceled = true;
+    if (ttsCurrentReader) { try { await ttsCurrentReader.cancel(); } catch(e) {} ttsCurrentReader = null; }
+    ttsStopPlayback();
+    if (ttsAudioContext && ttsAudioContext.state === 'suspended') {
+      try { await ttsAudioContext.resume(); } catch(e) {}
+    }
+    ttsIsPaused = false;
+    ttsSetStatus('⏹ 중지됨');
+    document.getElementById('tts-play-btn').disabled = false;
+    document.getElementById('tts-stop-btn').disabled = true;
+    document.getElementById('tts-pause-btn').disabled = true;
+    ttsUpdatePauseBtn();
+    ttsIsPlaying = false;
+    ttsHighlightSection(null);
+  }
+
+  async function ttsTogglePause() {
+    if (!ttsIsPlaying || !ttsAudioContext) return;
+    if (ttsIsPaused) {
+      try { await ttsAudioContext.resume(); } catch(e) {}
+      ttsIsPaused = false;
+      ttsSetStatus('▶ 재생 재개됨');
+    } else {
+      try { await ttsAudioContext.suspend(); } catch(e) {}
+      ttsIsPaused = true;
+      ttsSetStatus('⏸ 일시정지됨');
+    }
+    ttsUpdatePauseBtn();
+  }
+
+  function ttsUpdatePauseBtn() {
+    const btn = document.getElementById('tts-pause-btn');
+    if (!btn) return;
+    btn.textContent = ttsIsPaused ? '▶ 계속' : '⏸ 일시정지';
+  }
+
+</script>
+</body>
+</html>
