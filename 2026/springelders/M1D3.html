@@ -250,9 +250,10 @@
       position: absolute;
       top: 0; left: 0;
       z-index: 9999;
-      max-width: 420px;
-      min-width: 280px;
-      padding: 26px 30px 22px;
+      zoom: var(--font-scale);
+      max-width: 460px;
+      min-width: 300px;
+      padding: 28px 32px 24px;
       background: linear-gradient(180deg, #1d1610 0%, #15100a 100%);
       border-top: 1px solid rgba(212, 181, 112, 0.70);
       box-shadow:
@@ -285,7 +286,7 @@
       font-family: 'Lora', 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 600;
-      font-size: 0.86rem;
+      font-size: 0.95rem;
       letter-spacing: 0.18em;
       color: #D4B36F;
       text-transform: uppercase;
@@ -296,7 +297,7 @@
     .vref-tt-body {
       position: relative;
       font-family: 'Gowun Batang', 'Noto Serif KR', serif;
-      font-size: 0.96rem;
+      font-size: 1.08rem;
       line-height: 1.95;
       color: #E8DFC8;
       font-weight: 400;
@@ -318,8 +319,42 @@
     .vref-tt-empty {
       color: #a09686;
       font-style: italic;
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       letter-spacing: 0.02em;
+    }
+    .vref-tt-en {
+      position: relative;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(212, 181, 112, 0.28);
+    }
+    .vref-tt-en-label {
+      font-family: 'Lora', 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      color: #A98545;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .vref-tt-en-body {
+      font-family: 'Lora', 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #d8cfb8;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+    .vref-tt-en-verse { margin-bottom: 6px; }
+    .vref-tt-en-verse:last-child { margin-bottom: 0; }
+    .vref-tt-en-vnum {
+      font-family: 'Cormorant Garamond', 'Lora', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 0.85em;
+      color: #A98545;
+      margin-right: 6px;
     }
     @media (hover: none) {
       .vref-link, .verse-link { cursor: pointer; }
@@ -376,8 +411,79 @@
         transition: background-color .15s ease;
       }
       .vref-tt-close:active { background: rgba(212, 181, 112, 0.20); }
-      .vref-tt-book { font-size: 0.78rem; padding-right: 48px; }
-      .vref-tt-body { font-size: 1rem; line-height: 1.95; }
+      .vref-tt-book { font-size: 0.85rem; padding-right: 48px; }
+      .vref-tt-body { font-size: 1.1rem; line-height: 1.95; }
+      .vref-tt-en-body { font-size: 1.02rem; line-height: 1.75; }
+    }
+
+    /* Verse map */
+    .vref-map-card {
+      background: #FAF6EC;
+      border-top: 2px solid #C9A961;
+      border-left: 1px solid rgba(201,169,97,0.18);
+      border-right: 1px solid rgba(201,169,97,0.18);
+      border-bottom: 1px solid rgba(201,169,97,0.18);
+      box-shadow: 0 1px 2px rgba(31,26,18,0.04), 0 6px 18px rgba(31,26,18,0.05);
+    }
+    .vref-map-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed rgba(201,169,97,0.45);
+    }
+    .vref-map-ref {
+      font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1F1A12;
+      letter-spacing: -0.005em;
+    }
+    @media (min-width: 768px) {
+      .vref-map-ref { font-size: 1.4rem; }
+    }
+    .vref-map-bookname {
+      font-family: 'Lora', 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8B5E3C;
+      opacity: 0.85;
+      white-space: nowrap;
+    }
+    .vref-map-body {
+      font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+    }
+    .vref-map-verse {
+      font-size: 0.98rem;
+      line-height: 1.95;
+      color: #1F1A12;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      margin-bottom: 10px;
+      text-indent: -1.4em;
+      padding-left: 1.4em;
+    }
+    .vref-map-verse:last-child { margin-bottom: 0; }
+    @media (min-width: 768px) {
+      .vref-map-verse { font-size: 1.05rem; line-height: 2; }
+    }
+    .vref-map-vnum {
+      font-family: 'Cormorant Garamond', 'Lora', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 0.9em;
+      color: #A98545;
+      margin-right: 8px;
+      vertical-align: 0.05em;
+    }
+    .vref-map-empty {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #8a7b6c;
+      letter-spacing: 0.02em;
     }
 
     /* Letter-spacing */
@@ -493,16 +599,32 @@
       <div class="text-xs ls-4 uppercase mb-8 text-goldBright">DANIEL · 단 9:19</div>
       <div class="h-px w-24 mb-12" style="background: #C9A961;"></div>
 
-      <p class="f-serif text-2xl md:text-4xl font-normal" style="line-height: 1.9;">
-        오, 주님, 들어 주십시오!<br />
-        오, 주님, 용서하여 주십시오!<br />
-        오, 주님, 들으시고 행동하여 주십시오!<br />
-        오, 저의 하나님,
-        <span class="text-goldBright" style="border-bottom: 1px solid #E5C76B; padding-bottom: 4px;">
-          주님 자신을 위하여
-        </span>
-        <br />지체하지 말아 주십시오.
-      </p>
+      <div class="f-serif text-2xl md:text-4xl font-normal" style="line-height: 1.45;">
+        <div class="mb-6 md:mb-8">
+          <div>오, 주님, 들어 주십시오!</div>
+          <div class="mt-1.5 md:mt-2 md:text-2xl" style="font-family: 'Lora', 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; line-height: 1.5; color: rgba(250,246,236,0.65); letter-spacing: 0.01em;">O Lord, hear!</div>
+        </div>
+        <div class="mb-6 md:mb-8">
+          <div>오, 주님, 용서하여 주십시오!</div>
+          <div class="mt-1.5 md:mt-2 md:text-2xl" style="font-family: 'Lora', 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; line-height: 1.5; color: rgba(250,246,236,0.65); letter-spacing: 0.01em;">O Lord, forgive!</div>
+        </div>
+        <div class="mb-6 md:mb-8">
+          <div>오, 주님, 들으시고 행동하여 주십시오!</div>
+          <div class="mt-1.5 md:mt-2 md:text-2xl" style="font-family: 'Lora', 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; line-height: 1.5; color: rgba(250,246,236,0.65); letter-spacing: 0.01em;">O Lord, listen and take action!</div>
+        </div>
+        <div>
+          <div style="line-height: 1.7;">
+            오, 저의 하나님,
+            <span class="text-goldBright" style="border-bottom: 1px solid #E5C76B; padding-bottom: 4px;">주님 자신을 위하여</span>
+            <br />지체하지 말아 주십시오.
+          </div>
+          <div class="mt-2 md:mt-3 md:text-2xl" style="font-family: 'Lora', 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; line-height: 1.55; color: rgba(250,246,236,0.65); letter-spacing: 0.01em;">
+            Do not delay,
+            <span style="color: #E5C76B; border-bottom: 1px solid #E5C76B; padding-bottom: 2px;">for Your own sake,</span>
+            O my God.
+          </div>
+        </div>
+      </div>
 
       <div class="mt-16 max-w-md text-sm leading-relaxed opacity-70">
         기도는 누구를 위한 것인가. 이 한 구절이 던지는 질문 앞에서, 기도의 모든 층위가 다시 정렬된다.
@@ -533,7 +655,8 @@
       <div class="grid md:grid-cols-3 gap-4 md:gap-6">
         <!-- shema -->
         <div class="p-8 md:p-10 relative bg-softWhite text-deepInk" style="border-top: 2px solid #C9B896;">
-          <div dir="rtl" class="f-heb text-5xl md:text-6xl text-right mb-6 leading-none text-deepInk">שְׁמַע</div>
+          <div dir="rtl" class="f-heb text-5xl md:text-6xl text-right mb-2 leading-none text-deepInk">שְׁמַע</div>
+          <div class="text-right text-sm md:text-base mb-4 text-deepInk opacity-70" style="letter-spacing: 0.08em;">[셰마]</div>
           <div class="text-[11px] ls-2 uppercase mb-2 opacity-70 text-rust">shema</div>
           <div class="f-serif text-xl md:text-2xl mb-5">들어 주십시오</div>
           <div class="text-sm leading-relaxed opacity-85">
@@ -542,7 +665,8 @@
         </div>
         <!-- selach -->
         <div class="p-8 md:p-10 relative bg-softWhite text-deepInk" style="border-top: 2px solid #C9B896;">
-          <div dir="rtl" class="f-heb text-5xl md:text-6xl text-right mb-6 leading-none text-deepInk">סְלַח</div>
+          <div dir="rtl" class="f-heb text-5xl md:text-6xl text-right mb-2 leading-none text-deepInk">סְלַח</div>
+          <div class="text-right text-sm md:text-base mb-4 text-deepInk opacity-70" style="letter-spacing: 0.08em;">[셀라흐]</div>
           <div class="text-[11px] ls-2 uppercase mb-2 opacity-70 text-rust">selach</div>
           <div class="f-serif text-xl md:text-2xl mb-5">용서하여 주십시오</div>
           <div class="text-sm leading-relaxed opacity-85">
@@ -552,7 +676,8 @@
         <!-- lema'ancha (emphasized) -->
         <div class="p-8 md:p-10 relative bg-midnight text-softWhite" style="border-top: 2px solid #E5C76B;">
           <div class="absolute top-4 right-4 text-[10px] ls-2 uppercase text-goldBright">중심</div>
-          <div dir="rtl" class="f-heb text-5xl md:text-6xl text-right mb-6 leading-none text-goldBright">לְמַעַנְךָ</div>
+          <div dir="rtl" class="f-heb text-5xl md:text-6xl text-right mb-2 leading-none text-goldBright">לְמַעַנְךָ</div>
+          <div class="text-right text-sm md:text-base mb-4 text-sandLight" style="letter-spacing: 0.08em; opacity: 0.85;">[레마안카]</div>
           <div class="text-[11px] ls-2 uppercase mb-2 text-goldBright">lema'ancha</div>
           <div class="f-serif text-xl md:text-2xl mb-5">주님 자신을 위하여</div>
           <div class="text-sm leading-relaxed opacity-85">
@@ -749,10 +874,11 @@
       <!-- Greek words: bind / loose -->
       <div class="grid md:grid-cols-2 gap-4 md:gap-6 mb-12">
         <div class="p-8 md:p-10" style="background: #0B142A; border-top: 2px solid #E5C76B;">
-          <div class="flex items-baseline justify-between mb-6">
+          <div class="flex items-baseline justify-between mb-2">
             <div class="f-gr text-6xl md:text-7xl leading-none text-goldBright">δέω</div>
             <div class="text-[11px] ls-2 uppercase opacity-70 text-goldBright">BIND</div>
           </div>
+          <div class="text-sm md:text-base mb-4 opacity-75" style="letter-spacing: 0.08em;">[데오]</div>
           <div class="text-[11px] ls-2 uppercase opacity-60 mb-2">deō</div>
           <div class="f-serif text-2xl mb-4">묶다</div>
           <div class="text-sm leading-relaxed opacity-85">
@@ -762,10 +888,11 @@
         </div>
 
         <div class="p-8 md:p-10" style="background: #0B142A; border-top: 2px solid #E5C76B;">
-          <div class="flex items-baseline justify-between mb-6">
+          <div class="flex items-baseline justify-between mb-2">
             <div class="f-gr text-6xl md:text-7xl leading-none text-goldBright">λύω</div>
             <div class="text-[11px] ls-2 uppercase opacity-70 text-goldBright">LOOSE</div>
           </div>
+          <div class="text-sm md:text-base mb-4 opacity-75" style="letter-spacing: 0.08em;">[뤼오]</div>
           <div class="text-[11px] ls-2 uppercase opacity-60 mb-2">lyō</div>
           <div class="f-serif text-2xl mb-4">풀다</div>
           <div class="text-sm leading-relaxed opacity-85">
@@ -1056,12 +1183,12 @@
     }
     function buildVersesHtml(book, chapter, versesStr, bibleData, BOOK_META) {
       if (!bibleData || !Object.keys(bibleData).length) {
-        return '<div class="text-sm opacity-50 italic">— 본문을 불러오는 중… —</div>';
+        return '<div class="vref-map-empty">— 본문을 불러오는 중… —</div>';
       }
       const entry = bibleData[book];
-      if (!entry) return '<div class="text-sm opacity-50 italic">— 책을 찾을 수 없음 —</div>';
+      if (!entry) return '<div class="vref-map-empty">— 책을 찾을 수 없음 —</div>';
       const ch = entry.chapters[String(chapter)];
-      if (!ch) return '<div class="text-sm opacity-50 italic">— ' + chapter + '장을 찾을 수 없음 —</div>';
+      if (!ch) return '<div class="vref-map-empty">— ' + chapter + '장을 찾을 수 없음 —</div>';
       const groups = parseSpec(versesStr);
       const lines = [];
       groups.forEach(g => {
@@ -1069,16 +1196,16 @@
           const t = ch[String(v)];
           if (typeof t === 'undefined') continue;
           lines.push(
-            '<p class="text-[13px] md:text-sm leading-relaxed text-deepInk">' +
-              '<span class="f-gr text-rust font-semibold mr-1.5" style="font-style:italic;">' + v + '</span>' +
+            '<p class="vref-map-verse">' +
+              '<span class="vref-map-vnum">' + v + '</span>' +
               escMap(t) +
             '</p>'
           );
         }
       });
       return lines.length
-        ? '<div class="space-y-2">' + lines.join('') + '</div>'
-        : '<div class="text-sm opacity-50 italic">— 해당 절을 찾을 수 없음 —</div>';
+        ? lines.join('')
+        : '<div class="vref-map-empty">— 해당 절을 찾을 수 없음 —</div>';
     }
 
     function renderVerseMap() {
@@ -1090,13 +1217,12 @@
         if (!m) return;
         const [, book, chapter, vstr] = m;
         const card = document.createElement('div');
-        card.className = 'p-5 md:p-6 bg-softWhite';
-        card.style.cssText = 'border-top: 2px solid #C9A961;';
+        card.className = 'vref-map-card p-6 md:p-8';
         const fullName = (meta && meta[book] && meta[book].n) || book;
         card.innerHTML = `
-          <div class="flex items-baseline justify-between mb-4 pb-3" style="border-bottom: 1px dashed rgba(201,169,97,0.4);">
-            <span class="f-serif text-lg md:text-xl text-deepInk">${escMap(ref)}</span>
-            <span class="text-[10px] ls-2 uppercase text-rust opacity-70">${escMap(fullName)}</span>
+          <div class="vref-map-head">
+            <span class="vref-map-ref">${escMap(ref)}</span>
+            <span class="vref-map-bookname">${escMap(fullName)}</span>
           </div>
           <div class="vref-map-body">${buildVersesHtml(book, chapter, vstr, data, meta)}</div>
         `;
@@ -1108,6 +1234,7 @@
     document.addEventListener('vref-bible-ready', renderVerseMap);
 
     // ----- Bridge: existing .verse-link buttons → vref-link tooltip system -----
+    const seenVerseRefs = new Set();
     function upgradeVerseLinks() {
       document.querySelectorAll('.verse-link[data-verse]').forEach((el) => {
         if (el.dataset.bound) return;
@@ -1117,6 +1244,10 @@
         el.dataset.book = m[1];
         el.dataset.chapter = m[2];
         el.dataset.verses = m[3];
+        if (!seenVerseRefs.has(el.dataset.verse)) {
+          el.dataset.first = '1';
+          seenVerseRefs.add(el.dataset.verse);
+        }
         el.dataset.bound = '1';
         el.tabIndex = 0;
       });
@@ -1256,6 +1387,7 @@
     'use strict';
 
     var XML_URL = 'https://tk-korea.github.io/seven_feasts/recovery_bible_ko.xml';
+    var XML_URL_EN = 'https://tk-korea.github.io/seven_feasts/recovery_bible_en.xml';
 
     var BOOKS = [
       {n:'창세기',a:'창'},{n:'출애굽기',a:'출'},{n:'레위기',a:'레'},{n:'민수기',a:'민'},
@@ -1298,6 +1430,33 @@
       return out;
     }
 
+    function parseBibleXml(xml) {
+      var doc = new DOMParser().parseFromString(xml, 'text/xml');
+      var data = {};
+      var books = doc.getElementsByTagName('Book');
+      for (var i = 0; i < books.length; i++) {
+        var b = books[i];
+        var abbrev = b.getAttribute('abbrevKo');
+        var nameKo = b.getAttribute('nameKo');
+        var chapters = {};
+        var chs = b.getElementsByTagName('Chapter');
+        for (var j = 0; j < chs.length; j++) {
+          var ch = chs[j];
+          var num = ch.getAttribute('num');
+          var verses = {};
+          var vs = ch.getElementsByTagName('Verse');
+          for (var k = 0; k < vs.length; k++) {
+            verses[vs[k].getAttribute('num')] = vs[k].textContent;
+          }
+          chapters[num] = verses;
+        }
+        var entry = { abbrevKo: abbrev, nameKo: nameKo, chapters: chapters };
+        data[abbrev] = entry;
+        if (nameKo) data[nameKo] = entry;
+      }
+      return data;
+    }
+
     var bibleData = null;
     var biblePromise = null;
     function loadBible() {
@@ -1307,29 +1466,7 @@
         if (!r.ok) throw new Error('XML fetch ' + r.status);
         return r.text();
       }).then(function(xml){
-        var doc = new DOMParser().parseFromString(xml, 'text/xml');
-        var data = {};
-        var books = doc.getElementsByTagName('Book');
-        for (var i = 0; i < books.length; i++) {
-          var b = books[i];
-          var abbrev = b.getAttribute('abbrevKo');
-          var nameKo = b.getAttribute('nameKo');
-          var chapters = {};
-          var chs = b.getElementsByTagName('Chapter');
-          for (var j = 0; j < chs.length; j++) {
-            var ch = chs[j];
-            var num = ch.getAttribute('num');
-            var verses = {};
-            var vs = ch.getElementsByTagName('Verse');
-            for (var k = 0; k < vs.length; k++) {
-              verses[vs[k].getAttribute('num')] = vs[k].textContent;
-            }
-            chapters[num] = verses;
-          }
-          var entry = { abbrevKo: abbrev, nameKo: nameKo, chapters: chapters };
-          data[abbrev] = entry;
-          data[nameKo] = entry;
-        }
+        var data = parseBibleXml(xml);
         bibleData = data;
         window.VrefBible = { data: data, meta: BOOK_META };
         document.dispatchEvent(new CustomEvent('vref-bible-ready'));
@@ -1342,6 +1479,25 @@
         return bibleData;
       });
       return biblePromise;
+    }
+
+    var bibleDataEn = null;
+    var biblePromiseEn = null;
+    function loadBibleEn() {
+      if (bibleDataEn) return Promise.resolve(bibleDataEn);
+      if (biblePromiseEn) return biblePromiseEn;
+      biblePromiseEn = fetch(XML_URL_EN).then(function(r){
+        if (!r.ok) throw new Error('EN XML fetch ' + r.status);
+        return r.text();
+      }).then(function(xml){
+        bibleDataEn = parseBibleXml(xml);
+        return bibleDataEn;
+      }).catch(function(e){
+        console.warn('[vref] English Bible XML 로드 실패:', e);
+        bibleDataEn = {};
+        return bibleDataEn;
+      });
+      return biblePromiseEn;
     }
 
     var tooltipEl = null;
@@ -1376,39 +1532,50 @@
       });
     }
 
-    function buildContent(bookKey, chapter, versesStr) {
+    function buildVerseLines(dataset, bookKey, chapter, versesStr, verseClass, vnumClass) {
+      if (!dataset || !Object.keys(dataset).length) {
+        return { html: '<span class="vref-tt-empty">— 불러오는 중… —</span>', empty: true };
+      }
+      var entry = dataset[bookKey];
+      if (!entry) return { html: '<span class="vref-tt-empty">— 책을 찾을 수 없음 —</span>', empty: true };
+      var ch = entry.chapters[String(chapter)];
+      if (!ch) return { html: '<span class="vref-tt-empty">— ' + chapter + '장을 찾을 수 없음 —</span>', empty: true };
+      var groups = parseVerseSpec(versesStr);
+      var pieces = [];
+      for (var gi = 0; gi < groups.length; gi++) {
+        var g = groups[gi];
+        for (var v = g.start; v <= g.end; v++) {
+          var t = ch[String(v)];
+          if (typeof t === 'undefined') continue;
+          pieces.push('<div class="' + verseClass + '"><span class="' + vnumClass + '">[' + v + ']</span>' + escHtml(t) + '</div>');
+        }
+      }
+      if (!pieces.length) return { html: '<span class="vref-tt-empty">— 해당 절을 찾을 수 없음 —</span>', empty: true };
+      return { html: pieces.join(''), empty: false };
+    }
+
+    function buildContent(bookKey, chapter, versesStr, showEn) {
       var meta = BOOK_META[bookKey];
       var koLabel = (meta ? meta.n : bookKey) + ' ' + chapter + '장 ' + versesStr + '절';
-      var html = '';
-      if (!bibleData || !Object.keys(bibleData).length) {
-        html = '<span class="vref-tt-empty">— 불러오는 중… —</span>';
-      } else {
-        var entry = bibleData[bookKey];
-        if (!entry) {
-          html = '<span class="vref-tt-empty">— 책을 찾을 수 없음 —</span>';
+      var ko = buildVerseLines(bibleData, bookKey, chapter, versesStr, 'vref-tt-verse', 'vref-tt-vnum');
+      var enBlock = '';
+      if (showEn) {
+        var enInner;
+        if (!bibleDataEn) {
+          enInner = '<span class="vref-tt-empty">— loading… —</span>';
         } else {
-          var ch = entry.chapters[String(chapter)];
-          if (!ch) {
-            html = '<span class="vref-tt-empty">— ' + chapter + '장을 찾을 수 없음 —</span>';
-          } else {
-            var groups = parseVerseSpec(versesStr);
-            var pieces = [];
-            for (var gi = 0; gi < groups.length; gi++) {
-              var g = groups[gi];
-              for (var v = g.start; v <= g.end; v++) {
-                var t = ch[String(v)];
-                if (typeof t === 'undefined') continue;
-                pieces.push('<div class="vref-tt-verse"><span class="vref-tt-vnum">[' + v + ']</span>' + escHtml(t) + '</div>');
-              }
-            }
-            html = pieces.join('');
-            if (!html) html = '<span class="vref-tt-empty">— 해당 절을 찾을 수 없음 —</span>';
-          }
+          enInner = buildVerseLines(bibleDataEn, bookKey, chapter, versesStr, 'vref-tt-en-verse', 'vref-tt-en-vnum').html;
         }
+        enBlock =
+          '<div class="vref-tt-en">' +
+            '<div class="vref-tt-en-label">Recovery Version · English</div>' +
+            '<div class="vref-tt-en-body">' + enInner + '</div>' +
+          '</div>';
       }
       return (
         '<div class="vref-tt-book">' + escHtml(koLabel) + '</div>' +
-        '<div class="vref-tt-body">' + html + '</div>'
+        '<div class="vref-tt-body">' + ko.html + '</div>' +
+        enBlock
       );
     }
 
@@ -1453,22 +1620,28 @@
       var b = linkEl.dataset.book;
       var c = linkEl.dataset.chapter;
       var v = linkEl.dataset.verses;
+      var showEn = linkEl.dataset.first === '1';
       if (!b || !c || !v) return;
-      renderTooltipInner(buildContent(b, parseInt(c, 10), v), mobile);
-      if (mobile) {
-        tooltipEl.style.top = '';
-        tooltipEl.style.left = '';
-        tooltipEl.scrollTop = 0;
-        backdropEl.dataset.show = '1';
-      } else {
-        positionTooltip(linkEl);
+      function render() {
+        renderTooltipInner(buildContent(b, parseInt(c, 10), v, showEn), mobile);
+        if (mobile) {
+          tooltipEl.style.top = '';
+          tooltipEl.style.left = '';
+          tooltipEl.scrollTop = 0;
+          backdropEl.dataset.show = '1';
+        } else {
+          positionTooltip(linkEl);
+        }
+        tooltipEl.dataset.show = '1';
       }
-      tooltipEl.dataset.show = '1';
-      if (!bibleData) {
-        loadBible().then(function(){
+      render();
+      var pending = [];
+      if (!bibleData) pending.push(loadBible());
+      if (showEn && !bibleDataEn) pending.push(loadBibleEn());
+      if (pending.length) {
+        Promise.all(pending).then(function(){
           if (activeLink !== linkEl) return;
-          renderTooltipInner(buildContent(b, parseInt(c, 10), v), mobile);
-          if (!mobile) positionTooltip(linkEl);
+          render();
         });
       }
     }
@@ -1531,6 +1704,10 @@
       bind();
       // Eager load — verse-map section displays inline verses, needs data ASAP
       loadBible();
+      // Prefetch English so first-occurrence tooltips render instantly
+      if (document.querySelector('.verse-link[data-first="1"], .vref-link[data-first="1"]')) {
+        loadBibleEn();
+      }
     }
 
     if (document.readyState === 'loading') {
