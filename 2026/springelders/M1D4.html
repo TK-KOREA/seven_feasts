@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>산을 옮기는 기도 — 막 11:23-24 묵상</title>
+<title>권위의 기도 - 산을 향한 직접적인 명령</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
@@ -582,72 +582,174 @@
     text-transform: uppercase;
   }
 
-  /* Reference tooltip system */
-  .ref-link {
+  /* ============== VREF TOOLTIP (ported from M1D3, Korean only) ============== */
+  .verse-link, .vref-link {
     color: var(--gold-light);
-    border-bottom: 1px dashed var(--gold);
+    font: inherit;
+    background: none;
+    border: none;
+    border-bottom: 1px dotted var(--gold);
     cursor: help;
-    position: relative;
-    font-style: normal;
-    text-decoration: none;
-    padding: 0 1px;
-    transition: color 0.2s;
+    padding: 0 2px;
+    margin: 0;
+    line-height: inherit;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: color .15s ease, background-color .15s ease;
   }
-  .ref-link:hover { color: var(--gold); }
-  .ref-link::before {
-    content: '✦';
-    font-size: 0.65em;
-    margin-right: 2px;
-    color: var(--gold);
-    vertical-align: super;
-  }
-  .tooltip {
-    position: absolute;
-    bottom: calc(100% + 12px);
-    left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    background: var(--cream);
-    color: var(--ink);
-    padding: 1rem 1.25rem;
-    width: max-content;
-    max-width: min(320px, calc(100vw - 4rem));
-    font-family: var(--serif);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  .verse-link:hover, .vref-link:hover { color: var(--gold); background: rgba(200, 162, 74, 0.13); }
+  .verse-link:active, .vref-link:active { color: var(--gold); background: rgba(200, 162, 74, 0.20); }
+  .verse-link:focus, .vref-link:focus { outline: none; }
+  .verse-link:focus-visible, .vref-link:focus-visible { outline: 1px dashed var(--gold); outline-offset: 2px; }
+
+  #vref-tt-backdrop {
+    position: fixed; inset: 0;
+    z-index: 9998;
+    background: rgba(8, 17, 31, 0.62);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 50;
     pointer-events: none;
-    text-align: left;
+    transition: opacity .25s ease;
+    display: none;
   }
-  .tooltip::after {
+  #vref-tt-backdrop[data-show="1"] {
+    opacity: 1; visibility: visible; pointer-events: auto;
+  }
+  #vref-tooltip {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 9999;
+    zoom: var(--font-scale);
+    max-width: 460px;
+    min-width: 300px;
+    padding: 24px 28px 22px;
+    background: linear-gradient(180deg, #0E1B3A 0%, #08111F 100%);
+    border-top: 1px solid rgba(200, 162, 74, 0.55);
+    box-shadow:
+      0 22px 48px -10px rgba(0, 0, 0, 0.7),
+      0 8px 18px -6px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(200, 162, 74, 0.08);
+    color: var(--cream);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  #vref-tooltip[data-show="1"] {
+    opacity: 1; visibility: visible; transform: translateY(0);
+  }
+  #vref-tooltip::before {
     content: '';
     position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: var(--cream);
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-deep) 100%);
+    box-shadow: 0 0 12px rgba(200, 162, 74, 0.3);
   }
-  .tooltip .tip-ref {
+  .vref-tt-handle { display: none; }
+  .vref-tt-close { display: none; }
+  .vref-tt-book {
+    position: relative;
     font-family: var(--display);
     font-style: italic;
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    color: var(--wine);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-light);
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    display: block;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(200, 162, 74, 0.28);
   }
-  .ref-link:hover .tooltip,
-  .ref-link:focus .tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
+  .vref-tt-body {
+    position: relative;
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--cream);
+    font-weight: 400;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .vref-tt-verse { margin-bottom: 8px; }
+  .vref-tt-verse:last-child { margin-bottom: 0; }
+  .vref-tt-vnum {
+    display: inline-block;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.85em;
+    color: var(--gold-light);
+    margin-right: 8px;
+    vertical-align: 0.05em;
+  }
+  .vref-tt-empty {
+    color: var(--cream);
+    font-style: italic;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    opacity: 0.55;
+  }
+  @media (hover: none) {
+    .verse-link, .vref-link { cursor: pointer; }
+  }
+  @media (max-width: 768px) {
+    #vref-tt-backdrop { display: block; }
+    #vref-tooltip {
+      position: fixed !important;
+      top: auto !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      padding: 14px 22px calc(28px + env(safe-area-inset-bottom, 0px));
+      border-top: none;
+      border-radius: 18px 18px 0 0;
+      box-shadow:
+        0 -2px 0 rgba(200, 162, 74, 0.40),
+        0 -16px 44px rgba(0, 0, 0, 0.55);
+      max-height: 75vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateY(100%);
+      pointer-events: auto;
+      transition: transform .28s cubic-bezier(0.32, 0.72, 0, 1), opacity .2s ease;
+    }
+    #vref-tooltip[data-show="1"] { transform: translateY(0); }
+    .vref-tt-handle {
+      display: block;
+      width: 44px; height: 4px;
+      border-radius: 2px;
+      background: rgba(232, 223, 200, 0.30);
+      margin: 0 auto 18px;
+    }
+    .vref-tt-close {
+      display: flex;
+      position: absolute;
+      top: 14px; right: 16px;
+      width: 36px; height: 36px;
+      align-items: center; justify-content: center;
+      background: rgba(232, 223, 200, 0.06);
+      border: 1px solid rgba(200, 162, 74, 0.25);
+      border-radius: 50%;
+      color: var(--gold-light);
+      font-family: var(--display);
+      font-size: 1.4rem;
+      line-height: 1;
+      padding: 0 0 2px;
+      cursor: pointer;
+      z-index: 2;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color .15s ease;
+    }
+    .vref-tt-close:active { background: rgba(200, 162, 74, 0.20); }
+    .vref-tt-book { font-size: 0.82rem; padding-right: 48px; }
+    .vref-tt-body { font-size: 1.05rem; line-height: 1.9; }
   }
 
   /* Dual comparison box for Gate 2 & 3 */
@@ -1110,13 +1212,218 @@
     transform: translateY(0);
   }
 
+  /* Card index badge — visible only in mobile swipe view */
+  .greek-card-index {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.4rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    opacity: 0.7;
+    text-transform: uppercase;
+    z-index: 2;
+    display: none;
+  }
+
+  /* Mobile swipe nav — hidden on desktop, shown ≤720px */
+  .greek-nav {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: 1.5rem auto 0;
+    padding: 0 1rem;
+  }
+  .greek-nav-btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(200, 162, 74, 0.35);
+    background: transparent;
+    color: var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0 0 2px;
+    font-family: var(--display);
+    transition: background 0.2s, color 0.2s, border-color 0.2s, opacity 0.2s;
+  }
+  .greek-nav-btn:hover:not(:disabled),
+  .greek-nav-btn:focus-visible {
+    background: rgba(200, 162, 74, 0.12);
+    border-color: var(--gold);
+    color: var(--gold-light);
+    outline: none;
+  }
+  .greek-nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .greek-nav-dots { display: flex; gap: 0.45rem; align-items: center; }
+  .greek-nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(200, 162, 74, 0.32);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .greek-nav-dot.active {
+    background: var(--gold);
+    width: 26px;
+    border-radius: 4px;
+  }
+
   /* Mobile adjustments */
+  @media (max-width: 720px) {
+    .scene-marker { letter-spacing: 0.28em; font-size: 0.78rem; gap: 0.7rem; margin-bottom: 1.5rem; }
+    .scene-marker::before { width: 1.75rem; }
+    .verse-eyebrow { letter-spacing: 0.32em; }
+    .verse-eyebrow::before, .verse-eyebrow::after { margin: 0 0.85rem; }
+    .gates { gap: 3.5rem; }
+    .quote-block { padding: 1.1rem 1.2rem; margin: 1.5rem 0; font-size: 1rem; }
+    .compare-cell .phrase { font-size: 1.02rem; line-height: 1.5; }
+
+    /* ── 단어의 광맥: swipe carousel ── */
+    .greek-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      grid-template-columns: none;
+      gap: 1rem;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scroll-padding-inline: 1.25rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 4px 1.25rem 8px;
+      margin-left: -1.25rem;
+      margin-right: -1.25rem;
+      max-width: none;
+    }
+    .greek-grid::-webkit-scrollbar { display: none; }
+
+    .greek-card {
+      flex: 0 0 calc(100% - 2.5rem);
+      max-width: calc(100% - 2.5rem);
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+      cursor: default;
+      transform: none !important;
+    }
+    /* Show all cards immediately in carousel (off-screen ones aren't observed) */
+    .greek-card.reveal { opacity: 1 !important; }
+    .greek-card-index { display: block; }
+    .greek-card .toggle { display: none; }
+
+    /* In carousel mode: deep content always visible — no clipping */
+    .greek-card .deep,
+    .greek-card.expanded .deep {
+      max-height: none;
+      overflow: visible;
+      margin-top: 1.1rem;
+    }
+
+    .greek-nav { display: flex; }
+  }
   @media (max-width: 540px) {
-    .scene { padding: 6vh 1.5rem; }
-    .scene-detail, .scene-quiz, .scene-prayer { padding: 8vh 1.5rem; }
-    .quiz-card { padding: 1.75rem 1.25rem; }
-    .prayer-block { padding: 2rem 1.5rem; }
-    .greek-card { padding: 1.75rem 1.5rem; }
+    .scene { padding: 6vh 1.25rem; }
+    .scene-detail, .scene-quiz, .scene-prayer { padding: 7vh 1.25rem; }
+    .scene-verse { padding-top: 9vh; padding-bottom: 7vh; }
+
+    .scene-marker { letter-spacing: 0.22em; font-size: 0.72rem; gap: 0.55rem; margin-bottom: 1.25rem; }
+    .scene-marker::before { width: 1.4rem; }
+
+    .verse-eyebrow { letter-spacing: 0.28em; font-size: 0.85rem; margin-bottom: 2rem; }
+    .verse-eyebrow::before, .verse-eyebrow::after { margin: 0 0.55rem; font-size: 0.5rem; }
+    .verse-title { font-size: clamp(1.45rem, 6.4vw, 2.1rem); line-height: 1.55; max-width: none; }
+    .verse-citation { font-size: 0.82rem; letter-spacing: 0.22em; margin-top: 2.5rem; }
+    .scroll-cue { bottom: 1.5rem; font-size: 0.72rem; letter-spacing: 0.2em; }
+
+    .greek-header { margin: 0 auto 2.25rem; }
+    .greek-header h2 { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+    .greek-header p { font-size: 0.88rem; line-height: 1.7; }
+    .greek-card { padding: 1.5rem 1.25rem; }
+    .greek-card .greek-word { font-size: 1.7rem; }
+    .greek-card .meaning { font-size: 1rem; }
+    .greek-card .toggle { top: 1rem; right: 1rem; font-size: 0.7rem; }
+    .greek-card .deep-inner { font-size: 0.85rem; line-height: 1.75; }
+
+    .summary-pull { font-size: 0.72rem; letter-spacing: 0.32em; }
+    .summary-text { font-size: clamp(1.25rem, 5.2vw, 1.75rem); line-height: 1.6; max-width: none; }
+    .summary-divider { height: 3rem; margin-bottom: 2rem; }
+
+    .detail-header { margin: 0 auto 2.5rem; }
+    .detail-header h2 { font-size: clamp(1.4rem, 5vw, 1.9rem); }
+    .gates { gap: 3rem; }
+    .gate { gap: 1.1rem; }
+    .gate-num { top: 0.85rem; left: 0.95rem; font-size: 0.75rem; letter-spacing: 0.2em; }
+    .gate-num strong { font-size: 2.3rem; }
+    .gate-body h3 { font-size: clamp(1.35rem, 5vw, 1.7rem); }
+    .gate-body h3 .label { letter-spacing: 0.3em; font-size: 0.75rem; margin-bottom: 0.7rem; }
+    .gate-body .body-text { font-size: 0.98rem; line-height: 1.85; margin-top: 1rem; }
+    .gate-body .body-text p + p { margin-top: 1rem; }
+
+    .quote-block { padding: 1rem 1.1rem; margin: 1.25rem 0; font-size: 0.96rem; line-height: 1.75; }
+    .quote-block .ref { letter-spacing: 0.22em; font-size: 0.7rem; margin-top: 0.75rem; }
+
+    .compare { margin: 1.5rem 0; }
+    .compare-cell { padding: 1.1rem 0.9rem; }
+    .compare-cell .label { letter-spacing: 0.25em; font-size: 0.65rem; margin-bottom: 0.55rem; }
+    .compare-cell .phrase { font-size: 0.98rem; line-height: 1.45; }
+    .compare-arrow { padding: 0.6rem; letter-spacing: 0.28em; font-size: 0.7rem; }
+
+    .quiz-header { margin: 0 auto 2.5rem; }
+    .quiz-header h2 { font-size: clamp(1.4rem, 5vw, 1.9rem); }
+    .quiz-header p { font-size: 0.92rem; }
+    .quiz-card { padding: 1.6rem 1.15rem; margin-bottom: 1.1rem; }
+    .quiz-num strong { font-size: 2rem; }
+    .quiz-num { letter-spacing: 0.32em; font-size: 0.72rem; }
+    .quiz-question { font-size: 1.04rem; line-height: 1.65; margin-bottom: 1.1rem; }
+    .quiz-option { padding: 0.85rem 1rem; font-size: 0.93rem; line-height: 1.6; }
+    .quiz-option .opt-letter { margin-right: 0.7rem; font-size: 1rem; }
+    .feedback-inner { padding: 1rem 1.1rem; font-size: 0.9rem; line-height: 1.75; }
+
+    .prayer-eyebrow { letter-spacing: 0.35em; font-size: 0.78rem; }
+    .prayer-eyebrow::before, .prayer-eyebrow::after { margin: 0 0.6rem; }
+    .prayer-title { font-size: clamp(1.4rem, 5vw, 1.9rem); }
+    .prayer-subtitle { font-size: 0.92rem; margin-bottom: 2.5rem; }
+    .prayer-block { padding: 1.85rem 1.3rem; }
+    .prayer-body { font-size: 0.98rem !important; line-height: 1.85 !important; }
+    .prayer-amen { letter-spacing: 0.3em; font-size: 0.88rem; margin-top: 1rem; }
+
+    .footer { padding: 3rem 1.25rem 2.25rem; }
+    .footer .footer-text { font-size: 0.9rem; line-height: 1.75; }
+
+
+    /* Topbar tighter on mobile */
+    .topbar { padding: 0 6px; gap: 2px; }
+    .topbar-title { font-size: 12px; letter-spacing: 0.08em; padding: 0 4px; }
+    .topbar-btn { width: 32px; height: 32px; }
+    .font-ctrl-btn { width: 24px; height: 24px; font-size: 13px; }
+    .font-controls { padding: 1px; }
+  }
+  @media (max-width: 380px) {
+    .scene { padding: 5vh 0.95rem; }
+    .scene-detail, .scene-quiz, .scene-prayer { padding: 6vh 0.95rem; }
+    .verse-title { font-size: clamp(1.3rem, 6vw, 1.85rem); line-height: 1.55; }
+    .summary-text { font-size: clamp(1.18rem, 5vw, 1.55rem); }
+    .greek-card { padding: 1.3rem 1.05rem; }
+    .greek-card .greek-word { font-size: 1.55rem; }
+    .quote-block { padding: 0.9rem 1rem; font-size: 0.93rem; }
+    .quiz-card { padding: 1.4rem 1rem; }
+    .quiz-question { font-size: 1rem; }
+    .quiz-option { padding: 0.78rem 0.9rem; font-size: 0.9rem; }
+    .prayer-block { padding: 1.55rem 1.1rem; }
+    .footer { padding: 2.5rem 1rem 2rem; }
+    .topbar-title { font-size: 11px; }
   }
 
   /* Selection */
@@ -1155,123 +1462,6 @@
   .nav-home{display:flex;align-items:center;gap:8px;color:var(--gold);opacity:0.95}
   .nav-home-icon{flex-shrink:0;color:var(--gold)}
 
-  /* Bible verse tooltip (auto-attached) */
-  .bible-tip{
-    border-bottom:1px dotted var(--gold);
-    cursor:help;
-    color:inherit;
-    text-decoration:none;
-    white-space:nowrap;
-    transition:color 0.18s ease,background 0.18s ease;
-  }
-  .bible-tip:hover,.bible-tip:focus{
-    color:var(--gold-light);
-    background:rgba(200,162,74,0.10);
-    outline:none;
-  }
-  .bible-tooltip{
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:9999;
-    background:linear-gradient(180deg,#0E1B3A 0%,#08111F 100%);
-    border:1px solid rgba(200,162,74,0.4);
-    box-shadow:
-      0 22px 48px -10px rgba(0,0,0,0.7),
-      0 8px 18px -6px rgba(0,0,0,0.5),
-      inset 0 1px 0 rgba(200,162,74,0.08);
-    padding:18px 22px 16px;
-    width:max-content;
-    max-width:min(400px,calc(100vw - 24px));
-    min-width:260px;
-    font-family:var(--serif);
-    font-size:14px;
-    line-height:1.75;
-    color:var(--cream);
-    border-radius:1px;
-    white-space:normal;
-    cursor:default;
-    display:none;
-    visibility:hidden;
-  }
-  .bible-tooltip.show{display:block;visibility:visible}
-  .bible-tooltip::before{
-    content:'';
-    position:absolute;
-    left:0;top:0;bottom:0;
-    width:3px;
-    background:linear-gradient(180deg,var(--gold-light) 0%,var(--gold) 50%,var(--gold-deep) 100%);
-    box-shadow:0 0 12px rgba(200,162,74,0.4);
-  }
-  .bible-tooltip::after{
-    content:'';
-    position:absolute;
-    inset:6px;
-    border:1px solid rgba(200,162,74,0.18);
-    pointer-events:none;
-  }
-  .bible-tooltip-ref{
-    position:relative;
-    font-family:var(--display);
-    font-style:italic;
-    font-weight:600;
-    font-size:0.78rem;
-    letter-spacing:0.18em;
-    color:var(--gold-light);
-    text-transform:uppercase;
-    margin-bottom:12px;
-    padding-bottom:10px;
-    border-bottom:1px solid rgba(200,162,74,0.28);
-  }
-  .bible-tooltip-ref::after{
-    content:'';
-    position:absolute;
-    left:0;bottom:-1px;
-    width:28px;
-    height:1px;
-    background:var(--gold);
-  }
-  .bible-tooltip-text{
-    position:relative;
-    font-size:0.93rem;
-    color:var(--cream);
-    word-break:keep-all;
-    overflow-wrap:break-word;
-    opacity:0.95;
-  }
-  .bible-tooltip-verse{margin-bottom:6px;padding-left:0}
-  .bible-tooltip-verse:last-child{margin-bottom:0}
-  .bible-tooltip-verse-num{
-    display:inline-block;
-    font-family:var(--display);
-    font-style:italic;
-    font-weight:600;
-    font-size:0.85rem;
-    color:var(--gold-light);
-    margin-right:8px;
-    vertical-align:0.05em;
-    min-width:18px;
-  }
-  .bible-tooltip-missing{
-    color:var(--cream);
-    font-style:italic;
-    font-size:0.88rem;
-    letter-spacing:0.02em;
-    opacity:0.55;
-  }
-  @media (hover:none){
-    .bible-tip{cursor:pointer;border-bottom-style:solid;border-bottom-width:0.5px}
-  }
-  @media (max-width:480px){
-    .bible-tooltip{
-      max-width:calc(100vw - 20px);
-      min-width:200px;
-      font-size:13px;
-      padding:15px 18px 14px;
-    }
-    .bible-tooltip-text{font-size:0.9rem}
-    .bible-tooltip-ref{font-size:0.72rem;letter-spacing:0.14em}
-  }
 
   /* TTS Reader modal */
   .tts-reader-overlay{display:none;position:fixed;inset:0;background:rgba(8,17,31,0.78);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:2000;align-items:center;justify-content:center;padding:20px}
@@ -1320,7 +1510,7 @@
 <!-- TOP BAR -->
 <div class="topbar" id="topbar">
   <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-  <div class="topbar-title">산을 옮기는 기도 · 막 11:23-24</div>
+  <div class="topbar-title">권위의 기도 - 산을 향한 직접적인 명령</div>
   <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
   <div class="font-controls">
     <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
@@ -1515,7 +1705,7 @@
 <section class="scene scene-detail" id="scene-4">
   <div class="scene-marker reveal" style="justify-content:center;"><span class="num">IV</span> 세 개의 문 · Three Gates</div>
   <div class="detail-header reveal">
-    <h2>"내"에서 "하나님"으로 — <em>중심이 옮겨지는 여정</em></h2>
+    <h2>"나"에서 "하나님"으로 — <em>중심이 옮겨지는 여정</em></h2>
   </div>
 
   <div class="gates">
@@ -1560,11 +1750,11 @@
         <div class="body-text">
           <p>겟세마네에서 주 예수님은 자신의 죽음에 관해 하나님과 교통하시면서 "하실 수만 있으시다면, 이 잔을 나에게서 지나가게 해 주십시오"라고 말씀드린 후, 곧이어 결정적인 한 마디를 더하셨습니다.</p>
           <div class="quote-block">
-            "그러나 나의 뜻대로 마시고, 아버지의 뜻대로 하옵소서."
+            "나의 아버지, 하실 수만 있으시다면, 이 잔을 나에게서 지나가게 해 주십시오. 그러나 나의 뜻대로 하지 마시고 아버지 뜻대로 하십시오."
             <span class="ref">마 26:39 · 세 번 반복하신 기도</span>
           </div>
           <p>일반적으로 우리는 자신의 갈망을 따라 기도하고, 그것이 이루어지기를 구합니다. 그러나 주 예수님이 보여주신 본은 정반대입니다 — <em>"제가 구하는 것은 당신의 뜻이 이루어지는 것입니다. 저의 유일한 갈망은 당신께서 유익을 얻으시는 것입니다."</em></p>
-          <p>주님께서 제자들에게 가르치신 기도의 첫 호흡도 동일합니다 — <a href="#" class="ref-link" tabindex="0">"아버지의 이름이 거룩히 여겨지도록 하시며, 왕국이 오게 하시며, 뜻이 하늘에서 이루어진 것같이 땅에서도 이루어지게 하십시오"<span class="tooltip"><span class="tip-ref">마 6:9-10</span>주기도문의 첫 세 간구. 사람의 필요(일용할 양식)보다 먼저 등장하는 것은 하나님의 이름·왕국·뜻입니다.</span></a>. 단지 자신의 생계와 사업과 가족만을 위해 기도할 줄 안다면, 그 기도는 표준에 미치지 못한 것이며, 우리가 하나님 앞에서 단일하지 않다는 — 즉 <em>하나님 외의 다른 것을 갈망한다</em>는 — 것을 입증합니다.</p>
+          <p>주님께서 제자들에게 가르치신 기도의 첫 호흡도 동일합니다 — "아버지의 이름이 거룩히 여겨지도록 하시며, 왕국이 오게 하시며, 뜻이 하늘에서 이루어진 것같이 땅에서도 이루어지게 하십시오" (<button class="verse-link" type="button" data-verse="마 6:9-10">마 6:9-10</button>). 단지 자신의 생계와 사업과 가족만을 위해 기도할 줄 안다면, 그 기도는 표준에 미치지 못한 것이며, 우리가 하나님 앞에서 단일하지 않다는 — 즉 <em>하나님 외의 다른 것을 갈망한다</em>는 — 것을 입증합니다.</p>
           <p>기도의 사람이 원하는 전부는 오직 하나님과 하나님의 뜻입니다.</p>
         </div>
       </div>
@@ -1612,7 +1802,7 @@
         </h3>
         <div class="body-text">
           <p>어떤 사람들은 기도에 믿음이 필요하다고 말합니다. 그러나 믿음은 우리가 원한다고 해서 가질 수 있는 것이 아닙니다. 사실 믿음은 우리 안에 계신 하나님에게서 나오는 한 가지 기능입니다. 우리가 하나님 안에 거하고 그분께서 우리 안에서 지위를 가지시도록 허락해 드릴 때, 그분은 우리 안에서 한 가지 기능을 산출하시는데 — <em>곧 믿음입니다.</em></p>
-          <p>그러므로 단지 사람들에게 믿음을 가지라고 권면하는 것은 아무 쓸모가 없습니다. 하나님으로 충만한 사람만이 믿음으로 충만합니다. 믿음은 우리에게서 나오지 않습니다. <a href="#" class="ref-link" tabindex="0">우리는 믿음이 하나님 자신이라고도 말할 수 있습니다<span class="tooltip"><span class="tip-ref">엡 2:6</span>"그리스도 예수 안에서 우리를 함께 일으키시고 함께 하늘에 앉히셨으니" — 우리 안에 계신 그리스도가 곧 우리의 믿음의 근거입니다.</span></a>.</p>
+          <p>그러므로 단지 사람들에게 믿음을 가지라고 권면하는 것은 아무 쓸모가 없습니다. 하나님으로 충만한 사람만이 믿음으로 충만합니다. 믿음은 우리에게서 나오지 않습니다. 우리는 믿음이 하나님 자신이라고도 말할 수 있습니다 — 우리 안에 계신 그리스도가 곧 우리의 믿음의 근거입니다 (<button class="verse-link" type="button" data-verse="엡 2:6">엡 2:6</button>).</p>
 
           <div class="compare">
             <div class="compare-cell against">
@@ -1626,7 +1816,7 @@
             <div class="compare-arrow">↓ 막 11:24의 결정적 차이 ↓</div>
           </div>
 
-          <p><a href="#" class="ref-link" tabindex="0">주님의 말씀에 따라<span class="tooltip"><span class="tip-ref">막 11:24</span>"여러분이 기도하고 구하는 것은 무엇이든지 이미 받은 줄로 믿으십시오. 그리하면 여러분에게 그대로 이루어질 것입니다."</span></a> 우리는 받을 것을 믿는 것이 아니라 <em>이미 받았음</em>을 믿어야 합니다. 믿음은 하나님께서 어떤 일을 하실 수 있거나 하실 것임을 믿을 뿐 아니라, 하나님께서 <em>이미 그 일을 하셨다</em>는 것을 믿는 것입니다.</p>
+          <p>주님의 말씀에 따라 (<button class="verse-link" type="button" data-verse="막 11:24">막 11:24</button>) 우리는 받을 것을 믿는 것이 아니라 <em>이미 받았음</em>을 믿어야 합니다. 믿음은 하나님께서 어떤 일을 하실 수 있거나 하실 것임을 믿을 뿐 아니라, 하나님께서 <em>이미 그 일을 하셨다</em>는 것을 믿는 것입니다.</p>
         </div>
       </div>
     </article>
@@ -1681,7 +1871,7 @@
           권위의 기도
         </h3>
         <div class="body-text">
-          <p>마가복음 11장 20절부터 24절까지에 나오는 기도는 <em>권위의 기도</em>입니다. 이것은 가장 높고 영적인 기도이며, 하나님께 무언가를 하시도록 요청하기보다 <a href="#" class="ref-link" tabindex="0">하나님의 권위를 사용하고 적용하여<span class="tooltip"><span class="tip-ref">슥 4:7</span>"큰 산아, 네가 무엇이냐. 네가 스룹바벨 앞에서 평지가 되리라" — 산을 향한 직접 명령의 구약적 원형.</span></a> 제거되어야 할 문제들과 일들을 처리합니다.</p>
+          <p>마가복음 <button class="verse-link" type="button" data-verse="막 11:20-24">11장 20-24절</button>에 나오는 기도는 <em>권위의 기도</em>입니다. 이것은 가장 높고 영적인 기도이며, 하나님께 무언가를 하시도록 요청하기보다 그분의 권위를 사용하고 적용하여 (<button class="verse-link" type="button" data-verse="슥 4:7">슥 4:7</button> — 산을 향한 직접 명령의 구약적 원형) 제거되어야 할 문제들과 일들을 처리합니다.</p>
 
           <div class="compare">
             <div class="compare-cell against">
@@ -1695,10 +1885,10 @@
             <div class="compare-arrow">↓ 발화의 대상이 바뀐다 ↓</div>
           </div>
 
-          <p><a href="#" class="ref-link" tabindex="0">하나님은 그분께서 명령하신 것을 우리도 명령하고<span class="tooltip"><span class="tip-ref">마 17:20</span>"너희에게 겨자씨 한 알 만한 믿음이라도 있으면, 이 산을 명하여 여기서 저기로 옮기라 하여도 옮길 것이요" — 권위의 기도의 직접적 약속.</span></a>, 그분께서 분부하신 것을 우리도 분부할 수 있는 권한을 우리에게 주셨습니다. <a href="#" class="ref-link" tabindex="0">교회는 묶고 푸는 권세를 받았으며<span class="tooltip"><span class="tip-ref">마 18:18-19</span>"무엇이든지 너희가 땅에서 매면 하늘에서도 매일 것이요, 무엇이든지 너희가 땅에서 풀면 하늘에서도 풀리리라."</span></a>, 완전한 믿음으로 조금도 의심하지 않으며 하나님의 뜻에 따른 것임을 분명히 인식할 때 이러한 권위의 기도를 할 수 있습니다.</p>
+          <p>하나님은 그분께서 명령하신 것을 우리도 명령하고, 그분께서 분부하신 것을 우리도 분부할 수 있는 권한을 우리에게 주셨습니다 (<button class="verse-link" type="button" data-verse="마 17:20">마 17:20</button>). 교회는 묶고 푸는 권세를 받았으며 (<button class="verse-link" type="button" data-verse="마 18:18-19">마 18:18-19</button>), 완전한 믿음으로 조금도 의심하지 않으며 하나님의 뜻에 따른 것임을 분명히 인식할 때 이러한 권위의 기도를 할 수 있습니다.</p>
 
           <div class="quote-block">
-            "이기는 이들은 모두 '이 산'을 향하여<br>말하기를 배워야 한다."
+            "누구든지 이 산을 향하여 '들려 올려져 바닷속으로 떨어져라.'라고 말하면서, 마음에 의심하지 않고 말한 대로 된다고 믿으면, 그대로 이루어질 것입니다."
             <span class="ref">막 11:23 · 권위의 기도의 부르심</span>
           </div>
         </div>
@@ -1774,14 +1964,119 @@
     }
   })();
 
-  // ─────── Greek card expansion ───────
+  // ─────── Greek card expansion (desktop grid only — mobile uses swipe carousel) ───────
+  const isGreekCarouselMode = () => window.matchMedia('(max-width: 720px)').matches;
   document.querySelectorAll('.greek-card').forEach(card => {
-    const toggle = () => card.classList.toggle('expanded');
+    const toggle = () => {
+      if (isGreekCarouselMode()) return;
+      card.classList.toggle('expanded');
+    };
     card.addEventListener('click', toggle);
     card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (isGreekCarouselMode()) return;
+        e.preventDefault();
+        card.classList.toggle('expanded');
+      }
     });
   });
+
+  // ─────── Greek cards: mobile swipe carousel ───────
+  (function initGreekCarousel() {
+    const grid = document.querySelector('.greek-grid');
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.greek-card'));
+    if (!cards.length) return;
+    const total = cards.length;
+
+    // Inject "01 / 04" index badge into each card
+    cards.forEach((card, i) => {
+      if (card.querySelector('.greek-card-index')) return;
+      const badge = document.createElement('div');
+      badge.className = 'greek-card-index';
+      badge.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+      card.insertBefore(badge, card.firstChild);
+    });
+
+    // Inject navigation controls right after the grid
+    let nav = grid.parentNode.querySelector('.greek-nav');
+    if (!nav) {
+      nav = document.createElement('div');
+      nav.className = 'greek-nav';
+      nav.setAttribute('role', 'tablist');
+      const prev = document.createElement('button');
+      prev.className = 'greek-nav-btn greek-nav-prev';
+      prev.type = 'button';
+      prev.setAttribute('aria-label', '이전 카드');
+      prev.textContent = '‹';
+      const dots = document.createElement('div');
+      dots.className = 'greek-nav-dots';
+      const next = document.createElement('button');
+      next.className = 'greek-nav-btn greek-nav-next';
+      next.type = 'button';
+      next.setAttribute('aria-label', '다음 카드');
+      next.textContent = '›';
+      cards.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'greek-nav-dot';
+        d.type = 'button';
+        d.setAttribute('aria-label', '카드 ' + (i + 1));
+        d.dataset.idx = String(i);
+        dots.appendChild(d);
+      });
+      nav.append(prev, dots, next);
+      grid.parentNode.insertBefore(nav, grid.nextSibling);
+    }
+
+    const dotEls = Array.from(nav.querySelectorAll('.greek-nav-dot'));
+    const prevBtn = nav.querySelector('.greek-nav-prev');
+    const nextBtn = nav.querySelector('.greek-nav-next');
+
+    const cardCenterInScroll = (c) => {
+      const cardRect = c.getBoundingClientRect();
+      const gridRect = grid.getBoundingClientRect();
+      return (cardRect.left - gridRect.left) + grid.scrollLeft + cardRect.width / 2;
+    };
+
+    const scrollToCard = (idx) => {
+      const c = cards[idx];
+      if (!c) return;
+      const target = cardCenterInScroll(c) - grid.clientWidth / 2;
+      const max = grid.scrollWidth - grid.clientWidth;
+      grid.scrollTo({ left: Math.max(0, Math.min(max, target)), behavior: 'smooth' });
+    };
+
+    const getCurrentIndex = () => {
+      const center = grid.scrollLeft + grid.clientWidth / 2;
+      let best = 0, bestDist = Infinity;
+      cards.forEach((c, i) => {
+        const cc = cardCenterInScroll(c);
+        const d = Math.abs(cc - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      return best;
+    };
+
+    const update = () => {
+      const cur = getCurrentIndex();
+      dotEls.forEach((d, i) => d.classList.toggle('active', i === cur));
+      prevBtn.disabled = cur === 0;
+      nextBtn.disabled = cur === total - 1;
+    };
+
+    dotEls.forEach((d, i) => d.addEventListener('click', () => scrollToCard(i)));
+    prevBtn.addEventListener('click', () => scrollToCard(getCurrentIndex() - 1));
+    nextBtn.addEventListener('click', () => scrollToCard(getCurrentIndex() + 1));
+
+    let scrollTimer;
+    grid.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(update, 70);
+    }, { passive: true });
+
+    window.addEventListener('resize', () => setTimeout(update, 150));
+    requestAnimationFrame(() => requestAnimationFrame(update));
+  })();
 
   // ─────── Reveal on scroll ───────
   const io = new IntersectionObserver((entries) => {
@@ -1890,7 +2185,7 @@
 
     const fb = document.createElement('div');
     fb.className = 'quiz-feedback';
-    fb.innerHTML = `<div class="feedback-inner"><span class="feedback-label">묵상</span>${item.feedback}</div>`;
+    fb.innerHTML = `<div class="feedback-inner"><span class="feedback-label">설명</span>${item.feedback}</div>`;
 
     card.appendChild(num);
     card.appendChild(q);
@@ -1943,331 +2238,312 @@
   }
 
   // ============================================================
-  // Bible Verse Tooltips (Recovery Version XML)
+  // BIBLE VERSE TOOLTIP — ported from M1D3 (Korean only)
+  // Hover (PC) / tap-to-open bottom-sheet (mobile)
   // ============================================================
-  const BIBLE_XML_PATH = '../../recovery_bible_ko.xml';
-  const BIBLE_BOOKS_KO = ['창','출','레','민','신','수','삿','룻','삼상','삼하','왕상','왕하','대상','대하','스','느','에','욥','시','잠','전','아','사','렘','애','겔','단','호','욜','암','옵','욘','미','나','합','습','학','슥','말','마','막','눅','요','행','롬','고전','고후','갈','엡','빌','골','살전','살후','딤전','딤후','딛','몬','히','약','벧전','벧후','요일','요이','요삼','유','계'];
-  const BIBLE_SINGLE_CHAPTER = new Set(['옵','몬','요이','요삼','유']);
-  let BIBLE_DATA = null;
-  let bibleTooltipEl = null;
-  let bibleActiveTip = null;
-  let bibleLoadPromise = null;
+  (function(){
+    'use strict';
 
-  async function loadBibleXML() {
-    if (bibleLoadPromise) return bibleLoadPromise;
-    bibleLoadPromise = (async () => {
-      try {
-        const res = await fetch(BIBLE_XML_PATH);
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const text = await res.text();
-        const xml = new DOMParser().parseFromString(text, 'application/xml');
-        const data = {};
-        xml.querySelectorAll('Book').forEach(book => {
-          const abbrev = book.getAttribute('abbrevKo');
-          if (!abbrev) return;
-          const bk = data[abbrev] = {};
-          book.querySelectorAll('Chapter').forEach(chap => {
-            const cnum = chap.getAttribute('num');
-            const ch = bk[cnum] = {};
-            chap.querySelectorAll('Verse').forEach(v => {
-              ch[v.getAttribute('num')] = v.textContent;
-            });
-          });
+    var XML_URL = '../../recovery_bible_ko.xml';
+
+    var BOOKS = [
+      {n:'창세기',a:'창'},{n:'출애굽기',a:'출'},{n:'레위기',a:'레'},{n:'민수기',a:'민'},
+      {n:'신명기',a:'신'},{n:'여호수아',a:'수'},{n:'사사기',a:'삿'},{n:'룻기',a:'룻'},
+      {n:'사무엘상',a:'삼상'},{n:'사무엘하',a:'삼하'},{n:'열왕기상',a:'왕상'},{n:'열왕기하',a:'왕하'},
+      {n:'역대상',a:'대상'},{n:'역대하',a:'대하'},{n:'에스라',a:'스'},{n:'느헤미야',a:'느'},
+      {n:'에스더',a:'에'},{n:'욥기',a:'욥'},{n:'시편',a:'시'},{n:'잠언',a:'잠'},
+      {n:'전도서',a:'전'},{n:'아가',a:'아'},{n:'이사야',a:'사'},{n:'예레미야',a:'렘'},
+      {n:'예레미야애가',a:'애'},{n:'에스겔',a:'겔'},{n:'다니엘',a:'단'},{n:'호세아',a:'호'},
+      {n:'요엘',a:'욜'},{n:'아모스',a:'암'},{n:'오바댜',a:'옵'},{n:'요나',a:'욘'},
+      {n:'미가',a:'미'},{n:'나훔',a:'나'},{n:'하박국',a:'합'},{n:'스바냐',a:'습'},
+      {n:'학개',a:'학'},{n:'스가랴',a:'슥'},{n:'말라기',a:'말'},{n:'마태복음',a:'마'},
+      {n:'마가복음',a:'막'},{n:'누가복음',a:'눅'},{n:'요한복음',a:'요'},{n:'사도행전',a:'행'},
+      {n:'로마서',a:'롬'},{n:'고린도전서',a:'고전'},{n:'고린도후서',a:'고후'},{n:'갈라디아서',a:'갈'},
+      {n:'에베소서',a:'엡'},{n:'빌립보서',a:'빌'},{n:'골로새서',a:'골'},{n:'데살로니가전서',a:'살전'},
+      {n:'데살로니가후서',a:'살후'},{n:'디모데전서',a:'딤전'},{n:'디모데후서',a:'딤후'},{n:'디도서',a:'딛'},
+      {n:'빌레몬서',a:'몬'},{n:'히브리서',a:'히'},{n:'야고보서',a:'약'},{n:'베드로전서',a:'벧전'},
+      {n:'베드로후서',a:'벧후'},{n:'요한일서',a:'요일'},{n:'요한이서',a:'요이'},{n:'요한삼서',a:'요삼'},
+      {n:'유다서',a:'유'},{n:'요한계시록',a:'계'}
+    ];
+
+    var BOOK_META = {};
+    for (var i = 0; i < BOOKS.length; i++) {
+      BOOK_META[BOOKS[i].a] = BOOKS[i];
+      BOOK_META[BOOKS[i].n] = BOOKS[i];
+    }
+
+    function parseVerseSpec(spec) {
+      var parts = String(spec).split(/\s*,\s*/);
+      var out = [];
+      for (var i = 0; i < parts.length; i++) {
+        var m = parts[i].match(/^(\d+)(?:\s*[\-–]\s*(\d+))?(상|하)?$/);
+        if (!m) continue;
+        out.push({
+          start: parseInt(m[1], 10),
+          end: m[2] ? parseInt(m[2], 10) : parseInt(m[1], 10),
+          suffix: m[3] || ''
         });
-        BIBLE_DATA = data;
-        return true;
-      } catch (e) {
-        console.warn('[Bible] XML load failed:', e);
-        return false;
       }
-    })();
-    return bibleLoadPromise;
-  }
-
-  function bibleLookup(book, chap, verseStart, verseEnd) {
-    if (!BIBLE_DATA) return null;
-    const bk = BIBLE_DATA[book];
-    if (!bk) return null;
-    const ch = bk[chap];
-    if (!ch) return null;
-    const list = [];
-    if (!verseEnd || verseStart === verseEnd) {
-      if (ch[verseStart]) list.push({ n: verseStart, t: ch[verseStart] });
-    } else {
-      const s = parseInt(verseStart, 10), e = parseInt(verseEnd, 10);
-      for (let i = s; i <= e; i++) {
-        if (ch[i]) list.push({ n: String(i), t: ch[i] });
-      }
-    }
-    return list.length ? list : null;
-  }
-
-  function ensureBibleTooltipEl() {
-    if (bibleTooltipEl) return bibleTooltipEl;
-    bibleTooltipEl = document.createElement('div');
-    bibleTooltipEl.className = 'bible-tooltip';
-    bibleTooltipEl.setAttribute('role', 'tooltip');
-    document.body.appendChild(bibleTooltipEl);
-    return bibleTooltipEl;
-  }
-
-  function showBibleTooltip(trigger) {
-    const ref = trigger.getAttribute('data-bref');
-    const book = trigger.getAttribute('data-book');
-    const chap = trigger.getAttribute('data-chap');
-    const vs = trigger.getAttribute('data-vs');
-    const ve = trigger.getAttribute('data-ve');
-    const tip = ensureBibleTooltipEl();
-    if (tip.parentNode !== document.body) document.body.appendChild(tip);
-
-    let bodyHtml;
-    if (!BIBLE_DATA) {
-      bodyHtml = '<div class="bible-tooltip-missing">성경 본문을 불러오는 중...</div>';
-    } else {
-      const verses = bibleLookup(book, chap, vs, ve);
-      if (!verses) {
-        bodyHtml = '<div class="bible-tooltip-missing">본문을 찾을 수 없습니다.</div>';
-      } else {
-        bodyHtml = '<div class="bible-tooltip-text">' +
-          verses.map(v => '<div class="bible-tooltip-verse"><span class="bible-tooltip-verse-num">' + v.n + '</span>' + v.t + '</div>').join('') +
-          '</div>';
-      }
-    }
-    tip.innerHTML = '<div class="bible-tooltip-ref">' + ref + '</div>' + bodyHtml;
-
-    tip.style.visibility = 'hidden';
-    tip.classList.add('show');
-
-    tip.style.left = '0px';
-    tip.style.top = '0px';
-    const probe0 = tip.getBoundingClientRect();
-    tip.style.left = '100px';
-    tip.style.top = '100px';
-    const probe100 = tip.getBoundingClientRect();
-    const fx = (probe100.left - probe0.left) / 100 || 1;
-    const fy = (probe100.top - probe0.top) / 100 || 1;
-
-    tip.style.left = '0px';
-    tip.style.top = '0px';
-    const tr = tip.getBoundingClientRect();
-    const tipW = tr.width;
-    const tipH = tr.height;
-
-    const triggerRect = trigger.getBoundingClientRect();
-    const margin = 8;
-    const gap = 4;
-
-    let visualLeft = triggerRect.left;
-    let visualTop = triggerRect.bottom + gap;
-    if (visualLeft + tipW > window.innerWidth - margin) {
-      visualLeft = window.innerWidth - tipW - margin;
-    }
-    if (visualLeft < margin) visualLeft = margin;
-    if (visualTop + tipH > window.innerHeight - margin) {
-      const above = triggerRect.top - tipH - gap;
-      if (above >= margin) visualTop = above;
-      else visualTop = Math.max(margin, window.innerHeight - tipH - margin);
+      return out;
     }
 
-    const styleLeft = (visualLeft - probe0.left) / fx;
-    const styleTop  = (visualTop  - probe0.top ) / fy;
-    tip.style.left = styleLeft + 'px';
-    tip.style.top = styleTop + 'px';
-    tip.style.visibility = 'visible';
-  }
-
-  function hideBibleTooltip() {
-    if (bibleTooltipEl) {
-      bibleTooltipEl.classList.remove('show');
-    }
-    bibleActiveTip = null;
-  }
-
-  function attachBibleTooltips(root) {
-    if (!root) return;
-    const keys = [...BIBLE_BOOKS_KO].sort((a, b) => b.length - a.length);
-    const pattern = new RegExp(
-      '(' + keys.join('|') + ')\\s+(?:(\\d+):)?(\\d+)(?:-(\\d+))?' +
-      '|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?' +
-      '|(?:,\\s*)(\\d+)(?:-(\\d+))?',
-      'g'
-    );
-
-    // Skip selectors include M1D4's existing static tooltip elements + chrome (topbar, sidepanel, modals).
-    const SKIP_SELECTOR = '.bible-tip,.ref-link,.tooltip,.tip-ref,.greek-card,.scene-marker,.verse-citation,.topbar,.sidepanel,.tts-reader-modal,.bible-tooltip,script,style';
-
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode(node) {
-        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        const p = node.parentElement;
-        if (!p) return NodeFilter.FILTER_REJECT;
-        if (p.closest(SKIP_SELECTOR)) return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-
-    const nodes = [];
-    let n;
-    while ((n = walker.nextNode())) nodes.push(n);
-
-    nodes.forEach(node => {
-      const text = node.nodeValue;
-      pattern.lastIndex = 0;
-      if (!pattern.test(text)) return;
-      pattern.lastIndex = 0;
-
-      let lastBook = null, lastChapter = null;
-      let lastIdx = 0;
-      let match;
-      let inserted = false;
-      const frag = document.createDocumentFragment();
-
-      while ((match = pattern.exec(text)) !== null) {
-        const full = match[0];
-        const book = match[1];
-        let chap = match[2];
-        const verse = match[3];
-        const endVerse = match[4];
-        const c2 = match[5], v2 = match[6], ev2 = match[7];
-        const v3 = match[8], ev3 = match[9];
-
-        let bk, ch, vs, ve, display, leadingComma = '';
-
-        if (book) {
-          if (chap === undefined) {
-            if (!BIBLE_SINGLE_CHAPTER.has(book)) continue;
-            chap = '1';
+    function parseBibleXml(xml) {
+      var doc = new DOMParser().parseFromString(xml, 'text/xml');
+      var data = {};
+      var books = doc.getElementsByTagName('Book');
+      for (var i = 0; i < books.length; i++) {
+        var b = books[i];
+        var abbrev = b.getAttribute('abbrevKo');
+        var nameKo = b.getAttribute('nameKo');
+        var chapters = {};
+        var chs = b.getElementsByTagName('Chapter');
+        for (var j = 0; j < chs.length; j++) {
+          var ch = chs[j];
+          var num = ch.getAttribute('num');
+          var verses = {};
+          var vs = ch.getElementsByTagName('Verse');
+          for (var k = 0; k < vs.length; k++) {
+            verses[vs[k].getAttribute('num')] = vs[k].textContent;
           }
-          bk = book; ch = chap; vs = verse; ve = endVerse;
-          lastBook = book; lastChapter = chap;
-          display = full;
-        } else if (v2) {
-          if (!lastBook) continue;
-          bk = lastBook; ch = c2; vs = v2; ve = ev2;
-          lastChapter = c2;
-          const m = full.match(/^,\s*/);
-          leadingComma = m ? m[0] : '';
-          display = full.slice(leadingComma.length);
-        } else if (v3) {
-          if (!lastBook || !lastChapter) continue;
-          bk = lastBook; ch = lastChapter; vs = v3; ve = ev3;
-          const m = full.match(/^,\s*/);
-          leadingComma = m ? m[0] : '';
-          display = full.slice(leadingComma.length);
-        } else {
-          continue;
+          chapters[num] = verses;
         }
-
-        const prefix = text.slice(lastIdx, match.index) + leadingComma;
-        if (prefix) frag.appendChild(document.createTextNode(prefix));
-
-        const span = document.createElement('span');
-        span.className = 'bible-tip';
-        span.setAttribute('tabindex', '0');
-        span.setAttribute('role', 'button');
-        span.setAttribute('aria-label', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : '') + ' 본문 보기');
-        span.setAttribute('data-bref', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : ''));
-        span.setAttribute('data-book', bk);
-        span.setAttribute('data-chap', ch);
-        span.setAttribute('data-vs', vs);
-        if (ve) span.setAttribute('data-ve', ve);
-        span.textContent = display;
-        frag.appendChild(span);
-
-        lastIdx = match.index + full.length;
-        inserted = true;
+        var entry = { abbrevKo: abbrev, nameKo: nameKo, chapters: chapters };
+        data[abbrev] = entry;
+        if (nameKo) data[nameKo] = entry;
       }
+      return data;
+    }
 
-      if (!inserted) return;
-      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
-      node.parentNode.replaceChild(frag, node);
-    });
-  }
-
-  function initBibleTooltips() {
-    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    const triggerOf = (target) => {
-      if (!target || !target.closest) return null;
-      if (target.closest('.bible-tooltip')) return null;
-      return target.closest('.bible-tip');
-    };
-
-    if (hasHover) {
-      document.body.addEventListener('mouseover', e => {
-        const t = triggerOf(e.target);
-        if (t) showBibleTooltip(t);
+    var bibleData = null;
+    var biblePromise = null;
+    function loadBible() {
+      if (bibleData) return Promise.resolve(bibleData);
+      if (biblePromise) return biblePromise;
+      biblePromise = fetch(XML_URL).then(function(r){
+        if (!r.ok) throw new Error('XML fetch ' + r.status);
+        return r.text();
+      }).then(function(xml){
+        var data = parseBibleXml(xml);
+        bibleData = data;
+        window.VrefBible = { data: data, meta: BOOK_META };
+        document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+        return data;
+      }).catch(function(e){
+        console.warn('[vref] Bible XML 로드 실패:', e);
+        bibleData = {};
+        window.VrefBible = { data: {}, meta: BOOK_META };
+        document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+        return bibleData;
       });
-      document.body.addEventListener('mouseout', e => {
-        const t = triggerOf(e.target);
-        if (!t) return;
-        const next = e.relatedTarget;
-        if (next && next.closest) {
-          if (next.closest('.bible-tooltip')) return;
-          if (next.closest('.bible-tip') === t) return;
-        }
-        hideBibleTooltip();
-      });
-      document.body.addEventListener('focusin', e => {
-        const t = triggerOf(e.target);
-        if (t) showBibleTooltip(t);
-      });
-      document.body.addEventListener('focusout', e => {
-        const t = triggerOf(e.target);
-        if (t) hideBibleTooltip();
+      return biblePromise;
+    }
+
+    var tooltipEl = null;
+    var backdropEl = null;
+    var activeLink = null;
+    var hideTimer = null;
+
+    function isMobileView() {
+      return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function ensureTooltip() {
+      if (tooltipEl) return tooltipEl;
+      tooltipEl = document.createElement('div');
+      tooltipEl.id = 'vref-tooltip';
+      document.body.appendChild(tooltipEl);
+      return tooltipEl;
+    }
+
+    function ensureBackdrop() {
+      if (backdropEl) return backdropEl;
+      backdropEl = document.createElement('div');
+      backdropEl.id = 'vref-tt-backdrop';
+      backdropEl.addEventListener('click', hideTooltip);
+      document.body.appendChild(backdropEl);
+      return backdropEl;
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/[&<>"']/g, function(c){
+        return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
       });
     }
 
-    document.body.addEventListener('click', e => {
-      if (e.target.closest && e.target.closest('.bible-tooltip')) return;
-      const t = e.target.closest && e.target.closest('.bible-tip');
-      if (t) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (bibleActiveTip === t) {
-          hideBibleTooltip();
-        } else {
-          showBibleTooltip(t);
-          bibleActiveTip = t;
+    function buildVerseLines(dataset, bookKey, chapter, versesStr) {
+      if (!dataset || !Object.keys(dataset).length) {
+        return { html: '<span class="vref-tt-empty">— 불러오는 중… —</span>', empty: true };
+      }
+      var entry = dataset[bookKey];
+      if (!entry) return { html: '<span class="vref-tt-empty">— 책을 찾을 수 없음 —</span>', empty: true };
+      var ch = entry.chapters[String(chapter)];
+      if (!ch) return { html: '<span class="vref-tt-empty">— ' + chapter + '장을 찾을 수 없음 —</span>', empty: true };
+      var groups = parseVerseSpec(versesStr);
+      var pieces = [];
+      for (var gi = 0; gi < groups.length; gi++) {
+        var g = groups[gi];
+        for (var v = g.start; v <= g.end; v++) {
+          var t = ch[String(v)];
+          if (typeof t === 'undefined') continue;
+          pieces.push('<div class="vref-tt-verse"><span class="vref-tt-vnum">[' + v + ']</span>' + escHtml(t) + '</div>');
         }
-        return;
       }
-      hideBibleTooltip();
-    });
+      if (!pieces.length) return { html: '<span class="vref-tt-empty">— 해당 절을 찾을 수 없음 —</span>', empty: true };
+      return { html: pieces.join(''), empty: false };
+    }
 
-    document.body.addEventListener('keydown', e => {
-      if (e.target.closest && e.target.closest('.bible-tooltip')) return;
-      const t = e.target.closest && e.target.closest('.bible-tip');
-      if (t && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault();
-        if (bibleActiveTip === t) hideBibleTooltip();
-        else { showBibleTooltip(t); bibleActiveTip = t; }
-      } else if (e.key === 'Escape') {
-        hideBibleTooltip();
+    function buildContent(bookKey, chapter, versesStr) {
+      var meta = BOOK_META[bookKey];
+      var koLabel = (meta ? meta.n : bookKey) + ' ' + chapter + '장 ' + versesStr + '절';
+      var ko = buildVerseLines(bibleData, bookKey, chapter, versesStr);
+      return (
+        '<div class="vref-tt-book">' + escHtml(koLabel) + '</div>' +
+        '<div class="vref-tt-body">' + ko.html + '</div>'
+      );
+    }
+
+    function positionTooltip(linkEl) {
+      var rect = linkEl.getBoundingClientRect();
+      var ttRect = tooltipEl.getBoundingClientRect();
+      var docY = window.scrollY || window.pageYOffset;
+      var docX = window.scrollX || window.pageXOffset;
+      var margin = 12;
+      var top = rect.bottom + docY + 10;
+      var left = rect.left + docX + (rect.width / 2) - (ttRect.width / 2);
+      if (left < docX + margin) left = docX + margin;
+      if (left + ttRect.width > docX + window.innerWidth - margin) {
+        left = docX + window.innerWidth - margin - ttRect.width;
       }
-    });
+      if (rect.bottom + ttRect.height + 10 > window.innerHeight && rect.top - ttRect.height - 10 > 0) {
+        top = rect.top + docY - ttRect.height - 10;
+      }
+      tooltipEl.style.top = top + 'px';
+      tooltipEl.style.left = left + 'px';
+    }
 
-    window.addEventListener('scroll', () => {
-      if (!bibleTooltipEl || !bibleTooltipEl.classList.contains('show')) return;
-      hideBibleTooltip();
-    }, { passive: true });
+    function renderTooltipInner(html, mobile) {
+      if (mobile) {
+        tooltipEl.innerHTML =
+          '<div class="vref-tt-handle"></div>' +
+          '<button class="vref-tt-close" type="button" aria-label="닫기">&times;</button>' +
+          html;
+        var btn = tooltipEl.querySelector('.vref-tt-close');
+        if (btn) btn.addEventListener('click', function(e){ e.stopPropagation(); hideTooltip(); });
+      } else {
+        tooltipEl.innerHTML = html;
+      }
+    }
 
-    window.addEventListener('resize', () => hideBibleTooltip());
-  }
+    function showTooltip(linkEl) {
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      activeLink = linkEl;
+      ensureTooltip();
+      var mobile = isMobileView();
+      if (mobile) ensureBackdrop();
+      var b = linkEl.dataset.book;
+      var c = linkEl.dataset.chapter;
+      var v = linkEl.dataset.verses;
+      if (!b || !c || !v) return;
+      function render() {
+        renderTooltipInner(buildContent(b, parseInt(c, 10), v), mobile);
+        if (mobile) {
+          tooltipEl.style.top = '';
+          tooltipEl.style.left = '';
+          tooltipEl.scrollTop = 0;
+          backdropEl.dataset.show = '1';
+        } else {
+          positionTooltip(linkEl);
+        }
+        tooltipEl.dataset.show = '1';
+      }
+      render();
+      if (!bibleData) {
+        loadBible().then(function(){
+          if (activeLink !== linkEl) return;
+          render();
+        });
+      }
+    }
 
-  (function bootstrapBibleTooltips() {
-    const start = () => {
-      // Run after quiz cards are created so their text gets scanned too.
-      requestAnimationFrame(() => {
-        initBibleTooltips();
-        attachBibleTooltips(document.body);
-        loadBibleXML();
+    function hideTooltip() {
+      activeLink = null;
+      if (tooltipEl) tooltipEl.dataset.show = '0';
+      if (backdropEl) backdropEl.dataset.show = '0';
+    }
+
+    // ----- Bridge: <button class="verse-link" data-verse="마 17:20"> → vref-link -----
+    function upgradeVerseLinks() {
+      document.querySelectorAll('.verse-link[data-verse]').forEach(function(el){
+        if (el.dataset.bound) return;
+        var m = el.dataset.verse.match(/^(\S+)\s+(\d+):(.+)$/);
+        if (!m) return;
+        el.classList.add('vref-link');
+        el.dataset.book = m[1];
+        el.dataset.chapter = m[2];
+        el.dataset.verses = m[3];
+        el.dataset.bound = '1';
+        if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
       });
-    };
+    }
+
+    function bind() {
+      // Desktop hover
+      document.addEventListener('mouseover', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) showTooltip(link);
+      });
+      document.addEventListener('mouseout', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (!link) return;
+        var to = e.relatedTarget;
+        if (to && to.closest && to.closest('.vref-link') === link) return;
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(hideTooltip, 100);
+      });
+      // Mobile tap-to-toggle
+      document.addEventListener('click', function(e){
+        if (!isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) {
+          e.preventDefault();
+          if (activeLink === link) hideTooltip();
+          else showTooltip(link);
+        }
+      });
+      // Keyboard (PC only)
+      document.addEventListener('focusin', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) showTooltip(link);
+      });
+      document.addEventListener('focusout', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) hideTooltip();
+      });
+      // Auto-close on page scroll — PC only
+      window.addEventListener('scroll', function(){
+        if (isMobileView()) return;
+        hideTooltip();
+      }, true);
+      window.addEventListener('resize', hideTooltip);
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') hideTooltip();
+      });
+    }
+
+    function init() {
+      upgradeVerseLinks();
+      bind();
+      loadBible();
+    }
+
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', start);
+      document.addEventListener('DOMContentLoaded', init);
     } else {
-      start();
+      init();
     }
   })();
 
@@ -2306,8 +2582,6 @@
     const body = g.querySelector('.gate-body');
     if (!body) return '';
     const clone = body.cloneNode(true);
-    // Replace tooltip refs (link text + tip-ref) with plain text only — drop the inner tooltip explanation.
-    clone.querySelectorAll('.tooltip').forEach(t => t.remove());
     return ttsCleanText(clone.textContent);
   }
 
