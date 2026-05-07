@@ -383,22 +383,133 @@
             }
         }
 
-        /* Hero typography */
+        /* Hero typography (compact) */
         .hero-title {
             font-family: 'Noto Serif KR', serif;
             font-weight: 500;
-            font-size: clamp(2.4rem, 6vw, 4.6rem);
-            line-height: 1.18;
+            font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+            line-height: 1.25;
             letter-spacing: -0.01em;
             color: var(--primary);
         }
-
         .hero-eng {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
             font-weight: 500;
             color: var(--accent);
         }
+
+        /* ============== OUTLINE MODAL (per-message) ============== */
+        #outline-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            display: none;
+        }
+        #outline-modal.is-open { display: block; }
+        .overview-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(28,46,42,0.55);
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+            animation: fadeBackdrop 0.25s ease;
+        }
+        @keyframes fadeBackdrop {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .overview-dialog {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg);
+            width: min(820px, calc(100vw - 1.5rem));
+            max-height: 88vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+            animation: dialogIn 0.3s cubic-bezier(0.2,0.7,0.3,1);
+        }
+        @keyframes dialogIn {
+            from { opacity: 0; transform: translate(-50%, -48%); }
+            to   { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        .overview-close {
+            position: absolute;
+            top: 0.55rem;
+            right: 0.6rem;
+            width: 38px; height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: transparent;
+            font-size: 1.7rem;
+            line-height: 1;
+            color: var(--ink-soft);
+            cursor: pointer;
+            transition: color 0.15s;
+            z-index: 5;
+        }
+        .overview-close:hover { color: var(--accent); }
+        .outline-modal-header {
+            padding: 2rem 2.25rem 1.25rem;
+            border-bottom: 1px solid var(--rule);
+            background: var(--bg-alt);
+            flex-shrink: 0;
+        }
+        .outline-modal-header h2 {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            line-height: 1.3;
+            margin-top: 0.5rem;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+        .outline-modal-body {
+            padding: 1.5rem 2.25rem 2rem;
+            overflow-y: auto;
+            flex: 1 1 auto;
+            font-size: 0.98rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        @media (max-width: 768px) {
+            /* Full-screen popup on mobile */
+            .overview-dialog {
+                top: 0 !important;
+                left: 0 !important;
+                transform: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 100vh !important;
+                max-height: 100vh !important;
+                border-top-width: 3px;
+                animation: slideUp 0.3s cubic-bezier(0.2,0.7,0.3,1);
+            }
+            @keyframes slideUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            .outline-modal-header { padding: 1.25rem 1.25rem 1rem; }
+            .outline-modal-body { padding: 1.1rem 1.25rem 2rem; font-size: 0.94rem; }
+            .overview-close { top: 0.3rem; right: 0.3rem; }
+        }
+
+        /* ============== COMPACT FOOTER ============== */
+        .compact-footer {
+            background: var(--primary);
+            color: #a09686;
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+        .compact-footer .accent { color: #e89a7c; }
 
         body { padding-top: 40px; }
 
@@ -483,10 +594,7 @@
             <a href="#top" class="font-semibold text-[12px] tracking-[0.18em] uppercase hover:text-[#e89a7c] transition mx-3">
                 Spring Elders' Training · 2026
             </a>
-            <a href="#editors-note" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition mr-4">서문</a>
-            <a href="#index" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition mr-4">목차</a>
-            <a href="#index" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition mr-4">메시지</a>
-            <a href="#closing" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition pr-2">말씀카드</a>
+            <a href="#index" class="text-[12px] tracking-wider hover:text-[#e89a7c] transition pr-2">메시지</a>
         </div>
         <div class="flex items-center h-[40px] flex-shrink-0">
             <span class="text-[10px] tracking-widest text-[#8a9a93] mr-2 hidden sm:inline">A A</span>
@@ -502,199 +610,67 @@
             <i class="fas fa-home mr-2"></i>홈페이지 (Seven Feasts)
         </a>
         <a href="#top" class="menu-item" onclick="toggleMenu()">표제 (Cover)</a>
-        <a href="#editors-note" class="menu-item" onclick="toggleMenu()">EDITOR'S NOTE · 서문</a>
-        <a href="#index" class="menu-item" onclick="toggleMenu()">ISSUE INDEX · 목차</a>
         <a href="#index" class="menu-item menu-parent" onclick="toggleMenu()">ARTICLES · 8 메시지</a>
         <div id="menu-articles"></div>
-        <a href="#closing" class="menu-item" onclick="toggleMenu()">CLOSING · 말씀카드</a>
     </div>
 
-    <!-- ============ Hero / Cover ============ -->
-    <header id="top" class="bg-alt scroll-mt-[60px]">
-        <div class="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-16 pt-14 md:pt-20 pb-16 md:pb-24">
-            <!-- Top metadata strip -->
-            <div class="flex flex-wrap items-center justify-between gap-3 mb-10 md:mb-16 pb-4 border-b border-[#d4cdbf]">
-                <div class="flex items-center gap-3 sans text-[11px] tracking-[0.25em] uppercase ink-soft">
-                    <span class="display italic accent text-[1.1rem] leading-none">Vol. <span class="meta">XXVI</span></span>
-                    <span class="w-1 h-1 rounded-full bg-[#c9532e] inline-block"></span>
-                    <span class="meta">Spring 2026</span>
-                </div>
+    <!-- ============ Compact Hero ============ -->
+    <header id="top" class="bg-alt scroll-mt-[60px] border-b border-[#d4cdbf]">
+        <div class="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-16 pt-8 md:pt-10 pb-7 md:pb-9">
+            <div class="flex flex-wrap items-center gap-3 sans text-[10px] tracking-[0.25em] uppercase ink-soft mb-3">
+                <span class="display italic accent text-[1rem] leading-none">Vol. <span class="meta">XXVI</span></span>
+                <span class="w-1 h-1 rounded-full bg-[#c9532e] inline-block"></span>
+                <span class="meta">Spring 2026</span>
+                <span class="w-1 h-1 rounded-full bg-[#c9532e] inline-block"></span>
+                <span class="meta">8 Messages · 48 Daily</span>
             </div>
-
-            <!-- Main cover grid -->
-            <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-end">
-                <!-- Left: Title (60%) -->
-                <div class="lg:col-span-7">
-                    <p class="label-tag mb-5">Issue 2026 · Elders' International Training</p>
-                    <h1 class="hero-title mb-7">
-                        말씀의 사역과<br>
-                        <span class="accent display italic font-medium" style="font-size:1.04em;">하나님의 경륜을 위한</span><br>
-                        하나님의 분배
-                    </h1>
-                    <div class="flex items-center gap-5">
-                        <span class="block w-16 h-[2px] bg-[#c9532e]"></span>
-                        <p class="hero-eng text-lg md:text-xl">The Ministry of the Word and God's Dispensing for God's Economy</p>
-                    </div>
-                </div>
-
-                <!-- Right: Meta box (40%) -->
-                <aside class="lg:col-span-5">
-                    <div class="meta-box">
-                        <dl class="space-y-4 sans text-[12px]">
-                            <div>
-                                <dt class="text-[10px] tracking-[0.28em] uppercase ink-soft mb-1">Issue</dt>
-                                <dd class="meta text-[1rem] font-medium ink">2026 / SPRING</dd>
-                            </div>
-                            <div>
-                                <dt class="text-[10px] tracking-[0.28em] uppercase ink-soft mb-1">Edition</dt>
-                                <dd class="meta text-[0.95rem] ink">Elders' &amp; Responsible Brothers'<br>International Training</dd>
-                            </div>
-                            <div>
-                                <dt class="text-[10px] tracking-[0.28em] uppercase ink-soft mb-1">Dates · Venue</dt>
-                                <dd class="meta text-[0.95rem] ink">March 20–22, 2026<br>Anaheim, California</dd>
-                            </div>
-                            <div>
-                                <dt class="text-[10px] tracking-[0.28em] uppercase ink-soft mb-1">Volume</dt>
-                                <dd class="meta text-[0.95rem] ink">8 Messages · 48 Daily Sections</dd>
-                            </div>
-                        </dl>
-                    </div>
-
-                    <!-- Subscript -->
-                    <p class="serif italic ink-soft text-[0.85rem] mt-5 leading-relaxed">
-                        “주의 종은… 가르치기를 잘하며…”<br>
-                        <span class="meta not-italic accent">— 딤후 2:24</span>
-                    </p>
-                </aside>
-            </div>
-
-            <!-- Bottom rule + caption -->
-            <div class="mt-14 md:mt-20">
-                <div class="h-[3px] w-full bg-[#c9532e]"></div>
-                <p class="display italic text-center mt-5 text-base md:text-lg ink-soft">
-                    “Be a workman approved by God, accurately handling the word of the truth.”
-                </p>
-            </div>
+            <h1 class="hero-title mb-3">
+                말씀의 사역과 <span class="accent display italic font-medium">하나님의 분배</span>
+            </h1>
+            <p class="hero-eng text-base md:text-lg leading-snug">
+                The Ministry of the Word and God's Dispensing for God's Economy
+            </p>
         </div>
     </header>
 
-    <!-- ============ Editor's Note ============ -->
-    <section id="editors-note" class="scroll-mt-[60px] py-20 md:py-28 px-6 md:px-10">
-        <div class="max-w-[680px] mx-auto">
-            <div class="mb-10 flex items-center gap-4">
-                <span class="label-tag">Editor's Note</span>
+    <!-- ============ Eight Messages ============ -->
+    <section id="index" class="scroll-mt-[60px] py-7 md:py-10 px-6 md:px-10 lg:px-16">
+        <div class="max-w-[1100px] mx-auto">
+            <div class="flex items-center gap-4 mb-5">
+                <span class="label-tag">Eight Messages</span>
                 <span class="flex-1 h-px bg-[#d4cdbf]"></span>
-                <span class="meta text-[11px] tracking-[0.2em] ink-soft">003 / 064</span>
+                <span class="meta text-[10px] tracking-[0.2em] ink-soft uppercase hidden sm:inline">8 · 48 Daily</span>
             </div>
-
-            <h2 class="display italic text-3xl md:text-4xl mb-8 ink leading-tight">
-                A Conference on the Ministry &amp; the Dispensing
-            </h2>
-
-            <p class="serif text-[1.02rem] md:text-[1.08rem] leading-[2] dropcap ink mb-7">
-                이번 봄 훈련의 중심에는 한 가지 부담이 있습니다. 곧, 사도들이 “기도하는 것과 그리고 말씀의 사역을 꾸준히 계속할 것이다”라고 말한 것처럼 (<a href="#" class="bible-link">행 6:4</a>), 우리도 같은 기도와 같은 사역에 헌신해야 한다는 부담입니다. 말씀의 사역은 교리의 전달이 아니라, 삼일 하나님 자신을 그분의 백성 안으로 분배하는 통로입니다.
-            </p>
-
-            <p class="serif text-[1.02rem] md:text-[1.08rem] leading-[2] ink mb-7">
-                여덟 메시지에 걸쳐 우리는 기도, 화목, 생명의 공급, 분량의 한계, 신실한 청지기로서의 협력, 요한의 사역의 분배, 그리고 영원한 축복을 살펴봅니다. 모든 메시지는 한 강물을 따라 흐릅니다 — 그 강물은 “생명이신 삼일 하나님께서 세 부분으로 된 사람 안으로 분배되심” 입니다 (<a href="#" class="bible-link">엡 3:17-19</a>).
-            </p>
-
-            <p class="serif text-[1.02rem] md:text-[1.08rem] leading-[2] ink-soft italic">
-                이 저널은 본 훈련 자료를 매일 매일 묵상으로 따라가도록 편집되었습니다. 매주 개요와 일일 분배(Day 1 ~ Day 6), 그리고 핵심 성구를 함께 펼쳐 둡니다.
-            </p>
-
-            <div class="mt-12 ornate-rule"><span class="diamond"></span></div>
+            <div id="accordion-container" class="space-y-3"></div>
         </div>
     </section>
 
-    <!-- ============ Pull Quote 1 ============ -->
-    <section class="bg-alt py-20 md:py-28 px-6 md:px-10">
-        <div class="max-w-[860px] mx-auto pullquote">
-            <p class="display italic font-medium text-2xl md:text-[2rem] leading-[1.5] ink">
-                기도의 참된 의미는 우리의 영 안에서 하나님을 접촉하고
-                <span class="accent">하나님 자신을 흡수하는 것이다.</span>
-            </p>
-            <p class="meta text-[11px] tracking-[0.25em] uppercase mt-7 ink-soft">
-                — Message 1 · Outline II
-            </p>
-        </div>
-    </section>
-
-    <!-- ============ Issue Index · Eight Messages ============ -->
-    <section id="index" class="scroll-mt-[60px] bg-alt py-20 md:py-28 px-6 md:px-10">
-        <div class="max-w-[1280px] mx-auto">
-            <div class="text-center mb-12">
-                <p class="label-tag mb-3">Inside this Issue</p>
-                <h2 class="display italic text-4xl md:text-5xl ink mb-4">Eight Messages</h2>
-                <div class="ornate-rule max-w-md mx-auto"><span class="diamond"></span></div>
-                <p class="serif italic ink-soft text-base mt-5 max-w-xl mx-auto leading-relaxed">
-                    각 메시지의 제목을 클릭하면 한 주의 개요와 일일 분배가 펼쳐집니다.
-                </p>
+    <!-- ============ Outline Modal (per-message) ============ -->
+    <div id="outline-modal" role="dialog" aria-modal="true" aria-labelledby="outline-title" aria-hidden="true">
+        <div class="overview-backdrop" onclick="closeOutline()"></div>
+        <div class="overview-dialog outline-dialog">
+            <button type="button" class="overview-close" onclick="closeOutline()" aria-label="닫기">&times;</button>
+            <div class="outline-modal-header">
+                <p class="label-tag" id="outline-eyebrow">Outline</p>
+                <h2 id="outline-title" class="display italic ink"></h2>
+                <p id="outline-subtitle" class="serif italic accent text-[0.92rem] mt-2"></p>
             </div>
-
-            <div id="accordion-container" class="space-y-4"></div>
+            <div id="outline-body" class="outline-modal-body ink"></div>
         </div>
-    </section>
-
-    <!-- ============ Pull Quote 2 ============ -->
-    <section class="py-20 md:py-28 px-6 md:px-10">
-        <div class="max-w-[860px] mx-auto pullquote">
-            <p class="display italic font-medium text-2xl md:text-[2rem] leading-[1.5] ink">
-                생명이신 삼일 하나님께서 그분 자신을
-                <span class="accent">세 부분으로 된 사람 안으로 분배하심으로써,</span>
-                하나님의 의에 따라, 하나님의 거룩함을 통하여, 하나님의 영광에 이르도록 하신다.
-            </p>
-            <p class="meta text-[11px] tracking-[0.25em] uppercase mt-7 ink-soft">
-                — Message 8 · Theme
-            </p>
-        </div>
-    </section>
-
-    <!-- ============ Closing ============ -->
-    <section id="closing" class="scroll-mt-[60px] bg-forest text-[#f3eddf] py-20 md:py-28 px-6 md:px-10">
-        <div class="max-w-[860px] mx-auto text-center">
-            <p class="label-tag mb-4" style="color:#e89a7c;">Closing</p>
-            <h2 class="display italic text-4xl md:text-5xl mb-8 leading-tight">신언 · 말씀 카드</h2>
-            <p class="serif text-[1.05rem] md:text-[1.15rem] leading-[2] mb-10" style="color:#e6dcc8;">
-                매일의 분배 후 기록되는 신언 (神言, Prophesying)은
-                훈련의 마지막 호흡입니다. 받은 말씀을 자신의 언어로 다시 빚어,
-                몸의 지체들에게 공급하십시오.
-            </p>
-            <div class="inline-block px-8 py-5 border border-[#3a4f4a]">
-                <p class="display italic text-2xl md:text-3xl" style="color:#e89a7c;">“Amen. Come, Lord Jesus!”</p>
-                <p class="meta text-[11px] tracking-[0.3em] uppercase mt-2" style="color:#8a9a93;">— Revelation 22:20</p>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Back to top -->
-    <a href="#top" id="backToTop" class="fixed bottom-5 right-5 md:bottom-8 md:right-8 bg-[#1c2e2a] text-[#f3eddf] w-12 h-12 md:w-14 md:h-14 text-base md:text-lg flex items-center justify-center shadow-lg hover:bg-[#2a4540] transition z-40 opacity-0 pointer-events-none" aria-label="맨 위로" style="border-radius: 2px; opacity: 1; pointer-events: auto;">
+    <a href="#top" id="backToTop" class="fixed bottom-5 right-5 md:bottom-8 md:right-8 bg-[#1c2e2a] text-[#f3eddf] w-12 h-12 md:w-14 md:h-14 text-base md:text-lg flex items-center justify-center shadow-lg hover:bg-[#2a4540] transition z-40 opacity-0 pointer-events-none" aria-label="맨 위로" style="border-radius: 2px;">
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- ============ Footer ============ -->
-    <footer class="bg-[#0f1c19] text-[#a09686] py-16 md:py-20 px-6 md:px-10 sans">
-        <div class="max-w-[1100px] mx-auto">
-            <div class="grid md:grid-cols-3 gap-10 md:gap-16 mb-12">
-                <div>
-                    <p class="label-tag mb-3" style="color:#c9532e;">Colophon</p>
-                    <p class="display italic text-2xl text-[#f3eddf] leading-tight">2026 Spring International<br>Training for Elders<br>&amp; Responsible Brothers</p>
-                </div>
-                <div>
-                    <p class="label-tag mb-3" style="color:#c9532e;">Theme</p>
-                    <p class="serif text-[#f3eddf] text-[0.95rem] leading-relaxed">The Ministry of the Word and God's Dispensing for God's Economy</p>
-                </div>
-                <div>
-                    <p class="label-tag mb-3" style="color:#c9532e;">Publisher</p>
-                    <p class="meta text-[0.85rem] leading-relaxed">Korea Gospel Book Room<br>한국복음서원<br>Korean Copyright © 2026</p>
-                </div>
-            </div>
-            <div class="h-px bg-[#2a3530] mb-8"></div>
-            <div class="flex flex-wrap items-center justify-between gap-4">
-                <p class="display italic text-[#e89a7c] text-lg">“Amen. Come, Lord Jesus!” — Rev 22:20</p>
-                <p class="meta text-[10px] tracking-[0.25em] uppercase">For the building up of the Body of Christ</p>
-            </div>
-        </div>
+    <!-- ============ Compact Footer ============ -->
+    <footer class="compact-footer">
+        <span>Korea Gospel Book Room</span>
+        <span class="mx-3">·</span>
+        <span class="accent">한국복음서원</span>
+        <span class="mx-3">·</span>
+        <span>© 2026</span>
     </footer>
 
     <!-- ================= SCRIPT ================= -->
@@ -1242,29 +1218,18 @@
         const container = document.getElementById('accordion-container');
         container.innerHTML = messages.map(m => {
             const num = String(m.id).padStart(2,'0');
+            const base = `https://tk-korea.github.io/seven_feasts/2026/springelders`;
+            // Resource buttons (popup or external HTML)
+            const overviewBtn = `<button type="button" class="day-btn day-active" onclick="openOutline(${m.id})"><i class="fas fa-list-ul mr-1 text-[10px]"></i>개요</button>`;
+            const hymnBtn    = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Hymn.html">찬송</span>`;
+            const prayerBtn  = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Prayer.html">기도문</span>`;
+            const truthBtn   = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Truth.html">진리</span>`;
+            const lifeBtn    = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Life.html">생명</span>`;
+            const serviceBtn = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Service.html">봉사</span>`;
+            // Daily buttons
             const dayButtons = Array.from({length:6}, (_,i) =>
-                `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/springelders/M${m.id}D${i+1}.html">Day ${i+1}</span>`
+                `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}D${i+1}.html">Day ${i+1}</span>`
             ).join('');
-            const hymnBtn   = `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/springelders/M${m.id}Hymn.html">찬송</span>`;
-            const prayerBtn  = `<span class="day-btn day-disabled checking" data-url="https://tk-korea.github.io/seven_feasts/2026/springelders/M${m.id}Prayer.html">기도문</span>`;
-
-            const outlinesHtml = m.outlines.map(line => {
-                const match = line.match(/^([ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ]+|[A-Z]|\d+|[a-z])\.\s*/);
-                if (!match) {
-                    return `<div class="outline-row outline-letter"><p class="ko-break">${linkifyBible(line)}</p></div>`;
-                }
-                const lvlNum = match[1];
-                let level;
-                if (/[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ]/.test(lvlNum)) level = 'roman';
-                else if (/^[A-Z]$/.test(lvlNum)) level = 'letter';
-                else if (/^\d+$/.test(lvlNum)) level = 'arabic';
-                else level = 'lower';
-                const text = linkifyBible(line.slice(match[0].length));
-                return `<div class="outline-row outline-${level}">
-                    <span class="outline-num">${lvlNum}.</span>
-                    <p class="ko-break">${text}</p>
-                </div>`;
-            }).join('');
 
             return `
             <div id="m-${m.id}" class="article scroll-mt-[60px]">
@@ -1281,41 +1246,86 @@
                     <div class="accordion-body-inner">
                         <div class="accordion-body-divider"></div>
                         <div class="px-6 md:px-8 pt-5 md:pt-6 pb-6">
-                            <div class="mb-6">
-                                <p class="label-tag mb-3">Daily Sections</p>
+                            <div class="mb-5">
+                                <p class="label-tag mb-3">Sections · Resources</p>
                                 <div class="flex flex-wrap gap-2">
+                                    ${overviewBtn}
                                     ${hymnBtn}
                                     ${prayerBtn}
+                                    ${truthBtn}
+                                    ${lifeBtn}
+                                    ${serviceBtn}
                                     ${dayButtons}
                                 </div>
                                 <p class="meta text-[10px] tracking-[0.18em] uppercase ink-soft mt-3 leading-relaxed">
-                                    Active links update automatically when each day's material publishes.
+                                    Inactive links activate automatically when each material publishes.
                                 </p>
                             </div>
                             <div class="border-t border-[#e8e0d2] pt-5">
-                                <p class="serif italic accent text-[0.95rem] mb-5">${linkifyBible(m.scripture)}</p>
-                                <div class="w-12 h-px bg-[#d4cdbf] mb-5"></div>
-                                <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break max-w-3xl">
+                                <p class="serif italic accent text-[0.95rem] mb-4">${linkifyBible(m.scripture)}</p>
+                                <div class="w-12 h-px bg-[#d4cdbf] mb-4"></div>
+                                <p class="serif ink-soft text-[0.95rem] leading-[1.85] ko-break max-w-3xl mb-5">
                                     ${m.excerpt}
                                 </p>
+                                <div class="key-insight">
+                                    <p class="meta text-[10px] tracking-[0.32em] uppercase mb-2" style="color:#e89a7c;">Key Insight</p>
+                                    <p class="display italic text-[1.15rem] md:text-[1.3rem] leading-[1.5]">${m.insight}</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="border-t border-[#e8e0d2] px-6 md:px-8 py-8 md:py-10 bg-[#faf7f2]">
-                            <article>
-                                <div class="key-insight mb-10">
-                                    <p class="meta text-[10px] tracking-[0.32em] uppercase mb-3" style="color:#e89a7c;">Key Insight · Week ${num}</p>
-                                    <p class="display italic text-[1.35rem] md:text-[1.5rem] leading-[1.5]">${m.insight}</p>
-                                </div>
-                                <div class="ink text-[0.98rem] md:text-[1.02rem]">
-                                    ${outlinesHtml}
-                                </div>
-                            </article>
                         </div>
                     </div>
                 </div>
             </div>`;
         }).join('');
+    }
+
+    /* ===== 개요 팝업: 메시지의 outline 트리 렌더 ===== */
+    function buildOutlineTreeHtml(outlines) {
+        return outlines.map(line => {
+            const match = line.match(/^([ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ]+|[A-Z]|\d+|[a-z])\.\s*/);
+            if (!match) {
+                return `<div class="outline-row outline-letter"><p class="ko-break">${linkifyBible(line)}</p></div>`;
+            }
+            const lvlNum = match[1];
+            let level;
+            if (/[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ]/.test(lvlNum)) level = 'roman';
+            else if (/^[A-Z]$/.test(lvlNum)) level = 'letter';
+            else if (/^\d+$/.test(lvlNum)) level = 'arabic';
+            else level = 'lower';
+            const text = linkifyBible(line.slice(match[0].length));
+            return `<div class="outline-row outline-${level}">
+                <span class="outline-num">${lvlNum}.</span>
+                <p class="ko-break">${text}</p>
+            </div>`;
+        }).join('');
+    }
+
+    function openOutline(id){
+        const m = messages.find(x => x.id === id);
+        if (!m) return;
+        const num = String(m.id).padStart(2,'0');
+        const titleEl = document.getElementById('outline-title');
+        const eyebrowEl = document.getElementById('outline-eyebrow');
+        const subtitleEl = document.getElementById('outline-subtitle');
+        const bodyEl = document.getElementById('outline-body');
+        if (eyebrowEl) eyebrowEl.textContent = `Outline · Message ${num}`;
+        if (titleEl) titleEl.textContent = m.titleKo;
+        if (subtitleEl) subtitleEl.innerHTML = linkifyBible(m.scripture);
+        if (bodyEl) bodyEl.innerHTML = buildOutlineTreeHtml(m.outlines);
+        const modal = document.getElementById('outline-modal');
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        if (bodyEl) bodyEl.scrollTop = 0;
+        const closeBtn = modal.querySelector('.overview-close');
+        if (closeBtn) closeBtn.focus();
+    }
+    function closeOutline(){
+        const modal = document.getElementById('outline-modal');
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
     }
 
     /* ===== 아코디언 토글 ===== */
@@ -1343,7 +1353,7 @@
 
     /* ===== 링크 유효성 실시간 확인 ===== */
     async function checkLinks(){
-        const buttons = document.querySelectorAll('.day-btn');
+        const buttons = document.querySelectorAll('.day-btn[data-url]');
         const checks = Array.from(buttons).map(async (btn) => {
             const url = btn.getAttribute('data-url');
             try {
@@ -1403,6 +1413,14 @@
         const tocBtn = document.querySelector('button[aria-label="목차"]');
         if (menu && !menu.classList.contains('hidden') && !menu.contains(e.target) && !(tocBtn && tocBtn.contains(e.target))) {
             menu.classList.add('hidden');
+        }
+    });
+
+    /* ===== ESC closes outline modal ===== */
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const m = document.getElementById('outline-modal');
+            if (m && m.classList.contains('is-open')) closeOutline();
         }
     });
 
