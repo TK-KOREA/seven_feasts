@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>화목의 사역 — 휘장을 넘어, 지성소로</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  :root {
+    --cream: #f6ecd9;
+    --cream-deep: #ecdfc4;
+    --parchment: #f1e6cf;
+    --sand: #e3d2ad;
+    --gold: #b88a3e;
+    --gold-deep: #8c6321;
+    --gold-soft: #d6b46a;
+    --ink: #2d1d0e;
+    --ink-soft: #4a3622;
+    --crimson: #8a3a30;
+    --crimson-soft: #a14a3f;
+    --veil: #5d3d4f;
+    --shadow: rgba(60, 40, 15, 0.08);
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+    overflow-x: hidden;
+  }
+
+  .font-display { font-family: 'Cormorant Garamond', 'Nanum Myeongjo', serif; font-weight: 500; }
+  .font-display-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }
+  .font-greek { font-family: 'Cormorant', 'Cormorant Garamond', serif; font-style: italic; }
+  .font-han { font-family: 'Gowun Batang', 'Nanum Myeongjo', serif; }
+  .font-body { font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif; }
+
+  /* Paper texture */
+  .paper-grain {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184,138,62,0.06) 0px, transparent 1px),
+      radial-gradient(circle at 70% 60%, rgba(45,29,14,0.04) 0px, transparent 1px),
+      radial-gradient(circle at 40% 80%, rgba(184,138,62,0.05) 0px, transparent 1px);
+    background-size: 3px 3px, 5px 5px, 7px 7px;
+  }
+
+  .vignette {
+    box-shadow: inset 0 0 120px rgba(60, 40, 15, 0.12);
+  }
+
+  /* Decorative ornament */
+  .ornament-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--gold);
+  }
+  .ornament-line::before,
+  .ornament-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes drawLine {
+    from { stroke-dashoffset: 1000; }
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes lightBeam {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.05); }
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(8px, -6px); }
+  }
+  @keyframes tearVeil {
+    0% { transform: scaleY(1); opacity: 1; }
+    100% { transform: scaleY(0.05) translateY(-50%); opacity: 0; }
+  }
+  @keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(184,138,62,0.4)); }
+    50% { filter: drop-shadow(0 0 18px rgba(184,138,62,0.7)); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-slow {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.6s ease-out, transform 1.6s ease-out;
+  }
+  .reveal-slow.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Bible reference styling */
+  .bible-ref {
+    color: var(--gold-deep);
+    border-bottom: 1px dashed var(--gold-soft);
+    cursor: help;
+    transition: all 0.2s;
+    position: relative;
+    font-weight: 500;
+  }
+  .bible-ref:hover {
+    color: var(--crimson);
+    border-bottom-color: var(--crimson);
+  }
+
+  /* Tooltip */
+  .tooltip-card {
+    position: absolute;
+    z-index: 50;
+    background: var(--parchment);
+    border: 1px solid var(--gold-soft);
+    box-shadow: 0 12px 40px rgba(60,40,15,0.18), inset 0 0 0 1px rgba(255,255,255,0.4);
+    padding: 1rem 1.25rem;
+    max-width: 360px;
+    min-width: 240px;
+    border-radius: 2px;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    animation: fadeIn 0.3s ease-out;
+  }
+  .tooltip-card::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 24px;
+    width: 12px;
+    height: 12px;
+    background: var(--parchment);
+    border-left: 1px solid var(--gold-soft);
+    border-top: 1px solid var(--gold-soft);
+    transform: rotate(45deg);
+  }
+
+  /* Hero light beam */
+  .light-beam {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 120%;
+    background: radial-gradient(ellipse at top, rgba(214,180,106,0.55), rgba(214,180,106,0.15) 40%, transparent 70%);
+    filter: blur(20px);
+    animation: lightBeam 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .candle-glow {
+    animation: flicker 3s ease-in-out infinite;
+  }
+
+  /* Veil */
+  .veil-curtain {
+    background:
+      linear-gradient(180deg, #5d3d4f 0%, #4a2f3f 50%, #3a2330 100%),
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.1) 0 2px, transparent 2px 8px);
+    background-blend-mode: multiply;
+    transform-origin: top center;
+    transition: transform 1.8s cubic-bezier(0.6, 0, 0.4, 1), opacity 1.8s ease-out;
+  }
+  .veil-tear-left {
+    transform-origin: top right;
+  }
+  .veil-tear-right {
+    transform-origin: top left;
+  }
+  .veil-torn .veil-tear-left {
+    transform: perspective(800px) rotateY(-65deg) translateX(-10%);
+    opacity: 0.4;
+  }
+  .veil-torn .veil-tear-right {
+    transform: perspective(800px) rotateY(65deg) translateX(10%);
+    opacity: 0.4;
+  }
+
+  /* Quiz card flip */
+  .quiz-option {
+    transition: all 0.25s ease;
+    border: 1px solid rgba(184,138,62,0.3);
+  }
+  .quiz-option:hover:not(.answered) {
+    border-color: var(--gold);
+    background: rgba(184,138,62,0.06);
+    transform: translateX(4px);
+  }
+  .quiz-option.correct {
+    background: rgba(141, 110, 47, 0.12);
+    border-color: var(--gold-deep);
+    color: var(--gold-deep);
+  }
+  .quiz-option.wrong {
+    background: rgba(138, 58, 48, 0.08);
+    border-color: var(--crimson);
+    color: var(--crimson);
+    opacity: 0.7;
+  }
+
+  /* Greek word card */
+  .greek-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    background: var(--parchment);
+    border: 1px solid rgba(184,138,62,0.25);
+  }
+  .greek-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 12px 28px rgba(60,40,15,0.12);
+    transform: translateY(-3px);
+  }
+  .greek-card.expanded {
+    background: linear-gradient(180deg, var(--parchment), var(--cream));
+    border-color: var(--gold);
+    box-shadow: 0 16px 40px rgba(60,40,15,0.15);
+  }
+
+  /* Drop cap */
+  .dropcap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 4em;
+    float: left;
+    line-height: 0.85;
+    margin: 0.05em 0.12em -0.08em 0;
+    color: var(--gold-deep);
+  }
+
+  /* Section dividers */
+  .deco-asterism {
+    color: var(--gold);
+    letter-spacing: 0.5em;
+    font-size: 0.9rem;
+  }
+
+  /* Footnote numbering */
+  sup.footnote {
+    color: var(--gold-deep);
+    font-weight: 600;
+    margin-left: 0.1em;
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    animation: drift 2.5s ease-in-out infinite;
+  }
+
+  /* Prayer section */
+  .prayer-paper {
+    background:
+      linear-gradient(180deg, #f4e8cf, #ecdfc4),
+      repeating-linear-gradient(0deg, transparent 0 28px, rgba(184,138,62,0.08) 28px 29px);
+    background-blend-mode: multiply;
+    border: 1px solid rgba(184,138,62,0.3);
+    box-shadow: 0 30px 60px rgba(60,40,15,0.12), inset 0 0 0 1px rgba(255,255,255,0.5);
+  }
+
+  /* Hand drawn arrow */
+  .hand-arrow {
+    stroke-dasharray: 4 0;
+  }
+
+  /* Stage reveal */
+  .stage-card {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .stage-card:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--cream-deep); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-soft); border-radius: 0; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+  /* Selection */
+  ::selection { background: var(--gold-soft); color: var(--ink); }
+
+  /* Number badge */
+  .number-badge {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold-deep);
+  }
+
+  /* Mirror */
+  .mirror-flip {
+    transform: scaleY(-1);
+    opacity: 0.25;
+    mask-image: linear-gradient(180deg, black, transparent 80%);
+    -webkit-mask-image: linear-gradient(180deg, black, transparent 80%);
+  }
+
+  @media (max-width: 768px) {
+    .hide-mobile { display: none; }
+  }
+
+  /* ═════════════════════════════════════════════════════════
+     PORTED FEATURES — Topbar, Side Panel, Bible Tooltip, TTS
+     (themed to M2D1 cream/gold/ink)
+     ═════════════════════════════════════════════════════════ */
+  :root { --topbar-h: 44px; --font-scale: 1; }
+  html { font-size: calc(16px * var(--font-scale)); }
+  body { padding-top: var(--topbar-h); }
+
+  /* Top bar */
+  .topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(246,236,217,0.92);backdrop-filter:saturate(150%) blur(10px);-webkit-backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid rgba(184,138,62,0.3);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+  .topbar-btn{flex-shrink:0;width:34px;height:34px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);opacity:0.85;transition:background .15s, opacity .15s}
+  .topbar-btn:hover{background:rgba(184,138,62,0.12);opacity:1;color:var(--gold-deep)}
+  .topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:500;letter-spacing:0.12em;color:var(--gold-deep);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px;text-transform:uppercase}
+  .topbar-title::-webkit-scrollbar{display:none}
+  .font-controls{display:flex;align-items:center;gap:2px;border:1px solid rgba(184,138,62,0.3);border-radius:4px;padding:2px;margin-left:4px}
+  .font-ctrl-btn{width:26px;height:26px;border:none;background:transparent;color:var(--ink-soft);font-size:14px;cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif}
+  .font-ctrl-btn:hover{background:rgba(184,138,62,0.18);color:var(--gold-deep)}
+
+  /* Overlay & Side panel */
+  .overlay{position:fixed;inset:0;background:rgba(45,29,14,0.45);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:linear-gradient(180deg,var(--cream) 0%,var(--cream-deep) 100%);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 32px rgba(60,40,15,0.3);font-family:'Noto Serif KR',serif;border-right:1px solid rgba(184,138,62,0.28)}
+  .sidepanel.open{transform:translateX(0)}
+  .sidepanel-header{padding:0 22px 16px;border-bottom:1px solid rgba(184,138,62,0.25);margin-bottom:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-deep);display:flex;align-items:center;gap:8px}
+  .sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--ink-soft);opacity:0.7;display:flex;align-items:center;justify-content:center}
+  .sidepanel-close:hover{background:rgba(184,138,62,0.18);color:var(--gold-deep);opacity:1}
+  .sp-nav{display:block;padding:10px 22px;font-size:13px;color:var(--ink);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:400;letter-spacing:-0.005em;opacity:0.85}
+  .sp-nav:hover{background:rgba(184,138,62,0.10);color:var(--gold-deep);opacity:1}
+  .sp-nav.sub{padding-left:38px;font-size:12.5px;font-weight:300;color:var(--ink-soft);opacity:0.75}
+  .sp-divider{height:1px;background:rgba(184,138,62,0.22);margin:10px 22px}
+  .sp-home{display:flex;align-items:center;gap:8px;color:var(--gold-deep);opacity:0.95;font-weight:500}
+  .sp-home-icon{flex-shrink:0;color:var(--gold-deep)}
+
+  /* TTS Reader modal */
+  .tts-reader-overlay{display:none;position:fixed;inset:0;background:rgba(45,29,14,0.65);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:2000;align-items:center;justify-content:center;padding:20px}
+  .tts-reader-overlay.active{display:flex}
+  .tts-reader-modal{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-deep) 100%);border-radius:6px;max-width:520px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 22px 60px rgba(45,29,14,0.45);border:1px solid rgba(184,138,62,0.35);border-top:3px solid var(--gold);font-family:'Noto Serif KR',serif;color:var(--ink)}
+  .tts-reader-header{padding:18px 22px 14px;border-bottom:1px dashed rgba(184,138,62,0.3);display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .tts-reader-icon{flex-shrink:0;color:var(--gold-deep)}
+  .tts-reader-title{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:500;color:var(--ink);flex:1}
+  .tts-reader-close{width:30px;height:30px;background:transparent;border:1px solid rgba(184,138,62,0.35);border-radius:50%;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;opacity:0.8}
+  .tts-reader-close:hover{background:var(--gold);color:var(--cream);border-color:var(--gold);opacity:1}
+  .tts-reader-body{padding:14px 22px;overflow-y:auto;flex:1}
+  .tts-form-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px;margin-top:14px;display:block}
+  .tts-form-label:first-child{margin-top:0}
+  .tts-voice-select{width:100%;padding:10px 12px;border:1px solid rgba(184,138,62,0.35);border-radius:4px;font-family:inherit;font-size:13px;background:var(--parchment);color:var(--ink)}
+  .tts-api-row{display:flex;gap:8px;align-items:center}
+  .tts-api-row input{flex:1;padding:9px 11px;border:1px solid rgba(184,138,62,0.35);border-radius:4px;font-family:inherit;font-size:12px;background:var(--parchment);color:var(--ink)}
+  .tts-api-row button{padding:9px 14px;border:1px solid var(--gold);background:var(--gold);color:var(--cream);border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer}
+  .tts-api-row button:hover{background:var(--gold-deep)}
+  .tts-section-list{border:1px solid rgba(184,138,62,0.25);border-radius:4px;background:var(--parchment);max-height:240px;overflow-y:auto}
+  .tts-section-item{display:flex;align-items:flex-start;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid rgba(184,138,62,0.18);font-size:13px;color:var(--ink);transition:background 0.15s}
+  .tts-section-item:last-child{border-bottom:none}
+  .tts-section-item:hover{background:rgba(184,138,62,0.08)}
+  .tts-section-item.all{font-weight:600;color:var(--gold-deep);background:rgba(184,138,62,0.10)}
+  .tts-section-item.playing{background:rgba(184,138,62,0.20);color:var(--gold-deep);font-weight:500}
+  .tts-section-checkbox{flex-shrink:0;width:15px;height:15px;margin-top:2px;accent-color:var(--gold);cursor:pointer}
+  .tts-section-label{flex:1;line-height:1.45}
+  .tts-progress{margin-top:14px;padding:12px 14px;background:var(--parchment);border:1px solid rgba(184,138,62,0.25);border-radius:4px;display:none}
+  .tts-progress.active{display:block}
+  .tts-progress-bar{height:6px;background:rgba(184,138,62,0.18);border-radius:3px;overflow:hidden}
+  .tts-progress-fill{height:100%;background:var(--gold-deep);width:0%;transition:width 0.3s}
+  .tts-progress-text{font-size:12px;color:var(--ink-soft);margin-top:8px;line-height:1.5}
+  .tts-progress-text strong{color:var(--gold-deep)}
+  .tts-status{font-size:11.5px;color:var(--ink-soft);margin-top:10px;font-style:italic;line-height:1.5;opacity:0.75}
+  .tts-status.error{color:var(--crimson);font-style:normal;font-weight:600;opacity:1}
+  .tts-reader-footer{padding:14px 22px 18px;border-top:1px solid rgba(184,138,62,0.25);display:flex;gap:10px;flex-shrink:0}
+  .tts-btn{flex:1;padding:11px 16px;border:1px solid rgba(184,138,62,0.35);background:transparent;color:var(--ink);border-radius:4px;font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:600;letter-spacing:0.06em;cursor:pointer;transition:all 0.15s}
+  .tts-btn:hover:not(:disabled){background:rgba(184,138,62,0.12);color:var(--gold-deep)}
+  .tts-btn:disabled{opacity:0.4;cursor:not-allowed}
+  .tts-btn.primary{background:var(--gold);border-color:var(--gold);color:var(--cream)}
+  .tts-btn.primary:hover:not(:disabled){background:var(--gold-deep);color:var(--cream)}
+  @media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
+
+  /* Mobile-friendly adjustments to existing M2D1 layout */
+  @media (max-width: 640px) {
+    section { padding-left: 1rem !important; padding-right: 1rem !important; }
+    .topbar-title { font-size: 11px; letter-spacing: 0.08em; }
+    .greek-card { padding: 1.25rem !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR (outside React root) -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="topbar-title">화목의 사역 · 휘장을 넘어, 지성소로 · 고후 5:20</div>
+  <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="sp-nav sp-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="sp-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" onclick="goTo('sec-hero')" style="color:var(--gold-deep);font-weight:500;">✦ 제목 — 화목의 사역</a>
+  <a class="sp-nav" onclick="goTo('sec-verse')">오늘의 구절 (고후 5:20) + 헬라어 묵상</a>
+  <a class="sp-nav" onclick="goTo('sec-core')">메시지의 심장</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" style="font-weight:600;color:var(--gold-deep);">상세 설명</a>
+  <a class="sp-nav sub" onclick="goTo('sec-stages')">두 단계의 화목 (성막 도해)</a>
+  <a class="sp-nav sub" onclick="goTo('sec-veil')">분리하는 휘장</a>
+  <a class="sp-nav sub" onclick="goTo('sec-ambassador')">대사의 자격</a>
+  <a class="sp-nav sub" onclick="goTo('sec-deeper')">깊이 읽기</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" onclick="goTo('sec-quiz')">묵상 점검 · 퀴즈</a>
+  <a class="sp-nav" onclick="goTo('sec-prayer')">오늘의 기도</a>
+</div>
+
+<!-- TTS READER MODAL -->
+<div class="tts-reader-overlay" id="tts-reader-overlay" onclick="ttsCloseOnBg(event)">
+  <div class="tts-reader-modal" onclick="event.stopPropagation()">
+    <div class="tts-reader-header">
+      <svg class="tts-reader-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      <div class="tts-reader-title">본문 듣기</div>
+      <button class="tts-reader-close" onclick="ttsCloseReader()" aria-label="닫기">✕</button>
+    </div>
+    <div class="tts-reader-body">
+      <label class="tts-form-label">API 키</label>
+      <div class="tts-api-row">
+        <input type="password" id="tts-api-key" placeholder="API 키를 입력하세요" />
+        <button onclick="ttsSaveApiKey()">저장</button>
+      </div>
+      <label class="tts-form-label">음성 선택</label>
+      <select class="tts-voice-select" id="tts-voice-select">
+        <option value="tk_voice">tk_voice</option>
+      </select>
+      <label class="tts-form-label">읽을 항목 (기본: 전체 선택)</label>
+      <div class="tts-section-list" id="tts-section-list"></div>
+      <div class="tts-progress" id="tts-progress">
+        <div class="tts-progress-bar"><div class="tts-progress-fill" id="tts-progress-fill"></div></div>
+        <div class="tts-progress-text" id="tts-progress-text">대기 중...</div>
+      </div>
+      <div class="tts-status" id="tts-status">서버에서 음성 목록을 불러옵니다...</div>
+    </div>
+    <div class="tts-reader-footer">
+      <button class="tts-btn" id="tts-stop-btn" onclick="ttsStop()" disabled>⏹ 중지</button>
+      <button class="tts-btn" id="tts-pause-btn" onclick="ttsTogglePause()" disabled>⏸ 일시정지</button>
+      <button class="tts-btn primary" id="tts-play-btn" onclick="ttsPlay()">▶ 재생</button>
+    </div>
+  </div>
+</div>
+
+<div id="root"></div>
+
+<!-- Chrome JS (plain, runs outside React) -->
+<script>
+  // ─────── Font scaling, side panel ───────
+  let fontScale = 1;
+  function adjustFont(dir) {
+    if (dir === 0) fontScale = 1;
+    else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+    else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+    document.documentElement.style.setProperty('--font-scale', fontScale);
+  }
+  function togglePanel() {
+    document.getElementById('sidepanel').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+  function goTo(id) {
+    togglePanel();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  }
+
+  // ─────── TTS Reader ───────
+  const TTS_CONFIG = {
+    serverUrl: 'https://qwen.tkhome.cloud',
+    apiKey: localStorage.getItem('qwen_tts_api_key') || '',
+    defaultVoice: 'tk_voice',
+    sampleRate: 24000,
+    pauseSec: 0.4,
+    chunkMaxLen: 200
+  };
+
+  const TTS_SECTIONS = [
+    { id: 'sec-hero',       title: '제목 — 화목의 사역' },
+    { id: 'sec-verse',      title: '오늘의 구절 (고후 5:20) + 헬라어 묵상' },
+    { id: 'sec-core',       title: '메시지의 심장' },
+    { id: 'sec-stages',     title: '두 단계의 화목 (성막)' },
+    { id: 'sec-veil',       title: '분리하는 휘장' },
+    { id: 'sec-ambassador', title: '대사의 자격' },
+    { id: 'sec-deeper',     title: '깊이 읽기' },
+    { id: 'sec-prayer',     title: '오늘의 기도' }
+  ];
+
+  function ttsClean(text) {
+    if (!text) return '';
+    return text.replace(/\s+/g, ' ').replace(/\[[^\]]*\]/g, '').trim();
+  }
+
+  function ttsExtract(secId) {
+    const root = document.getElementById(secId);
+    if (!root) return '';
+    const clone = root.cloneNode(true);
+    // Drop decorative / non-readable elements:
+    //  - SVGs, scroll cues
+    //  - tooltip-card popups
+    //  - Greek script (font-greek) and transliteration (font-display-italic) — keep meaning + text
+    //  - veil curtains / hero dust particles
+    clone.querySelectorAll('svg, .scroll-hint, .tooltip-card, .light-beam, .veil-curtain, .deco-asterism, .candle-glow, .number-badge, .font-greek, .mirror-flip').forEach(el => el.remove());
+    return ttsClean(clone.textContent);
+  }
+
+  const TTS_EXTRACTORS = {};
+  TTS_SECTIONS.forEach(s => { TTS_EXTRACTORS[s.id] = () => ttsExtract(s.id); });
+
+  let ttsAudioContext = null;
+  let ttsNextPlayTime = 0;
+  let ttsScheduledSources = [];
+  let ttsCurrentReader = null;
+  let ttsIsCanceled = false;
+  let ttsIsPlaying = false;
+  let ttsIsPaused = false;
+
+  function ttsPcmToBuffer(int16Bytes, ctx) {
+    const evenLen = int16Bytes.byteLength - (int16Bytes.byteLength % 2);
+    if (evenLen === 0) return null;
+    const aligned = new Uint8Array(evenLen);
+    aligned.set(int16Bytes.subarray(0, evenLen));
+    const int16 = new Int16Array(aligned.buffer);
+    const float32 = new Float32Array(int16.length);
+    for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768;
+    const buffer = ctx.createBuffer(1, float32.length, TTS_CONFIG.sampleRate);
+    buffer.copyToChannel(float32, 0);
+    return buffer;
+  }
+
+  function ttsScheduleBuffer(buffer) {
+    if (!buffer || !ttsAudioContext) return;
+    const source = ttsAudioContext.createBufferSource();
+    source.buffer = buffer;
+    source.connect(ttsAudioContext.destination);
+    const now = ttsAudioContext.currentTime;
+    if (ttsNextPlayTime < now) ttsNextPlayTime = now;
+    source.start(ttsNextPlayTime);
+    ttsScheduledSources.push(source);
+    ttsNextPlayTime += buffer.duration;
+    source.onended = () => {
+      const idx = ttsScheduledSources.indexOf(source);
+      if (idx >= 0) ttsScheduledSources.splice(idx, 1);
+    };
+  }
+
+  function ttsStopPlayback() {
+    ttsScheduledSources.forEach(src => { try { src.stop(); } catch(e) {} });
+    ttsScheduledSources = [];
+    ttsNextPlayTime = 0;
+  }
+
+  function ttsOpenReader() {
+    document.getElementById('tts-reader-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    ttsInitSectionList();
+    if (TTS_CONFIG.apiKey) document.getElementById('tts-api-key').value = TTS_CONFIG.apiKey;
+    ttsLoadVoices();
+  }
+
+  function ttsCloseReader() {
+    if (ttsIsPlaying) {
+      if (!confirm('재생 중입니다. 정말 닫으시겠습니까?')) return;
+      ttsStop();
+    }
+    document.getElementById('tts-reader-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function ttsCloseOnBg(e) {
+    if (e.target.id === 'tts-reader-overlay') ttsCloseReader();
+  }
+
+  function ttsSaveApiKey() {
+    const input = document.getElementById('tts-api-key');
+    TTS_CONFIG.apiKey = input.value.trim();
+    localStorage.setItem('qwen_tts_api_key', TTS_CONFIG.apiKey);
+    ttsSetStatus(TTS_CONFIG.apiKey ? 'API 키가 저장되었습니다.' : 'API 키가 비워졌습니다.');
+    ttsLoadVoices();
+  }
+
+  function ttsInitSectionList() {
+    const list = document.getElementById('tts-section-list');
+    if (list.dataset.initialized === 'true') return;
+    list.innerHTML = '';
+    const allItem = document.createElement('label');
+    allItem.className = 'tts-section-item all';
+    allItem.innerHTML = '<input type="checkbox" class="tts-section-checkbox" id="tts-section-all" checked><span class="tts-section-label">전체 선택 / 해제</span>';
+    allItem.querySelector('input').addEventListener('change', function() { ttsToggleAll(this); });
+    list.appendChild(allItem);
+    TTS_SECTIONS.forEach(sec => {
+      const item = document.createElement('label');
+      item.className = 'tts-section-item';
+      item.dataset.sectionId = sec.id;
+      item.innerHTML = '<input type="checkbox" class="tts-section-checkbox" data-section="' + sec.id + '" checked><span class="tts-section-label">' + sec.title + '</span>';
+      list.appendChild(item);
+    });
+    list.dataset.initialized = 'true';
+  }
+
+  function ttsToggleAll(cb) {
+    document.querySelectorAll('#tts-section-list input[data-section]').forEach(c => c.checked = cb.checked);
+  }
+
+  async function ttsLoadVoices() {
+    const select = document.getElementById('tts-voice-select');
+    try {
+      const res = await fetch(TTS_CONFIG.serverUrl + '/voices');
+      if (!res.ok) throw new Error('서버 응답 ' + res.status);
+      const data = await res.json();
+      select.innerHTML = '';
+      if (!data.voices || data.voices.length === 0) {
+        const opt = document.createElement('option');
+        opt.textContent = '(등록된 음성 없음)';
+        select.appendChild(opt);
+        ttsSetStatus('등록된 음성이 없습니다.', true);
+        return;
+      }
+      data.voices.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v.name;
+        opt.textContent = v.name + (v.name === data.default ? ' (기본)' : '');
+        select.appendChild(opt);
+      });
+      if (data.default) select.value = data.default;
+      ttsSetStatus(data.voices.length + '개 음성 로드 완료. 항목을 선택하고 재생을 누르세요.');
+    } catch (e) {
+      select.innerHTML = '<option>tk_voice</option>';
+      ttsSetStatus('음성 목록 로드 실패: ' + e.message, true);
+    }
+  }
+
+  function ttsSetStatus(msg, isError) {
+    const el = document.getElementById('tts-status');
+    el.textContent = msg;
+    el.className = 'tts-status' + (isError ? ' error' : '');
+  }
+
+  function ttsUpdateProgress(current, total, sectionTitle) {
+    document.getElementById('tts-progress').classList.add('active');
+    document.getElementById('tts-progress-fill').style.width = (current / total * 100) + '%';
+    document.getElementById('tts-progress-text').innerHTML = '<strong>' + current + ' / ' + total + '</strong> · ' + sectionTitle;
+  }
+
+  function ttsHighlightSection(sectionId) {
+    document.querySelectorAll('#tts-section-list .tts-section-item').forEach(el => el.classList.remove('playing'));
+    if (sectionId) {
+      const item = document.querySelector('#tts-section-list .tts-section-item[data-section-id="' + sectionId + '"]');
+      if (item) item.classList.add('playing');
+    }
+  }
+
+  async function ttsPlay() {
+    if (!TTS_CONFIG.apiKey) { ttsSetStatus('먼저 API 키를 입력하고 저장하세요.', true); return; }
+    const checked = document.querySelectorAll('#tts-section-list input[data-section]:checked');
+    if (checked.length === 0) { ttsSetStatus('읽을 항목을 하나 이상 선택하세요.', true); return; }
+    const voice = document.getElementById('tts-voice-select').value;
+    const selectedIds = Array.from(checked).map(cb => cb.dataset.section);
+    const sectionsToRead = TTS_SECTIONS.filter(s => selectedIds.includes(s.id));
+
+    ttsIsCanceled = false;
+    ttsIsPlaying = true;
+    document.getElementById('tts-play-btn').disabled = true;
+    document.getElementById('tts-stop-btn').disabled = false;
+    document.getElementById('tts-pause-btn').disabled = false;
+
+    if (!ttsAudioContext || ttsAudioContext.state === 'closed') {
+      const Ctor = window.AudioContext || window.webkitAudioContext;
+      try {
+        ttsAudioContext = new Ctor({ sampleRate: TTS_CONFIG.sampleRate });
+      } catch (e) {
+        ttsAudioContext = new Ctor();
+      }
+    }
+    if (ttsAudioContext.state === 'suspended') await ttsAudioContext.resume();
+    ttsIsPaused = false;
+    ttsUpdatePauseBtn();
+
+    ttsStopPlayback();
+
+    try {
+      for (let i = 0; i < sectionsToRead.length; i++) {
+        if (ttsIsCanceled) break;
+        const sec = sectionsToRead[i];
+        const extractor = TTS_EXTRACTORS[sec.id];
+        if (!extractor) continue;
+        ttsUpdateProgress(i + 1, sectionsToRead.length, sec.title);
+        ttsHighlightSection(sec.id);
+        ttsSetStatus('재생 중: ' + sec.title);
+        const text = extractor();
+        if (!text || text.trim().length < 2) continue;
+        await ttsStreamText(text, voice);
+        if (ttsIsCanceled) break;
+      }
+      while (!ttsIsCanceled) {
+        if (ttsAudioContext.state === 'suspended') {
+          await new Promise(r => setTimeout(r, 200));
+          continue;
+        }
+        const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
+        if (remaining <= 0) break;
+        ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
+        await new Promise(r => setTimeout(r, Math.min(remaining * 1000 + 200, 1000)));
+      }
+      if (!ttsIsCanceled) ttsSetStatus('✅ 모든 항목 재생 완료');
+      else ttsSetStatus('⏹ 중지됨');
+    } catch (e) {
+      ttsSetStatus('❌ 오류: ' + e.message, true);
+    } finally {
+      ttsIsPlaying = false;
+      ttsIsPaused = false;
+      ttsHighlightSection(null);
+      document.getElementById('tts-play-btn').disabled = false;
+      document.getElementById('tts-stop-btn').disabled = true;
+      document.getElementById('tts-pause-btn').disabled = true;
+      ttsUpdatePauseBtn();
+      ttsCurrentReader = null;
+    }
+  }
+
+  async function ttsStreamText(text, voice) {
+    const res = await fetch(TTS_CONFIG.serverUrl + '/tts/stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': TTS_CONFIG.apiKey },
+      body: JSON.stringify({ text: text, voice: voice, pause_sec: TTS_CONFIG.pauseSec, chunk_max_len: TTS_CONFIG.chunkMaxLen })
+    });
+    if (!res.ok) {
+      let errMsg = 'HTTP ' + res.status;
+      try { const err = await res.json(); errMsg = err.detail || errMsg; } catch(e) {}
+      throw new Error(errMsg);
+    }
+    const reader = res.body.getReader();
+    ttsCurrentReader = reader;
+    let buffer = new Uint8Array(0);
+    const MIN_DECODE = 24000;
+    while (true) {
+      let done, value;
+      try { ({ done, value } = await reader.read()); }
+      catch (e) { if (ttsIsCanceled) break; throw e; }
+      if (done || ttsIsCanceled) {
+        if (buffer.length >= 2 && !ttsIsCanceled) ttsScheduleBuffer(ttsPcmToBuffer(buffer, ttsAudioContext));
+        break;
+      }
+      const merged = new Uint8Array(buffer.length + value.length);
+      merged.set(buffer);
+      merged.set(value, buffer.length);
+      buffer = merged;
+      while (buffer.length >= MIN_DECODE && !ttsIsCanceled) {
+        const evenLen = MIN_DECODE - (MIN_DECODE % 2);
+        const audioBuffer = ttsPcmToBuffer(buffer.subarray(0, evenLen), ttsAudioContext);
+        if (audioBuffer) ttsScheduleBuffer(audioBuffer);
+        buffer = buffer.subarray(evenLen);
+      }
+    }
+  }
+
+  async function ttsStop() {
+    ttsIsCanceled = true;
+    if (ttsCurrentReader) { try { await ttsCurrentReader.cancel(); } catch(e) {} ttsCurrentReader = null; }
+    ttsStopPlayback();
+    if (ttsAudioContext && ttsAudioContext.state === 'suspended') {
+      try { await ttsAudioContext.resume(); } catch(e) {}
+    }
+    ttsIsPaused = false;
+    ttsSetStatus('⏹ 중지됨');
+    document.getElementById('tts-play-btn').disabled = false;
+    document.getElementById('tts-stop-btn').disabled = true;
+    document.getElementById('tts-pause-btn').disabled = true;
+    ttsUpdatePauseBtn();
+    ttsIsPlaying = false;
+    ttsHighlightSection(null);
+  }
+
+  async function ttsTogglePause() {
+    if (!ttsIsPlaying || !ttsAudioContext) return;
+    if (ttsIsPaused) {
+      try { await ttsAudioContext.resume(); } catch(e) {}
+      ttsIsPaused = false;
+      ttsSetStatus('▶ 재생 재개됨');
+    } else {
+      try { await ttsAudioContext.suspend(); } catch(e) {}
+      ttsIsPaused = true;
+      ttsSetStatus('⏸ 일시정지됨');
+    }
+    ttsUpdatePauseBtn();
+  }
+
+  function ttsUpdatePauseBtn() {
+    const btn = document.getElementById('tts-pause-btn');
+    if (!btn) return;
+    btn.textContent = ttsIsPaused ? '▶ 계속' : '⏸ 일시정지';
+  }
+</script>
+
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+/* ============================================================
+   BIBLE REFERENCE DATABASE
+   ============================================================ */
+const BIBLE_REFS = {
+  '롬 5:10': '우리가 원수였을 때에 하나님의 아들의 죽음을 통해 하나님과 화목하게 되었다면, 이미 화목하게 된 우리는 더욱 그분의 생명 안에서 구원받을 것입니다.',
+  '골 1:21': '여러분도 전에는 하나님을 멀리 떠나 있었으며, 악한 행실 때문에 여러분의 생각 안에서 그분과 원수들이었습니다.',
+  '골 1:20': '그분의 십자가의 피를 통하여 화평을 이루어, 만물 곧 땅에 있는 것들이나 하늘들에 있는 것들을 그분을 통해 그분 자신과 화목하게 하는 것을 기뻐하기 때문입니다.',
+  '고후 5:18': '이 모든 것은 하나님에게서 나온 것입니다. 하나님께서 그리스도를 통하여 우리를 하나님 자신과 화목하게 하시고, 우리에게 화목의 사역을 주셨습니다.',
+  '엡 2:16': '또한 적대감을 십자가로 소멸하셔서 이 십자가를 통하여 이 둘을 한 몸 안에서 하나님과 화목하게 하시려는 것입니다.',
+  '엡 2:18': '왜냐하면 그분을 통하여 우리 모두가 한 성령 안에서 아버지께 나아가기 때문입니다.',
+  '고후 5:19': '이것은 곧 하나님께서 그리스도 안에서 세상을 하나님 자신과 화목하게 하셨고, 그들의 허물을 그들에게 돌리지 않으셨으며, 화목의 말씀을 우리에게 맡기신 것입니다.',
+  '고후 5:20': '그러므로 우리가 그리스도를 대신하는 대사들이 되어, 하나님께서 우리를 통하여 여러분에게 권면하시듯이, 우리가 그리스도를 대신하여 여러분에게 간청합니다. 하나님과 화목하십시오.',
+  '고후 6:1': '그리고 하나님과 함께 일하는 우리가 또한 여러분에게 간절히 권합니다. 하나님의 은혜를 헛되이 받지 마십시오.',
+  '고후 6:2': '왜냐하면 하나님께서 "기쁘게 받을 만한 때에 내가 너의 말을 들었고, 구원의 날에 내가 너를 도왔다."라고 말씀하셨기 때문입니다. 보십시오, 지금이야말로 기쁘게 받아들이시기에 좋은 때이며, 지금이야말로 구원의 날입니다.',
+  '고전 15:3': '내가 우선적으로 여러분에게 전해 준 것은 나도 전해 받았던 것인데, 그것은 그리스도께서 성경대로 우리 죄들 때문에 죽으셨다는 것과,',
+  '벧전 2:24': '그분은 우리의 죄들을 직접 자기의 몸에 짊어지시고 나무에 달리셨습니다. 그것은 우리가 죄들에 대하여 죽음으로써 의에 대하여 살도록 하시려는 것입니다.',
+  '고후 5:14': '그리스도의 사랑이 우리를 강권합니다. 우리가 단정하는 것은 한 사람이 모든 사람을 대신하여 죽으셨으므로, 모든 사람이 죽었다는 것입니다.',
+  '고후 5:15': '그분께서 모든 사람을 대신하여 죽으신 것은 살아 있는 사람들이 더 이상 자신을 향하여 살지 않고, 자기들을 대신하여 죽으셨다가 살아나신 분을 향하여 살도록 하려는 것입니다.',
+  '고후 5:21': '하나님께서 죄를 알지도 못하신 분을 우리 대신 죄가 되게 하신 것은 우리가 그분 안에서 하나님의 의가 되도록 하시려는 것입니다.',
+  '롬 8:3': '율법이 육체 때문에 연약하여 할 수 없던 것을 하나님께서 하셨습니다. 곧 하나님은 죄와 관련하여 그분 자신의 아들을 죄의 육체의 모양으로 보내시어, 그 육체 안에서 죄에 대해 유죄판결 하심으로써',
+  '고후 4:10': '예수님을 죽게 한 것을 우리가 항상 몸에 지니고 다니는 것은 예수님의 생명도 우리 몸에서 나타나게 하려는 것입니다.',
+  '갈 2:20': '나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다.',
+  '갈 5:24': '그러나 그리스도 예수님께 속한 사람들은 육체를 그 정욕과 욕망과 함께 십자가에 못 박았습니다.',
+  '고전 3:1': '형제님들, 내가 전에 여러분에게 말할 때에 여러분을 영적인 사람들처럼 대할 수 없었고, 육체적인 사람 곧 그리스도 안에 있는 어린 아기들처럼 대하였습니다.',
+  '고전 2:14': '그러나 혼적인 사람은 하나님의 영의 일들을 받아들이지 않습니다. 왜냐하면 그 일들이 그 사람에게는 어리석게 보이기 때문입니다.',
+  '히 10:19': '그러므로 형제님들, 우리가 예수님의 피로 말미암아 담대하게 지성소에 들어가게 되었습니다.',
+  '히 10:20': '예수님은 휘장, 곧 그분의 육체를 통해서 우리를 위하여 새롭고 살아 있는 길을 열어 놓으셨습니다.',
+  '히 7:25': '그러므로 그분은 자신을 통하여 하나님께 나아오는 사람들을 철저히 구원하실 수 있으십니다. 왜냐하면 그분은 항상 살아 계셔서 그들을 위하여 중보기도를 하시기 때문입니다.',
+};
+
+/* ============================================================
+   BIBLE XML LOADER (Recovery Version)
+   ============================================================ */
+const BIBLE_XML_PATH = '../../recovery_bible_ko.xml';
+let BIBLE_DATA = null;
+let bibleLoadPromise = null;
+const bibleListeners = new Set();
+
+async function loadBibleXML() {
+  if (bibleLoadPromise) return bibleLoadPromise;
+  bibleLoadPromise = (async () => {
+    try {
+      const res = await fetch(BIBLE_XML_PATH);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const xml = new DOMParser().parseFromString(text, 'application/xml');
+      const data = {};
+      xml.querySelectorAll('Book').forEach(book => {
+        const abbrev = book.getAttribute('abbrevKo');
+        if (!abbrev) return;
+        const bk = data[abbrev] = {};
+        book.querySelectorAll('Chapter').forEach(chap => {
+          const cnum = chap.getAttribute('num');
+          const ch = bk[cnum] = {};
+          chap.querySelectorAll('Verse').forEach(v => {
+            ch[v.getAttribute('num')] = v.textContent;
+          });
+        });
+      });
+      BIBLE_DATA = data;
+      window.BIBLE_DATA = data;
+      bibleListeners.forEach(fn => { try { fn(); } catch(e) {} });
+      return true;
+    } catch (e) {
+      console.warn('[Bible] XML load failed:', e);
+      return false;
+    }
+  })();
+  return bibleLoadPromise;
+}
+
+function lookupBibleByRef(refKey) {
+  // refKey format: "고후 5:20" or "고후 5:20-21" or "고후 5:18-19"
+  if (!refKey) return null;
+  const m = refKey.match(/^(\S+)\s+(\d+):(\d+)(?:-(\d+))?$/);
+  if (!m) return null;
+  const [, book, chap, vsStr, veStr] = m;
+  if (!BIBLE_DATA || !BIBLE_DATA[book] || !BIBLE_DATA[book][chap]) return null;
+  const ch = BIBLE_DATA[book][chap];
+  if (!veStr || vsStr === veStr) return ch[vsStr] ? [{ n: vsStr, t: ch[vsStr] }] : null;
+  const s = parseInt(vsStr, 10), e = parseInt(veStr, 10);
+  const list = [];
+  for (let i = s; i <= e; i++) {
+    if (ch[i]) list.push({ n: String(i), t: ch[i] });
+  }
+  return list.length ? list : null;
+}
+
+/* ============================================================
+   TOOLTIP COMPONENT
+   ============================================================ */
+function BibleRef({ children, refKey }) {
+  const [show, setShow] = useState(false);
+  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const [, forceUpdate] = useState(0);
+  const ref = useRef(null);
+
+  // Re-render when XML loads so tooltips shown before load can refresh.
+  useEffect(() => {
+    const fn = () => forceUpdate(v => v + 1);
+    bibleListeners.add(fn);
+    return () => { bibleListeners.delete(fn); };
+  }, []);
+
+  const handleEnter = () => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      setCoords({
+        top: rect.bottom + window.scrollY + 10,
+        left: rect.left + window.scrollX
+      });
+    }
+    setShow(true);
+  };
+
+  // Prefer XML lookup; fall back to static map.
+  const xmlVerses = lookupBibleByRef(refKey);
+  const staticText = BIBLE_REFS[refKey];
+  const hasContent = xmlVerses || staticText;
+
+  return (
+    <span className="relative inline">
+      <span
+        ref={ref}
+        className="bible-ref"
+        onMouseEnter={handleEnter}
+        onMouseLeave={() => setShow(false)}
+        onClick={handleEnter}
+      >
+        {children || refKey}
+      </span>
+      {show && hasContent && (
+        <span
+          className="tooltip-card font-body"
+          style={{ top: coords.top + 'px', left: coords.left + 'px', position: 'absolute' }}
+        >
+          <span className="block font-display text-xs tracking-widest uppercase mb-1.5" style={{color: 'var(--gold-deep)'}}>{refKey}</span>
+          {xmlVerses ? (
+            <span className="block">
+              {xmlVerses.map((v, i) => (
+                <span key={i} className="block mb-1">
+                  <span style={{color: 'var(--gold-deep)', fontStyle: 'italic', fontWeight: 600, marginRight: '6px'}}>{v.n}</span>
+                  {v.t}
+                </span>
+              ))}
+            </span>
+          ) : (
+            <span className="block">{staticText}</span>
+          )}
+        </span>
+      )}
+    </span>
+  );
+}
+
+/* ============================================================
+   SCROLL REVEAL HOOK
+   ============================================================ */
+function useReveal() {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal, .reveal-slow').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
+
+/* ============================================================
+   ORNAMENT
+   ============================================================ */
+function Ornament({ small }) {
+  if (small) {
+    return (
+      <div className="flex items-center justify-center my-6 deco-asterism">
+        <span>· · ·</span>
+      </div>
+    );
+  }
+  return (
+    <div className="flex items-center justify-center gap-4 my-10" aria-hidden>
+      <svg width="60" height="14" viewBox="0 0 60 14" fill="none">
+        <path d="M0 7 L25 7" stroke="var(--gold)" strokeWidth="0.5" />
+        <circle cx="30" cy="7" r="1.5" fill="var(--gold)" />
+        <path d="M35 7 L60 7" stroke="var(--gold)" strokeWidth="0.5" />
+      </svg>
+      <span className="font-display-italic text-sm" style={{color: 'var(--gold-deep)'}}>✦</span>
+      <svg width="60" height="14" viewBox="0 0 60 14" fill="none">
+        <path d="M0 7 L25 7" stroke="var(--gold)" strokeWidth="0.5" />
+        <circle cx="30" cy="7" r="1.5" fill="var(--gold)" />
+        <path d="M35 7 L60 7" stroke="var(--gold)" strokeWidth="0.5" />
+      </svg>
+    </div>
+  );
+}
+
+/* ============================================================
+   1. HERO
+   ============================================================ */
+function Hero() {
+  return (
+    <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden"
+      style={{background: 'radial-gradient(ellipse at center, #2d1d0e 0%, #1a0f06 70%, #0d0703 100%)'}}>
+
+      <div className="light-beam" />
+
+      {/* Floating dust particles */}
+      <div className="absolute inset-0 pointer-events-none opacity-40">
+        {[...Array(20)].map((_, i) => (
+          <span key={i}
+            className="absolute rounded-full"
+            style={{
+              width: (Math.random() * 3 + 1) + 'px',
+              height: (Math.random() * 3 + 1) + 'px',
+              background: 'rgba(214,180,106,0.6)',
+              top: (Math.random() * 100) + '%',
+              left: (Math.random() * 100) + '%',
+              animation: `drift ${4 + Math.random() * 4}s ease-in-out infinite`,
+              animationDelay: (Math.random() * 3) + 's'
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 max-w-3xl">
+        <div className="reveal-slow visible" style={{animationDelay: '0.2s'}}>
+          <p className="font-display-italic text-sm md:text-base tracking-[0.4em] uppercase mb-8" style={{color: 'var(--gold-soft)'}}>
+            Today&apos;s Devotion · 화목의 사역
+          </p>
+        </div>
+
+        <div className="reveal-slow visible" style={{animationDelay: '0.6s'}}>
+          <h1 className="font-han text-3xl md:text-5xl lg:text-6xl leading-[1.4] mb-12"
+            style={{color: '#f4e8cf', fontWeight: 400, letterSpacing: '-0.01em'}}>
+            농담할 때,
+            <br />
+            <span style={{color: 'var(--gold-soft)'}}>당신은 그리스도 안에 있습니까?</span>
+          </h1>
+        </div>
+
+        <div className="reveal-slow visible" style={{animationDelay: '1.2s'}}>
+          <p className="font-display italic text-lg md:text-xl leading-relaxed max-w-xl mx-auto"
+            style={{color: 'rgba(244,232,207,0.7)'}}>
+            중립 지대는 없습니다.
+            <br />
+            우리는 그리스도 안에 있거나, 그분 밖에 있습니다.
+          </p>
+        </div>
+
+        <div className="reveal-slow visible mt-20" style={{animationDelay: '1.8s'}}>
+          <div className="scroll-hint flex flex-col items-center gap-3" style={{color: 'rgba(244,232,207,0.4)'}}>
+            <span className="font-display-italic text-xs tracking-[0.3em] uppercase">scroll</span>
+            <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
+              <path d="M7 1 V20 M1 14 L7 20 L13 14" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom title plate */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+        <p className="font-display-italic text-xs tracking-[0.5em] uppercase" style={{color: 'rgba(214,180,106,0.5)'}}>
+          The Veil &nbsp;·&nbsp; The Holy of Holies
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   2. TODAY'S VERSE
+   ============================================================ */
+function VerseSection() {
+  const [openCard, setOpenCard] = useState(null);
+
+  const greekWords = [
+    {
+      id: 'katallasso',
+      greek: 'καταλλάσσω',
+      transliteration: 'katallassō',
+      korPron: '카탈랏소',
+      gloss: '화목하게 하다',
+      etymology: 'κατά (완전히) + ἀλλάσσω (바꾸다)',
+      meaning: '본래 화폐 교환에서 온 단어로, "완전히 바꾸다, 적대 관계를 우호 관계로 전환하다"를 뜻합니다. 단순한 평화 협정이 아니라 두 당사자 사이의 본질적인 관계 전환입니다.',
+      reflection: '하나님은 우리를 변화시켜 그분과 같은 관계로 들어가게 하셨습니다.'
+    },
+    {
+      id: 'presbeuo',
+      greek: 'πρεσβεύω',
+      transliteration: 'presbeuō',
+      korPron: '프레스뷰오',
+      gloss: '대사가 되다',
+      etymology: 'πρέσβυς (장로, 연장자)에서 파생',
+      meaning: '왕의 권위를 위임받아 그분을 공식적으로 대표하는 자를 가리킵니다. 대사의 말은 곧 왕의 말이며, 대사의 위신은 곧 왕의 위신입니다.',
+      reflection: '대사는 자신을 말하지 않습니다. 그를 보낸 왕을 대표하기에, 그는 왕과 하나여야 합니다.'
+    },
+    {
+      id: 'deometha',
+      greek: 'δεόμεθα',
+      transliteration: 'deometha',
+      korPron: '데오메타',
+      gloss: '간청합니다',
+      etymology: 'δέομαι (필요하다, 결핍되다)의 중간태',
+      meaning: '단순한 권면이나 요청이 아니라, 절박한 필요에서 나오는 호소입니다. 마치 무릎 꿇고 빌듯이 간곡히 청하는 어조입니다.',
+      reflection: '하나님이 우리를 통해 간청하십니다. 이것은 명령보다 더 깊은 사랑의 음성입니다.'
+    },
+  ];
+
+  return (
+    <section className="py-32 px-6 relative paper-grain" style={{background: 'var(--cream)'}}>
+      <div className="max-w-5xl mx-auto">
+
+        <div className="text-center reveal">
+          <p className="font-display-italic tracking-[0.4em] uppercase text-sm mb-3" style={{color: 'var(--gold-deep)'}}>
+            Today&apos;s Verse
+          </p>
+          <p className="font-display text-base mb-1" style={{color: 'var(--ink-soft)'}}>
+            고린도후서 5장 20절
+          </p>
+        </div>
+
+        <Ornament />
+
+        {/* The Verse */}
+        <blockquote className="reveal text-center max-w-3xl mx-auto">
+          <p className="font-han text-xl md:text-2xl lg:text-3xl leading-[2] mb-8" style={{color: 'var(--ink)', fontWeight: 400}}>
+            그러므로 우리가{' '}
+            <span style={{color: 'var(--gold-deep)', fontWeight: 700}}>그리스도를 대신하는 대사들</span>
+            이 되어, 하나님께서 우리를 통하여 여러분에게 권면하시듯이, 우리가{' '}
+            <span style={{color: 'var(--gold-deep)', fontWeight: 700}}>그리스도를 대신하여 여러분에게 간청합니다</span>.
+            <br />
+            <span className="font-han text-2xl md:text-4xl mt-6 inline-block" style={{color: 'var(--crimson)', fontWeight: 700, letterSpacing: '0.02em'}}>
+              하나님과 화목하십시오.
+            </span>
+          </p>
+        </blockquote>
+
+        <Ornament small />
+
+        {/* Greek word analysis */}
+        <div className="reveal mt-16">
+          <p className="text-center font-display italic text-sm tracking-widest mb-2" style={{color: 'var(--gold-deep)'}}>
+            ΕΛΛΗΝΙΚΌΝ &nbsp;·&nbsp; 헬라어 원문 묵상
+          </p>
+          <p className="text-center text-sm mb-10" style={{color: 'var(--ink-soft)'}}>
+            카드를 클릭해 단어 속 깊이를 살펴보세요
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {greekWords.map((word) => {
+              const isOpen = openCard === word.id;
+              return (
+                <div
+                  key={word.id}
+                  className={`greek-card p-7 ${isOpen ? 'expanded' : ''}`}
+                  onClick={() => setOpenCard(isOpen ? null : word.id)}
+                >
+                  <div className="text-center">
+                    <p className="font-greek text-3xl md:text-4xl mb-1" style={{color: 'var(--gold-deep)'}}>
+                      {word.greek}
+                    </p>
+                    <p className="font-han text-xs mb-1" style={{color: 'var(--gold-deep)', opacity: 0.75, letterSpacing: '0.08em'}}>
+                      <span style={{fontStyle: 'italic', opacity: 0.7}}>⟨ </span>{word.korPron}<span style={{fontStyle: 'italic', opacity: 0.7}}> ⟩</span>
+                    </p>
+                    <p className="font-display italic text-sm mb-1" style={{color: 'var(--ink-soft)'}}>
+                      {word.transliteration}
+                    </p>
+                    <p className="font-han text-sm mb-4" style={{color: 'var(--crimson)'}}>
+                      {word.gloss}
+                    </p>
+                  </div>
+
+                  <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="pt-4 border-t" style={{borderColor: 'rgba(184,138,62,0.25)'}}>
+                      <p className="font-display italic text-xs mb-2" style={{color: 'var(--gold-deep)'}}>
+                        어원 · {word.etymology}
+                      </p>
+                      <p className="text-sm leading-relaxed mb-3" style={{color: 'var(--ink-soft)'}}>
+                        {word.meaning}
+                      </p>
+                      <p className="font-han text-sm italic leading-relaxed pl-3 border-l-2" style={{color: 'var(--ink)', borderColor: 'var(--gold)'}}>
+                        {word.reflection}
+                      </p>
+                    </div>
+                  </div>
+
+                  {!isOpen && (
+                    <p className="text-center text-xs font-display-italic mt-2" style={{color: 'var(--gold-deep)'}}>
+                      클릭하여 펼치기
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   3. CORE SUMMARY
+   ============================================================ */
+function CoreSummary() {
+  return (
+    <section className="py-28 px-6 relative" style={{background: 'var(--cream-deep)'}}>
+      <div className="max-w-3xl mx-auto text-center">
+        <div className="reveal">
+          <p className="font-display-italic tracking-[0.4em] uppercase text-xs mb-8" style={{color: 'var(--gold-deep)'}}>
+            메시지의 심장 · The Heart
+          </p>
+
+          <div className="relative inline-block">
+            <span className="absolute -top-6 -left-8 font-display text-7xl opacity-30" style={{color: 'var(--gold)'}}>“</span>
+            <span className="absolute -bottom-12 -right-4 font-display text-7xl opacity-30" style={{color: 'var(--gold)'}}>”</span>
+
+            <p className="font-han text-2xl md:text-3xl lg:text-4xl leading-[1.7] py-8 px-4" style={{color: 'var(--ink)', fontWeight: 400}}>
+              구원은 죄에서 끝나지 않습니다.
+              <br />
+              <span style={{color: 'var(--crimson)', fontWeight: 700}}>육체에서 나와 지성소로</span> 들어가는 것이
+              <br />
+              화목의 완성입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   4. TWO STAGES — TABERNACLE VISUALIZATION
+   ============================================================ */
+function TwoStages() {
+  const [activeStage, setActiveStage] = useState(null);
+
+  return (
+    <section className="py-32 px-6 relative paper-grain" style={{background: 'var(--cream)'}}>
+      <div className="max-w-6xl mx-auto">
+
+        <div className="text-center reveal mb-4">
+          <p className="font-display-italic tracking-[0.4em] uppercase text-sm mb-3" style={{color: 'var(--gold-deep)'}}>
+            The Two Stages
+          </p>
+          <h2 className="font-han text-3xl md:text-5xl mb-6" style={{color: 'var(--ink)', fontWeight: 700}}>
+            두 단계의 화목
+          </h2>
+          <p className="font-han text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style={{color: 'var(--ink-soft)'}}>
+            사람들을 하나님과 완전히 화목하게 하려면 두 단계가 필요합니다.
+            <br className="hide-mobile" />
+            그리스도의 죽음에는 객관적 방면과 주관적 방면이 있습니다.
+          </p>
+        </div>
+
+        <Ornament />
+
+        {/* Tabernacle SVG */}
+        <div className="reveal-slow mb-16">
+          <div className="bg-[var(--parchment)] rounded-sm p-8 md:p-12 border" style={{borderColor: 'rgba(184,138,62,0.3)', boxShadow: '0 20px 50px rgba(60,40,15,0.1)'}}>
+            <p className="text-center font-display-italic text-sm mb-6" style={{color: 'var(--gold-deep)'}}>
+              구약 성막의 단면 · Cross-section of the Tabernacle
+            </p>
+
+            <svg viewBox="0 0 800 320" className="w-full h-auto">
+              {/* Outer wall outline */}
+              <rect x="40" y="60" width="720" height="200" fill="none" stroke="var(--ink-soft)" strokeWidth="1.5" />
+
+              {/* Outer Court */}
+              <rect x="40" y="60" width="320" height="200" fill="rgba(184,138,62,0.04)" />
+              <text x="200" y="50" textAnchor="middle" className="font-han" fontSize="13" fill="var(--ink-soft)">바깥뜰 · 세상</text>
+
+              {/* Altar */}
+              <rect x="170" y="160" width="60" height="40" fill="none" stroke="var(--crimson)" strokeWidth="1.2" />
+              <path d="M180 160 L190 150 L200 160 M210 160 L220 150 L230 160" stroke="var(--crimson)" strokeWidth="1" fill="none" />
+              <text x="200" y="220" textAnchor="middle" className="font-han" fontSize="10" fill="var(--crimson-soft)">번제단 (십자가)</text>
+
+              {/* First veil (entrance) */}
+              <line x1="360" y1="60" x2="360" y2="260" stroke="var(--ink-soft)" strokeWidth="1.5" strokeDasharray="3 3" />
+
+              {/* Holy Place */}
+              <rect x="360" y="60" width="280" height="200" fill="rgba(184,138,62,0.1)" />
+              <text x="500" y="50" textAnchor="middle" className="font-han" fontSize="13" fill="var(--ink-soft)">성소 · 구원받은 자리</text>
+
+              {/* Lampstand */}
+              <g transform="translate(420, 200)">
+                <line x1="0" y1="0" x2="0" y2="-40" stroke="var(--gold-deep)" strokeWidth="1.5" />
+                <circle cx="0" cy="-45" r="3" fill="var(--gold)" className="candle-glow" />
+                <line x1="-15" y1="-25" x2="-15" y2="-40" stroke="var(--gold-deep)" strokeWidth="1" />
+                <line x1="15" y1="-25" x2="15" y2="-40" stroke="var(--gold-deep)" strokeWidth="1" />
+                <circle cx="-15" cy="-43" r="2" fill="var(--gold)" className="candle-glow" />
+                <circle cx="15" cy="-43" r="2" fill="var(--gold)" className="candle-glow" />
+                <path d="M-15 -25 Q0 -10 15 -25" fill="none" stroke="var(--gold-deep)" strokeWidth="1" />
+              </g>
+
+              {/* Showbread table */}
+              <rect x="490" y="180" width="40" height="20" fill="none" stroke="var(--gold-deep)" strokeWidth="1" />
+
+              {/* Incense altar */}
+              <rect x="570" y="170" width="30" height="30" fill="none" stroke="var(--gold-deep)" strokeWidth="1" />
+
+              {/* THE VEIL — second veil */}
+              <g>
+                <rect x="638" y="60" width="6" height="200" fill="var(--veil)" opacity="0.85" />
+                <rect x="635" y="60" width="3" height="200" fill="var(--crimson-soft)" opacity="0.4" />
+                <text x="640" y="280" textAnchor="middle" className="font-display-italic" fontSize="11" fill="var(--crimson)">the veil</text>
+                <text x="640" y="294" textAnchor="middle" className="font-han" fontSize="11" fill="var(--crimson)">육체의 휘장</text>
+              </g>
+
+              {/* Holy of Holies */}
+              <rect x="644" y="60" width="116" height="200" fill="rgba(184,138,62,0.18)" />
+              <text x="702" y="50" textAnchor="middle" className="font-han" fontSize="13" fill="var(--gold-deep)">지성소 · 하나님의 임재</text>
+
+              {/* Ark */}
+              <g transform="translate(675, 175)">
+                <rect width="50" height="30" fill="var(--gold)" stroke="var(--gold-deep)" strokeWidth="1" />
+                <path d="M0 0 Q10 -12 18 0 M32 0 Q40 -12 50 0" fill="none" stroke="var(--gold-deep)" strokeWidth="1.2" />
+                <circle cx="25" cy="-8" r="3" fill="var(--gold-soft)" className="candle-glow" />
+              </g>
+              <text x="700" y="230" textAnchor="middle" className="font-han" fontSize="10" fill="var(--gold-deep)">언약궤</text>
+
+              {/* Stage 1 arrow */}
+              <g style={{cursor: 'pointer'}} onClick={() => setActiveStage(activeStage === 1 ? null : 1)}>
+                <path d="M 100 130 Q 240 100 360 130" fill="none" stroke="var(--crimson-soft)" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrowhead-1)" />
+                <text x="200" y="92" textAnchor="middle" className="font-han" fontSize="12" fill="var(--crimson)" fontWeight="700">① 객관적 죽음</text>
+              </g>
+
+              {/* Stage 2 arrow */}
+              <g style={{cursor: 'pointer'}} onClick={() => setActiveStage(activeStage === 2 ? null : 2)}>
+                <path d="M 460 130 Q 560 110 700 130" fill="none" stroke="var(--gold-deep)" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrowhead-2)" />
+                <text x="580" y="92" textAnchor="middle" className="font-han" fontSize="12" fill="var(--gold-deep)" fontWeight="700">② 주관적 죽음</text>
+              </g>
+
+              {/* Markers */}
+              <defs>
+                <marker id="arrowhead-1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                  <polygon points="0 0, 10 3, 0 6" fill="var(--crimson-soft)" />
+                </marker>
+                <marker id="arrowhead-2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                  <polygon points="0 0, 10 3, 0 6" fill="var(--gold-deep)" />
+                </marker>
+              </defs>
+            </svg>
+
+            <p className="text-center text-xs mt-4 font-display-italic" style={{color: 'var(--gold-deep)'}}>
+              화살표를 클릭하면 각 단계의 의미가 펼쳐집니다
+            </p>
+          </div>
+        </div>
+
+        {/* Two stage cards */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Stage 1 */}
+          <div
+            className={`stage-card reveal p-8 md:p-10 cursor-pointer transition-all`}
+            style={{
+              background: activeStage === 1 ? 'linear-gradient(180deg, var(--parchment), var(--cream))' : 'var(--parchment)',
+              border: '1px solid ' + (activeStage === 1 ? 'var(--crimson)' : 'rgba(138,58,48,0.3)'),
+              boxShadow: activeStage === 1 ? '0 20px 40px rgba(138,58,48,0.15)' : '0 8px 20px rgba(60,40,15,0.06)'
+            }}
+            onClick={() => setActiveStage(activeStage === 1 ? null : 1)}
+          >
+            <p className="number-badge text-5xl mb-3">i.</p>
+            <p className="font-display-italic text-xs tracking-[0.3em] uppercase mb-2" style={{color: 'var(--crimson)'}}>
+              Objective &nbsp;·&nbsp; 객관적 방면
+            </p>
+            <h3 className="font-han text-2xl md:text-3xl mb-5" style={{color: 'var(--ink)', fontWeight: 700}}>
+              죄인을 죄에서 건지심
+            </h3>
+            <p className="font-han leading-[2] mb-5" style={{color: 'var(--ink-soft)'}}>
+              그리스도께서 <span style={{color: 'var(--crimson)', fontWeight: 600}}>우리의 죄들 때문에</span> 죽으심으로,
+              우리의 죄들이 십자가에서 하나님께 심판받았습니다.
+              이로써 죄인은 용서받고 하나님과 화목하게 됩니다.
+            </p>
+            <div className="flex flex-wrap gap-3 text-sm">
+              <BibleRef refKey="고전 15:3" />
+              <BibleRef refKey="벧전 2:24" />
+              <BibleRef refKey="고후 5:19" />
+            </div>
+            <div className={`overflow-hidden transition-all duration-500 ${activeStage === 1 ? 'max-h-96 mt-6' : 'max-h-0'}`}>
+              <div className="pt-5 border-t" style={{borderColor: 'rgba(138,58,48,0.25)'}}>
+                <p className="font-han italic text-sm leading-relaxed" style={{color: 'var(--ink)'}}>
+                  &ldquo;이 방면에서 그리스도는 십자가에서 우리의 죄들을 짊어지심으로
+                  우리를 대신하여 우리의 죄들이 하나님께 심판받게 하셨다.&rdquo;
+                </p>
+                <p className="text-xs mt-3 font-display-italic" style={{color: 'var(--crimson)'}}>
+                  — 결과: 죄에서의 분리, 용서, 위치적 화목
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Stage 2 */}
+          <div
+            className={`stage-card reveal p-8 md:p-10 cursor-pointer transition-all`}
+            style={{
+              background: activeStage === 2 ? 'linear-gradient(180deg, var(--parchment), var(--cream))' : 'var(--parchment)',
+              border: '1px solid ' + (activeStage === 2 ? 'var(--gold-deep)' : 'rgba(184,138,62,0.3)'),
+              boxShadow: activeStage === 2 ? '0 20px 40px rgba(184,138,62,0.15)' : '0 8px 20px rgba(60,40,15,0.06)'
+            }}
+            onClick={() => setActiveStage(activeStage === 2 ? null : 2)}
+          >
+            <p className="number-badge text-5xl mb-3">ii.</p>
+            <p className="font-display-italic text-xs tracking-[0.3em] uppercase mb-2" style={{color: 'var(--gold-deep)'}}>
+              Subjective &nbsp;·&nbsp; 주관적 방면
+            </p>
+            <h3 className="font-han text-2xl md:text-3xl mb-5" style={{color: 'var(--ink)', fontWeight: 700}}>
+              믿는 이를 육체에서 건지심
+            </h3>
+            <p className="font-han leading-[2] mb-5" style={{color: 'var(--ink-soft)'}}>
+              그리스도께서 <span style={{color: 'var(--gold-deep)', fontWeight: 600}}>사람인 우리들을 대신하여</span> 죽으셔서,
+              우리가 부활 생명 안에서 그분을 향하여 살게 하셨습니다.
+              그리스도가 우리 대신 죄가 되심으로 죄가 제거되었습니다.
+            </p>
+            <div className="flex flex-wrap gap-3 text-sm">
+              <BibleRef refKey="고후 5:14" />
+              <BibleRef refKey="고후 5:15" />
+              <BibleRef refKey="고후 5:21" />
+              <BibleRef refKey="롬 8:3" />
+            </div>
+            <div className={`overflow-hidden transition-all duration-500 ${activeStage === 2 ? 'max-h-96 mt-6' : 'max-h-0'}`}>
+              <div className="pt-5 border-t" style={{borderColor: 'rgba(184,138,62,0.25)'}}>
+                <p className="font-han italic text-sm leading-relaxed" style={{color: 'var(--ink)'}}>
+                  &ldquo;이 방면에서 그리스도는 우리를 대신하여 죄가 되시어 하나님께 심판받고 제거되심으로,
+                  우리를 그리스도 안에서 하나님의 의가 되게 하셨다.&rdquo;
+                </p>
+                <p className="text-xs mt-3 font-display-italic" style={{color: 'var(--gold-deep)'}}>
+                  — 결과: 육체에서의 분리, 부활 생명, 체험적 화목
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   5. THE VEIL SCENE
+   ============================================================ */
+function VeilScene() {
+  const [torn, setTorn] = useState(false);
+
+  // Auto-tear when scrolled into view
+  const sectionRef = useRef(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setTorn(true), 600);
+        }
+      });
+    }, { threshold: 0.5 });
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="py-32 px-6 relative overflow-hidden"
+      style={{background: 'linear-gradient(180deg, #2a1a0d 0%, #1d1208 100%)'}}>
+
+      <div className="max-w-5xl mx-auto">
+
+        <div className="text-center mb-12">
+          <p className="font-display-italic tracking-[0.4em] uppercase text-xs mb-3" style={{color: 'var(--gold-soft)'}}>
+            The Dividing Veil
+          </p>
+          <h2 className="font-han text-3xl md:text-5xl mb-6" style={{color: '#f4e8cf', fontWeight: 700}}>
+            분리하는 휘장
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+
+          {/* Veil illustration */}
+          <div className="relative h-[400px] flex items-center justify-center">
+            <div className={`absolute inset-0 flex ${torn ? 'veil-torn' : ''}`}>
+              {/* Left half */}
+              <div className="veil-curtain veil-tear-left flex-1 relative">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0 1px, transparent 1px 6px)'
+                }} />
+                {/* Cherubim hint */}
+                <svg className="absolute top-1/2 right-2 -translate-y-1/2 opacity-40" width="40" height="50" viewBox="0 0 40 50">
+                  <circle cx="20" cy="15" r="6" fill="none" stroke="rgba(214,180,106,0.6)" strokeWidth="0.8" />
+                  <path d="M5 30 Q20 20 35 30 M5 38 Q20 28 35 38" stroke="rgba(214,180,106,0.6)" strokeWidth="0.8" fill="none" />
+                </svg>
+              </div>
+              <div className="veil-curtain veil-tear-right flex-1 relative">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0 1px, transparent 1px 6px)'
+                }} />
+                <svg className="absolute top-1/2 left-2 -translate-y-1/2 opacity-40" width="40" height="50" viewBox="0 0 40 50">
+                  <circle cx="20" cy="15" r="6" fill="none" stroke="rgba(214,180,106,0.6)" strokeWidth="0.8" />
+                  <path d="M5 30 Q20 20 35 30 M5 38 Q20 28 35 38" stroke="rgba(214,180,106,0.6)" strokeWidth="0.8" fill="none" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Light from behind */}
+            {torn && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{animation: 'fadeIn 2s ease-out'}}>
+                <div style={{
+                  width: '80%', height: '80%',
+                  background: 'radial-gradient(ellipse at center, rgba(214,180,106,0.5), transparent 70%)',
+                  filter: 'blur(20px)'
+                }} />
+                <div className="absolute font-display-italic text-center" style={{color: 'var(--gold-soft)'}}>
+                  <p className="text-xs tracking-[0.3em] uppercase mb-2 opacity-70">behind the veil</p>
+                  <p className="font-han text-2xl candle-glow">지성소</p>
+                </div>
+              </div>
+            )}
+
+            <button
+              onClick={() => setTorn(!torn)}
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 text-xs font-display-italic px-4 py-2 border tracking-wider"
+              style={{color: 'var(--gold-soft)', borderColor: 'rgba(214,180,106,0.4)'}}
+            >
+              {torn ? '· 휘장을 닫기 ·' : '· 휘장을 찢기 ·'}
+            </button>
+          </div>
+
+          {/* Text */}
+          <div>
+            <p className="font-han text-lg md:text-xl leading-[2.1]" style={{color: '#e8d9b8'}}>
+              고린도 성도들은 이미 구원받았으나,
+              <br />
+              여전히 <span style={{color: 'var(--gold-soft)', fontWeight: 600}}>겉사람 곧 육체</span> 안에서 살고 있었습니다.
+            </p>
+            <p className="font-han text-lg md:text-xl leading-[2.1] mt-6" style={{color: '#e8d9b8'}}>
+              그들과 하나님 사이에는
+              <br />
+              <span style={{color: 'var(--crimson-soft)', fontWeight: 600}}>육체라는 분리하는 휘장</span>이 드리워 있었습니다.
+            </p>
+
+            <div className="mt-8 pt-6 border-t" style={{borderColor: 'rgba(214,180,106,0.25)'}}>
+              <p className="font-display italic text-base leading-relaxed mb-3" style={{color: 'var(--gold-soft)'}}>
+                &ldquo;그들은 성소 안에 있었지만,
+                <br />지성소 안에는 있지 않았다.&rdquo;
+              </p>
+              <p className="text-sm flex flex-wrap gap-3">
+                <BibleRef refKey="히 10:19" />
+                <BibleRef refKey="히 10:20" />
+                <BibleRef refKey="고전 3:1" />
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20 text-center max-w-2xl mx-auto">
+          <p className="font-han text-xl md:text-2xl leading-[2]" style={{color: '#f4e8cf'}}>
+            바울은 그 휘장을
+            <br />
+            <span style={{color: 'var(--gold-soft)', fontWeight: 700, fontSize: '1.1em'}}>완전히 찢어 버리려고</span>
+            <br />
+            일하고 있었습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   6. AMBASSADOR'S QUALIFICATION
+   ============================================================ */
+function AmbassadorQualification() {
+  return (
+    <section className="py-32 px-6 relative paper-grain" style={{background: 'var(--cream)'}}>
+      <div className="max-w-5xl mx-auto">
+
+        <div className="text-center reveal mb-4">
+          <p className="font-display-italic tracking-[0.4em] uppercase text-sm mb-3" style={{color: 'var(--gold-deep)'}}>
+            The Ambassador&apos;s Qualification
+          </p>
+          <h2 className="font-han text-3xl md:text-5xl mb-6" style={{color: 'var(--ink)', fontWeight: 700}}>
+            대사의 자격
+          </h2>
+          <p className="font-han text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style={{color: 'var(--ink-soft)'}}>
+            대사는 우주 안에서 최고 권위이신 하나님을 대표하는 사람입니다.
+            <br className="hide-mobile" />
+            그분과 하나일 때에만, 그분의 말씀과 행하심이 그를 통해 흘러갑니다.
+          </p>
+        </div>
+
+        <Ornament />
+
+        {/* Mirror visualization */}
+        <div className="reveal-slow grid md:grid-cols-2 gap-8 items-center">
+
+          <div className="relative">
+            <div className="bg-[var(--parchment)] p-10 border" style={{borderColor: 'rgba(184,138,62,0.3)', boxShadow: '0 20px 40px rgba(60,40,15,0.08)'}}>
+              <p className="font-display-italic text-xs tracking-[0.3em] uppercase mb-3" style={{color: 'var(--gold-deep)'}}>
+                내가 머무는 위치
+              </p>
+              <p className="font-han text-2xl md:text-3xl" style={{color: 'var(--ink)', fontWeight: 700}}>
+                = 다른 이를
+                <br />
+                데려갈 수 있는 위치
+              </p>
+            </div>
+            <div className="bg-[var(--parchment)] p-10 border mirror-flip absolute -bottom-2 left-0 right-0" style={{borderColor: 'rgba(184,138,62,0.3)'}}>
+              <p className="font-display-italic text-xs tracking-[0.3em] uppercase mb-3" style={{color: 'var(--gold-deep)'}}>
+                내가 머무는 위치
+              </p>
+              <p className="font-han text-2xl md:text-3xl" style={{color: 'var(--ink)', fontWeight: 700}}>
+                = 다른 이를
+                <br />
+                데려갈 수 있는 위치
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <p className="font-han text-lg md:text-xl leading-[2.1] mb-6" style={{color: 'var(--ink)'}}>
+              우리가 다른 이들을 어느 정도까지 하나님께로
+              <br />
+              <span style={{color: 'var(--gold-deep)', fontWeight: 700}}>그리고 하나님 안으로</span> 인도할 수 있는지는,
+            </p>
+            <p className="font-han text-lg md:text-xl leading-[2.1]" style={{color: 'var(--ink)'}}>
+              언제나 <span style={{color: 'var(--crimson)', fontWeight: 700}}>하나님에 대한 우리의 현재 위치</span>로
+              <br />
+              결정됩니다.
+            </p>
+            <p className="font-display italic text-base mt-8 pl-4 border-l-2" style={{color: 'var(--ink-soft)', borderColor: 'var(--gold)'}}>
+              우리가 하나님 안에 더 있을수록,
+              <br />
+              우리는 다른 이들을 하나님 안으로
+              <br />
+              더 화목하게 할 수 있습니다.
+            </p>
+            <p className="text-sm mt-6 flex flex-wrap gap-3">
+              <BibleRef refKey="고후 5:20" />
+              <BibleRef refKey="갈 2:20" />
+              <BibleRef refKey="고후 4:10" />
+            </p>
+          </div>
+        </div>
+
+        {/* Identification with Christ */}
+        <div className="reveal mt-24 max-w-3xl mx-auto text-center">
+          <p className="font-display-italic text-xs tracking-[0.3em] uppercase mb-4" style={{color: 'var(--gold-deep)'}}>
+            The Prerequisite
+          </p>
+          <p className="font-han text-xl md:text-2xl leading-[1.9]" style={{color: 'var(--ink)'}}>
+            화목의 사역을 수행하려면
+            <br />
+            우리는 <span style={{color: 'var(--crimson)', fontWeight: 700}}>십자가에 못 박히신 그리스도와 동일시되어야</span> 합니다.
+          </p>
+          <p className="text-sm mt-6 flex flex-wrap justify-center gap-3">
+            <BibleRef refKey="갈 2:20" />
+            <BibleRef refKey="갈 5:24" />
+            <BibleRef refKey="고후 5:14" />
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   7. DEEPER TEACHING
+   ============================================================ */
+function DeeperTeaching() {
+  return (
+    <section className="py-32 px-6 relative" style={{background: 'var(--cream-deep)'}}>
+      <div className="max-w-3xl mx-auto">
+
+        <div className="text-center reveal mb-12">
+          <p className="font-display-italic tracking-[0.4em] uppercase text-sm mb-3" style={{color: 'var(--gold-deep)'}}>
+            Deeper Reading · 깊이 읽기
+          </p>
+          <h2 className="font-han text-3xl md:text-4xl" style={{color: 'var(--ink)', fontWeight: 700}}>
+            하나님과 그리스도와 사도들이
+            <br />
+            하나인 사역
+          </h2>
+        </div>
+
+        <Ornament />
+
+        <article className="reveal font-han text-base md:text-lg leading-[2.1]" style={{color: 'var(--ink-soft)'}}>
+          <p className="dropcap mb-8">
+            바울의 문장 구성은 특이합니다. <BibleRef refKey="고후 5:20">고후 5:20</BibleRef>에서 그는 &ldquo;우리가 그리스도를 대신하는 대사들이 되어&rdquo;라고 한 후, 곧바로 &ldquo;하나님께서 우리를 통하여 여러분에게 권면하시듯이&rdquo;라고 말합니다. 그가 하는 말은 곧 하나님께서 하시는 말씀이며, 그가 행하는 것은 곧 하나님께서 행하시는 것입니다.
+          </p>
+
+          <p className="mb-8">
+            그리스도의 대사들은 <span style={{color: 'var(--gold-deep)', fontWeight: 700}}>하나님과 하나이고, 하나님과 같으며, 하나님으로서 권면합니다</span>. 새 언약의 사역은 하나님과 그리스도와 사역자들이 하나인 사역입니다.
+          </p>
+
+          <Ornament small />
+
+          <p className="mb-8">
+            <BibleRef refKey="고후 5:20">고린도후서 5장 20절</BibleRef>에서 바울이 &ldquo;하나님과 화목하십시오&rdquo;라고 말한 대상은 죄인들이 아닙니다. 이미 부분적으로 화목한 <span style={{color: 'var(--crimson)', fontWeight: 600}}>고린도의 믿는 이들</span>입니다. 그들은 성도들이자 하나님의 아들의 교통 안으로 부르심받은 이들이었습니다.
+          </p>
+
+          <p className="mb-8">
+            그러나 <BibleRef refKey="고전 3:1" /> 말씀처럼 그들은 여전히 육체적이었고, <BibleRef refKey="고전 2:14" />이 보여 주듯 혼적인 사람으로 살고 있었습니다. 휘장 — 성소 입구의 막이 아니라, 성소와 지성소를 나누는 그 휘장 — 이 그들과 하나님 사이에 드리워 있었습니다.
+          </p>
+
+          <p className="mb-8">
+            <BibleRef refKey="고후 5:19">19절</BibleRef>의 화목의 대상은 <span style={{color: 'var(--gold-deep)', fontWeight: 600}}>세상</span>이요, <BibleRef refKey="고후 5:20">20절</BibleRef>의 화목의 대상은 <span style={{color: 'var(--gold-deep)', fontWeight: 600}}>이미 화목하게 되었지만 더욱 전진된 화목이 필요한 믿는 이들</span>입니다. 객관적인 구원에서 주관적인 구원으로, 죄에서의 분리에서 육체에서의 분리로, 위치적 화목에서 체험적 화목으로 — 이것이 <BibleRef refKey="히 7:25">철저한 구원</BibleRef>의 길입니다.
+          </p>
+
+          <Ornament small />
+
+          <blockquote className="font-display italic text-lg md:text-xl leading-relaxed text-center my-12 px-4" style={{color: 'var(--ink)'}}>
+            &ldquo;우리가 실지적으로 항상 그리스도 안에 있지 않기 때문에
+            <br />
+            우리에게는 더 전진된 화목이 필요하다.
+            <br />
+            우리는 그리스도 안으로 돌아와 화목하게 되어야 한다.&rdquo;
+          </blockquote>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   8. QUIZ
+   ============================================================ */
+function Quiz() {
+  const questions = [
+    {
+      q: "본문에서 '그리스도를 대신하는 대사들'에 대한 설명으로 옳은 것은 무엇입니까?",
+      options: [
+        { text: '하나님과 그리스도와 하나 되어 그분을 대표한다.', correct: true },
+        { text: '그리스도와 분리되어 독자적으로 일한다.', correct: false },
+        { text: '자신의 개인적인 의견을 전달하는 사람이다.', correct: false },
+        { text: '단순히 지식을 전달하는 교사이다.', correct: false },
+      ],
+      explain: '대사는 왕의 권위를 위임받아 왕을 대표하는 사람입니다. 새 언약의 사역자들은 하나님과 그리스도와 하나가 되어, 그들이 하는 말이 곧 하나님께서 하시는 말씀이 되는 화목의 사역자들입니다(고후 5:20).'
+    },
+    {
+      q: "화목의 사역의 '첫 번째 단계'가 목표로 하는 대상과 내용은 무엇입니까?",
+      options: [
+        { text: '천사들을 하나님과 화목하게 하는 것', correct: false },
+        { text: '죄인들을 죄에서 나오게 하여 하나님과 화목하게 하는 것', correct: true },
+        { text: '성도들을 지성소 안으로 이끄는 것', correct: false },
+        { text: '믿는 이들을 육체에서 나오게 하는 것', correct: false },
+      ],
+      explain: '첫 번째 단계는 그리스도께서 우리의 죄들 때문에 죽으심으로(고전 15:3) 죄인들을 죄에서 나오게 하여 하나님과 화목하게 하는 객관적인 방면입니다(고후 5:19).'
+    },
+    {
+      q: "화목의 '두 번째 단계'를 위해 그리스도는 어떤 방면으로 죽으셨습니까?",
+      options: [
+        { text: '도덕적인 본을 보이시는 방면', correct: false },
+        { text: '우리의 죄들을 짊어지시는 객관적인 방면', correct: false },
+        { text: '우리를 대신하여 죄 자체가 되시는 주관적인 방면', correct: true },
+        { text: '율법의 조항들을 완성하시는 방면', correct: false },
+      ],
+      explain: '두 번째 단계는 그리스도께서 우리를 대신하여 죄가 되심으로(고후 5:21), 우리를 육체에서 건져 부활 생명 안에서 그분을 향해 살게 하시는 주관적인 방면입니다(고후 5:14-15).'
+    },
+    {
+      q: '고린도 성도들이 하나님과 완전히 화목되지 못했던 실지적인 이유는 무엇입니까?',
+      options: [
+        { text: '사도 바울을 대적했기 때문에', correct: false },
+        { text: '아직 복음을 한 번도 듣지 못했기 때문에', correct: false },
+        { text: '그들이 그리스도를 믿지 않았기 때문에', correct: false },
+        { text: '그들이 여전히 육체(겉사람) 안에서 살고 있었기 때문에', correct: true },
+      ],
+      explain: '고린도 성도들은 이미 부분적으로 화목하여 성소 안에 있었지만, 여전히 육체적이고 혼적인 사람으로 살고 있었기에 지성소 안에 들어가지 못했습니다(고전 3:1, 2:14).'
+    },
+    {
+      q: "성막의 기구에 비유했을 때, 하나님과 믿는 이들을 분리하는 '휘장'은 무엇을 상징합니까?",
+      options: [
+        { text: '육체 곧 타고난 사람', correct: true },
+        { text: '세상의 유혹', correct: false },
+        { text: '죄들의 목록', correct: false },
+        { text: '율법의 규례들', correct: false },
+      ],
+      explain: '히브리서 10:20은 휘장이 곧 그리스도의 육체임을 밝힙니다. 우리의 타고난 육체가 우리와 지성소에 계신 하나님 사이를 가로막는 분리하는 휘장입니다.'
+    },
+    {
+      q: "이미 믿는 이들인 우리에게 왜 '더 전진된 화목'이 필요합니까?",
+      options: [
+        { text: '다시 죄인이 될 가능성이 있기 때문에', correct: false },
+        { text: '일상생활에서 실지적으로 항상 그리스도 안에 있지 않기 때문에', correct: true },
+        { text: '구원이 취소될 수 있기 때문에', correct: false },
+        { text: '성경 지식이 부족하기 때문에', correct: false },
+      ],
+      explain: '우리는 위치적으로는 이미 화목하게 되었지만, 실지적으로는 항상 그리스도 안에 있지 않습니다. 그러므로 우리에게는 그리스도 안으로 돌아와 화목하게 되는 더 전진된 체험적 화목이 필요합니다.'
+    },
+    {
+      q: '화목의 사역을 수행하는 사역자들의 위치가 중요한 이유는 무엇입니까?',
+      options: [
+        { text: '사도라는 직분이 권위를 주기 때문에', correct: false },
+        { text: '더 많은 보상을 받기 위해서', correct: false },
+        { text: '성도들보다 높은 계급에 있어야 하기 때문에', correct: false },
+        { text: '사역자가 하나님 안에 있는 정도만큼 타인을 하나님 안으로 인도할 수 있기 때문에', correct: true },
+      ],
+      explain: "다른 이들을 하나님 안으로 화목하게 할 수 있는 정도는 언제나 '하나님에 대한 우리의 현재 위치'로 결정됩니다. 우리가 하나님 안에 더 있을수록 다른 이들을 그분 안으로 더 인도할 수 있습니다."
+    },
+    {
+      q: '화목의 사역을 수행하기 위해 사역자들이 가져야 할 필수적인 태도는 무엇입니까?',
+      options: [
+        { text: '십자가에 못 박히신 그리스도와 동일시되는 것', correct: true },
+        { text: '웅변적인 설교 기술을 연마하는 것', correct: false },
+        { text: '최대한 많은 세상을 화목하게 하려고 노력하는 것', correct: false },
+        { text: '율법의 모든 조항을 완벽히 지키는 것', correct: false },
+      ],
+      explain: '화목의 사역은 십자가에 못 박히신 그리스도와 동일시될 때만 수행됩니다(갈 2:20, 갈 5:24, 고후 4:10). 자아의 죽음 없이는 부활의 생명을 다른 이들에게 전달할 수 없습니다.'
+    },
+    {
+      q: "화목의 두 번째 단계에서 그리스도가 '우리 대신 죄가 되신' 목적은 무엇입니까?",
+      options: [
+        { text: '우리가 그리스도 안에서 하나님의 의가 되게 하려고', correct: true },
+        { text: '우리가 도덕적으로 훌륭한 사람이 되게 하려고', correct: false },
+        { text: '세상의 모든 종교를 하나로 통합하려고', correct: false },
+        { text: '우리의 미래의 죄들을 미리 용서받게 하려고', correct: false },
+      ],
+      explain: '고후 5:21 — "하나님께서 죄를 알지도 못하신 분을 우리 대신 죄가 되게 하신 것은 우리가 그분 안에서 하나님의 의가 되도록 하시려는 것입니다." 그리스도가 죄가 되심의 궁극적 목적은 우리가 그분 안에서 하나님의 의가 되는 것입니다.'
+    },
+  ];
+
+  const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+
+  return (
+    <section className="py-32 px-6 relative paper-grain" style={{background: 'var(--cream)'}}>
+      <div className="max-w-3xl mx-auto">
+
+        <div className="text-center reveal mb-12">
+          <p className="font-display-italic tracking-[0.4em] uppercase text-sm mb-3" style={{color: 'var(--gold-deep)'}}>
+            Self-Examination
+          </p>
+          <h2 className="font-han text-3xl md:text-4xl mb-3" style={{color: 'var(--ink)', fontWeight: 700}}>
+            묵상 점검
+          </h2>
+          <p className="font-han" style={{color: 'var(--ink-soft)'}}>
+            마음에 짚이는 답을 골라 보세요
+          </p>
+        </div>
+
+        <Ornament />
+
+        <div className="space-y-10">
+          {questions.map((q, i) => (
+            <div key={i} className="reveal">
+              <div className="flex items-baseline gap-4 mb-5">
+                <span className="number-badge text-3xl">Q.{i + 1}</span>
+                <p className="font-han text-lg md:text-xl leading-relaxed flex-1" style={{color: 'var(--ink)', fontWeight: 500}}>
+                  {q.q}
+                </p>
+              </div>
+
+              <div className="space-y-3 ml-0 md:ml-14">
+                {q.options.map((opt, j) => {
+                  const answered = answers[i] !== null;
+                  const selected = answers[i] === j;
+                  let cls = 'quiz-option px-5 py-4 cursor-pointer block w-full text-left font-han';
+                  if (answered) {
+                    cls += ' answered';
+                    if (opt.correct) cls += ' correct';
+                    else if (selected) cls += ' wrong';
+                  }
+                  return (
+                    <button
+                      key={j}
+                      className={cls}
+                      onClick={() => {
+                        if (!answered) {
+                          const newAnswers = [...answers];
+                          newAnswers[i] = j;
+                          setAnswers(newAnswers);
+                        }
+                      }}
+                      style={{
+                        background: answered && opt.correct ? 'rgba(141, 110, 47, 0.12)' : (answered && selected ? 'rgba(138,58,48,0.08)' : 'var(--parchment)'),
+                      }}
+                    >
+                      <span className="font-display-italic mr-3" style={{color: 'var(--gold-deep)'}}>
+                        {String.fromCharCode(97 + j)}.
+                      </span>
+                      {opt.text}
+                      {answered && opt.correct && (
+                        <span className="float-right">✓</span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {answers[i] !== null && (
+                <div className="ml-0 md:ml-14 mt-4 p-5 border-l-2 font-han text-sm leading-relaxed" style={{
+                  borderColor: 'var(--gold)',
+                  background: 'rgba(184,138,62,0.06)',
+                  color: 'var(--ink-soft)',
+                  animation: 'fadeUp 0.5s ease-out'
+                }}>
+                  <span className="font-display-italic text-xs tracking-widest uppercase block mb-2" style={{color: 'var(--gold-deep)'}}>
+                    묵상
+                  </span>
+                  {q.explain}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   9. PRAYER
+   ============================================================ */
+function Prayer() {
+  return (
+    <section className="py-32 px-6 relative" style={{background: 'linear-gradient(180deg, var(--cream-deep), var(--sand))'}}>
+      <div className="max-w-2xl mx-auto">
+
+        <div className="text-center reveal mb-12">
+          <p className="font-display-italic tracking-[0.4em] uppercase text-sm mb-3" style={{color: 'var(--gold-deep)'}}>
+            Today&apos;s Prayer
+          </p>
+          <h2 className="font-han text-3xl md:text-4xl" style={{color: 'var(--ink)', fontWeight: 700}}>
+            오늘의 기도
+          </h2>
+        </div>
+
+        <div className="reveal-slow prayer-paper p-10 md:p-14 relative">
+          {/* corner ornaments */}
+          <div className="absolute top-3 left-3 w-6 h-6 border-l border-t" style={{borderColor: 'var(--gold)'}} />
+          <div className="absolute top-3 right-3 w-6 h-6 border-r border-t" style={{borderColor: 'var(--gold)'}} />
+          <div className="absolute bottom-3 left-3 w-6 h-6 border-l border-b" style={{borderColor: 'var(--gold)'}} />
+          <div className="absolute bottom-3 right-3 w-6 h-6 border-r border-b" style={{borderColor: 'var(--gold)'}} />
+
+          <p className="font-display-italic text-base mb-8 text-center" style={{color: 'var(--gold-deep)'}}>
+            ✦ &nbsp; 사랑하시는 주님 &nbsp; ✦
+          </p>
+
+          <div className="font-han text-base md:text-lg leading-[2.3]" style={{color: 'var(--ink)'}}>
+            <p className="mb-6">
+              저를 죄에서 건지신 그 큰 은혜를 감사드립니다.
+              주님의 십자가의 피로 제 죄들이 심판받았고,
+              저는 용서받아 성소 안에 들어왔습니다.
+            </p>
+            <p className="mb-6">
+              그러나 주님,
+              저는 아직 성소 안에서 머뭇거리고 있음을 고백합니다.
+              저의 타고난 육체가 여전히
+              주님과 저 사이에 휘장처럼 드리워 있습니다.
+            </p>
+            <p className="mb-6">
+              주여, 저를{' '}
+              <span style={{color: 'var(--crimson)', fontWeight: 700}}>십자가에 못 박힌 그리스도와 동일시되게</span> 하셔서,
+              저의 육체의 휘장이 찢어지게 하시옵소서.
+              부활 생명 안에서 주님을 향하여 살게 하시고,
+              지성소에 계신 주님과 온전히 하나 되게 하시옵소서.
+            </p>
+            <p>
+              그래야 저도 그리스도의 대사로서,
+              다른 이들을 주님께로, 그리고{' '}
+              <span style={{color: 'var(--gold-deep)', fontWeight: 700}}>주님 안으로</span> 인도할 수 있겠습니다.
+            </p>
+          </div>
+
+          <p className="font-display-italic text-base mt-10 text-center" style={{color: 'var(--gold-deep)'}}>
+            ── 아멘 ──
+          </p>
+        </div>
+
+        {/* Closing verse */}
+        <div className="reveal text-center mt-16">
+          <p className="font-han text-base md:text-lg leading-relaxed italic" style={{color: 'var(--ink-soft)'}}>
+            보십시오, 지금이야말로 기쁘게 받아들이시기에 좋은 때이며,
+            <br />
+            지금이야말로 구원의 날입니다.
+          </p>
+          <p className="text-sm mt-3">
+            <BibleRef refKey="고후 6:2" />
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+function Footer() {
+  return (
+    <footer className="py-12 px-6 text-center" style={{background: 'var(--ink)', color: 'var(--gold-soft)'}}>
+      <div className="max-w-3xl mx-auto">
+        <p className="font-display-italic text-xs tracking-[0.4em] uppercase mb-3 opacity-70">
+          The Ministry of Reconciliation
+        </p>
+        <p className="font-han text-sm opacity-60">
+          출처 · 고린도후서 라이프 스타디 2권, 메시지 37, 39
+        </p>
+        <p className="font-display italic text-xs mt-6 opacity-40">
+          ✦ &nbsp; 휘장을 넘어, 지성소로 &nbsp; ✦
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+/* ============================================================
+   APP
+   ============================================================ */
+function App() {
+  useReveal();
+
+  // Load Recovery Bible XML once on mount; BibleRef will pick it up.
+  useEffect(() => { loadBibleXML(); }, []);
+
+  return (
+    <div className="vignette">
+      <div id="sec-hero"><Hero /></div>
+      <div id="sec-verse"><VerseSection /></div>
+      <div id="sec-core"><CoreSummary /></div>
+      <div id="sec-stages"><TwoStages /></div>
+      <div id="sec-veil"><VeilScene /></div>
+      <div id="sec-ambassador"><AmbassadorQualification /></div>
+      <div id="sec-deeper"><DeeperTeaching /></div>
+      <div id="sec-quiz"><Quiz /></div>
+      <div id="sec-prayer"><Prayer /></div>
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
