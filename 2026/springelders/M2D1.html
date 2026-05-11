@@ -140,39 +140,42 @@
     transition: all 0.2s;
     position: relative;
     font-weight: 500;
+    /* Mobile: kill 300ms tap delay + make tap target reliably hittable on iOS */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(184,138,62,0.15);
+    display: inline-block;
+    padding: 0 2px;
   }
   .bible-ref:hover {
     color: var(--crimson);
     border-bottom-color: var(--crimson);
   }
+  /* Touch-only devices need cursor:pointer for click events to fire reliably on spans (iOS Safari quirk) */
+  @media (hover: none), (pointer: coarse) {
+    .bible-ref {
+      cursor: pointer;
+      border-bottom-style: solid;
+      border-bottom-width: 0.5px;
+    }
+  }
 
-  /* Tooltip */
+  /* Tooltip (rendered via React portal, position:fixed set inline) */
   .tooltip-card {
-    position: absolute;
-    z-index: 50;
+    z-index: 9999;
     background: var(--parchment);
     border: 1px solid var(--gold-soft);
-    box-shadow: 0 12px 40px rgba(60,40,15,0.18), inset 0 0 0 1px rgba(255,255,255,0.4);
-    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--gold-deep);
+    box-shadow: 0 18px 44px rgba(60,40,15,0.28), inset 0 0 0 1px rgba(255,255,255,0.4);
+    padding: 0.95rem 1.15rem;
     max-width: 360px;
     min-width: 240px;
-    border-radius: 2px;
+    border-radius: 3px;
     font-size: 0.875rem;
     line-height: 1.7;
     color: var(--ink-soft);
-    animation: fadeIn 0.3s ease-out;
-  }
-  .tooltip-card::before {
-    content: '';
-    position: absolute;
-    top: -7px;
-    left: 24px;
-    width: 12px;
-    height: 12px;
-    background: var(--parchment);
-    border-left: 1px solid var(--gold-soft);
-    border-top: 1px solid var(--gold-soft);
-    transform: rotate(45deg);
+    animation: fadeIn 0.18s ease-out;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   /* Hero light beam */
@@ -933,29 +936,106 @@ function lookupBibleByRef(refKey) {
 }
 
 /* ============================================================
-   TOOLTIP COMPONENT
+   TOOLTIP COMPONENT — portal'd, viewport-positioned, click/hover/keyboard
    ============================================================ */
 function BibleRef({ children, refKey }) {
   const [show, setShow] = useState(false);
-  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const [coords, setCoords] = useState({ top: -9999, left: -9999, visibility: 'hidden' });
   const [, forceUpdate] = useState(0);
-  const ref = useRef(null);
+  const triggerRef = useRef(null);
+  const tooltipRef = useRef(null);
+  const hideTimer = useRef(null);
 
-  // Re-render when XML loads so tooltips shown before load can refresh.
+  // Re-render when XML loads
   useEffect(() => {
     const fn = () => forceUpdate(v => v + 1);
     bibleListeners.add(fn);
     return () => { bibleListeners.delete(fn); };
   }, []);
 
-  const handleEnter = () => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setCoords({
-        top: rect.bottom + window.scrollY + 10,
-        left: rect.left + window.scrollX
-      });
+  // Position the tooltip in viewport space with edge detection.
+  const positionTooltip = useCallback(() => {
+    if (!triggerRef.current || !tooltipRef.current) return;
+    const trigger = triggerRef.current.getBoundingClientRect();
+    const tt = tooltipRef.current;
+    const w = tt.offsetWidth;
+    const h = tt.offsetHeight;
+    const margin = 8;
+    const gap = 8;
+
+    let top = trigger.bottom + gap;
+    let left = trigger.left;
+
+    if (left + w > window.innerWidth - margin) {
+      left = Math.max(margin, window.innerWidth - w - margin);
     }
+    if (left < margin) left = margin;
+    if (top + h > window.innerHeight - margin) {
+      const above = trigger.top - h - gap;
+      if (above >= margin) top = above;
+      else top = Math.max(margin, window.innerHeight - h - margin);
+    }
+    setCoords({ top, left, visibility: 'visible' });
+  }, []);
+
+  // After tooltip mounts, measure and position.
+  useEffect(() => {
+    if (!show) return;
+    setCoords(c => ({ ...c, visibility: 'hidden' }));
+    requestAnimationFrame(() => {
+      positionTooltip();
+    });
+  }, [show, positionTooltip]);
+
+  // Close on outside click / Escape / scroll / resize.
+  // 300ms grace period: on mobile, address-bar collapse + tap timing fire scroll/resize
+  // events RIGHT as the tooltip opens — those would otherwise close it instantly.
+  useEffect(() => {
+    if (!show) return;
+    const openedAt = Date.now();
+    const GRACE = 300;
+    const onDocPointerDown = (e) => {
+      if (Date.now() - openedAt < 80) return; // ignore the very tap that opened it
+      if (tooltipRef.current && tooltipRef.current.contains(e.target)) return;
+      if (triggerRef.current && triggerRef.current.contains(e.target)) return;
+      setShow(false);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') setShow(false); };
+    const onScroll = () => {
+      if (Date.now() - openedAt < GRACE) return;
+      setShow(false);
+    };
+    document.addEventListener('mousedown', onDocPointerDown);
+    document.addEventListener('touchstart', onDocPointerDown, { passive: true });
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      document.removeEventListener('mousedown', onDocPointerDown);
+      document.removeEventListener('touchstart', onDocPointerDown);
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [show]);
+
+  const cancelHide = () => {
+    if (hideTimer.current) { clearTimeout(hideTimer.current); hideTimer.current = null; }
+  };
+  const scheduleHide = () => {
+    cancelHide();
+    hideTimer.current = setTimeout(() => setShow(false), 120);
+  };
+
+  // Always OPEN on click (don't toggle). Closing is done by:
+  //   - mouseLeave on desktop (hover capable)
+  //   - tap outside / scroll / Escape on mobile (registered while show=true)
+  // This avoids the touch-device race where synthetic mouseEnter sets show=true
+  // and the click that follows immediately toggles it back to false.
+  const handleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    cancelHide();
     setShow(true);
   };
 
@@ -964,37 +1044,59 @@ function BibleRef({ children, refKey }) {
   const staticText = BIBLE_REFS[refKey];
   const hasContent = xmlVerses || staticText;
 
+  const tooltipNode = (show && hasContent) ? (
+    <div
+      ref={tooltipRef}
+      className="tooltip-card font-body"
+      role="tooltip"
+      onMouseEnter={cancelHide}
+      onMouseLeave={scheduleHide}
+      style={{
+        position: 'fixed',
+        top: coords.top + 'px',
+        left: coords.left + 'px',
+        visibility: coords.visibility,
+        zIndex: 9999,
+        maxWidth: 'min(360px, calc(100vw - 24px))'
+      }}
+    >
+      <div className="font-display text-xs tracking-widest uppercase mb-1.5" style={{color: 'var(--gold-deep)'}}>{refKey}</div>
+      {xmlVerses ? (
+        <div>
+          {xmlVerses.map((v, i) => (
+            <div key={i} style={{marginBottom: '4px'}}>
+              <span style={{color: 'var(--gold-deep)', fontStyle: 'italic', fontWeight: 600, marginRight: '6px'}}>{v.n}</span>
+              {v.t}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>{staticText}</div>
+      )}
+    </div>
+  ) : null;
+
   return (
-    <span className="relative inline">
+    <span style={{display: 'inline'}}>
       <span
-        ref={ref}
+        ref={triggerRef}
         className="bible-ref"
-        onMouseEnter={handleEnter}
-        onMouseLeave={() => setShow(false)}
-        onClick={handleEnter}
+        tabIndex="0"
+        role="button"
+        onMouseEnter={() => { cancelHide(); setShow(true); }}
+        onMouseLeave={scheduleHide}
+        onClick={handleClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setShow(true);
+          }
+        }}
+        aria-label={refKey + ' 본문 보기'}
       >
         {children || refKey}
       </span>
-      {show && hasContent && (
-        <span
-          className="tooltip-card font-body"
-          style={{ top: coords.top + 'px', left: coords.left + 'px', position: 'absolute' }}
-        >
-          <span className="block font-display text-xs tracking-widest uppercase mb-1.5" style={{color: 'var(--gold-deep)'}}>{refKey}</span>
-          {xmlVerses ? (
-            <span className="block">
-              {xmlVerses.map((v, i) => (
-                <span key={i} className="block mb-1">
-                  <span style={{color: 'var(--gold-deep)', fontStyle: 'italic', fontWeight: 600, marginRight: '6px'}}>{v.n}</span>
-                  {v.t}
-                </span>
-              ))}
-            </span>
-          ) : (
-            <span className="block">{staticText}</span>
-          )}
-        </span>
-      )}
+      {tooltipNode && ReactDOM.createPortal(tooltipNode, document.body)}
     </span>
   );
 }
@@ -1309,88 +1411,249 @@ function TwoStages() {
         {/* Tabernacle SVG */}
         <div className="reveal-slow mb-16">
           <div className="bg-[var(--parchment)] rounded-sm p-8 md:p-12 border" style={{borderColor: 'rgba(184,138,62,0.3)', boxShadow: '0 20px 50px rgba(60,40,15,0.1)'}}>
-            <p className="text-center font-display-italic text-sm mb-6" style={{color: 'var(--gold-deep)'}}>
-              구약 성막의 단면 · Cross-section of the Tabernacle
+            <p className="text-center font-display-italic text-sm mb-1" style={{color: 'var(--gold-deep)'}}>
+              구약 성막의 평면도 · The Tabernacle Floor Plan
+            </p>
+            <p className="text-center text-xs mb-6" style={{color: 'var(--ink-soft)', opacity: 0.75}}>
+              뜰 100×50 규빗 · 성막 30×10 규빗 · 지성소 10×10×10 규빗 (출 25–27, 36–38)
             </p>
 
-            <svg viewBox="0 0 800 320" className="w-full h-auto">
-              {/* Outer wall outline */}
-              <rect x="40" y="60" width="720" height="200" fill="none" stroke="var(--ink-soft)" strokeWidth="1.5" />
-
-              {/* Outer Court */}
-              <rect x="40" y="60" width="320" height="200" fill="rgba(184,138,62,0.04)" />
-              <text x="200" y="50" textAnchor="middle" className="font-han" fontSize="13" fill="var(--ink-soft)">바깥뜰 · 세상</text>
-
-              {/* Altar */}
-              <rect x="170" y="160" width="60" height="40" fill="none" stroke="var(--crimson)" strokeWidth="1.2" />
-              <path d="M180 160 L190 150 L200 160 M210 160 L220 150 L230 160" stroke="var(--crimson)" strokeWidth="1" fill="none" />
-              <text x="200" y="220" textAnchor="middle" className="font-han" fontSize="10" fill="var(--crimson-soft)">번제단 (십자가)</text>
-
-              {/* First veil (entrance) */}
-              <line x1="360" y1="60" x2="360" y2="260" stroke="var(--ink-soft)" strokeWidth="1.5" strokeDasharray="3 3" />
-
-              {/* Holy Place */}
-              <rect x="360" y="60" width="280" height="200" fill="rgba(184,138,62,0.1)" />
-              <text x="500" y="50" textAnchor="middle" className="font-han" fontSize="13" fill="var(--ink-soft)">성소 · 구원받은 자리</text>
-
-              {/* Lampstand */}
-              <g transform="translate(420, 200)">
-                <line x1="0" y1="0" x2="0" y2="-40" stroke="var(--gold-deep)" strokeWidth="1.5" />
-                <circle cx="0" cy="-45" r="3" fill="var(--gold)" className="candle-glow" />
-                <line x1="-15" y1="-25" x2="-15" y2="-40" stroke="var(--gold-deep)" strokeWidth="1" />
-                <line x1="15" y1="-25" x2="15" y2="-40" stroke="var(--gold-deep)" strokeWidth="1" />
-                <circle cx="-15" cy="-43" r="2" fill="var(--gold)" className="candle-glow" />
-                <circle cx="15" cy="-43" r="2" fill="var(--gold)" className="candle-glow" />
-                <path d="M-15 -25 Q0 -10 15 -25" fill="none" stroke="var(--gold-deep)" strokeWidth="1" />
-              </g>
-
-              {/* Showbread table */}
-              <rect x="490" y="180" width="40" height="20" fill="none" stroke="var(--gold-deep)" strokeWidth="1" />
-
-              {/* Incense altar */}
-              <rect x="570" y="170" width="30" height="30" fill="none" stroke="var(--gold-deep)" strokeWidth="1" />
-
-              {/* THE VEIL — second veil */}
-              <g>
-                <rect x="638" y="60" width="6" height="200" fill="var(--veil)" opacity="0.85" />
-                <rect x="635" y="60" width="3" height="200" fill="var(--crimson-soft)" opacity="0.4" />
-                <text x="640" y="280" textAnchor="middle" className="font-display-italic" fontSize="11" fill="var(--crimson)">the veil</text>
-                <text x="640" y="294" textAnchor="middle" className="font-han" fontSize="11" fill="var(--crimson)">육체의 휘장</text>
-              </g>
-
-              {/* Holy of Holies */}
-              <rect x="644" y="60" width="116" height="200" fill="rgba(184,138,62,0.18)" />
-              <text x="702" y="50" textAnchor="middle" className="font-han" fontSize="13" fill="var(--gold-deep)">지성소 · 하나님의 임재</text>
-
-              {/* Ark */}
-              <g transform="translate(675, 175)">
-                <rect width="50" height="30" fill="var(--gold)" stroke="var(--gold-deep)" strokeWidth="1" />
-                <path d="M0 0 Q10 -12 18 0 M32 0 Q40 -12 50 0" fill="none" stroke="var(--gold-deep)" strokeWidth="1.2" />
-                <circle cx="25" cy="-8" r="3" fill="var(--gold-soft)" className="candle-glow" />
-              </g>
-              <text x="700" y="230" textAnchor="middle" className="font-han" fontSize="10" fill="var(--gold-deep)">언약궤</text>
-
-              {/* Stage 1 arrow */}
-              <g style={{cursor: 'pointer'}} onClick={() => setActiveStage(activeStage === 1 ? null : 1)}>
-                <path d="M 100 130 Q 240 100 360 130" fill="none" stroke="var(--crimson-soft)" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrowhead-1)" />
-                <text x="200" y="92" textAnchor="middle" className="font-han" fontSize="12" fill="var(--crimson)" fontWeight="700">① 객관적 죽음</text>
-              </g>
-
-              {/* Stage 2 arrow */}
-              <g style={{cursor: 'pointer'}} onClick={() => setActiveStage(activeStage === 2 ? null : 2)}>
-                <path d="M 460 130 Q 560 110 700 130" fill="none" stroke="var(--gold-deep)" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrowhead-2)" />
-                <text x="580" y="92" textAnchor="middle" className="font-han" fontSize="12" fill="var(--gold-deep)" fontWeight="700">② 주관적 죽음</text>
-              </g>
-
-              {/* Markers */}
+            <svg viewBox="0 0 800 460" className="w-full h-auto" style={{maxHeight: '560px'}}>
               <defs>
+                {/* East gate / tabernacle entrance — embroidered linen (blue, purple, scarlet) */}
+                <linearGradient id="gateCloth" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#1B4D6B" stopOpacity="0.75"/>
+                  <stop offset="50%" stopColor="#5d3d4f" stopOpacity="0.85"/>
+                  <stop offset="100%" stopColor="#a14a3f" stopOpacity="0.75"/>
+                </linearGradient>
+                {/* The veil — heavier woven, blue / purple / scarlet / fine linen */}
+                <linearGradient id="veilCloth" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#1B4D6B" stopOpacity="0.9"/>
+                  <stop offset="33%" stopColor="#5d3d4f" stopOpacity="0.92"/>
+                  <stop offset="66%" stopColor="#a14a3f" stopOpacity="0.93"/>
+                  <stop offset="100%" stopColor="#f1e6cf" stopOpacity="0.85"/>
+                </linearGradient>
+                {/* Shekinah glow above the Ark */}
+                <radialGradient id="shekinahGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#E8C97A" stopOpacity="0.6"/>
+                  <stop offset="55%" stopColor="#D6B46A" stopOpacity="0.22"/>
+                  <stop offset="100%" stopColor="#D6B46A" stopOpacity="0"/>
+                </radialGradient>
+                {/* Desert sand texture */}
+                <pattern id="sand" patternUnits="userSpaceOnUse" width="8" height="8">
+                  <rect width="8" height="8" fill="rgba(184,138,62,0.045)"/>
+                  <circle cx="2" cy="2" r="0.4" fill="rgba(184,138,62,0.2)"/>
+                  <circle cx="6" cy="5" r="0.3" fill="rgba(184,138,62,0.13)"/>
+                </pattern>
+                {/* Arrowhead markers */}
                 <marker id="arrowhead-1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                  <polygon points="0 0, 10 3, 0 6" fill="var(--crimson-soft)" />
+                  <polygon points="0 0, 10 3, 0 6" fill="var(--crimson)" />
                 </marker>
                 <marker id="arrowhead-2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
                   <polygon points="0 0, 10 3, 0 6" fill="var(--gold-deep)" />
                 </marker>
               </defs>
+
+              {/* === ZONE LABELS === */}
+              <text x="200" y="64" textAnchor="middle" className="font-han" fontSize="12" fill="var(--ink-soft)">바깥뜰 · 세상</text>
+              <text x="535" y="64" textAnchor="middle" className="font-han" fontSize="12" fill="var(--gold-deep)">성소 · 구원받은 자리</text>
+              <text x="643" y="64" textAnchor="middle" className="font-han" fontSize="12" fill="var(--gold-deep)" fontWeight="700">지성소 · 하나님의 임재</text>
+
+              {/* === OUTER COURT (100×50 cubits, 2:1) === */}
+              <rect x="40" y="80" width="720" height="360" fill="url(#sand)" stroke="var(--ink-soft)" strokeWidth="1.4"/>
+
+              {/* Linen perimeter screens: 60 bronze pillars with silver caps */}
+              {Array.from({length: 21}).map((_, i) => (
+                <circle key={"np" + i} cx={40 + i*36} cy="80" r="1.7" fill="var(--gold-deep)" opacity="0.75"/>
+              ))}
+              {Array.from({length: 21}).map((_, i) => (
+                <circle key={"sp" + i} cx={40 + i*36} cy="440" r="1.7" fill="var(--gold-deep)" opacity="0.75"/>
+              ))}
+              {Array.from({length: 11}).map((_, i) => (
+                <circle key={"wp" + i} cx="760" cy={80 + i*36} r="1.7" fill="var(--gold-deep)" opacity="0.75"/>
+              ))}
+              {/* East side: 20-cubit gate replaces 4 middle pillars (positions 4-7) */}
+              {[0,1,2,3,8,9,10].map((i) => (
+                <circle key={"ep" + i} cx="40" cy={80 + i*36} r="1.7" fill="var(--gold-deep)" opacity="0.75"/>
+              ))}
+
+              {/* East gate (20-cubit embroidered screen) */}
+              <rect x="36" y="224" width="8" height="144" fill="url(#gateCloth)" opacity="0.85"/>
+              <text x="22" y="300" textAnchor="middle" fontSize="9" fill="var(--ink-soft)" className="font-han" transform="rotate(-90 22 300)">동문 · 20규빗</text>
+
+              {/* Compass */}
+              <g transform="translate(724, 108)" opacity="0.55">
+                <circle r="13" fill="rgba(246,236,217,0.85)" stroke="var(--ink-soft)" strokeWidth="0.5"/>
+                <line x1="0" y1="-11" x2="0" y2="11" stroke="var(--ink-soft)" strokeWidth="0.4"/>
+                <line x1="-11" y1="0" x2="11" y2="0" stroke="var(--ink-soft)" strokeWidth="0.4"/>
+                <polygon points="0,-11 -2,-6 2,-6" fill="var(--crimson)" opacity="0.7"/>
+                <text textAnchor="middle" y="-14" fontSize="7" fill="var(--ink-soft)" className="font-han">북</text>
+                <text textAnchor="middle" y="20" fontSize="7" fill="var(--ink-soft)" className="font-han">남</text>
+                <text textAnchor="middle" x="-16" y="3" fontSize="7" fill="var(--ink-soft)" className="font-han">동</text>
+                <text textAnchor="middle" x="16" y="3" fontSize="7" fill="var(--ink-soft)" className="font-han">서</text>
+              </g>
+
+              {/* === BRONZE ALTAR (5×5 cubits) - position: ~20 cubits in from east gate, centered N–S === */}
+              <g transform="translate(184, 260)">
+                <rect x="-22" y="-22" width="44" height="44" fill="rgba(138,58,48,0.18)" stroke="var(--crimson)" strokeWidth="1.2"/>
+                {/* grating - cross hatch */}
+                <line x1="-22" y1="-11" x2="22" y2="-11" stroke="var(--crimson-soft)" strokeWidth="0.5" opacity="0.5"/>
+                <line x1="-22" y1="0" x2="22" y2="0" stroke="var(--crimson-soft)" strokeWidth="0.5" opacity="0.5"/>
+                <line x1="-22" y1="11" x2="22" y2="11" stroke="var(--crimson-soft)" strokeWidth="0.5" opacity="0.5"/>
+                <line x1="-11" y1="-22" x2="-11" y2="22" stroke="var(--crimson-soft)" strokeWidth="0.5" opacity="0.5"/>
+                <line x1="0" y1="-22" x2="0" y2="22" stroke="var(--crimson-soft)" strokeWidth="0.5" opacity="0.5"/>
+                <line x1="11" y1="-22" x2="11" y2="22" stroke="var(--crimson-soft)" strokeWidth="0.5" opacity="0.5"/>
+                {/* 4 horns at corners */}
+                <rect x="-25" y="-25" width="5" height="5" fill="var(--crimson)"/>
+                <rect x="20" y="-25" width="5" height="5" fill="var(--crimson)"/>
+                <rect x="-25" y="20" width="5" height="5" fill="var(--crimson)"/>
+                <rect x="20" y="20" width="5" height="5" fill="var(--crimson)"/>
+                {/* flames */}
+                <path d="M-10 -8 Q-6 -16 -3 -10 Q0 -18 3 -10 Q6 -16 10 -8 Z" fill="var(--crimson-soft)" opacity="0.55"/>
+              </g>
+              <text x="184" y="315" textAnchor="middle" className="font-han" fontSize="10" fill="var(--crimson)">번제단 (출 27:1)</text>
+              <text x="184" y="328" textAnchor="middle" className="font-display-italic" fontSize="9" fill="var(--crimson-soft)" fontStyle="italic">十字架</text>
+
+              {/* === BRONZE LAVER (round basin between altar and tent) === */}
+              <g transform="translate(335, 260)">
+                <ellipse cx="0" cy="0" rx="22" ry="16" fill="rgba(184,138,62,0.22)" stroke="var(--gold-deep)" strokeWidth="1.2"/>
+                <ellipse cx="0" cy="-4" rx="18" ry="13" fill="none" stroke="var(--gold-deep)" strokeWidth="0.6" opacity="0.65"/>
+                <ellipse cx="0" cy="-7" rx="13" ry="9" fill="rgba(27,77,107,0.28)" stroke="var(--gold-deep)" strokeWidth="0.5"/>
+                <rect x="-3" y="14" width="6" height="6" fill="var(--gold-deep)"/>
+                <line x1="-12" y1="20" x2="12" y2="20" stroke="var(--gold-deep)" strokeWidth="1.5"/>
+              </g>
+              <text x="335" y="310" textAnchor="middle" className="font-han" fontSize="10" fill="var(--gold-deep)">물두멍 (출 30:18)</text>
+              <text x="335" y="323" textAnchor="middle" className="font-display-italic" fontSize="9" fill="var(--gold-deep)" fontStyle="italic" opacity="0.75">씻음</text>
+
+              {/* === TABERNACLE BUILDING (30×10 cubits) — footprint x=460..676, y=224..296 === */}
+              <rect x="460" y="224" width="216" height="72" fill="rgba(45,29,14,0.04)" stroke="var(--ink)" strokeWidth="1.8"/>
+
+              {/* Acacia boards along N/S walls (visual ticks) */}
+              {Array.from({length: 20}).map((_, i) => (
+                <line key={"tnb" + i} x1={462 + i*10.7} y1="224" x2={462 + i*10.7} y2="227" stroke="var(--ink)" strokeWidth="0.6" opacity="0.55"/>
+              ))}
+              {Array.from({length: 20}).map((_, i) => (
+                <line key={"tsb" + i} x1={462 + i*10.7} y1="293" x2={462 + i*10.7} y2="296" stroke="var(--ink)" strokeWidth="0.6" opacity="0.55"/>
+              ))}
+              {Array.from({length: 6}).map((_, i) => (
+                <line key={"twb" + i} x1="673" y1={228 + i*11.5} x2="676" y2={228 + i*11.5} stroke="var(--ink)" strokeWidth="0.6" opacity="0.55"/>
+              ))}
+
+              {/* === HOLY PLACE FILL === */}
+              <rect x="466" y="227" width="138" height="66" fill="rgba(184,138,62,0.08)"/>
+
+              {/* Entrance screen at east face of tabernacle — 10 cubits, 5 pillars */}
+              <rect x="458" y="224" width="6" height="72" fill="url(#gateCloth)" opacity="0.85"/>
+              {[0,1,2,3,4].map(i => (
+                <circle key={"epil" + i} cx="461" cy={232 + i*15} r="2.2" fill="var(--gold-deep)"/>
+              ))}
+              <text x="460" y="216" textAnchor="middle" fontSize="9" fill="var(--ink-soft)" className="font-han">성소 입구 막</text>
+
+              {/* SHOWBREAD TABLE (north side) */}
+              <g transform="translate(515, 240)">
+                <rect x="-15" y="-7" width="30" height="14" fill="rgba(184,138,62,0.22)" stroke="var(--gold-deep)" strokeWidth="1"/>
+                {[0,1].map(row => (
+                  [0,1,2,3,4,5].map(col => (
+                    <circle key={"lf" + row + "-" + col} cx={-13 + col*5} cy={-3 + row*6} r="1.6" fill="var(--cream-deep)" stroke="var(--gold-deep)" strokeWidth="0.3"/>
+                  ))
+                ))}
+                <line x1="-13" y1="7" x2="-13" y2="11" stroke="var(--gold-deep)" strokeWidth="0.7"/>
+                <line x1="13" y1="7" x2="13" y2="11" stroke="var(--gold-deep)" strokeWidth="0.7"/>
+              </g>
+              <text x="515" y="220" textAnchor="middle" className="font-han" fontSize="9" fill="var(--gold-deep)">진설병 상 (출 25:23)</text>
+
+              {/* LAMPSTAND (south side) — 7-branched menorah */}
+              <g transform="translate(515, 280)">
+                <line x1="0" y1="7" x2="0" y2="-6" stroke="var(--gold-deep)" strokeWidth="1.6"/>
+                <path d="M-5 9 L0 5 L5 9 Z" fill="var(--gold-deep)"/>
+                <path d="M0 -1 Q-3 -3 -3 -6 L-3 -9" fill="none" stroke="var(--gold-deep)" strokeWidth="1"/>
+                <path d="M0 1 Q-5 -2 -5 -5 L-5 -9" fill="none" stroke="var(--gold-deep)" strokeWidth="1"/>
+                <path d="M0 3 Q-7 -1 -7 -4 L-7 -9" fill="none" stroke="var(--gold-deep)" strokeWidth="1"/>
+                <path d="M0 -1 Q3 -3 3 -6 L3 -9" fill="none" stroke="var(--gold-deep)" strokeWidth="1"/>
+                <path d="M0 1 Q5 -2 5 -5 L5 -9" fill="none" stroke="var(--gold-deep)" strokeWidth="1"/>
+                <path d="M0 3 Q7 -1 7 -4 L7 -9" fill="none" stroke="var(--gold-deep)" strokeWidth="1"/>
+                {[-7,-5,-3,0,3,5,7].map((x, i) => (
+                  <g key={"fl" + i}>
+                    <ellipse cx={x} cy="-10.5" rx="1.4" ry="2" fill="var(--gold)" className="candle-glow"/>
+                    <circle cx={x} cy="-9.5" r="0.55" fill="#fff" opacity="0.75"/>
+                  </g>
+                ))}
+              </g>
+              <text x="515" y="307" textAnchor="middle" className="font-han" fontSize="9" fill="var(--gold-deep)">등잔대 (출 25:31)</text>
+
+              {/* ALTAR OF INCENSE — west end of HP, centered, just east of the veil */}
+              <g transform="translate(588, 260)">
+                <rect x="-7" y="-7" width="14" height="14" fill="rgba(184,138,62,0.3)" stroke="var(--gold-deep)" strokeWidth="1"/>
+                <rect x="-8" y="-9" width="2" height="2" fill="var(--gold-deep)"/>
+                <rect x="6" y="-9" width="2" height="2" fill="var(--gold-deep)"/>
+                <rect x="-8" y="7" width="2" height="2" fill="var(--gold-deep)"/>
+                <rect x="6" y="7" width="2" height="2" fill="var(--gold-deep)"/>
+                {/* smoke */}
+                <path d="M-2 -8 Q-1 -12 1 -14 Q3 -16 1 -19" fill="none" stroke="var(--gold-soft)" strokeWidth="0.5" opacity="0.7"/>
+                <path d="M2 -8 Q3 -12 1 -14 Q-1 -16 2 -19" fill="none" stroke="var(--gold-soft)" strokeWidth="0.5" opacity="0.6"/>
+              </g>
+              <text x="588" y="240" textAnchor="middle" className="font-han" fontSize="9" fill="var(--gold-deep)">분향단 (출 30:1)</text>
+
+              {/* === THE VEIL between Holy Place and Holy of Holies === */}
+              <g>
+                <rect x="604" y="224" width="8" height="72" fill="url(#veilCloth)"/>
+                {/* Embroidered cherubim */}
+                <g transform="translate(608, 244)" opacity="0.75">
+                  <circle r="2.2" fill="rgba(232,201,122,0.85)"/>
+                  <path d="M-3.5 1 Q0 -2 3.5 1 M-3.5 3 Q0 0 3.5 3" stroke="rgba(232,201,122,0.85)" strokeWidth="0.5" fill="none"/>
+                </g>
+                <g transform="translate(608, 276)" opacity="0.75">
+                  <circle r="2.2" fill="rgba(232,201,122,0.85)"/>
+                  <path d="M-3.5 1 Q0 -2 3.5 1 M-3.5 3 Q0 0 3.5 3" stroke="rgba(232,201,122,0.85)" strokeWidth="0.5" fill="none"/>
+                </g>
+                <text x="608" y="313" textAnchor="middle" className="font-display-italic" fontSize="10" fill="var(--crimson)" fontStyle="italic">the veil</text>
+                <text x="608" y="325" textAnchor="middle" className="font-han" fontSize="10" fill="var(--crimson)" fontWeight="600">육체의 휘장</text>
+                <text x="608" y="337" textAnchor="middle" className="font-display-italic" fontSize="8" fill="var(--crimson-soft)" fontStyle="italic">(히 10:20)</text>
+              </g>
+
+              {/* === HOLY OF HOLIES (10×10 cube floor plan) === */}
+              <rect x="612" y="227" width="62" height="66" fill="rgba(184,138,62,0.28)"/>
+
+              {/* Shekinah glow */}
+              <circle cx="643" cy="260" r="36" fill="url(#shekinahGlow)"/>
+
+              {/* ARK OF THE COVENANT with mercy seat + 2 cherubim */}
+              <g transform="translate(643, 260)">
+                {/* ark body */}
+                <rect x="-14" y="-6" width="28" height="16" fill="var(--gold)" stroke="var(--gold-deep)" strokeWidth="0.9"/>
+                {/* mercy seat (kapporeth) */}
+                <rect x="-15" y="-9" width="30" height="3.5" fill="var(--gold-soft)" stroke="var(--gold-deep)" strokeWidth="0.7"/>
+                {/* 2 cherubim with wings overshadowing */}
+                <g transform="translate(-8, -13)">
+                  <circle cx="0" cy="0" r="2.4" fill="var(--gold-deep)"/>
+                  <path d="M-3 -1 Q-7 -7 -3 -10 M2 -2 Q4 -8 8 -10" fill="none" stroke="var(--gold-deep)" strokeWidth="0.8"/>
+                </g>
+                <g transform="translate(8, -13)">
+                  <circle cx="0" cy="0" r="2.4" fill="var(--gold-deep)"/>
+                  <path d="M3 -1 Q7 -7 3 -10 M-2 -2 Q-4 -8 -8 -10" fill="none" stroke="var(--gold-deep)" strokeWidth="0.8"/>
+                </g>
+                <path d="M-3 -22 Q0 -25 3 -22" fill="none" stroke="var(--gold-deep)" strokeWidth="0.8"/>
+                <circle cx="0" cy="-20" r="3" fill="var(--gold-soft)" className="candle-glow" opacity="0.8"/>
+                {/* carrying poles */}
+                <line x1="-16" y1="-1" x2="-22" y2="-1" stroke="var(--gold-deep)" strokeWidth="1.2"/>
+                <line x1="16" y1="-1" x2="22" y2="-1" stroke="var(--gold-deep)" strokeWidth="1.2"/>
+                <line x1="-16" y1="6" x2="-22" y2="6" stroke="var(--gold-deep)" strokeWidth="1.2"/>
+                <line x1="16" y1="6" x2="22" y2="6" stroke="var(--gold-deep)" strokeWidth="1.2"/>
+              </g>
+              <text x="643" y="316" textAnchor="middle" className="font-han" fontSize="9" fill="var(--gold-deep)" fontWeight="600">언약궤 · 속죄소 (출 25:10)</text>
+              <text x="643" y="218" textAnchor="middle" className="font-display-italic" fontSize="9" fill="var(--gold-deep)" fontStyle="italic">Shekinah</text>
+
+              {/* === STAGE ARROWS (clickable) === */}
+              {/* Stage 1: through the gate → bronze altar → laver → into Holy Place */}
+              <g style={{cursor: 'pointer'}} onClick={() => setActiveStage(activeStage === 1 ? null : 1)}>
+                <path d="M 70 405 Q 250 425 460 405" fill="none" stroke="var(--crimson)" strokeWidth="2.2" strokeDasharray="6 4" markerEnd="url(#arrowhead-1)" />
+                <text x="265" y="420" textAnchor="middle" className="font-han" fontSize="12" fill="var(--crimson)" fontWeight="700">① 객관적 죽음 — 죄인을 죄에서 건짐</text>
+              </g>
+              {/* Stage 2: through the veil into the Holy of Holies */}
+              <g style={{cursor: 'pointer'}} onClick={() => setActiveStage(activeStage === 2 ? null : 2)}>
+                <path d="M 466 380 Q 555 395 668 380" fill="none" stroke="var(--gold-deep)" strokeWidth="2.2" strokeDasharray="6 4" markerEnd="url(#arrowhead-2)" />
+                <text x="565" y="370" textAnchor="middle" className="font-han" fontSize="12" fill="var(--gold-deep)" fontWeight="700">② 주관적 죽음 — 육체에서 건짐</text>
+              </g>
             </svg>
 
             <p className="text-center text-xs mt-4 font-display-italic" style={{color: 'var(--gold-deep)'}}>
@@ -1878,10 +2141,10 @@ function Quiz() {
             Self-Examination
           </p>
           <h2 className="font-han text-3xl md:text-4xl mb-3" style={{color: 'var(--ink)', fontWeight: 700}}>
-            묵상 점검
+            퀴즈
           </h2>
           <p className="font-han" style={{color: 'var(--ink-soft)'}}>
-            마음에 짚이는 답을 골라 보세요
+            답을 골라 보세요
           </p>
         </div>
 
@@ -1942,7 +2205,7 @@ function Quiz() {
                   animation: 'fadeUp 0.5s ease-out'
                 }}>
                   <span className="font-display-italic text-xs tracking-widest uppercase block mb-2" style={{color: 'var(--gold-deep)'}}>
-                    묵상
+                    설명
                   </span>
                   {q.explain}
                 </div>
@@ -1980,7 +2243,7 @@ function Prayer() {
           <div className="absolute bottom-3 right-3 w-6 h-6 border-r border-b" style={{borderColor: 'var(--gold)'}} />
 
           <p className="font-display-italic text-base mb-8 text-center" style={{color: 'var(--gold-deep)'}}>
-            ✦ &nbsp; 사랑하시는 주님 &nbsp; ✦
+            ✦ &nbsp; 사랑하는 주님 &nbsp; ✦
           </p>
 
           <div className="font-han text-base md:text-lg leading-[2.3]" style={{color: 'var(--ink)'}}>
@@ -2000,12 +2263,12 @@ function Prayer() {
               <span style={{color: 'var(--crimson)', fontWeight: 700}}>십자가에 못 박힌 그리스도와 동일시되게</span> 하셔서,
               저의 육체의 휘장이 찢어지게 하시옵소서.
               부활 생명 안에서 주님을 향하여 살게 하시고,
-              지성소에 계신 주님과 온전히 하나 되게 하시옵소서.
+              지성소에 계신 주님과 온전히 하나 되게 해주십시오..
             </p>
             <p>
-              그래야 저도 그리스도의 대사로서,
+              그렇게하여 저도 그리스도의 대사로서,
               다른 이들을 주님께로, 그리고{' '}
-              <span style={{color: 'var(--gold-deep)', fontWeight: 700}}>주님 안으로</span> 인도할 수 있겠습니다.
+              <span style={{color: 'var(--gold-deep)', fontWeight: 700}}>주님 안으로</span> 인도할 수 있기 원합니다..
             </p>
           </div>
 
