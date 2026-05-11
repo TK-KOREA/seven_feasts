@@ -1007,12 +1007,275 @@
     .tabernacle-diagram{position: relative; top: 0}
     .greek-section, .summary-section, .tabernacle-section, .veil-section, .forwith-section, .details-section, .quiz-section, .prayer-section{padding: 100px 20px}
   }
+
+  /* ═════════════════════════════════════════════════════════
+     PORTED FEATURES — Topbar, Side Panel, Bible Tooltip, TTS
+     (themed to M2D2 parchment/bronze/ink)
+     ═════════════════════════════════════════════════════════ */
+  :root { --topbar-h: 44px; --font-scale: 1; }
+  html { font-size: calc(16px * var(--font-scale)); }
+  body { padding-top: var(--topbar-h); }
+
+  /* Top bar — light parchment over dark backdrop */
+  .topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(239,229,207,0.94);backdrop-filter:saturate(150%) blur(10px);-webkit-backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid rgba(94,74,46,0.28);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+  .topbar-btn{flex-shrink:0;width:34px;height:34px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);opacity:0.85;transition:background .15s, opacity .15s}
+  .topbar-btn:hover{background:rgba(184,137,90,0.18);opacity:1;color:var(--crimson)}
+  .topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:'Cinzel','Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:0.28em;color:var(--bronze-deep);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px;text-transform:uppercase}
+  .topbar-title::-webkit-scrollbar{display:none}
+  .font-controls{display:flex;align-items:center;gap:2px;border:1px solid rgba(94,74,46,0.28);border-radius:4px;padding:2px;margin-left:4px}
+  .font-ctrl-btn{width:26px;height:26px;border:none;background:transparent;color:var(--ink-soft);font-size:14px;cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif}
+  .font-ctrl-btn:hover{background:rgba(184,137,90,0.22);color:var(--crimson)}
+
+  /* Overlay & Side panel */
+  .overlay{position:fixed;inset:0;background:rgba(31,24,19,0.55);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:linear-gradient(180deg,var(--parchment) 0%,var(--parchment-deep) 100%);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 32px rgba(31,24,19,0.3);font-family:'Noto Serif KR',serif;border-right:1px solid rgba(94,74,46,0.3)}
+  .sidepanel.open{transform:translateX(0)}
+  .sidepanel-header{padding:0 22px 16px;border-bottom:1px solid rgba(94,74,46,0.25);margin-bottom:12px;font-family:'Cinzel','Cormorant Garamond',serif;font-size:12px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:var(--bronze-deep);display:flex;align-items:center;gap:8px}
+  .sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--ink-soft);opacity:0.7;display:flex;align-items:center;justify-content:center}
+  .sidepanel-close:hover{background:rgba(184,137,90,0.2);color:var(--crimson);opacity:1}
+  .sp-nav{display:block;padding:10px 22px;font-size:13px;color:var(--ink);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:400;letter-spacing:-0.005em;opacity:0.85}
+  .sp-nav:hover{background:rgba(184,137,90,0.12);color:var(--crimson);opacity:1}
+  .sp-nav.sub{padding-left:38px;font-size:12.5px;font-weight:300;color:var(--ink-soft);opacity:0.78}
+  .sp-divider{height:1px;background:rgba(94,74,46,0.22);margin:10px 22px}
+  .sp-home{display:flex;align-items:center;gap:8px;color:var(--bronze-deep);opacity:0.95;font-weight:500}
+  .sp-home-icon{flex-shrink:0;color:var(--bronze-deep)}
+
+  /* Bible verse tooltip (auto-attached) — dark style for contrast on parchment */
+  .bible-tip{
+    border-bottom:1px dotted var(--bronze);
+    cursor:help;
+    color:inherit;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:color 0.18s ease,background 0.18s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(184,137,90,0.18);
+    padding: 0 2px;
+  }
+  .bible-tip:hover,.bible-tip:focus{
+    color:var(--crimson);
+    background:rgba(184,137,90,0.12);
+    outline:none;
+  }
+  @media (hover:none), (pointer:coarse){
+    .bible-tip{cursor:pointer;border-bottom-style:solid;border-bottom-width:0.5px}
+  }
+  .bible-tooltip{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:9999;
+    background:linear-gradient(180deg,var(--ink) 0%,var(--ink-soft) 100%);
+    border:1px solid rgba(212,167,106,0.45);
+    box-shadow:
+      0 22px 48px -10px rgba(31,24,19,0.45),
+      0 8px 18px -6px rgba(31,24,19,0.30),
+      inset 0 1px 0 rgba(244,229,194,0.08);
+    padding:18px 22px 16px;
+    width:max-content;
+    max-width:min(400px,calc(100vw - 24px));
+    min-width:260px;
+    font-family:'Noto Serif KR',serif;
+    font-size:14px;
+    line-height:1.75;
+    color:var(--sacred-light);
+    border-radius:1px;
+    white-space:normal;
+    cursor:default;
+    display:none;
+    visibility:hidden;
+  }
+  .bible-tooltip.show{display:block;visibility:visible}
+  .bible-tooltip::before{
+    content:'';
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:3px;
+    background:linear-gradient(180deg,var(--gold-bright) 0%,var(--gold) 50%,var(--gold-deep) 100%);
+    box-shadow:0 0 12px rgba(212,167,106,0.45);
+  }
+  .bible-tooltip::after{
+    content:'';
+    position:absolute;
+    inset:6px;
+    border:1px solid rgba(212,167,106,0.18);
+    pointer-events:none;
+  }
+  .bible-tooltip-ref{
+    position:relative;
+    font-family:'Cinzel','Cormorant Garamond',serif;
+    font-weight:500;
+    font-size:0.78rem;
+    letter-spacing:0.22em;
+    color:var(--gold-bright);
+    text-transform:uppercase;
+    margin-bottom:12px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(212,167,106,0.28);
+  }
+  .bible-tooltip-ref::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:-1px;
+    width:28px;
+    height:1px;
+    background:var(--gold-bright);
+  }
+  .bible-tooltip-text{
+    position:relative;
+    font-size:0.93rem;
+    color:var(--sacred-light);
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    opacity:0.96;
+  }
+  .bible-tooltip-verse{margin-bottom:6px;padding-left:0}
+  .bible-tooltip-verse:last-child{margin-bottom:0}
+  .bible-tooltip-verse-num{
+    display:inline-block;
+    font-family:'Cinzel','Cormorant Garamond',serif;
+    font-weight:500;
+    font-size:0.85rem;
+    color:var(--gold-bright);
+    margin-right:8px;
+    vertical-align:0.05em;
+    min-width:18px;
+  }
+  .bible-tooltip-missing{
+    color:var(--sacred-light);
+    font-style:italic;
+    font-size:0.88rem;
+    letter-spacing:0.02em;
+    opacity:0.6;
+  }
+  @media (max-width:480px){
+    .bible-tooltip{
+      max-width:calc(100vw - 20px);
+      min-width:200px;
+      font-size:13px;
+      padding:15px 18px 14px;
+    }
+    .bible-tooltip-text{font-size:0.9rem}
+    .bible-tooltip-ref{font-size:0.72rem;letter-spacing:0.16em}
+  }
+
+  /* TTS Reader modal */
+  .tts-reader-overlay{display:none;position:fixed;inset:0;background:rgba(31,24,19,0.65);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:2000;align-items:center;justify-content:center;padding:20px}
+  .tts-reader-overlay.active{display:flex}
+  .tts-reader-modal{background:linear-gradient(180deg,var(--parchment) 0%,var(--parchment-deep) 100%);border-radius:6px;max-width:520px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 22px 60px rgba(31,24,19,0.4);border:1px solid rgba(94,74,46,0.32);border-top:3px solid var(--bronze);font-family:'Noto Serif KR',serif;color:var(--ink)}
+  .tts-reader-header{padding:18px 22px 14px;border-bottom:1px dashed rgba(94,74,46,0.3);display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .tts-reader-icon{flex-shrink:0;color:var(--bronze-deep)}
+  .tts-reader-title{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:500;color:var(--ink);flex:1}
+  .tts-reader-close{width:30px;height:30px;background:transparent;border:1px solid rgba(94,74,46,0.32);border-radius:50%;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;opacity:0.8}
+  .tts-reader-close:hover{background:var(--bronze);color:var(--parchment);border-color:var(--bronze);opacity:1}
+  .tts-reader-body{padding:14px 22px;overflow-y:auto;flex:1}
+  .tts-form-label{font-family:'Cinzel','Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--bronze-deep);margin-bottom:8px;margin-top:14px;display:block}
+  .tts-form-label:first-child{margin-top:0}
+  .tts-voice-select{width:100%;padding:10px 12px;border:1px solid rgba(94,74,46,0.32);border-radius:4px;font-family:inherit;font-size:13px;background:rgba(255,255,255,0.4);color:var(--ink)}
+  .tts-api-row{display:flex;gap:8px;align-items:center}
+  .tts-api-row input{flex:1;padding:9px 11px;border:1px solid rgba(94,74,46,0.32);border-radius:4px;font-family:inherit;font-size:12px;background:rgba(255,255,255,0.4);color:var(--ink)}
+  .tts-api-row button{padding:9px 14px;border:1px solid var(--bronze-deep);background:var(--bronze-deep);color:var(--parchment);border-radius:4px;font-size:11px;font-weight:600;letter-spacing:0.08em;cursor:pointer}
+  .tts-api-row button:hover{background:var(--crimson);border-color:var(--crimson)}
+  .tts-section-list{border:1px solid rgba(94,74,46,0.25);border-radius:4px;background:rgba(255,255,255,0.35);max-height:240px;overflow-y:auto}
+  .tts-section-item{display:flex;align-items:flex-start;gap:10px;padding:9px 13px;cursor:pointer;border-bottom:1px solid rgba(94,74,46,0.18);font-size:13px;color:var(--ink);transition:background 0.15s}
+  .tts-section-item:last-child{border-bottom:none}
+  .tts-section-item:hover{background:rgba(184,137,90,0.08)}
+  .tts-section-item.all{font-weight:600;color:var(--bronze-deep);background:rgba(184,137,90,0.12)}
+  .tts-section-item.playing{background:rgba(184,137,90,0.20);color:var(--bronze-deep);font-weight:500}
+  .tts-section-checkbox{flex-shrink:0;width:15px;height:15px;margin-top:2px;accent-color:var(--bronze-deep);cursor:pointer}
+  .tts-section-label{flex:1;line-height:1.45}
+  .tts-progress{margin-top:14px;padding:12px 14px;background:rgba(255,255,255,0.35);border:1px solid rgba(94,74,46,0.25);border-radius:4px;display:none}
+  .tts-progress.active{display:block}
+  .tts-progress-bar{height:6px;background:rgba(94,74,46,0.18);border-radius:3px;overflow:hidden}
+  .tts-progress-fill{height:100%;background:var(--bronze-deep);width:0%;transition:width 0.3s}
+  .tts-progress-text{font-size:12px;color:var(--ink-soft);margin-top:8px;line-height:1.5}
+  .tts-progress-text strong{color:var(--bronze-deep)}
+  .tts-status{font-size:11.5px;color:var(--ink-soft);margin-top:10px;font-style:italic;line-height:1.5;opacity:0.75}
+  .tts-status.error{color:var(--crimson);font-style:normal;font-weight:600;opacity:1}
+  .tts-reader-footer{padding:14px 22px 18px;border-top:1px solid rgba(94,74,46,0.25);display:flex;gap:10px;flex-shrink:0}
+  .tts-btn{flex:1;padding:11px 16px;border:1px solid rgba(94,74,46,0.32);background:transparent;color:var(--ink);border-radius:4px;font-family:'Noto Serif KR',serif;font-size:12.5px;font-weight:500;letter-spacing:0.06em;cursor:pointer;transition:all 0.15s}
+  .tts-btn:hover:not(:disabled){background:rgba(184,137,90,0.12);color:var(--crimson)}
+  .tts-btn:disabled{opacity:0.4;cursor:not-allowed}
+  .tts-btn.primary{background:var(--bronze-deep);border-color:var(--bronze-deep);color:var(--parchment)}
+  .tts-btn.primary:hover:not(:disabled){background:var(--crimson);border-color:var(--crimson);color:var(--parchment)}
+  @media (max-width:480px){.tts-reader-modal{max-height:95vh}.tts-reader-body{padding:14px 16px}}
 </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="topbar-title">휘장을 지나, 지성소로 · 갈 2:20</div>
+  <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="sp-nav sp-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="sp-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" onclick="goToSection('hero')" style="color:var(--bronze-deep);font-weight:500;">✦ 오늘의 구절 — 갈 2:20</a>
+  <a class="sp-nav" onclick="goToSection('greek-section')">Ⅰ. 원문의 무게 — 헬라어 네 단어</a>
+  <a class="sp-nav" onclick="goToSection('summary-section')">Ⅱ. 핵심 한 줄</a>
+  <a class="sp-nav" onclick="goToSection('tabernacle-section')">Ⅲ. 성막의 세 구역</a>
+  <a class="sp-nav" onclick="goToSection('veil-section')">Ⅳ. 휘장이 찢어지는 순간</a>
+  <a class="sp-nav" onclick="goToSection('forwith-section')">Ⅴ. 위해 일하기 vs 함께 일하기</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" style="font-weight:600;color:var(--bronze-deep);">Ⅵ. 더 깊이 들어가기</a>
+  <a class="sp-nav sub" onclick="goToAcc(0)">왜 우리의 구원은 아직 '부분적'인가</a>
+  <a class="sp-nav sub" onclick="goToAcc(1)">'지성소 안에 들어간다'는 것은 무엇인가</a>
+  <a class="sp-nav sub" onclick="goToAcc(2)">사도의 위임 — 화목의 일</a>
+  <a class="sp-nav sub" onclick="goToAcc(3)">'지금이 바로 구원의 날' — 고후 6:2</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" onclick="goToSection('quiz-section')">Ⅶ. 자기 점검 · 퀴즈</a>
+  <a class="sp-nav" onclick="goToSection('prayer-section')">Ⅷ. 오늘의 기도</a>
+</div>
+
+<!-- TTS READER MODAL -->
+<div class="tts-reader-overlay" id="tts-reader-overlay" onclick="ttsCloseOnBg(event)">
+  <div class="tts-reader-modal" onclick="event.stopPropagation()">
+    <div class="tts-reader-header">
+      <svg class="tts-reader-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      <div class="tts-reader-title">본문 듣기</div>
+      <button class="tts-reader-close" onclick="ttsCloseReader()" aria-label="닫기">✕</button>
+    </div>
+    <div class="tts-reader-body">
+      <label class="tts-form-label">API 키</label>
+      <div class="tts-api-row">
+        <input type="password" id="tts-api-key" placeholder="API 키를 입력하세요" />
+        <button onclick="ttsSaveApiKey()">저장</button>
+      </div>
+      <label class="tts-form-label">음성 선택</label>
+      <select class="tts-voice-select" id="tts-voice-select">
+        <option value="tk_voice">tk_voice</option>
+      </select>
+      <label class="tts-form-label">읽을 항목 (기본: 전체 선택)</label>
+      <div class="tts-section-list" id="tts-section-list"></div>
+      <div class="tts-progress" id="tts-progress">
+        <div class="tts-progress-bar"><div class="tts-progress-fill" id="tts-progress-fill"></div></div>
+        <div class="tts-progress-text" id="tts-progress-text">대기 중...</div>
+      </div>
+      <div class="tts-status" id="tts-status">서버에서 음성 목록을 불러옵니다...</div>
+    </div>
+    <div class="tts-reader-footer">
+      <button class="tts-btn" id="tts-stop-btn" onclick="ttsStop()" disabled>⏹ 중지</button>
+      <button class="tts-btn" id="tts-pause-btn" onclick="ttsTogglePause()" disabled>⏸ 일시정지</button>
+      <button class="tts-btn primary" id="tts-play-btn" onclick="ttsPlay()">▶ 재생</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ SECTION 1: HERO ============ -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="container">
     <div class="hero-grid">
       <div class="hero-mark">
@@ -1543,6 +1806,675 @@
       });
     });
   });
+
+  // ============================================================
+  // PORTED FROM M1D4 — Font scale, Side panel, Bible tooltip, TTS
+  // ============================================================
+  let fontScale = 1;
+  function adjustFont(dir) {
+    if (dir === 0) fontScale = 1;
+    else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+    else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+    document.documentElement.style.setProperty('--font-scale', fontScale);
+  }
+  function togglePanel() {
+    document.getElementById('sidepanel').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+  function goToSection(idOrClass) {
+    togglePanel();
+    setTimeout(() => {
+      const el = document.getElementById(idOrClass) || document.querySelector('section.' + idOrClass);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+  function goToAcc(idx) {
+    togglePanel();
+    setTimeout(() => {
+      const items = document.querySelectorAll('.details-section .acc-item');
+      if (items[idx]) {
+        items[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        items[idx].classList.add('open');
+      }
+    }, 320);
+  }
+
+  // ============================================================
+  // Bible Verse Tooltips (Recovery Version XML)
+  // ============================================================
+  const BIBLE_XML_PATH = '../../recovery_bible_ko.xml';
+  const BIBLE_BOOKS_KO = ['창','출','레','민','신','수','삿','룻','삼상','삼하','왕상','왕하','대상','대하','스','느','에','욥','시','잠','전','아','사','렘','애','겔','단','호','욜','암','옵','욘','미','나','합','습','학','슥','말','마','막','눅','요','행','롬','고전','고후','갈','엡','빌','골','살전','살후','딤전','딤후','딛','몬','히','약','벧전','벧후','요일','요이','요삼','유','계'];
+  const BIBLE_SINGLE_CHAPTER = new Set(['옵','몬','요이','요삼','유']);
+  let BIBLE_DATA = null;
+  let bibleTooltipEl = null;
+  let bibleActiveTip = null;
+  let bibleLoadPromise = null;
+
+  async function loadBibleXML() {
+    if (bibleLoadPromise) return bibleLoadPromise;
+    bibleLoadPromise = (async () => {
+      try {
+        const res = await fetch(BIBLE_XML_PATH);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        const xml = new DOMParser().parseFromString(text, 'application/xml');
+        const data = {};
+        xml.querySelectorAll('Book').forEach(book => {
+          const abbrev = book.getAttribute('abbrevKo');
+          if (!abbrev) return;
+          const bk = data[abbrev] = {};
+          book.querySelectorAll('Chapter').forEach(chap => {
+            const cnum = chap.getAttribute('num');
+            const ch = bk[cnum] = {};
+            chap.querySelectorAll('Verse').forEach(v => {
+              ch[v.getAttribute('num')] = v.textContent;
+            });
+          });
+        });
+        BIBLE_DATA = data;
+        return true;
+      } catch (e) {
+        console.warn('[Bible] XML load failed:', e);
+        return false;
+      }
+    })();
+    return bibleLoadPromise;
+  }
+
+  function bibleLookup(book, chap, verseStart, verseEnd) {
+    if (!BIBLE_DATA) return null;
+    const bk = BIBLE_DATA[book];
+    if (!bk) return null;
+    const ch = bk[chap];
+    if (!ch) return null;
+    const list = [];
+    if (!verseEnd || verseStart === verseEnd) {
+      if (ch[verseStart]) list.push({ n: verseStart, t: ch[verseStart] });
+    } else {
+      const s = parseInt(verseStart, 10), e = parseInt(verseEnd, 10);
+      for (let i = s; i <= e; i++) {
+        if (ch[i]) list.push({ n: String(i), t: ch[i] });
+      }
+    }
+    return list.length ? list : null;
+  }
+
+  function ensureBibleTooltipEl() {
+    if (bibleTooltipEl) return bibleTooltipEl;
+    bibleTooltipEl = document.createElement('div');
+    bibleTooltipEl.className = 'bible-tooltip';
+    bibleTooltipEl.setAttribute('role', 'tooltip');
+    document.body.appendChild(bibleTooltipEl);
+    return bibleTooltipEl;
+  }
+
+  function showBibleTooltip(trigger) {
+    const ref = trigger.getAttribute('data-bref');
+    const book = trigger.getAttribute('data-book');
+    const chap = trigger.getAttribute('data-chap');
+    const vs = trigger.getAttribute('data-vs');
+    const ve = trigger.getAttribute('data-ve');
+    const tip = ensureBibleTooltipEl();
+    if (tip.parentNode !== document.body) document.body.appendChild(tip);
+
+    let bodyHtml;
+    if (!BIBLE_DATA) {
+      bodyHtml = '<div class="bible-tooltip-missing">성경 본문을 불러오는 중...</div>';
+    } else {
+      const verses = bibleLookup(book, chap, vs, ve);
+      if (!verses) {
+        bodyHtml = '<div class="bible-tooltip-missing">본문을 찾을 수 없습니다.</div>';
+      } else {
+        bodyHtml = '<div class="bible-tooltip-text">' +
+          verses.map(v => '<div class="bible-tooltip-verse"><span class="bible-tooltip-verse-num">' + v.n + '</span>' + v.t + '</div>').join('') +
+          '</div>';
+      }
+    }
+    tip.innerHTML = '<div class="bible-tooltip-ref">' + ref + '</div>' + bodyHtml;
+
+    tip.style.visibility = 'hidden';
+    tip.classList.add('show');
+
+    tip.style.left = '0px';
+    tip.style.top = '0px';
+    const probe0 = tip.getBoundingClientRect();
+    tip.style.left = '100px';
+    tip.style.top = '100px';
+    const probe100 = tip.getBoundingClientRect();
+    const fx = (probe100.left - probe0.left) / 100 || 1;
+    const fy = (probe100.top - probe0.top) / 100 || 1;
+
+    tip.style.left = '0px';
+    tip.style.top = '0px';
+    const tr = tip.getBoundingClientRect();
+    const tipW = tr.width;
+    const tipH = tr.height;
+
+    const triggerRect = trigger.getBoundingClientRect();
+    const margin = 8;
+    const gap = 4;
+
+    let visualLeft = triggerRect.left;
+    let visualTop = triggerRect.bottom + gap;
+    if (visualLeft + tipW > window.innerWidth - margin) {
+      visualLeft = window.innerWidth - tipW - margin;
+    }
+    if (visualLeft < margin) visualLeft = margin;
+    if (visualTop + tipH > window.innerHeight - margin) {
+      const above = triggerRect.top - tipH - gap;
+      if (above >= margin) visualTop = above;
+      else visualTop = Math.max(margin, window.innerHeight - tipH - margin);
+    }
+
+    const styleLeft = (visualLeft - probe0.left) / fx;
+    const styleTop  = (visualTop  - probe0.top ) / fy;
+    tip.style.left = styleLeft + 'px';
+    tip.style.top = styleTop + 'px';
+    tip.style.visibility = 'visible';
+  }
+
+  function hideBibleTooltip() {
+    if (bibleTooltipEl) bibleTooltipEl.classList.remove('show');
+    bibleActiveTip = null;
+  }
+
+  function attachBibleTooltips(root) {
+    if (!root) return;
+    const keys = [...BIBLE_BOOKS_KO].sort((a, b) => b.length - a.length);
+    const pattern = new RegExp(
+      '(' + keys.join('|') + ')\\s+(?:(\\d+):)?(\\d+)(?:-(\\d+))?' +
+      '|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?' +
+      '|(?:,\\s*)(\\d+)(?:-(\\d+))?',
+      'g'
+    );
+
+    // Skip M2D2's existing static tooltip / interactive / chrome elements.
+    const SKIP_SELECTOR = '.bible-tip,.verse-tag,.verse-tooltip,.verse-inline,.verse-ref,.ref,.greek-card,.tab-card,.tab-svg,.quiz-item,.quiz-option,.quiz-explain,.acc-trigger,.eyebrow,.topbar,.sidepanel,.tts-reader-modal,.bible-tooltip,script,style';
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const p = node.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        if (p.closest(SKIP_SELECTOR)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    nodes.forEach(node => {
+      const text = node.nodeValue;
+      pattern.lastIndex = 0;
+      if (!pattern.test(text)) return;
+      pattern.lastIndex = 0;
+
+      let lastBook = null, lastChapter = null;
+      let lastIdx = 0;
+      let match;
+      let inserted = false;
+      const frag = document.createDocumentFragment();
+
+      while ((match = pattern.exec(text)) !== null) {
+        const full = match[0];
+        const book = match[1];
+        let chap = match[2];
+        const verse = match[3];
+        const endVerse = match[4];
+        const c2 = match[5], v2 = match[6], ev2 = match[7];
+        const v3 = match[8], ev3 = match[9];
+
+        let bk, ch, vs, ve, display, leadingComma = '';
+
+        if (book) {
+          if (chap === undefined) {
+            if (!BIBLE_SINGLE_CHAPTER.has(book)) continue;
+            chap = '1';
+          }
+          bk = book; ch = chap; vs = verse; ve = endVerse;
+          lastBook = book; lastChapter = chap;
+          display = full;
+        } else if (v2) {
+          if (!lastBook) continue;
+          bk = lastBook; ch = c2; vs = v2; ve = ev2;
+          lastChapter = c2;
+          const m = full.match(/^,\s*/);
+          leadingComma = m ? m[0] : '';
+          display = full.slice(leadingComma.length);
+        } else if (v3) {
+          if (!lastBook || !lastChapter) continue;
+          bk = lastBook; ch = lastChapter; vs = v3; ve = ev3;
+          const m = full.match(/^,\s*/);
+          leadingComma = m ? m[0] : '';
+          display = full.slice(leadingComma.length);
+        } else {
+          continue;
+        }
+
+        const prefix = text.slice(lastIdx, match.index) + leadingComma;
+        if (prefix) frag.appendChild(document.createTextNode(prefix));
+
+        const span = document.createElement('span');
+        span.className = 'bible-tip';
+        span.setAttribute('tabindex', '0');
+        span.setAttribute('role', 'button');
+        span.setAttribute('aria-label', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : '') + ' 본문 보기');
+        span.setAttribute('data-bref', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : ''));
+        span.setAttribute('data-book', bk);
+        span.setAttribute('data-chap', ch);
+        span.setAttribute('data-vs', vs);
+        if (ve) span.setAttribute('data-ve', ve);
+        span.textContent = display;
+        frag.appendChild(span);
+
+        lastIdx = match.index + full.length;
+        inserted = true;
+      }
+
+      if (!inserted) return;
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function initBibleTooltips() {
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const triggerOf = (target) => {
+      if (!target || !target.closest) return null;
+      if (target.closest('.bible-tooltip')) return null;
+      return target.closest('.bible-tip');
+    };
+    if (hasHover) {
+      document.body.addEventListener('mouseover', e => {
+        const t = triggerOf(e.target);
+        if (t) showBibleTooltip(t);
+      });
+      document.body.addEventListener('mouseout', e => {
+        const t = triggerOf(e.target);
+        if (!t) return;
+        const next = e.relatedTarget;
+        if (next && next.closest) {
+          if (next.closest('.bible-tooltip')) return;
+          if (next.closest('.bible-tip') === t) return;
+        }
+        hideBibleTooltip();
+      });
+      document.body.addEventListener('focusin', e => {
+        const t = triggerOf(e.target);
+        if (t) showBibleTooltip(t);
+      });
+      document.body.addEventListener('focusout', e => {
+        const t = triggerOf(e.target);
+        if (t) hideBibleTooltip();
+      });
+    }
+    document.body.addEventListener('click', e => {
+      if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+      const t = e.target.closest && e.target.closest('.bible-tip');
+      if (t) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (bibleActiveTip === t) hideBibleTooltip();
+        else { showBibleTooltip(t); bibleActiveTip = t; }
+        return;
+      }
+      hideBibleTooltip();
+    });
+    document.body.addEventListener('keydown', e => {
+      if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+      const t = e.target.closest && e.target.closest('.bible-tip');
+      if (t && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        if (bibleActiveTip === t) hideBibleTooltip();
+        else { showBibleTooltip(t); bibleActiveTip = t; }
+      } else if (e.key === 'Escape') {
+        hideBibleTooltip();
+      }
+    });
+    window.addEventListener('scroll', () => {
+      if (!bibleTooltipEl || !bibleTooltipEl.classList.contains('show')) return;
+      hideBibleTooltip();
+    }, { passive: true });
+    window.addEventListener('resize', () => hideBibleTooltip());
+  }
+
+  (function bootstrapBibleTooltips() {
+    const start = () => {
+      requestAnimationFrame(() => {
+        initBibleTooltips();
+        attachBibleTooltips(document.body);
+        loadBibleXML();
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start);
+    } else {
+      start();
+    }
+  })();
+
+  // ============================================================
+  // TTS Reader (M2D2 sections)
+  // ============================================================
+  const TTS_CONFIG = {
+    serverUrl: 'https://qwen.tkhome.cloud',
+    apiKey: localStorage.getItem('qwen_tts_api_key') || '',
+    defaultVoice: 'tk_voice',
+    sampleRate: 24000,
+    pauseSec: 0.4,
+    chunkMaxLen: 200
+  };
+
+  const TTS_SECTIONS = [
+    { id: 'hero',               title: '오늘의 구절 — 갈 2:20' },
+    { id: 'greek-section',      title: 'Ⅰ. 원문의 무게 — 헬라어 네 단어' },
+    { id: 'summary-section',    title: 'Ⅱ. 핵심 한 줄' },
+    { id: 'tabernacle-section', title: 'Ⅲ. 성막의 세 구역' },
+    { id: 'veil-section',       title: 'Ⅳ. 휘장이 찢어지는 순간' },
+    { id: 'forwith-section',    title: 'Ⅴ. 위해 일하기 vs 함께 일하기' },
+    { id: 'details-section',    title: 'Ⅵ. 더 깊이 들어가기 — 4개 질문' },
+    { id: 'prayer-section',     title: 'Ⅷ. 오늘의 기도' }
+  ];
+
+  function ttsClean(text) {
+    if (!text) return '';
+    return text.replace(/\s+/g, ' ').replace(/\[[^\]]*\]/g, '').trim();
+  }
+
+  function ttsExtract(idOrClass) {
+    const root = document.getElementById(idOrClass) || document.querySelector('section.' + idOrClass);
+    if (!root) return '';
+    const clone = root.cloneNode(true);
+    // Drop decorative / non-readable / Greek elements.
+    clone.querySelectorAll('svg, .scroll-cue, .verse-tooltip, .acc-icon, .greek-pronounce, .greek-meta, .number, .preposition, .mark, .quote-mark, textarea, .prayer-symbol, .veil-visual').forEach(el => el.remove());
+    // Open all accordions so their content is read.
+    return ttsClean(clone.textContent);
+  }
+
+  const TTS_EXTRACTORS = {};
+  TTS_SECTIONS.forEach(s => { TTS_EXTRACTORS[s.id] = () => ttsExtract(s.id); });
+
+  let ttsAudioContext = null;
+  let ttsNextPlayTime = 0;
+  let ttsScheduledSources = [];
+  let ttsCurrentReader = null;
+  let ttsIsCanceled = false;
+  let ttsIsPlaying = false;
+  let ttsIsPaused = false;
+
+  function ttsPcmToBuffer(int16Bytes, ctx) {
+    const evenLen = int16Bytes.byteLength - (int16Bytes.byteLength % 2);
+    if (evenLen === 0) return null;
+    const aligned = new Uint8Array(evenLen);
+    aligned.set(int16Bytes.subarray(0, evenLen));
+    const int16 = new Int16Array(aligned.buffer);
+    const float32 = new Float32Array(int16.length);
+    for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768;
+    const buffer = ctx.createBuffer(1, float32.length, TTS_CONFIG.sampleRate);
+    buffer.copyToChannel(float32, 0);
+    return buffer;
+  }
+
+  function ttsScheduleBuffer(buffer) {
+    if (!buffer || !ttsAudioContext) return;
+    const source = ttsAudioContext.createBufferSource();
+    source.buffer = buffer;
+    source.connect(ttsAudioContext.destination);
+    const now = ttsAudioContext.currentTime;
+    if (ttsNextPlayTime < now) ttsNextPlayTime = now;
+    source.start(ttsNextPlayTime);
+    ttsScheduledSources.push(source);
+    ttsNextPlayTime += buffer.duration;
+    source.onended = () => {
+      const idx = ttsScheduledSources.indexOf(source);
+      if (idx >= 0) ttsScheduledSources.splice(idx, 1);
+    };
+  }
+
+  function ttsStopPlayback() {
+    ttsScheduledSources.forEach(src => { try { src.stop(); } catch(e) {} });
+    ttsScheduledSources = [];
+    ttsNextPlayTime = 0;
+  }
+
+  function ttsOpenReader() {
+    document.getElementById('tts-reader-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    ttsInitSectionList();
+    if (TTS_CONFIG.apiKey) document.getElementById('tts-api-key').value = TTS_CONFIG.apiKey;
+    ttsLoadVoices();
+  }
+
+  function ttsCloseReader() {
+    if (ttsIsPlaying) {
+      if (!confirm('재생 중입니다. 정말 닫으시겠습니까?')) return;
+      ttsStop();
+    }
+    document.getElementById('tts-reader-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function ttsCloseOnBg(e) {
+    if (e.target.id === 'tts-reader-overlay') ttsCloseReader();
+  }
+
+  function ttsSaveApiKey() {
+    const input = document.getElementById('tts-api-key');
+    TTS_CONFIG.apiKey = input.value.trim();
+    localStorage.setItem('qwen_tts_api_key', TTS_CONFIG.apiKey);
+    ttsSetStatus(TTS_CONFIG.apiKey ? 'API 키가 저장되었습니다.' : 'API 키가 비워졌습니다.');
+    ttsLoadVoices();
+  }
+
+  function ttsInitSectionList() {
+    const list = document.getElementById('tts-section-list');
+    if (list.dataset.initialized === 'true') return;
+    list.innerHTML = '';
+    const allItem = document.createElement('label');
+    allItem.className = 'tts-section-item all';
+    allItem.innerHTML = '<input type="checkbox" class="tts-section-checkbox" id="tts-section-all" checked><span class="tts-section-label">전체 선택 / 해제</span>';
+    allItem.querySelector('input').addEventListener('change', function() { ttsToggleAll(this); });
+    list.appendChild(allItem);
+    TTS_SECTIONS.forEach(sec => {
+      const item = document.createElement('label');
+      item.className = 'tts-section-item';
+      item.dataset.sectionId = sec.id;
+      item.innerHTML = '<input type="checkbox" class="tts-section-checkbox" data-section="' + sec.id + '" checked><span class="tts-section-label">' + sec.title + '</span>';
+      list.appendChild(item);
+    });
+    list.dataset.initialized = 'true';
+  }
+
+  function ttsToggleAll(cb) {
+    document.querySelectorAll('#tts-section-list input[data-section]').forEach(c => c.checked = cb.checked);
+  }
+
+  async function ttsLoadVoices() {
+    const select = document.getElementById('tts-voice-select');
+    try {
+      const res = await fetch(TTS_CONFIG.serverUrl + '/voices');
+      if (!res.ok) throw new Error('서버 응답 ' + res.status);
+      const data = await res.json();
+      select.innerHTML = '';
+      if (!data.voices || data.voices.length === 0) {
+        const opt = document.createElement('option');
+        opt.textContent = '(등록된 음성 없음)';
+        select.appendChild(opt);
+        ttsSetStatus('등록된 음성이 없습니다.', true);
+        return;
+      }
+      data.voices.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v.name;
+        opt.textContent = v.name + (v.name === data.default ? ' (기본)' : '');
+        select.appendChild(opt);
+      });
+      if (data.default) select.value = data.default;
+      ttsSetStatus(data.voices.length + '개 음성 로드 완료. 항목을 선택하고 재생을 누르세요.');
+    } catch (e) {
+      select.innerHTML = '<option>tk_voice</option>';
+      ttsSetStatus('음성 목록 로드 실패: ' + e.message, true);
+    }
+  }
+
+  function ttsSetStatus(msg, isError) {
+    const el = document.getElementById('tts-status');
+    el.textContent = msg;
+    el.className = 'tts-status' + (isError ? ' error' : '');
+  }
+
+  function ttsUpdateProgress(current, total, sectionTitle) {
+    document.getElementById('tts-progress').classList.add('active');
+    document.getElementById('tts-progress-fill').style.width = (current / total * 100) + '%';
+    document.getElementById('tts-progress-text').innerHTML = '<strong>' + current + ' / ' + total + '</strong> · ' + sectionTitle;
+  }
+
+  function ttsHighlightSection(sectionId) {
+    document.querySelectorAll('#tts-section-list .tts-section-item').forEach(el => el.classList.remove('playing'));
+    if (sectionId) {
+      const item = document.querySelector('#tts-section-list .tts-section-item[data-section-id="' + sectionId + '"]');
+      if (item) item.classList.add('playing');
+    }
+  }
+
+  async function ttsPlay() {
+    if (!TTS_CONFIG.apiKey) { ttsSetStatus('먼저 API 키를 입력하고 저장하세요.', true); return; }
+    const checked = document.querySelectorAll('#tts-section-list input[data-section]:checked');
+    if (checked.length === 0) { ttsSetStatus('읽을 항목을 하나 이상 선택하세요.', true); return; }
+    const voice = document.getElementById('tts-voice-select').value;
+    const selectedIds = Array.from(checked).map(cb => cb.dataset.section);
+    const sectionsToRead = TTS_SECTIONS.filter(s => selectedIds.includes(s.id));
+
+    ttsIsCanceled = false;
+    ttsIsPlaying = true;
+    document.getElementById('tts-play-btn').disabled = true;
+    document.getElementById('tts-stop-btn').disabled = false;
+    document.getElementById('tts-pause-btn').disabled = false;
+
+    if (!ttsAudioContext || ttsAudioContext.state === 'closed') {
+      const Ctor = window.AudioContext || window.webkitAudioContext;
+      try { ttsAudioContext = new Ctor({ sampleRate: TTS_CONFIG.sampleRate }); }
+      catch (e) { ttsAudioContext = new Ctor(); }
+    }
+    if (ttsAudioContext.state === 'suspended') await ttsAudioContext.resume();
+    ttsIsPaused = false;
+    ttsUpdatePauseBtn();
+    ttsStopPlayback();
+
+    try {
+      for (let i = 0; i < sectionsToRead.length; i++) {
+        if (ttsIsCanceled) break;
+        const sec = sectionsToRead[i];
+        const extractor = TTS_EXTRACTORS[sec.id];
+        if (!extractor) continue;
+        ttsUpdateProgress(i + 1, sectionsToRead.length, sec.title);
+        ttsHighlightSection(sec.id);
+        ttsSetStatus('재생 중: ' + sec.title);
+        const text = extractor();
+        if (!text || text.trim().length < 2) continue;
+        await ttsStreamText(text, voice);
+        if (ttsIsCanceled) break;
+      }
+      while (!ttsIsCanceled) {
+        if (ttsAudioContext.state === 'suspended') {
+          await new Promise(r => setTimeout(r, 200));
+          continue;
+        }
+        const remaining = ttsNextPlayTime - ttsAudioContext.currentTime;
+        if (remaining <= 0) break;
+        ttsSetStatus('재생 마무리 중... (남은 ' + remaining.toFixed(1) + '초)');
+        await new Promise(r => setTimeout(r, Math.min(remaining * 1000 + 200, 1000)));
+      }
+      if (!ttsIsCanceled) ttsSetStatus('✅ 모든 항목 재생 완료');
+      else ttsSetStatus('⏹ 중지됨');
+    } catch (e) {
+      ttsSetStatus('❌ 오류: ' + e.message, true);
+    } finally {
+      ttsIsPlaying = false;
+      ttsIsPaused = false;
+      ttsHighlightSection(null);
+      document.getElementById('tts-play-btn').disabled = false;
+      document.getElementById('tts-stop-btn').disabled = true;
+      document.getElementById('tts-pause-btn').disabled = true;
+      ttsUpdatePauseBtn();
+      ttsCurrentReader = null;
+    }
+  }
+
+  async function ttsStreamText(text, voice) {
+    const res = await fetch(TTS_CONFIG.serverUrl + '/tts/stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': TTS_CONFIG.apiKey },
+      body: JSON.stringify({ text: text, voice: voice, pause_sec: TTS_CONFIG.pauseSec, chunk_max_len: TTS_CONFIG.chunkMaxLen })
+    });
+    if (!res.ok) {
+      let errMsg = 'HTTP ' + res.status;
+      try { const err = await res.json(); errMsg = err.detail || errMsg; } catch(e) {}
+      throw new Error(errMsg);
+    }
+    const reader = res.body.getReader();
+    ttsCurrentReader = reader;
+    let buffer = new Uint8Array(0);
+    const MIN_DECODE = 24000;
+    while (true) {
+      let done, value;
+      try { ({ done, value } = await reader.read()); }
+      catch (e) { if (ttsIsCanceled) break; throw e; }
+      if (done || ttsIsCanceled) {
+        if (buffer.length >= 2 && !ttsIsCanceled) ttsScheduleBuffer(ttsPcmToBuffer(buffer, ttsAudioContext));
+        break;
+      }
+      const merged = new Uint8Array(buffer.length + value.length);
+      merged.set(buffer);
+      merged.set(value, buffer.length);
+      buffer = merged;
+      while (buffer.length >= MIN_DECODE && !ttsIsCanceled) {
+        const evenLen = MIN_DECODE - (MIN_DECODE % 2);
+        const audioBuffer = ttsPcmToBuffer(buffer.subarray(0, evenLen), ttsAudioContext);
+        if (audioBuffer) ttsScheduleBuffer(audioBuffer);
+        buffer = buffer.subarray(evenLen);
+      }
+    }
+  }
+
+  async function ttsStop() {
+    ttsIsCanceled = true;
+    if (ttsCurrentReader) { try { await ttsCurrentReader.cancel(); } catch(e) {} ttsCurrentReader = null; }
+    ttsStopPlayback();
+    if (ttsAudioContext && ttsAudioContext.state === 'suspended') {
+      try { await ttsAudioContext.resume(); } catch(e) {}
+    }
+    ttsIsPaused = false;
+    ttsSetStatus('⏹ 중지됨');
+    document.getElementById('tts-play-btn').disabled = false;
+    document.getElementById('tts-stop-btn').disabled = true;
+    document.getElementById('tts-pause-btn').disabled = true;
+    ttsUpdatePauseBtn();
+    ttsIsPlaying = false;
+    ttsHighlightSection(null);
+  }
+
+  async function ttsTogglePause() {
+    if (!ttsIsPlaying || !ttsAudioContext) return;
+    if (ttsIsPaused) {
+      try { await ttsAudioContext.resume(); } catch(e) {}
+      ttsIsPaused = false;
+      ttsSetStatus('▶ 재생 재개됨');
+    } else {
+      try { await ttsAudioContext.suspend(); } catch(e) {}
+      ttsIsPaused = true;
+      ttsSetStatus('⏸ 일시정지됨');
+    }
+    ttsUpdatePauseBtn();
+  }
+
+  function ttsUpdatePauseBtn() {
+    const btn = document.getElementById('tts-pause-btn');
+    if (!btn) return;
+    btn.textContent = ttsIsPaused ? '▶ 계속' : '⏸ 일시정지';
+  }
 </script>
 
 </body>
