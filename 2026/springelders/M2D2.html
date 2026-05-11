@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>휘장을 지나, 지성소로 — 갈라디아서 2:20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=GFS+Didot&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment: #efe5cf;
+    --parchment-deep: #e6d8b8;
+    --ink: #1f1813;
+    --ink-soft: #3a2e23;
+    --bronze: #8b6f47;
+    --bronze-deep: #5e4a2e;
+    --gold: #b8895a;
+    --gold-bright: #d4a76a;
+    --gold-deep: #7a5a2e;
+    --crimson: #6b1f2e;
+    --crimson-deep: #3a0f1a;
+    --violet-deep: #2a1b2e;
+    --sacred-light: #f4e5c2;
+    --shadow: rgba(31, 24, 19, 0.15);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
+    color: var(--ink);
+    background: var(--parchment);
+    overflow-x: hidden;
+    line-height: 1.7;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Grain texture overlay */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 100;
+    mix-blend-mode: multiply;
+    opacity: 0.6;
+  }
+
+  section{
+    position: relative;
+    padding: 120px 24px;
+    transition: background-color 1.2s ease;
+  }
+  .container{
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ============ TYPOGRAPHY ============ */
+  .display{
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .eyebrow{
+    font-family: 'Cinzel', 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--bronze-deep);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .eyebrow::before, .eyebrow::after{
+    content:"";
+    height: 1px;
+    flex: 1;
+    background: currentColor;
+    opacity: 0.3;
+  }
+  .eyebrow.left::before{display:none}
+  .eyebrow.left{justify-content: flex-start}
+  .eyebrow.left::after{max-width: 80px}
+
+  h1.title{
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  h2.section-title{
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+  h2.section-title em{
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+
+  /* ============ SECTION 1: HERO ============ */
+  .hero{
+    background: linear-gradient(180deg, #f5ecd6 0%, var(--parchment) 60%, var(--parchment-deep) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+  }
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (min-width: 900px){
+    .hero-grid{grid-template-columns: 1fr 1fr; gap: 80px}
+  }
+  .hero-mark{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-mark svg{
+    width: 100%;
+    height: 100%;
+  }
+  .verse-cite{
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--bronze-deep);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .verse-body{
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.55;
+    font-weight: 300;
+    color: var(--ink);
+  }
+  .verse-body .line{
+    opacity: 0;
+    transform: translateY(20px);
+    animation: lineRise 1.2s ease forwards;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .verse-body .line:nth-child(1){animation-delay: 0.4s}
+  .verse-body .line:nth-child(2){animation-delay: 1.0s}
+  .verse-body .line:nth-child(3){animation-delay: 1.6s}
+  .verse-body .line:nth-child(4){animation-delay: 2.2s}
+  .verse-body .emph{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--crimson);
+  }
+  @keyframes lineRise{
+    to{opacity: 1; transform: translateY(0)}
+  }
+  .scroll-cue{
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--bronze-deep);
+    opacity: 0;
+    animation: fadeIn 1s ease 3s forwards;
+  }
+  .scroll-cue::after{
+    content:"";
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: var(--bronze-deep);
+    margin: 16px auto 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes fadeIn{to{opacity: 0.7}}
+  @keyframes pulse{
+    0%, 100%{transform: scaleY(1); opacity: 0.8}
+    50%{transform: scaleY(0.5); opacity: 0.3}
+  }
+
+  /* ============ SECTION 2: GREEK ============ */
+  .greek-section{
+    background: linear-gradient(180deg, var(--parchment-deep) 0%, #d9c89e 100%);
+  }
+  .greek-intro{
+    max-width: 640px;
+    margin-bottom: 80px;
+  }
+  .greek-intro p{
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .greek-grid{
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px){
+    .greek-grid{grid-template-columns: 1fr 1fr}
+  }
+  .greek-card{
+    background: #f7eed8;
+    border: 1px solid rgba(94, 74, 46, 0.25);
+    padding: 36px 32px;
+    position: relative;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  .greek-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(94, 74, 46, 0.4);
+  }
+  .greek-card .number{
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--bronze);
+  }
+  .greek-word{
+    font-family: 'GFS Didot', 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 44px);
+    color: var(--ink);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .greek-pronounce{
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    color: var(--bronze-deep);
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .greek-pronounce::before{content:"["; margin-right: 2px}
+  .greek-pronounce::after{content:"]"; margin-left: 2px}
+  .greek-meta{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--bronze-deep);
+    font-style: italic;
+    border-top: 1px solid rgba(94, 74, 46, 0.2);
+    padding-top: 16px;
+    margin-top: 20px;
+    letter-spacing: 0.02em;
+  }
+  .greek-meaning{
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .greek-meaning strong{
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .greek-emphasis{
+    margin-top: 60px;
+    padding: 40px;
+    border-left: 3px solid var(--crimson);
+    background: rgba(247, 238, 216, 0.6);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .greek-emphasis strong{
+    font-style: normal;
+    color: var(--crimson);
+    font-weight: 600;
+  }
+
+  /* ============ SECTION 3: SUMMARY ============ */
+  .summary-section{
+    background: linear-gradient(180deg, #d9c89e 0%, #b89968 100%);
+    text-align: center;
+    padding: 160px 24px;
+  }
+  .summary-mark{
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--bronze-deep);
+    margin-bottom: 40px;
+  }
+  .summary-text{
+    font-size: clamp(28px, 4.5vw, 48px);
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .summary-text .accent{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--crimson);
+  }
+  .summary-divider{
+    width: 1px;
+    height: 60px;
+    background: var(--bronze-deep);
+    margin: 60px auto 0;
+    opacity: 0.4;
+  }
+
+  /* ============ SECTION 4: TABERNACLE ============ */
+  .tabernacle-section{
+    background: linear-gradient(180deg, #b89968 0%, #7a5a2e 50%, #4a3520 100%);
+    color: var(--parchment);
+    padding: 140px 24px;
+  }
+  .tabernacle-section .eyebrow{
+    color: var(--gold-bright);
+  }
+  .tabernacle-section h2.section-title{
+    color: var(--sacred-light);
+    margin-bottom: 60px;
+  }
+  .tabernacle-layout{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  @media (min-width: 900px){
+    .tabernacle-layout{grid-template-columns: 320px 1fr; gap: 80px}
+  }
+  .tabernacle-diagram{
+    position: sticky;
+    top: 40px;
+  }
+  .tab-svg{
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+  }
+  .tab-zone{
+    cursor: pointer;
+    transition: opacity 0.4s ease;
+  }
+  .tab-zone:hover{opacity: 0.85}
+  .tab-zone.active rect{stroke-width: 2}
+  .tab-info{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .tab-card{
+    background: rgba(244, 229, 194, 0.06);
+    border: 1px solid rgba(244, 229, 194, 0.2);
+    padding: 32px;
+    transition: all 0.5s ease;
+    position: relative;
+  }
+  .tab-card.highlighted{
+    background: rgba(244, 229, 194, 0.12);
+    border-color: var(--gold-bright);
+  }
+  .tab-card .level{
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--gold-bright);
+    margin-bottom: 12px;
+  }
+  .tab-card h3{
+    font-family: 'Noto Serif KR', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--sacred-light);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .tab-card .subtitle{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(244, 229, 194, 0.65);
+    margin-bottom: 20px;
+  }
+  .tab-card p{
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(244, 229, 194, 0.85);
+  }
+  .tab-card .verse-tag{
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 12px;
+    border: 1px solid rgba(244, 229, 194, 0.3);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold-bright);
+    cursor: help;
+    position: relative;
+  }
+  .verse-tooltip{
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 0;
+    width: 280px;
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 16px 18px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    line-height: 1.65;
+    letter-spacing: normal;
+    text-transform: none;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    font-weight: 300;
+    text-align: left;
+  }
+  .verse-tooltip::after{
+    content:"";
+    position: absolute;
+    top: 100%;
+    left: 24px;
+    border: 6px solid transparent;
+    border-top-color: var(--ink);
+  }
+  .verse-tag:hover .verse-tooltip{
+    opacity: 1;
+    visibility: visible;
+  }
+  .verse-tooltip .ref{
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold-bright);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* ============ SECTION 5: VEIL TEAR ============ */
+  .veil-section{
+    background: var(--crimson-deep);
+    color: var(--sacred-light);
+    padding: 180px 24px;
+    overflow: hidden;
+    position: relative;
+  }
+  .veil-stage{
+    position: relative;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .veil-visual{
+    height: 280px;
+    position: relative;
+    margin: 60px 0 80px;
+    overflow: hidden;
+  }
+  .veil-panel{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(180deg, #8b2942 0%, var(--crimson) 50%, #4a1622 100%);
+    box-shadow: inset 0 0 80px rgba(0,0,0,0.5);
+    transition: transform 2s cubic-bezier(0.7, 0, 0.3, 1);
+  }
+  .veil-panel.left{
+    left: 0;
+    transform-origin: left center;
+    background-image:
+      linear-gradient(180deg, #8b2942 0%, var(--crimson) 50%, #4a1622 100%),
+      repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 4px);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 8%, calc(100% + 4px) 16%, calc(100% - 12px) 28%, 100% 40%, calc(100% - 6px) 55%, 100% 70%, calc(100% - 10px) 85%, 100% 100%, 0 100%);
+  }
+  .veil-panel.right{
+    right: 0;
+    transform-origin: right center;
+    clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 12px 85%, 4px 70%, 14px 55%, 2px 40%, 10px 28%, 0 16%, 8px 8%);
+  }
+  .veil-light{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.4);
+    width: 60%;
+    height: 130%;
+    background: radial-gradient(ellipse, var(--sacred-light) 0%, rgba(244, 229, 194, 0.6) 30%, transparent 70%);
+    opacity: 0;
+    transition: all 2s ease 0.3s;
+    z-index: 0;
+    filter: blur(20px);
+  }
+  .veil-visual.torn .veil-panel.left{transform: translateX(-100%) rotate(-2deg)}
+  .veil-visual.torn .veil-panel.right{transform: translateX(100%) rotate(2deg)}
+  .veil-visual.torn .veil-light{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .veil-quote{
+    font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.6;
+    color: var(--sacred-light);
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+  .veil-quote .quote-mark{
+    font-family: 'GFS Didot', serif;
+    font-size: 60px;
+    color: var(--gold-bright);
+    display: block;
+    line-height: 0.5;
+    margin-bottom: 30px;
+    opacity: 0.6;
+  }
+  .veil-answer{
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (min-width: 720px){
+    .veil-answer{grid-template-columns: 1fr 1fr; gap: 60px}
+  }
+  .veil-block{
+    border-top: 1px solid rgba(244, 229, 194, 0.3);
+    padding-top: 24px;
+  }
+  .veil-block .label{
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--gold-bright);
+    margin-bottom: 16px;
+  }
+  .veil-block h4{
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    color: var(--sacred-light);
+  }
+  .veil-block p{
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(244, 229, 194, 0.8);
+  }
+  .veil-block .verse-ref{
+    margin-top: 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold-bright);
+    opacity: 0.7;
+  }
+
+  /* ============ SECTION 6: FOR vs WITH ============ */
+  .forwith-section{
+    background: linear-gradient(180deg, var(--crimson-deep) 0%, var(--violet-deep) 100%);
+    color: var(--sacred-light);
+    padding: 160px 24px;
+  }
+  .forwith-section h2.section-title{color: var(--sacred-light)}
+  .forwith-section .eyebrow{color: var(--gold-bright)}
+  .forwith-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin: 60px 0 60px;
+  }
+  @media (min-width: 760px){
+    .forwith-grid{grid-template-columns: 1fr 1fr; gap: 48px}
+  }
+  .forwith-card{
+    padding: 48px 40px;
+    border: 1px solid rgba(244, 229, 194, 0.2);
+    position: relative;
+    background: rgba(0,0,0,0.15);
+  }
+  .forwith-card.with{
+    border-color: var(--gold-bright);
+    background: rgba(212, 167, 106, 0.08);
+  }
+  .forwith-card .preposition{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--gold-bright);
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .forwith-card h3{
+    font-family: 'Noto Serif KR', serif;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+    color: var(--sacred-light);
+  }
+  .forwith-card p{
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(244, 229, 194, 0.8);
+    margin-bottom: 16px;
+  }
+  .forwith-card .illust{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(244, 229, 194, 0.6);
+    border-top: 1px solid rgba(244, 229, 194, 0.15);
+    padding-top: 16px;
+    margin-top: 24px;
+  }
+  .forwith-key{
+    text-align: center;
+    margin-top: 80px;
+    padding: 48px 32px;
+    border-top: 1px solid rgba(244, 229, 194, 0.2);
+    border-bottom: 1px solid rgba(244, 229, 194, 0.2);
+  }
+  .forwith-key p{
+    font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.5;
+    color: var(--sacred-light);
+    font-weight: 300;
+  }
+  .forwith-key p strong{
+    color: var(--gold-bright);
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* ============ SECTION 7: DETAILS ACCORDION ============ */
+  .details-section{
+    background: linear-gradient(180deg, var(--violet-deep) 0%, #1a1019 100%);
+    color: var(--sacred-light);
+    padding: 140px 24px;
+  }
+  .details-section h2.section-title{color: var(--sacred-light)}
+  .details-section .eyebrow{color: var(--gold-bright)}
+  .accordion{
+    margin-top: 60px;
+    border-top: 1px solid rgba(244, 229, 194, 0.2);
+  }
+  .acc-item{
+    border-bottom: 1px solid rgba(244, 229, 194, 0.2);
+  }
+  .acc-trigger{
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 32px 0;
+    cursor: pointer;
+    color: var(--sacred-light);
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    transition: color 0.3s ease;
+  }
+  .acc-trigger:hover{color: var(--gold-bright)}
+  .acc-icon{
+    width: 32px; height: 32px;
+    flex-shrink: 0;
+    position: relative;
+    transition: transform 0.4s ease;
+  }
+  .acc-icon::before, .acc-icon::after{
+    content:"";
+    position: absolute;
+    background: currentColor;
+    top: 50%; left: 50%;
+    transition: transform 0.4s ease;
+  }
+  .acc-icon::before{width: 16px; height: 1px; transform: translate(-50%, -50%)}
+  .acc-icon::after{width: 1px; height: 16px; transform: translate(-50%, -50%)}
+  .acc-item.open .acc-icon::after{transform: translate(-50%, -50%) scaleY(0)}
+  .acc-content{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+  }
+  .acc-item.open .acc-content{max-height: 800px}
+  .acc-inner{
+    padding: 0 0 40px;
+    color: rgba(244, 229, 194, 0.8);
+    font-size: 16px;
+    line-height: 1.85;
+    max-width: 720px;
+  }
+  .acc-inner p{margin-bottom: 16px}
+  .acc-inner .verse-inline{
+    color: var(--gold-bright);
+    border-bottom: 1px dashed var(--gold-bright);
+    cursor: help;
+    position: relative;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    padding: 0 2px;
+  }
+  .acc-inner .verse-inline:hover .verse-tooltip{
+    opacity: 1;
+    visibility: visible;
+  }
+  .acc-inner .verse-inline .verse-tooltip{
+    bottom: calc(100% + 8px);
+  }
+
+  /* ============ SECTION 8: QUIZ ============ */
+  .quiz-section{
+    background: #1a1019;
+    color: var(--sacred-light);
+    padding: 140px 24px;
+  }
+  .quiz-section h2.section-title{color: var(--sacred-light)}
+  .quiz-section .eyebrow{color: var(--gold-bright)}
+  .quiz-intro{
+    font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(244, 229, 194, 0.7);
+    max-width: 600px;
+    margin-bottom: 60px;
+    line-height: 1.8;
+  }
+  .quiz-item{
+    margin-bottom: 56px;
+  }
+  .quiz-number{
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--gold-bright);
+    margin-bottom: 16px;
+  }
+  .quiz-question{
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    color: var(--sacred-light);
+  }
+  .quiz-options{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .quiz-option{
+    background: none;
+    border: 1px solid rgba(244, 229, 194, 0.2);
+    color: var(--sacred-light);
+    padding: 18px 24px;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    font-weight: 300;
+    position: relative;
+  }
+  .quiz-option:hover:not(:disabled){
+    border-color: var(--gold-bright);
+    background: rgba(212, 167, 106, 0.06);
+  }
+  .quiz-option.correct{
+    border-color: var(--gold-bright);
+    background: rgba(212, 167, 106, 0.15);
+    color: var(--sacred-light);
+  }
+  .quiz-option.incorrect{
+    border-color: rgba(139, 41, 66, 0.5);
+    background: rgba(139, 41, 66, 0.1);
+    color: rgba(244, 229, 194, 0.5);
+  }
+  .quiz-option:disabled{cursor: default}
+  .quiz-option .mark{
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'GFS Didot', serif;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .quiz-option.correct .mark, .quiz-option.incorrect .mark{opacity: 1}
+  .quiz-explain{
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: rgba(212, 167, 106, 0.06);
+    border-left: 2px solid var(--gold-bright);
+    font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(244, 229, 194, 0.8);
+    display: none;
+  }
+  .quiz-explain.visible{display: block}
+  .quiz-reflective{
+    margin-top: 56px;
+    padding: 40px;
+    border: 1px solid rgba(212, 167, 106, 0.3);
+    background: rgba(212, 167, 106, 0.04);
+  }
+  .quiz-reflective .quiz-number{color: var(--gold-bright)}
+  .quiz-reflective .quiz-question{margin-bottom: 16px}
+  .quiz-reflective p{
+    font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    font-style: italic;
+    color: rgba(244, 229, 194, 0.7);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .quiz-reflective textarea{
+    width: 100%;
+    margin-top: 20px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(244, 229, 194, 0.2);
+    color: var(--sacred-light);
+    padding: 16px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    resize: vertical;
+    min-height: 100px;
+    font-weight: 300;
+  }
+  .quiz-reflective textarea:focus{
+    outline: none;
+    border-color: var(--gold-bright);
+  }
+
+  /* ============ SECTION 9: PRAYER ============ */
+  .prayer-section{
+    background: linear-gradient(180deg, #1a1019 0%, var(--crimson-deep) 50%, #2a0f1a 100%);
+    color: var(--sacred-light);
+    padding: 160px 24px 140px;
+    position: relative;
+    overflow: hidden;
+  }
+  .prayer-section::before{
+    content:"";
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(244, 229, 194, 0.15) 0%, transparent 60%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .prayer-container{
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .prayer-symbol{
+    width: 1px;
+    height: 60px;
+    background: var(--gold-bright);
+    margin: 0 auto 40px;
+    opacity: 0.6;
+  }
+  .prayer-section .eyebrow{
+    color: var(--gold-bright);
+    justify-content: center;
+  }
+  .prayer-section .eyebrow::before, .prayer-section .eyebrow::after{
+    max-width: 60px;
+  }
+  .prayer-title{
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    color: var(--sacred-light);
+    margin-bottom: 60px;
+    line-height: 1.2;
+  }
+  .prayer-body{
+    font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+    font-size: clamp(18px, 2.2vw, 22px);
+    line-height: 1.9;
+    color: rgba(244, 229, 194, 0.9);
+    font-weight: 300;
+    font-style: italic;
+  }
+  .prayer-body p{
+    margin-bottom: 20px;
+  }
+  .prayer-body .emph{
+    color: var(--gold-bright);
+    font-style: normal;
+    font-weight: 400;
+  }
+  .prayer-amen{
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: 14px;
+    letter-spacing: 0.5em;
+    color: var(--gold-bright);
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(244, 229, 194, 0.2);
+    display: inline-block;
+  }
+  .prayer-cite{
+    margin-top: 80px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(244, 229, 194, 0.5);
+    letter-spacing: 0.05em;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background: #0d080b;
+    color: rgba(244, 229, 194, 0.4);
+    text-align: center;
+    padding: 60px 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+  footer span{
+    display: block;
+    margin-top: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: rgba(244, 229, 194, 0.3);
+  }
+
+  /* ============ REVEAL ON SCROLL ============ */
+  .reveal{
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.in{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal.delay-1{transition-delay: 0.15s}
+  .reveal.delay-2{transition-delay: 0.3s}
+  .reveal.delay-3{transition-delay: 0.45s}
+
+  /* ============ RESPONSIVE TWEAKS ============ */
+  @media (max-width: 720px){
+    section{padding: 80px 20px}
+    .verse-tooltip{width: 240px}
+    .tabernacle-diagram{position: relative; top: 0}
+    .greek-section, .summary-section, .tabernacle-section, .veil-section, .forwith-section, .details-section, .quiz-section, .prayer-section{padding: 100px 20px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SECTION 1: HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-mark">
+        <!-- SVG: minimal cross with light, hand-rendered feel -->
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="halo" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stop-color="#f4e5c2" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#f4e5c2" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="crossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#5e4a2e"/>
+              <stop offset="100%" stop-color="#1f1813"/>
+            </linearGradient>
+          </defs>
+          <!-- Halo of light -->
+          <ellipse cx="150" cy="160" rx="140" ry="180" fill="url(#halo)"/>
+          <!-- Cross -->
+          <rect x="142" y="60" width="16" height="280" fill="url(#crossGrad)"/>
+          <rect x="80" y="130" width="140" height="14" fill="url(#crossGrad)"/>
+          <!-- Subtle nail marks / texture lines -->
+          <line x1="100" y1="137" x2="105" y2="137" stroke="#1f1813" stroke-width="1.5" opacity="0.4"/>
+          <line x1="195" y1="137" x2="200" y2="137" stroke="#1f1813" stroke-width="1.5" opacity="0.4"/>
+          <line x1="150" y1="320" x2="150" y2="325" stroke="#1f1813" stroke-width="1.5" opacity="0.4"/>
+          <!-- Greek letters: Ι Ν Β Ι (titulus) - subtle -->
+          <text x="150" y="115" text-anchor="middle" font-family="GFS Didot, serif" font-size="11" fill="#5e4a2e" opacity="0.7" letter-spacing="2">ΙΝΒΙ</text>
+        </svg>
+      </div>
+      <div>
+        <div class="eyebrow left">Galatians · 갈라디아서 2:20</div>
+        <div class="verse-body">
+          <span class="line">나는 그리스도와 함께</span>
+          <span class="line"><span class="emph">십자가에 못 박혔습니다.</span></span>
+          <span class="line">이제는 더 이상 내가 사는 것이 아니라,</span>
+          <span class="line">그리스도께서 내 안에 사십니다.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL · 휘장을 향하여</div>
+</section>
+
+<!-- ============ SECTION 2: GREEK ============ -->
+<section class="greek-section">
+  <div class="container">
+    <div class="eyebrow left reveal">I · 원문의 무게</div>
+    <h2 class="section-title reveal">헬라어 네 단어가 말하는 <em>한 사건의 영속성</em></h2>
+    <div class="greek-intro reveal delay-1">
+      <p>이 한 절에는 시제와 주격이 미세하게 흔들리는 네 개의 핵심 단어가 박혀 있다. 그것들을 들여다볼수록, 십자가는 과거의 사건이 아니라 <em>지금도 작동 중인 상태</em>임이 드러난다.</p>
+    </div>
+
+    <div class="greek-grid">
+      <div class="greek-card reveal">
+        <span class="number">01</span>
+        <div class="greek-word">συνεσταύρωμαι</div>
+        <div class="greek-pronounce">쉬네스타우로마이</div>
+        <div class="greek-meaning"><strong>나는 함께 십자가에 못 박혔다.</strong> 동사 σταυρόω(못 박다)에 σύν(함께)이 결합한 형태. 핵심은 <em>완료시제 수동태</em>다.</div>
+        <div class="greek-meta">Perfect · Passive · 1st sg.<br>한 번 일어났고, 지금도 그 상태에 머문다.</div>
+      </div>
+
+      <div class="greek-card reveal delay-1">
+        <span class="number">02</span>
+        <div class="greek-word">ζῶ</div>
+        <div class="greek-pronounce">조</div>
+        <div class="greek-meaning"><strong>나는 산다.</strong> 그러나 바로 뒤에 οὐκέτι ἐγώ — <em>"이제는 더 이상 내가 아니다"</em>가 따라온다. 사는 주체가 옮겨졌다.</div>
+        <div class="greek-meta">Present · Active · 1st sg.<br>살고 있되, 살고 있는 것은 더 이상 내가 아니다.</div>
+      </div>
+
+      <div class="greek-card reveal delay-2">
+        <span class="number">03</span>
+        <div class="greek-word">ἐν ἐμοί</div>
+        <div class="greek-pronounce">엔 에모이</div>
+        <div class="greek-meaning"><strong>내 안에서.</strong> 단순한 위치 표현이 아니다. 그리스도가 신자 안에 거하시는 <em>장소적 연합</em>을 가리킨다.</div>
+        <div class="greek-meta">Preposition + Dative<br>거주의 처소이자 활동의 영역.</div>
+      </div>
+
+      <div class="greek-card reveal delay-3">
+        <span class="number">04</span>
+        <div class="greek-word">πίστει</div>
+        <div class="greek-pronounce">피스테이</div>
+        <div class="greek-meaning"><strong>믿음 안에서.</strong> 여격(dative). "믿음에 의해서"가 아니라 <em>"믿음이라는 영역 안에서"</em> 살아가는 새 차원을 말한다.</div>
+        <div class="greek-meta">Dative of sphere<br>믿음은 수단이 아니라 거주하는 공간이다.</div>
+      </div>
+    </div>
+
+    <div class="greek-emphasis reveal">
+      네 단어가 한 방향을 가리킨다. <strong>완료시제</strong>의 못 박힘은 끝난 사건이 아니라 지속되는 신분이며, <strong>현재시제</strong>의 삶은 더 이상 나의 것이 아니다. 나는 <strong>그리스도 안에</strong>, 또 <strong>믿음 안에</strong> 거주하며 살아간다.
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: SUMMARY ============ -->
+<section class="summary-section">
+  <div class="container">
+    <div class="summary-mark reveal">II · 핵심 한 줄</div>
+    <div class="summary-text reveal delay-1">
+      구원받았다. 그러나 <span class="accent">육체라는 휘장</span>이<br>
+      여전히 나와 하나님을 가르고 있다.
+    </div>
+    <div class="summary-divider"></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: TABERNACLE ============ -->
+<section class="tabernacle-section">
+  <div class="container">
+    <div class="eyebrow left reveal">III · 성막의 세 구역</div>
+    <h2 class="section-title reveal">나는 지금 <em>어디까지</em> 들어와 있는가</h2>
+
+    <div class="tabernacle-layout">
+      <div class="tabernacle-diagram reveal">
+        <svg class="tab-svg" viewBox="0 0 280 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="court" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#a07a4a"/>
+              <stop offset="100%" stop-color="#7a5a2e"/>
+            </linearGradient>
+            <linearGradient id="holy" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#d4a76a"/>
+              <stop offset="100%" stop-color="#b8895a"/>
+            </linearGradient>
+            <linearGradient id="hh" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8b2942"/>
+              <stop offset="100%" stop-color="#4a1622"/>
+            </linearGradient>
+            <radialGradient id="presence" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f4e5c2" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#f4e5c2" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Outer court -->
+          <g class="tab-zone" data-zone="0">
+            <rect x="20" y="20" width="240" height="140" fill="url(#court)" stroke="#f4e5c2" stroke-opacity="0.3"/>
+            <text x="140" y="60" text-anchor="middle" font-family="Cinzel, serif" font-size="9" letter-spacing="3" fill="#f4e5c2" opacity="0.7">OUTER COURT</text>
+            <text x="140" y="85" text-anchor="middle" font-family="Noto Serif KR, serif" font-size="14" fill="#f4e5c2" font-weight="300">바깥뜰</text>
+            <!-- Bronze altar icon -->
+            <rect x="125" y="105" width="30" height="20" fill="none" stroke="#f4e5c2" stroke-width="1" opacity="0.6"/>
+            <path d="M 130 105 L 135 95 M 140 105 L 140 90 M 150 105 L 145 95" stroke="#f4e5c2" stroke-width="1" opacity="0.6" fill="none"/>
+            <text x="140" y="145" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#f4e5c2" opacity="0.55" font-style="italic">놋제단</text>
+          </g>
+
+          <!-- First veil (entrance to Holy Place) -->
+          <rect x="20" y="160" width="240" height="3" fill="#f4e5c2" opacity="0.4"/>
+
+          <!-- Holy Place -->
+          <g class="tab-zone" data-zone="1">
+            <rect x="20" y="163" width="240" height="140" fill="url(#holy)" stroke="#f4e5c2" stroke-opacity="0.3"/>
+            <text x="140" y="200" text-anchor="middle" font-family="Cinzel, serif" font-size="9" letter-spacing="3" fill="#1f1813" opacity="0.7">HOLY PLACE</text>
+            <text x="140" y="225" text-anchor="middle" font-family="Noto Serif KR, serif" font-size="14" fill="#1f1813" font-weight="400">성소</text>
+            <!-- Lampstand & altar of incense -->
+            <circle cx="80" cy="260" r="3" fill="#1f1813" opacity="0.5"/>
+            <path d="M 80 263 L 80 275 M 75 270 L 75 280 M 85 270 L 85 280 M 70 275 L 70 285 M 90 275 L 90 285" stroke="#1f1813" stroke-width="0.8" opacity="0.5"/>
+            <rect x="195" y="265" width="14" height="14" fill="none" stroke="#1f1813" stroke-width="1" opacity="0.5"/>
+            <path d="M 200 265 L 200 258 M 204 265 L 204 258" stroke="#1f1813" stroke-width="0.8" opacity="0.5"/>
+            <text x="140" y="288" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#1f1813" opacity="0.55" font-style="italic">등잔대 · 분향단</text>
+          </g>
+
+          <!-- THE VEIL (second veil - critical) -->
+          <g>
+            <rect x="20" y="303" width="240" height="6" fill="#8b2942"/>
+            <path d="M 20 303 L 30 306 L 45 303 L 60 309 L 80 304 L 100 308 L 125 304 L 145 309 L 165 304 L 185 308 L 205 304 L 225 308 L 245 303 L 260 309" stroke="#f4e5c2" stroke-width="0.5" fill="none" opacity="0.6"/>
+            <text x="270" y="308" text-anchor="end" font-family="Cinzel, serif" font-size="7" letter-spacing="2" fill="#f4e5c2" opacity="0.7" transform="translate(0, -2)">VEIL · 휘장</text>
+          </g>
+
+          <!-- Holy of Holies -->
+          <g class="tab-zone" data-zone="2">
+            <rect x="20" y="309" width="240" height="150" fill="url(#hh)" stroke="#f4e5c2" stroke-opacity="0.3"/>
+            <ellipse cx="140" cy="384" rx="80" ry="50" fill="url(#presence)"/>
+            <text x="140" y="345" text-anchor="middle" font-family="Cinzel, serif" font-size="9" letter-spacing="3" fill="#f4e5c2" opacity="0.85">HOLY OF HOLIES</text>
+            <text x="140" y="370" text-anchor="middle" font-family="Noto Serif KR, serif" font-size="14" fill="#f4e5c2" font-weight="300">지성소</text>
+            <text x="140" y="400" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="11" fill="#f4e5c2" font-style="italic" opacity="0.85">하나님의 임재</text>
+            <text x="140" y="430" text-anchor="middle" font-family="Cinzel, serif" font-size="8" letter-spacing="2" fill="#f4e5c2" opacity="0.6">PRESENCE</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="tab-info">
+        <div class="tab-card reveal" data-card="0">
+          <div class="level">FIRST · 첫 번째 단계</div>
+          <h3>바깥뜰</h3>
+          <div class="subtitle">놋제단 · 죄에서 구원</div>
+          <p>그리스도의 피로 죄가 사해진 단계. 우리는 이미 하나님과 화목하게 되었다. 그러나 이것은 화목의 <em>시작</em>이지 끝이 아니다. 우리는 여전히 바깥뜰에 서 있다.</p>
+          <span class="verse-tag">롬 5:10 상
+            <span class="verse-tooltip">
+              <span class="ref">로마서 5:10상</span>
+              우리가 원수였을 때에 하나님의 아들의 죽음을 통해 하나님과 화목하게 되었다면…
+            </span>
+          </span>
+        </div>
+
+        <div class="tab-card reveal delay-1" data-card="1">
+          <div class="level">PARTIAL · 부분적 단계</div>
+          <h3>성소</h3>
+          <div class="subtitle">등잔대 · 분향단 · 그 영의 복</div>
+          <p>그 영의 복들이 있고, 등잔대의 빛과 분향단의 기도가 있다. 그러나 결정적인 것이 빠져 있다 — <em>하나님의 직접적인 임재.</em> 고린도 성도들은 여기에 머물러 있었다.</p>
+          <span class="verse-tag">고전 3:1 · 2:14
+            <span class="verse-tooltip">
+              <span class="ref">고린도전서 3:1</span>
+              형제님들, 내가 전에 여러분에게 말할 때에 영적인 사람들처럼 대할 수 없었고, 육체적인 사람 곧 그리스도 안에 있는 어린 아기들처럼 대하였습니다.
+            </span>
+          </span>
+        </div>
+
+        <div class="tab-card highlighted reveal delay-2" data-card="2">
+          <div class="level">COMPLETE · 두 번째 화목</div>
+          <h3>지성소</h3>
+          <div class="subtitle">하나님 자신을 얻는 자리</div>
+          <p>휘장 — 곧 육체 — 이 찢어진 후에야 들어갈 수 있는 자리. 여기서 비로소 우리는 <em>죄에서</em>만이 아니라 <em>타고난 사람</em>에서 이끌려 나와 하나님과 하나가 된다. 화목이 사실상 완전한 구원이다.</p>
+          <span class="verse-tag">히 10:19-20
+            <span class="verse-tooltip">
+              <span class="ref">히브리서 10:19-20</span>
+              우리가 예수님의 피로 말미암아 담대하게 지성소에 들어가게 되었습니다. 예수님은 휘장, 곧 그분의 육체를 통해서 우리를 위하여 새롭고 살아 있는 길을 열어 놓으셨습니다.
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: VEIL TEAR ============ -->
+<section class="veil-section" id="veil-section">
+  <div class="veil-stage">
+    <div class="eyebrow reveal" style="justify-content:center">IV · 휘장이 찢어지는 순간</div>
+    <h2 class="section-title reveal" style="text-align:center; color: var(--sacred-light)">바울이 고린도에서 하던 일</h2>
+
+    <div class="veil-visual" id="veilVisual">
+      <div class="veil-light"></div>
+      <div class="veil-panel left"></div>
+      <div class="veil-panel right"></div>
+    </div>
+
+    <div class="veil-quote reveal">
+      <span class="quote-mark">"</span>
+      바울은 고린도의 믿는 이들이 지성소 안에 들어갈 수 있도록 <strong style="color:var(--gold-bright); font-weight:400">육체라는 분리하는 휘장</strong>을 완전히 찢어 버리려고 일하고 있었다.
+    </div>
+
+    <div class="veil-answer">
+      <div class="veil-block reveal">
+        <div class="label">문제 · THE VEIL</div>
+        <h4>휘장은 곧 육체였다.</h4>
+        <p>고린도 성도들의 타고난 사람, 겉사람, 혼이 곧 휘장이었다. 그것이 그들과 하나님을 가르고 있었다. 죄 사함만으로는 이 휘장이 찢어지지 않는다.</p>
+        <div class="verse-ref">히브리서 10:20</div>
+      </div>
+
+      <div class="veil-block reveal delay-1">
+        <div class="label">해답 · THE CROSS</div>
+        <h4>그리스도와 함께 못 박힘.</h4>
+        <p>그리스도 예수님께 속한 사람들은 육체를 그 정욕과 욕망과 함께 십자가에 못 박았다. 휘장의 찢어짐은 곧 십자가에서 일어난다.</p>
+        <div class="verse-ref">갈라디아서 5:24</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: FOR vs WITH ============ -->
+<section class="forwith-section">
+  <div class="container">
+    <div class="eyebrow left reveal">V · 두 가지 일하는 방식</div>
+    <h2 class="section-title reveal">하나님을 <em>위해</em> 일하기 vs 하나님과 <em>함께</em> 일하기</h2>
+
+    <div class="forwith-grid">
+      <div class="forwith-card reveal">
+        <div class="preposition">FOR</div>
+        <h3>위하여 일하기</h3>
+        <p>홀로 분주하다. 결과를 만든다. 그러나 일하는 동안 정작 그분 안에 있지 않다. 다른 이들을 그분 안으로 화목하게 할 수 없다 — 나 자신이 그분 안에 있지 않기 때문이다.</p>
+        <p class="illust">어떤 아내는 남편을 <em>위해</em> 요리하는 것은 즐기지만, 남편과 <em>함께</em> 요리하는 것은 좋아하지 않을 수 있다.</p>
+      </div>
+
+      <div class="forwith-card with reveal delay-1">
+        <div class="preposition">WITH</div>
+        <h3>함께 일하기</h3>
+        <p>그분 안에서 일한다. 그분과 동행하며 일한다. 나의 위치가 곧 다른 이들이 도달할 수 있는 가장 먼 지점이 된다. 내가 그분 안에 깊이 있을수록 더 많은 이들을 그분 안으로 인도한다.</p>
+        <p class="illust">사도들은 하나님과 <em>함께</em> 일했다. 자신 스스로는 어떤 사람도 하나님 안으로 이끌 수 없음을 알았기 때문이다.</p>
+      </div>
+    </div>
+
+    <div class="forwith-key reveal">
+      <p>우리와 하나님과의 <strong>친밀함</strong>이<br>우리 일의 결과를 가늠한다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7: DETAILS ACCORDION ============ -->
+<section class="details-section">
+  <div class="container">
+    <div class="eyebrow left reveal">VI · 더 깊이 들어가기</div>
+    <h2 class="section-title reveal">남은 질문들</h2>
+
+    <div class="accordion">
+      <div class="acc-item">
+        <button class="acc-trigger">
+          <span>왜 우리의 구원은 아직 "부분적"인가</span>
+          <span class="acc-icon"></span>
+        </button>
+        <div class="acc-content">
+          <div class="acc-inner">
+            <p>고린도 성도들은 이미 구원받았고 하나님과 어느 정도 화목하게 되었다. 그러나 여전히 육체 안에서 살았다. 그들의 타고난 존재가 분리하는 휘장이었다. 그러므로 그들에게는 두 번째 단계의 화목이 필요했다.</p>
+            <p>로마서 5장 10절은 두 단계의 화목을 한 절 안에 압축한다. 원수였을 때 <em>그분의 죽음을 통해</em> 화목하게 되었고, 이미 화목하게 된 우리는 더욱 <em>그분의 생명 안에서</em> 구원받을 것이다. 죽음의 화목이 시작이라면, 생명의 화목이 완성이다.</p>
+            <p>참고 : <span class="verse-inline">롬 5:10
+              <span class="verse-tooltip"><span class="ref">로마서 5:10</span>우리가 원수였을 때에 하나님의 아들의 죽음을 통해 하나님과 화목하게 되었다면, 이미 화목하게 된 우리는 더욱 그분의 생명 안에서 구원받을 것입니다.</span>
+            </span> · <span class="verse-inline">히 7:25
+              <span class="verse-tooltip"><span class="ref">히브리서 7:25</span>그러므로 그분은 자신을 통하여 하나님께 나아오는 사람들을 철저히 구원하실 수 있으십니다. 왜냐하면 그분은 항상 살아 계셔서 그들을 위하여 중보기도를 하시기 때문입니다.</span>
+            </span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger">
+          <span>"지성소 안에 들어간다"는 것은 무엇인가</span>
+          <span class="acc-icon"></span>
+        </button>
+        <div class="acc-content">
+          <div class="acc-inner">
+            <p>지성소는 하나님의 직접적인 임재가 있는 자리다. 성소까지는 그 영의 복들이 있고 등잔대와 분향단이 있지만, 거기엔 하나님 자신의 직접적인 임재가 없다. 하나님 <em>자신</em>을 얻으려면 더 전진된 화목을 이루어 지성소 안으로 들어가야 한다.</p>
+            <p>그리고 그 들어감의 길은 다른 것이 아니다 — 휘장이다. 휘장은 그분의 육체였고, 또한 우리의 육체이기도 하다. 그분의 육체가 찢어진 그 자리에서, 우리의 육체 또한 찢어진다.</p>
+            <p>참고 : <span class="verse-inline">히 10:19-20
+              <span class="verse-tooltip"><span class="ref">히브리서 10:19-20</span>우리가 예수님의 피로 말미암아 담대하게 지성소에 들어가게 되었습니다. 예수님은 휘장, 곧 그분의 육체를 통해서 우리를 위하여 새롭고 살아 있는 길을 열어 놓으셨습니다.</span>
+            </span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger">
+          <span>사도의 위임 — 화목의 일</span>
+          <span class="acc-icon"></span>
+        </button>
+        <div class="acc-content">
+          <div class="acc-inner">
+            <p>사도들은 화목의 일과 사역을 위임받았을 뿐 아니라, 다른 사람들을 하나님 안으로 이끌면서 <em>하나님과 함께</em> 일했다. 그들은 자신 스스로는 어떤 사람도 하나님 안으로 이끌 수 없다는 것을 알고 있었다. 그들에게는 그러한 능력이나 역량이 없었다.</p>
+            <p>그러므로 사도의 표시는 단지 표적과 기이한 일이 아니라, 그가 견디는 가운데 그분과 함께 일하고 있었다는 사실 자체였다. 그리스도를 대신하는 대사로서 그분을 통해 권면이 흘러갔다.</p>
+            <p>참고 : <span class="verse-inline">고후 5:20
+              <span class="verse-tooltip"><span class="ref">고린도후서 5:20</span>그러므로 우리가 그리스도를 대신하는 대사들이 되어, 하나님께서 우리를 통하여 여러분에게 권면하시듯이, 우리가 그리스도를 대신하여 여러분에게 간청합니다. 하나님과 화목하십시오.</span>
+            </span> · <span class="verse-inline">고후 12:12상
+              <span class="verse-tooltip"><span class="ref">고린도후서 12:12상</span>사도의 표시는 내가 모든 것을 견디는 가운데 표적들과 기이한 일들과 능력의 일들로 여러분 앞에 완전히 나타났습니다.</span>
+            </span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger">
+          <span>"지금이 바로 구원의 날" — 고후 6:2</span>
+          <span class="acc-icon"></span>
+        </button>
+        <div class="acc-content">
+          <div class="acc-inner">
+            <p>바울은 5장에서 화목을 말한 직후 6장에서 구원을 말한다. 문맥상 6장 2절의 구원은 사실상 화목을 가리킨다. <em>화목이 곧 완전한 구원이다.</em></p>
+            <p>그러므로 "기쁘게 받아들이시기에 좋은 때"는 우리가 두 번째 단계의 화목으로 들어가는 때, 휘장이 찢어지는 때, 지성소 안에 들어가는 때다. 그 때는 미루어질 수 없다. <em>지금</em>이다.</p>
+            <p>참고 : <span class="verse-inline">고후 6:1-2
+              <span class="verse-tooltip"><span class="ref">고린도후서 6:1-2</span>하나님과 함께 일하는 우리가 또한 여러분에게 간절히 권합니다. 하나님의 은혜를 헛되이 받지 마십시오. … 보십시오, 지금이야말로 기쁘게 받아들이시기에 좋은 때이며, 지금이야말로 구원의 날입니다.</span>
+            </span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 8: QUIZ ============ -->
+<section class="quiz-section">
+  <div class="container">
+    <div class="eyebrow left reveal">VII · 자기 점검</div>
+    <h2 class="section-title reveal">읽은 것을 <em>나의 자리</em>로 옮기기</h2>
+    <p class="quiz-intro reveal delay-1">정답을 맞히는 것이 목적이 아니다. 메시지가 내 안에서 어떻게 자리잡았는지 가만히 들여다보는 시간이다.</p>
+
+    <div class="quiz-item reveal" data-quiz="1">
+      <div class="quiz-number">QUESTION 01</div>
+      <div class="quiz-question">바울이 고린도 성도들에게 필요하다고 본 "두 번째 단계"는 무엇인가?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-answer="wrong">
+          죄 사함의 회복 <span class="mark">×</span>
+        </button>
+        <button class="quiz-option" data-answer="correct">
+          육체라는 휘장이 찢어져 지성소 안으로 들어감 <span class="mark">✓</span>
+        </button>
+        <button class="quiz-option" data-answer="wrong">
+          은사의 회복과 활성화 <span class="mark">×</span>
+        </button>
+      </div>
+      <div class="quiz-explain">고린도 성도들은 이미 죄에서 구원받았다. 그러나 육체라는 휘장이 여전히 그들을 하나님에게서 분리하고 있었다. 바울이 일하고 있던 것은 바로 그 휘장을 찢는 일이었다.</div>
+    </div>
+
+    <div class="quiz-item reveal" data-quiz="2">
+      <div class="quiz-number">QUESTION 02</div>
+      <div class="quiz-question">본문에 따르면 "완전한 구원"은 언제 이루어지는가?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-answer="wrong">
+          처음 믿고 거듭난 그 순간 <span class="mark">×</span>
+        </button>
+        <button class="quiz-option" data-answer="wrong">
+          이 땅의 삶을 마친 이후 <span class="mark">×</span>
+        </button>
+        <button class="quiz-option" data-answer="correct">
+          하나님과 완전히 화목하게 될 때 <span class="mark">✓</span>
+        </button>
+      </div>
+      <div class="quiz-explain">"우리가 받은 구원은 단지 부분적일 뿐 아직 완전한 것은 아니다. 우리는 하나님과 완전히 화목하게 될 때에만 완전히 구원받는다." 화목이 곧 완전한 구원이다.</div>
+    </div>
+
+    <div class="quiz-item reveal" data-quiz="3">
+      <div class="quiz-number">QUESTION 03</div>
+      <div class="quiz-question">다른 이들을 하나님께로 인도하는 능력을 결정하는 것은 무엇인가?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-answer="wrong">
+          말씀에 대한 지식과 사역의 경험 <span class="mark">×</span>
+        </button>
+        <button class="quiz-option" data-answer="correct">
+          하나님에 대한 나의 현재 위치 <span class="mark">✓</span>
+        </button>
+        <button class="quiz-option" data-answer="wrong">
+          기도의 양과 헌신의 강도 <span class="mark">×</span>
+        </button>
+      </div>
+      <div class="quiz-explain">"우리가 다른 이들을 어느 정도까지 하나님께로 그리고 하나님 안으로 인도할 수 있는지는 언제나 하나님에 대한 우리의 현재 위치로 결정된다." 내가 그분 안에 더 있을수록, 더 많은 이들을 그분 안으로 인도할 수 있다.</div>
+    </div>
+
+    <div class="quiz-reflective reveal">
+      <div class="quiz-number" style="color:var(--gold-bright)">REFLECTION 04</div>
+      <div class="quiz-question">나는 지금 성막의 어느 구역에 있다고 느끼는가?</div>
+      <p>바깥뜰의 놋제단 앞 — 죄 사함의 자리에서 안도하고 있는가?<br>
+      성소의 등잔대 옆 — 은사와 봉사 속에 있지만 그분의 임재는 멀게 느껴지는가?<br>
+      혹은 휘장 앞에 서서, 그것이 찢어지기를 기다리고 있는가?</p>
+      <textarea placeholder="조용히 적어 보십시오. 누구에게 보여 줄 글이 아닙니다." aria-label="자기 성찰 메모"></textarea>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 9: PRAYER ============ -->
+<section class="prayer-section">
+  <div class="prayer-container">
+    <div class="prayer-symbol"></div>
+    <div class="eyebrow reveal">VIII · 오늘의 기도</div>
+    <h1 class="prayer-title reveal delay-1">지금이 그 때입니다</h1>
+    <div class="prayer-body reveal delay-2">
+      <p>주님, 저는 그리스도와 함께 <span class="emph">십자가에 못 박혔습니다.</span> 그것은 이미 일어난 일이며, 지금도 머무는 자리입니다.</p>
+      <p>그러나 저는 여전히 육체 안에 사는 저를 봅니다. 타고난 사람이라는 휘장이 저와 당신을 가르고 있음을 봅니다.</p>
+      <p>주님, 그 휘장을 찢어 주십시오. 죄에서만이 아니라, 저의 <span class="emph">겉사람</span>에서 저를 이끌어 내어 주십시오. 저를 지성소 안으로, 당신의 임재 안으로 데려가 주십시오.</p>
+      <p>주님을 <em>위해서</em>가 아니라 주님과 <span class="emph">함께</span> 일하기 원합니다. 저의 일이 당신 밖에서 일어나지 않게 하시고, 제가 머무는 그 자리가 다른 이들이 도달할 수 있는 자리가 되게 하소서.</p>
+      <p>지금이야말로 기쁘게 받아들이시기에 좋은 때이며, <span class="emph">지금이야말로 구원의 날</span>입니다.</p>
+      <div class="prayer-amen">A · M · E · N</div>
+    </div>
+    <div class="prayer-cite">— 갈 2:20 · 고후 5:14–6:2 · 히 10:19–20</div>
+  </div>
+</section>
+
+<footer>
+  휘장을 지나, 지성소로
+  <span>BEYOND THE VEIL · INTO THE PRESENCE</span>
+</footer>
+
+<script>
+  // ============ Reveal on scroll ============
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ============ Veil tearing on scroll ============
+  const veilVisual = document.getElementById('veilVisual');
+  const veilObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => veilVisual.classList.add('torn'), 600);
+        veilObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  if (veilVisual) veilObs.observe(veilVisual);
+
+  // ============ Tabernacle zone <-> card sync ============
+  const zones = document.querySelectorAll('.tab-zone');
+  const cards = document.querySelectorAll('.tab-card');
+
+  zones.forEach(z => {
+    z.addEventListener('mouseenter', () => {
+      const i = z.dataset.zone;
+      cards.forEach(c => c.classList.toggle('highlighted', c.dataset.card === i));
+      zones.forEach(zz => zz.classList.toggle('active', zz === z));
+    });
+    z.addEventListener('mouseleave', () => {
+      cards.forEach(c => {
+        c.classList.toggle('highlighted', c.dataset.card === '2');
+      });
+      zones.forEach(zz => zz.classList.remove('active'));
+    });
+  });
+
+  cards.forEach(c => {
+    c.addEventListener('mouseenter', () => {
+      const i = c.dataset.card;
+      zones.forEach(z => z.classList.toggle('active', z.dataset.zone === i));
+    });
+    c.addEventListener('mouseleave', () => {
+      zones.forEach(z => z.classList.remove('active'));
+    });
+  });
+
+  // ============ Accordion ============
+  document.querySelectorAll('.acc-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+
+  // ============ Quiz ============
+  document.querySelectorAll('.quiz-item').forEach(item => {
+    const opts = item.querySelectorAll('.quiz-option');
+    const explain = item.querySelector('.quiz-explain');
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const correct = opt.dataset.answer === 'correct';
+        opts.forEach(o => {
+          o.disabled = true;
+          if (o.dataset.answer === 'correct') o.classList.add('correct');
+        });
+        if (!correct) opt.classList.add('incorrect');
+        if (explain) explain.classList.add('visible');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
