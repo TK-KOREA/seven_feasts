@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>휘장을 지나, 지성소로 — 갈라디아서 2:20</title>
+<title>휘장을 지나, 지성소로</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=GFS+Didot&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
@@ -121,22 +121,8 @@
     grid-template-columns: 1fr;
     gap: 60px;
     align-items: center;
-  }
-  @media (min-width: 900px){
-    .hero-grid{grid-template-columns: 1fr 1fr; gap: 80px}
-  }
-  .hero-mark{
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3/4;
-    max-height: 480px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .hero-mark svg{
-    width: 100%;
-    height: 100%;
+    max-width: 720px;
+    margin: 0 auto;
   }
   .verse-cite{
     font-family: 'Cinzel', serif;
@@ -287,6 +273,51 @@
     font-size: 19px;
     line-height: 1.7;
     color: var(--ink-soft);
+  }
+  .greek-bridge{
+    margin: 64px 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-family: 'Cinzel', 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bronze-deep);
+    font-weight: 500;
+  }
+  .greek-bridge::before, .greek-bridge::after{
+    content:"";
+    height: 1px;
+    flex: 1;
+    background: currentColor;
+    opacity: 0.3;
+  }
+  .greek-bridge-sub{
+    max-width: 640px;
+    margin: 0 0 36px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+  }
+  .greek-bridge-sub em{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--crimson);
+    font-weight: 400;
+  }
+  .greek-card .ref-tag{
+    display: inline-block;
+    margin-top: 14px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--bronze);
+    padding: 4px 10px;
+    border: 1px solid rgba(94, 74, 46, 0.25);
+    border-radius: 2px;
   }
   .greek-emphasis strong{
     font-style: normal;
@@ -999,6 +1030,7 @@
   .reveal.delay-1{transition-delay: 0.15s}
   .reveal.delay-2{transition-delay: 0.3s}
   .reveal.delay-3{transition-delay: 0.45s}
+  .reveal.delay-4{transition-delay: 0.6s}
 
   /* ============ RESPONSIVE TWEAKS ============ */
   @media (max-width: 720px){
@@ -1207,7 +1239,7 @@
 <!-- TOP BAR -->
 <div class="topbar" id="topbar">
   <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-  <div class="topbar-title">휘장을 지나, 지성소로 · 갈 2:20</div>
+  <div class="topbar-title">휘장을 지나, 지성소로</div>
   <button class="topbar-btn" onclick="ttsOpenReader()" aria-label="읽어주기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
   <div class="font-controls">
     <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
@@ -1224,7 +1256,7 @@
   <a class="sp-nav sp-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="sp-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
   <div class="sp-divider"></div>
   <a class="sp-nav" onclick="goToSection('hero')" style="color:var(--bronze-deep);font-weight:500;">✦ 오늘의 구절 — 갈 2:20</a>
-  <a class="sp-nav" onclick="goToSection('greek-section')">Ⅰ. 원문의 무게 — 헬라어 네 단어</a>
+  <a class="sp-nav" onclick="goToSection('greek-section')">Ⅰ. 원문의 무게 — 헬라어 아홉 단어</a>
   <a class="sp-nav" onclick="goToSection('summary-section')">Ⅱ. 핵심 한 줄</a>
   <a class="sp-nav" onclick="goToSection('tabernacle-section')">Ⅲ. 성막의 세 구역</a>
   <a class="sp-nav" onclick="goToSection('veil-section')">Ⅳ. 휘장이 찢어지는 순간</a>
@@ -1278,32 +1310,6 @@
 <section class="hero" id="hero">
   <div class="container">
     <div class="hero-grid">
-      <div class="hero-mark">
-        <!-- SVG: minimal cross with light, hand-rendered feel -->
-        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <radialGradient id="halo" cx="50%" cy="40%" r="50%">
-              <stop offset="0%" stop-color="#f4e5c2" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#f4e5c2" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="crossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#5e4a2e"/>
-              <stop offset="100%" stop-color="#1f1813"/>
-            </linearGradient>
-          </defs>
-          <!-- Halo of light -->
-          <ellipse cx="150" cy="160" rx="140" ry="180" fill="url(#halo)"/>
-          <!-- Cross -->
-          <rect x="142" y="60" width="16" height="280" fill="url(#crossGrad)"/>
-          <rect x="80" y="130" width="140" height="14" fill="url(#crossGrad)"/>
-          <!-- Subtle nail marks / texture lines -->
-          <line x1="100" y1="137" x2="105" y2="137" stroke="#1f1813" stroke-width="1.5" opacity="0.4"/>
-          <line x1="195" y1="137" x2="200" y2="137" stroke="#1f1813" stroke-width="1.5" opacity="0.4"/>
-          <line x1="150" y1="320" x2="150" y2="325" stroke="#1f1813" stroke-width="1.5" opacity="0.4"/>
-          <!-- Greek letters: Ι Ν Β Ι (titulus) - subtle -->
-          <text x="150" y="115" text-anchor="middle" font-family="GFS Didot, serif" font-size="11" fill="#5e4a2e" opacity="0.7" letter-spacing="2">ΙΝΒΙ</text>
-        </svg>
-      </div>
       <div>
         <div class="eyebrow left">Galatians · 갈라디아서 2:20</div>
         <div class="verse-body">
@@ -1322,9 +1328,9 @@
 <section class="greek-section">
   <div class="container">
     <div class="eyebrow left reveal">I · 원문의 무게</div>
-    <h2 class="section-title reveal">헬라어 네 단어가 말하는 <em>한 사건의 영속성</em></h2>
+    <h2 class="section-title reveal">헬라어 원문이 여는 <em>한 메시지의 골격</em></h2>
     <div class="greek-intro reveal delay-1">
-      <p>이 한 절에는 시제와 주격이 미세하게 흔들리는 네 개의 핵심 단어가 박혀 있다. 그것들을 들여다볼수록, 십자가는 과거의 사건이 아니라 <em>지금도 작동 중인 상태</em>임이 드러난다.</p>
+      <p>먼저 갈라디아서의 한 절. 시제와 주격이 미세하게 흔들리는 네 개의 핵심 단어가 박혀 있다. 그것들을 들여다볼수록, 십자가는 과거의 사건이 아니라 <em>지금도 작동 중인 상태</em>임이 드러난다.</p>
     </div>
 
     <div class="greek-grid">
@@ -1334,6 +1340,7 @@
         <div class="greek-pronounce">쉬네스타우로마이</div>
         <div class="greek-meaning"><strong>나는 함께 십자가에 못 박혔다.</strong> 동사 σταυρόω(못 박다)에 σύν(함께)이 결합한 형태. 핵심은 <em>완료시제 수동태</em>다.</div>
         <div class="greek-meta">Perfect · Passive · 1st sg.<br>한 번 일어났고, 지금도 그 상태에 머문다.</div>
+        <span class="ref-tag">갈 2:20</span>
       </div>
 
       <div class="greek-card reveal delay-1">
@@ -1342,14 +1349,16 @@
         <div class="greek-pronounce">조</div>
         <div class="greek-meaning"><strong>나는 산다.</strong> 그러나 바로 뒤에 οὐκέτι ἐγώ — <em>"이제는 더 이상 내가 아니다"</em>가 따라온다. 사는 주체가 옮겨졌다.</div>
         <div class="greek-meta">Present · Active · 1st sg.<br>살고 있되, 살고 있는 것은 더 이상 내가 아니다.</div>
+        <span class="ref-tag">갈 2:20</span>
       </div>
 
       <div class="greek-card reveal delay-2">
         <span class="number">03</span>
         <div class="greek-word">ἐν ἐμοί</div>
         <div class="greek-pronounce">엔 에모이</div>
-        <div class="greek-meaning"><strong>내 안에서.</strong> 단순한 위치 표현이 아니다. 그리스도가 신자 안에 거하시는 <em>장소적 연합</em>을 가리킨다.</div>
+        <div class="greek-meaning"><strong>내 안에서.</strong> 단순한 위치 표현이 아니다. 그리스도가 믿는이들 안에 거하시는 <em>장소적 연합</em>을 가리킨다.</div>
         <div class="greek-meta">Preposition + Dative<br>거주의 처소이자 활동의 영역.</div>
+        <span class="ref-tag">갈 2:20</span>
       </div>
 
       <div class="greek-card reveal delay-3">
@@ -1358,11 +1367,62 @@
         <div class="greek-pronounce">피스테이</div>
         <div class="greek-meaning"><strong>믿음 안에서.</strong> 여격(dative). "믿음에 의해서"가 아니라 <em>"믿음이라는 영역 안에서"</em> 살아가는 새 차원을 말한다.</div>
         <div class="greek-meta">Dative of sphere<br>믿음은 수단이 아니라 거주하는 공간이다.</div>
+        <span class="ref-tag">갈 2:20</span>
+      </div>
+    </div>
+
+    <div class="greek-bridge reveal">갈라디아의 한 절에서 메시지 전체로</div>
+    <p class="greek-bridge-sub reveal delay-1">한 절에서 시작된 골격은 히브리서의 <em>휘장</em>, 갈라디아서의 <em>육체</em>, 고린도후서의 <em>화목·함께 일함·지금</em>으로 뻗어 나간다. 다섯 단어를 더 펼치면, 메시지가 어디까지 우리를 데려가려 하는지가 보인다.</p>
+
+    <div class="greek-grid">
+      <div class="greek-card reveal">
+        <span class="number">05</span>
+        <div class="greek-word">καταπέτασμα</div>
+        <div class="greek-pronounce">카타페타스마</div>
+        <div class="greek-meaning"><strong>휘장.</strong> κατά(아래로)와 πετάννυμι(펼치다)가 결합 — <em>"드리워 펼쳐 놓은 천"</em>. 성소와 지성소를 가르던 그 휘장, 십자가 순간 위에서 아래로 찢어진 그 천을 가리킨다.</div>
+        <div class="greek-meta">명사 · 중성<br>가려 놓은 것, 분리시키는 것.</div>
+        <span class="ref-tag">히 10:20 · 마 27:51</span>
+      </div>
+
+      <div class="greek-card reveal delay-1">
+        <span class="number">06</span>
+        <div class="greek-word">σάρξ</div>
+        <div class="greek-pronounce">사르크스</div>
+        <div class="greek-meaning"><strong>육체.</strong> 단순한 몸이 아니라 <em>타고난 사람, 겉사람, 하나님과 맞서는 영역</em>. 히 10:20은 결정적으로 말한다 — "휘장, <strong>곧 그분의 육체</strong>." 휘장의 정체가 바로 이 σάρξ다.</div>
+        <div class="greek-meta">명사 · 여성<br>고전 3:1의 "사르키노이"(육체적인) 역시 같은 뿌리.</div>
+        <span class="ref-tag">히 10:20 · 갈 5:24 · 고전 3:1</span>
+      </div>
+
+      <div class="greek-card reveal delay-2">
+        <span class="number">07</span>
+        <div class="greek-word">καταλλαγή</div>
+        <div class="greek-pronounce">카탈라게</div>
+        <div class="greek-meaning"><strong>화목.</strong> 원래 상거래 용어 — <em>교환, 바꿔 놓음.</em> 적대의 자리에 친밀이 들어선다. 롬 5:10은 두 단계를 압축한다: 그분의 <em>죽음</em>으로 화목하게 되었고, 그분의 <em>생명</em> 안에서 구원받는다.</div>
+        <div class="greek-meta">명사 · 여성 (동사 καταλλάσσω)<br>화목이 곧 완전한 구원이다.</div>
+        <span class="ref-tag">롬 5:10-11 · 고후 5:18-19</span>
+      </div>
+
+      <div class="greek-card reveal delay-3">
+        <span class="number">08</span>
+        <div class="greek-word">συνεργοῦντες</div>
+        <div class="greek-pronounce">쉬네르군테스</div>
+        <div class="greek-meaning"><strong>함께 일하는 자들.</strong> σύν(함께) + ἔργον(일). 01번 <em>쉬네스타우로마이</em>의 σύν과 같은 접두사다. 그리스도와 <em>함께</em> 못 박힌 자만이 그분과 <em>함께</em> 일할 수 있다.</div>
+        <div class="greek-meta">현재 능동 분사 · 복수<br>FOR가 아니라 WITH — 모든 사역의 자세.</div>
+        <span class="ref-tag">고후 6:1</span>
+      </div>
+
+      <div class="greek-card reveal delay-4">
+        <span class="number">09</span>
+        <div class="greek-word">νῦν</div>
+        <div class="greek-pronounce">뉜</div>
+        <div class="greek-meaning"><strong>지금.</strong> 고후 6:2은 이 단어를 두 번 겹쳐 못 박는다 — <em>"보십시오, 지금이 그 때이며, 보십시오, 지금이 그 날입니다."</em> 함께 따라오는 καιρός는 "흘러가는 시간"이 아니라 <em>"꼭 그 순간"</em>을 가리킨다.</div>
+        <div class="greek-meta">시간 부사<br>지성소로 들어가는 일은 미루어질 수 없다.</div>
+        <span class="ref-tag">고후 6:2</span>
       </div>
     </div>
 
     <div class="greek-emphasis reveal">
-      네 단어가 한 방향을 가리킨다. <strong>완료시제</strong>의 못 박힘은 끝난 사건이 아니라 지속되는 신분이며, <strong>현재시제</strong>의 삶은 더 이상 나의 것이 아니다. 나는 <strong>그리스도 안에</strong>, 또 <strong>믿음 안에</strong> 거주하며 살아간다.
+      아홉 단어가 한 방향을 가리킨다. <strong>완료시제</strong>의 못 박힘은 지속되는 신분이고, <strong>현재시제</strong>의 삶은 더 이상 나의 것이 아니다. <strong>휘장</strong>은 곧 <strong>육체</strong>였고, 그 휘장이 찢어지는 자리에서 비로소 <strong>화목</strong>이 완성된다. 그리고 그 화목은 <strong>그분을 위해</strong>서가 아니라 <strong>그분과 함께</strong> 이루어진다 — <strong>지금</strong>.
     </div>
   </div>
 </section>
@@ -2169,7 +2229,7 @@
 
   const TTS_SECTIONS = [
     { id: 'hero',               title: '오늘의 구절 — 갈 2:20' },
-    { id: 'greek-section',      title: 'Ⅰ. 원문의 무게 — 헬라어 네 단어' },
+    { id: 'greek-section',      title: 'Ⅰ. 원문의 무게 — 헬라어 아홉 단어' },
     { id: 'summary-section',    title: 'Ⅱ. 핵심 한 줄' },
     { id: 'tabernacle-section', title: 'Ⅲ. 성막의 세 구역' },
     { id: 'veil-section',       title: 'Ⅳ. 휘장이 찢어지는 순간' },
