@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>화목으로의 여정</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink-1: #f5ebd6;
+    --ink-2: #d8cdb3;
+    --ink-3: #a89c81;
+    --thread: #c9a567;
+    --thread-soft: rgba(201, 165, 103, 0.4);
+    --shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+    --serif-display: 'Nanum Myeongjo', serif;
+    --serif-body: 'Noto Serif KR', serif;
+    --sans: 'Noto Sans KR', sans-serif;
+    --latin: 'Cormorant Garamond', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--ink-1);
+    background: #0a0e22;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ NOISE TEXTURE ============ */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.5;
+  }
+
+  /* ============ COVER ============ */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8vh 6vw;
+    background: radial-gradient(ellipse at 50% 30%, #1a1f3d 0%, #0a0e22 70%);
+    position: relative;
+  }
+
+  .cover-mark {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--thread), transparent);
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: fadeIn 1.4s 0.2s forwards;
+  }
+
+  .cover-eyebrow {
+    font-family: var(--latin);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.95rem;
+    letter-spacing: 0.4em;
+    color: var(--thread);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 1.4s 0.6s forwards;
+  }
+
+  .cover h1 {
+    font-family: var(--serif-display);
+    font-weight: 400;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeIn 1.4s 1s forwards;
+  }
+
+  .cover h1 em {
+    font-style: normal;
+    color: var(--thread);
+    font-weight: 700;
+  }
+
+  .cover-sub {
+    font-family: var(--serif-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    color: var(--ink-2);
+    max-width: 38ch;
+    line-height: 2;
+    opacity: 0;
+    animation: fadeIn 1.4s 1.4s forwards;
+  }
+
+  .cover-scroll {
+    position: absolute;
+    bottom: 5vh;
+    font-family: var(--latin);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--ink-3);
+    opacity: 0;
+    animation: fadeIn 1.4s 2s forwards, drift 2.4s 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ============ ACT SECTIONS ============ */
+  .act {
+    min-height: 100vh;
+    padding: 14vh 6vw;
+    position: relative;
+    transition: background 1.2s ease;
+  }
+
+  .act-1 { background: linear-gradient(180deg, #0a0e22 0%, #11142e 100%); }
+  .act-2 { background: linear-gradient(180deg, #11142e 0%, #1c1f3e 100%); }
+  .act-3 { background: linear-gradient(180deg, #1c1f3e 0%, #2a2944 100%); }
+  .act-4 { background: linear-gradient(180deg, #2a2944 0%, #45405e 100%); }
+  .act-5 { background: linear-gradient(180deg, #45405e 0%, #8a7d6a 100%); }
+  .act-6 { background: linear-gradient(180deg, #8a7d6a 0%, #d4b88a 50%, #e8d4a4 100%); }
+
+  .act-5, .act-6 {
+    color: #1a1a1a;
+  }
+
+  .act-header {
+    max-width: 800px;
+    margin: 0 auto 6rem;
+    text-align: center;
+  }
+
+  .act-number {
+    font-family: var(--latin);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: 0.5em;
+    color: var(--thread);
+    display: block;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+  }
+
+  .act-5 .act-number, .act-6 .act-number {
+    color: #8a6f3d;
+  }
+
+  .act-title {
+    font-family: var(--serif-display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s 0.15s ease;
+  }
+
+  .act-subtitle {
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-3);
+    letter-spacing: 0.15em;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s 0.3s ease;
+  }
+
+  .act-5 .act-subtitle, .act-6 .act-subtitle {
+    color: #6b5a3e;
+  }
+
+  .act.visible .act-number,
+  .act.visible .act-title,
+  .act.visible .act-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ NARRATIVE INTRO ============ */
+  .narrative {
+    max-width: 620px;
+    margin: 0 auto 5rem;
+    font-family: var(--serif-body);
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+    line-height: 2.1;
+    text-align: center;
+    color: var(--ink-2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s 0.45s ease;
+  }
+
+  .act-5 .narrative, .act-6 .narrative {
+    color: #3a3528;
+  }
+
+  .act.visible .narrative {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .narrative em {
+    color: var(--thread);
+    font-style: italic;
+  }
+  .act-5 .narrative em, .act-6 .narrative em {
+    color: #8a5a1f;
+  }
+
+  /* ============ CARD GRID ============ */
+  .cards {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .card {
+    border: 1px solid rgba(245, 235, 214, 0.12);
+    background: rgba(245, 235, 214, 0.025);
+    padding: 2.5rem 2rem 2rem;
+    backdrop-filter: blur(4px);
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease, border-color 0.4s ease, background 0.4s ease;
+  }
+
+  .act-5 .card, .act-6 .card {
+    border-color: rgba(60, 50, 30, 0.18);
+    background: rgba(255, 248, 230, 0.3);
+  }
+
+  .act.visible .card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .act.visible .card:nth-child(1) { transition-delay: 0.5s; }
+  .act.visible .card:nth-child(2) { transition-delay: 0.65s; }
+  .act.visible .card:nth-child(3) { transition-delay: 0.8s; }
+  .act.visible .card:nth-child(4) { transition-delay: 0.95s; }
+
+  .card:hover {
+    border-color: var(--thread-soft);
+    background: rgba(245, 235, 214, 0.05);
+  }
+  .act-5 .card:hover, .act-6 .card:hover {
+    border-color: rgba(138, 111, 61, 0.4);
+    background: rgba(255, 248, 230, 0.5);
+  }
+
+  .card-mark {
+    font-family: var(--latin);
+    font-style: italic;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--thread);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+  .act-5 .card-mark, .act-6 .card-mark {
+    color: #8a6f3d;
+  }
+
+  .card h3 {
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    margin-bottom: 1.3rem;
+    letter-spacing: -0.01em;
+  }
+
+  .card blockquote {
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--ink-2);
+    border-left: 1px solid var(--thread-soft);
+    padding-left: 1.2rem;
+    margin-bottom: 1.3rem;
+  }
+  .act-5 .card blockquote, .act-6 .card blockquote {
+    color: #3a3528;
+    border-left-color: rgba(138, 111, 61, 0.5);
+  }
+
+  .card p {
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: var(--ink-2);
+    margin-bottom: 1.8rem;
+  }
+  .act-5 .card p, .act-6 .card p {
+    color: #3a3528;
+  }
+
+  .detail-btn {
+    background: none;
+    border: none;
+    border-top: 1px solid rgba(245, 235, 214, 0.15);
+    padding: 1rem 0 0;
+    margin-top: auto;
+    width: 100%;
+    text-align: left;
+    font-family: var(--latin);
+    font-style: italic;
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    color: var(--thread);
+    cursor: pointer;
+    transition: color 0.3s, letter-spacing 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .act-5 .detail-btn, .act-6 .detail-btn {
+    color: #8a5a1f;
+    border-top-color: rgba(138, 111, 61, 0.25);
+  }
+
+  .detail-btn:hover {
+    color: var(--ink-1);
+    letter-spacing: 0.2em;
+  }
+  .act-5 .detail-btn:hover, .act-6 .detail-btn:hover {
+    color: #4a2f0e;
+  }
+
+  .detail-btn::after {
+    content: '→';
+    transition: transform 0.3s;
+  }
+  .detail-btn:hover::after {
+    transform: translateX(4px);
+  }
+
+  /* ============ ACT BRIDGE TRANSITIONS ============ */
+  .bridge {
+    max-width: 540px;
+    margin: 8rem auto 0;
+    text-align: center;
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--ink-3);
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .act.visible .bridge {
+    opacity: 1;
+    transition-delay: 1.2s;
+  }
+  .act-5 .bridge, .act-6 .bridge {
+    color: #6b5a3e;
+  }
+
+  .bridge::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--thread-soft), transparent);
+    margin: 0 auto 2.5rem;
+  }
+  .act-5 .bridge::before, .act-6 .bridge::before {
+    background: linear-gradient(to bottom, transparent, rgba(138, 111, 61, 0.5), transparent);
+  }
+
+  /* ============ ACT 1: DESCENT VISUAL ============ */
+  .descent {
+    max-width: 520px;
+    margin: 5rem auto;
+    opacity: 0;
+    transition: opacity 1.4s ease;
+    transition-delay: 0.8s;
+  }
+  .act.visible .descent { opacity: 1; }
+
+  .descent-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.8rem 0;
+    font-family: var(--serif-body);
+    font-size: 0.95rem;
+    color: var(--ink-2);
+  }
+  .descent-row:nth-child(1) { padding-left: 0; opacity: 0.95; }
+  .descent-row:nth-child(2) { padding-left: 1.5rem; opacity: 0.8; }
+  .descent-row:nth-child(3) { padding-left: 3rem; opacity: 0.65; }
+  .descent-row:nth-child(4) { padding-left: 4.5rem; opacity: 0.5; }
+  .descent-row:nth-child(5) { padding-left: 6rem; opacity: 0.35; }
+
+  .descent-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--thread);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ============ ACT 3: RESTRAINED BRIDGE ============ */
+  .bridge-visual {
+    max-width: 700px;
+    margin: 4rem auto 5rem;
+    height: 120px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 2s ease;
+    transition-delay: 0.6s;
+  }
+  .act.visible .bridge-visual { opacity: 1; }
+
+  .bridge-visual .side {
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: rgba(245, 235, 214, 0.25);
+  }
+  .bridge-visual .side.left { left: 0; }
+  .bridge-visual .side.right { right: 0; }
+
+  .bridge-visual .thread {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    width: 20%;
+    height: 1px;
+    background: var(--thread);
+    transform-origin: left;
+    animation: threadDraw 2.5s 0.8s ease forwards;
+    transform: scaleX(0);
+  }
+
+  .bridge-visual .marker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--thread);
+    background: #1c1f3e;
+    border-radius: 50%;
+  }
+  .bridge-visual .marker.left { left: calc(40% - 3px); }
+  .bridge-visual .marker.right { right: calc(40% - 3px); }
+
+  .bridge-visual .label {
+    position: absolute;
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    letter-spacing: 0.1em;
+  }
+  .bridge-visual .label.left {
+    left: 0;
+    top: calc(50% + 20px);
+  }
+  .bridge-visual .label.right {
+    right: 0;
+    top: calc(50% + 20px);
+  }
+  .bridge-visual .label.center {
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(50% - 35px);
+    color: var(--thread);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+  }
+
+  @keyframes threadDraw {
+    to { transform: scaleX(1); }
+  }
+
+  /* ============ ACT 4: EXPANDING CIRCLES ============ */
+  .circles-visual {
+    max-width: 400px;
+    margin: 4rem auto;
+    aspect-ratio: 1;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    transition-delay: 0.6s;
+  }
+  .act.visible .circles-visual { opacity: 1; }
+
+  .ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(245, 235, 214, 0.2);
+    border-radius: 50%;
+    animation: pulse 6s ease-in-out infinite;
+  }
+  .ring:nth-child(1) { inset: 0; animation-delay: 0s; }
+  .ring:nth-child(2) { inset: 15%; animation-delay: 0.8s; opacity: 0.7; }
+  .ring:nth-child(3) { inset: 30%; animation-delay: 1.6s; opacity: 0.5; }
+  .ring:nth-child(4) { inset: 45%; animation-delay: 2.4s; opacity: 0.3; }
+
+  .ring-label {
+    position: absolute;
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-2);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .ring-label.outer { top: -10px; left: 50%; transform: translate(-50%, -100%); }
+  .ring-label.mid { top: 15%; left: 50%; transform: translate(-50%, -100%); font-size: 0.8rem; }
+  .ring-label.inner {
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif-display);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--thread);
+    letter-spacing: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: var(--o, 1); }
+    50% { transform: scale(1.02); opacity: calc(var(--o, 1) * 0.7); }
+  }
+
+  /* ============ ACT 5: FLOW DIAGRAM ============ */
+  .flow {
+    max-width: 700px;
+    margin: 4rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .flow-step .num {
+    font-family: var(--latin);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #8a6f3d;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.6rem;
+  }
+
+  .flow-step .label {
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #2a2218;
+  }
+
+  .flow-arrow {
+    color: #8a6f3d;
+    font-family: var(--latin);
+    font-style: italic;
+    flex-shrink: 0;
+  }
+
+  /* ============ ACT 6: TRINITY FLOW ============ */
+  .trinity {
+    max-width: 700px;
+    margin: 4rem auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .trinity-step {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(138, 111, 61, 0.2);
+  }
+  .trinity-step:last-child { border-bottom: none; }
+
+  .trinity-step .role {
+    font-family: var(--latin);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #8a6f3d;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    min-width: 100px;
+    flex-shrink: 0;
+  }
+
+  .trinity-step .label {
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #2a2218;
+    min-width: 80px;
+  }
+
+  .trinity-step .desc {
+    font-family: var(--serif-body);
+    font-style: italic;
+    color: #3a3528;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ============ CLOSING ============ */
+  .closing {
+    padding: 20vh 6vw;
+    background: linear-gradient(180deg, #e8d4a4 0%, #f5ebd6 100%);
+    text-align: center;
+    color: #2a2218;
+  }
+  .closing-mark {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #8a6f3d, transparent);
+    margin: 0 auto 4rem;
+  }
+  .closing h2 {
+    font-family: var(--serif-display);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.5;
+    max-width: 26ch;
+    margin: 0 auto 2.5rem;
+    letter-spacing: -0.01em;
+  }
+  .closing h2 em {
+    font-style: italic;
+    color: #8a5a1f;
+  }
+  .closing-cite {
+    font-family: var(--latin);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #6b5a3e;
+    letter-spacing: 0.25em;
+  }
+
+  /* ============ MODAL ============ */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 34, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh 5vw;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal {
+    background: #f5ebd6;
+    max-width: 720px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 4rem 3.5rem;
+    color: #2a2218;
+    position: relative;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: opacity 0.5s 0.1s ease, transform 0.5s 0.1s ease;
+    box-shadow: var(--shadow);
+  }
+  .modal-backdrop.open .modal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .modal::-webkit-scrollbar { width: 8px; }
+  .modal::-webkit-scrollbar-track { background: transparent; }
+  .modal::-webkit-scrollbar-thumb { background: rgba(138, 111, 61, 0.3); }
+
+  .modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: 1px solid rgba(138, 111, 61, 0.3);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: var(--latin);
+    font-size: 1.2rem;
+    color: #6b5a3e;
+    transition: all 0.3s;
+  }
+  .modal-close:hover {
+    background: rgba(138, 111, 61, 0.1);
+    color: #2a2218;
+    transform: rotate(90deg);
+  }
+
+  .modal-eyebrow {
+    font-family: var(--latin);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: #8a6f3d;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .modal h3 {
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 1.3;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .modal-body {
+    font-family: var(--serif-body);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 2.1;
+    color: #3a3528;
+  }
+
+  .modal-body p {
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-body .verse {
+    font-style: italic;
+    background: rgba(201, 165, 103, 0.12);
+    border-left: 2px solid #c9a567;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    color: #4a3e28;
+  }
+
+  .modal-body strong {
+    font-weight: 500;
+    color: #2a2218;
+    background: linear-gradient(transparent 65%, rgba(201, 165, 103, 0.3) 65%);
+    padding: 0 0.1em;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 640px) {
+    .act { padding: 10vh 5vw; }
+    .act-header { margin-bottom: 4rem; }
+    .narrative { font-size: 1.05rem; line-height: 1.95; }
+    .cards { grid-template-columns: 1fr; gap: 1.5rem; }
+    .card { padding: 2rem 1.5rem 1.5rem; }
+    .modal { padding: 3rem 1.8rem; }
+    .modal h3 { font-size: 1.5rem; }
+    .descent-row { gap: 1rem; font-size: 0.9rem; }
+    .descent-row:nth-child(3) { padding-left: 2rem; }
+    .descent-row:nth-child(4) { padding-left: 3rem; }
+    .descent-row:nth-child(5) { padding-left: 4rem; }
+    .flow { flex-direction: column; gap: 1rem; }
+    .flow-arrow { transform: rotate(90deg); }
+    .trinity-step { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- COVER -->
+<!-- ============================================ -->
+<section class="cover">
+  <div class="cover-mark"></div>
+  <div class="cover-eyebrow">A Journey of Reconciliation</div>
+  <h1>화목으로의 <em>여정</em></h1>
+  <p class="cover-sub">멀리 떨어진 우리에게 그분이 먼저 오셨다.<br>그리고 우리를 그분 자신과 화목하게 하셨다.</p>
+  <div class="cover-scroll">scroll ↓</div>
+</section>
+
+<!-- ============================================ -->
+<!-- ACT I: 거리 -->
+<!-- ============================================ -->
+<section class="act act-1" data-act>
+  <div class="act-header">
+    <span class="act-number">— I —</span>
+    <h1 class="act-title">거리</h1>
+    <p class="act-subtitle">화목의 필요</p>
+  </div>
+
+  <p class="narrative">
+    문제는 하나님께 있지 않다. 우리에게 있다.<br>
+    사람은 떠나 있었고, 멀어졌고, <em>원수가 되었다</em>.
+  </p>
+
+  <div class="descent">
+    <div class="descent-row"><span class="descent-dot"></span>하나님에게서 떠남</div>
+    <div class="descent-row"><span class="descent-dot"></span>생각 안에서 원수가 됨</div>
+    <div class="descent-row"><span class="descent-dot"></span>지식 가운데에 하나님 두기를 거절함</div>
+    <div class="descent-row"><span class="descent-dot"></span>마음으로 미워하고, 입으로 모독함</div>
+    <div class="descent-row"><span class="descent-dot"></span>“하나님은 없다”</div>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-mark">01 · 골 1:21</div>
+      <h3>떠나 있던 우리</h3>
+      <blockquote>“여러분도 전에는 하나님을 멀리 떠나 있었으며, 악한 행실 때문에 여러분의 생각 안에서 그분과 원수들이었습니다.”</blockquote>
+      <p>타락은 단순한 거리를 만든 것이 아니다. 사람은 *생각 안에서* 하나님과 원수가 되었다.</p>
+      <button class="detail-btn" data-detail="1a">자세히</button>
+    </article>
+
+    <article class="card">
+      <div class="card-mark">02 · 롬 1:28</div>
+      <h3>거절된 인식</h3>
+      <blockquote>“지식 가운데에 하나님 두기를 거절했다.”</blockquote>
+      <p>이것은 무지가 아니다. 알지 못함이 아니라 *알기를 거절함*이다. 고의로 한쪽에 제쳐 두는 것.</p>
+      <button class="detail-btn" data-detail="1b">자세히</button>
+    </article>
+
+    <article class="card">
+      <div class="card-mark">03 · 시 14:1</div>
+      <h3>“하나님은 없다”</h3>
+      <blockquote>“어리석은 이는 마음속으로 ‘하나님은 없다.’ 하네.”</blockquote>
+      <p>거리는 마침내 부정(否定)으로 자란다. 하나님이 없는 듯 생각하고, 그렇게 살게 된다.</p>
+      <button class="detail-btn" data-detail="1c">자세히</button>
+    </article>
+  </div>
+
+  <p class="bridge">
+    이렇게 멀리 떨어진 우리에게 ―<br>
+    누군가는 먼저 움직여야 했다.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- ACT II: 그러나, 하나님은 -->
+<!-- ============================================ -->
+<section class="act act-2" data-act>
+  <div class="act-header">
+    <span class="act-number">— II —</span>
+    <h1 class="act-title">그러나, 하나님은</h1>
+    <p class="act-subtitle">화목의 의미</p>
+  </div>
+
+  <p class="narrative">
+    하나님은 우리와 화목하실 필요가 없으셨다. 문제는 우리 편에 있었으니까.<br>
+    그러나 <em>우리가 원수였을 때에</em>, 그분이 먼저 찾아오셨다.
+  </p>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-mark">04 · 헬라어 원문</div>
+      <h3>철저히 변화되다</h3>
+      <blockquote>“하나님과 화목하게 되는 것은 ‘하나님 앞에서 철저히 변화되는 것’을 의미한다.”</blockquote>
+      <p>화목은 화해가 아니라 변화다. 사람이 하나님 앞에서 새롭게 되는 사건.</p>
+      <button class="detail-btn" data-detail="2a">자세히</button>
+    </article>
+
+    <article class="card">
+      <div class="card-mark">05 · 롬 5:10</div>
+      <h3>원수였을 때에</h3>
+      <blockquote>“우리가 원수였을 때에 하나님의 아들의 죽음을 통해 하나님과 화목하게 되었다.”</blockquote>
+      <p>회개하고 찾을 때가 아니라, 등 돌리고 있을 때 그분이 오셨다. 이것이 사랑의 순서다.</p>
+      <button class="detail-btn" data-detail="2b">자세히</button>
+    </article>
+
+    <article class="card">
+      <div class="card-mark">06 · 고후 5:20</div>
+      <h3>간청하시는 분</h3>
+      <blockquote>“하나님께서 우리를 통하여 여러분에게 권면하시듯이, 우리가 그리스도를 대신하여 여러분에게 간청합니다.”</blockquote>
+      <p>먼 나라에 간 아내를 데려오려는 남편처럼, 하나님은 사람을 보내 권하시고 간청하신다.</p>
+      <button class="detail-btn" data-detail="2c">자세히</button>
+    </article>
+  </div>
+
+  <p class="bridge">
+    그분은 어떻게 우리를 데려오셨는가.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- ACT III: 다리 (RESTRAINED) -->
+<!-- ============================================ -->
+<section class="act act-3" data-act>
+  <div class="act-header">
+    <span class="act-number">— III —</span>
+    <h1 class="act-title">다리</h1>
+    <p class="act-subtitle">화목의 수단과 절차</p>
+  </div>
+
+  <p class="narrative">
+    사람과 하나님 사이에 깊은 골짜기가 있었다.<br>
+    그 위로, <em>한 줄의 길</em>이 놓였다.
+  </p>
+
+  <div class="bridge-visual">
+    <div class="side left"></div>
+    <div class="side right"></div>
+    <div class="thread"></div>
+    <div class="marker left"></div>
+    <div class="marker right"></div>
+    <div class="label left">사람</div>
+    <div class="label right">하나님</div>
+    <div class="label center">— 십자가 —</div>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-mark">07 · 골 1:20</div>
+      <h3>회복의 길</h3>
+      <blockquote>“그분의 십자가의 피를 통하여 화평을 이루어 ··· 그분 자신과 화목하게 하셨다.”</blockquote>
+      <p>구속이 없다면 화목도 없다. 모든 문제가 십자가에서 해결되었고, 모든 간격이 제거되었다.</p>
+      <button class="detail-btn" data-detail="3a">자세히</button>
+    </article>
+
+    <article class="card">
+      <div class="card-mark">08 · 엡 2:16</div>
+      <h3>둘을 한 몸으로</h3>
+      <blockquote>“이 십자가를 통하여 이 둘을 한 몸 안에서 하나님과 화목하게 하시려는 것입니다.”</blockquote>
+      <p>십자가는 사람과 하나님을 잇는 다리이자, 사람과 사람을 잇는 다리. 한 면으로 적대감을 소멸하고, 한 면으로 구속한다.</p>
+      <button class="detail-btn" data-detail="3b">자세히</button>
+    </article>
+  </div>
+
+  <p class="bridge">
+    그리고 그 화목은 어디까지 미치는가.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- ACT IV: 모든 것이, 함께 -->
+<!-- ============================================ -->
+<section class="act act-4" data-act>
+  <div class="act-header">
+    <span class="act-number">— IV —</span>
+    <h1 class="act-title">모든 것이, 함께</h1>
+    <p class="act-subtitle">화목의 범위</p>
+  </div>
+
+  <p class="narrative">
+    화목은 사적인 사건이 아니다.<br>
+    <em>만물</em>이, <em>한 몸</em>으로, 함께 돌이켜진다.
+  </p>
+
+  <div class="circles-visual">
+    <div class="ring-label outer">만물 · 하늘과 땅의 것들</div>
+    <div class="ring"></div>
+    <div class="ring-label mid">한 몸 · 회중</div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring-label inner">그리스도</div>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-mark">09 · 골 1:16-20</div>
+      <h3>만물의 화목</h3>
+      <blockquote>“만물 곧 땅에 있는 것들이나 하늘들에 있는 것들을 그분을 통해 그분 자신과 화목하게 하는 것을 기뻐하기 때문입니다.”</blockquote>
+      <p>그리스도 안에서 창조된 모든 것은, 그리스도를 통해 다시 하나님께 돌아온다. 노아의 방주가 그랬듯.</p>
+      <button class="detail-btn" data-detail="4a">자세히</button>
+    </article>
+
+    <article class="card">
+      <div class="card-mark">10 · 골 3:15</div>
+      <h3>한 몸 안에서</h3>
+      <blockquote>“우리는 심지어 한 몸 안에 부름을 받았다.”</blockquote>
+      <p>나 혼자 구원받은 것이 아니라, 우리가 함께 구원받았다. 이스라엘이 한 회중으로 시나이산에 선 것처럼.</p>
+      <button class="detail-btn" data-detail="4b">자세히</button>
+    </article>
+  </div>
+
+  <p class="bridge">
+    이 모든 것이 어떻게 내 것이 되는가.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- ACT V: 믿음으로 -->
+<!-- ============================================ -->
+<section class="act act-5" data-act>
+  <div class="act-header">
+    <span class="act-number">— V —</span>
+    <h1 class="act-title">믿음으로</h1>
+    <p class="act-subtitle">화목의 사실</p>
+  </div>
+
+  <p class="narrative">
+    주님이 다 이루셨다. 우리에게 남은 것은,<br>
+    그 사실을 <em>믿고 받아들이는 것</em>.
+  </p>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="num">— i —</div>
+      <div class="label">용서</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="num">— ii —</div>
+      <div class="label">의롭다 하심</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="num">— iii —</div>
+      <div class="label">화목</div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-mark">11 · 롬 5:1</div>
+      <h3>믿음의 결과</h3>
+      <blockquote>“그러므로 우리가 믿음으로 의롭게 되었으므로, 우리 주 예수 그리스도를 통하여 하나님을 향해 화평을 누립니다.”</blockquote>
+      <p>화목은 감정이 아니라 사실이다. 그리고 그 사실은 믿음을 통해 내 것이 된다.</p>
+      <button class="detail-btn" data-detail="5a">자세히</button>
+    </article>
+
+    <article class="card">
+      <div class="card-mark">12 · 동시성</div>
+      <h3>한 번에 받은 것</h3>
+      <blockquote>“순차적으로 일어나지만, 우리가 믿을 때 이 항목들을 동시에 받는다.”</blockquote>
+      <p>용서, 의롭다 하심, 화목 — 이 모든 것이 하나의 믿음 안에 함께 담긴다.</p>
+      <button class="detail-btn" data-detail="5b">자세히</button>
+    </article>
+  </div>
+
+  <p class="bridge">
+    그리고 우리는, 어디로 나아가는가.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- ACT VI: 아버지께로 -->
+<!-- ============================================ -->
+<section class="act act-6" data-act>
+  <div class="act-header">
+    <span class="act-number">— VI —</span>
+    <h1 class="act-title">아버지께로</h1>
+    <p class="act-subtitle">화목의 체험</p>
+  </div>
+
+  <p class="narrative">
+    화목은 한 번 만에 영원히 이루어졌다.<br>
+    그리고 이제 우리는, 계속 <em>아버지께 나아간다</em>.
+  </p>
+
+  <div class="trinity">
+    <div class="trinity-step">
+      <div class="role">Through · 통하여</div>
+      <div class="label">아들</div>
+      <div class="desc">성취하시는 분이시자 수단이신 그분을 통하여</div>
+    </div>
+    <div class="trinity-step">
+      <div class="role">In · 안에서</div>
+      <div class="label">영</div>
+      <div class="desc">집행하시는 분이시자 적용이신 그분 안에서</div>
+    </div>
+    <div class="trinity-step">
+      <div class="role">To · 께로</div>
+      <div class="label">아버지</div>
+      <div class="desc">기원이시자 누림의 근원이신 그분께 나아간다</div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-mark">13 · 엡 2:18</div>
+      <h3>나아감</h3>
+      <blockquote>“그분을 통하여 우리 모두가 한 성령 안에서 아버지께 나아가기 때문입니다.”</blockquote>
+      <p>화목은 위치적 사건이고, 나아감은 체험적 누림이다. 십자가가 사실이라면, 영은 그 사실을 살게 한다.</p>
+      <button class="detail-btn" data-detail="6a">자세히</button>
+    </article>
+
+    <article class="card">
+      <div class="card-mark">14 · 사역으로</div>
+      <h3>친밀이 사역이 된다</h3>
+      <blockquote>“우리가 하나님 안에 더 있을수록, 사람을 하나님과 화목하게 하고 하나님 안으로 이끌 수 있다.”</blockquote>
+      <p>우리가 누리는 친밀함의 깊이만큼, 우리는 사람들을 이끌 수 있다. 화목의 사역은 거기서 흘러나온다.</p>
+      <button class="detail-btn" data-detail="6b">자세히</button>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CLOSING -->
+<!-- ============================================ -->
+<section class="closing">
+  <div class="closing-mark"></div>
+  <h2>“하나님과 <em>화목</em>하십시오.”</h2>
+  <p class="closing-cite">— 고린도후서 5장 20절 —</p>
+</section>
+
+<!-- ============================================ -->
+<!-- MODAL -->
+<!-- ============================================ -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="닫기">×</button>
+    <div class="modal-eyebrow" id="modal-eyebrow"></div>
+    <h3 id="modal-title"></h3>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+  // ============ INTERSECTION OBSERVER FOR FADE-INS ============
+  const acts = document.querySelectorAll('[data-act]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  acts.forEach(a => observer.observe(a));
+
+  // ============ MODAL CONTENT ============
+  const details = {
+    '1a': {
+      eyebrow: 'I · 화목의 필요',
+      title: '떠나 있던 우리',
+      body: `
+        <p><span class="verse">“여러분도 전에는 하나님을 멀리 떠나 있었으며, 악한 행실 때문에 여러분의 생각 안에서 그분과 원수들이었습니다.”(골 1:21)</span></p>
+        <p>타락으로 인하여 사람은 하나님에게서 벗어났을 뿐 아니라 멀리 떠나 있었으며, 심지어 악한 행실 때문에 자신의 생각 안에서 <strong>하나님과 원수</strong>였다.</p>
+        <p>그러므로 사람은 회개하여 하나님께 돌아와서 하나님에게서 죄들의 용서를 받을 뿐 아니라 하나님과 화목하게 될 필요가 있다.</p>
+        <p>사람은 하나님과 원수가 되었으므로 하나님의 법에 복종하지 않으며, 하나님의 법에 복종하려고 해도 할 수 없다. 사람은 하나님께 반역함으로 반역적인 본성을 갖게 되었고, 이 때문에 하나님의 법에 복종하지 못한다.</p>
+        <p>사람은 죄가 있기 때문에 용서받을 필요가 있을 뿐 아니라, <strong>하나님께 복종하지 않고 복종할 수도 없으며 하나님과 함께 즐거워하거나 화평을 갖지 못하기 때문에 하나님과 화목할 필요</strong>가 있다.</p>
+      `
+    },
+    '1b': {
+      eyebrow: 'I · 화목의 필요',
+      title: '거절된 인식',
+      body: `
+        <p><span class="verse">“지식 가운데에 하나님 두기를 거절하였다.”(롬 1:28)</span></p>
+        <p>사람은 지식 가운데에 하나님을 두기를 거절할 정도까지 하나님에게서 단절되었다. 이것은 사람이 하나님을 알지 못하는 것이 아니라 <strong>‘하나님을 알기를 거절하는 것’</strong>이다.</p>
+        <p>사람은 고의로 하나님을 알지 않으려 하고, 고의로 하나님을 한쪽에 제쳐 두며, 고의로 하나님을 거부한다.</p>
+        <p>사람은 생각 안에서 하나님과 원수가 되었고, 하나님께 복종하기를 싫어하며, 지식 가운데에 하나님 두기를 거절하기 때문에, 그들의 눈에는 하나님을 두려워하는 것이 없고, 심지어 하나님을 미워하며, 하나님을 모독한다.</p>
+        <p><strong>미움은 속에 품은 감정이고, 모독은 밖의 언행이다.</strong> 사람은 자신 속에 있는 생각으로 하나님을 미워하며, 밖의 말과 행위로 하나님을 모독한다.</p>
+      `
+    },
+    '1c': {
+      eyebrow: 'I · 화목의 필요',
+      title: '“하나님은 없다”',
+      body: `
+        <p><span class="verse">“어리석은 이는 마음속으로 ‘하나님은 없다.’ 하네.”(시 14:1)</span></p>
+        <p>하나님과 사람의 문제는 사람이 <strong>하나님이 없다고 말하는 정도</strong>까지 이르렀다. 사람은 어느 정도까지 하나님을 버린 것인가! 이것은 어떠한 모독인가!</p>
+        <p><span class="verse">“악인은 ··· 생각으로는 온통 ‘하나님은 없다!’라고 여깁니다.”(시 10:4)</span></p>
+        <p>사람은 하나님이 없다고 말하기 때문에, 하나님이 없는 것처럼 생각하고 책략을 꾸미며, 아주 대담하게 하나님을 반대하고 멸시하고 거절하는 온갖 일을 저지른다.</p>
+        <p>이러한 상태로 인하여, 사람은 하나님 앞에 <strong>불순종의 아들들</strong>이 되어 하나님께 반역하고 하나님을 거절하게 되었다. 그러므로 그들은 하나님께서 보시기에 <strong>진노의 자식들</strong>이 되었다(엡 2:2-3).</p>
+      `
+    },
+    '2a': {
+      eyebrow: 'II · 화목의 의미',
+      title: '철저히 변화되다',
+      body: `
+        <p>헬라어 원문에서 하나님과 화목하게 되는 것은 <strong>‘하나님 앞에서 철저히 변화되는 것’</strong>을 의미한다.</p>
+        <p>사람은 타락으로 인하여 하나님을 배반하고 하나님과 문제가 생겼으며, 하나님과 원수가 되었다. 사람은 하나님을 거절하고 미워하지만, <strong>하나님은 사람을 사랑하시고 좋아하신다.</strong> 사람은 하나님을 거절했지만, 하나님은 사람을 원하신다.</p>
+        <p>그러므로 하나님은 사람을 그분 자신과 화목하게 하시기 위해 오신 것이다. 하나님은 그리스도를 보내셔서 십자가에서 피를 흘려 구속을 성취하게 하심으로써 화목을 이루셨다.</p>
+        <p>그리스도는 사람이 하나님과 화목하게 되는 데 필요한 모든 일을 성취하셨다. 그러므로 하나님은 <strong>그리스도 안에서 사람을 그분과 화목하게 하실 수 있게 되셨다</strong>(골 1:20).</p>
+      `
+    },
+    '2b': {
+      eyebrow: 'II · 화목의 의미',
+      title: '원수였을 때에',
+      body: `
+        <p><span class="verse">“우리가 원수였을 때에 하나님의 아들의 죽음을 통해 하나님과 화목하게 되었다.”(롬 5:10)</span></p>
+        <p>하나님은 우리가 회개하고 그분을 찾을 때 우리에게 오셔서 그분과 화목하라고 하신 것이 아니라, <strong>우리가 그분과 원수 되었을 때 오셔서 그분과 화목하라고 하셨다.</strong></p>
+        <p>누구든지 하나님과 원수이고 하나님과 문제가 생겼을지라도 하나님과 화목하기를 원하기만 하면, 하나님은 주님의 죽음을 통해 그 사람을 그분과 화목하게 하신다.</p>
+        <p>오늘 사람이 하나님과 화목하지 못하는 원인은 <strong>하나님 편에 있는 것이 아니라 사람 편에 있다.</strong> 이 문제는 다른 데 있는 것이 아니라 사람이 원하지 않는 데 있다.</p>
+      `
+    },
+    '2c': {
+      eyebrow: 'II · 화목의 의미',
+      title: '간청하시는 분',
+      body: `
+        <p><span class="verse">“우리가 그리스도를 대신하는 대사들이 되어, 하나님께서 우리를 통하여 여러분에게 권면하시듯이, 우리가 그리스도를 대신하여 여러분에게 간청합니다. 하나님과 화목하십시오.”(고후 5:18-20)</span></p>
+        <p>이것은 마치 한 남편이 그와 문제가 생긴 아내가 돌아오기를 바라면서 <strong>그녀가 돌아오도록 사람을 보내어 권하는 것</strong>과 같다.</p>
+        <p>하나님은 사람을 그분과 화목하게 하시기 위해 주 예수님을 통해 화목에 필요한 모든 요구를 이루셨을 뿐 아니라, 사도들을 통해 사람들에게 그분과 화목하라고 하신다.</p>
+        <p><strong>하나님은 사람들이 그분과 화목하게 되기를 간절히 바라시며, 사람들에게 그분과 화목하라고 간청하신다!</strong> 이 어떠한 사랑인가! 이 어떠한 간절함인가!</p>
+        <p>그리스도의 사역자들이 사람들에게 회개하고 하나님께 돌이켜 그분의 은혜를 받으라고 간곡히 권면하는 까닭은 그들이 하나님의 간절한 사랑에 감동을 받았기 때문이다.</p>
+      `
+    },
+    '3a': {
+      eyebrow: 'III · 화목의 수단',
+      title: '회복의 길',
+      body: `
+        <p><span class="verse">“그분의 십자가의 피를 통하여 화평을 이루어, 만물을 ··· 그분을 통해 그분 자신과 화목하게 하는 것을 기뻐하기 때문입니다.”(골 1:20)</span></p>
+        <p>사람은 하나님께 문제가 있기 때문에 하나님과 화목하게 될 필요가 있지만, 이 문제를 생각해 본 적이 없고 하나님과 화목하게 되려는 방법은 더더욱 찾지 않았다.</p>
+        <p>하나님은 사람과 관련하여 문제가 없으시기 때문에 사람과 화목하게 되실 필요가 없었지만, <strong>우리를 그분과 화목하게 하기를 원하셨다.</strong> 하나님은 우리를 사랑하시기 때문에 회복의 길을 여시어 우리를 그분과 화목하게 하셨다.</p>
+        <p>우리의 죄들이 용서받는 것이 주님의 구속에 근거한 것처럼, 우리가 하나님과 화목하게 되는 것도 <strong>주님의 구속에 근거한다.</strong> 주님의 구속이 없다면, 우리는 하나님과 화목하게 될 길이 없다.</p>
+        <p>그러나 주님의 구속이 우리와 하나님 사이의 모든 문제를 이미 해결했고 모든 간격을 제거했기 때문에, 우리는 돌이켜서 하나님과 화목하게 될 수 있으며 하나님은 우리를 기쁘게 받으실 수 있다.</p>
+      `
+    },
+    '3b': {
+      eyebrow: 'III · 화목의 절차',
+      title: '둘을 한 몸으로',
+      body: `
+        <p><span class="verse">“이 십자가를 통하여 이 둘(유대인과 이방인)을 ··· 하나님과 화목하게 하시려는 것입니다.”(엡 2:16)</span></p>
+        <p>주 예수님의 십자가는 <strong>사람과 하나님 사이의 큰 골짜기를 잇는 다리</strong>와 같아서, 사람을 하나님과 교통할 수 있게 하고 하나님의 임재로 돌아올 수 있게 한다.</p>
+        <p>하나님은 주 예수님의 이 십자가를 통하여 유대인과 이방인 이 둘을 모두 자신과 화목하게 하셨다. 우리가 한 몸 안에서 하나님과 화목하게 된 것은 십자가를 통해서이다.</p>
+        <p>그리스도의 십자가는 <strong>한 면으로 사람의 육체 때문에 세워진 규례들에서 비롯된 적대감을 소멸했고, 다른 한 면으로 십자가에서 흘리신 그리스도의 피를 통해 우리를 구속했다.</strong> 이 십자가를 통해 유대인들과 이방인들은 모두 한 몸 안에서 하나님과 화목하게 된 것이다.</p>
+      `
+    },
+    '4a': {
+      eyebrow: 'IV · 화목에 포함된 것',
+      title: '만물의 화목',
+      body: `
+        <p><span class="verse">“왜냐하면 만물, 곧 하늘들에 있는 것들과 땅에 있는 것들 ··· 이 다 그분 안에서 창조되었으며, 또한 만물이 그분을 통하여, 그리고 그분께 이르도록 창조되었기 때문입니다. ··· 그분의 십자가의 피를 통하여 화평을 이루어, 만물을 그분을 통해 그분 자신과 화목하게 하셨습니다.”(골 1:16-20)</span></p>
+        <p>신약의 다른 곳에서는 화목하게 하는 것이 하나님께 선택받은 백성과 관련이 있음을 본다. 하지만 여기서는 <strong>만물이 하나님과 화목하게 되는 것</strong>을 본다.</p>
+        <p>만물은 그리스도 안에서, 그리스도를 통하여, 그리스도께 이르도록 창조되었다. 그러나 사람의 타락으로 말미암아 이 모든 것이 잃어버린 바 되었다. 그러므로 만물은 그리스도 안에서 하나님과 화목하게 되는 것이 필요하다.</p>
+        <p>노아가 만든 방주의 그림을 생각해 보라. 그 방주는 노아의 여덟 식구를 구원했을 뿐 아니라 <strong>모든 종류의 동물도 구원했다.</strong></p>
+        <p>그리스도의 화목하게 하심이 미치는 광대한 범위는 그러한 모든 것을 포함한다. 그리스도는 얼마나 광대하신 구속자이시며, 얼마나 광대한 화목을 성취하셨는가!</p>
+      `
+    },
+    '4b': {
+      eyebrow: 'IV · 화목의 범위',
+      title: '한 몸 안에서',
+      body: `
+        <p><span class="verse">“우리는 심지어 한 몸 안에 부름을 받았다.”(골 3:15)</span></p>
+        <p>일반적으로 우리는 화목하게 되는 것을 개인적인 문제로 간주한다. 우리는 종종 단체적으로 화목하게 되는 것에 대해서는 거의 생각하지 않는다. 그러나 <strong>합당하고 진정한 화목은 한 몸 안에서 이루어진다.</strong></p>
+        <p>이스라엘 자손이 이집트에서 나온 것이 이에 대한 분명한 그림이다. 어떤 의미에서 이집트에 거주하던 이스라엘 자손은 하나님과 멀리 떨어져 있었다. 그들은 함께 이집트에서 나와 홍해를 건넌 후에, 시나이산에서 <strong>개인으로서가 아니라 하나의 회중으로서 하나님과 화목하게 되었다.</strong></p>
+        <p>오늘날 우리는 단체적인 방면에 대한 이러한 개념을 가질 필요가 있다. 여러분은 개인적으로 구원받았다고 생각하지 말라. 그보다 <strong>우리 모두는 함께 구원받았고, 한 몸 안에서 하나님과 화목하게 되었다.</strong></p>
+      `
+    },
+    '5a': {
+      eyebrow: 'V · 화목의 사실',
+      title: '믿음의 결과',
+      body: `
+        <p><span class="verse">“그러므로 우리가 믿음으로 의롭게 되었으므로, 우리 주 예수 그리스도를 통하여 하나님을 향해 화평을 누립니다.”(롬 5:1)</span></p>
+        <p><span class="verse">“우리가 원수였을 때에 하나님의 아들의 죽음을 통해 하나님과 화목하게 되었다면, 이미 화목하게 된 우리는 더욱 그분의 생명 안에서 구원받을 것입니다.”(롬 5:10)</span></p>
+        <p>하나님과 화목하게 되는 것은 <strong>믿음의 결과</strong>이다.</p>
+        <p>우리가 하나님과 화목하게 되는 데 필요한 모든 일을 주 예수님께서 우리를 위해 다 이루셨지만, 우리는 여전히 믿음으로 주님께서 성취하신 것을 믿고 시인하며 이 사실을 받아들일 필요가 있다.</p>
+        <p>우리가 믿자마자 하나님은 주 예수님께서 성취하신 것으로 말미암아 우리를 그분 자신과 화목하게 하신다.</p>
+      `
+    },
+    '5b': {
+      eyebrow: 'V · 화목의 사실',
+      title: '한 번에 받은 것',
+      body: `
+        <p>우리가 믿으면 먼저 <strong>하나님의 용서하심과 의롭다 하심</strong>을 받고, 그 후에 <strong>하나님과 화목하게 된다.</strong></p>
+        <p>하나님의 용서하심과 의롭다 하심과 화목하게 하심은 <strong>순차적으로 일어나지만, 우리가 믿을 때 이 항목들을 동시에 받는다.</strong></p>
+        <p style="text-align:center; font-family: 'Nanum Myeongjo', serif; font-style: italic; color: #8a5a1f; margin-top: 2rem;">용서 → 의롭다 하심 → 화목<br><span style="font-size: 0.9rem;">— 한 번의 믿음으로, 함께 —</span></p>
+      `
+    },
+    '6a': {
+      eyebrow: 'VI · 화목의 체험',
+      title: '나아감',
+      body: `
+        <p><span class="verse">“그분은 오셔서, 멀리 떨어져 있던 여러분에게 화평을 복음으로 전하시고, 가까운 데 있던 사람들에게도 화평을 복음으로 전하셨습니다. 왜냐하면 그분을 통하여 우리 모두가 한 성령 안에서 아버지께 나아가기 때문입니다.”(엡 2:17-18)</span></p>
+        <p>먼저, 유대인 믿는 이들과 이방인 믿는 이들은 모두 한 몸 안에서 하나님과 화목하게 되었다. 이것은 <strong>위치적인 문제</strong>였다. 그러고 나서 이 둘은 한 성령 안에서 아버지께 나아간다. 이것은 <strong>체험적인 것</strong>이다.</p>
+        <p>우리가 아버지와 화목하게 되었고, 하나님께 나아간다고 말하지 않은 것은 의미가 깊다. <strong>우리는 한 번 만에 영원히 하나님과 화목하게 되었고, 지금은 계속적인 누림을 위해 아버지께 나아가고 있다.</strong></p>
+        <p>이것은 신격의 삼일성을 암시한다. <strong>성취하시는 분이시자 수단이신 아들 하나님을 통하여, 집행하시는 분이시자 적용이신 영 하나님 안에서, 우리는 기원이신 분이시자 누림의 근원이신 아버지 하나님께 나아간다.</strong></p>
+        <p>하나님과 화목하게 되는 것은 구원받는 것이다. 아버지께 나아가는 것은 생명의 근원이시고 우리를 거듭나게 하시어 그분의 아들들이 되게 하신 하나님을 누리는 것이다.</p>
+      `
+    },
+    '6b': {
+      eyebrow: 'VI · 화목의 체험',
+      title: '친밀이 사역이 된다',
+      body: `
+        <p>우리는 십자가를 통해 한 몸 안에서 하나님과 화목하게 되었다. <strong>이제 우리는 아버지께 나아가고 있으며, 직접 그분을 접촉하고 있다.</strong></p>
+        <p>우리가 사람을 얼마나 하나님 앞으로 이끌고 하나님 안으로 이끌 수 있는지는 <strong>우리가 하나님과 얼마나 친밀한 관계를 갖고 있는지에 달렸다.</strong></p>
+        <p>우리가 하나님 안에 더 있을수록, 사람을 하나님과 화목하게 하고 하나님 안으로 이끌 수 있다.</p>
+        <p style="text-align:center; font-family: 'Nanum Myeongjo', serif; font-style: italic; color: #8a5a1f; margin-top: 2rem; font-size: 1.1rem;">화목은 도착이 아니라,<br>새로운 누림의 시작이다.</p>
+      `
+    }
+  };
+
+  // ============ MODAL CONTROLS ============
+  const backdrop = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('modal-close');
+  const eyebrowEl = document.getElementById('modal-eyebrow');
+  const titleEl = document.getElementById('modal-title');
+  const bodyEl = document.getElementById('modal-body');
+
+  document.querySelectorAll('.detail-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.detail;
+      const data = details[key];
+      if (!data) return;
+      eyebrowEl.textContent = data.eyebrow;
+      titleEl.textContent = data.title;
+      bodyEl.innerHTML = data.body;
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      backdrop.querySelector('.modal').scrollTop = 0;
+    });
+  });
+
+  function closeModal() {
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+
+</body>
+</html>
