@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>의의 사역 — 그 영으로 적셔지기까지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2EBD9;
+    --paper-deep:#E8DFC8;
+    --ink:#181B2C;
+    --ink-soft:#4B4E63;
+    --ink-faint:#8A8B98;
+    --gold:#A88B3E;
+    --gold-soft:#C9A35A;
+    --gold-pale:#E5D4A6;
+    --wine:#6B2C2C;
+    --crystal:#A8BCC4;
+    --crystal-light:#DCE7EB;
+    --crystal-pale:#EEF4F6;
+    --line:rgba(24,27,44,.18);
+    --line-soft:rgba(24,27,44,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Noto Serif KR', 'EB Garamond', serif;
+    color:var(--ink);
+    background:var(--paper);
+    font-weight:300;
+    line-height:1.75;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+
+  /* ----- Decorative & utility ----- */
+  .ornament{
+    display:inline-block;
+    font-family:'Cormorant Garamond',serif;
+    color:var(--gold);
+    letter-spacing:.6em;
+    font-size:.95rem;
+  }
+  .rule{height:1px;background:var(--line);width:100%}
+  .rule-gold{height:1px;background:var(--gold);width:60px;margin:1.5rem auto}
+  .eyebrow{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    letter-spacing:.18em;
+    text-transform:lowercase;
+    font-size:.95rem;
+  }
+  .section-num{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:1.1rem;
+    letter-spacing:.1em;
+  }
+
+  /* ----- HERO ----- */
+  .hero{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(168,139,62,.10), transparent 55%),
+      radial-gradient(ellipse at 75% 80%, rgba(168,188,196,.10), transparent 55%),
+      linear-gradient(180deg, #0F1224 0%, #14182B 60%, #1A1F38 100%);
+    color:var(--paper);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:3rem 6vw 3rem;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 12% 22%, rgba(255,255,255,.4) 1px, transparent 1.5px),
+      radial-gradient(circle at 67% 41%, rgba(255,255,255,.25) 1px, transparent 1.5px),
+      radial-gradient(circle at 83% 18%, rgba(255,255,255,.3) 1px, transparent 1.5px),
+      radial-gradient(circle at 31% 78%, rgba(255,255,255,.18) 1px, transparent 1.5px),
+      radial-gradient(circle at 90% 75%, rgba(255,255,255,.25) 1px, transparent 1.5px),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,.15) 1px, transparent 1.5px);
+    opacity:.6;
+  }
+  .hero-top{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Cormorant Garamond',serif;
+    color:var(--gold-soft);
+    letter-spacing:.2em;
+    font-size:.85rem;
+    position:relative;z-index:2;
+  }
+  .hero-top .brand{font-style:italic}
+  .hero-top .date{letter-spacing:.3em}
+  .hero-center{
+    flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;z-index:2;
+    max-width:1100px;margin:0 auto;
+  }
+  .hero-eyebrow{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold-soft);
+    letter-spacing:.4em;
+    font-size:1rem;
+    margin-bottom:2.5rem;
+  }
+  .hero-eyebrow::before,.hero-eyebrow::after{
+    content:'';display:inline-block;width:40px;height:1px;
+    background:var(--gold);vertical-align:middle;margin:0 1.2rem;
+  }
+  .hero-quote{
+    font-family:'Gowun Batang', serif;
+    font-weight:400;
+    font-size:clamp(2.2rem, 5.5vw, 4.6rem);
+    line-height:1.35;
+    letter-spacing:-.01em;
+    color:var(--paper);
+    margin-bottom:2rem;
+  }
+  .hero-quote .accent{color:var(--gold-soft);font-style:italic;font-family:'Cormorant Garamond',serif;font-weight:400}
+  .hero-citation{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold-pale);
+    letter-spacing:.15em;
+    font-size:1rem;
+    opacity:.85;
+  }
+  .hero-subtitle{
+    margin-top:3.5rem;
+    font-size:1.05rem;
+    color:rgba(242,235,217,.7);
+    letter-spacing:.05em;
+    font-weight:300;
+    max-width:600px;
+    line-height:1.9;
+  }
+  .hero-subtitle strong{color:var(--gold-soft);font-weight:400;letter-spacing:.02em}
+  .hero-bottom{
+    position:relative;z-index:2;display:flex;justify-content:center;align-items:center;
+    flex-direction:column;gap:.8rem;
+    color:var(--gold-soft);
+  }
+  .scroll-line{
+    width:1px;height:60px;
+    background:linear-gradient(to bottom, transparent, var(--gold-soft) 50%, transparent);
+    animation:scrollPulse 2.6s ease-in-out infinite;
+  }
+  @keyframes scrollPulse{
+    0%,100%{opacity:.3;transform:scaleY(.7)}
+    50%{opacity:1;transform:scaleY(1)}
+  }
+  .scroll-label{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    letter-spacing:.3em;
+    font-size:.78rem;
+  }
+
+  /* ----- Generic Section ----- */
+  section.page{
+    padding:7rem 6vw;
+    position:relative;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom:5rem;
+  }
+  .section-head .num{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:1.2rem;
+    letter-spacing:.3em;
+    margin-bottom:1.2rem;
+  }
+  .section-head h2{
+    font-family:'Gowun Batang',serif;
+    font-weight:700;
+    font-size:clamp(1.8rem, 3.2vw, 2.6rem);
+    color:var(--ink);
+    line-height:1.4;
+    letter-spacing:-.01em;
+  }
+  .section-head .sub{
+    margin-top:1rem;
+    font-size:1rem;
+    color:var(--ink-soft);
+    font-style:italic;
+    font-family:'Cormorant Garamond',serif;
+    letter-spacing:.05em;
+  }
+  .section-head .ornament-rule{
+    display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.8rem auto;
+  }
+  .section-head .ornament-rule::before,
+  .section-head .ornament-rule::after{
+    content:'';height:1px;background:var(--gold);width:60px;
+  }
+  .section-head .ornament-rule span{
+    font-family:'Cormorant Garamond',serif;
+    color:var(--gold);font-size:.9rem;letter-spacing:.5em;
+  }
+
+  /* ----- Section 2 : Greek Words ----- */
+  .verses{
+    max-width:1100px;margin:0 auto 5rem;
+    display:grid;gap:2.2rem;
+  }
+  .verse-card{
+    background:rgba(255,255,255,.4);
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+    padding:2.2rem 2.5rem;
+    position:relative;
+  }
+  .verse-card .ref{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;color:var(--wine);
+    letter-spacing:.1em;font-size:.95rem;
+    margin-bottom:1rem;
+  }
+  .verse-card .kor{
+    font-family:'Gowun Batang',serif;
+    font-size:1.15rem;
+    color:var(--ink);
+    line-height:1.85;
+    margin-bottom:.8rem;
+  }
+  .verse-card .eng{
+    font-family:'EB Garamond',serif;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    line-height:1.7;
+  }
+
+  .words-intro{
+    text-align:center;
+    max-width:680px;margin:0 auto 3rem;
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    line-height:1.9;
+  }
+  .word-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:1.8rem;
+    max-width:1200px;margin:0 auto;
+  }
+  .word-card{
+    background:linear-gradient(180deg, #FBF6E8 0%, #F4ECD3 100%);
+    border:1px solid var(--gold-pale);
+    padding:2.2rem 1.8rem 2rem;
+    position:relative;
+    transition:transform .4s ease, box-shadow .4s ease;
+  }
+  .word-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px -25px rgba(24,27,44,.3);
+  }
+  .word-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  }
+  .word-greek{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+    font-size:2.6rem;
+    color:var(--wine);
+    line-height:1.1;
+    letter-spacing:-.01em;
+    text-align:center;
+  }
+  .word-pronounce{
+    font-family:'Gowun Batang',serif;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:.95rem;
+    margin-top:.5rem;
+    letter-spacing:.05em;
+  }
+  .word-divider{
+    display:flex;align-items:center;justify-content:center;gap:.6rem;
+    margin:1.4rem 0 1rem;
+  }
+  .word-divider::before,.word-divider::after{
+    content:'';height:1px;background:var(--gold);flex:1;
+  }
+  .word-divider span{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:.78rem;
+    letter-spacing:.2em;
+  }
+  .word-root{
+    font-family:'Gowun Batang',serif;
+    font-size:1.02rem;
+    color:var(--ink);
+    text-align:center;
+    line-height:1.6;
+    padding:.9rem 1rem;
+    background:rgba(168,139,62,.08);
+    border-top:1px solid var(--gold-pale);
+    border-bottom:1px solid var(--gold-pale);
+    margin-bottom:1rem;
+  }
+  .word-etymology{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:.92rem;
+    margin-bottom:1.2rem;
+    line-height:1.5;
+  }
+  .word-trans{
+    display:grid;grid-template-columns:auto 1fr;gap:.5rem 1rem;
+    font-size:.92rem;color:var(--ink);
+    padding-top:.8rem;border-top:1px dashed var(--line);
+  }
+  .word-trans .lang{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    letter-spacing:.1em;
+  }
+  .word-trans .val{font-family:'Gowun Batang',serif}
+
+  /* ----- Section 3 : Summary Flow ----- */
+  .summary-section{
+    background:
+      linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+  }
+  .flow{
+    display:grid;
+    grid-template-columns:1fr auto 1fr auto 1fr;
+    align-items:stretch;
+    max-width:1200px;margin:0 auto;
+    gap:1rem;
+  }
+  .flow-step{
+    background:#FFFCF3;
+    border:1px solid var(--line);
+    padding:2.5rem 1.8rem;
+    text-align:center;
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .flow-step .stage{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    letter-spacing:.3em;
+    font-size:.8rem;
+    margin-bottom:1rem;
+  }
+  .flow-step .symbol{
+    font-size:2.4rem;color:var(--wine);
+    margin-bottom:1rem;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+  }
+  .flow-step .title{
+    font-family:'Gowun Batang',serif;
+    font-weight:700;
+    font-size:1.25rem;
+    color:var(--ink);
+    margin-bottom:.8rem;
+  }
+  .flow-step .desc{
+    font-size:.92rem;
+    color:var(--ink-soft);
+    line-height:1.6;
+    font-family:'Noto Serif KR',serif;
+  }
+  .flow-step .verse-tag{
+    margin-top:1rem;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:.82rem;
+    color:var(--gold);
+    letter-spacing:.1em;
+  }
+  .flow-arrow{
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.6rem;
+  }
+  .flow-step:nth-child(1){background:#FAF3E0}
+  .flow-step:nth-child(3){background:#F7EFE0}
+  .flow-step:nth-child(5){background:linear-gradient(180deg, var(--crystal-pale), #FFFFFF)}
+  .flow-step:nth-child(5) .symbol{color:var(--crystal)}
+
+  /* ----- Section 4 : Detailed Movements ----- */
+  .movements-section{background:var(--paper)}
+  .movement{
+    max-width:1100px;margin:0 auto 6rem;
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:4rem;
+    align-items:start;
+  }
+  .movement:last-child{margin-bottom:0}
+  .movement-left .label{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;color:var(--gold);
+    letter-spacing:.3em;font-size:.9rem;
+    margin-bottom:1.2rem;
+  }
+  .movement-left h3{
+    font-family:'Gowun Batang',serif;
+    font-weight:700;
+    font-size:2rem;
+    line-height:1.35;
+    color:var(--ink);
+    margin-bottom:1.4rem;
+    letter-spacing:-.01em;
+  }
+  .movement-left .lede{
+    font-family:'Gowun Batang',serif;
+    font-style:normal;
+    color:var(--wine);
+    font-size:1.08rem;
+    line-height:1.85;
+    border-left:2px solid var(--gold);
+    padding-left:1.2rem;
+    margin-top:1.5rem;
+  }
+  .movement-right p{
+    font-size:1.02rem;color:var(--ink);
+    line-height:2;margin-bottom:1.2rem;
+  }
+  .movement-right p:first-child::first-letter{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3.5rem;
+    float:left;
+    line-height:.9;
+    padding:.3rem .6rem 0 0;
+    color:var(--wine);
+    font-weight:500;
+  }
+
+  /* Diagrams within movements */
+  .diagram{
+    margin:2rem 0;
+    padding:1.8rem;
+    background:#FFFCF3;
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .diagram-label{
+    position:absolute;top:-.7rem;left:1.5rem;
+    background:var(--paper);
+    padding:0 .8rem;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:.85rem;
+    letter-spacing:.15em;
+  }
+  /* Movement 1 — branching */
+  .branch{
+    display:grid;grid-template-columns:1fr auto 1fr;gap:1.2rem;
+    align-items:center;
+  }
+  .branch-side{
+    text-align:center;padding:1.2rem;
+    border:1px dashed var(--line);
+  }
+  .branch-side h4{
+    font-family:'Gowun Batang',serif;
+    font-weight:700;font-size:1rem;
+    color:var(--wine);margin-bottom:.5rem;
+  }
+  .branch-side .arrow-down{color:var(--gold);margin:.6rem 0}
+  .branch-side .outcome{
+    font-size:.9rem;color:var(--ink-soft);line-height:1.6;
+  }
+  .branch-center{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;color:var(--gold);
+    letter-spacing:.2em;font-size:.85rem;
+    writing-mode:vertical-rl;text-orientation:mixed;
+  }
+  /* Movement 2 — student illustration */
+  .illust-student{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+    margin-top:1.5rem;
+  }
+  .illust-side{
+    padding:1.3rem;
+    border:1px solid var(--line);
+    text-align:center;
+    background:#FFFCF3;
+  }
+  .illust-side .icon{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.4rem;
+    margin-bottom:.6rem;
+  }
+  .illust-side.outer .icon{color:var(--gold)}
+  .illust-side.inner .icon{color:var(--wine)}
+  .illust-side h4{
+    font-family:'Gowun Batang',serif;font-weight:700;
+    font-size:1rem;margin-bottom:.4rem;color:var(--ink);
+  }
+  .illust-side .check{font-size:1.4rem;display:block;margin:.3rem 0}
+  .illust-side.outer .check{color:#3a7a3a}
+  .illust-side.inner .check{color:var(--wine)}
+  .illust-side .note{font-size:.85rem;color:var(--ink-soft);line-height:1.5;font-style:italic}
+  /* Movement 3 — sequence */
+  .sequence{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;
+    text-align:center;margin-top:1.5rem;
+  }
+  .seq-step{
+    padding:1.2rem;
+    border:1px solid var(--line);
+  }
+  .seq-step:nth-child(1){background:linear-gradient(180deg,#E8DFC8,#D6CAA8)}
+  .seq-step:nth-child(2){background:linear-gradient(180deg,#E5D4A6,#F0E2BB)}
+  .seq-step:nth-child(3){background:linear-gradient(180deg,#EEF4F6,#DCE7EB)}
+  .seq-step .stage-num{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;color:var(--wine);
+    font-size:.85rem;letter-spacing:.2em;
+    margin-bottom:.5rem;
+  }
+  .seq-step h4{
+    font-family:'Gowun Batang',serif;font-weight:700;
+    font-size:1rem;color:var(--ink);margin-bottom:.4rem;
+  }
+  .seq-step p{
+    font-size:.85rem;color:var(--ink-soft);
+    line-height:1.55;margin:0;
+  }
+
+  /* Tooltip references */
+  .ref-link{
+    color:var(--wine);
+    border-bottom:1px dashed var(--gold);
+    cursor:pointer;
+    position:relative;
+    font-weight:500;
+    transition:color .2s ease;
+  }
+  .ref-link:hover{color:var(--gold)}
+  .ref-tooltip{
+    position:absolute;
+    bottom:calc(100% + 12px);
+    left:50%;transform:translateX(-50%);
+    width:280px;
+    background:#FFFDF6;
+    border:1px solid var(--gold);
+    box-shadow:0 12px 30px -10px rgba(24,27,44,.3);
+    padding:1rem 1.1rem;
+    z-index:10;
+    opacity:0;visibility:hidden;
+    transition:opacity .25s ease, visibility .25s ease, transform .25s ease;
+    pointer-events:none;
+  }
+  .ref-link:hover .ref-tooltip,
+  .ref-link.active .ref-tooltip{
+    opacity:1;visibility:visible;
+    transform:translateX(-50%) translateY(-4px);
+  }
+  .ref-tooltip::after{
+    content:'';position:absolute;
+    top:100%;left:50%;transform:translateX(-50%);
+    border:6px solid transparent;
+    border-top-color:var(--gold);
+  }
+  .ref-tooltip .t-ref{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;color:var(--wine);
+    font-size:.85rem;letter-spacing:.1em;
+    margin-bottom:.4rem;
+    border-bottom:1px solid var(--gold-pale);
+    padding-bottom:.4rem;
+  }
+  .ref-tooltip .t-text{
+    font-family:'Noto Serif KR',serif;
+    font-size:.85rem;color:var(--ink);
+    line-height:1.6;margin-bottom:.5rem;
+  }
+  .ref-tooltip .t-note{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:.75rem;color:var(--ink-soft);
+    letter-spacing:.05em;
+    padding-top:.4rem;
+    border-top:1px dotted var(--line);
+  }
+
+  /* ----- Section 6 : Q&A ----- */
+  .qa-section{
+    background:linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 50%, var(--crystal-pale) 100%);
+  }
+  .qa-list{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:1.2rem}
+  .qa-item{
+    background:#FFFCF3;
+    border:1px solid var(--line);
+    overflow:hidden;
+    transition:border-color .3s ease, box-shadow .3s ease;
+  }
+  .qa-item.open{
+    border-color:var(--gold);
+    box-shadow:0 10px 30px -20px rgba(24,27,44,.3);
+  }
+  .qa-q{
+    cursor:pointer;
+    padding:1.5rem 1.8rem;
+    display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;
+    font-family:'Gowun Batang',serif;
+    font-weight:700;
+    font-size:1.08rem;
+    color:var(--ink);
+    line-height:1.55;
+  }
+  .qa-q .mark{
+    color:var(--wine);
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:1.4rem;
+    flex-shrink:0;
+    line-height:1;
+  }
+  .qa-toggle{
+    color:var(--gold);
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.6rem;
+    flex-shrink:0;
+    transition:transform .3s ease;
+    line-height:1;
+  }
+  .qa-item.open .qa-toggle{transform:rotate(45deg)}
+  .qa-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .45s ease;
+  }
+  .qa-item.open .qa-a{max-height:600px}
+  .qa-a-inner{
+    padding:0 1.8rem 1.7rem;
+    border-top:1px dashed var(--line);
+    margin-top:0;
+  }
+  .qa-a-inner p{
+    font-size:.98rem;
+    color:var(--ink);
+    line-height:1.9;
+    padding-top:1rem;
+  }
+  .qa-a-inner .verse-cite{
+    margin-top:1rem;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:.9rem;
+    letter-spacing:.05em;
+  }
+
+  /* ----- Section 7 : Quiz ----- */
+  .quiz-section{
+    background:linear-gradient(180deg, var(--crystal-pale) 0%, var(--paper) 100%);
+  }
+  .quiz-list{
+    max-width:880px;margin:0 auto;
+    display:flex;flex-direction:column;gap:2.5rem;
+  }
+  .quiz-item{
+    background:#FFFCF3;
+    border:1px solid var(--line);
+    padding:2rem 2.2rem;
+    position:relative;
+  }
+  .quiz-item::before{
+    content:attr(data-num);
+    position:absolute;top:-1rem;left:1.5rem;
+    background:var(--wine);
+    color:var(--paper);
+    padding:.3rem .9rem;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:.85rem;
+    letter-spacing:.2em;
+  }
+  .quiz-q{
+    font-family:'Gowun Batang',serif;
+    font-weight:700;
+    font-size:1.1rem;
+    color:var(--ink);
+    line-height:1.7;
+    margin-bottom:1.4rem;
+  }
+  .quiz-opts{display:flex;flex-direction:column;gap:.6rem}
+  .quiz-opt{
+    cursor:pointer;
+    padding:.85rem 1.1rem;
+    background:rgba(255,255,255,.6);
+    border:1px solid var(--line);
+    font-family:'Noto Serif KR',serif;
+    font-size:.96rem;
+    color:var(--ink);
+    line-height:1.55;
+    display:flex;gap:1rem;align-items:flex-start;
+    transition:all .25s ease;
+  }
+  .quiz-opt:hover{
+    background:rgba(168,139,62,.08);
+    border-color:var(--gold-pale);
+  }
+  .quiz-opt .letter{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    flex-shrink:0;
+    font-size:1.05rem;
+    min-width:1.5rem;
+  }
+  .quiz-opt.correct{
+    background:rgba(120,160,100,.15);
+    border-color:#7a9a5a;
+    color:var(--ink);
+  }
+  .quiz-opt.correct .letter{color:#5a7a3a}
+  .quiz-opt.incorrect{
+    background:rgba(107,44,44,.08);
+    border-color:var(--wine);
+    color:var(--ink-soft);
+  }
+  .quiz-opt.incorrect .letter{color:var(--wine)}
+  .quiz-feedback{
+    margin-top:1.2rem;
+    padding:1rem 1.2rem;
+    background:rgba(168,139,62,.08);
+    border-left:3px solid var(--gold);
+    font-size:.92rem;
+    line-height:1.7;
+    color:var(--ink);
+    display:none;
+  }
+  .quiz-feedback.show{display:block}
+  .quiz-feedback .label{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    letter-spacing:.15em;
+    font-size:.82rem;
+    display:block;margin-bottom:.4rem;
+  }
+
+  /* ----- Section 8 : Prayer ----- */
+  .prayer-section{
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(168,188,196,.25), transparent 60%),
+      linear-gradient(180deg, var(--paper) 0%, var(--crystal-pale) 50%, #FFFFFF 100%);
+    text-align:center;
+    padding:9rem 6vw 6rem;
+  }
+  .prayer-card{
+    max-width:760px;margin:0 auto;
+    background:rgba(255,255,255,.7);
+    border:1px solid var(--crystal);
+    padding:4rem 3rem;
+    position:relative;
+    backdrop-filter:blur(6px);
+  }
+  .prayer-card::before{
+    content:'✦';
+    position:absolute;top:-1rem;left:50%;transform:translateX(-50%);
+    background:var(--crystal-pale);
+    color:var(--gold);
+    padding:0 1rem;
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.2rem;
+  }
+  .prayer-card .eyebrow{
+    margin-bottom:1.5rem;display:block;
+  }
+  .prayer-card h2{
+    font-family:'Gowun Batang',serif;
+    font-weight:700;
+    font-size:2rem;
+    color:var(--ink);
+    margin-bottom:2.5rem;
+    letter-spacing:-.01em;
+  }
+  .prayer-text{
+    font-family:'Gowun Batang',serif;
+    font-size:1.1rem;
+    line-height:2.1;
+    color:var(--ink);
+    text-align:left;
+    padding:0 1rem;
+  }
+  .prayer-text p{margin-bottom:1.2rem}
+  .prayer-text .amen{
+    text-align:center;
+    margin-top:2rem;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--gold);
+    letter-spacing:.3em;
+    font-size:1.05rem;
+  }
+  .commit-card{
+    margin-top:3rem;max-width:520px;margin-left:auto;margin-right:auto;
+    background:rgba(255,255,255,.5);
+    border:1px dashed var(--crystal);
+    padding:1.8rem;
+  }
+  .commit-card .label{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;color:var(--gold);
+    letter-spacing:.15em;font-size:.85rem;
+    margin-bottom:.8rem;
+  }
+  .commit-card .prompt{
+    font-family:'Gowun Batang',serif;
+    color:var(--ink);font-size:1rem;
+    margin-bottom:1rem;line-height:1.7;
+  }
+  .commit-card textarea{
+    width:100%;min-height:80px;
+    background:rgba(255,255,255,.7);
+    border:1px solid var(--line);
+    padding:.8rem 1rem;
+    font-family:'Noto Serif KR',serif;
+    font-size:.95rem;color:var(--ink);
+    resize:vertical;
+    outline:none;
+    transition:border-color .2s ease;
+  }
+  .commit-card textarea:focus{border-color:var(--gold)}
+
+  /* ----- Footer ----- */
+  footer{
+    background:#0F1224;
+    color:rgba(242,235,217,.6);
+    text-align:center;
+    padding:3rem 6vw;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    letter-spacing:.15em;
+    font-size:.85rem;
+  }
+  footer .ornament{color:var(--gold);margin-bottom:1rem;display:block;letter-spacing:.6em}
+  footer .source{margin-top:.6rem;font-size:.78rem;opacity:.6;letter-spacing:.05em;font-style:normal;font-family:'Noto Serif KR',serif}
+
+  /* ----- Responsive ----- */
+  @media (max-width:900px){
+    .flow{grid-template-columns:1fr;gap:.8rem}
+    .flow-arrow{transform:rotate(90deg);padding:.3rem 0}
+    .movement{grid-template-columns:1fr;gap:2rem}
+    .branch{grid-template-columns:1fr;gap:.8rem}
+    .branch-center{writing-mode:horizontal-tb;text-align:center;padding:.5rem}
+    .illust-student{grid-template-columns:1fr}
+    .sequence{grid-template-columns:1fr;gap:.6rem}
+    .verse-card{padding:1.8rem 1.5rem}
+    section.page{padding:5rem 5vw}
+    .prayer-card{padding:3rem 1.5rem}
+    .ref-tooltip{width:240px}
+  }
+  @media (max-width:600px){
+    .hero{padding:2rem 5vw}
+    .hero-eyebrow::before,.hero-eyebrow::after{width:20px;margin:0 .5rem}
+    .word-greek{font-size:2.2rem}
+    .quiz-item{padding:1.5rem 1.3rem}
+    .qa-q{padding:1.2rem 1.3rem;font-size:1rem}
+    .qa-a-inner{padding:0 1.3rem 1.3rem}
+    .ref-tooltip{width:220px;left:0;transform:translateX(0)}
+    .ref-link:hover .ref-tooltip,
+    .ref-link.active .ref-tooltip{transform:translateX(0) translateY(-4px)}
+    .ref-tooltip::after{left:30px;transform:translateX(0)}
+  }
+
+  /* ═════════════════════════════════════════════════════════
+     PORTED FEATURES — Topbar, Side Panel, Bible Tooltip (XML)
+     (themed to M2D4 paper / gold / ink)
+     ═════════════════════════════════════════════════════════ */
+  :root { --topbar-h: 44px; --font-scale: 1; }
+  html { font-size: calc(16px * var(--font-scale)); }
+  body { padding-top: var(--topbar-h); }
+
+  /* Top bar — paper over dark backdrop */
+  .topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(242,235,217,0.93);backdrop-filter:saturate(150%) blur(10px);-webkit-backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+  .topbar-btn{flex-shrink:0;width:34px;height:34px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);opacity:0.85;transition:background .15s, opacity .15s}
+  .topbar-btn:hover{background:rgba(168,139,62,0.18);opacity:1;color:var(--gold)}
+  .topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;font-weight:500;letter-spacing:0.22em;color:var(--gold);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px;text-transform:lowercase}
+  .topbar-title::-webkit-scrollbar{display:none}
+  .font-controls{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:4px;padding:2px;margin-left:4px}
+  .font-ctrl-btn{width:26px;height:26px;border:none;background:transparent;color:var(--ink-soft);font-size:14px;cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif KR',serif}
+  .font-ctrl-btn:hover{background:rgba(168,139,62,0.20);color:var(--gold)}
+
+  /* Overlay & Side panel */
+  .overlay{position:fixed;inset:0;background:rgba(24,27,44,0.58);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 32px rgba(24,27,44,0.32);font-family:'Noto Serif KR',serif;border-right:1px solid var(--line)}
+  .sidepanel.open{transform:translateX(0)}
+  .sidepanel-header{padding:0 22px 16px;border-bottom:1px solid var(--line);margin-bottom:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:500;letter-spacing:0.24em;text-transform:lowercase;color:var(--gold);display:flex;align-items:center;gap:8px}
+  .sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--ink-soft);opacity:0.7;display:flex;align-items:center;justify-content:center}
+  .sidepanel-close:hover{background:rgba(168,139,62,0.20);color:var(--gold);opacity:1}
+  .sp-nav{display:block;padding:10px 22px;font-size:13px;color:var(--ink);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:400;letter-spacing:-0.005em;opacity:0.88}
+  .sp-nav:hover{background:rgba(168,139,62,0.10);color:var(--gold);opacity:1}
+  .sp-nav.sub{padding-left:38px;font-size:12.5px;font-weight:300;color:var(--ink-soft);opacity:0.78}
+  .sp-divider{height:1px;background:var(--line);margin:10px 22px}
+  .sp-home{display:flex;align-items:center;gap:8px;color:var(--gold);opacity:0.95;font-weight:500}
+  .sp-home-icon{flex-shrink:0;color:var(--gold)}
+
+  /* Bible verse tooltip (auto-attached) — dark style for contrast on paper */
+  .bible-tip{
+    border-bottom:1px dotted var(--gold);
+    cursor:help;
+    color:inherit;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:color 0.18s ease,background 0.18s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(168,139,62,0.18);
+    padding: 0 2px;
+  }
+  .bible-tip:hover,.bible-tip:focus{
+    color:var(--wine);
+    background:rgba(168,139,62,0.12);
+    outline:none;
+  }
+  @media (hover:none),(pointer:coarse){
+    .bible-tip{cursor:pointer;border-bottom-style:solid;border-bottom-width:0.5px}
+  }
+  .bible-tooltip{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:9999;
+    background:linear-gradient(180deg,var(--ink) 0%,#0F1224 100%);
+    border:1px solid rgba(229,212,166,0.42);
+    box-shadow:
+      0 22px 48px -10px rgba(15,18,36,0.55),
+      0 8px 18px -6px rgba(15,18,36,0.4),
+      inset 0 1px 0 rgba(229,212,166,0.08);
+    padding:18px 22px 16px;
+    width:max-content;
+    max-width:min(400px,calc(100vw - 24px));
+    min-width:260px;
+    font-family:'Noto Serif KR',serif;
+    font-size:14px;
+    line-height:1.75;
+    color:var(--paper);
+    border-radius:1px;
+    white-space:normal;
+    cursor:default;
+    display:none;
+    visibility:hidden;
+  }
+  .bible-tooltip.show{display:block;visibility:visible}
+  .bible-tooltip::before{
+    content:'';
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:3px;
+    background:linear-gradient(180deg,var(--gold-pale) 0%,var(--gold-soft) 50%,var(--gold) 100%);
+    box-shadow:0 0 12px rgba(201,163,90,0.45);
+  }
+  .bible-tooltip::after{
+    content:'';
+    position:absolute;
+    inset:6px;
+    border:1px solid rgba(229,212,166,0.18);
+    pointer-events:none;
+  }
+  .bible-tooltip-ref{
+    position:relative;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:0.82rem;
+    letter-spacing:0.20em;
+    color:var(--gold-pale);
+    text-transform:lowercase;
+    margin-bottom:12px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(229,212,166,0.28);
+  }
+  .bible-tooltip-ref::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:-1px;
+    width:28px;
+    height:1px;
+    background:var(--gold-pale);
+  }
+  .bible-tooltip-text{
+    position:relative;
+    font-size:0.93rem;
+    color:var(--paper);
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    opacity:0.96;
+  }
+  .bible-tooltip-verse{margin-bottom:6px;padding-left:0}
+  .bible-tooltip-verse:last-child{margin-bottom:0}
+  .bible-tooltip-verse-num{
+    display:inline-block;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:0.88rem;
+    color:var(--gold-pale);
+    margin-right:8px;
+    vertical-align:0.05em;
+    min-width:18px;
+  }
+  .bible-tooltip-missing{
+    color:var(--paper);
+    font-style:italic;
+    font-size:0.88rem;
+    letter-spacing:0.02em;
+    opacity:0.6;
+  }
+  @media (max-width:480px){
+    .bible-tooltip{
+      max-width:calc(100vw - 20px);
+      min-width:200px;
+      font-size:13px;
+      padding:15px 18px 14px;
+    }
+    .bible-tooltip-text{font-size:0.9rem}
+    .bible-tooltip-ref{font-size:0.74rem;letter-spacing:0.16em}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="topbar-title">의의 사역 · 그 영으로 적셔지기까지 · 고후 5:14</div>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="sp-nav sp-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="sp-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" onclick="goTo('hero')" style="color:var(--gold);font-weight:500;">✦ 제목 — 의의 사역</a>
+  <a class="sp-nav" onclick="goTo('words')">02 · 오늘의 구절 + 헬라어 단어</a>
+  <a class="sp-nav" onclick="goTo('summary')">03 · 메시지 한눈에 — 3단계</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" style="font-weight:600;color:var(--gold);">04 · 세 악장</a>
+  <a class="sp-nav sub" onclick="goToMovement(0)">Ⅰ. 죄 사함을 넘어, 우리를 대신하신 죽음</a>
+  <a class="sp-nav sub" onclick="goToMovement(1)">Ⅱ. 참된 의의 기준, 겉이 아니라 안</a>
+  <a class="sp-nav sub" onclick="goToMovement(2)">Ⅲ. 그 영으로 적셔져 수정처럼 맑아진 내면</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" onclick="goTo('qa')">05 · 심화 Q&amp;A</a>
+  <a class="sp-nav" onclick="goTo('quiz')">06 · 퀴즈 (8문항)</a>
+  <a class="sp-nav" onclick="goTo('prayer')">07 · 오늘의 기도</a>
+</div>
+
+<!-- =================== SECTION 1 : HERO =================== -->
+<section class="hero" id="hero">
+  <div class="hero-top">
+    <span class="brand">Life-Study · 2 Corinthians</span>
+    <span class="date">MESSAGE&nbsp;·&nbsp;37</span>
+  </div>
+
+  <div class="hero-center">
+    <span class="hero-eyebrow">The Ministry of Righteousness</span>
+    <h1 class="hero-quote">
+      그리스도의 사랑이 <br>
+      우리를 <span class="accent">강권합니다</span>.
+    </h1>
+    <div class="hero-citation">— 2 Corinthians 5:14</div>
+    <p class="hero-subtitle">
+      죄 사함을 넘어, 우리의 <strong>옛 존재가 종결되고</strong><br>
+      그 영으로 적셔져 마침내 <strong>하나님의 의 자체</strong>가 되기까지.
+    </p>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="scroll-line"></div>
+    <div class="scroll-label">Scroll · 흐름을 따라</div>
+  </div>
+</section>
+
+
+<!-- =================== SECTION 2 : VERSES & GREEK =================== -->
+<section class="page" id="words">
+  <div class="section-head">
+    <span class="num">— 02 —</span>
+    <div class="ornament-rule"><span>VERBA</span></div>
+    <h2>오늘의 구절, 그리고 그 안의 살아 있는 단어들</h2>
+    <p class="sub">Three verses · four ancient words</p>
+  </div>
+
+  <div class="verses">
+    <div class="verse-card">
+      <div class="ref">2 Corinthians 5:14 · 고린도후서 5:14</div>
+      <p class="kor">그리스도의 사랑이 우리를 강권합니다. 우리가 단정하는 것은 한 사람이 모든 사람을 대신하여 죽으셨으므로, 모든 사람이 죽었다는 것입니다.</p>
+      <p class="eng">For the love of Christ constrains us because we have judged this, that One died for all, therefore all died;</p>
+    </div>
+    <div class="verse-card">
+      <div class="ref">2 Corinthians 3:8 · 고린도후서 3:8</div>
+      <p class="kor">하물며 그 영의 사역은 더욱 영광 안에 있지 않겠습니까?</p>
+      <p class="eng">How shall the ministry of the Spirit not be more in glory?</p>
+    </div>
+    <div class="verse-card">
+      <div class="ref">2 Corinthians 3:9 · 고린도후서 3:9</div>
+      <p class="kor">유죄판결을 내리는 사역에 영광이 있다면, 의의 사역에는 영광이 더욱 넘칠 것입니다.</p>
+      <p class="eng">For if there is glory with the ministry of condemnation, much more the ministry of righteousness abounds with glory.</p>
+    </div>
+  </div>
+
+  <p class="words-intro">
+    헬라어 원문이 품고 있는 어원적 결을 따라가 보면, 본문이 말하는 ‘강권’과 ‘사역’과 ‘영’과 ‘의’가 단순한 추상명사가 아니라
+    한 사람의 존재 전체를 안에서부터 다시 짜는 살아 있는 움직임이라는 것을 발견하게 됩니다.
+  </p>
+
+  <div class="word-grid">
+
+    <div class="word-card">
+      <div class="word-greek">συνέχει</div>
+      <div class="word-pronounce">쉬네케이</div>
+      <div class="word-divider"><span>ROOT</span></div>
+      <div class="word-root">함께 붙들어<br>한 방향으로 밀고 간다</div>
+      <div class="word-etymology">syn(함께) + echō(붙들다)<br>— to hold together, compel</div>
+      <div class="word-trans">
+        <span class="lang">한</span><span class="val">강권하다</span>
+        <span class="lang">英</span><span class="val">constrains</span>
+      </div>
+    </div>
+
+    <div class="word-card">
+      <div class="word-greek">διακονία</div>
+      <div class="word-pronounce">디아코니아</div>
+      <div class="word-divider"><span>ROOT</span></div>
+      <div class="word-root">사이를 지나며<br>섬기는 일</div>
+      <div class="word-etymology">dia(통하여) + konia(섬김)<br>— service through movement</div>
+      <div class="word-trans">
+        <span class="lang">한</span><span class="val">사역</span>
+        <span class="lang">英</span><span class="val">ministry</span>
+      </div>
+    </div>
+
+    <div class="word-card">
+      <div class="word-greek">πνεῦμα</div>
+      <div class="word-pronounce">프뉴마</div>
+      <div class="word-divider"><span>ROOT</span></div>
+      <div class="word-root">숨 · 바람 · 생기<br>—내적으로 적셔지는 것</div>
+      <div class="word-etymology">pneō(불다, 숨쉬다)에서<br>— breath, wind, spirit</div>
+      <div class="word-trans">
+        <span class="lang">한</span><span class="val">영</span>
+        <span class="lang">英</span><span class="val">spirit</span>
+      </div>
+    </div>
+
+    <div class="word-card">
+      <div class="word-greek">δικαιοσύνη</div>
+      <div class="word-pronounce">디카이오쉬네</div>
+      <div class="word-divider"><span>ROOT</span></div>
+      <div class="word-root">올바른 상태<br>그 자체에 놓이는 것</div>
+      <div class="word-etymology">dikē(정의) + -synē(됨, 상태)<br>— rightness as state of being</div>
+      <div class="word-trans">
+        <span class="lang">한</span><span class="val">의(義)</span>
+        <span class="lang">英</span><span class="val">righteousness</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =================== SECTION 3 : SUMMARY FLOW =================== -->
+<section class="page summary-section" id="summary">
+  <div class="section-head">
+    <span class="num">— 03 —</span>
+    <div class="ornament-rule"><span>ARC</span></div>
+    <h2>메시지 한눈에 보기</h2>
+    <p class="sub">From forgiveness · through termination · into transparency</p>
+  </div>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="stage">STAGE&nbsp;ONE</div>
+      <div class="symbol">i.</div>
+      <div class="title">죄 사함</div>
+      <div class="desc">그리스도께서 우리의 죄들 때문에 죽으심으로 우리가 하나님께 용서받습니다. 화목의 시작 단계입니다.</div>
+      <div class="verse-tag">1 Cor 15:3</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="stage">STAGE&nbsp;TWO</div>
+      <div class="symbol">ii.</div>
+      <div class="title">옛 존재의 종결</div>
+      <div class="desc">그리스도께서 우리를 대신하여 죽으심으로, 타고난 옛사람이 종결되고 우리는 하나님의 의가 되도록 열립니다.</div>
+      <div class="verse-tag">2 Cor 5:14, 21</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="stage">STAGE&nbsp;THREE</div>
+      <div class="symbol">iii.</div>
+      <div class="title">투명한 내면</div>
+      <div class="desc">생명 주시는 그 영으로 적셔져 내적 존재가 수정처럼 맑아지고, 그 결과 자연스럽게 의로운 사람이 됩니다.</div>
+      <div class="verse-tag">2 Cor 3:8-9</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =================== SECTION 4 : THREE MOVEMENTS =================== -->
+<section class="page movements-section" id="movements">
+  <div class="section-head">
+    <span class="num">— 04 —</span>
+    <div class="ornament-rule"><span>MOVEMENTS</span></div>
+    <h2>세 악장으로 듣는 의의 사역</h2>
+    <p class="sub">A narrative in three movements</p>
+  </div>
+
+  <!-- ===== Movement 1 ===== -->
+  <article class="movement">
+    <div class="movement-left">
+      <div class="label">MOVEMENT&nbsp;·&nbsp;Ⅰ</div>
+      <h3>죄 사함을 넘어,<br>우리를 대신하신 죽음</h3>
+      <p class="lede">“그리스도는 우리의 죄들 때문에 죽으셨을 뿐 아니라, 또한 우리를 대신하여 죽으셨다.”</p>
+    </div>
+    <div class="movement-right">
+      <p>오늘날 많은 그리스도인은 그리스도께서 <span class="ref-link">자신의 죄들 때문에 죽으셨다는 사실<span class="ref-tooltip"><span class="t-ref">1 Corinthians 15:3</span><span class="t-text">“그리스도께서 성경대로 우리 죄들을 위하여 죽으시고”</span><span class="t-note">— 화목의 ‘시작 단계’를 보여주는 구절</span></span></span>만을 알고 있습니다. 그러나 그 죽음이 우리의 ‘죄들’만이 아니라 ‘우리 자신’을 위한 죽음이기도 했다는 진실은 종종 가려져 있습니다.</p>
+      <p>그리스도는 우리의 죄들을 용서받게 하기 위해 죽으셨고, 동시에 <span class="ref-link">우리의 겉사람—타고난 옛 존재—을 종결시키기 위해<span class="ref-tooltip"><span class="t-ref">2 Corinthians 5:14</span><span class="t-text">“한 사람이 모든 사람을 대신하여 죽으셨으므로, 모든 사람이 죽었다.”</span><span class="t-note">— 우리 옛 존재의 종결을 선언</span></span></span> 우리를 대신하여 죽으셨습니다. 전자는 ‘용서와 의롭다 함’으로, 후자는 <span class="ref-link">‘하나님의 의가 됨’으로 이어집니다<span class="ref-tooltip"><span class="t-ref">2 Corinthians 5:21</span><span class="t-text">“그리스도는 죄를 모르시지만, 하나님은 우리를 위하여 그분을 죄로 삼으셨다. 이는 우리로 하여금 그분 안에서 하나님의 의가 되게 하시려는 것이다.”</span><span class="t-note">— ‘대신한 죽음’의 궁극 목적</span></span></span>.</p>
+
+      <div class="diagram">
+        <div class="diagram-label">TWO SIDES OF ONE DEATH</div>
+        <div class="branch">
+          <div class="branch-side">
+            <h4>죄들 때문에 죽으심</h4>
+            <div class="arrow-down">↓</div>
+            <p class="outcome">용서 받음<br>의롭다 함을 받음<br><em>— 화목의 시작 —</em></p>
+          </div>
+          <div class="branch-center">ONE&nbsp;CROSS</div>
+          <div class="branch-side">
+            <h4>우리를 대신하여 죽으심</h4>
+            <div class="arrow-down">↓</div>
+            <p class="outcome">옛 존재가 종결됨<br>하나님의 의가 됨<br><em>— 화목의 완성으로 —</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== Movement 2 ===== -->
+  <article class="movement">
+    <div class="movement-left">
+      <div class="label">MOVEMENT&nbsp;·&nbsp;Ⅱ</div>
+      <h3>참된 의의 기준,<br>겉이 아니라 안</h3>
+      <p class="lede">“우리가 어떤 잘못을 저지르지 않았을 때조차 우리는 여전히 하나님께 올바르지 않을 수 있다.”</p>
+    </div>
+    <div class="movement-right">
+      <p>많은 그리스도인이 ‘의’를 잘못을 저지르지 않는 상태로만 이해합니다. 본문은 이러한 관념을 너무 피상적이라고 단언합니다. 의는 단순한 흠 없음이 아니라, 우리의 온 존재가 <span class="ref-link">주님의 생각과 뜻 안에 있는 상태<span class="ref-tooltip"><span class="t-ref">Matthew 6:33</span><span class="t-text">“너희는 먼저 그분의 왕국과 그분의 의를 구하라.”</span><span class="t-note">— 왕국의 의는 곧 ‘하나님께 올바른’ 상태</span></span></span>입니다.</p>
+      <p>본문에 등장하는 한 학생의 예시가 이를 선명히 보여줍니다. 그는 학교에서 아무 잘못도 저지르지 않습니다. 교실에 앉아 있고, 누구와도 다투지 않습니다. 그러나 그의 생각은 다른 곳에 있고, 학생답게 공부하지도 않습니다. 겉으로 보기엔 흠이 없지만, 내적으로는 그의 온 존재가 빗나가 있습니다.</p>
+
+      <div class="diagram">
+        <div class="diagram-label">A STUDENT IN THE CLASSROOM</div>
+        <div class="illust-student">
+          <div class="illust-side outer">
+            <div class="icon">◯</div>
+            <h4>겉으로</h4>
+            <span class="check">✓ 흠 없음</span>
+            <p class="note">잘못을 저지르지 않음<br>규칙을 어기지 않음</p>
+          </div>
+          <div class="illust-side inner">
+            <div class="icon">⌀</div>
+            <h4>내적으로</h4>
+            <span class="check">✕ 빗나감</span>
+            <p class="note">생각이 다른 곳에 있음<br>주님의 뜻 안에 있지 않음</p>
+          </div>
+        </div>
+      </div>
+      <p>겉으로 잘못이 없는 것은 의의 기준이 아닙니다. 우리가 하나님의 뜻을 행하지 않는 한, 우리는 결코 올바른 것이 아닙니다.</p>
+    </div>
+  </article>
+
+  <!-- ===== Movement 3 ===== -->
+  <article class="movement">
+    <div class="movement-left">
+      <div class="label">MOVEMENT&nbsp;·&nbsp;Ⅲ</div>
+      <h3>그 영으로 적셔져<br>수정처럼 맑아진 내면</h3>
+      <p class="lede">“우리의 내적 존재는 투명하고 수정같이 맑게 되어, 하나님의 마음을 알게 된다.”</p>
+    </div>
+    <div class="movement-right">
+      <p>의는 노력으로 만들어지지 않습니다. 우리 안에 사시고 일하시는 <span class="ref-link">생명 주시는 그 영<span class="ref-tooltip"><span class="t-ref">2 Corinthians 3:8</span><span class="t-text">“하물며 그 영의 사역은 더욱 영광 안에 있지 않겠습니까?”</span><span class="t-note">— 새 언약 사역의 핵심 동력</span></span></span>을 체험할 때, 우리는 자연스럽게 의로워집니다. 내적 존재가 영으로 주입되고 적셔지면, 그 안이 투명해지고 수정같이 맑아져 주님의 생각과 뜻을 어렵지 않게 분별하게 됩니다.</p>
+
+      <div class="diagram">
+        <div class="diagram-label">THE INWARD WORK OF THE SPIRIT</div>
+        <div class="sequence">
+          <div class="seq-step">
+            <div class="stage-num">i. 탁한 그릇</div>
+            <h4>주님의 뜻이 보이지 않음</h4>
+            <p>옛 존재 그대로의 내면.<br>분명하지 않고, 빗나가 있음.</p>
+          </div>
+          <div class="seq-step">
+            <div class="stage-num">ii. 영의 주입</div>
+            <h4>πνεῦμα — 적셔지기</h4>
+            <p>생명 주시는 영이 안에 부어지고<br>존재 전체를 흠뻑 적심.</p>
+          </div>
+          <div class="seq-step">
+            <div class="stage-num">iii. 수정같이 맑음</div>
+            <h4>의로운 사람이 됨</h4>
+            <p>노력 없이 주님의 뜻을 분별하고,<br>자연스럽게 그 뜻 안에 머묾.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>이렇게 변화된 사람은 큰일에서뿐 아니라 작은 일에서도 올바르며, 하나님과 다른 이들과 자신에게 올바른 사람이 됩니다. 그의 의는 <span class="ref-link">하나님의 형상—표현되신 하나님—이 됩니다<span class="ref-tooltip"><span class="t-ref">Genesis 1:26-27</span><span class="t-text">“우리의 형상을 따라 우리의 모양대로 우리가 사람을 만들자.”</span><span class="t-note">— 의로운 사람은 하나님을 표현하는 사람</span></span></span>. 새 언약 사역의 열매는 이러한 의를 산출하는 것이며, 그 의는 각 사람 안에서, 교회 안에서, 그리고 마침내 천년왕국 안에서 의의 상태를 산출할 것입니다.</p>
+    </div>
+  </article>
+</section>
+
+
+<!-- =================== SECTION 6 : Q&A =================== -->
+<section class="page qa-section" id="qa">
+  <div class="section-head">
+    <span class="num">— 05 —</span>
+    <div class="ornament-rule"><span>DIALOGUE</span></div>
+    <h2>심화 Q&amp;A</h2>
+    <p class="sub">Questions that go a step deeper</p>
+  </div>
+
+  <div class="qa-list">
+    <div class="qa-item">
+      <div class="qa-q">
+        <span class="mark">Q.</span>
+        <span class="qa-q-text">잘못한 게 없는데도 왜 하나님께 올바르지 않을 수 있나요?</span>
+        <span class="qa-toggle">+</span>
+      </div>
+      <div class="qa-a">
+        <div class="qa-a-inner">
+          <p>본문은 ‘의’를 단지 잘못이 없는 상태로 정의하지 않습니다. 의는 우리의 ‘존재 전체’가 주님의 생각과 뜻 안에 있는 상태입니다. 행위가 아무리 흠 없어 보여도, 그 행위의 출처인 ‘내적 존재’가 주님의 뜻 밖에 있다면 그것은 의가 아닙니다. 교실에 얌전히 앉아 있지만 생각은 다른 곳에 가 있는 학생처럼, 우리도 외적인 흠 없음으로 자기 의에 머물 수 있습니다.</p>
+          <p class="verse-cite">— Movement Ⅱ 참조</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">
+        <span class="mark">Q.</span>
+        <span class="qa-q-text">내가 그 영을 주입받고 적셔지고 있다는 것을 어떻게 알 수 있나요?</span>
+        <span class="qa-toggle">+</span>
+      </div>
+      <div class="qa-a">
+        <div class="qa-a-inner">
+          <p>본문은 한 가지 분명한 표지를 제시합니다. 영으로 적셔질 때 우리 ‘내적 존재가 투명해진다’는 것입니다. 노력하지 않아도 주님의 생각이 분명히 드러나고, 그분의 뜻과 일에 대한 이해가 자연스럽게 열립니다. 무엇이 그분께 부합하는지 헷갈리지 않게 되고, 다른 이들을 향한 행동, 심지어 물질을 다루는 방식까지 자연스럽게 올바르게 됩니다. 곧 ‘큰일과 작은 일 모두에서 올바른 사람’이 되어 가는 흐름이 영의 주입의 표지입니다.</p>
+          <p class="verse-cite">— Movement Ⅲ 참조</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">
+        <span class="mark">Q.</span>
+        <span class="qa-q-text">교회생활과 가정생활이 왜 ‘의의 상태’와 연결되나요?</span>
+        <span class="qa-toggle">+</span>
+      </div>
+      <div class="qa-a">
+        <div class="qa-a-inner">
+          <p>새 언약의 사역이 산출하는 ‘의’는 개인 안에만 머무르지 않습니다. 본문은 그 의가 각 사람 안에서, 교회 안에서, 그리고 천년왕국 안에서 의의 상태를 산출한다고 말합니다. 모든 것과 모든 사람과 모든 문제에서 하나님께서 보시기에 의로운 지방 교회, 그릇된 것이 없고 모든 것이 그분께 만족스러운 가정—이러한 공동체적 ‘의의 상태’가 바로 새 언약 사역의 현재적 열매입니다. 왕국의 의는 미래에만 있는 것이 아니라, 오늘 교회생활과 가정생활에서 미리 맛볼 수 있는 실재입니다.</p>
+          <p class="verse-cite">— Summary &amp; Movement Ⅲ 참조</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">
+        <span class="mark">Q.</span>
+        <span class="qa-q-text">‘우리가 하나님의 의가 된다’는 표현은 너무 과한 표현 아닌가요?</span>
+        <span class="qa-toggle">+</span>
+      </div>
+      <div class="qa-a">
+        <div class="qa-a-inner">
+          <p>본문은 그것이 새 언약 사역의 정확한 도착점이라고 말합니다. 우리는 단지 하나님께 의롭다 ‘함을 받는’ 데서 그치지 않고, 사실상 ‘하나님의 의가 됩니다’. 그리스도께서 우리를 대신해 죽으심으로 우리의 옛 존재를 종결하셨고, 그 영으로 우리 안을 채워 하나님의 형상을 표현하는 사람이 되게 하시기 때문입니다. ‘의롭다 함’이 법정적 선언이라면, ‘하나님의 의가 됨’은 그 영에 의한 존재의 변화입니다.</p>
+          <p class="verse-cite">— Movement Ⅰ &amp; Ⅲ 참조</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =================== SECTION 7 : QUIZ =================== -->
+<section class="page quiz-section" id="quiz">
+  <div class="section-head">
+    <span class="num">— 06 —</span>
+    <div class="ornament-rule"><span>EXAMINATION</span></div>
+    <h2>퀴즈로 메시지 다시 새기기</h2>
+    <p class="sub">Eight questions to settle the message</p>
+  </div>
+
+  <div class="quiz-list">
+
+    <div class="quiz-item" data-num="Q · 1" data-correct="C">
+      <div class="quiz-q">그리스도께서 우리의 ‘죄들 때문’에 죽으신 것과 ‘우리를 대신하여’ 죽으신 것의 핵심적인 차이는 무엇입니까?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="A"><span class="letter">A.</span><span>죄들을 위한 죽음은 십자가 사건이며, 우리를 대신한 죽음은 부활 사건을 의미합니다.</span></div>
+        <div class="quiz-opt" data-opt="B"><span class="letter">B.</span><span>죄들을 위한 죽음은 구약의 방식이고, 우리를 대신한 죽음은 신약의 사역입니다.</span></div>
+        <div class="quiz-opt" data-opt="C"><span class="letter">C.</span><span>죄들을 위한 죽음은 용서를 위함이고, 우리를 대신한 죽음은 우리가 하나님의 의가 되기 위함입니다.</span></div>
+        <div class="quiz-opt" data-opt="D"><span class="letter">D.</span><span>죄들을 위한 죽음은 화목의 완성 단계이고, 우리를 대신한 죽음은 화목의 시작 단계입니다.</span></div>
+      </div>
+      <div class="quiz-feedback">
+        <span class="label">정답 · C</span>
+        본문은 죄들을 위한 죽음은 용서를 위함(화목의 시작 단계)이고, 우리를 대신한 죽음은 옛 존재를 종결하여 우리가 하나님의 의가 되게 하시기 위한 것이라고 분명히 구분합니다.
+      </div>
+    </div>
+
+    <div class="quiz-item" data-num="Q · 2" data-correct="D">
+      <div class="quiz-q">본문에 따르면 새 언약의 사역이 ‘의의 상태’를 산출하는 세 가지 영역에 포함되지 않는 것은 무엇입니까?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="A"><span class="letter">A.</span><span>각 사람의 내면</span></div>
+        <div class="quiz-opt" data-opt="B"><span class="letter">B.</span><span>천년왕국</span></div>
+        <div class="quiz-opt" data-opt="C"><span class="letter">C.</span><span>교회 생활</span></div>
+        <div class="quiz-opt" data-opt="D"><span class="letter">D.</span><span>개인적인 도덕적 수양</span></div>
+      </div>
+      <div class="quiz-feedback">
+        <span class="label">정답 · D</span>
+        본문이 명시한 세 영역은 ‘각 사람’, ‘교회’, ‘천년왕국’입니다. ‘개인적인 도덕적 수양’은 본문이 오히려 경계하는 피상적 의의 관념에 가깝습니다.
+      </div>
+    </div>
+
+    <div class="quiz-item" data-num="Q · 3" data-correct="C">
+      <div class="quiz-q">본문에서 정의하는 참된 ‘의’란 무엇을 의미합니까?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="A"><span class="letter">A.</span><span>율법의 요구를 완벽하게 지켜 행하는 것</span></div>
+        <div class="quiz-opt" data-opt="B"><span class="letter">B.</span><span>다른 사람들에게 비난받을 만한 행동을 하지 않는 것</span></div>
+        <div class="quiz-opt" data-opt="C"><span class="letter">C.</span><span>우리의 존재와 행위가 주님의 생각과 뜻에 부합하는 상태</span></div>
+        <div class="quiz-opt" data-opt="D"><span class="letter">D.</span><span>타고난 선한 성품을 유지하는 것</span></div>
+      </div>
+      <div class="quiz-feedback">
+        <span class="label">정답 · C</span>
+        의는 흠 없음이 아니라, 우리의 ‘온 존재’가 주님의 생각과 뜻 안에 있는 상태입니다. 행위만이 아니라 존재 자체가 그분께 부합해야 진정한 의입니다.
+      </div>
+    </div>
+
+    <div class="quiz-item" data-num="Q · 4" data-correct="B">
+      <div class="quiz-q">교실에 앉아 있지만 공부하지 않는 학생의 예시는 무엇을 설명하기 위해 사용되었습니까?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="A"><span class="letter">A.</span><span>세상 교육 시스템의 한계를 지적하기 위해</span></div>
+        <div class="quiz-opt" data-opt="B"><span class="letter">B.</span><span>겉으로 잘못이 없어도 내적으로 주님의 뜻에서 벗어나 있을 수 있음을 보여주기 위해</span></div>
+        <div class="quiz-opt" data-opt="C"><span class="letter">C.</span><span>교회 안에서 어린 성도들을 어떻게 양육해야 하는지 설명하기 위해</span></div>
+        <div class="quiz-opt" data-opt="D"><span class="letter">D.</span><span>지식적인 공부보다 영적인 체험이 더 중요함을 강조하기 위해</span></div>
+      </div>
+      <div class="quiz-feedback">
+        <span class="label">정답 · B</span>
+        이 예시의 핵심은 ‘외적 흠 없음 ≠ 내적 올바름’입니다. 학생은 잘못은 없지만, 생각이 다른 곳에 있고 학생답게 공부하지 않습니다. 우리의 신앙도 동일한 위험에 노출되어 있습니다.
+      </div>
+    </div>
+
+    <div class="quiz-item" data-num="Q · 5" data-correct="D">
+      <div class="quiz-q">우리가 어떻게 하면 하나님과 다른 이들에게 ‘의로운 사람’이 될 수 있다고 설명합니까?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="A"><span class="letter">A.</span><span>성경 지식을 많이 습득하여 옳고 그름을 분별함으로써</span></div>
+        <div class="quiz-opt" data-opt="B"><span class="letter">B.</span><span>철저한 금욕 생활과 자기 부인을 통해서</span></div>
+        <div class="quiz-opt" data-opt="C"><span class="letter">C.</span><span>물질적인 소유를 모두 가난한 자들에게 나누어 줌으로써</span></div>
+        <div class="quiz-opt" data-opt="D"><span class="letter">D.</span><span>생명 주시는 영을 주입받고 그 영으로 적셔짐으로써</span></div>
+      </div>
+      <div class="quiz-feedback">
+        <span class="label">정답 · D</span>
+        본문은 매우 분명합니다. 의는 노력이나 금욕이나 지식의 결과가 아니라, 생명 주시는 영의 주입과 적심의 자연스러운 열매입니다.
+      </div>
+    </div>
+
+    <div class="quiz-item" data-num="Q · 6" data-correct="A">
+      <div class="quiz-q">본문에서 ‘의’가 ‘하나님의 형상’이라고 말하는 이유는 무엇입니까?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="A"><span class="letter">A.</span><span>의로운 사람이 하나님을 표현하는 사람이기 때문에</span></div>
+        <div class="quiz-opt" data-opt="B"><span class="letter">B.</span><span>의는 구원받은 자들이 천국에서 입을 옷이기 때문에</span></div>
+        <div class="quiz-opt" data-opt="C"><span class="letter">C.</span><span>의는 하나님의 성품 중 가장 중요한 속성이기 때문에</span></div>
+        <div class="quiz-opt" data-opt="D"><span class="letter">D.</span><span>인간이 원래 하나님의 의로운 모습으로 창조되었기 때문에</span></div>
+      </div>
+      <div class="quiz-feedback">
+        <span class="label">정답 · A</span>
+        본문은 “그의 의가 하나님의 형상 곧 표현되신 하나님”이라고 말합니다. 의로운 사람은 곧 하나님을 표현하는 사람이며, 그것이 ‘의가 곧 형상’인 이유입니다.
+      </div>
+    </div>
+
+    <div class="quiz-item" data-num="Q · 7" data-correct="C">
+      <div class="quiz-q">고린도후서 3장 9절을 바탕으로 할 때, 새 언약 사역의 특징은 무엇입니까?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="A"><span class="letter">A.</span><span>구약의 율법을 완성하여 다시 이스라엘에게 주는 사역입니다.</span></div>
+        <div class="quiz-opt" data-opt="B"><span class="letter">B.</span><span>죄를 지은 자들에게 엄격한 심판을 선포하는 사역입니다.</span></div>
+        <div class="quiz-opt" data-opt="C"><span class="letter">C.</span><span>유죄판결을 내리는 사역보다 영광이 더욱 넘치는 의의 사역입니다.</span></div>
+        <div class="quiz-opt" data-opt="D"><span class="letter">D.</span><span>모든 사람이 평등하다는 사회적 정의를 실현하는 사역입니다.</span></div>
+      </div>
+      <div class="quiz-feedback">
+        <span class="label">정답 · C</span>
+        고후 3:9은 명확합니다. 유죄판결의 사역에 영광이 있다면, 의의 사역에는 영광이 더욱 ‘넘칠’ 것입니다. 새 언약 사역은 영광이 넘치는 의의 사역입니다.
+      </div>
+    </div>
+
+    <div class="quiz-item" data-num="Q · 8" data-correct="A">
+      <div class="quiz-q">그리스도의 사랑이 우리를 강권할 때 우리가 내리는 결론은 무엇입니까? (고후 5:14 참조)</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" data-opt="A"><span class="letter">A.</span><span>한 사람이 모든 사람을 대신하여 죽었으므로 모든 사람이 죽었다는 것</span></div>
+        <div class="quiz-opt" data-opt="B"><span class="letter">B.</span><span>그리스도의 사랑을 전파하기 위해 선교사로 나가야 한다는 것</span></div>
+        <div class="quiz-opt" data-opt="C"><span class="letter">C.</span><span>모든 사람이 구원을 받았으므로 더 이상 노력이 필요 없다는 것</span></div>
+        <div class="quiz-opt" data-opt="D"><span class="letter">D.</span><span>우리가 죄를 지어도 하나님의 사랑이 다 용서하신다는 것</span></div>
+      </div>
+      <div class="quiz-feedback">
+        <span class="label">정답 · A</span>
+        그리스도의 사랑이 강권할 때 우리가 ‘단정하는’ 결론은 분명합니다: 한 사람이 모든 사람을 대신하여 죽으셨으므로, 모든 사람이 죽었다—옛 존재의 종결이 모든 신자의 결론입니다.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =================== SECTION 8 : PRAYER =================== -->
+<section class="prayer-section" id="prayer">
+  <div class="prayer-card">
+    <span class="eyebrow">— today's prayer —</span>
+    <h2>오늘의 기도</h2>
+    <div class="prayer-text">
+      <p>주님, 제 죄들을 용서하셨을 뿐 아니라 저를 대신하여 죽으심으로 제 옛 존재를 종결하셨음을 감사드립니다. 그리스도의 사랑이 저를 강권하시는 그 사실 앞에 다시 머무릅니다.</p>
+      <p>오늘 생명 주시는 그 영으로 제 안을 흠뻑 적셔주셔서, 제 내면이 수정처럼 맑아지게 하소서. 노력으로 의롭게 되려는 모든 시도를 내려놓고, 그 영의 주입으로만 자연스럽게 주님의 뜻을 분별하며 행하게 하소서.</p>
+      <p>큰일에서뿐 아니라 작은 일에서도, 가정생활과 교회생활 속에서, 주님께서 보시기에 올바른 의의 상태가 산출되게 하소서. 저의 의가 곧 표현된 주님 자신이 되도록, 저를 그 영의 사역에 온전히 내어드립니다.</p>
+      <p class="amen">— Amen —</p>
+    </div>
+  </div>
+
+  <div class="commit-card">
+    <div class="label">— TODAY'S COMMITMENT —</div>
+    <p class="prompt">오늘 내가 주님의 뜻 안에 머무를 한 가지 영역은…</p>
+    <textarea placeholder="이 자리에 적어 보세요."></textarea>
+  </div>
+</section>
+
+<footer>
+  <span class="ornament">· · · ✦ · · ·</span>
+  Life-Study of 2 Corinthians · Witness Lee
+  <div class="source">고린도후서 라이프 스타디, 2권 메시지 37 · 1권 메시지 27</div>
+</footer>
+
+
+<script>
+  // ===== Q&A accordion =====
+  document.querySelectorAll('.qa-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.qa-item').forEach(i => i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ===== Quiz interaction =====
+  document.querySelectorAll('.quiz-item').forEach(item => {
+    const correct = item.dataset.correct;
+    const opts = item.querySelectorAll('.quiz-opt');
+    const fb = item.querySelector('.quiz-feedback');
+    opts.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if(item.classList.contains('answered')) return;
+        item.classList.add('answered');
+        const picked = opt.dataset.opt;
+        opts.forEach(o => {
+          o.style.cursor = 'default';
+          if(o.dataset.opt === correct) o.classList.add('correct');
+          else if(o.dataset.opt === picked) o.classList.add('incorrect');
+        });
+        fb.classList.add('show');
+      });
+    });
+  });
+
+  // ===== Mobile-friendly tooltip tap =====
+  document.querySelectorAll('.ref-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = link.classList.contains('active');
+      document.querySelectorAll('.ref-link').forEach(l => l.classList.remove('active'));
+      if(!isActive) link.classList.add('active');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.ref-link').forEach(l => l.classList.remove('active'));
+  });
+
+  // ============================================================
+  // PORTED — Font scale, Side panel nav, Bible XML tooltip
+  // ============================================================
+  let fontScale = 1;
+  function adjustFont(dir) {
+    if (dir === 0) fontScale = 1;
+    else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+    else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+    document.documentElement.style.setProperty('--font-scale', fontScale);
+  }
+  function togglePanel() {
+    document.getElementById('sidepanel').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+  function goTo(id) {
+    togglePanel();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+  function goToMovement(idx) {
+    togglePanel();
+    setTimeout(() => {
+      const items = document.querySelectorAll('#movements .movement');
+      if (items[idx]) items[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+
+  // ============================================================
+  // Bible Verse Tooltips (Recovery Version XML)
+  // ============================================================
+  const BIBLE_XML_PATH = '../../recovery_bible_ko.xml';
+  const BIBLE_BOOKS_KO = ['창','출','레','민','신','수','삿','룻','삼상','삼하','왕상','왕하','대상','대하','스','느','에','욥','시','잠','전','아','사','렘','애','겔','단','호','욜','암','옵','욘','미','나','합','습','학','슥','말','마','막','눅','요','행','롬','고전','고후','갈','엡','빌','골','살전','살후','딤전','딤후','딛','몬','히','약','벧전','벧후','요일','요이','요삼','유','계'];
+  const BIBLE_SINGLE_CHAPTER = new Set(['옵','몬','요이','요삼','유']);
+  let BIBLE_DATA = null;
+  let bibleTooltipEl = null;
+  let bibleActiveTip = null;
+  let bibleLoadPromise = null;
+
+  async function loadBibleXML() {
+    if (bibleLoadPromise) return bibleLoadPromise;
+    bibleLoadPromise = (async () => {
+      try {
+        const res = await fetch(BIBLE_XML_PATH);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        const xml = new DOMParser().parseFromString(text, 'application/xml');
+        const data = {};
+        xml.querySelectorAll('Book').forEach(book => {
+          const abbrev = book.getAttribute('abbrevKo');
+          if (!abbrev) return;
+          const bk = data[abbrev] = {};
+          book.querySelectorAll('Chapter').forEach(chap => {
+            const cnum = chap.getAttribute('num');
+            const ch = bk[cnum] = {};
+            chap.querySelectorAll('Verse').forEach(v => {
+              ch[v.getAttribute('num')] = v.textContent;
+            });
+          });
+        });
+        BIBLE_DATA = data;
+        return true;
+      } catch (e) {
+        console.warn('[Bible] XML load failed:', e);
+        return false;
+      }
+    })();
+    return bibleLoadPromise;
+  }
+
+  function bibleLookup(book, chap, verseStart, verseEnd) {
+    if (!BIBLE_DATA) return null;
+    const bk = BIBLE_DATA[book];
+    if (!bk) return null;
+    const ch = bk[chap];
+    if (!ch) return null;
+    const list = [];
+    if (!verseEnd || verseStart === verseEnd) {
+      if (ch[verseStart]) list.push({ n: verseStart, t: ch[verseStart] });
+    } else {
+      const s = parseInt(verseStart, 10), e = parseInt(verseEnd, 10);
+      for (let i = s; i <= e; i++) {
+        if (ch[i]) list.push({ n: String(i), t: ch[i] });
+      }
+    }
+    return list.length ? list : null;
+  }
+
+  function ensureBibleTooltipEl() {
+    if (bibleTooltipEl) return bibleTooltipEl;
+    bibleTooltipEl = document.createElement('div');
+    bibleTooltipEl.className = 'bible-tooltip';
+    bibleTooltipEl.setAttribute('role', 'tooltip');
+    document.body.appendChild(bibleTooltipEl);
+    return bibleTooltipEl;
+  }
+
+  function showBibleTooltip(trigger) {
+    const ref = trigger.getAttribute('data-bref');
+    const book = trigger.getAttribute('data-book');
+    const chap = trigger.getAttribute('data-chap');
+    const vs = trigger.getAttribute('data-vs');
+    const ve = trigger.getAttribute('data-ve');
+    const tip = ensureBibleTooltipEl();
+    if (tip.parentNode !== document.body) document.body.appendChild(tip);
+
+    let bodyHtml;
+    if (!BIBLE_DATA) {
+      bodyHtml = '<div class="bible-tooltip-missing">성경 본문을 불러오는 중...</div>';
+    } else {
+      const verses = bibleLookup(book, chap, vs, ve);
+      if (!verses) {
+        bodyHtml = '<div class="bible-tooltip-missing">본문을 찾을 수 없습니다.</div>';
+      } else {
+        bodyHtml = '<div class="bible-tooltip-text">' +
+          verses.map(v => '<div class="bible-tooltip-verse"><span class="bible-tooltip-verse-num">' + v.n + '</span>' + v.t + '</div>').join('') +
+          '</div>';
+      }
+    }
+    tip.innerHTML = '<div class="bible-tooltip-ref">' + ref + '</div>' + bodyHtml;
+
+    tip.style.visibility = 'hidden';
+    tip.classList.add('show');
+
+    tip.style.left = '0px';
+    tip.style.top = '0px';
+    const probe0 = tip.getBoundingClientRect();
+    tip.style.left = '100px';
+    tip.style.top = '100px';
+    const probe100 = tip.getBoundingClientRect();
+    const fx = (probe100.left - probe0.left) / 100 || 1;
+    const fy = (probe100.top - probe0.top) / 100 || 1;
+
+    tip.style.left = '0px';
+    tip.style.top = '0px';
+    const tr = tip.getBoundingClientRect();
+    const tipW = tr.width;
+    const tipH = tr.height;
+
+    const triggerRect = trigger.getBoundingClientRect();
+    const margin = 8;
+    const gap = 4;
+
+    let visualLeft = triggerRect.left;
+    let visualTop = triggerRect.bottom + gap;
+    if (visualLeft + tipW > window.innerWidth - margin) {
+      visualLeft = window.innerWidth - tipW - margin;
+    }
+    if (visualLeft < margin) visualLeft = margin;
+    if (visualTop + tipH > window.innerHeight - margin) {
+      const above = triggerRect.top - tipH - gap;
+      if (above >= margin) visualTop = above;
+      else visualTop = Math.max(margin, window.innerHeight - tipH - margin);
+    }
+
+    const styleLeft = (visualLeft - probe0.left) / fx;
+    const styleTop  = (visualTop  - probe0.top ) / fy;
+    tip.style.left = styleLeft + 'px';
+    tip.style.top = styleTop + 'px';
+    tip.style.visibility = 'visible';
+  }
+
+  function hideBibleTooltip() {
+    if (bibleTooltipEl) bibleTooltipEl.classList.remove('show');
+    bibleActiveTip = null;
+  }
+
+  function attachBibleTooltips(root) {
+    if (!root) return;
+    const keys = [...BIBLE_BOOKS_KO].sort((a, b) => b.length - a.length);
+    const pattern = new RegExp(
+      '(' + keys.join('|') + ')\\s+(?:(\\d+):)?(\\d+)(?:-(\\d+))?' +
+      '|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?' +
+      '|(?:,\\s*)(\\d+)(?:-(\\d+))?',
+      'g'
+    );
+
+    // Skip M2D4's existing static tooltip / display / chrome elements.
+    const SKIP_SELECTOR = '.bible-tip,.ref-link,.ref-tooltip,.t-ref,.t-text,.t-note,.verse-tag,.verse-cite,.word-greek,.word-pron,.word-orig,.hero-eyebrow,.hero-citation,.hero-quote,.brand,.date,.section-head .num,.flow-step .stage,.movement .label,.diagram-label,.stage-num,.quiz-q,.quiz-opt,.quiz-feedback,.qa-q,.qa-toggle,.qa-a-inner,.commit-card,.label,.topbar,.sidepanel,.bible-tooltip,script,style';
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const p = node.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        if (p.closest(SKIP_SELECTOR)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    nodes.forEach(node => {
+      const text = node.nodeValue;
+      pattern.lastIndex = 0;
+      if (!pattern.test(text)) return;
+      pattern.lastIndex = 0;
+
+      let lastBook = null, lastChapter = null;
+      let lastIdx = 0;
+      let match;
+      let inserted = false;
+      const frag = document.createDocumentFragment();
+
+      while ((match = pattern.exec(text)) !== null) {
+        const full = match[0];
+        const book = match[1];
+        let chap = match[2];
+        const verse = match[3];
+        const endVerse = match[4];
+        const c2 = match[5], v2 = match[6], ev2 = match[7];
+        const v3 = match[8], ev3 = match[9];
+
+        let bk, ch, vs, ve, display, leadingComma = '';
+
+        if (book) {
+          if (chap === undefined) {
+            if (!BIBLE_SINGLE_CHAPTER.has(book)) continue;
+            chap = '1';
+          }
+          bk = book; ch = chap; vs = verse; ve = endVerse;
+          lastBook = book; lastChapter = chap;
+          display = full;
+        } else if (v2) {
+          if (!lastBook) continue;
+          bk = lastBook; ch = c2; vs = v2; ve = ev2;
+          lastChapter = c2;
+          const m = full.match(/^,\s*/);
+          leadingComma = m ? m[0] : '';
+          display = full.slice(leadingComma.length);
+        } else if (v3) {
+          if (!lastBook || !lastChapter) continue;
+          bk = lastBook; ch = lastChapter; vs = v3; ve = ev3;
+          const m = full.match(/^,\s*/);
+          leadingComma = m ? m[0] : '';
+          display = full.slice(leadingComma.length);
+        } else {
+          continue;
+        }
+
+        const prefix = text.slice(lastIdx, match.index) + leadingComma;
+        if (prefix) frag.appendChild(document.createTextNode(prefix));
+
+        const span = document.createElement('span');
+        span.className = 'bible-tip';
+        span.setAttribute('tabindex', '0');
+        span.setAttribute('role', 'button');
+        span.setAttribute('aria-label', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : '') + ' 본문 보기');
+        span.setAttribute('data-bref', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : ''));
+        span.setAttribute('data-book', bk);
+        span.setAttribute('data-chap', ch);
+        span.setAttribute('data-vs', vs);
+        if (ve) span.setAttribute('data-ve', ve);
+        span.textContent = display;
+        frag.appendChild(span);
+
+        lastIdx = match.index + full.length;
+        inserted = true;
+      }
+
+      if (!inserted) return;
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function initBibleTooltips() {
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const triggerOf = (target) => {
+      if (!target || !target.closest) return null;
+      if (target.closest('.bible-tooltip')) return null;
+      return target.closest('.bible-tip');
+    };
+    if (hasHover) {
+      document.body.addEventListener('mouseover', e => {
+        const t = triggerOf(e.target);
+        if (t) showBibleTooltip(t);
+      });
+      document.body.addEventListener('mouseout', e => {
+        const t = triggerOf(e.target);
+        if (!t) return;
+        const next = e.relatedTarget;
+        if (next && next.closest) {
+          if (next.closest('.bible-tooltip')) return;
+          if (next.closest('.bible-tip') === t) return;
+        }
+        hideBibleTooltip();
+      });
+      document.body.addEventListener('focusin', e => {
+        const t = triggerOf(e.target);
+        if (t) showBibleTooltip(t);
+      });
+      document.body.addEventListener('focusout', e => {
+        const t = triggerOf(e.target);
+        if (t) hideBibleTooltip();
+      });
+    }
+    document.body.addEventListener('click', e => {
+      if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+      const t = e.target.closest && e.target.closest('.bible-tip');
+      if (t) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (bibleActiveTip === t) hideBibleTooltip();
+        else { showBibleTooltip(t); bibleActiveTip = t; }
+        return;
+      }
+      hideBibleTooltip();
+    });
+    document.body.addEventListener('keydown', e => {
+      if (e.target.closest && e.target.closest('.bible-tooltip')) return;
+      const t = e.target.closest && e.target.closest('.bible-tip');
+      if (t && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        if (bibleActiveTip === t) hideBibleTooltip();
+        else { showBibleTooltip(t); bibleActiveTip = t; }
+      } else if (e.key === 'Escape') {
+        hideBibleTooltip();
+      }
+    });
+    window.addEventListener('scroll', () => {
+      if (!bibleTooltipEl || !bibleTooltipEl.classList.contains('show')) return;
+      hideBibleTooltip();
+    }, { passive: true });
+    window.addEventListener('resize', () => hideBibleTooltip());
+  }
+
+  (function bootstrapBibleTooltips() {
+    const start = () => {
+      requestAnimationFrame(() => {
+        initBibleTooltips();
+        attachBibleTooltips(document.body);
+        loadBibleXML();
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start);
+    } else {
+      start();
+    }
+  })();
+</script>
+
+</body>
+</html>
