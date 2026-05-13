@@ -3,1709 +3,1697 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>하나님의 의 — 화목 사역의 궁극적 완결</title>
+<title>고치에서 수정으로 — 하나님의 의가 되다</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Gowun+Batang:wght@400;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=GFS+Didot&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#1a1612;
-  --ink-soft:#2a2520;
-  --bone:#f4ede0;
-  --bone-2:#ebe2d2;
-  --paper:#fbf7ee;
-  --gold:#b8965a;
-  --gold-deep:#8a6d3b;
-  --gold-light:#d9bd83;
-  --blood:#6b1f1f;
-  --blood-soft:#8c3030;
-  --crystal:#c8d4d8;
-  --mist:#8a8378;
-  --rule:#d8cdb6;
-  --shadow:rgba(26,22,18,0.08);
-}
+  :root{
+    --ink:#1a1612;
+    --ink-soft:#2c2419;
+    --cocoon:#3d2f1f;
+    --sepia:#8b6f47;
+    --crimson:#7a2828;
+    --gold:#c9a86b;
+    --gold-soft:#d9bf8a;
+    --ivory:#f5f0e6;
+    --ivory-warm:#ede5d3;
+    --crystal:#a8c4d4;
+    --crystal-soft:#cfdde5;
+    --glow:#faf8f2;
+    --line:rgba(60,45,30,0.18);
+    --shadow:0 20px 60px -20px rgba(40,25,15,0.25);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans KR','Gowun Batang',serif;
+    color:var(--ink);
+    background:var(--ivory);
+    line-height:1.7;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+  /* ============ ATMOSPHERE ============ */
+  .grain{
+    position:fixed;inset:0;pointer-events:none;z-index:1;
+    opacity:.08;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
 
-body{
-  font-family:'Noto Serif KR', 'Cormorant Garamond', serif;
-  background:var(--paper);
-  color:var(--ink);
-  font-weight:400;
-  line-height:1.7;
-  letter-spacing:-0.005em;
-  overflow-x:hidden;
-}
+  /* ============ NAV ============ */
+  .top-mark{display:none;}
+  .progress{
+    position:fixed;top:var(--topbar-h);left:0;height:2px;background:var(--gold);
+    width:0%;z-index:999;transition:width .1s linear;
+  }
 
-/* paper grain */
-body::before{
-  content:"";
-  position:fixed;inset:0;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(184,150,90,0.04) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(107,31,31,0.03) 0%, transparent 50%);
-  pointer-events:none;z-index:1;
-}
-body::after{
-  content:"";
-  position:fixed;inset:0;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.05 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
-  opacity:0.18;mix-blend-mode:multiply;
-  pointer-events:none;z-index:2;
-}
+  /* ============ SECTIONS ============ */
+  section{position:relative;padding:140px 32px;z-index:2;}
+  .wrap{max-width:1100px;margin:0 auto;position:relative;}
 
-.container{
-  max-width:1180px;
-  margin:0 auto;
-  padding:0 32px;
-  position:relative;
-  z-index:3;
-}
+  /* Section labels */
+  .label{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-size:0.875rem;
+    letter-spacing:.3em;text-transform:uppercase;
+    color:var(--sepia);
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:36px;
+  }
+  .label::before{content:"";width:48px;height:1px;background:var(--sepia);}
 
-/* ============ TOP RULE ============ */
-.top-bar{
-  border-bottom:1px solid var(--rule);
-  padding:18px 0;
-  background:var(--paper);
-  position:relative;z-index:3;
-}
-.top-bar .container{
-  display:flex;justify-content:space-between;align-items:center;
-  font-family:'EB Garamond', serif;
-  font-size:13px;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--mist);
-}
-.top-bar .brand{
-  display:flex;align-items:center;gap:12px;
-}
-.top-bar .brand-mark{
-  width:22px;height:22px;
-  display:flex;align-items:center;justify-content:center;
-}
-.top-bar .brand-mark svg{width:100%;height:100%}
-.top-bar .meta{font-style:italic;letter-spacing:0.1em}
+  h2.section-title{
+    font-family:'Gowun Batang','Cormorant Garamond',serif;
+    font-weight:400;font-size:clamp(2.125rem,5vw,3.5rem);
+    line-height:1.2;color:var(--ink);
+    margin-bottom:28px;letter-spacing:-.01em;
+  }
+  h2.section-title em{font-style:normal;color:var(--crimson);font-weight:700;}
 
-/* ============ HERO ============ */
-.hero{
-  padding:90px 0 110px;
-  border-bottom:1px solid var(--rule);
-  position:relative;
-}
-.hero .container{
-  display:grid;
-  grid-template-columns:1fr 1.3fr;
-  gap:80px;
-  align-items:center;
-}
-.hero-symbol{
-  position:relative;
-  aspect-ratio:1/1;
-  display:flex;align-items:center;justify-content:center;
-}
-.hero-symbol svg{
-  width:100%;height:auto;max-width:380px;
-  filter:drop-shadow(0 8px 24px rgba(26,22,18,0.12));
-}
-.hero-text .eyebrow{
-  font-family:'EB Garamond', serif;
-  font-size:13px;letter-spacing:0.32em;text-transform:uppercase;
-  color:var(--blood);
-  margin-bottom:24px;
-  display:inline-flex;align-items:center;gap:14px;
-}
-.hero-text .eyebrow::before{
-  content:"";width:36px;height:1px;background:var(--blood);
-}
-.hero-text h1{
-  font-family:'Noto Serif KR', serif;
-  font-weight:300;
-  font-size:clamp(38px, 5.2vw, 64px);
-  line-height:1.18;
-  letter-spacing:-0.025em;
-  margin-bottom:36px;
-  color:var(--ink);
-}
-.hero-text h1 .accent{
-  color:var(--blood);
-  font-weight:500;
-  font-style:italic;
-}
-.hero-text h1 .gold{
-  color:var(--gold-deep);
-  font-weight:500;
-}
-.hero-verse{
-  border-left:2px solid var(--gold);
-  padding:8px 0 8px 22px;
-  font-size:17px;
-  color:var(--ink-soft);
-  line-height:1.85;
-  font-family:'Gowun Batang', serif;
-}
-.hero-verse cite{
-  display:block;
-  margin-top:10px;
-  font-style:normal;
-  font-family:'EB Garamond', serif;
-  font-size:13px;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--gold-deep);
-}
-.hero-label{
-  margin-top:42px;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--mist);
-  font-size:14px;
-  letter-spacing:0.08em;
-}
+  /* ============ HERO ============ */
+  .hero{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(201,168,107,0.12), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(168,196,212,0.08), transparent 60%),
+      linear-gradient(180deg, #efe8d8 0%, #ede5d3 100%);
+    padding-top:160px;padding-bottom:120px;
+    display:flex;align-items:center;
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1fr;gap:60px;}
+  .hero-eyebrow{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.125rem;color:var(--sepia);letter-spacing:.25em;
+    text-transform:uppercase;margin-bottom:32px;
+    opacity:0;animation:fadeUp 1.1s .2s forwards;
+  }
+  .hero-title{
+    font-family:'Gowun Batang',serif;font-weight:400;
+    font-size:clamp(2.875rem,7.5vw,6rem);line-height:1.05;
+    letter-spacing:-.02em;color:var(--ink);
+    max-width:980px;
+    opacity:0;animation:fadeUp 1.2s .4s forwards;
+  }
+  .hero-title .accent{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    color:var(--crimson);font-weight:500;
+  }
+  .hero-title .crystal-word{
+    background:linear-gradient(120deg, var(--gold) 0%, var(--crimson) 50%, var(--crystal) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-weight:700;
+  }
+  .hero-scripture{
+    margin-top:64px;
+    border-left:2px solid var(--gold);
+    padding:8px 0 8px 32px;
+    max-width:760px;
+    opacity:0;animation:fadeUp 1.2s .8s forwards;
+  }
+  .hero-scripture .ref{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.875rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--crimson);margin-bottom:12px;
+  }
+  .hero-scripture .ko{
+    font-family:'Gowun Batang',serif;
+    font-size:clamp(1.125rem,2vw,1.375rem);line-height:1.75;
+    color:var(--ink);margin-bottom:14px;
+  }
+  .hero-scripture .en{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:clamp(0.9375rem,1.6vw,1.125rem);
+    color:var(--sepia);line-height:1.7;
+  }
+  .scroll-cue{
+    position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
+    font-family:'Cormorant Garamond',serif;font-size:0.6875rem;
+    letter-spacing:.4em;text-transform:uppercase;color:var(--sepia);
+    opacity:0;animation:fadeUp 1.2s 1.4s forwards, bounce 2s 2.4s infinite;
+  }
+  .scroll-cue::after{
+    content:"";display:block;width:1px;height:48px;
+    background:var(--sepia);margin:14px auto 0;
+  }
 
-/* ============ SECTION COMMON ============ */
-section{position:relative;z-index:3}
-.section-head{
-  margin-bottom:60px;
-  display:flex;align-items:baseline;gap:24px;
-}
-.section-num{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  font-size:64px;
-  color:var(--gold);
-  line-height:1;font-weight:400;
-}
-.section-titles .kicker{
-  font-family:'EB Garamond', serif;
-  letter-spacing:0.3em;text-transform:uppercase;
-  font-size:12px;color:var(--mist);
-  margin-bottom:8px;
-}
-.section-titles h2{
-  font-family:'Noto Serif KR', serif;
-  font-weight:500;
-  font-size:clamp(28px, 3.4vw, 40px);
-  letter-spacing:-0.02em;
-  color:var(--ink);
-  line-height:1.25;
-}
+  /* Hero decorative cocoon→butterfly silhouettes */
+  .silhouette{
+    position:absolute;pointer-events:none;
+    opacity:.18;
+  }
+  .silhouette.cocoon{
+    top:18%;right:-2%;width:280px;height:280px;
+    transform:rotate(-12deg);
+  }
+  .silhouette.butterfly{
+    bottom:14%;left:-3%;width:320px;height:280px;
+  }
 
-/* ============ GREEK SECTION ============ */
-.greek-section{
-  padding:110px 0;
-  border-bottom:1px solid var(--rule);
-}
-.greek-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:0;
-  border-top:1px solid var(--rule);
-  border-left:1px solid var(--rule);
-}
-.greek-card{
-  padding:42px 38px;
-  border-right:1px solid var(--rule);
-  border-bottom:1px solid var(--rule);
-  background:var(--paper);
-  position:relative;
-  transition:background 0.4s ease;
-  cursor:pointer;
-}
-.greek-card:hover{
-  background:var(--bone);
-}
-.greek-card .gnum{
-  position:absolute;top:18px;right:22px;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  font-size:13px;
-  color:var(--gold-deep);letter-spacing:0.1em;
-}
-.greek-word{
-  font-family:'EB Garamond', serif;
-  font-size:54px;
-  font-weight:500;
-  color:var(--ink);
-  letter-spacing:-0.01em;
-  line-height:1;
-  margin-bottom:8px;
-}
-.greek-trans{
-  font-family:'Noto Serif KR', serif;
-  font-size:14px;
-  color:var(--mist);
-  letter-spacing:0.04em;
-  margin-bottom:22px;
-}
-.greek-meanings{
-  display:flex;gap:18px;
-  padding-bottom:18px;
-  border-bottom:1px dashed var(--rule);
-  margin-bottom:18px;
-}
-.greek-meanings > div{flex:1}
-.greek-meanings .lab{
-  font-family:'EB Garamond', serif;
-  font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold-deep);
-  margin-bottom:6px;
-}
-.greek-meanings .val{
-  font-family:'Gowun Batang', serif;
-  font-size:20px;
-  color:var(--ink);
-  font-weight:700;
-}
-.greek-meanings .val.en{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  font-weight:500;
-}
-.greek-meta{
-  font-size:14px;
-  line-height:1.65;
-  color:var(--ink-soft);
-}
-.greek-meta strong{
-  color:var(--blood);
-  font-weight:600;
-}
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(28px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes bounce{
+    0%,100%{transform:translateX(-50%) translateY(0);}
+    50%{transform:translateX(-50%) translateY(8px);}
+  }
 
-/* ============ SUMMARY ============ */
-.summary-section{
-  padding:110px 0;
-  text-align:center;
-  background:linear-gradient(180deg, var(--paper) 0%, var(--bone) 100%);
-  border-bottom:1px solid var(--rule);
-  position:relative;
-}
-.summary-section::before,
-.summary-section::after{
-  content:"";
-  position:absolute;left:50%;transform:translateX(-50%);
-  width:140px;height:1px;background:var(--gold);
-}
-.summary-section::before{top:60px}
-.summary-section::after{bottom:60px}
-.summary-kicker{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  letter-spacing:0.2em;
-  color:var(--gold-deep);
-  font-size:14px;
-  margin-bottom:32px;
-}
-.summary-line{
-  font-family:'Noto Serif KR', serif;
-  font-weight:400;
-  font-size:clamp(24px, 3vw, 36px);
-  line-height:1.55;
-  letter-spacing:-0.015em;
-  max-width:900px;margin:0 auto;
-  color:var(--ink);
-}
-.summary-line em{
-  color:var(--blood);
-  font-style:normal;
-  font-weight:600;
-  background:linear-gradient(180deg, transparent 70%, rgba(184,150,90,0.3) 70%);
-  padding:0 2px;
-}
-.summary-ref{
-  margin-top:32px;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold-deep);
-  letter-spacing:0.12em;
-}
+  /* ============ GREEK WORDS ============ */
+  .greek{
+    background:linear-gradient(180deg, #ede5d3 0%, #e6dcc4 100%);
+  }
+  .greek-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;margin-top:48px;
+  }
+  .word-card{
+    background:var(--ivory);
+    border:1px solid var(--line);
+    padding:48px 32px 40px;
+    position:relative;
+    box-shadow:var(--shadow);
+    transition:transform .5s cubic-bezier(.2,.7,.3,1), box-shadow .5s;
+  }
+  .word-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 30px 70px -25px rgba(40,25,15,0.35);
+  }
+  .word-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg, var(--gold) 0%, var(--crimson) 100%);
+  }
+  .word-card .idx{
+    position:absolute;top:18px;right:24px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.8125rem;color:var(--sepia);letter-spacing:.2em;
+  }
+  .greek-word{
+    font-family:'GFS Didot','Cormorant Garamond',serif;
+    font-size:2.875rem;color:var(--ink);
+    line-height:1.1;margin-bottom:6px;
+    letter-spacing:.01em;
+  }
+  .pronounce{
+    font-family:'Gowun Batang',serif;
+    font-size:0.9375rem;color:var(--crimson);
+    letter-spacing:.05em;margin-bottom:16px;
+    font-weight:700;
+  }
+  .word-meanings{margin-bottom:4px;}
+  .meaning-ko{
+    font-family:'Gowun Batang',serif;
+    font-size:1.0625rem;color:var(--ink);
+    font-weight:500;margin-bottom:4px;
+    line-height:1.5;
+  }
+  .meaning-en{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:0.96875rem;color:var(--cocoon);
+    letter-spacing:.02em;
+  }
+  .word-divider{height:1px;background:var(--line);margin:20px 0 18px;}
+  .word-note{
+    margin-top:24px;font-size:0.84375rem;color:var(--cocoon);
+    line-height:1.7;font-style:italic;
+    font-family:'Gowun Batang',serif;
+    border-top:1px dotted var(--line);padding-top:18px;
+  }
+  .word-core{
+    margin:20px 0 8px;
+    padding:16px 18px 14px;
+    background:linear-gradient(135deg, rgba(201,168,107,0.16), rgba(122,40,40,0.04));
+    border-left:2px solid var(--crimson);
+    position:relative;
+  }
+  .word-core .core-label{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.65625rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--crimson);margin-bottom:9px;display:block;
+    font-weight:600;
+  }
+  .word-core .core-text{
+    font-family:'Gowun Batang',serif;
+    font-size:0.90625rem;color:var(--ink);
+    line-height:1.7;font-weight:500;
+    display:block;
+  }
+  .word-core .core-text em{
+    font-style:italic;color:var(--crimson);
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    letter-spacing:.01em;
+  }
+  .word-core .core-text strong{
+    color:var(--cocoon);font-weight:700;font-style:normal;
+  }
 
-/* ============ SECTION 1 — STAGES ============ */
-.section1{
-  padding:110px 0;
-  border-bottom:1px solid var(--rule);
-}
-.stages-wrap{
-  display:grid;
-  grid-template-columns:1.1fr 1fr;
-  gap:64px;
-  align-items:start;
-}
-.stages-diagram{
-  position:sticky;top:40px;
-  aspect-ratio:1/1.1;
-  border:1px solid var(--rule);
-  background:var(--paper);
-  padding:32px;
-  display:flex;flex-direction:column;
-}
-.diagram-title{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold-deep);
-  letter-spacing:0.15em;
-  font-size:13px;
-  text-transform:uppercase;
-  margin-bottom:8px;
-}
-.diagram-subtitle{
-  font-size:13px;color:var(--mist);
-  margin-bottom:20px;
-}
-.diagram-svg{
-  flex:1;
-  display:flex;align-items:center;justify-content:center;
-}
-.diagram-svg svg{width:100%;height:100%;max-height:380px}
+  /* ============ SUMMARY ============ */
+  .summary{
+    background:linear-gradient(180deg, #e6dcc4 0%, #d9ccb0 100%);
+    padding:160px 32px;
+  }
+  .summary-headline{
+    font-family:'Gowun Batang',serif;font-weight:400;
+    font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.45;
+    color:var(--ink);max-width:900px;margin-bottom:60px;
+  }
+  .summary-headline .h{
+    background:linear-gradient(180deg, transparent 60%, rgba(201,168,107,0.45) 60%);
+    padding:0 4px;
+  }
+  .summary-headline .em{color:var(--crimson);font-weight:700;}
+  .sub-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;margin-top:48px;
+  }
+  .sub-card{
+    background:var(--ivory);padding:36px 28px;
+    border:1px solid var(--line);
+    position:relative;overflow:hidden;
+    transition:transform .4s;
+  }
+  .sub-card:hover{transform:translateY(-4px);}
+  .sub-card .num{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:3rem;color:var(--gold);line-height:1;
+    margin-bottom:18px;display:block;
+  }
+  .sub-card .icon{
+    width:54px;height:54px;margin-bottom:18px;
+  }
+  .sub-card h3{
+    font-family:'Gowun Batang',serif;font-weight:700;
+    font-size:1.1875rem;color:var(--ink);
+    line-height:1.4;margin-bottom:12px;
+  }
+  .sub-card p{font-size:0.90625rem;color:var(--cocoon);line-height:1.7;}
 
-.stage-zone{transition:all 0.4s ease;cursor:pointer}
-.stage-zone .zone-fill{transition:fill 0.4s ease, opacity 0.4s ease}
-.stage-zone .zone-stroke{transition:stroke 0.4s ease, stroke-width 0.4s ease}
-.stage-zone .zone-label{transition:fill 0.4s ease, font-weight 0.3s ease}
-.stage-zone.active .zone-fill{opacity:1}
-.stage-zone.active .zone-label{font-weight:700}
+  /* ============ TIMELINE ============ */
+  .narrative{
+    background:linear-gradient(180deg, #d9ccb0 0%, #2c2419 100%);
+    color:var(--ivory);
+    padding:160px 32px;
+  }
+  .narrative .label{color:var(--gold-soft);}
+  .narrative .label::before{background:var(--gold-soft);}
+  .narrative h2.section-title{color:var(--ivory);}
+  .narrative h2.section-title em{color:var(--gold);}
+  .narrative .lead{
+    font-family:'Gowun Batang',serif;
+    font-size:1.125rem;color:var(--ivory-warm);
+    max-width:720px;margin-bottom:80px;line-height:1.8;
+  }
+  .timeline{
+    position:relative;padding-left:48px;
+    border-left:1px solid rgba(245,240,230,0.2);
+  }
+  .stage{
+    position:relative;padding-bottom:80px;
+  }
+  .stage:last-child{padding-bottom:0;}
+  .stage::before{
+    content:"";position:absolute;left:-56px;top:8px;
+    width:16px;height:16px;border-radius:50%;
+    background:var(--cocoon);
+    border:2px solid var(--gold-soft);
+    box-shadow:0 0 0 6px rgba(58,45,30,0.4);
+  }
+  .stage.s2::before{background:var(--sepia);}
+  .stage.s3::before{background:var(--crimson);}
+  .stage.s4::before{
+    background:var(--crystal);
+    box-shadow:0 0 0 6px rgba(168,196,212,0.25), 0 0 24px rgba(168,196,212,0.5);
+  }
+  .stage-num{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.8125rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--gold-soft);margin-bottom:8px;
+  }
+  .stage-title{
+    font-family:'Gowun Batang',serif;font-weight:700;
+    font-size:1.75rem;color:var(--ivory);margin-bottom:16px;
+    line-height:1.3;
+  }
+  .stage-body{
+    font-size:0.96875rem;color:var(--ivory-warm);
+    line-height:1.85;max-width:680px;
+  }
+  .stage-body em{color:var(--gold-soft);font-style:normal;font-weight:500;}
+  .stage-quote{
+    margin-top:18px;padding:14px 20px;
+    border-left:2px solid var(--gold);
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.90625rem;color:var(--gold-soft);
+    background:rgba(245,240,230,0.04);
+  }
 
-.stages-cards{
-  display:flex;flex-direction:column;gap:22px;
-}
-.stage-card{
-  background:var(--paper);
-  border:1px solid var(--rule);
-  padding:30px 32px;
-  cursor:pointer;
-  transition:all 0.35s ease;
-  position:relative;
-}
-.stage-card:hover,.stage-card.active{
-  border-color:var(--ink);
-  background:var(--bone);
-  transform:translateX(-4px);
-  box-shadow:6px 6px 0 var(--ink);
-}
-.stage-card .stage-num{
-  position:absolute;top:24px;right:32px;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  font-size:36px;
-  color:var(--gold);
-  line-height:1;
-}
-.stage-card h3{
-  font-family:'Noto Serif KR', serif;
-  font-weight:600;
-  font-size:20px;
-  margin-bottom:6px;
-  letter-spacing:-0.01em;
-}
-.stage-card .stage-state{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--blood);
-  font-size:14px;letter-spacing:0.08em;
-  margin-bottom:14px;
-}
-.stage-card p{
-  font-size:15px;
-  color:var(--ink-soft);
-  line-height:1.75;
-}
-.stage-card .micro{
-  margin-top:14px;
-  padding-top:14px;
-  border-top:1px dashed var(--rule);
-  font-size:13px;color:var(--mist);
-  font-style:italic;
-}
-.stage-card[data-stage="3"]{
-  border-color:var(--gold);
-  background:linear-gradient(135deg, var(--paper) 0%, rgba(184,150,90,0.08) 100%);
-}
+  /* Couple illustration card */
+  .couple-card{
+    margin-top:24px;
+    background:rgba(245,240,230,0.06);
+    border:1px solid rgba(245,240,230,0.15);
+    padding:28px 30px;
+    max-width:680px;
+  }
+  .couple-card .ctitle{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.8125rem;letter-spacing:.25em;text-transform:uppercase;
+    color:var(--gold-soft);margin-bottom:14px;
+  }
+  .couple-flow{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    margin-top:14px;font-size:0.84375rem;color:var(--ivory-warm);
+  }
+  .couple-flow .step{
+    padding:8px 14px;background:rgba(245,240,230,0.08);
+    border-radius:2px;line-height:1.4;
+  }
+  .couple-flow .arrow{color:var(--gold);font-family:'Cormorant Garamond',serif;}
 
-/* ============ SECTION 2 — EXCHANGE (DARK) ============ */
-.section2{
-  background:var(--ink);
-  color:var(--bone);
-  padding:130px 0;
-  position:relative;
-  overflow:hidden;
-}
-.section2::before{
-  content:"";
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse at center, rgba(184,150,90,0.12) 0%, transparent 60%);
-  pointer-events:none;
-}
-.section2 .section-head .section-num{color:var(--gold-light)}
-.section2 .section-titles .kicker{color:var(--gold-light)}
-.section2 .section-titles h2{color:var(--bone)}
+  /* ============ TOOLTIP VERSES ============ */
+  .verses{
+    background:linear-gradient(180deg, #2c2419 0%, #1a1612 100%);
+    color:var(--ivory);
+    padding:140px 32px;
+  }
+  .verses .label{color:var(--gold-soft);}
+  .verses .label::before{background:var(--gold-soft);}
+  .verses h2.section-title{color:var(--ivory);}
+  .verses .intro{
+    color:var(--ivory-warm);font-size:1rem;
+    max-width:680px;margin-bottom:64px;line-height:1.8;
+  }
+  .verse-row{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+  }
+  .verse-chip{
+    background:rgba(245,240,230,0.04);
+    border:1px solid rgba(245,240,230,0.15);
+    padding:24px 24px 22px;
+    cursor:pointer;position:relative;
+    transition:all .4s;
+  }
+  .verse-chip:hover{
+    background:rgba(245,240,230,0.08);
+    border-color:var(--gold);
+    transform:translateY(-3px);
+  }
+  .verse-chip .vref{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.8125rem;letter-spacing:.25em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:10px;
+  }
+  .verse-chip .vname{
+    font-family:'Gowun Batang',serif;
+    font-size:1.125rem;color:var(--ivory);
+    line-height:1.45;margin-bottom:14px;
+  }
+  .verse-chip .vexpand{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.75rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold-soft);opacity:.7;
+  }
+  .verse-content{
+    max-height:0;overflow:hidden;
+    transition:max-height .6s cubic-bezier(.4,0,.2,1), margin-top .4s;
+  }
+  .verse-chip.open .verse-content{
+    max-height:400px;margin-top:18px;
+  }
+  .verse-text{
+    font-size:0.875rem;color:var(--ivory-warm);
+    line-height:1.75;padding-top:18px;
+    border-top:1px dotted rgba(245,240,230,0.2);
+  }
+  .verse-text .conn{
+    display:block;margin-top:12px;
+    font-family:'Gowun Batang',serif;
+    font-size:0.8125rem;color:var(--gold-soft);font-style:italic;
+  }
 
-.exchange-stage{
-  display:grid;
-  grid-template-columns:1fr 1.4fr 1fr;
-  gap:0;
-  align-items:center;
-  margin-top:30px;
-}
-.exchange-side{
-  padding:0 20px;
-}
-.exchange-side .side-label{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  letter-spacing:0.18em;
-  font-size:12px;
-  text-transform:uppercase;
-  margin-bottom:14px;
-}
-.exchange-side.left .side-label{color:var(--blood-soft)}
-.exchange-side.right .side-label{color:var(--gold-light)}
-.exchange-side h3{
-  font-family:'Noto Serif KR', serif;
-  font-weight:500;
-  font-size:24px;
-  line-height:1.4;
-  margin-bottom:18px;
-  color:var(--bone);
-}
-.exchange-side p{
-  font-size:15px;
-  line-height:1.85;
-  color:rgba(244,237,224,0.75);
-}
-.exchange-side .verse{
-  margin-top:18px;
-  padding-top:18px;
-  border-top:1px solid rgba(184,150,90,0.3);
-  font-size:14px;font-style:italic;
-  color:var(--gold-light);
-  font-family:'Gowun Batang', serif;
-}
-.exchange-side .verse-ref{
-  display:block;
-  margin-top:8px;
-  font-family:'EB Garamond', serif;
-  font-style:normal;
-  letter-spacing:0.15em;
-  color:var(--mist);
-  font-size:12px;text-transform:uppercase;
-}
+  /* ============ QnA ============ */
+  .qna{
+    background:linear-gradient(180deg, #1a1612 0%, #2c2419 60%, #5a4030 100%);
+    color:var(--ivory);padding:160px 32px;
+  }
+  .qna .label{color:var(--gold-soft);}
+  .qna .label::before{background:var(--gold-soft);}
+  .qna h2.section-title{color:var(--ivory);}
+  .qna-list{margin-top:48px;}
+  .qa{
+    border-top:1px solid rgba(245,240,230,0.15);
+    padding:28px 0;
+  }
+  .qa:last-child{border-bottom:1px solid rgba(245,240,230,0.15);}
+  .qa-q{
+    display:flex;justify-content:space-between;gap:24px;
+    cursor:pointer;align-items:flex-start;
+  }
+  .qa-q h3{
+    font-family:'Gowun Batang',serif;font-weight:400;
+    font-size:1.3125rem;color:var(--ivory);line-height:1.5;
+    flex:1;
+  }
+  .qa-q .toggle{
+    font-family:'Cormorant Garamond',serif;font-size:1.875rem;
+    color:var(--gold);line-height:1;transition:transform .4s;
+    flex-shrink:0;
+  }
+  .qa.open .qa-q .toggle{transform:rotate(45deg);}
+  .qa-a{
+    max-height:0;overflow:hidden;
+    transition:max-height .6s cubic-bezier(.4,0,.2,1);
+  }
+  .qa.open .qa-a{max-height:600px;}
+  .qa-a-inner{
+    padding:24px 0 0;font-size:0.9375rem;
+    color:var(--ivory-warm);line-height:1.85;
+    max-width:820px;
+  }
+  .qa-a-inner em{color:var(--gold-soft);font-style:italic;}
 
-.exchange-center{
-  display:flex;align-items:center;justify-content:center;
-  position:relative;
-  min-height:340px;
-}
-.cross-svg{
-  width:100%;max-width:280px;
-  position:relative;z-index:2;
-}
-.cross-svg svg{width:100%;height:auto}
+  /* ============ QUIZ ============ */
+  .quiz{
+    background:linear-gradient(180deg, #5a4030 0%, #a87850 50%, #d9ccb0 100%);
+    color:var(--ivory);padding:160px 32px;
+  }
+  .quiz .label{color:var(--ivory);opacity:.8;}
+  .quiz .label::before{background:var(--ivory);}
+  .quiz h2.section-title{color:var(--ivory);}
+  .quiz-intro{
+    color:var(--ivory-warm);font-size:1rem;max-width:680px;
+    margin-bottom:48px;line-height:1.8;
+  }
+  .quiz-card{
+    background:rgba(255,255,255,0.95);
+    color:var(--ink);padding:48px 40px;
+    box-shadow:0 30px 80px -20px rgba(20,15,10,0.4);
+    border-top:3px solid var(--crimson);
+  }
+  .q-counter{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.8125rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--sepia);margin-bottom:18px;
+  }
+  .q-counter strong{color:var(--crimson);font-style:normal;font-weight:700;}
+  .q-question{
+    font-family:'Gowun Batang',serif;font-weight:700;
+    font-size:1.375rem;line-height:1.5;color:var(--ink);
+    margin-bottom:32px;
+  }
+  .q-options{display:flex;flex-direction:column;gap:12px;}
+  .q-option{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 20px;
+    background:var(--ivory);
+    border:1px solid var(--line);
+    cursor:pointer;
+    transition:all .25s;
+    font-size:0.9375rem;color:var(--ink);line-height:1.5;
+    text-align:left;width:100%;font-family:inherit;
+  }
+  .q-option:hover{background:var(--ivory-warm);border-color:var(--gold);}
+  .q-option .letter{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    color:var(--crimson);font-weight:700;font-size:1.125rem;
+    flex-shrink:0;min-width:20px;
+  }
+  .q-option.correct{
+    background:#e9f0e3;border-color:#6b8e57;
+  }
+  .q-option.correct .letter{color:#4a6b3a;}
+  .q-option.wrong{
+    background:#f0e3e3;border-color:#a85050;
+  }
+  .q-option.wrong .letter{color:#7a3030;}
+  .q-option.disabled{cursor:default;pointer-events:none;}
+  .q-feedback{
+    margin-top:24px;padding:18px 22px;
+    background:var(--ivory-warm);
+    border-left:3px solid var(--gold);
+    font-size:0.90625rem;color:var(--cocoon);line-height:1.7;
+    display:none;
+  }
+  .q-feedback.show{display:block;animation:fadeUp .4s;}
+  .q-controls{
+    margin-top:32px;display:flex;justify-content:space-between;
+    align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .q-btn{
+    background:var(--ink);color:var(--ivory);
+    border:none;padding:14px 32px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.9375rem;letter-spacing:.2em;text-transform:uppercase;
+    cursor:pointer;transition:all .25s;
+  }
+  .q-btn:hover{background:var(--crimson);}
+  .q-btn:disabled{opacity:.3;cursor:not-allowed;}
+  .q-progress{
+    display:flex;gap:6px;flex:1;justify-content:center;
+  }
+  .q-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--line);
+  }
+  .q-dot.active{background:var(--crimson);}
+  .q-dot.done{background:var(--gold);}
 
-/* particles */
-.particle{
-  position:absolute;
-  width:6px;height:6px;
-  border-radius:50%;
-  pointer-events:none;
-}
-@keyframes flowL{
-  0%{transform:translateX(-160px) translateY(0);opacity:0}
-  20%{opacity:1}
-  100%{transform:translateX(0) translateY(0);opacity:0}
-}
-@keyframes flowR{
-  0%{transform:translateX(0) translateY(0);opacity:0}
-  20%{opacity:1}
-  100%{transform:translateX(160px) translateY(0);opacity:0}
-}
-.p-sin{
-  background:var(--blood-soft);
-  box-shadow:0 0 12px var(--blood-soft);
-  animation:flowL 3s ease-in-out infinite;
-}
-.p-righteous{
-  background:var(--gold-light);
-  box-shadow:0 0 14px var(--gold);
-  animation:flowR 3s ease-in-out infinite;
-}
+  .quiz-result{display:none;text-align:center;padding:32px 0;}
+  .quiz-result.show{display:block;animation:fadeUp .6s;}
+  .quiz-result .score{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:6rem;color:var(--crimson);line-height:1;
+    margin:24px 0;
+  }
+  .quiz-result .score span{
+    font-size:2rem;color:var(--sepia);font-style:normal;
+  }
+  .quiz-result h3{
+    font-family:'Gowun Batang',serif;font-size:1.5rem;
+    color:var(--ink);margin-bottom:14px;
+  }
+  .quiz-result p{
+    color:var(--cocoon);font-size:0.9375rem;line-height:1.8;
+    max-width:520px;margin:0 auto 28px;
+  }
 
-.exchange-bottom{
-  margin-top:60px;
-  padding-top:40px;
-  border-top:1px solid rgba(184,150,90,0.3);
-  text-align:center;
-  font-family:'Gowun Batang', serif;
-  font-style:italic;
-  color:var(--gold-light);
-  font-size:18px;
-  line-height:1.7;
-}
-.exchange-bottom .ref{
-  display:block;margin-top:8px;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  letter-spacing:0.15em;
-  color:var(--mist);
-  font-size:13px;
-}
+  /* ============ PRAYER ============ */
+  .prayer{
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,107,0.18), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 50% 80%, rgba(168,196,212,0.15), transparent 70%),
+      linear-gradient(180deg, #d9ccb0 0%, #f5f0e6 40%, #faf8f2 100%);
+    padding:180px 32px 200px;
+    text-align:center;
+    overflow:hidden;position:relative;
+  }
+  .prayer .label{justify-content:center;color:var(--gold);}
+  .prayer .label::before, .prayer .label::after{
+    content:"";width:48px;height:1px;background:var(--gold);
+  }
+  .prayer .label::after{margin-left:0;}
+  .prayer-text{
+    font-family:'Gowun Batang',serif;font-weight:400;
+    font-size:clamp(1.375rem,3vw,2rem);line-height:1.7;
+    color:var(--ink);max-width:760px;margin:48px auto 0;
+    letter-spacing:-.005em;
+  }
+  .prayer-text .em{color:var(--crimson);font-weight:700;}
+  .prayer-text .crystal{
+    background:linear-gradient(120deg, var(--gold) 0%, var(--crystal) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-weight:700;
+  }
+  .prayer-amen{
+    margin-top:60px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.125rem;letter-spacing:.4em;text-transform:uppercase;
+    color:var(--crimson);
+  }
+  .prayer-star{
+    margin:48px auto 0;width:24px;height:24px;
+    color:var(--gold);
+  }
 
-/* ============ SECTION 3 — A vs B ============ */
-.section3{
-  padding:110px 0;
-  border-bottom:1px solid var(--rule);
-}
-.ab-grid{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  gap:0;
-  position:relative;
-}
-.ab-col{
-  padding:40px 44px;
-  background:var(--paper);
-  border:1px solid var(--rule);
-}
-.ab-col.a{border-right:none}
-.ab-col.b{
-  background:linear-gradient(135deg, var(--paper) 0%, rgba(184,150,90,0.06) 100%);
-}
-.ab-divider{
-  display:flex;align-items:center;justify-content:center;
-  position:relative;
-  width:80px;
-}
-.ab-divider .vline{
-  position:absolute;top:20px;bottom:20px;left:50%;
-  width:1px;background:var(--rule);
-}
-.ab-divider .vs{
-  background:var(--paper);
-  border:1px solid var(--gold);
-  width:54px;height:54px;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold-deep);
-  font-size:18px;
-  z-index:2;
-  position:relative;
-}
-.ab-col .ab-tag{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  font-size:12px;
-  margin-bottom:14px;
-}
-.ab-col.a .ab-tag{color:var(--blood)}
-.ab-col.b .ab-tag{color:var(--gold-deep)}
-.ab-col h3{
-  font-family:'Noto Serif KR', serif;
-  font-weight:600;
-  font-size:24px;
-  margin-bottom:24px;
-  letter-spacing:-0.015em;
-}
-.ab-rows{
-  display:flex;flex-direction:column;gap:18px;
-  margin-bottom:24px;
-}
-.ab-row{
-  display:flex;align-items:baseline;gap:12px;
-  font-size:15px;
-  padding-bottom:14px;
-  border-bottom:1px dashed var(--rule);
-}
-.ab-row:last-child{border-bottom:none}
-.ab-row .ab-key{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--mist);
-  min-width:80px;
-  letter-spacing:0.06em;
-}
-.ab-row .ab-val{
-  flex:1;
-  color:var(--ink);
-  font-weight:500;
-}
-.ab-col .ab-bottom{
-  padding-top:18px;
-  border-top:1px solid var(--rule);
-  font-size:15px;
-  color:var(--ink-soft);
-  line-height:1.7;
-}
-.ab-keystone{
-  margin-top:50px;
-  padding:42px 60px;
-  background:var(--ink);
-  color:var(--bone);
-  text-align:center;
-  position:relative;
-}
-.ab-keystone::before,
-.ab-keystone::after{
-  content:"";
-  position:absolute;
-  width:40px;height:40px;
-  border:1px solid var(--gold);
-}
-.ab-keystone::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
-.ab-keystone::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
-.ab-keystone .kicker{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold-light);
-  letter-spacing:0.2em;
-  font-size:12px;
-  text-transform:uppercase;
-  margin-bottom:14px;
-}
-.ab-keystone .keystone-line{
-  font-family:'Noto Serif KR', serif;
-  font-weight:400;
-  font-size:clamp(20px,2.4vw,28px);
-  line-height:1.6;
-  color:var(--bone);
-}
-.ab-keystone .keystone-line strong{
-  color:var(--gold-light);
-  font-weight:600;
-}
-.ab-keystone .keystone-line .greek{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold-light);
-}
+  /* Footer */
+  footer{
+    background:var(--ivory);
+    padding:48px 32px;text-align:center;
+    border-top:1px solid var(--line);
+  }
+  footer .fmark{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:0.8125rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--sepia);
+  }
 
-/* ============ DETAILS / Q&A ============ */
-.details-section{
-  padding:110px 0;
-  border-bottom:1px solid var(--rule);
-}
-.qa-list{
-  display:flex;flex-direction:column;
-  border-top:1px solid var(--ink);
-}
-.qa-item{
-  border-bottom:1px solid var(--rule);
-}
-.qa-q{
-  display:flex;align-items:center;gap:24px;
-  padding:30px 8px;
-  cursor:pointer;
-  transition:background 0.3s ease;
-  user-select:none;
-}
-.qa-q:hover{background:var(--bone)}
-.qa-q .qnum{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold);
-  font-size:22px;
-  min-width:36px;
-}
-.qa-q .qtext{
-  flex:1;
-  font-family:'Noto Serif KR', serif;
-  font-weight:500;
-  font-size:19px;
-  letter-spacing:-0.01em;
-  color:var(--ink);
-}
-.qa-q .qarrow{
-  width:28px;height:28px;
-  display:flex;align-items:center;justify-content:center;
-  transition:transform 0.4s ease;
-  color:var(--gold-deep);
-}
-.qa-item.open .qa-q .qarrow{transform:rotate(45deg)}
-.qa-item.open .qa-q{background:var(--bone)}
-.qa-a{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height 0.5s ease;
-  background:var(--bone);
-}
-.qa-a-inner{
-  padding:0 8px 32px 68px;
-  font-family:'Gowun Batang', serif;
-  font-size:16px;
-  line-height:1.9;
-  color:var(--ink-soft);
-}
-.qa-a-inner p+p{margin-top:12px}
-.qa-a-inner .verse-tip{
-  color:var(--blood);
-  font-weight:600;
-  cursor:help;
-  border-bottom:1px dotted var(--blood);
-  position:relative;
-}
-.qa-a-inner .verse-tip:hover .tip-content{
-  opacity:1;visibility:visible;transform:translateY(0);
-}
-.tip-content{
-  position:absolute;
-  bottom:calc(100% + 10px);left:50%;transform:translate(-50%, 6px);
-  background:var(--ink);
-  color:var(--bone);
-  padding:14px 18px;
-  width:300px;
-  font-family:'Gowun Batang', serif;
-  font-size:13px;
-  line-height:1.65;
-  letter-spacing:-0.005em;
-  font-weight:400;
-  border:1px solid var(--gold);
-  z-index:50;
-  opacity:0;visibility:hidden;
-  transition:all 0.3s ease;
-  pointer-events:none;
-  text-align:left;
-}
-.tip-content::after{
-  content:"";
-  position:absolute;top:100%;left:50%;
-  transform:translateX(-50%);
-  border:6px solid transparent;
-  border-top-color:var(--ink);
-}
-.tip-content .tip-ref{
-  display:block;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  letter-spacing:0.12em;
-  color:var(--gold-light);
-  font-size:11px;
-  text-transform:uppercase;
-  margin-bottom:6px;
-}
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.2,.7,.3,1), transform 1s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-delay-1{transition-delay:.1s;}
+  .reveal-delay-2{transition-delay:.2s;}
+  .reveal-delay-3{transition-delay:.3s;}
+  .reveal-delay-4{transition-delay:.4s;}
 
-/* ============ QUIZ ============ */
-.quiz-section{
-  padding:110px 0;
-  background:var(--bone);
-  border-bottom:1px solid var(--rule);
-}
-.quiz-list{
-  display:flex;flex-direction:column;gap:36px;
-}
-.quiz-item{
-  background:var(--paper);
-  border:1px solid var(--rule);
-  padding:36px 40px;
-  position:relative;
-}
-.quiz-item .qnum{
-  position:absolute;top:24px;right:36px;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold);
-  font-size:28px;
-}
-.quiz-q{
-  font-family:'Noto Serif KR', serif;
-  font-weight:600;
-  font-size:18px;
-  margin-bottom:22px;
-  letter-spacing:-0.01em;
-  padding-right:50px;
-  line-height:1.5;
-}
-.quiz-options{
-  display:flex;flex-direction:column;gap:10px;
-  margin-bottom:18px;
-}
-.quiz-option{
-  padding:14px 18px;
-  border:1px solid var(--rule);
-  background:var(--paper);
-  font-family:'Gowun Batang', serif;
-  font-size:15px;
-  cursor:pointer;
-  transition:all 0.25s ease;
-  display:flex;align-items:center;gap:14px;
-  text-align:left;
-  color:var(--ink);
-}
-.quiz-option:hover{
-  background:var(--bone);
-  border-color:var(--ink);
-}
-.quiz-option .opt-marker{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold-deep);
-  min-width:20px;
-}
-.quiz-option.correct{
-  background:rgba(184,150,90,0.15);
-  border-color:var(--gold);
-  color:var(--ink);
-}
-.quiz-option.wrong{
-  background:rgba(107,31,31,0.08);
-  border-color:var(--blood);
-  color:var(--blood);
-}
-.quiz-option.disabled{cursor:default;pointer-events:none;opacity:0.65}
-.quiz-option.correct.disabled,.quiz-option.wrong.disabled{opacity:1}
-.quiz-explain{
-  margin-top:12px;
-  padding:18px 22px;
-  background:var(--ink);
-  color:var(--bone);
-  font-family:'Gowun Batang', serif;
-  font-size:14px;line-height:1.75;
-  border-left:3px solid var(--gold);
-  display:none;
-}
-.quiz-explain.show{display:block;animation:fadeIn 0.4s ease}
-.quiz-explain .ex-label{
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  color:var(--gold-light);
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  font-size:11px;margin-bottom:8px;
-  display:block;
-}
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(-6px)}
-  to{opacity:1;transform:translateY(0)}
-}
+  /* ═════════════════════════════════════════════════════════
+     PORTED FEATURES — Topbar, Side Panel, Bible Verse Tooltip
+     (themed to M2D3 ivory/sepia/gold palette)
+     ═════════════════════════════════════════════════════════ */
+  :root{ --topbar-h: 44px; --font-scale: 1; }
+  html{ font-size: calc(16px * var(--font-scale)); }
+  body{ padding-top: var(--topbar-h); }
 
-/* ============ PRAYER ============ */
-.prayer-section{
-  padding:130px 0 110px;
-  background:var(--ink);
-  color:var(--bone);
-  position:relative;
-  overflow:hidden;
-}
-.prayer-section::before{
-  content:"";
-  position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(184,150,90,0.15) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(107,31,31,0.1) 0%, transparent 40%);
-}
-.prayer-section .container{position:relative;z-index:3}
-.prayer-section .section-head .section-num{color:var(--gold-light)}
-.prayer-section .section-titles .kicker{color:var(--gold-light)}
-.prayer-section .section-titles h2{color:var(--bone)}
+  /* Top bar */
+  .topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:rgba(26,22,18,0.88);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(201,168,107,0.30);display:flex;align-items:center;padding:0 10px;z-index:1000;gap:4px}
+  .topbar-btn{flex-shrink:0;width:34px;height:34px;border:none;background:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ivory);opacity:0.85;transition:background .15s, opacity .15s}
+  .topbar-btn:hover{background:rgba(201,168,107,0.18);opacity:1;color:var(--gold-soft)}
+  .topbar-title{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:500;letter-spacing:0.12em;color:var(--gold);scrollbar-width:none;-ms-overflow-style:none;padding:0 6px;text-transform:uppercase}
+  .topbar-title::-webkit-scrollbar{display:none}
+  .font-controls{display:flex;align-items:center;gap:2px;border:1px solid rgba(201,168,107,0.30);border-radius:4px;padding:2px;margin-left:4px}
+  .font-ctrl-btn{width:26px;height:26px;border:none;background:transparent;color:var(--ivory);font-size:14px;cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center}
+  .font-ctrl-btn:hover{background:rgba(201,168,107,0.22);color:var(--gold-soft)}
 
-.prayer-body{
-  max-width:780px;
-  margin:0 auto;
-  text-align:center;
-}
-.prayer-mark{
-  margin:0 auto 40px;
-  width:60px;height:60px;
-  display:flex;align-items:center;justify-content:center;
-}
-.prayer-mark svg{width:100%;height:100%}
-.prayer-text{
-  font-family:'Gowun Batang', serif;
-  font-size:19px;
-  line-height:2.1;
-  color:rgba(244,237,224,0.92);
-  letter-spacing:-0.005em;
-  font-weight:400;
-}
-.prayer-text p+p{margin-top:22px}
-.prayer-text em{
-  color:var(--gold-light);
-  font-style:italic;
-  font-weight:500;
-}
-.prayer-amen{
-  margin-top:50px;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  letter-spacing:0.3em;
-  color:var(--gold);
-  font-size:18px;
-  display:flex;align-items:center;justify-content:center;gap:20px;
-}
-.prayer-amen::before,
-.prayer-amen::after{
-  content:"";
-  width:60px;height:1px;background:var(--gold);
-}
+  /* Overlay & Side panel */
+  .overlay{position:fixed;inset:0;background:rgba(26,22,18,0.55);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:1001;opacity:0;pointer-events:none;transition:opacity .25s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .sidepanel{position:fixed;top:0;left:0;bottom:0;width:300px;max-width:82vw;background:linear-gradient(180deg, #2c2419 0%, #1a1612 100%);z-index:1002;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:20px 0;box-shadow:4px 0 32px rgba(0,0,0,.5);font-family:'Noto Sans KR',sans-serif;border-right:1px solid rgba(201,168,107,0.22)}
+  .sidepanel.open{transform:translateX(0)}
+  .sidepanel-header{padding:0 22px 16px;border-bottom:1px solid rgba(201,168,107,0.20);margin-bottom:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px}
+  .sidepanel-close{margin-left:auto;width:28px;height:28px;border:none;background:transparent;border-radius:3px;cursor:pointer;font-size:14px;color:var(--ivory);opacity:0.75;display:flex;align-items:center;justify-content:center}
+  .sidepanel-close:hover{background:rgba(201,168,107,0.18);color:var(--gold-soft);opacity:1}
+  .nav-item{display:block;padding:10px 22px;font-size:13px;color:var(--ivory-warm);text-decoration:none;cursor:pointer;transition:background .15s,color .15s;font-weight:400;letter-spacing:-0.005em;opacity:0.88}
+  .nav-item:hover{background:rgba(201,168,107,0.10);color:var(--gold-soft);opacity:1}
+  .nav-item.sub{padding-left:38px;font-size:12.5px;font-weight:300;opacity:0.70}
+  .nav-divider{height:1px;background:rgba(201,168,107,0.18);margin:10px 22px}
+  .nav-home{display:flex;align-items:center;gap:8px;color:var(--gold);opacity:0.95}
+  .nav-home-icon{flex-shrink:0;color:var(--gold)}
 
-/* ============ FOOTER ============ */
-.foot{
-  background:var(--ink);
-  color:var(--mist);
-  padding:38px 0;
-  font-family:'EB Garamond', serif;
-  font-style:italic;
-  letter-spacing:0.15em;
-  text-align:center;
-  font-size:13px;
-  border-top:1px solid rgba(184,150,90,0.2);
-}
+  /* Inline verse-link buttons (auto-upgraded to vref-link) */
+  .verse-link, .vref-link{
+    color:var(--crimson);
+    background:rgba(201,168,107,0.12);
+    border:none;
+    padding:1px 6px;
+    border-radius:3px;
+    font-family:inherit;font-size:inherit;font-weight:600;
+    cursor:pointer;text-decoration:none;display:inline;
+    transition:color .15s, background .15s;
+  }
+  .verse-link:hover, .vref-link:hover{color:var(--ink);background:rgba(201,168,107,0.28);}
+  .verse-link:active, .vref-link:active{color:var(--ink);background:rgba(201,168,107,0.40);}
+  .verse-link:focus, .vref-link:focus{outline:none;}
+  .verse-link:focus-visible, .vref-link:focus-visible{outline:1px dashed var(--gold);outline-offset:2px;}
+  /* dark-background variant */
+  .narrative .verse-link, .narrative .vref-link,
+  .verses .verse-link, .verses .vref-link,
+  .qna .verse-link, .qna .vref-link{
+    color:var(--gold);background:rgba(201,168,107,0.15);
+  }
+  .narrative .verse-link:hover, .narrative .vref-link:hover,
+  .verses .verse-link:hover, .verses .vref-link:hover,
+  .qna .verse-link:hover, .qna .vref-link:hover{
+    color:var(--gold-soft);background:rgba(201,168,107,0.30);
+  }
 
-/* ============ RESPONSIVE ============ */
-@media (max-width:900px){
-  .container{padding:0 22px}
-  .hero{padding:60px 0 70px}
-  .hero .container{grid-template-columns:1fr;gap:40px}
-  .hero-symbol{max-width:280px;margin:0 auto}
-  .greek-grid{grid-template-columns:1fr}
-  .stages-wrap{grid-template-columns:1fr;gap:36px}
-  .stages-diagram{position:static;aspect-ratio:auto;min-height:360px}
-  .exchange-stage{grid-template-columns:1fr;gap:40px}
-  .exchange-center{order:-1;min-height:240px}
-  .ab-grid{grid-template-columns:1fr;gap:0}
-  .ab-col.a{border-right:1px solid var(--rule);border-bottom:none}
-  .ab-divider{width:100%;height:60px;flex-direction:row}
-  .ab-divider .vline{top:50%;bottom:auto;left:20px;right:20px;width:auto;height:1px}
-  .section-head{flex-direction:column;gap:8px;align-items:flex-start}
-  .section-num{font-size:48px}
-  .quiz-item{padding:28px 24px}
-  .qa-q .qtext{font-size:17px}
-  .greek-card{padding:32px 26px}
-  .greek-word{font-size:42px}
-  .ab-keystone{padding:32px 24px}
-}
+  /* Bible verse tooltip */
+  #vref-tt-backdrop{
+    position:fixed;inset:0;
+    background:rgba(26,22,18,0.55);
+    z-index:1490;display:none;opacity:0;
+    transition:opacity .2s;
+  }
+  #vref-tt-backdrop[data-show="1"]{opacity:1;}
+  #vref-tooltip{
+    position:absolute;z-index:1500;
+    max-width:380px;
+    background:var(--ivory);
+    border:1px solid var(--gold);
+    border-radius:6px;
+    padding:14px 16px;
+    box-shadow:0 16px 48px rgba(40,25,15,0.35);
+    opacity:0;pointer-events:none;
+    transition:opacity .18s;
+    font-family:'Gowun Batang',serif;
+  }
+  #vref-tooltip[data-show="1"]{opacity:1;pointer-events:auto;}
+  #vref-tooltip::before{
+    content:"";position:absolute;top:-7px;left:50%;transform:translateX(-50%) rotate(45deg);
+    width:12px;height:12px;background:var(--ivory);
+    border-left:1px solid var(--gold);border-top:1px solid var(--gold);
+  }
+  .vref-tt-handle{display:none;}
+  .vref-tt-close{display:none;}
+  .vref-tt-book{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--crimson);
+    border-bottom:1px dotted var(--line);
+    padding-bottom:8px;margin-bottom:10px;
+    font-weight:600;
+  }
+  .vref-tt-body{
+    font-family:'Gowun Batang',serif;
+    font-size:14.5px;line-height:1.78;color:var(--ink);
+  }
+  .vref-tt-verse{margin-bottom:8px;}
+  .vref-tt-verse:last-child{margin-bottom:0;}
+  .vref-tt-vnum{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:11px;color:var(--sepia);margin-right:6px;letter-spacing:.04em;
+  }
+  .vref-tt-empty{
+    font-style:italic;color:var(--sepia);
+    font-family:'Cormorant Garamond',serif;
+  }
+
+  /* Mobile: bottom sheet tooltip */
+  @media (max-width:768px){
+    .verse-link, .vref-link{cursor:pointer;}
+    #vref-tt-backdrop{display:block;}
+    #vref-tooltip{
+      position:fixed;
+      left:0 !important;right:0;
+      top:auto !important;bottom:0;
+      max-width:100%;width:100%;
+      max-height:75vh;
+      border-radius:16px 16px 0 0;
+      transform:translateY(100%);
+      transition:transform .3s cubic-bezier(.4,0,.2,1);
+      opacity:1;
+      padding:20px 22px 28px;
+      overflow-y:auto;
+      box-shadow:0 -10px 36px rgba(40,25,15,0.45);
+    }
+    #vref-tooltip::before{display:none;}
+    #vref-tooltip[data-show="1"]{transform:translateY(0);}
+    .vref-tt-handle{
+      display:block;
+      width:40px;height:4px;
+      background:var(--line);
+      border-radius:2px;
+      margin:0 auto 14px;
+    }
+    .vref-tt-close{
+      display:flex;align-items:center;justify-content:center;
+      position:absolute;top:16px;right:16px;
+      width:32px;height:32px;
+      border:1px solid var(--line);
+      background:transparent;border-radius:50%;
+      color:var(--ink);cursor:pointer;font-size:18px;
+      line-height:1;
+    }
+    .vref-tt-close:hover{background:rgba(201,168,107,0.12);}
+    .vref-tt-close:active{background:rgba(201,168,107,0.22);}
+    .vref-tt-book{font-size:12.5px;padding-right:48px;}
+    .vref-tt-body{font-size:15.5px;line-height:1.88;}
+  }
+
+  /* Responsive */
+  @media(max-width:640px){
+    section{padding:100px 22px;}
+    .top-mark{left:18px;top:18px;font-size:11px;}
+    .silhouette{display:none;}
+    .timeline{padding-left:32px;}
+    .stage::before{left:-40px;}
+    .quiz-card{padding:32px 22px;}
+    .q-controls{flex-direction:column;}
+    .q-progress{order:-1;}
+  }
 </style>
 </head>
 <body>
 
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+
 <!-- TOP BAR -->
-<div class="top-bar">
-  <div class="container">
-    <div class="brand">
-      <div class="brand-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M12 2 L12 22 M5 9 L19 9 M8 16 L16 16" />
-        </svg>
-      </div>
-      <span>오늘의 묵상 · 화목의 사역</span>
-    </div>
-    <div class="meta">고린도후서 5:21</div>
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="topbar-title">고치에서 수정으로 — 하나님의 의가 되다</div>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
   </div>
 </div>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-symbol">
-      <!-- two figures exchanging across a cross -->
-      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#d9bd83"/>
-            <stop offset="100%" stop-color="#8a6d3b"/>
-          </linearGradient>
-          <linearGradient id="bloodGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#8c3030"/>
-            <stop offset="100%" stop-color="#6b1f1f"/>
-          </linearGradient>
-          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1"/>
-          </filter>
-        </defs>
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
 
-        <!-- decorative outer circle -->
-        <circle cx="200" cy="200" r="180" fill="none" stroke="#d8cdb6" stroke-width="0.6" stroke-dasharray="2 4"/>
-        <circle cx="200" cy="200" r="155" fill="none" stroke="#b8965a" stroke-width="0.4" opacity="0.5"/>
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="nav-item nav-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="nav-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('scene-hero')" style="color:var(--gold-soft);font-weight:500;">✦ 오늘의 구절 — 고후 5:21</a>
+  <a class="nav-item" onclick="goTo('scene-greek')">Ⅰ. 헬라어 원문이 말하는 것</a>
+  <a class="nav-item" onclick="goTo('scene-summary')">Ⅱ. 핵심 메시지</a>
+  <a class="nav-item" onclick="goTo('scene-narrative')">Ⅲ. 네 단계의 변형</a>
+  <a class="nav-item" onclick="goTo('scene-verses')">Ⅳ. 함께 읽는 성경 구절</a>
+  <a class="nav-item" onclick="goTo('scene-qna')">Ⅴ. 심화 Q&amp;A</a>
+  <a class="nav-item" onclick="goTo('scene-quiz')">Ⅵ. 오늘의 퀴즈</a>
+  <a class="nav-item" onclick="goTo('scene-prayer')">Ⅶ. 오늘의 기도</a>
+</div>
 
-        <!-- central cross -->
-        <g transform="translate(200 200)">
-          <rect x="-4" y="-100" width="8" height="200" fill="url(#goldGrad)"/>
-          <rect x="-45" y="-50" width="90" height="8" fill="url(#goldGrad)"/>
-          <!-- glow -->
-          <rect x="-4" y="-100" width="8" height="200" fill="none" stroke="#b8965a" stroke-width="0.5" opacity="0.4"/>
-        </g>
+<!-- ================== HERO ================== -->
+<section class="hero" id="scene-hero">
+  <!-- decorative SVG silhouettes -->
+  <svg class="silhouette cocoon" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="100" cy="100" rx="55" ry="85" fill="#3d2f1f"/>
+    <path d="M70 50 Q100 30 130 50 M68 80 Q100 70 132 80 M65 110 Q100 100 135 110 M68 140 Q100 130 132 140 M72 165 Q100 155 128 165" stroke="#1a1612" stroke-width="2" fill="none" opacity=".5"/>
+  </svg>
+  <svg class="silhouette butterfly" viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M160 140 Q90 60 50 100 Q20 150 90 180 Q140 190 160 140 Z" fill="#c9a86b" opacity=".6"/>
+    <path d="M160 140 Q230 60 270 100 Q300 150 230 180 Q180 190 160 140 Z" fill="#a8c4d4" opacity=".6"/>
+    <path d="M160 140 Q100 200 70 240 Q120 245 160 200 Q200 245 250 240 Q220 200 160 140 Z" fill="#7a2828" opacity=".4"/>
+    <ellipse cx="160" cy="150" rx="6" ry="40" fill="#1a1612"/>
+  </svg>
 
-        <!-- left figure (sinner) -->
-        <g transform="translate(85 215)" stroke="#6b1f1f" stroke-width="1.2" fill="none">
-          <circle cx="0" cy="-30" r="14"/>
-          <path d="M-18 0 Q0 -8 18 0 L18 50 L-18 50 Z"/>
-          <line x1="0" y1="-16" x2="0" y2="-44" stroke-dasharray="1 2" opacity="0.5"/>
-        </g>
-        <text x="85" y="295" text-anchor="middle" font-family="EB Garamond" font-style="italic" font-size="13" fill="#6b1f1f" letter-spacing="2">SINNER</text>
+  <div class="wrap">
+    <div class="hero-eyebrow">From Cocoon to Crystal</div>
+    <h1 class="hero-title">
+      우리는 의롭다 하심을<br/>
+      <span class="accent">받았을 뿐 아니라,</span><br/>
+      <span class="crystal-word">하나님의 의가 됩니다.</span>
+    </h1>
 
-        <!-- right figure (made righteous) -->
-        <g transform="translate(315 215)" stroke="#8a6d3b" stroke-width="1.2" fill="none">
-          <circle cx="0" cy="-30" r="14"/>
-          <path d="M-18 0 Q0 -8 18 0 L18 50 L-18 50 Z"/>
-          <!-- halo -->
-          <circle cx="0" cy="-30" r="20" stroke="#d9bd83" stroke-width="0.5" opacity="0.7"/>
-        </g>
-        <text x="315" y="295" text-anchor="middle" font-family="EB Garamond" font-style="italic" font-size="13" fill="#8a6d3b" letter-spacing="2">RIGHTEOUS</text>
-
-        <!-- arrows -->
-        <g stroke="#6b1f1f" stroke-width="1" fill="none" opacity="0.7">
-          <path d="M105 180 Q150 150 195 180" stroke-dasharray="2 3"/>
-          <polygon points="195,180 188,175 188,184" fill="#6b1f1f"/>
-        </g>
-        <text x="150" y="135" font-family="EB Garamond" font-style="italic" font-size="11" fill="#6b1f1f" letter-spacing="2">SIN →</text>
-
-        <g stroke="#8a6d3b" stroke-width="1" fill="none" opacity="0.85">
-          <path d="M205 230 Q250 260 295 230" stroke-dasharray="2 3"/>
-          <polygon points="295,230 288,235 288,226" fill="#8a6d3b"/>
-        </g>
-        <text x="225" y="285" font-family="EB Garamond" font-style="italic" font-size="11" fill="#8a6d3b" letter-spacing="2">← RIGHTEOUSNESS</text>
-
-        <!-- top label -->
-        <text x="200" y="58" text-anchor="middle" font-family="EB Garamond" font-style="italic" font-size="12" fill="#8a8378" letter-spacing="4">— THE GREAT EXCHANGE —</text>
-
-      </svg>
-    </div>
-
-    <div class="hero-text">
-      <div class="eyebrow">화목의 사역 · 궁극적 완결</div>
-      <h1>
-        <span class="accent">죄</span> 없으신 그분이<br>
-        <span class="accent">죄</span>가 되시어<br>
-        죄인이 <span class="gold">하나님의 의</span>가 되다
-      </h1>
-      <div class="hero-verse">
-        하나님께서 죄를 알지도 못하신 분을 우리 대신 죄가 되게 하신 것은 우리가 그분 안에서 하나님의 의가 되도록 하시려는 것입니다.
-        <cite>고린도후서 5:21</cite>
-      </div>
-      <div class="hero-label">— 두 번의 교환, 한 번의 완결</div>
+    <div class="hero-scripture">
+      <div class="ref">2 Corinthians 5:21 · 고린도후서</div>
+      <div class="ko">하나님께서 죄를 알지도 못하신 분을 우리 대신 죄가 되게 하신 것은 우리가 그분 안에서 <strong style="color:var(--crimson);">하나님의 의</strong>가 되도록 하시려는 것입니다.</div>
+      <div class="en">Him who did not know sin He made sin on our behalf that we might become the righteousness of God in Him.</div>
     </div>
   </div>
+
+  <div class="scroll-cue">Scroll</div>
 </section>
 
-<!-- ============ GREEK SECTION ============ -->
-<section class="greek-section">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-num">I.</div>
-      <div class="section-titles">
-        <div class="kicker">Original Words · 원어 분석</div>
-        <h2>네 개의 열쇠말, 본문의 결을 열다</h2>
-      </div>
-    </div>
+<!-- ================== GREEK WORDS ================== -->
+<section class="greek" id="scene-greek">
+  <div class="wrap">
+    <div class="label reveal">Ⅰ &nbsp;·&nbsp; Original Words</div>
+    <h2 class="section-title reveal reveal-delay-1">헬라어 원문이 <em>말하는 것</em></h2>
+    <p class="reveal reveal-delay-2" style="max-width:680px;color:var(--cocoon);font-size:1rem;line-height:1.85;">고후 5:21의 핵심 단어들을 그 본래의 결을 따라 읽어봅니다. 한글 발음, 한국어 의미, 영어 번역을 함께 대조하여 깊이를 드러냅니다.</p>
 
     <div class="greek-grid">
-
-      <div class="greek-card">
-        <span class="gnum">01</span>
-        <div class="greek-word">ἁμαρτία</div>
-        <div class="greek-trans">하마르티아</div>
-        <div class="greek-meanings">
-          <div>
-            <div class="lab">한국어</div>
-            <div class="val">죄</div>
-          </div>
-          <div>
-            <div class="lab">English</div>
-            <div class="val en">sin</div>
-          </div>
-        </div>
-        <div class="greek-meta">
-          단순한 행위가 아닌, <strong>본성·상태로서의 죄</strong>. 본문에서 하나님은 그리스도를 죄를 짊어진 분으로만 여기신 것이 아니라, <strong>죄 그 자체</strong>로 여기셨다.
-        </div>
-      </div>
-
-      <div class="greek-card">
-        <span class="gnum">02</span>
-        <div class="greek-word">ποιέω</div>
-        <div class="greek-trans">포이에오</div>
-        <div class="greek-meanings">
-          <div>
-            <div class="lab">한국어</div>
-            <div class="val">되게 하다</div>
-          </div>
-          <div>
-            <div class="lab">English</div>
-            <div class="val en">to make</div>
-          </div>
-        </div>
-        <div class="greek-meta">
-          단순한 법적 선언이 아니라 <strong>실재적으로 만드시는</strong> 능동적 사역. 하나님께서 하셨고, 율법이 할 수 없었다 — 롬 8:3.
-        </div>
-      </div>
-
-      <div class="greek-card">
-        <span class="gnum">03</span>
-        <div class="greek-word">ἐν αὐτῷ</div>
-        <div class="greek-trans">엔 아우토</div>
-        <div class="greek-meanings">
-          <div>
-            <div class="lab">한국어</div>
-            <div class="val">그분 안에서</div>
-          </div>
-          <div>
-            <div class="lab">English</div>
-            <div class="val en">in Him</div>
-          </div>
-        </div>
-        <div class="greek-meta">
-          위치적일 뿐 아니라 부활 안에서 <strong>유기적으로 연결</strong>됨. 그리스도와의 살아 있는 연합 — 이 안에서만 우리는 의가 된다.
-        </div>
-      </div>
-
-      <div class="greek-card">
-        <span class="gnum">04</span>
+      <div class="word-card reveal reveal-delay-1">
+        <div class="idx">i.</div>
         <div class="greek-word">δικαιοσύνη</div>
-        <div class="greek-trans">디카이오쉬네</div>
-        <div class="greek-meanings">
-          <div>
-            <div class="lab">한국어</div>
-            <div class="val">의</div>
-          </div>
-          <div>
-            <div class="lab">English</div>
-            <div class="val en">righteousness</div>
-          </div>
+        <div class="pronounce">디카이오쉬네</div>
+        <div class="word-meanings">
+          <div class="meaning-ko">의(義) — 올바름, 의로움</div>
+          <div class="meaning-en">righteousness</div>
         </div>
-        <div class="greek-meta">
-          의롭다 <em>함을 받는</em> 것을 넘어, 우리가 의 <strong>그 자체가 되는 것</strong>. 새 하늘과 새 땅에 거할 그 의(벧후 3:13).
+        <div class="word-core">
+          <span class="core-label">本義 · Root</span>
+          <span class="core-text"><strong>δίκη(디케)</strong>에서 파생 — 본래 <em>"관습·규범에 부합함, 마땅한 자리에 놓임"</em>. 곧 어떤 기준에 비추어 <em>"올바름이 입증된 상태"</em>를 가리키는 법정적·관계적 용어입니다.</span>
         </div>
+        <div class="word-divider"></div>
+        <div class="word-note">단지 도덕적 흠 없음을 넘어, <strong style="color:var(--crimson);font-style:normal;">하나님 보시기에 모든 것이 올바른 상태</strong>를 가리킵니다. 새 하늘과 새 땅에 거할 그 의(<button class="verse-link" data-verse="벧후 3:13">벧후 3:13</button>)입니다.</div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ============ SUMMARY ============ -->
-<section class="summary-section">
-  <div class="container">
-    <div class="summary-kicker">— 오늘의 핵심 —</div>
-    <div class="summary-line">
-      화목의 사역은 우리가 그리스도 안에서 <em>하나님의 의가 되는 정도까지</em> 우리를 하나님께 돌아가게 한다.
-    </div>
-    <div class="summary-ref">개요 III · 고후 5:21</div>
-  </div>
-</section>
-
-<!-- ============ SECTION 1 — STAGES ============ -->
-<section class="section1">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-num">II.</div>
-      <div class="section-titles">
-        <div class="kicker">Three Stages · 의의 세 단계</div>
-        <h2>지금 나는 어디에 있는가</h2>
-      </div>
-    </div>
-
-    <div class="stages-wrap">
-      <!-- DIAGRAM -->
-      <div class="stages-diagram">
-        <div class="diagram-title">— Tabernacle Model —</div>
-        <div class="diagram-subtitle">바깥뜰에서 지성소까지 — 점진하는 의</div>
-        <div class="diagram-svg">
-          <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="dot" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="0.6" fill="#d8cdb6"/>
-              </pattern>
-            </defs>
-
-            <!-- outer (stage 1 - outside) -->
-            <g class="stage-zone" data-zone="1">
-              <rect class="zone-fill" x="10" y="10" width="300" height="340" fill="url(#dot)" opacity="0.4"/>
-              <rect class="zone-stroke" x="10" y="10" width="300" height="340" fill="none" stroke="#8a8378" stroke-width="1" stroke-dasharray="3 3"/>
-              <text class="zone-label" x="160" y="340" text-anchor="middle" font-family="EB Garamond" font-style="italic" font-size="12" fill="#8a8378" letter-spacing="2">① OUTSIDE · 구원 전</text>
-            </g>
-
-            <!-- middle (stage 2 - holy place) -->
-            <g class="stage-zone" data-zone="2">
-              <rect class="zone-fill" x="50" y="70" width="220" height="240" fill="#ebe2d2" opacity="0.5"/>
-              <rect class="zone-stroke" x="50" y="70" width="220" height="240" fill="none" stroke="#b8965a" stroke-width="1"/>
-              <text class="zone-label" x="160" y="300" text-anchor="middle" font-family="EB Garamond" font-style="italic" font-size="12" fill="#8a6d3b" letter-spacing="2">② HOLY PLACE · 의롭다 함</text>
-            </g>
-
-            <!-- inner (stage 3 - holy of holies) -->
-            <g class="stage-zone" data-zone="3">
-              <rect class="zone-fill" x="100" y="130" width="120" height="120" fill="#b8965a" opacity="0.3"/>
-              <rect class="zone-stroke" x="100" y="130" width="120" height="120" fill="none" stroke="#6b1f1f" stroke-width="1.2"/>
-              <text class="zone-label" x="160" y="245" text-anchor="middle" font-family="EB Garamond" font-style="italic" font-size="11" fill="#6b1f1f" letter-spacing="2">③ HOLY OF HOLIES</text>
-              <text x="160" y="195" text-anchor="middle" font-family="Noto Serif KR" font-weight="600" font-size="14" fill="#1a1612">하나님의 의</text>
-              <!-- ark mark -->
-              <g transform="translate(160 170)" opacity="0.7">
-                <rect x="-12" y="-3" width="24" height="6" fill="#b8965a"/>
-                <path d="M-10 -3 Q-6 -10 0 -8 Q6 -10 10 -3" stroke="#8a6d3b" stroke-width="1" fill="none"/>
-              </g>
-            </g>
-
-            <!-- arrows -->
-            <g stroke="#b8965a" stroke-width="0.8" fill="none" opacity="0.7">
-              <path d="M30 30 L70 78" stroke-dasharray="2 2"/>
-              <polygon points="70,78 64,76 67,72" fill="#b8965a"/>
-              <path d="M90 90 L115 132" stroke-dasharray="2 2"/>
-              <polygon points="115,132 109,131 113,126" fill="#b8965a"/>
-            </g>
-
-          </svg>
+      <div class="word-card reveal reveal-delay-2">
+        <div class="idx">ii.</div>
+        <div class="greek-word">ἁμαρτίαν</div>
+        <div class="pronounce">하마르티안</div>
+        <div class="word-meanings">
+          <div class="meaning-ko">죄(罪)</div>
+          <div class="meaning-en">sin</div>
         </div>
+        <div class="word-core">
+          <span class="core-label">本義 · Root</span>
+          <span class="core-text">활쏘기·창던지기에서 온 말 — <em>"과녁에서 빗나가다, 표적을 놓치다(to miss the mark)"</em>. 죄의 본질은 규범 위반 이전에, <strong>하나님이 정하신 영광의 표적에 이르지 못함</strong>입니다(<button class="verse-link" data-verse="롬 3:23">롬 3:23</button>).</span>
+        </div>
+        <div class="word-divider"></div>
+        <div class="word-note">하나님은 그리스도를 단지 '죄를 짊어진 분'으로가 아니라, 우리 대신 <strong style="color:var(--crimson);font-style:normal;">'죄' 자체로 여기셨습니다.</strong> 십자가에서 그 육체 안에서 죄가 유죄판결 되었습니다(<button class="verse-link" data-verse="롬 8:3">롬 8:3</button>).</div>
       </div>
 
-      <!-- CARDS -->
-      <div class="stages-cards">
-
-        <div class="stage-card" data-stage="1">
-          <div class="stage-num">01</div>
-          <h3>구원받기 전</h3>
-          <div class="stage-state">— 전적 유죄판결 —</div>
-          <p>하나님께서 우리를 전적으로 유죄판결 하신 상태. 죄 안에 머물러 있던 우리는 의의 가능성조차 없었다.</p>
+      <div class="word-card reveal reveal-delay-3">
+        <div class="idx">iii.</div>
+        <div class="greek-word">ἐν αὐτῷ</div>
+        <div class="pronounce">엔 아우토</div>
+        <div class="word-meanings">
+          <div class="meaning-ko">그분 안에서</div>
+          <div class="meaning-en">in Him</div>
         </div>
-
-        <div class="stage-card" data-stage="2">
-          <div class="stage-num">02</div>
-          <h3>구원받은 후</h3>
-          <div class="stage-state">— 의롭다 함 받음 (불완전한 의) —</div>
-          <p>의의 상태로 이끌렸으나, 솔직히 보면 생활에 올바르지 못한 것들이 여전히 남아 있다. 특히 <strong>타고난 사람 곧 자아</strong>가 여전히 하나님과 우리를 분리되게 한다 — 이것이 죄이다.</p>
-          <div class="micro">강한 기질의 남편 + 유별난 아내 = 화목과 의가 있으나 불완전한 상태</div>
+        <div class="word-core">
+          <span class="core-label">本義 · Root</span>
+          <span class="core-text">전치사 <strong>ἐν</strong>은 단순한 위치(at/in)가 아닌 <em>"영역·요소·잠겨드는 자리(sphere/element of being)"</em>를 가리킵니다 — 마치 물고기가 물 안에서 살듯, 그 안에서 호흡하고 잠겨드는 <em>생명의 영역</em>입니다.</span>
         </div>
-
-        <div class="stage-card" data-stage="3">
-          <div class="stage-num">03</div>
-          <h3>지성소 안 — 하나님의 의</h3>
-          <div class="stage-state">— 타고난 생명을 죄로 인정 —</div>
-          <p>더 전진된 화목을 통해 자신의 기질과 유별남이 죄임을, 곧 <strong>타고난 생명이 죄</strong>임을 인정한다. 그 결과 지성소 안으로 이끌려 주님을 누리게 된다.</p>
-          <div class="micro">"주님을 찬양합니다!" → "아멘!" — 이때 부부는 '하나님의 의' 안에 있다</div>
-        </div>
-
+        <div class="word-divider"></div>
+        <div class="word-note">단순한 위치적 표현이 아닙니다. 부활 안에서 우리가 그리스도와 <strong style="color:var(--crimson);font-style:normal;">유기적으로 연결됨</strong>을 가리키며, 이 연결 안에서 우리는 하나님의 의로 조성됩니다.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SECTION 2 — EXCHANGE ============ -->
-<section class="section2">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-num">III.</div>
-      <div class="section-titles">
-        <div class="kicker">The Decisive Exchange · 결정적 전환</div>
-        <h2>십자가에서 일어난 단 한 번의 교환</h2>
-      </div>
-    </div>
+<!-- ================== SUMMARY ================== -->
+<section class="summary" id="scene-summary">
+  <div class="wrap">
+    <div class="label reveal">Ⅱ &nbsp;·&nbsp; Core Message</div>
+    <h2 class="section-title reveal reveal-delay-1">핵심 메시지</h2>
+    <p class="summary-headline reveal reveal-delay-2">
+      하나님의 구원의 <span class="em">궁극적인 완결</span>은 단순히 의롭게 되는 것을 넘어,<br/>
+      내적 존재가 온전히 투명해져서 그리스도 안에서 <span class="h">실질적인 '하나님의 의' 자체가 되는 것</span>입니다.
+    </p>
 
-    <div class="exchange-stage">
-
-      <div class="exchange-side left">
-        <div class="side-label">— 문제 · Problem</div>
-        <h3>율법이<br>할 수 없던 것</h3>
-        <p>율법이 육체 때문에 연약하여 할 수 없던 일 — 죄의 육체 안에 갇힌 우리는 스스로 의에 이를 수 없었다.</p>
-        <div class="verse">
-          "율법이 육체 때문에 연약하여 할 수 없던 것을 하나님께서 하셨습니다."
-          <span class="verse-ref">— 로마서 8:3a</span>
-        </div>
-      </div>
-
-      <div class="exchange-center">
-        <!-- floating particles -->
-        <div class="particle p-sin" style="top:42%;left:0;animation-delay:0s"></div>
-        <div class="particle p-sin" style="top:52%;left:0;animation-delay:0.8s"></div>
-        <div class="particle p-sin" style="top:48%;left:0;animation-delay:1.6s"></div>
-        <div class="particle p-sin" style="top:55%;left:0;animation-delay:2.2s"></div>
-
-        <div class="particle p-righteous" style="top:42%;right:0;animation-delay:0.4s"></div>
-        <div class="particle p-righteous" style="top:50%;right:0;animation-delay:1.2s"></div>
-        <div class="particle p-righteous" style="top:48%;right:0;animation-delay:2s"></div>
-
-        <div class="cross-svg">
-          <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#d9bd83" stop-opacity="0.5"/>
-                <stop offset="100%" stop-color="#d9bd83" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="crossGold" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#d9bd83"/>
-                <stop offset="50%" stop-color="#b8965a"/>
-                <stop offset="100%" stop-color="#8a6d3b"/>
-              </linearGradient>
-            </defs>
-
-            <!-- halo -->
-            <circle cx="100" cy="120" r="100" fill="url(#halo)"/>
-
-            <!-- serpent (Num 21 / John 3:14) wrapped around lower beam -->
-            <g stroke="#6b1f1f" stroke-width="1.2" fill="none" opacity="0.55">
-              <path d="M85 240 Q100 232 115 240 Q100 248 85 240" stroke-dasharray="2 2"/>
-            </g>
-
-            <!-- cross -->
-            <rect x="93" y="20" width="14" height="240" fill="url(#crossGold)"/>
-            <rect x="50" y="90" width="100" height="14" fill="url(#crossGold)"/>
-
-            <!-- inscription -->
-            <text x="100" y="14" text-anchor="middle" font-family="EB Garamond" font-style="italic" font-size="10" fill="#d9bd83" letter-spacing="3">INRI</text>
-
-            <!-- light rays -->
-            <g stroke="#d9bd83" stroke-width="0.4" opacity="0.5">
-              <line x1="100" y1="97" x2="40" y2="40"/>
-              <line x1="100" y1="97" x2="160" y2="40"/>
-              <line x1="100" y1="97" x2="20" y2="97"/>
-              <line x1="100" y1="97" x2="180" y2="97"/>
-              <line x1="100" y1="97" x2="40" y2="155"/>
-              <line x1="100" y1="97" x2="160" y2="155"/>
-            </g>
-
-            <!-- bottom label -->
-            <text x="100" y="275" text-anchor="middle" font-family="EB Garamond" font-style="italic" font-size="11" fill="#8a8378" letter-spacing="3">— THE CROSS —</text>
-          </svg>
-        </div>
-      </div>
-
-      <div class="exchange-side right">
-        <div class="side-label">Solution · 해답 —</div>
-        <h3>하나님께서<br>친히 하시다</h3>
-        <p>하나님은 그분 자신의 아들을 <strong style="color:var(--gold-light)">죄의 육체의 모양</strong>으로 보내시어, 그 육체 안에서 죄에 대해 유죄판결 하셨다. 갈보리에서 죄 자체가 정죄되었다.</p>
-        <div class="verse">
-          "모세가 광야에서 뱀을 들어 올린 것같이, 사람의 아들도 반드시 들려 올려져야 합니다."
-          <span class="verse-ref">— 요한복음 3:14</span>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="exchange-bottom">
-      그리스도께서 우리의 대속자로서 십자가에서 죽으셨을 때,<br>
-      하나님은 그분을 죄를 짊어지신 분으로 여기셨을 뿐 아니라 <strong style="color:#fff">죄 자체</strong>로 여기셨다.
-      <span class="ref">— 고후 5:21 · 롬 8:3 · 요 3:14</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 3 — A vs B ============ -->
-<section class="section3">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-num">IV.</div>
-      <div class="section-titles">
-        <div class="kicker">Substitution &amp; Constitution · 두 가지 일하심</div>
-        <h2>대치하심에서 조성하심으로</h2>
-      </div>
-    </div>
-
-    <div class="ab-grid">
-
-      <div class="ab-col a">
-        <div class="ab-tag">— A · Substitution</div>
-        <h3>대치하심</h3>
-        <div class="ab-rows">
-          <div class="ab-row"><div class="ab-key">When</div><div class="ab-val">갈보리에서</div></div>
-          <div class="ab-row"><div class="ab-key">How</div><div class="ab-val">우리를 <em>위해</em> 죄가 되심</div></div>
-          <div class="ab-row"><div class="ab-key">Mode</div><div class="ab-val">객관적·법적 차원</div></div>
-          <div class="ab-row"><div class="ab-key">Result</div><div class="ab-val">의롭다 함 (갈 2:16)</div></div>
-        </div>
-        <div class="ab-bottom">
-          그리스도는 그분의 대치하심을 통하여 <em>우리를 위해</em> 죄가 되셨다.
-        </div>
-      </div>
-
-      <div class="ab-divider">
-        <div class="vline"></div>
-        <div class="vs">to</div>
-      </div>
-
-      <div class="ab-col b">
-        <div class="ab-tag">B · Constitution —</div>
-        <h3>조성하심</h3>
-        <div class="ab-rows">
-          <div class="ab-row"><div class="ab-key">When</div><div class="ab-val">부활 안에서</div></div>
-          <div class="ab-row"><div class="ab-key">How</div><div class="ab-val">생명으로 우리 <em>안에</em> 사심</div></div>
-          <div class="ab-row"><div class="ab-key">Mode</div><div class="ab-val">주관적·유기적 차원</div></div>
-          <div class="ab-row"><div class="ab-key">Result</div><div class="ab-val">하나님의 의가 됨 (고후 5:21)</div></div>
-        </div>
-        <div class="ab-bottom">
-          이제 그분의 조성하심을 통해 우리는 그분 안에서 <em>하나님의 의가 된다.</em>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="ab-keystone">
-      <div class="kicker">— Keystone —</div>
-      <div class="keystone-line">
-        "<span class="greek">ἐν αὐτῷ</span>" — <strong>그분 안에서</strong> —<br>
-        위치적일 뿐 아니라 부활 안에서 <strong>유기적으로</strong> 연결됨
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DETAILS / Q&A ============ -->
-<section class="details-section">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-num">V.</div>
-      <div class="section-titles">
-        <div class="kicker">Deeper · 심화 묵상</div>
-        <h2>본문의 행간을 묻고 답하다</h2>
-      </div>
-    </div>
-
-    <div class="qa-list">
-
-      <div class="qa-item">
-        <div class="qa-q">
-          <div class="qnum">i.</div>
-          <div class="qtext">"의롭다 함을 받는 것"과 "하나님의 의가 되는 것"은 어떻게 다른가?</div>
-          <div class="qarrow">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9h12 M9 3v12"/></svg>
-          </div>
-        </div>
-        <div class="qa-a">
-          <div class="qa-a-inner">
-            <p>의롭다 함은 <span class="verse-tip">갈 2:16<span class="tip-content"><span class="tip-ref">갈라디아서 2:16</span>사람이 의롭게 되는 것이 율법의 행위로써가 아니라 예수 그리스도를 믿음으로 말미암는다… 율법의 행위로써가 아니라 그리스도를 믿음으로 의롭게 되기 위한 것입니다.</span></span>의 의미처럼 <strong>그리스도를 믿음으로 의롭다 인정받는 법적 차원</strong>이다. 반면 <span class="verse-tip">고후 5:21<span class="tip-content"><span class="tip-ref">고린도후서 5:21</span>하나님께서 죄를 알지도 못하신 분을 우리 대신 죄가 되게 하신 것은 우리가 그분 안에서 하나님의 의가 되도록 하시려는 것입니다.</span></span>의 "하나님의 의가 된다"는 표현은 한 걸음 더 나아간다 — 그리스도께서 부활 안에서 우리 안에 생명으로 오시고, 그 생명이 우리를 의 <em>그 자체</em>로 조성하시는 것이다.</p>
-            <p>전자가 신분의 변화라면, 후자는 <strong>존재의 변화</strong>이다. 하나님은 우리를 단지 '의롭다 인정해 주신' 것이 아니라, 우리가 의 자체가 되기를 원하신다.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="qa-item">
-        <div class="qa-q">
-          <div class="qnum">ii.</div>
-          <div class="qtext">부부 비유에서 '불완전한 의'는 무엇이며, 어떻게 '하나님의 의'로 진행되는가?</div>
-          <div class="qarrow">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9h12 M9 3v12"/></svg>
-          </div>
-        </div>
-        <div class="qa-a">
-          <div class="qa-a-inner">
-            <p>구원받은 부부가 변하기 시작하여 의의 상태에 들어왔으나, 남편의 <strong>강한 기질</strong>과 아내의 <strong>유별난 성격</strong>은 여전히 화목을 가로막는다. 이것이 본문이 말하는 불완전한 의이다.</p>
-            <p>전진은 한 가지 인정에서 시작된다 — <strong>"나의 타고난 생명이 죄다."</strong> 남편이 자신의 기질을 죄로, 아내가 자신의 유별남을 죄로 인정할 때 그들은 지성소 안으로 이끌리고, "주님을 찬양합니다!" "아멘!"의 응답 속에서 비로소 하나님의 의 안에 있게 된다.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="qa-item">
-        <div class="qa-q">
-          <div class="qnum">iii.</div>
-          <div class="qtext">왜 우리는 '고치에서 빠져나오지 못한 나비'에 비유되는가?</div>
-          <div class="qarrow">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9h12 M9 3v12"/></svg>
-          </div>
-        </div>
-        <div class="qa-a">
-          <div class="qa-a-inner">
-            <p>우리는 자신이 그리스도 안에서 새 창조물이라고 말할 수는 있어도, "나는 하나님의 의다"라고 담대히 선포하기는 어렵다. 그 이유는 우리가 <strong>고치에서 완전히 빠져나오지 못한 나비</strong>와 같기 때문이다.</p>
-            <p>고치는 우리의 타고난 자아·기질·습관이다. 오직 이 고치가 완전히 사라져 버릴 때 우리는 비로소 자신이 하나님의 의라고 말할 수 있다. 그때까지 필요한 것은 <strong>십자가의 더 전진된 일</strong>이 우리에게 이루어져서 남아 있는 고치가 소모되는 것이다.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="qa-item">
-        <div class="qa-q">
-          <div class="qnum">iv.</div>
-          <div class="qtext">새 예루살렘과 '의'는 어떻게 연결되는가?</div>
-          <div class="qarrow">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9h12 M9 3v12"/></svg>
-          </div>
-        </div>
-        <div class="qa-a">
-          <div class="qa-a-inner">
-            <p><span class="verse-tip">베드로후서 3:13<span class="tip-content"><span class="tip-ref">베드로후서 3:13</span>그분의 약속을 따라 우리가 의가 거하는 새 하늘과 새 땅을 기다리고 있습니다.</span></span>은 새 하늘과 새 땅에 <strong>의가 거한다</strong>고 말한다. 이것은 모든 것이 하나님께 완전히 되돌려질 것임을 시사한다 — 모든 것이 머리 아래 통일되고 좋은 질서 안에 있게 될 것이다. 어긋나고 무질서한 것이 조금도 없다.</p>
-            <p>늦어도 새 예루살렘에서 우리는 완전히 하나님의 의가 될 것이다. 그때 하나님은 사탄에게 자랑하시며 "이 모든 것이 올바르다"고 말씀하실 수 있을 것이다. 의는 하나님의 구원의 <strong>궁극적 완결</strong>이다.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ QUIZ ============ -->
-<section class="quiz-section">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-num">VI.</div>
-      <div class="section-titles">
-        <div class="kicker">Test · 마음에 새기기</div>
-        <h2>오늘의 메시지를 확인하다</h2>
-      </div>
-    </div>
-
-    <div class="quiz-list">
-
-      <div class="quiz-item" data-correct="1">
-        <div class="qnum">01</div>
-        <div class="quiz-q">고후 5:21에서 하나님께서 죄를 알지도 못하신 분(그리스도)을 무엇으로 삼으셨는가?</div>
-        <div class="quiz-options">
-          <button class="quiz-option" data-idx="0"><span class="opt-marker">a.</span><span>죄를 짊어진 자</span></button>
-          <button class="quiz-option" data-idx="1"><span class="opt-marker">b.</span><span>죄 그 자체</span></button>
-          <button class="quiz-option" data-idx="2"><span class="opt-marker">c.</span><span>죄 없는 본보기</span></button>
-          <button class="quiz-option" data-idx="3"><span class="opt-marker">d.</span><span>율법의 완성자</span></button>
-        </div>
-        <div class="quiz-explain">
-          <span class="ex-label">— 해설</span>
-          하나님은 그리스도를 단지 죄를 짊어지신 분이 아니라 <strong style="color:#d9bd83">죄 자체</strong>로 여기셨다. 본문은 "죄가 되게 하셨다(ποιέω)"고 말한다 — 단순 선언이 아닌 실재적 만드심이다.
-        </div>
-      </div>
-
-      <div class="quiz-item" data-correct="2">
-        <div class="qnum">02</div>
-        <div class="quiz-q">고후 5:21의 "그분 안에서(ἐν αὐτῷ)"가 의미하는 두 가지 차원은?</div>
-        <div class="quiz-options">
-          <button class="quiz-option" data-idx="0"><span class="opt-marker">a.</span><span>도덕적 + 사회적</span></button>
-          <button class="quiz-option" data-idx="1"><span class="opt-marker">b.</span><span>과거적 + 미래적</span></button>
-          <button class="quiz-option" data-idx="2"><span class="opt-marker">c.</span><span>위치적 + 유기적(연결)</span></button>
-          <button class="quiz-option" data-idx="3"><span class="opt-marker">d.</span><span>법적 + 감정적</span></button>
-        </div>
-        <div class="quiz-explain">
-          <span class="ex-label">— 해설</span>
-          "그분 안에서"는 우리가 그리스도 안에 있다는 <strong style="color:#d9bd83">위치적 의미</strong>와 더불어, 부활 안에서 그분과 살아 있는 생명으로 연결되어 있다는 <strong style="color:#d9bd83">유기적 의미</strong>를 동시에 가진다.
-        </div>
-      </div>
-
-      <div class="quiz-item" data-correct="2">
-        <div class="qnum">03</div>
-        <div class="quiz-q">부부 비유에서, 그들이 '하나님의 의'로 나아가기 위해 인정해야 했던 것은?</div>
-        <div class="quiz-options">
-          <button class="quiz-option" data-idx="0"><span class="opt-marker">a.</span><span>과거의 큰 죄들</span></button>
-          <button class="quiz-option" data-idx="1"><span class="opt-marker">b.</span><span>믿음의 부족</span></button>
-          <button class="quiz-option" data-idx="2"><span class="opt-marker">c.</span><span>타고난 생명(기질·유별남)이 죄임</span></button>
-          <button class="quiz-option" data-idx="3"><span class="opt-marker">d.</span><span>교회 봉사의 부족</span></button>
-        </div>
-        <div class="quiz-explain">
-          <span class="ex-label">— 해설</span>
-          남편의 강한 기질과 아내의 유별남, 곧 <strong style="color:#d9bd83">타고난 생명 자체</strong>가 죄임을 인정할 때 비로소 지성소 안으로 들어가 주님을 누리고 하나님의 의 안에 있게 된다.
-        </div>
-      </div>
-
-      <div class="quiz-item" data-correct="1">
-        <div class="qnum">04</div>
-        <div class="quiz-q">베드로후서 3:13에 따르면, 새 하늘과 새 땅에 거하는 것은 무엇인가?</div>
-        <div class="quiz-options">
-          <button class="quiz-option" data-idx="0"><span class="opt-marker">a.</span><span>평강</span></button>
-          <button class="quiz-option" data-idx="1"><span class="opt-marker">b.</span><span>의</span></button>
-          <button class="quiz-option" data-idx="2"><span class="opt-marker">c.</span><span>거룩</span></button>
-          <button class="quiz-option" data-idx="3"><span class="opt-marker">d.</span><span>사랑</span></button>
-        </div>
-        <div class="quiz-explain">
-          <span class="ex-label">— 해설</span>
-          새 하늘과 새 땅에 <strong style="color:#d9bd83">의가 거한다</strong>. 이것은 만물이 머리 아래 통일되고 좋은 질서 안에 있어 모든 것이 하나님께 올바르고 만족스럽게 됨을 시사한다.
-        </div>
-      </div>
-
-      <div class="quiz-item" data-correct="0">
-        <div class="qnum">05</div>
-        <div class="quiz-q">'대치하심'과 '조성하심'의 차이를 가장 잘 설명한 것은?</div>
-        <div class="quiz-options">
-          <button class="quiz-option" data-idx="0"><span class="opt-marker">a.</span><span>대치 = 갈보리에서 우리를 위해 죄가 되심 / 조성 = 부활 안에서 우리 안에 살아 의로 만드심</span></button>
-          <button class="quiz-option" data-idx="1"><span class="opt-marker">b.</span><span>대치 = 구약의 율법 / 조성 = 신약의 은혜</span></button>
-          <button class="quiz-option" data-idx="2"><span class="opt-marker">c.</span><span>대치 = 행위 / 조성 = 믿음</span></button>
-          <button class="quiz-option" data-idx="3"><span class="opt-marker">d.</span><span>대치 = 개인적 / 조성 = 공동체적</span></button>
-        </div>
-        <div class="quiz-explain">
-          <span class="ex-label">— 해설</span>
-          그리스도는 갈보리에서 그분의 <strong style="color:#d9bd83">대치하심</strong>을 통해 우리를 위해 죄가 되셨고, 부활 안에서 그분의 <strong style="color:#d9bd83">조성하심</strong>을 통해 우리 안에 사시며 우리를 하나님의 의로 만드신다.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ PRAYER ============ -->
-<section class="prayer-section">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-num">VII.</div>
-      <div class="section-titles">
-        <div class="kicker">Prayer · 응답의 기도</div>
-        <h2>오늘의 기도</h2>
-      </div>
-    </div>
-
-    <div class="prayer-body">
-      <div class="prayer-mark">
-        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#b8965a" stroke-width="0.8">
-          <circle cx="30" cy="30" r="28" stroke-dasharray="2 3"/>
-          <path d="M30 14 L30 46 M22 22 L38 22"/>
-          <circle cx="30" cy="22" r="1.5" fill="#b8965a"/>
+    <div class="sub-grid">
+      <div class="sub-card reveal reveal-delay-1">
+        <svg class="icon" viewBox="0 0 64 64" fill="none">
+          <path d="M32 8 L40 24 L56 26 L44 38 L48 56 L32 46 L16 56 L20 38 L8 26 L24 24 Z" fill="#c9a86b" opacity=".25" stroke="#7a2828" stroke-width="1.5"/>
+          <circle cx="32" cy="32" r="6" fill="#7a2828"/>
         </svg>
+        <span class="num">i.</span>
+        <h3>하나님의 의로 조성됨</h3>
+        <p>십자가에서 우리 대신 죄가 되신 그리스도께서 이제는 부활 생명으로 우리 안에 들어오셔서, 우리를 하나님의 의로 유기적으로 조성하십니다.</p>
       </div>
-
-      <div class="prayer-text">
-        <p>주님, 죄를 알지도 못하신 주님께서 저를 대신해 <em>죄가 되어 주신</em> 그 교환 앞에 무릎 꿇습니다.</p>
-
-        <p>저는 의롭다 하심을 받은 것에 머물지 않고, 그분 안에서 <em>하나님의 의 그 자체</em>가 되기를 원합니다.</p>
-
-        <p>제 안에 아직 남아 있는 <em>고치</em> — 강한 기질, 유별난 자아, 타고난 생명 — 을 죄로 인정합니다. 십자가의 더 전진된 일이 제게 임하여, 제 내적 존재가 투명하고 수정같이 맑게 되어 주님의 생각과 의지 안에 거하게 하소서.</p>
-
-        <p>새 예루살렘에서 주님이 저를 가리켜 "올바르다" 하실 그날까지, 부활의 생명으로 저를 조성해 주소서.</p>
+      <div class="sub-card reveal reveal-delay-2">
+        <svg class="icon" viewBox="0 0 64 64" fill="none">
+          <path d="M32 4 L52 32 L32 60 L12 32 Z" fill="#a8c4d4" opacity=".4" stroke="#7a2828" stroke-width="1.5"/>
+          <path d="M32 4 L32 60 M12 32 L52 32" stroke="#c9a86b" stroke-width="1" opacity=".6"/>
+        </svg>
+        <span class="num">ii.</span>
+        <h3>투명해진 내적 존재</h3>
+        <p>하나님의 의가 된다는 것은 우리 내적 존재가 투명하고 수정같이 맑아져서, 온전히 하나님의 생각과 의지 안에 머무는 것을 의미합니다.</p>
       </div>
-
-      <div class="prayer-amen">아 멘</div>
+      <div class="sub-card reveal reveal-delay-3">
+        <svg class="icon" viewBox="0 0 64 64" fill="none">
+          <ellipse cx="32" cy="32" rx="14" ry="22" fill="#3d2f1f" opacity=".4"/>
+          <path d="M22 18 L20 14 M42 18 L44 14 M32 12 L32 8" stroke="#7a2828" stroke-width="1.5"/>
+          <path d="M18 32 Q12 28 8 32 M46 32 Q52 28 56 32" stroke="#c9a86b" stroke-width="1.5" opacity=".7"/>
+        </svg>
+        <span class="num">iii.</span>
+        <h3>고치(타고난 생명)의 파쇄</h3>
+        <p>나비가 고치에서 빠져나오듯, 우리를 가로막는 타고난 자아라는 '고치'가 십자가를 통해 완전히 소모되어야만 온전한 하나님의 의가 될 수 있습니다.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<div class="foot">
-  <div class="container">— 고린도후서 라이프 스타디 · 메시지 37 —</div>
-</div>
+<!-- ================== NARRATIVE TIMELINE ================== -->
+<section class="narrative" id="scene-narrative">
+  <div class="wrap">
+    <div class="label reveal">Ⅲ &nbsp;·&nbsp; The Journey</div>
+    <h2 class="section-title reveal reveal-delay-1">네 단계의 <em>변형</em></h2>
+    <p class="lead reveal reveal-delay-2">유죄판결의 어둠에서 새 예루살렘의 빛까지 — 우리가 '하나님의 의'가 되어가는 여정은 한 번에 완결되지 않습니다. 이는 십자가의 더 전진된 일을 통해 점진적으로 이루어지는 변형의 과정입니다.</p>
+
+    <div class="timeline">
+      <div class="stage s1 reveal">
+        <div class="stage-num">Stage I</div>
+        <div class="stage-title">유죄판결의 상태</div>
+        <div class="stage-body">구원받기 전, 우리는 <em>하나님께서 전적으로 유죄판결 하신 상태</em> 안에 있었습니다. 죄가 우리를 지배하였고, 율법은 우리의 육체의 연약함 때문에 우리를 의롭게 할 수 없었습니다.</div>
+        <div class="stage-quote">"율법이 육체 때문에 연약하여 할 수 없던 것을 하나님께서 하셨습니다." — <button class="verse-link" data-verse="롬 8:3">롬 8:3</button></div>
+      </div>
+
+      <div class="stage s2 reveal">
+        <div class="stage-num">Stage II</div>
+        <div class="stage-title">의롭다 하심을 받음</div>
+        <div class="stage-body">그리스도를 믿음으로 우리는 <em>의롭다 함을 받을 수 있는 상태</em>로 이끌렸습니다. 이것이 '의'입니다. 그러나 솔직히 말하면, 한편으로 의로운 상태에 있으면서도 다른 한편으로 우리의 생활에는 여전히 올바르지 못한 것들이 있습니다. 특히 우리의 <em>타고난 사람, 자아</em>가 여전히 하나님과 우리를 분리되게 합니다.</div>
+      </div>
+
+      <div class="stage s3 reveal">
+        <div class="stage-num">Stage III</div>
+        <div class="stage-title">십자가의 더 전진된 일</div>
+        <div class="stage-body">우리가 우리의 기질, 유별남, 곧 <em>타고난 생명 자체가 죄임</em>을 인정하기 시작할 때, 십자가의 더 전진된 일이 우리에게 이루어집니다. 고치의 남아 있는 부분이 소모되기 시작하고, 우리는 지성소 안으로 이끌려 주님을 누릴 수 있게 됩니다.</div>
+
+        <div class="couple-card">
+          <div class="ctitle">A Living Example · 부부 예화</div>
+          <div class="stage-body" style="font-size:0.90625rem;">강한 기질의 남편과 유별난 자매인 아내. 두 사람이 모두 구원받아 의의 상태에 있었으나 화목은 불완전했습니다. 그러나 그들이 자신의 타고난 생명이 죄임을 인정할 때 —</div>
+          <div class="couple-flow">
+            <span class="step">기질을 죄로 인정</span>
+            <span class="arrow">›</span>
+            <span class="step">유별남을 죄로 인정</span>
+            <span class="arrow">›</span>
+            <span class="step">지성소 안으로</span>
+            <span class="arrow">›</span>
+            <span class="step">"주님을 찬양합니다!" / "아멘!"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage s4 reveal">
+        <div class="stage-num">Stage IV · Consummation</div>
+        <div class="stage-title">하나님의 의가 됨</div>
+        <div class="stage-body">고치가 완전히 사라져 버릴 때, 우리는 자신이 <em>하나님의 의</em>라고 담대히 말할 수 있게 됩니다. 늦어도 새 예루살렘에서 우리는 완전히 하나님의 의가 될 것이며, 모든 것이 머리 아래 통일되고 좋은 질서 안에 있게 될 것입니다. 어긋나고 무질서한 것이 조금도 없을 것입니다.</div>
+        <div class="stage-quote">"의가 거하는 새 하늘과 새 땅을 우리는 약속에 따라 바라봅니다." — <button class="verse-link" data-verse="벧후 3:13">벧후 3:13</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== BIBLE VERSE TOOLTIPS ================== -->
+<section class="verses" id="scene-verses">
+  <div class="wrap">
+    <div class="label reveal">Ⅳ &nbsp;·&nbsp; Related Scriptures</div>
+    <h2 class="section-title reveal reveal-delay-1">함께 읽는 <em>성경 구절</em></h2>
+    <p class="intro reveal reveal-delay-2">각 구절을 눌러 본문을 펼쳐보세요. 이 구절들은 '하나님의 의'라는 한 주제를 서로 다른 각도에서 비춥니다.</p>
+
+    <div class="verse-row">
+      <div class="verse-chip reveal reveal-delay-1" onclick="toggleVerse(this)">
+        <div class="vref">갈라디아서 2:16</div>
+        <div class="vname">의의 출발점 — 믿음</div>
+        <div class="vexpand">tap to expand ⌄</div>
+        <div class="verse-content"><div class="verse-text">"사람이 의롭게 되는 것이 율법의 행위로써가 아니라 예수 그리스도를 믿음으로 말미암는다는 것을 알고…"<span class="conn">— 의는 율법이 아닌 믿음에서 시작됩니다. 이는 여정의 첫걸음입니다.</span></div></div>
+      </div>
+
+      <div class="verse-chip reveal reveal-delay-2" onclick="toggleVerse(this)">
+        <div class="vref">로마서 8:3</div>
+        <div class="vname">메커니즘 — 육체 안에서의 유죄판결</div>
+        <div class="vexpand">tap to expand ⌄</div>
+        <div class="verse-content"><div class="verse-text">"율법이 육체 때문에 연약하여 할 수 없던 것을 하나님께서 하셨습니다. 곧 하나님은 죄와 관련하여 그분 자신의 아들을 죄의 육체의 모양으로 보내시어, 그 육체 안에서 죄에 대해 유죄판결 하심으로써…"<span class="conn">— 율법이 못한 일을 하나님이 친히 십자가에서 이루셨습니다.</span></div></div>
+      </div>
+
+      <div class="verse-chip reveal reveal-delay-3" onclick="toggleVerse(this)">
+        <div class="vref">요한복음 3:14</div>
+        <div class="vname">모형 — 들려 올려진 뱀</div>
+        <div class="vexpand">tap to expand ⌄</div>
+        <div class="verse-content"><div class="verse-text">"모세가 광야에서 뱀을 들어 올린 것같이, 사람의 아들도 반드시 들려 올려져야 합니다."<span class="conn">— 그리스도는 우리를 위해 '죄' 자체(뱀의 모양)로 들려 올려지셨습니다.</span></div></div>
+      </div>
+
+      <div class="verse-chip reveal reveal-delay-4" onclick="toggleVerse(this)">
+        <div class="vref">베드로후서 3:13</div>
+        <div class="vname">완결 — 의가 거하는 새 하늘과 새 땅</div>
+        <div class="vexpand">tap to expand ⌄</div>
+        <div class="verse-content"><div class="verse-text">"우리는 그분의 약속에 따라 의가 거하는 새 하늘과 새 땅을 바라봅니다."<span class="conn">— 모든 것이 하나님께 올바르게 되돌려지는 궁극적 완결의 자리입니다.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== Q&A ================== -->
+<section class="qna" id="scene-qna">
+  <div class="wrap">
+    <div class="label reveal">Ⅴ &nbsp;·&nbsp; Going Deeper</div>
+    <h2 class="section-title reveal reveal-delay-1">심화 <em>Q&amp;A</em></h2>
+
+    <div class="qna-list">
+      <div class="qa reveal" onclick="toggleQA(this)">
+        <div class="qa-q">
+          <h3>의롭다 하심을 받은 것과 '하나님의 의'가 되는 것은 어떻게 다른가요?</h3>
+          <span class="toggle">+</span>
+        </div>
+        <div class="qa-a"><div class="qa-a-inner">
+          의롭다 하심은 우리가 하나님께 의롭다고 <em>여겨지는</em> 법적인 상태이며, 구원의 출발점입니다. 그러나 본문은 여기서 멈추지 않습니다. '하나님의 의가 되는 것'은 그리스도께서 부활 생명으로 우리 안에 살면서 우리를 의로 <em>조성하시는</em> 유기적 변형의 결과입니다. 전자는 신분이고, 후자는 존재 자체가 바뀌는 것입니다. 우리의 내적 존재가 투명해져서 하나님의 생각과 의지에 온전히 일치하게 됩니다.
+        </div></div>
+      </div>
+
+      <div class="qa reveal" onclick="toggleQA(this)">
+        <div class="qa-q">
+          <h3>'고치'란 구체적으로 무엇이며, 어떻게 사라지나요?</h3>
+          <span class="toggle">+</span>
+        </div>
+        <div class="qa-a"><div class="qa-a-inner">
+          '고치'는 우리의 <em>타고난 사람, 자아, 기질</em>입니다. 구원받은 후에도 우리에게 남아 있는, 하나님과 우리를 분리되게 하는 모든 것입니다. 부부 예화에서 남편의 강한 기질, 아내의 유별남이 그것입니다. 이 고치는 도덕적 노력으로 벗겨지지 않습니다. <em>십자가의 더 전진된 일</em>이 우리에게 이루어져, 우리가 자신의 타고난 생명 자체를 죄로 인정할 때 비로소 소모됩니다. 늦어도 새 예루살렘에서 완전히 사라질 것입니다.
+        </div></div>
+      </div>
+
+      <div class="qa reveal" onclick="toggleQA(this)">
+        <div class="qa-q">
+          <h3>'투명하고 수정같이 맑은' 내적 존재란 실제로 어떤 모습인가요?</h3>
+          <span class="toggle">+</span>
+        </div>
+        <div class="qa-a"><div class="qa-a-inner">
+          그것은 자기 의지와 생각이 더 이상 하나님과 어긋나지 않는 상태입니다. 내 안에 가리는 것이 없어서, 하나님의 빛이 그대로 통과하는 존재입니다. 부부 예화에서 한 사람이 "주님을 찬양합니다!"라고 할 때 다른 한 사람이 즉시 "아멘!"이라고 화답할 수 있는 상태 — 곧 <em>하나님의 생각과 의지 안에서 어긋남 없이 머무는 것</em>입니다. 이것이 '하나님의 의'의 실질입니다.
+        </div></div>
+      </div>
+
+      <div class="qa reveal" onclick="toggleQA(this)">
+        <div class="qa-q">
+          <h3>'그분 안에서(ἐν αὐτῷ)'가 위치적이 아니라 유기적이라는 것은 무슨 뜻인가요?</h3>
+          <span class="toggle">+</span>
+        </div>
+        <div class="qa-a"><div class="qa-a-inner">
+          위치적이라면 단지 그리스도가 계신 곳에 우리도 있다는 의미일 것입니다. 그러나 유기적 연결은 <em>생명의 연결</em>입니다. 가지가 포도나무에 붙어 한 생명을 공유하듯, 부활 안에서 그리스도와 우리는 한 생명으로 연결됩니다. 이 유기적 연결 안에서 그분의 부활 생명이 우리 안에 살면서 우리를 의로 조성합니다. '그분 안에서'는 곧 '그분의 생명 안에서'입니다.
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== QUIZ ================== -->
+<section class="quiz" id="scene-quiz">
+  <div class="wrap">
+    <div class="label reveal">Ⅵ &nbsp;·&nbsp; Test Yourself</div>
+    <h2 class="section-title reveal reveal-delay-1">오늘의 <em>퀴즈</em></h2>
+    <p class="quiz-intro reveal reveal-delay-2">10개의 질문을 통해 메시지의 핵심을 되새겨봅시다. 한 문제씩, 천천히 마음에 새기며 답해보세요.</p>
+
+    <div class="quiz-card reveal reveal-delay-3" id="quizCard">
+      <div id="quizContent">
+        <div class="q-counter"><strong id="qNum">1</strong> &nbsp;/&nbsp; 10</div>
+        <div class="q-question" id="qQuestion"></div>
+        <div class="q-options" id="qOptions"></div>
+        <div class="q-feedback" id="qFeedback"></div>
+        <div class="q-controls">
+          <div></div>
+          <div class="q-progress" id="qProgress"></div>
+          <button class="q-btn" id="qNext" disabled>다음 ›</button>
+        </div>
+      </div>
+
+      <div class="quiz-result" id="quizResult">
+        <div class="q-counter">RESULT</div>
+        <div class="score"><span id="finalScore">0</span> / 10</div>
+        <h3 id="resultTitle"></h3>
+        <p id="resultMessage"></p>
+        <button class="q-btn" onclick="resetQuiz()">다시 풀어보기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== PRAYER ================== -->
+<section class="prayer" id="scene-prayer">
+  <div class="wrap">
+    <div class="label reveal">Ⅶ &nbsp;·&nbsp; Today's Prayer</div>
+    <div class="prayer-text reveal reveal-delay-1">
+      주님,<br/>
+      저를 위해 <span class="em">죄가 되신 그리스도</span>여,<br/>
+      이제는 부활 생명으로 제 안에 사시어<br/>
+      저의 <span class="em">고치</span>를 끝까지 소모시키소서.<br/><br/>
+      제 기질도, 제 유별남도, 제 타고난 자아도<br/>
+      모두 죄임을 인정합니다.<br/>
+      저를 십자가의 더 전진된 일 안으로,<br/>
+      지성소 안으로 이끄소서.<br/><br/>
+      마침내 제 내적 존재가<br/>
+      <span class="crystal">수정같이 투명하게</span> 되어<br/>
+      당신의 의(義) 자체가 되게 하소서.
+    </div>
+    <svg class="prayer-star" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/>
+    </svg>
+    <div class="prayer-amen">— 아 멘 —</div>
+  </div>
+</section>
+
+<footer>
+  <div class="fmark">2 Corinthians 5:21 · Romans 8:3 · 2 Peter 3:13</div>
+</footer>
 
 <script>
-// ============ STAGE CARDS ↔ DIAGRAM ============
-const stageCards = document.querySelectorAll('.stage-card');
-const stageZones = document.querySelectorAll('.stage-zone');
+  // ============ Progress bar ============
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+  });
 
-function setStageActive(n){
-  stageCards.forEach(c => c.classList.toggle('active', c.dataset.stage === n));
-  stageZones.forEach(z => z.classList.toggle('active', z.dataset.zone === n));
-}
+  // ============ Font scale + Side panel ============
+  let fontScale = 1;
+  function adjustFont(dir){
+    if (dir === 0) fontScale = 1;
+    else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+    else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+    document.documentElement.style.setProperty('--font-scale', fontScale);
+  }
+  function togglePanel(){
+    document.getElementById('sidepanel').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+  function goTo(id){
+    togglePanel();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  }
 
-stageCards.forEach(card => {
-  card.addEventListener('mouseenter', () => setStageActive(card.dataset.stage));
-  card.addEventListener('focus', () => setStageActive(card.dataset.stage));
-});
-stageZones.forEach(zone => {
-  zone.addEventListener('mouseenter', () => setStageActive(zone.dataset.zone));
-});
-document.querySelector('.stages-wrap').addEventListener('mouseleave', () => {
-  stageCards.forEach(c => c.classList.remove('active'));
-  stageZones.forEach(z => z.classList.remove('active'));
-});
+  // ============================================================
+  // BIBLE VERSE TOOLTIP — ported from M1D4 (Korean only)
+  // Hover (PC) / tap-to-open bottom-sheet (mobile)
+  // ============================================================
+  (function(){
+    'use strict';
 
-// ============ Q&A ACCORDION ============
-document.querySelectorAll('.qa-item').forEach(item => {
-  const q = item.querySelector('.qa-q');
-  const a = item.querySelector('.qa-a');
-  q.addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.qa-item.open').forEach(other => {
-      if (other !== item){
-        other.classList.remove('open');
-        other.querySelector('.qa-a').style.maxHeight = '0';
+    var XML_URL = '../../recovery_bible_ko.xml';
+
+    var BOOKS = [
+      {n:'창세기',a:'창'},{n:'출애굽기',a:'출'},{n:'레위기',a:'레'},{n:'민수기',a:'민'},
+      {n:'신명기',a:'신'},{n:'여호수아',a:'수'},{n:'사사기',a:'삿'},{n:'룻기',a:'룻'},
+      {n:'사무엘상',a:'삼상'},{n:'사무엘하',a:'삼하'},{n:'열왕기상',a:'왕상'},{n:'열왕기하',a:'왕하'},
+      {n:'역대상',a:'대상'},{n:'역대하',a:'대하'},{n:'에스라',a:'스'},{n:'느헤미야',a:'느'},
+      {n:'에스더',a:'에'},{n:'욥기',a:'욥'},{n:'시편',a:'시'},{n:'잠언',a:'잠'},
+      {n:'전도서',a:'전'},{n:'아가',a:'아'},{n:'이사야',a:'사'},{n:'예레미야',a:'렘'},
+      {n:'예레미야애가',a:'애'},{n:'에스겔',a:'겔'},{n:'다니엘',a:'단'},{n:'호세아',a:'호'},
+      {n:'요엘',a:'욜'},{n:'아모스',a:'암'},{n:'오바댜',a:'옵'},{n:'요나',a:'욘'},
+      {n:'미가',a:'미'},{n:'나훔',a:'나'},{n:'하박국',a:'합'},{n:'스바냐',a:'습'},
+      {n:'학개',a:'학'},{n:'스가랴',a:'슥'},{n:'말라기',a:'말'},{n:'마태복음',a:'마'},
+      {n:'마가복음',a:'막'},{n:'누가복음',a:'눅'},{n:'요한복음',a:'요'},{n:'사도행전',a:'행'},
+      {n:'로마서',a:'롬'},{n:'고린도전서',a:'고전'},{n:'고린도후서',a:'고후'},{n:'갈라디아서',a:'갈'},
+      {n:'에베소서',a:'엡'},{n:'빌립보서',a:'빌'},{n:'골로새서',a:'골'},{n:'데살로니가전서',a:'살전'},
+      {n:'데살로니가후서',a:'살후'},{n:'디모데전서',a:'딤전'},{n:'디모데후서',a:'딤후'},{n:'디도서',a:'딛'},
+      {n:'빌레몬서',a:'몬'},{n:'히브리서',a:'히'},{n:'야고보서',a:'약'},{n:'베드로전서',a:'벧전'},
+      {n:'베드로후서',a:'벧후'},{n:'요한일서',a:'요일'},{n:'요한이서',a:'요이'},{n:'요한삼서',a:'요삼'},
+      {n:'유다서',a:'유'},{n:'요한계시록',a:'계'}
+    ];
+
+    var BOOK_META = {};
+    for (var i = 0; i < BOOKS.length; i++) {
+      BOOK_META[BOOKS[i].a] = BOOKS[i];
+      BOOK_META[BOOKS[i].n] = BOOKS[i];
+    }
+
+    function parseVerseSpec(spec){
+      var parts = String(spec).split(/\s*,\s*/);
+      var out = [];
+      for (var i = 0; i < parts.length; i++) {
+        var m = parts[i].match(/^(\d+)(?:\s*[\-–]\s*(\d+))?(상|하)?$/);
+        if (!m) continue;
+        out.push({
+          start: parseInt(m[1], 10),
+          end: m[2] ? parseInt(m[2], 10) : parseInt(m[1], 10),
+          suffix: m[3] || ''
+        });
+      }
+      return out;
+    }
+
+    function parseBibleXml(xml){
+      var doc = new DOMParser().parseFromString(xml, 'text/xml');
+      var data = {};
+      var books = doc.getElementsByTagName('Book');
+      for (var i = 0; i < books.length; i++) {
+        var b = books[i];
+        var abbrev = b.getAttribute('abbrevKo');
+        var nameKo = b.getAttribute('nameKo');
+        var chapters = {};
+        var chs = b.getElementsByTagName('Chapter');
+        for (var j = 0; j < chs.length; j++) {
+          var ch = chs[j];
+          var num = ch.getAttribute('num');
+          var verses = {};
+          var vs = ch.getElementsByTagName('Verse');
+          for (var k = 0; k < vs.length; k++) {
+            verses[vs[k].getAttribute('num')] = vs[k].textContent;
+          }
+          chapters[num] = verses;
+        }
+        var entry = { abbrevKo: abbrev, nameKo: nameKo, chapters: chapters };
+        data[abbrev] = entry;
+        if (nameKo) data[nameKo] = entry;
+      }
+      return data;
+    }
+
+    var bibleData = null;
+    var biblePromise = null;
+    function loadBible(){
+      if (bibleData) return Promise.resolve(bibleData);
+      if (biblePromise) return biblePromise;
+      biblePromise = fetch(XML_URL).then(function(r){
+        if (!r.ok) throw new Error('XML fetch ' + r.status);
+        return r.text();
+      }).then(function(xml){
+        var data = parseBibleXml(xml);
+        bibleData = data;
+        window.VrefBible = { data: data, meta: BOOK_META };
+        document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+        return data;
+      }).catch(function(e){
+        console.warn('[vref] Bible XML 로드 실패:', e);
+        bibleData = {};
+        window.VrefBible = { data: {}, meta: BOOK_META };
+        document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+        return bibleData;
+      });
+      return biblePromise;
+    }
+
+    var tooltipEl = null;
+    var backdropEl = null;
+    var activeLink = null;
+    var hideTimer = null;
+
+    function isMobileView(){
+      return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function ensureTooltip(){
+      if (tooltipEl) return tooltipEl;
+      tooltipEl = document.createElement('div');
+      tooltipEl.id = 'vref-tooltip';
+      document.body.appendChild(tooltipEl);
+      return tooltipEl;
+    }
+
+    function ensureBackdrop(){
+      if (backdropEl) return backdropEl;
+      backdropEl = document.createElement('div');
+      backdropEl.id = 'vref-tt-backdrop';
+      backdropEl.addEventListener('click', hideTooltip);
+      document.body.appendChild(backdropEl);
+      return backdropEl;
+    }
+
+    function escHtml(s){
+      return String(s).replace(/[&<>"']/g, function(c){
+        return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+      });
+    }
+
+    function buildVerseLines(dataset, bookKey, chapter, versesStr){
+      if (!dataset || !Object.keys(dataset).length) {
+        return { html: '<span class="vref-tt-empty">— 불러오는 중… —</span>', empty: true };
+      }
+      var entry = dataset[bookKey];
+      if (!entry) return { html: '<span class="vref-tt-empty">— 책을 찾을 수 없음 —</span>', empty: true };
+      var ch = entry.chapters[String(chapter)];
+      if (!ch) return { html: '<span class="vref-tt-empty">— ' + chapter + '장을 찾을 수 없음 —</span>', empty: true };
+      var groups = parseVerseSpec(versesStr);
+      var pieces = [];
+      for (var gi = 0; gi < groups.length; gi++) {
+        var g = groups[gi];
+        for (var v = g.start; v <= g.end; v++) {
+          var t = ch[String(v)];
+          if (typeof t === 'undefined') continue;
+          pieces.push('<div class="vref-tt-verse"><span class="vref-tt-vnum">[' + v + ']</span>' + escHtml(t) + '</div>');
+        }
+      }
+      if (!pieces.length) return { html: '<span class="vref-tt-empty">— 해당 절을 찾을 수 없음 —</span>', empty: true };
+      return { html: pieces.join(''), empty: false };
+    }
+
+    function buildContent(bookKey, chapter, versesStr){
+      var meta = BOOK_META[bookKey];
+      var koLabel = (meta ? meta.n : bookKey) + ' ' + chapter + '장 ' + versesStr + '절';
+      var ko = buildVerseLines(bibleData, bookKey, chapter, versesStr);
+      return (
+        '<div class="vref-tt-book">' + escHtml(koLabel) + '</div>' +
+        '<div class="vref-tt-body">' + ko.html + '</div>'
+      );
+    }
+
+    function positionTooltip(linkEl){
+      var rect = linkEl.getBoundingClientRect();
+      var ttRect = tooltipEl.getBoundingClientRect();
+      var docY = window.scrollY || window.pageYOffset;
+      var docX = window.scrollX || window.pageXOffset;
+      var margin = 12;
+      var top = rect.bottom + docY + 10;
+      var left = rect.left + docX + (rect.width / 2) - (ttRect.width / 2);
+      if (left < docX + margin) left = docX + margin;
+      if (left + ttRect.width > docX + window.innerWidth - margin) {
+        left = docX + window.innerWidth - margin - ttRect.width;
+      }
+      if (rect.bottom + ttRect.height + 10 > window.innerHeight && rect.top - ttRect.height - 10 > 0) {
+        top = rect.top + docY - ttRect.height - 10;
+      }
+      tooltipEl.style.top = top + 'px';
+      tooltipEl.style.left = left + 'px';
+    }
+
+    function renderTooltipInner(html, mobile){
+      if (mobile) {
+        tooltipEl.innerHTML =
+          '<div class="vref-tt-handle"></div>' +
+          '<button class="vref-tt-close" type="button" aria-label="닫기">&times;</button>' +
+          html;
+        var btn = tooltipEl.querySelector('.vref-tt-close');
+        if (btn) btn.addEventListener('click', function(e){ e.stopPropagation(); hideTooltip(); });
+      } else {
+        tooltipEl.innerHTML = html;
+      }
+    }
+
+    function showTooltip(linkEl){
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      activeLink = linkEl;
+      ensureTooltip();
+      var mobile = isMobileView();
+      if (mobile) ensureBackdrop();
+      var b = linkEl.dataset.book;
+      var c = linkEl.dataset.chapter;
+      var v = linkEl.dataset.verses;
+      if (!b || !c || !v) return;
+      function render(){
+        renderTooltipInner(buildContent(b, parseInt(c, 10), v), mobile);
+        if (mobile) {
+          tooltipEl.style.top = '';
+          tooltipEl.style.left = '';
+          tooltipEl.scrollTop = 0;
+          backdropEl.dataset.show = '1';
+        } else {
+          positionTooltip(linkEl);
+        }
+        tooltipEl.dataset.show = '1';
+      }
+      render();
+      if (!bibleData) {
+        loadBible().then(function(){
+          if (activeLink !== linkEl) return;
+          render();
+        });
+      }
+    }
+
+    function hideTooltip(){
+      activeLink = null;
+      if (tooltipEl) tooltipEl.dataset.show = '0';
+      if (backdropEl) backdropEl.dataset.show = '0';
+    }
+
+    // ----- Bridge: <button class="verse-link" data-verse="롬 8:3"> → vref-link -----
+    function upgradeVerseLinks(){
+      document.querySelectorAll('.verse-link[data-verse]').forEach(function(el){
+        if (el.dataset.bound) return;
+        var m = el.dataset.verse.match(/^(\S+)\s+(\d+):(.+)$/);
+        if (!m) return;
+        el.classList.add('vref-link');
+        el.dataset.book = m[1];
+        el.dataset.chapter = m[2];
+        el.dataset.verses = m[3];
+        el.dataset.bound = '1';
+        if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+      });
+    }
+
+    function bind(){
+      // Desktop hover
+      document.addEventListener('mouseover', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) showTooltip(link);
+      });
+      document.addEventListener('mouseout', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (!link) return;
+        var to = e.relatedTarget;
+        if (to && to.closest && to.closest('.vref-link') === link) return;
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(hideTooltip, 100);
+      });
+      // Mobile tap-to-toggle
+      document.addEventListener('click', function(e){
+        if (!isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) {
+          e.preventDefault();
+          if (activeLink === link) hideTooltip();
+          else showTooltip(link);
+        }
+      });
+      // Keyboard (PC only)
+      document.addEventListener('focusin', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) showTooltip(link);
+      });
+      document.addEventListener('focusout', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) hideTooltip();
+      });
+      // Auto-close on page scroll — PC only
+      window.addEventListener('scroll', function(){
+        if (isMobileView()) return;
+        hideTooltip();
+      }, true);
+      window.addEventListener('resize', hideTooltip);
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') hideTooltip();
+      });
+    }
+
+    function init(){
+      upgradeVerseLinks();
+      bind();
+      loadBible();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+
+  // ============ Scroll reveal ============
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
       }
     });
-    if (isOpen){
-      item.classList.remove('open');
-      a.style.maxHeight = '0';
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ============ Verse tooltips ============
+  function toggleVerse(el){
+    el.classList.toggle('open');
+  }
+
+  // ============ Q&A accordion ============
+  function toggleQA(el){
+    el.classList.toggle('open');
+  }
+
+  // ============ QUIZ ============
+  const quizData = [
+    {
+      q: "고린도후서 5장 21절에서 설명하는 '하나님의 구원의 궁극적인 완결'은 무엇입니까?",
+      options: ["율법의 완성", "하나님의 의가 되는 것", "천국에 가는 것", "죄의 용서"],
+      correct: 1,
+      explain: "본문은 의롭다 하심을 넘어, 우리가 그리스도 안에서 '하나님의 의' 자체가 되는 것이 구원의 궁극적인 완결이라고 말합니다."
+    },
+    {
+      q: "로마서 8장 3절에 따르면, 율법이 연약하여 할 수 없었던 일을 하나님은 어떻게 성취하셨습니까?",
+      options: ["아들을 죄의 육체의 모양으로 보내어 죄를 심판함", "율법의 규정을 완화함", "인간의 의지를 강화함", "천사들을 통해 새로운 법을 전달함"],
+      correct: 0,
+      explain: "하나님은 그분의 아들을 죄의 육체의 모양으로 보내시어, 그 육체 안에서 죄에 대해 유죄판결 하심으로 율법이 못한 일을 친히 이루셨습니다."
+    },
+    {
+      q: "구원받은 부부의 예시에서, 그들이 여전히 불완전한 의의 상태에 머물게 만드는 근본적인 원인은 무엇입니까?",
+      options: ["성경 지식의 부족", "도덕적인 타락", "타고난 생명과 강한 기질", "교회 생활의 부재"],
+      correct: 2,
+      explain: "남편의 강한 기질과 아내의 유별남, 곧 그들의 '타고난 생명'이 여전히 하나님과 그들을 분리시키는 죄였습니다."
+    },
+    {
+      q: "본문에서 '고치'를 완전히 빠져나오지 못한 나비의 비유는 무엇을 상징합니까?",
+      options: ["아직 하나님의 의로 온전히 변화되지 않은 상태", "세상으로부터의 격리", "사탄의 유혹", "죽음 이후의 부활"],
+      correct: 0,
+      explain: "고치는 우리의 타고난 자아이며, 그것이 완전히 사라질 때까지 우리는 부분적으로만 하나님의 의라고 말할 수 있습니다."
+    },
+    {
+      q: "고린도후서 5장 21절의 '그분 안에서'라는 표현이 담고 있는 유기적인 의미는 무엇입니까?",
+      options: ["장래에 그리스도를 만남", "예배당 안에 거함", "그리스도의 가르침을 따름", "그리스도와 부활 안에서 하나 됨"],
+      correct: 3,
+      explain: "'그분 안에서(ἐν αὐτῷ)'는 단지 위치적 의미가 아니라, 부활 안에서 그리스도와 한 생명으로 연결되는 유기적 연합을 의미합니다."
+    },
+    {
+      q: "새 예루살렘에서 모든 것이 '하나님의 의'가 된다는 것은 어떤 상태를 의미합니까?",
+      options: ["인간의 노력이 결실을 맺은 상태", "죄인들이 하나도 없는 상태", "모든 것이 하나님께 올바르고 만족스러운 상태", "율법이 엄격하게 집행되는 상태"],
+      correct: 2,
+      explain: "모든 것이 머리 아래 통일되고 좋은 질서 안에 있어, 어긋나고 무질서한 것이 조금도 없는 — 하나님께 올바르고 만족스러운 상태입니다."
+    },
+    {
+      q: "그리스도께서 십자가에서 '죄' 자체가 되셨다는 의미에 대한 설명 중 옳은 것은 무엇입니까?",
+      options: ["그리스도의 존재가 사탄으로 변했다", "죄의 영향력을 일시적으로 차단하셨다", "그리스도께서 실제로 죄를 지으셨다", "하나님이 그분을 죄를 짊어진 분이자 죄 자체로 여기셨다"],
+      correct: 3,
+      explain: "본문은 하나님께서 그리스도를 단지 '죄를 짊어지신 분'으로 여기셨을 뿐 아니라 '죄 자체'로 여기셨다고 분명히 말씀합니다."
+    },
+    {
+      q: "내적 존재가 '투명하고 수정같이 맑게 되는 것'은 무엇과 관련이 있습니까?",
+      options: ["지식의 습득", "하나님의 의가 됨", "금욕적인 생활", "침례를 받는 의식"],
+      correct: 1,
+      explain: "내적 존재가 투명해져 하나님의 생각과 의지 안에 머무는 것 — 그것이 바로 '하나님의 의'가 되는 것의 실질입니다."
+    },
+    {
+      q: "베드로후서 3장 13절에 근거하여, 의가 새 하늘과 새 땅에 거한다는 사실이 시사하는 바는 무엇입니까?",
+      options: ["더 이상의 심판이 없다", "시간이 정지됨", "모든 것이 하나님께 완전히 되돌려짐", "물질적인 풍요가 가득함"],
+      correct: 2,
+      explain: "의가 거한다는 것은 모든 것이 머리 아래 통일되고, 하나님께 완전히 되돌려진 궁극적 완결을 시사합니다."
+    },
+    {
+      q: "새 언약의 사역이 믿는 이들 안으로 분배하는 것은 무엇입니까?",
+      options: ["종교적인 의무", "사회적인 정의", "생명의 영", "문자적인 율법"],
+      correct: 2,
+      explain: "새 언약의 사역은 그 영의 사역이자 의의 사역으로서, 믿는 이들 안으로 '생명의 영'을 분배합니다."
+    }
+  ];
+
+  let qIdx = 0, qScore = 0, qAnswered = false;
+
+  function renderQuiz(){
+    const item = quizData[qIdx];
+    document.getElementById('qNum').textContent = qIdx + 1;
+    document.getElementById('qQuestion').textContent = item.q;
+    const opts = document.getElementById('qOptions');
+    opts.innerHTML = '';
+    const letters = ['A','B','C','D'];
+    item.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'q-option';
+      btn.innerHTML = `<span class="letter">${letters[i]}.</span><span>${opt}</span>`;
+      btn.onclick = () => selectAnswer(i, btn);
+      opts.appendChild(btn);
+    });
+    document.getElementById('qFeedback').classList.remove('show');
+    document.getElementById('qNext').disabled = true;
+    qAnswered = false;
+    renderProgress();
+  }
+
+  function renderProgress(){
+    const p = document.getElementById('qProgress');
+    p.innerHTML = '';
+    for(let i=0; i<10; i++){
+      const d = document.createElement('div');
+      d.className = 'q-dot';
+      if(i < qIdx) d.classList.add('done');
+      if(i === qIdx) d.classList.add('active');
+      p.appendChild(d);
+    }
+  }
+
+  function selectAnswer(i, btn){
+    if(qAnswered) return;
+    qAnswered = true;
+    const item = quizData[qIdx];
+    const all = document.querySelectorAll('.q-option');
+    all.forEach(b => b.classList.add('disabled'));
+
+    if(i === item.correct){
+      btn.classList.add('correct');
+      qScore++;
     } else {
-      item.classList.add('open');
-      a.style.maxHeight = a.scrollHeight + 'px';
+      btn.classList.add('wrong');
+      all[item.correct].classList.add('correct');
+    }
+
+    const fb = document.getElementById('qFeedback');
+    fb.textContent = item.explain;
+    fb.classList.add('show');
+    document.getElementById('qNext').disabled = false;
+  }
+
+  document.getElementById('qNext').addEventListener('click', () => {
+    qIdx++;
+    if(qIdx >= quizData.length){
+      showResult();
+    } else {
+      if(qIdx === quizData.length - 1){
+        document.getElementById('qNext').textContent = '결과 보기 ›';
+      }
+      renderQuiz();
     }
   });
-});
 
-// ============ QUIZ ============
-document.querySelectorAll('.quiz-item').forEach(item => {
-  const correct = parseInt(item.dataset.correct, 10);
-  const options = item.querySelectorAll('.quiz-option');
-  const explain = item.querySelector('.quiz-explain');
-  options.forEach(opt => {
-    opt.addEventListener('click', () => {
-      const idx = parseInt(opt.dataset.idx, 10);
-      options.forEach(o => o.classList.add('disabled'));
-      if (idx === correct){
-        opt.classList.add('correct');
-      } else {
-        opt.classList.add('wrong');
-        options[correct].classList.add('correct');
-      }
-      explain.classList.add('show');
-    });
-  });
-});
+  function showResult(){
+    document.getElementById('quizContent').style.display = 'none';
+    document.getElementById('quizResult').classList.add('show');
+    document.getElementById('finalScore').textContent = qScore;
+
+    let title, msg;
+    if(qScore === 10){
+      title = "✦  하나님의 의로 충만히 빛납니다";
+      msg = "메시지의 모든 결을 깊이 붙드셨습니다. 이제 이 진리가 생활 안에서 실제가 되도록, 십자가의 더 전진된 일이 당신 안에 계속 이루어지기를 기도합니다.";
+    } else if(qScore >= 7){
+      title = "✦  진리의 빛이 스며들고 있습니다";
+      msg = "메시지의 중심을 잘 붙드셨습니다. 놓친 부분을 다시 한번 본문과 함께 묵상해보시면 더욱 풍성한 깨달음이 있을 것입니다.";
+    } else if(qScore >= 4){
+      title = "✦  여정은 계속됩니다";
+      msg = "절반쯤 걸어오셨습니다. 본문을 다시 천천히 읽어보시고, 특히 '고치'와 '하나님의 의로 조성됨'의 관계를 마음에 새겨보세요.";
+    } else {
+      title = "✦  다시 처음부터, 천천히";
+      msg = "괜찮습니다. 한 번에 다 이해할 수 있는 진리가 아닙니다. 위로 다시 올라가 부부 예화와 네 단계의 여정을 차분히 읽어보세요. 빛은 서서히 밝아집니다.";
+    }
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultMessage').textContent = msg;
+  }
+
+  function resetQuiz(){
+    qIdx = 0; qScore = 0; qAnswered = false;
+    document.getElementById('quizContent').style.display = 'block';
+    document.getElementById('quizResult').classList.remove('show');
+    document.getElementById('qNext').textContent = '다음 ›';
+    renderQuiz();
+  }
+
+  renderQuiz();
 </script>
 
 </body>
