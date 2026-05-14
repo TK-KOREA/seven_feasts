@@ -1,0 +1,1308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#1a1410" />
+<title>민수기 1장 — 그 수에 든 사람들</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* ================================================
+   민수기 1장 · 인터랙티브 인포그래픽
+   디자인 컨셉: 시나이 광야의 양피지 위에 쓰인
+   질서 정연한 인구조사 두루마리
+   ================================================ */
+
+:root{
+  --ink: #1a1410;
+  --ink-2: #3d2f24;
+  --paper: #f4ecd9;
+  --paper-2: #ebe0c6;
+  --paper-3: #e0d3b3;
+  --rule: #c9b894;
+  --accent: #8b2a1f;        /* 깊은 진홍 — 언약·증거 */
+  --accent-2: #a8442f;
+  --gold: #a8884a;          /* 성막의 금속 */
+  --sand: #c4a575;
+  --muted: #6b5942;
+  --shadow: rgba(60,38,18,.18);
+  --serif: 'Gowun Batang', 'Noto Serif KR', serif;
+  --sans: 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+  --num: 'Cormorant Garamond', 'Gowun Batang', serif;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink: #ece1c8;
+    --ink-2: #c8b893;
+    --paper: #15110c;
+    --paper-2: #1d1812;
+    --paper-3: #251e15;
+    --rule: #3a2f20;
+    --accent: #c75a48;
+    --accent-2: #d97a64;
+    --gold: #c9a464;
+    --sand: #8c7548;
+    --muted: #8a7857;
+    --shadow: rgba(0,0,0,.5);
+  }
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.7;
+  color:var(--ink);
+  background:var(--paper);
+  background-image:
+    radial-gradient(ellipse at top, transparent 0%, rgba(139,42,31,.04) 100%),
+    repeating-linear-gradient(0deg, transparent 0, transparent 28px, rgba(139,42,31,.025) 28px, rgba(139,42,31,.025) 29px);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* paper grain */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.15 0 0 0 0.08 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity:.5;
+  mix-blend-mode:multiply;
+}
+@media (prefers-color-scheme: dark){
+  body::before{mix-blend-mode:overlay;opacity:.25}
+}
+
+/* ─── 진행률 바 ─── */
+.progress{
+  position:fixed;top:0;left:0;right:0;
+  height:3px;background:transparent;
+  z-index:100;
+  padding-top: env(safe-area-inset-top);
+}
+.progress__bar{
+  height:100%;width:0%;
+  background:linear-gradient(90deg, var(--accent), var(--gold));
+  transition:width .1s linear;
+}
+
+/* ─── 공통 레이아웃 ─── */
+main{position:relative;z-index:1}
+section{
+  padding: 84px 24px;
+  max-width: 640px;
+  margin: 0 auto;
+  position:relative;
+}
+@media(min-width:720px){
+  section{padding: 120px 32px}
+}
+
+.label{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:14px;
+  letter-spacing:.08em;
+  color:var(--accent);
+  text-transform:uppercase;
+  margin-bottom:14px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.label::before{
+  content:"";
+  width:24px;height:1px;
+  background:var(--accent);
+}
+
+h1,h2,h3{font-family:var(--serif);font-weight:700;letter-spacing:-.01em}
+h2{
+  font-size:clamp(28px, 7vw, 38px);
+  line-height:1.25;
+  margin-bottom:28px;
+  color:var(--ink);
+}
+h2 .accent{color:var(--accent)}
+
+/* ─── 페이드 인 ─── */
+.fade{
+  opacity:0;
+  transform:translateY(24px);
+  transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.fade.in{opacity:1;transform:none}
+.fade.d1{transition-delay:.08s}
+.fade.d2{transition-delay:.16s}
+.fade.d3{transition-delay:.24s}
+.fade.d4{transition-delay:.32s}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-delay:.001ms !important;
+    transition-duration:.001ms !important;
+  }
+  .fade{opacity:1;transform:none}
+}
+
+/* ════════════════════════════════════════
+   1. 표지
+   ════════════════════════════════════════ */
+.cover{
+  min-height: 100svh;
+  min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top: max(84px, env(safe-area-inset-top));
+  position:relative;
+  overflow:hidden;
+}
+.cover__frame{
+  position:absolute;
+  inset: 24px;
+  border:1px solid var(--rule);
+  pointer-events:none;
+}
+.cover__frame::before,
+.cover__frame::after{
+  content:"";
+  position:absolute;
+  width:14px;height:14px;
+  border:1px solid var(--accent);
+}
+.cover__frame::before{top:-7px;left:-7px;border-right:0;border-bottom:0}
+.cover__frame::after{bottom:-7px;right:-7px;border-left:0;border-top:0}
+
+.cover__book{
+  font-family:var(--num);
+  font-size:14px;
+  letter-spacing:.3em;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-bottom:32px;
+}
+.cover__chapter{
+  font-family:var(--num);
+  font-size: clamp(80px, 28vw, 160px);
+  font-style:italic;
+  line-height:.9;
+  color:var(--accent);
+  margin-bottom:8px;
+}
+.cover__title{
+  font-family:var(--serif);
+  font-size: clamp(34px, 9vw, 56px);
+  line-height:1.15;
+  font-weight:700;
+  margin-bottom:24px;
+}
+.cover__subtitle{
+  font-family:var(--serif);
+  font-size: clamp(17px, 4.4vw, 20px);
+  line-height:1.7;
+  color:var(--ink-2);
+  max-width: 28ch;
+  margin-bottom:48px;
+  font-weight:400;
+}
+.cover__subtitle em{
+  color:var(--accent);
+  font-style:normal;
+  font-weight:700;
+}
+.cover__meta{
+  display:flex;
+  gap:24px;
+  font-size:13px;
+  color:var(--muted);
+  font-family:var(--num);
+  letter-spacing:.05em;
+  border-top:1px solid var(--rule);
+  padding-top:16px;
+  width:100%;
+  max-width:300px;
+}
+.cover__meta span{display:flex;flex-direction:column;gap:2px}
+.cover__meta b{font-family:var(--serif);font-size:15px;color:var(--ink);font-weight:700}
+
+.scroll-cue{
+  position:absolute;
+  bottom: max(40px, env(safe-area-inset-bottom));
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  animation: float 2.2s ease-in-out infinite;
+}
+.scroll-cue svg{display:block}
+@keyframes float{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(6px)}
+}
+
+/* ════════════════════════════════════════
+   2. 본문 전체
+   ════════════════════════════════════════ */
+.verses{}
+.verses__group{
+  margin-bottom:48px;
+  padding-top:8px;
+  border-top:1px dashed var(--rule);
+}
+.verses__group-title{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:14px;
+  letter-spacing:.05em;
+  color:var(--accent);
+  margin: 16px 0 24px;
+  display:flex;align-items:baseline;gap:10px;
+}
+.verses__group-title b{
+  font-family:var(--num);
+  font-size:20px;
+  font-style:italic;
+  font-weight:500;
+  color:var(--ink);
+}
+.verse{
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.85;
+  margin-bottom:18px;
+  display:flex;
+  gap:14px;
+  align-items:baseline;
+}
+.verse__num{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:14px;
+  color:var(--accent);
+  flex-shrink:0;
+  width:24px;
+  text-align:right;
+  padding-top:4px;
+  font-weight:500;
+}
+.verse__text{flex:1}
+
+/* 핵심 단어 — 탭 가능한 각주 트리거 */
+.term{
+  color:var(--accent);
+  font-weight:700;
+  border-bottom:1px dotted var(--accent);
+  cursor:pointer;
+  padding:1px 2px;
+  background:transparent;
+  border-left:0;border-right:0;border-top:0;
+  font-family:inherit;
+  font-size:inherit;
+  transition:background .2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.term:hover,.term:focus-visible{
+  background:rgba(139,42,31,.1);
+  outline:none;
+}
+.term:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+  border-radius:2px;
+}
+
+/* ════════════════════════════════════════
+   3. 인물·개념 카드
+   ════════════════════════════════════════ */
+.tribes{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:24px;
+}
+@media(min-width:520px){
+  .tribes{grid-template-columns:repeat(3,1fr)}
+}
+.tribe{
+  perspective:1000px;
+  aspect-ratio: 1 / 1.15;
+  min-height: 150px;
+  /* button resets — without all:unset which would kill grid/perspective */
+  appearance:none;
+  -webkit-appearance:none;
+  background:none;
+  border:0;
+  padding:0;
+  margin:0;
+  font:inherit;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  display:block;
+  width:100%;
+}
+.tribe:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.tribe__inner{
+  position:relative;
+  width:100%;height:100%;
+  transition:transform .6s cubic-bezier(.4,.2,.2,1);
+  transform-style:preserve-3d;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.tribe.flipped .tribe__inner{transform:rotateY(180deg)}
+.tribe__face{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+  padding:14px 12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-radius:2px;
+  box-shadow: 0 1px 0 var(--shadow);
+}
+.tribe__face--back{
+  transform:rotateY(180deg);
+  background:var(--ink);
+  color:var(--paper);
+  border-color:var(--ink);
+}
+.tribe__order{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:13px;
+  color:var(--muted);
+}
+.tribe__name{
+  font-family:var(--serif);
+  font-size:20px;
+  font-weight:700;
+  line-height:1.1;
+  color:var(--ink);
+}
+.tribe__leader{
+  font-family:var(--serif);
+  font-size:12px;
+  color:var(--muted);
+  margin-top:auto;
+  line-height:1.4;
+}
+.tribe__face--back .tribe__order{color:var(--gold)}
+.tribe__face--back .tribe__label{
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-family:var(--num);
+  font-style:italic;
+  margin-bottom:4px;
+}
+.tribe__count{
+  font-family:var(--num);
+  font-size:26px;
+  font-style:italic;
+  color:var(--paper);
+  line-height:1;
+  font-weight:500;
+}
+.tribe__count small{font-size:14px;opacity:.7;margin-left:2px;font-style:normal}
+.tribe__father{
+  font-size:11px;
+  color:var(--sand);
+  line-height:1.4;
+  margin-top:8px;
+}
+
+.totals{
+  margin-top:32px;
+  padding:24px;
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+  text-align:center;
+  position:relative;
+}
+.totals::before,.totals::after{
+  content:"";position:absolute;
+  width:10px;height:10px;
+  border:1px solid var(--accent);
+}
+.totals::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.totals::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.totals__label{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:13px;
+  letter-spacing:.1em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.totals__num{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:clamp(40px,12vw,56px);
+  color:var(--accent);
+  line-height:1.1;
+  margin:6px 0 4px;
+  font-weight:500;
+}
+.totals__caption{
+  font-family:var(--serif);
+  font-size:14px;
+  color:var(--ink-2);
+}
+
+/* ════════════════════════════════════════
+   4. 구조 다이어그램
+   ════════════════════════════════════════ */
+.structure{
+  margin-top:16px;
+  font-family:var(--serif);
+}
+.node{
+  position:relative;
+  padding:14px 16px;
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+  margin-bottom:8px;
+}
+.node--root{
+  background:var(--ink);
+  color:var(--paper);
+  border-color:var(--ink);
+}
+.node--root .node__title{color:var(--paper)}
+.node--root .node__roman{color:var(--gold)}
+.node__roman{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:13px;
+  color:var(--accent);
+  letter-spacing:.05em;
+}
+.node__title{
+  font-size:17px;
+  font-weight:700;
+  margin-top:2px;
+  color:var(--ink);
+}
+.node__range{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:2px;
+}
+.node--root .node__range{color:var(--sand)}
+.indent-1{margin-left:14px;position:relative}
+.indent-1::before{
+  content:"";
+  position:absolute;
+  left:-14px;top:0;bottom:50%;
+  width:14px;
+  border-left:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.indent-2{margin-left:28px;position:relative}
+.indent-2::before{
+  content:"";
+  position:absolute;
+  left:-14px;top:0;bottom:50%;
+  width:14px;
+  border-left:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+
+/* ════════════════════════════════════════
+   5. 반복 단어·모티프
+   ════════════════════════════════════════ */
+.motif{
+  border-top:1px solid var(--rule);
+  padding:22px 0;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:18px;
+  align-items:start;
+}
+.motif:last-child{border-bottom:1px solid var(--rule)}
+.motif__count{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:34px;
+  color:var(--accent);
+  line-height:1;
+  font-weight:500;
+  min-width:46px;
+}
+.motif__count small{font-size:13px;color:var(--muted);display:block;font-style:normal;letter-spacing:.1em;margin-top:2px;font-family:var(--num)}
+.motif__word{
+  font-family:var(--serif);
+  font-size:19px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:4px;
+}
+.motif__meaning{
+  font-size:14px;
+  color:var(--ink-2);
+  line-height:1.65;
+}
+
+/* ════════════════════════════════════════
+   6. 묵상 질문
+   ════════════════════════════════════════ */
+.question{
+  border-bottom:1px solid var(--rule);
+}
+.question:first-of-type{border-top:1px solid var(--rule)}
+.question__btn{
+  width:100%;
+  background:none;
+  border:0;
+  text-align:left;
+  padding:22px 0;
+  font-family:var(--serif);
+  font-size:17px;
+  font-weight:700;
+  color:var(--ink);
+  cursor:pointer;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  line-height:1.5;
+  min-height:44px;
+  -webkit-tap-highlight-color:transparent;
+}
+.question__btn:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:4px;
+}
+.question__btn-num{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:14px;
+  color:var(--accent);
+  flex-shrink:0;
+  width:22px;
+  padding-top:5px;
+  font-weight:500;
+}
+.question__btn-text{flex:1}
+.question__icon{
+  flex-shrink:0;
+  width:22px;height:22px;
+  border:1px solid var(--ink-2);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .3s ease;
+  margin-top:3px;
+}
+.question.open .question__icon{transform:rotate(45deg);border-color:var(--accent)}
+.question.open .question__icon line{stroke:var(--accent)}
+.question__body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease;
+}
+.question__body-inner{
+  padding: 0 0 24px 38px;
+  font-family:var(--serif);
+  font-size:15px;
+  line-height:1.75;
+  color:var(--ink-2);
+}
+
+/* ════════════════════════════════════════
+   7. 마무리 카드
+   ════════════════════════════════════════ */
+.keycard{
+  background:var(--ink);
+  color:var(--paper);
+  padding:48px 28px;
+  position:relative;
+  margin-top:32px;
+  border:1px solid var(--ink);
+  overflow:hidden;
+}
+.keycard__corner{
+  position:absolute;
+  width:32px;height:32px;
+  border:1px solid var(--gold);
+}
+.keycard__corner.tl{top:14px;left:14px;border-right:0;border-bottom:0}
+.keycard__corner.tr{top:14px;right:14px;border-left:0;border-bottom:0}
+.keycard__corner.bl{bottom:14px;left:14px;border-right:0;border-top:0}
+.keycard__corner.br{bottom:14px;right:14px;border-left:0;border-top:0}
+.keycard__ref{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:14px;
+  letter-spacing:.25em;
+  color:var(--gold);
+  text-align:center;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+.keycard__verse{
+  font-family:var(--serif);
+  font-size:22px;
+  line-height:1.6;
+  text-align:center;
+  font-weight:400;
+  color:var(--paper);
+}
+.keycard__verse em{
+  color:var(--accent-2);
+  font-style:normal;
+  font-weight:700;
+}
+.keycard__caption{
+  text-align:center;
+  font-family:var(--num);
+  font-style:italic;
+  font-size:13px;
+  color:var(--sand);
+  margin-top:24px;
+  letter-spacing:.05em;
+}
+.share{
+  display:flex;
+  gap:10px;
+  margin-top:24px;
+  justify-content:center;
+}
+.share button{
+  min-height:44px;
+  padding:0 20px;
+  border:1px solid var(--rule);
+  background:var(--paper-2);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  border-radius:2px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  -webkit-tap-highlight-color:transparent;
+  transition: background .15s ease;
+}
+.share button:hover,.share button:focus-visible{
+  background:var(--paper-3);
+  outline:none;
+}
+.share button:focus-visible{
+  border-color:var(--accent);
+}
+
+footer{
+  text-align:center;
+  padding: 40px 24px max(40px, env(safe-area-inset-bottom));
+  font-family:var(--num);
+  font-style:italic;
+  font-size:12px;
+  letter-spacing:.15em;
+  color:var(--muted);
+}
+footer hr{
+  border:0;
+  border-top:1px solid var(--rule);
+  width:60px;
+  margin:0 auto 18px;
+}
+
+/* ════════════════════════════════════════
+   각주 모달
+   ════════════════════════════════════════ */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(20,12,8,.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index:1000;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:0;
+  opacity:0;
+  transition:opacity .25s ease;
+}
+.modal-overlay.show{display:flex;opacity:1}
+.modal{
+  width:100%;
+  max-width:640px;
+  background:var(--paper);
+  color:var(--ink);
+  border-top-left-radius:18px;
+  border-top-right-radius:18px;
+  padding: 12px 24px max(28px, env(safe-area-inset-bottom));
+  transform: translateY(40px);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+  max-height: 80vh;
+  overflow-y:auto;
+  box-shadow: 0 -10px 40px rgba(0,0,0,.25);
+}
+.modal-overlay.show .modal{transform:translateY(0)}
+@media(min-width:720px){
+  .modal-overlay{align-items:center;padding:24px}
+  .modal{border-radius:8px}
+}
+.modal__handle{
+  width:42px;height:4px;
+  background:var(--rule);
+  border-radius:2px;
+  margin:8px auto 18px;
+}
+.modal__label{
+  font-family:var(--num);
+  font-style:italic;
+  font-size:12px;
+  letter-spacing:.2em;
+  color:var(--accent);
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.modal__title{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:16px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--rule);
+}
+.modal__body{
+  font-family:var(--serif);
+  font-size:15px;
+  line-height:1.8;
+  color:var(--ink-2);
+}
+.modal__body p{margin-bottom:14px}
+.modal__close{
+  position:absolute;
+  top:16px;right:18px;
+  width:36px;height:36px;
+  background:transparent;
+  border:1px solid var(--rule);
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink);
+  -webkit-tap-highlight-color:transparent;
+}
+.modal__close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* 토스트 */
+.toast{
+  position:fixed;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--ink);
+  color:var(--paper);
+  padding:12px 20px;
+  border-radius:30px;
+  font-size:14px;
+  font-family:var(--sans);
+  z-index:2000;
+  opacity:0;
+  transition: all .3s ease;
+  pointer-events:none;
+}
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+<div class="progress" role="progressbar" aria-label="페이지 진행률" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress__bar" id="progressBar"></div>
+</div>
+
+<main>
+
+<!-- ════════════ 1. 표지 ════════════ -->
+<section class="cover" aria-labelledby="cover-title">
+  <div class="cover__frame" aria-hidden="true"></div>
+  <p class="cover__book">민수기 · Numbers</p>
+  <p class="cover__chapter">01</p>
+  <h1 id="cover-title" class="cover__title">그 수에 든<br>사람들</h1>
+  <p class="cover__subtitle">시나이 광야의 회막에서, <em>여호와의 군대</em>로 편성된 이스라엘.</p>
+  <div class="cover__meta">
+    <span><b>54</b>절</span>
+    <span><b>12</b>지파</span>
+    <span><b>603,550</b>명</span>
+  </div>
+  <a href="#read" class="scroll-cue" aria-label="아래로 스크롤">
+    <span>SCROLL</span>
+    <svg width="14" height="20" viewBox="0 0 14 20" fill="none" aria-hidden="true">
+      <rect x="0.5" y="0.5" width="13" height="19" rx="6.5" stroke="currentColor"/>
+      <line x1="7" y1="5" x2="7" y2="10" stroke="currentColor" stroke-linecap="round"/>
+    </svg>
+  </a>
+</section>
+
+<!-- ════════════ 2. 본문 ════════════ -->
+<section id="read" aria-labelledby="read-title">
+  <p class="label fade">본문</p>
+  <h2 class="fade d1" id="read-title">시나이에서<br>들려온 명령</h2>
+  <p class="fade d2" style="font-family:var(--serif);font-size:16px;color:var(--ink-2);margin-bottom:32px;line-height:1.75">밑줄 친 단어를 누르면 각주가 펼쳐집니다.</p>
+
+  <div class="verses fade d3">
+
+    <div class="verses__group">
+      <p class="verses__group-title"><b>Ⅰ-A-1</b><span>가문별로 그들의 인도자들에 의해 ─ 1:1-46</span></p>
+
+      <div class="verse"><span class="verse__num">1</span><span class="verse__text">이스라엘 자손이 이집트 땅에서 나온 그 이듬해 둘째 달 초하룻날에, 시나이 광야에 있는 <button class="term" data-foot="f-1-1">회막</button>에서 여호와께서 모세에게 말씀하셨다.</span></div>
+      <div class="verse"><span class="verse__num">2</span><span class="verse__text">"너희는 이스라엘 자손의 온 회중의 수효를 <button class="term" data-foot="f-1-2">그들의 가문과 그들의 조상 집안별로</button> 조사하되, 모든 남자의 명수를 하나하나 조사하여라.</span></div>
+      <div class="verse"><span class="verse__num">3</span><span class="verse__text">너와 아론은 이스라엘 가운데에서 <button class="term" data-foot="f-1-3">군 복무를 할 수 있는 이십 세 이상</button> 된 모든 남자를 부대별로 세어야 한다.</span></div>
+      <div class="verse"><span class="verse__num">4</span><span class="verse__text">그리고 각 지파에서 그 조상 집안의 우두머리 한 사람씩을 너희와 함께 있게 해야 한다.</span></div>
+      <div class="verse"><span class="verse__num">5-15</span><span class="verse__text">너희와 함께 설 사람들의 이름은 이러하다. 르우벤 지파에서는 스데울의 아들 엘리술, 시므온 지파에서는 수리삿대의 아들 슬루미엘, 유다 지파에서는 암미나답의 아들 나손, 잇사갈 지파에서는 수알의 아들 느다넬, 스불론 지파에서는 헬론의 아들 엘리압, 요셉의 자손 가운데 에브라임 지파에서는 암미훗의 아들 엘리사마, 므낫세 지파에서는 브다술의 아들 가말리엘, 베냐민 지파에서는 기드오니의 아들 아비단, 단 지파에서는 암미삿대의 아들 아히에셀, 아셀 지파에서는 오그란의 아들 바기엘, 갓 지파에서는 드우엘의 아들 엘리아삽, 납달리 지파에서는 에난의 아들 아히라이다."</span></div>
+      <div class="verse"><span class="verse__num">16</span><span class="verse__text">이들은 회중 가운데에서 부름받은 사람들로서 그 조상 지파의 인도자이며 이스라엘 수천 인의 우두머리였다.</span></div>
+      <div class="verse"><span class="verse__num">17</span><span class="verse__text"><button class="term" data-foot="f-1-17">모세와 아론은 지명된 이 사람들을 거느리고</button>,</span></div>
+      <div class="verse"><span class="verse__num">18</span><span class="verse__text">둘째 달 초하룻날에 온 회중을 불러 모았다. 회중은 자기들의 가문과 자기들의 조상 집안별로 이십 세 이상의 남자들의 명수를 하나하나 등록하였다.</span></div>
+      <div class="verse"><span class="verse__num">19</span><span class="verse__text">여호와께서 모세에게 명령하신 대로 모세는 시나이 광야에서 그들의 수를 세었다.</span></div>
+      <div class="verse"><span class="verse__num">20-43</span><span class="verse__text">르우벤 지파에서 그 수에 든 사람은 사만 육천오백 명, 시므온 지파는 오만 구천삼백 명, 갓 지파는 사만 오천육백오십 명, 유다 지파는 칠만 사천육백 명, 잇사갈 지파는 오만 사천사백 명, 스불론 지파는 오만 칠천사백 명, 에브라임 지파는 사만 오백 명, 므낫세 지파는 삼만 이천이백 명, 베냐민 지파는 삼만 오천사백 명, 단 지파는 육만 이천칠백 명, 아셀 지파는 사만 천오백 명, 납달리 지파는 오만 삼천사백 명이었다.</span></div>
+      <div class="verse"><span class="verse__num">44</span><span class="verse__text">이들은 모세와 아론, 그리고 저마다 자기 조상 집안을 대표하는 이스라엘 열두 인도자들에 의해 그 수에 든 사람들이다.</span></div>
+      <div class="verse"><span class="verse__num">45-46</span><span class="verse__text">이와 같이 이스라엘 자손 가운데 군 복무를 할 수 있는 이십 세 이상의 모든 남자를 그들의 조상 집안별로 그 수를 세니, 그 수에 든 사람은 <strong style="color:var(--accent)">육십만 삼천오백오십 명</strong>이었다.</span></div>
+    </div>
+
+    <div class="verses__group">
+      <p class="verses__group-title"><b>Ⅰ-A-2</b><span>레위인들은 군대의 수에 들지 않음 ─ 1:47-54</span></p>
+
+      <div class="verse"><span class="verse__num">47</span><span class="verse__text">그러나 <button class="term" data-foot="f-1-47">레위인들</button>은 그 조상의 지파에 따라 그들 가운데에서 그 수에 들지 않았다.</span></div>
+      <div class="verse"><span class="verse__num">48-49</span><span class="verse__text">여호와께서 모세에게 말씀하셨다. "레위 지파만은 그 수에 들게 하지도 말고, 이스라엘 자손 가운데에서 그들의 수효를 조사하지도 마라.</span></div>
+      <div class="verse"><span class="verse__num">50</span><span class="verse__text">너는 레위인들에게 <button class="term" data-foot="f-1-50">증거의 성막</button>과 그 모든 기구와 거기에 딸린 모든 일을 일임하여라. 그들은 성막과 모든 기구를 운반해야 하고, 성막을 섬기며 그 주위에 진을 쳐야 한다.</span></div>
+      <div class="verse"><span class="verse__num">51</span><span class="verse__text">성막이 움직일 때에는 레위인들이 그것을 거두어야 하고, 성막이 머물 때에도 레위인들이 그것을 세워야 한다. 그러나 <button class="term" data-foot="f-1-51">다른 사람</button>이 가까이 오면 죽여야 한다.</span></div>
+      <div class="verse"><span class="verse__num">52</span><span class="verse__text">이스라엘 자손은 각각 부대별로 자기의 진영과 자기의 깃발 옆에 진을 쳐야 한다.</span></div>
+      <div class="verse"><span class="verse__num">53</span><span class="verse__text">그러나 레위인들은 증거의 성막 주위에 진을 쳐서 이스라엘 자손의 회중에게 진노가 내리지 않게 해야 한다. 레위인들은 증거의 성막을 위한 임무를 수행해야 한다."</span></div>
+      <div class="verse"><span class="verse__num">54</span><span class="verse__text">이스라엘 자손은 여호와께서 모세에게 명령하신 그대로 다 하였다.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ 3. 인물·개념 카드 ════════════ -->
+<section id="cards" aria-labelledby="cards-title">
+  <p class="label fade">열두 인도자</p>
+  <h2 class="fade d1" id="cards-title">지파의 <span class="accent">우두머리</span>들</h2>
+  <p class="fade d2" style="font-family:var(--serif);font-size:16px;color:var(--ink-2);margin-bottom:20px;line-height:1.75">각 카드를 누르면 그 지파의 수가 펼쳐집니다. 본문에 기록된 순서대로 정렬했습니다.</p>
+
+  <div class="tribes fade d3" id="tribes"></div>
+
+  <div class="totals fade d4">
+    <div class="totals__label">합계 · The Sum</div>
+    <div class="totals__num">603,550</div>
+    <div class="totals__caption">군 복무를 할 수 있는 이십 세 이상의 모든 남자 (1:46)</div>
+  </div>
+</section>
+
+<!-- ════════════ 4. 구조 다이어그램 ════════════ -->
+<section id="structure" aria-labelledby="structure-title">
+  <p class="label fade">본문 구조</p>
+  <h2 class="fade d1" id="structure-title">민수기 1장의 <span class="accent">흐름</span></h2>
+  <p class="fade d2" style="font-family:var(--serif);font-size:16px;color:var(--ink-2);margin-bottom:20px;line-height:1.75">본문은 큰 두 단락으로 나뉩니다. 군대로 셈해지는 열두 지파, 그리고 셈에서 제외되는 한 지파.</p>
+
+  <div class="structure fade d3">
+    <div class="node node--root">
+      <span class="node__roman">Ⅰ</span>
+      <div class="node__title">군대로 편성됨</div>
+      <div class="node__range">1:1 — 9:14</div>
+    </div>
+    <div class="indent-1">
+      <div class="node">
+        <span class="node__roman">A</span>
+        <div class="node__title">그 수에 듦</div>
+        <div class="node__range">1:1 — 1:54</div>
+      </div>
+    </div>
+    <div class="indent-2">
+      <div class="node">
+        <span class="node__roman">1</span>
+        <div class="node__title">가문별로 · 인도자들에 의해 · 나이를 기준으로</div>
+        <div class="node__range">1:1 — 1:46 · 12지파 · 603,550명</div>
+      </div>
+    </div>
+    <div class="indent-2">
+      <div class="node">
+        <span class="node__roman">2</span>
+        <div class="node__title">레위인들은 군대의 수에 들지 않음</div>
+        <div class="node__range">1:47 — 1:54 · 증거의 성막을 섬김</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fade d4" style="margin-top:48px">
+    <p style="font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted);line-height:1.75;text-align:center;padding:0 12px">
+      "전쟁에 나가는 이스라엘 사람들은,<br>
+      하나님의 증거를 위해 하나님을 섬기는<br>
+      레위인들을 밖에서 보호하는 역할을 하였다."
+      <br><span style="display:block;margin-top:10px;font-size:12px;letter-spacing:.15em;font-style:normal;color:var(--accent)">— 1:47 각주</span>
+    </p>
+  </div>
+</section>
+
+<!-- ════════════ 5. 반복 단어·모티프 ════════════ -->
+<section id="motifs" aria-labelledby="motifs-title">
+  <p class="label fade">반복되는 말</p>
+  <h2 class="fade d1" id="motifs-title">본문이 새기는 <span class="accent">리듬</span></h2>
+  <p class="fade d2" style="font-family:var(--serif);font-size:16px;color:var(--ink-2);margin-bottom:8px;line-height:1.75">같은 어구가 거듭됩니다. 셈하는 일은 단순한 산수가 아니라, 정해진 질서를 따라 거행되는 의식이었습니다.</p>
+
+  <div class="fade d3" style="margin-top:24px">
+    <div class="motif">
+      <div class="motif__count">×12<small>지파마다</small></div>
+      <div>
+        <div class="motif__word">"군 복무를 할 수 있는 이십 세 이상의"</div>
+        <div class="motif__meaning">싸움에 나갈 수 있는 자격. 직역하면 "전쟁에 나갈 수 있는". 히브리어 ‘차바’는 봉사로도 번역됩니다 (1:3 각주).</div>
+      </div>
+    </div>
+    <div class="motif">
+      <div class="motif__count">×12<small>지파마다</small></div>
+      <div>
+        <div class="motif__word">"가문과 그들의 조상 집안별로"</div>
+        <div class="motif__meaning">생명의 근원과 생명의 교통 안에서 수에 들었습니다. 혼자가 아니라 한 집안의 일원으로서 (1:2 각주).</div>
+      </div>
+    </div>
+    <div class="motif">
+      <div class="motif__count">×12<small>지파마다</small></div>
+      <div>
+        <div class="motif__word">"명수를 하나하나"</div>
+        <div class="motif__meaning">군중이 아니라 한 사람 한 사람. 익명의 무리가 아니라 이름으로 호명된 개인들이 셈되었습니다.</div>
+      </div>
+    </div>
+    <div class="motif">
+      <div class="motif__count">3<small>방면의 인정</small></div>
+      <div>
+        <div class="motif__word">모세 · 아론 · 열두 인도자</div>
+        <div class="motif__meaning">머리이신 그리스도, 대제사장이신 그리스도, 그리고 각 교회의 장로들 — 세 방면의 권위 (1:17 각주).</div>
+      </div>
+    </div>
+    <div class="motif">
+      <div class="motif__count">2<small>이름</small></div>
+      <div>
+        <div class="motif__word">회막 · 증거의 성막</div>
+        <div class="motif__meaning">하나님과 만나는 자리(회막)이자, 하나님의 증거를 위한 자리(증거의 성막). 한 장막의 두 이름 (1:50 각주).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ 6. 묵상 질문 ════════════ -->
+<section id="meditate" aria-labelledby="meditate-title">
+  <p class="label fade">묵상</p>
+  <h2 class="fade d1" id="meditate-title">스스로에게 <span class="accent">묻기</span></h2>
+  <p class="fade d2" style="font-family:var(--serif);font-size:16px;color:var(--ink-2);margin-bottom:32px;line-height:1.75">각 질문을 눌러 펼쳐 보세요.</p>
+
+  <div class="fade d3">
+    <article class="question">
+      <button class="question__btn" aria-expanded="false">
+        <span class="question__btn-num">01</span>
+        <span class="question__btn-text">나는 어느 "조상 집안"의 생명의 교통 안에 있는가?</span>
+        <span class="question__icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><line x1="0" y1="5" x2="10" y2="5" stroke="currentColor"/><line x1="5" y1="0" x2="5" y2="10" stroke="currentColor"/></svg></span>
+      </button>
+      <div class="question__body"><div class="question__body-inner">
+        본문에 따르면 이스라엘 사람은 홀로 셈에 들지 않았습니다. 그는 한 가문, 한 집안의 사람으로서 셈에 들었습니다. 1:2 각주는 이것을 "생명의 근원과 생명의 교통"이라 부릅니다. 내가 속한 그 교통의 자리는 어디입니까?
+      </div></div>
+    </article>
+
+    <article class="question">
+      <button class="question__btn" aria-expanded="false">
+        <span class="question__btn-num">02</span>
+        <span class="question__btn-text">나의 "이십 세" — 생명의 성숙은 어디쯤 와 있는가?</span>
+        <span class="question__icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><line x1="0" y1="5" x2="10" y2="5" stroke="currentColor"/><line x1="5" y1="0" x2="5" y2="10" stroke="currentColor"/></svg></span>
+      </button>
+      <div class="question__body"><div class="question__body-inner">
+        싸움에 나가려면 이십 세 이상이어야 했습니다. 1:2 각주는 이것을 "생명의 성숙을 기준으로 하여"라고 풉니다. 갈렙은 85세에도 전투원이었습니다 (1:3 각주). 나이가 아니라 성숙. 나는 싸울 만큼 자랐습니까?
+      </div></div>
+    </article>
+
+    <article class="question">
+      <button class="question__btn" aria-expanded="false">
+        <span class="question__btn-num">03</span>
+        <span class="question__btn-text">나는 전투원인가, 레위인인가 — 아니면 둘 다인가?</span>
+        <span class="question__icon" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10"><line x1="0" y1="5" x2="10" y2="5" stroke="currentColor"/><line x1="5" y1="0" x2="5" y2="10" stroke="currentColor"/></svg></span>
+      </button>
+      <div class="question__body"><div class="question__body-inner">
+        1:47 각주는 말합니다 — "믿는 이들은 전쟁을 위해서는 단체적인 전투원이고, 봉사를 위해서는 레위인들이며 심지어 제사장들이다." 한 공동체 안에서 나는 어느 자리에 서 있습니까? 밖에서 지키는 자입니까, 안에서 섬기는 자입니까?
+      </div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ════════════ 7. 마무리 ════════════ -->
+<section id="close" aria-labelledby="close-title">
+  <p class="label fade">핵심 구절</p>
+  <h2 class="fade d1" id="close-title">기억할 한 마디</h2>
+
+  <article class="keycard fade d3" aria-labelledby="close-title">
+    <span class="keycard__corner tl" aria-hidden="true"></span>
+    <span class="keycard__corner tr" aria-hidden="true"></span>
+    <span class="keycard__corner bl" aria-hidden="true"></span>
+    <span class="keycard__corner br" aria-hidden="true"></span>
+    <div class="keycard__ref">민수기 1 : 54</div>
+    <p class="keycard__verse">
+      "이스라엘 자손은 <em>여호와께서<br>모세에게 명령하신 그대로</em><br>다 하였다."
+    </p>
+    <div class="keycard__caption">— 한 절기, 한 회중, 한 순종 —</div>
+  </article>
+
+  <div class="share fade d4">
+    <button id="copyBtn" aria-label="구절 복사하기">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <rect x="3.5" y="3.5" width="9" height="11" rx="1" stroke="currentColor"/>
+        <path d="M5.5 3.5V2.5C5.5 1.95 5.95 1.5 6.5 1.5H10.5C11.05 1.5 11.5 1.95 11.5 2.5V3.5" stroke="currentColor"/>
+      </svg>
+      복사
+    </button>
+    <button id="shareBtn" aria-label="구절 공유하기">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="4" cy="8" r="2" stroke="currentColor"/>
+        <circle cx="12" cy="4" r="2" stroke="currentColor"/>
+        <circle cx="12" cy="12" r="2" stroke="currentColor"/>
+        <line x1="5.5" y1="7" x2="10.5" y2="4.5" stroke="currentColor"/>
+        <line x1="5.5" y1="9" x2="10.5" y2="11.5" stroke="currentColor"/>
+      </svg>
+      공유
+    </button>
+  </div>
+</section>
+
+<footer>
+  <hr>
+  민수기 1장 · Numbers Chapter One<br>
+  Sinai · 둘째 달 초하룻날
+</footer>
+
+</main>
+
+<!-- 각주 모달 -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal">
+    <button class="modal__close" id="modalClose" aria-label="닫기">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
+    <div class="modal__handle" aria-hidden="true"></div>
+    <p class="modal__label" id="modalLabel">각주</p>
+    <h3 class="modal__title" id="modalTitle"></h3>
+    <div class="modal__body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ════════ 데이터 ════════ */
+const TRIBES = [
+  { n:'르우벤', leader:'엘리술', father:'스데울', count:46500 },
+  { n:'시므온', leader:'슬루미엘', father:'수리삿대', count:59300 },
+  { n:'갓',     leader:'엘리아삽', father:'드우엘',  count:45650 },
+  { n:'유다',   leader:'나손',    father:'암미나답', count:74600 },
+  { n:'잇사갈', leader:'느다넬',  father:'수알',    count:54400 },
+  { n:'스불론', leader:'엘리압',  father:'헬론',    count:57400 },
+  { n:'에브라임',leader:'엘리사마',father:'암미훗',  count:40500 },
+  { n:'므낫세', leader:'가말리엘',father:'브다술',  count:32200 },
+  { n:'베냐민', leader:'아비단',  father:'기드오니', count:35400 },
+  { n:'단',     leader:'아히에셀',father:'암미삿대', count:62700 },
+  { n:'아셀',   leader:'바기엘',  father:'오그란',  count:41500 },
+  { n:'납달리', leader:'아히라',  father:'에난',    count:53400 },
+];
+
+const FOOTNOTES = {
+  'f-1-1': {
+    title: '회막 · 1:1',
+    body: `<p>민수기에 묘사된 그림에서, 하나님의 움직임은 성막과 함께한 언약궤에 있었다. 즉, 하나님의 움직임은 교회와 함께하시는 그리스도 안에 있다.</p>
+    <p>이 그리스도는 하나님께서 체현되신 분으로서 하나님과 사람의 연합인 하나님-사람이시며, 교회는 이 땅 위에 있는 하나님의 거처로서 그리스도의 확대와 증가이다.</p>
+    <p>민수기에 묘사된 그림은 하나님께서 땅을 되찾아 그분의 영원한 목적을 이루시기 위해 이 땅에서 움직이시고 그분의 원수를 정복하실 수 있도록 하나의 실체로 함께 연합된, 삼일 하나님과 그분께 선택받은 백성을 보여 준다.</p>`
+  },
+  'f-1-2': {
+    title: '가문과 조상 집안별로 · 1:2',
+    body: `<p>이스라엘 자손은 그들의 가문별(조상 집안별)로 인도자들에 의해, 즉 <strong>생명의 근원</strong>과 <strong>생명의 교통</strong>에 의해 그리고 <strong>생명 안의 인도 직분(권위) 아래</strong>, 나이를 기준으로 하여 즉 <strong>생명의 성숙</strong>을 기준으로 하여 그 수에 듦으로써 싸우는 군대로 편성되었다.</p>
+    <p>이스라엘 자손은 그 수에 들기 위해 그들의 조상 집안의 생명의 교통 안에 있어야 했고, 생명이 자라서 성숙해야 했다.</p>`
+  },
+  'f-1-3': {
+    title: '군 복무를 할 수 있는 이십 세 이상 · 1:3',
+    body: `<p>직역하면 <strong>"전쟁에 나갈 수 있는, 군대에 갈 수 있는"</strong>. 히브리어 ‘차바’는 민수기 4:3에서처럼 (제사장의) ‘봉사’로 번역될 수도 있다.</p>
+    <p>하나님께 서원하는 일에는 20세부터 60세까지의 이스라엘 남자에게 가장 많은 값이 정해졌다 (레 27:3). 그러나 싸우는 일에는 20세부터 그 이상 제한이 없이 다만 이스라엘 남자면 되었다.</p>
+    <p>심지어 <strong>85세나 되는 갈렙도 여전히 전투원</strong>이었으며 이스라엘 민족을 위해 싸울 수 있었다 (수 14:10-11).</p>
+    <p style="font-size:13px;color:var(--muted)">또한 "방문해야 한다, 소집해야 한다"로 옮길 수도 있다.</p>`
+  },
+  'f-1-17': {
+    title: '세 방면의 인정 · 1:17',
+    body: `<p>이스라엘 사람의 수를 세는 일은 세 방면에서, 권위 있는 사람들의 인정을 받았다.</p>
+    <p><strong>첫째는 모세의 인정</strong>을 받았는데, 이것은 머리이신 그리스도께서 그분의 권위를 사용하시는 것을 의미한다.</p>
+    <p><strong>둘째는 아론의 인정</strong>을 받았는데, 이것은 대제사장이신 그리스도께서 그분의 제사장 직분을 수행하시는 것을 의미한다.</p>
+    <p><strong>셋째는 열두 지파의 인도자들의 인정</strong>을 받았는데, 이것은 각 교회의 장로들이 그리스도의 머리의 권위 아래에서 하나님의 백성을 인도하는 것을 의미한다.</p>
+    <p>하나님께서 임명하신 대표 권위들은 하나님의 규정에 따라 수행된 일들을 인정하는 일을 하였다.</p>`
+  },
+  'f-1-47': {
+    title: '레위인들 · 1:47',
+    body: `<p>레위인들은 군대의 수에 들지 않았다. 그들은 증거의 성막을 섬기도록 임명되었고, 그 성막 주위에 진을 쳐서 이스라엘 자손이 증거의 성막에 손대지 못하게 하였다.</p>
+    <p>전쟁에 나가는 이스라엘 사람들은, <strong>하나님의 증거를 위해 하나님을 섬기는 레위인들을 밖에서 보호</strong>하는 역할을 하였다.</p>
+    <p>군대로 편성된 이스라엘 사람들은 하나님의 증거를 위해 전쟁하는 <strong>단체적인 전투원인 교회의 예표</strong>이다 (엡 6:10-20).</p>
+    <p>레위인들 또한 하나님을 섬기는 방면에서 교회의 예표이다. 믿는 이들은 전쟁을 위해서는 단체적인 전투원이고, 봉사(섬김)를 위해서는 레위인들이며 심지어 제사장들이다 (벧전 2:5, 9).</p>`
+  },
+  'f-1-50': {
+    title: '증거의 성막 · 1:50',
+    body: `<p>하나님의 백성이 하나님과 만난다는 점에서 성막은 <strong>회막</strong>이라고 불렸고 (민 1:1), 하나님의 증거를 위한다는 점에서 성막은 <strong>증거의 성막</strong>이라고 불렸다 (민 1:50, 53).</p>
+    <p>신약에서는 그리스도와 그리스도의 확대인 교회가 이 두 방면에서 성막의 실재이다.</p>`
+  },
+  'f-1-51': {
+    title: '다른 사람 · 1:51',
+    body: `<p>즉, <strong>일반인</strong>. 레위인이 아닌 사람이다.</p>`
+  },
+};
+
+/* ════════ 지파 카드 ════════ */
+function fmt(n){ return n.toLocaleString('en-US'); }
+const tribesEl = document.getElementById('tribes');
+TRIBES.forEach((t, i) => {
+  const card = document.createElement('button');
+  card.className = 'tribe';
+  card.type = 'button';
+  card.setAttribute('aria-label', `${t.n} 지파, ${fmt(t.count)}명. 눌러서 자세히 보기.`);
+  card.innerHTML = `
+    <div class="tribe__inner">
+      <div class="tribe__face">
+        <div class="tribe__order">${String(i+1).padStart(2,'0')}</div>
+        <div class="tribe__name">${t.n}</div>
+        <div class="tribe__leader">${t.father}의 아들<br><strong style="color:var(--ink)">${t.leader}</strong></div>
+      </div>
+      <div class="tribe__face tribe__face--back">
+        <div class="tribe__order">${String(i+1).padStart(2,'0')}</div>
+        <div>
+          <div class="tribe__label">그 수에 든 사람</div>
+          <div class="tribe__count">${fmt(t.count)}<small>명</small></div>
+        </div>
+        <div class="tribe__father">${t.n} 지파</div>
+      </div>
+    </div>`;
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+  tribesEl.appendChild(card);
+});
+
+/* ════════ 페이드 인 (IntersectionObserver) ════════ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+/* ════════ 진행률 바 ════════ */
+const progressBar = document.getElementById('progressBar');
+function updateProgress(){
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+  progressBar.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+window.addEventListener('resize', updateProgress);
+updateProgress();
+
+/* ════════ 각주 모달 ════════ */
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+let lastFocus = null;
+
+function openFoot(key){
+  const f = FOOTNOTES[key];
+  if (!f) return;
+  modalTitle.textContent = f.title;
+  modalBody.innerHTML = f.body;
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  lastFocus = document.activeElement;
+  setTimeout(() => modalClose.focus(), 50);
+}
+function closeFoot(){
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+  if (lastFocus) lastFocus.focus();
+}
+document.querySelectorAll('.term').forEach(btn => {
+  btn.addEventListener('click', () => openFoot(btn.dataset.foot));
+});
+modalClose.addEventListener('click', closeFoot);
+modal.addEventListener('click', (e) => { if (e.target === modal) closeFoot(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('show')) closeFoot();
+});
+
+/* ════════ 묵상 질문 아코디언 ════════ */
+document.querySelectorAll('.question__btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const q = btn.closest('.question');
+    const body = q.querySelector('.question__body');
+    const isOpen = q.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    body.style.maxHeight = isOpen ? body.scrollHeight + 'px' : '0px';
+  });
+});
+
+/* ════════ 공유·복사 ════════ */
+const KEY_VERSE = '"이스라엘 자손은 여호와께서 모세에게 명령하신 그대로 다 하였다." — 민수기 1:54';
+const toast = document.getElementById('toast');
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  try{
+    await navigator.clipboard.writeText(KEY_VERSE);
+    showToast('구절이 복사되었습니다');
+  }catch{
+    showToast('복사에 실패했습니다');
+  }
+});
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  if (navigator.share){
+    try{
+      await navigator.share({ title: '민수기 1:54', text: KEY_VERSE });
+    }catch{}
+  } else {
+    try{
+      await navigator.clipboard.writeText(KEY_VERSE);
+      showToast('공유를 지원하지 않아 복사했습니다');
+    }catch{
+      showToast('공유에 실패했습니다');
+    }
+  }
+});
+</script>
+</body>
+</html>
