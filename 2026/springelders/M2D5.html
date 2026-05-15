@@ -1252,14 +1252,296 @@
   .reveal.delay-2 { transition-delay: 0.3s; }
   .reveal.delay-3 { transition-delay: 0.45s; }
 
+  /* ═════════════════════════════════════════════════════════
+     PORTED FEATURES — Topbar, Side Panel, Bible Tooltip (XML)
+     Themed to M2D5 parchment / crimson / gold
+     ═════════════════════════════════════════════════════════ */
+  :root { --topbar-h: 44px; --font-scale: 1; }
+  html { font-size: calc(16px * var(--font-scale)); }
+  body { padding-top: var(--topbar-h); }
+
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--topbar-h);
+    background: rgba(244, 232, 206, 0.92);
+    backdrop-filter: saturate(150%) blur(10px);
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+    border-bottom: 1px solid rgba(139, 111, 47, 0.25);
+    display: flex; align-items: center; padding: 0 10px;
+    z-index: 1000; gap: 4px;
+  }
+  .topbar-btn {
+    flex-shrink: 0; width: 34px; height: 34px;
+    border: none; background: none; border-radius: 4px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: var(--ink-soft); opacity: 0.85;
+    transition: background .15s, opacity .15s;
+  }
+  .topbar-btn:hover { background: rgba(201, 169, 97, 0.18); opacity: 1; color: var(--crimson); }
+  .topbar-title {
+    flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap;
+    font-family: var(--font-display); font-style: italic;
+    font-size: 12.5px; font-weight: 500; letter-spacing: 0.22em;
+    color: var(--gold-deep);
+    scrollbar-width: none; -ms-overflow-style: none;
+    padding: 0 6px; text-transform: lowercase;
+  }
+  .topbar-title::-webkit-scrollbar { display: none; }
+  .font-toggle { flex-shrink: 0; margin-left: auto; font-family: var(--font-kor); font-size: 14px; font-weight: 500; }
+  .font-popup {
+    position: fixed; top: calc(var(--topbar-h) - 4px); right: 10px;
+    display: none; align-items: center; gap: 2px;
+    background: rgba(244, 232, 206, 0.97);
+    backdrop-filter: saturate(150%) blur(10px);
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+    border: 1px solid rgba(139, 111, 47, 0.25); border-radius: 4px;
+    padding: 3px; z-index: 1003;
+    box-shadow: 0 8px 20px -6px rgba(15, 22, 38, 0.25);
+  }
+  .font-popup.open { display: flex; }
+  .font-ctrl-btn {
+    width: 30px; height: 30px; border: none; background: transparent;
+    color: var(--ink-soft); font-size: 15px; cursor: pointer;
+    border-radius: 3px; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-kor);
+  }
+  .font-ctrl-btn:hover { background: rgba(201, 169, 97, 0.22); color: var(--crimson); }
+
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(15, 22, 38, 0.58);
+    backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+    z-index: 1001; opacity: 0; pointer-events: none;
+    transition: opacity .25s;
+  }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+
+  .sidepanel {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: 300px; max-width: 82vw;
+    background: linear-gradient(180deg, var(--parchment) 0%, var(--parchment-warm) 100%);
+    z-index: 1002; transform: translateX(-100%);
+    transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+    overflow-y: auto; padding: 20px 0;
+    box-shadow: 4px 0 32px rgba(15, 22, 38, 0.32);
+    font-family: var(--font-kor);
+    border-right: 1px solid rgba(139, 111, 47, 0.25);
+  }
+  .sidepanel.open { transform: translateX(0); }
+  .sidepanel-header {
+    padding: 0 22px 16px; border-bottom: 1px solid rgba(139, 111, 47, 0.25);
+    margin-bottom: 12px;
+    font-family: var(--font-display); font-style: italic;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.24em;
+    text-transform: lowercase; color: var(--gold-deep);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sidepanel-close {
+    margin-left: auto; width: 28px; height: 28px;
+    border: none; background: transparent; border-radius: 3px;
+    cursor: pointer; font-size: 14px; color: var(--ink-soft);
+    opacity: 0.7; display: flex; align-items: center; justify-content: center;
+  }
+  .sidepanel-close:hover { background: rgba(201, 169, 97, 0.22); color: var(--crimson); opacity: 1; }
+  .sp-nav {
+    display: block; padding: 10px 22px; font-size: 13px;
+    color: var(--ink); text-decoration: none; cursor: pointer;
+    transition: background .15s, color .15s;
+    font-weight: 400; letter-spacing: -0.005em; opacity: 0.88;
+  }
+  .sp-nav:hover { background: rgba(201, 169, 97, 0.16); color: var(--crimson); opacity: 1; }
+  .sp-nav.sub { padding-left: 38px; font-size: 12.5px; font-weight: 300; color: var(--ink-soft); opacity: 0.78; }
+  .sp-divider { height: 1px; background: rgba(139, 111, 47, 0.22); margin: 10px 22px; }
+  .sp-home { display: flex; align-items: center; gap: 8px; color: var(--crimson); opacity: 0.95; font-weight: 500; }
+  .sp-home-icon { flex-shrink: 0; color: var(--crimson); }
+
+  /* ============== VREF TOOLTIP (ported from M1D4, Korean only) ============== */
+  .verse-link, .vref-link {
+    color: inherit; font: inherit; background: none;
+    border: none; border-bottom: 1px dotted var(--gold);
+    cursor: help; padding: 0 2px; margin: 0;
+    line-height: inherit; white-space: nowrap;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(201, 169, 97, 0.18);
+    transition: color .15s ease, background-color .15s ease;
+  }
+  .verse-link:hover, .vref-link:hover { color: var(--crimson); background: rgba(201, 169, 97, 0.13); }
+  .verse-link:active, .vref-link:active { color: var(--crimson); background: rgba(201, 169, 97, 0.22); }
+  .verse-link:focus, .vref-link:focus { outline: none; }
+  .verse-link:focus-visible, .vref-link:focus-visible { outline: 1px dashed var(--gold); outline-offset: 2px; }
+  /* Dark sections — keep gold tone */
+  .journey .vref-link, .refs .vref-link {
+    border-bottom-color: var(--gold-bright);
+  }
+  .journey .vref-link:hover, .refs .vref-link:hover {
+    color: var(--gold-bright); background: rgba(232, 199, 117, 0.16);
+  }
+
+  #vref-tt-backdrop {
+    position: fixed; inset: 0;
+    z-index: 9998;
+    background: rgba(15, 22, 38, 0.62);
+    -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .25s ease;
+    display: none;
+  }
+  #vref-tt-backdrop[data-show="1"] {
+    opacity: 1; visibility: visible; pointer-events: auto;
+  }
+  #vref-tooltip {
+    position: absolute; top: 0; left: 0;
+    z-index: 9999;
+    zoom: var(--font-scale);
+    max-width: 460px; min-width: 300px;
+    padding: 24px 28px 22px;
+    background: linear-gradient(180deg, var(--ink) 0%, var(--ink-deep) 100%);
+    border-top: 1px solid rgba(232, 199, 117, 0.42);
+    box-shadow:
+      0 22px 48px -10px rgba(15, 22, 38, 0.55),
+      0 8px 18px -6px rgba(15, 22, 38, 0.4),
+      inset 0 1px 0 rgba(232, 199, 117, 0.08);
+    color: var(--parchment);
+    pointer-events: none; opacity: 0; visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  #vref-tooltip[data-show="1"] {
+    opacity: 1; visibility: visible; transform: translateY(0);
+  }
+  #vref-tooltip::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-deep) 100%);
+    box-shadow: 0 0 12px rgba(232, 199, 117, 0.45);
+  }
+  .vref-tt-handle { display: none; }
+  .vref-tt-close { display: none; }
+  .vref-tt-book {
+    position: relative;
+    font-family: var(--font-display); font-style: italic; font-weight: 500;
+    font-size: 0.82rem; letter-spacing: 0.20em;
+    color: var(--gold-bright); text-transform: lowercase;
+    margin-bottom: 14px; padding-bottom: 12px;
+    border-bottom: 1px solid rgba(232, 199, 117, 0.28);
+  }
+  .vref-tt-body {
+    position: relative;
+    font-family: var(--font-kor);
+    font-size: 1rem; line-height: 1.85;
+    color: var(--parchment); font-weight: 400;
+    word-break: keep-all; overflow-wrap: break-word;
+  }
+  .vref-tt-verse { margin-bottom: 8px; }
+  .vref-tt-verse:last-child { margin-bottom: 0; }
+  .vref-tt-vnum {
+    display: inline-block;
+    font-family: var(--font-display); font-style: italic; font-weight: 500;
+    font-size: 0.85em; color: var(--gold-bright);
+    margin-right: 8px; vertical-align: 0.05em;
+  }
+  .vref-tt-empty {
+    color: var(--parchment); font-style: italic;
+    font-size: 0.92rem; letter-spacing: 0.02em; opacity: 0.55;
+  }
+  @media (hover: none) {
+    .verse-link, .vref-link {
+      cursor: pointer; border-bottom-style: solid; border-bottom-width: 0.5px;
+    }
+  }
+  @media (max-width: 768px) {
+    #vref-tt-backdrop { display: block; }
+    #vref-tooltip {
+      position: fixed !important;
+      top: auto !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+      width: 100%; max-width: 100%; min-width: 0;
+      padding: 14px 22px calc(28px + env(safe-area-inset-bottom, 0px));
+      border-top: none;
+      border-radius: 18px 18px 0 0;
+      box-shadow:
+        0 -2px 0 rgba(232, 199, 117, 0.40),
+        0 -16px 44px rgba(15, 22, 38, 0.55);
+      max-height: 75vh; overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateY(100%);
+      pointer-events: auto;
+      transition: transform .28s cubic-bezier(0.32, 0.72, 0, 1), opacity .2s ease;
+    }
+    #vref-tooltip[data-show="1"] { transform: translateY(0); }
+    .vref-tt-handle {
+      display: block;
+      width: 44px; height: 4px;
+      border-radius: 2px;
+      background: rgba(232, 199, 117, 0.30);
+      margin: 0 auto 18px;
+    }
+    .vref-tt-close {
+      display: flex;
+      position: absolute;
+      top: 14px; right: 16px;
+      width: 36px; height: 36px;
+      align-items: center; justify-content: center;
+      background: rgba(232, 199, 117, 0.06);
+      border: 1px solid rgba(201, 169, 97, 0.30);
+      border-radius: 50%;
+      color: var(--gold-bright);
+      font-family: var(--font-display);
+      font-size: 1.4rem; line-height: 1;
+      padding: 0 0 2px;
+      cursor: pointer; z-index: 2;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color .15s ease;
+    }
+    .vref-tt-close:active { background: rgba(201, 169, 97, 0.20); }
+    .vref-tt-book { font-size: 0.82rem; padding-right: 48px; }
+    .vref-tt-body { font-size: 1.05rem; line-height: 1.9; }
+  }
+
 </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="topbar-title">두 휘장, 한 길 · 지성소를 향한 여정 · 히 10:20</div>
+  <button class="topbar-btn font-toggle" onclick="toggleFontPopup(event)" aria-label="글꼴 크기 조절">가</button>
+</div>
+
+<div class="font-popup" id="fontPopup" onclick="event.stopPropagation()">
+  <button class="font-ctrl-btn" onclick="adjustFont(-1)" aria-label="글꼴 축소">−</button>
+  <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:13px;" aria-label="글꼴 기본">가</button>
+  <button class="font-ctrl-btn" onclick="adjustFont(1)" aria-label="글꼴 확대">+</button>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="sp-nav sp-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="sp-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" onclick="goTo('hero')" style="color:var(--crimson);font-weight:500;">✦ 제목 — 두 휘장, 한 길</a>
+  <a class="sp-nav" onclick="goTo('declaration')">02 · 선언 — 화목의 본뜻</a>
+  <a class="sp-nav" onclick="goTo('words')">03 · 헬라어 단어들 (5)</a>
+  <a class="sp-nav" onclick="goTo('journey')">04 · 여정 지도 — 마당에서 지성소까지</a>
+  <a class="sp-nav" onclick="goTo('comparison')">05 · 두 휘장 비교</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" style="font-weight:600;color:var(--crimson);">06 · 세 막 (Three Acts)</a>
+  <a class="sp-nav sub" onclick="goToAct(0)">Ⅰ. 피로 열린 첫 문</a>
+  <a class="sp-nav sub" onclick="goToAct(1)">Ⅱ. 그러나 여전히 분리되어 있다</a>
+  <a class="sp-nav sub" onclick="goToAct(2)">Ⅲ. 찢어진 그분의 육체를 통하여</a>
+  <div class="sp-divider"></div>
+  <a class="sp-nav" onclick="goTo('refs')">07 · 참조 본문</a>
+  <a class="sp-nav" onclick="goTo('qna')">08 · 심화 Q&amp;A</a>
+  <a class="sp-nav" onclick="goTo('quiz')">09 · 퀴즈 (10문항)</a>
+  <a class="sp-nav" onclick="goTo('prayer')">10 · 오늘의 기도</a>
+</div>
+
 <!-- ═══════════════════════════════════════════════════════
      1. HERO
      ═══════════════════════════════════════════════════════ -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="veil-stage">
     <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -1303,7 +1585,7 @@
 <!-- ═══════════════════════════════════════════════════════
      2. DECLARATION
      ═══════════════════════════════════════════════════════ -->
-<section class="declaration">
+<section class="declaration" id="declaration">
   <div class="container narrow reveal">
     <div class="eyebrow solo">PROCLAMATION</div>
     <blockquote class="pull-quote">
@@ -1319,7 +1601,7 @@
 <!-- ═══════════════════════════════════════════════════════
      3. GREEK WORDS
      ═══════════════════════════════════════════════════════ -->
-<section class="greek-section">
+<section class="greek-section" id="words">
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">ANALYSIS · LANGUAGE OF THE TORN PATH</div>
@@ -1468,7 +1750,7 @@
 <!-- ═══════════════════════════════════════════════════════
      4. JOURNEY MAP
      ═══════════════════════════════════════════════════════ -->
-<section class="journey">
+<section class="journey" id="journey">
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">THE JOURNEY · 여정 지도</div>
@@ -1553,7 +1835,7 @@
 <!-- ═══════════════════════════════════════════════════════
      5. COMPARISON
      ═══════════════════════════════════════════════════════ -->
-<section class="comparison">
+<section class="comparison" id="comparison">
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">DICHOTOMY · 두 휘장의 비교</div>
@@ -1626,7 +1908,7 @@
 <!-- ═══════════════════════════════════════════════════════
      6. THREE ACTS
      ═══════════════════════════════════════════════════════ -->
-<section class="acts">
+<section class="acts" id="acts">
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">— A NARRATIVE IN THREE ACTS —</div>
@@ -1731,7 +2013,7 @@
 <!-- ═══════════════════════════════════════════════════════
      7. REFERENCES
      ═══════════════════════════════════════════════════════ -->
-<section class="refs">
+<section class="refs" id="refs">
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">— SCRIPTURE TOUCHSTONES —</div>
@@ -1782,7 +2064,7 @@
 <!-- ═══════════════════════════════════════════════════════
      8. Q&A
      ═══════════════════════════════════════════════════════ -->
-<section class="qna">
+<section class="qna" id="qna">
   <div class="container narrow">
     <div class="reveal">
       <div class="eyebrow">— DEEPER INQUIRIES —</div>
@@ -1889,7 +2171,7 @@
 <!-- ═══════════════════════════════════════════════════════
      9. QUIZ
      ═══════════════════════════════════════════════════════ -->
-<section class="quiz">
+<section class="quiz" id="quiz">
   <div class="container narrow">
     <div class="reveal">
       <div class="eyebrow">— QUICK RECOLLECTION · 퀴즈 —</div>
@@ -1913,7 +2195,7 @@
 <!-- ═══════════════════════════════════════════════════════
      10. PRAYER
      ═══════════════════════════════════════════════════════ -->
-<section class="prayer">
+<section class="prayer" id="prayer">
   <div class="container narrow">
     <div class="reveal">
       <div class="eyebrow">— TODAY'S PRAYER · 오늘의 기도 —</div>
@@ -2257,6 +2539,452 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ============================================================
+  // PORTED — Font scale, Side panel nav, Bible XML tooltip
+  // ============================================================
+  let fontScale = 1;
+  function adjustFont(dir) {
+    if (dir === 0) fontScale = 1;
+    else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+    else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+    document.documentElement.style.setProperty('--font-scale', fontScale);
+  }
+  function togglePanel() {
+    document.getElementById('sidepanel').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+  function toggleFontPopup(e) {
+    if (e) e.stopPropagation();
+    document.getElementById('fontPopup').classList.toggle('open');
+  }
+  document.addEventListener('click', (e) => {
+    const popup = document.getElementById('fontPopup');
+    if (!popup) return;
+    if (popup.classList.contains('open') && !e.target.closest('.font-toggle') && !e.target.closest('.font-popup')) {
+      popup.classList.remove('open');
+    }
+  });
+  function goTo(id) {
+    togglePanel();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+  function goToAct(idx) {
+    togglePanel();
+    setTimeout(() => {
+      const items = document.querySelectorAll('#acts .act');
+      if (items[idx]) items[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+
+  // ============================================================
+  // BIBLE VERSE TOOLTIP — ported from M1D4 (Korean only)
+  // Hover (PC) / tap-to-open bottom-sheet (mobile)
+  // ============================================================
+  (function(){
+    'use strict';
+
+    var XML_URL = '../../recovery_bible_ko.xml';
+
+    var BOOKS = [
+      {n:'창세기',a:'창'},{n:'출애굽기',a:'출'},{n:'레위기',a:'레'},{n:'민수기',a:'민'},
+      {n:'신명기',a:'신'},{n:'여호수아',a:'수'},{n:'사사기',a:'삿'},{n:'룻기',a:'룻'},
+      {n:'사무엘상',a:'삼상'},{n:'사무엘하',a:'삼하'},{n:'열왕기상',a:'왕상'},{n:'열왕기하',a:'왕하'},
+      {n:'역대상',a:'대상'},{n:'역대하',a:'대하'},{n:'에스라',a:'스'},{n:'느헤미야',a:'느'},
+      {n:'에스더',a:'에'},{n:'욥기',a:'욥'},{n:'시편',a:'시'},{n:'잠언',a:'잠'},
+      {n:'전도서',a:'전'},{n:'아가',a:'아'},{n:'이사야',a:'사'},{n:'예레미야',a:'렘'},
+      {n:'예레미야애가',a:'애'},{n:'에스겔',a:'겔'},{n:'다니엘',a:'단'},{n:'호세아',a:'호'},
+      {n:'요엘',a:'욜'},{n:'아모스',a:'암'},{n:'오바댜',a:'옵'},{n:'요나',a:'욘'},
+      {n:'미가',a:'미'},{n:'나훔',a:'나'},{n:'하박국',a:'합'},{n:'스바냐',a:'습'},
+      {n:'학개',a:'학'},{n:'스가랴',a:'슥'},{n:'말라기',a:'말'},{n:'마태복음',a:'마'},
+      {n:'마가복음',a:'막'},{n:'누가복음',a:'눅'},{n:'요한복음',a:'요'},{n:'사도행전',a:'행'},
+      {n:'로마서',a:'롬'},{n:'고린도전서',a:'고전'},{n:'고린도후서',a:'고후'},{n:'갈라디아서',a:'갈'},
+      {n:'에베소서',a:'엡'},{n:'빌립보서',a:'빌'},{n:'골로새서',a:'골'},{n:'데살로니가전서',a:'살전'},
+      {n:'데살로니가후서',a:'살후'},{n:'디모데전서',a:'딤전'},{n:'디모데후서',a:'딤후'},{n:'디도서',a:'딛'},
+      {n:'빌레몬서',a:'몬'},{n:'히브리서',a:'히'},{n:'야고보서',a:'약'},{n:'베드로전서',a:'벧전'},
+      {n:'베드로후서',a:'벧후'},{n:'요한일서',a:'요일'},{n:'요한이서',a:'요이'},{n:'요한삼서',a:'요삼'},
+      {n:'유다서',a:'유'},{n:'요한계시록',a:'계'}
+    ];
+
+    var BOOK_META = {};
+    for (var i = 0; i < BOOKS.length; i++) {
+      BOOK_META[BOOKS[i].a] = BOOKS[i];
+      BOOK_META[BOOKS[i].n] = BOOKS[i];
+    }
+    var SINGLE_CHAPTER = new Set(['옵','몬','요이','요삼','유']);
+
+    function parseVerseSpec(spec) {
+      var parts = String(spec).split(/\s*,\s*/);
+      var out = [];
+      for (var i = 0; i < parts.length; i++) {
+        var m = parts[i].match(/^(\d+)(?:\s*[\-–]\s*(\d+))?(상|하)?$/);
+        if (!m) continue;
+        out.push({
+          start: parseInt(m[1], 10),
+          end: m[2] ? parseInt(m[2], 10) : parseInt(m[1], 10),
+          suffix: m[3] || ''
+        });
+      }
+      return out;
+    }
+
+    function parseBibleXml(xml) {
+      var doc = new DOMParser().parseFromString(xml, 'text/xml');
+      var data = {};
+      var books = doc.getElementsByTagName('Book');
+      for (var i = 0; i < books.length; i++) {
+        var b = books[i];
+        var abbrev = b.getAttribute('abbrevKo');
+        var nameKo = b.getAttribute('nameKo');
+        var chapters = {};
+        var chs = b.getElementsByTagName('Chapter');
+        for (var j = 0; j < chs.length; j++) {
+          var ch = chs[j];
+          var num = ch.getAttribute('num');
+          var verses = {};
+          var vs = ch.getElementsByTagName('Verse');
+          for (var k = 0; k < vs.length; k++) {
+            verses[vs[k].getAttribute('num')] = vs[k].textContent;
+          }
+          chapters[num] = verses;
+        }
+        var entry = { abbrevKo: abbrev, nameKo: nameKo, chapters: chapters };
+        data[abbrev] = entry;
+        if (nameKo) data[nameKo] = entry;
+      }
+      return data;
+    }
+
+    var bibleData = null;
+    var biblePromise = null;
+    function loadBible() {
+      if (bibleData) return Promise.resolve(bibleData);
+      if (biblePromise) return biblePromise;
+      biblePromise = fetch(XML_URL).then(function(r){
+        if (!r.ok) throw new Error('XML fetch ' + r.status);
+        return r.text();
+      }).then(function(xml){
+        var data = parseBibleXml(xml);
+        bibleData = data;
+        window.VrefBible = { data: data, meta: BOOK_META };
+        document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+        return data;
+      }).catch(function(e){
+        console.warn('[vref] Bible XML 로드 실패:', e);
+        bibleData = {};
+        window.VrefBible = { data: {}, meta: BOOK_META };
+        document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+        return bibleData;
+      });
+      return biblePromise;
+    }
+
+    var tooltipEl = null;
+    var backdropEl = null;
+    var activeLink = null;
+    var hideTimer = null;
+
+    function isMobileView() {
+      return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function ensureTooltip() {
+      if (tooltipEl) return tooltipEl;
+      tooltipEl = document.createElement('div');
+      tooltipEl.id = 'vref-tooltip';
+      document.body.appendChild(tooltipEl);
+      return tooltipEl;
+    }
+
+    function ensureBackdrop() {
+      if (backdropEl) return backdropEl;
+      backdropEl = document.createElement('div');
+      backdropEl.id = 'vref-tt-backdrop';
+      backdropEl.addEventListener('click', hideTooltip);
+      document.body.appendChild(backdropEl);
+      return backdropEl;
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/[&<>"']/g, function(c){
+        return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+      });
+    }
+
+    function buildVerseLines(dataset, bookKey, chapter, versesStr) {
+      if (!dataset || !Object.keys(dataset).length) {
+        return { html: '<span class="vref-tt-empty">— 불러오는 중… —</span>', empty: true };
+      }
+      var entry = dataset[bookKey];
+      if (!entry) return { html: '<span class="vref-tt-empty">— 책을 찾을 수 없음 —</span>', empty: true };
+      var ch = entry.chapters[String(chapter)];
+      if (!ch) return { html: '<span class="vref-tt-empty">— ' + chapter + '장을 찾을 수 없음 —</span>', empty: true };
+      var groups = parseVerseSpec(versesStr);
+      var pieces = [];
+      for (var gi = 0; gi < groups.length; gi++) {
+        var g = groups[gi];
+        for (var v = g.start; v <= g.end; v++) {
+          var t = ch[String(v)];
+          if (typeof t === 'undefined') continue;
+          pieces.push('<div class="vref-tt-verse"><span class="vref-tt-vnum">[' + v + ']</span>' + escHtml(t) + '</div>');
+        }
+      }
+      if (!pieces.length) return { html: '<span class="vref-tt-empty">— 해당 절을 찾을 수 없음 —</span>', empty: true };
+      return { html: pieces.join(''), empty: false };
+    }
+
+    function buildContent(bookKey, chapter, versesStr) {
+      var meta = BOOK_META[bookKey];
+      var koLabel = (meta ? meta.n : bookKey) + ' ' + chapter + '장 ' + versesStr + '절';
+      var ko = buildVerseLines(bibleData, bookKey, chapter, versesStr);
+      return (
+        '<div class="vref-tt-book">' + escHtml(koLabel) + '</div>' +
+        '<div class="vref-tt-body">' + ko.html + '</div>'
+      );
+    }
+
+    function positionTooltip(linkEl) {
+      var rect = linkEl.getBoundingClientRect();
+      var ttRect = tooltipEl.getBoundingClientRect();
+      var docY = window.scrollY || window.pageYOffset;
+      var docX = window.scrollX || window.pageXOffset;
+      var margin = 12;
+      var top = rect.bottom + docY + 10;
+      var left = rect.left + docX + (rect.width / 2) - (ttRect.width / 2);
+      if (left < docX + margin) left = docX + margin;
+      if (left + ttRect.width > docX + window.innerWidth - margin) {
+        left = docX + window.innerWidth - margin - ttRect.width;
+      }
+      if (rect.bottom + ttRect.height + 10 > window.innerHeight && rect.top - ttRect.height - 10 > 0) {
+        top = rect.top + docY - ttRect.height - 10;
+      }
+      tooltipEl.style.top = top + 'px';
+      tooltipEl.style.left = left + 'px';
+    }
+
+    function renderTooltipInner(html, mobile) {
+      if (mobile) {
+        tooltipEl.innerHTML =
+          '<div class="vref-tt-handle"></div>' +
+          '<button class="vref-tt-close" type="button" aria-label="닫기">&times;</button>' +
+          html;
+        var btn = tooltipEl.querySelector('.vref-tt-close');
+        if (btn) btn.addEventListener('click', function(e){ e.stopPropagation(); hideTooltip(); });
+      } else {
+        tooltipEl.innerHTML = html;
+      }
+    }
+
+    function showTooltip(linkEl) {
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      activeLink = linkEl;
+      ensureTooltip();
+      var mobile = isMobileView();
+      if (mobile) ensureBackdrop();
+      var b = linkEl.dataset.book;
+      var c = linkEl.dataset.chapter;
+      var v = linkEl.dataset.verses;
+      if (!b || !c || !v) return;
+      function render() {
+        renderTooltipInner(buildContent(b, parseInt(c, 10), v), mobile);
+        if (mobile) {
+          tooltipEl.style.top = '';
+          tooltipEl.style.left = '';
+          tooltipEl.scrollTop = 0;
+          backdropEl.dataset.show = '1';
+        } else {
+          positionTooltip(linkEl);
+        }
+        tooltipEl.dataset.show = '1';
+      }
+      render();
+      if (!bibleData) {
+        loadBible().then(function(){
+          if (activeLink !== linkEl) return;
+          render();
+        });
+      }
+    }
+
+    function hideTooltip() {
+      activeLink = null;
+      if (tooltipEl) tooltipEl.dataset.show = '0';
+      if (backdropEl) backdropEl.dataset.show = '0';
+    }
+
+    // ----- Bridge: <button class="verse-link" data-verse="마 17:20"> → vref-link -----
+    function upgradeVerseLinks() {
+      document.querySelectorAll('.verse-link[data-verse]').forEach(function(el){
+        if (el.dataset.bound) return;
+        var m = el.dataset.verse.match(/^(\S+)\s+(\d+):(.+)$/);
+        if (!m) return;
+        el.classList.add('vref-link');
+        el.dataset.book = m[1];
+        el.dataset.chapter = m[2];
+        el.dataset.verses = m[3];
+        el.dataset.bound = '1';
+        if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+      });
+    }
+
+    // ----- Auto-detect bible refs in body text -----
+    function attachAutoLinks(root) {
+      if (!root) return;
+      var keys = BOOKS.map(function(b){ return b.a; }).sort(function(a,b){ return b.length - a.length; });
+      var pattern = new RegExp(
+        '(' + keys.join('|') + ')\\s+(?:(\\d+):)?(\\d+)(?:-(\\d+))?' +
+        '|(?:,\\s*)(\\d+):(\\d+)(?:-(\\d+))?' +
+        '|(?:,\\s*)(\\d+)(?:-(\\d+))?',
+        'g'
+      );
+      // Skip selector — exclude UI chrome, the existing .vlink/modal system, decorative labels
+      var SKIP_SELECTOR = '.vref-link,.verse-link,.vlink,.modal,.modal-backdrop,.modal-ref,.modal-text-kor,.modal-text-eng,.ref-chip,.ref-chip-ref,.ref-chip-preview,.hero-eyebrow,.hero-title,.hero-subtitle,.hero-verse-ref,.pull-quote-attr,.eyebrow,.section-sub,.section-title .emph,.greek-word,.greek-pron,.greek-card-num,.greek-trans-label,.greek-etym-label,.station-num,.station-name,.station-desc,.stage-tag .num,.stage-tag .label,.v-label,.v-greek,.act-num,.act-label,.compare-cell.mid,.qna-q-mark,.qna-toggle,.quiz-q,.quiz-option,.quiz-feedback,.quiz-complete,.quiz-score,.quiz-msg,.quiz-restart,.quiz-pcount,.quiz-dot,.quiz-option-letter,.quiz-next,.prayer-amen,.topbar,.font-popup,.sidepanel,.sp-nav,#vref-tooltip,#vref-tt-backdrop,footer,.scroll-hint,script,style';
+
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: function(node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          var p = node.parentElement;
+          if (!p) return NodeFilter.FILTER_REJECT;
+          if (p.closest(SKIP_SELECTOR)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      var nodes = [];
+      var n;
+      while ((n = walker.nextNode())) nodes.push(n);
+
+      nodes.forEach(function(node){
+        var text = node.nodeValue;
+        pattern.lastIndex = 0;
+        if (!pattern.test(text)) return;
+        pattern.lastIndex = 0;
+
+        var lastBook = null, lastChapter = null;
+        var lastIdx = 0;
+        var match;
+        var inserted = false;
+        var frag = document.createDocumentFragment();
+
+        while ((match = pattern.exec(text)) !== null) {
+          var full = match[0];
+          var book = match[1];
+          var chap = match[2];
+          var verse = match[3];
+          var endVerse = match[4];
+          var c2 = match[5], v2 = match[6], ev2 = match[7];
+          var v3 = match[8], ev3 = match[9];
+
+          var bk, ch, vs, ve, display, leadingComma = '';
+
+          if (book) {
+            if (chap === undefined) {
+              if (!SINGLE_CHAPTER.has(book)) continue;
+              chap = '1';
+            }
+            bk = book; ch = chap; vs = verse; ve = endVerse;
+            lastBook = book; lastChapter = chap;
+            display = full;
+          } else if (v2) {
+            if (!lastBook) continue;
+            bk = lastBook; ch = c2; vs = v2; ve = ev2;
+            lastChapter = c2;
+            var mm = full.match(/^,\s*/);
+            leadingComma = mm ? mm[0] : '';
+            display = full.slice(leadingComma.length);
+          } else if (v3) {
+            if (!lastBook || !lastChapter) continue;
+            bk = lastBook; ch = lastChapter; vs = v3; ve = ev3;
+            var mm2 = full.match(/^,\s*/);
+            leadingComma = mm2 ? mm2[0] : '';
+            display = full.slice(leadingComma.length);
+          } else {
+            continue;
+          }
+
+          var prefix = text.slice(lastIdx, match.index) + leadingComma;
+          if (prefix) frag.appendChild(document.createTextNode(prefix));
+
+          var span = document.createElement('span');
+          span.className = 'vref-link';
+          span.setAttribute('tabindex', '0');
+          span.setAttribute('role', 'button');
+          span.setAttribute('aria-label', bk + ' ' + ch + ':' + vs + (ve ? '-' + ve : '') + ' 본문 보기');
+          span.dataset.book = bk;
+          span.dataset.chapter = ch;
+          span.dataset.verses = vs + (ve ? '-' + ve : '');
+          span.textContent = display;
+          frag.appendChild(span);
+
+          lastIdx = match.index + full.length;
+          inserted = true;
+        }
+
+        if (!inserted) return;
+        if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+        node.parentNode.replaceChild(frag, node);
+      });
+    }
+
+    function bind() {
+      document.addEventListener('mouseover', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) showTooltip(link);
+      });
+      document.addEventListener('mouseout', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (!link) return;
+        var to = e.relatedTarget;
+        if (to && to.closest && to.closest('.vref-link') === link) return;
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(hideTooltip, 100);
+      });
+      document.addEventListener('click', function(e){
+        if (!isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) {
+          e.preventDefault();
+          if (activeLink === link) hideTooltip();
+          else showTooltip(link);
+        }
+      });
+      document.addEventListener('focusin', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) showTooltip(link);
+      });
+      document.addEventListener('focusout', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) hideTooltip();
+      });
+      window.addEventListener('scroll', function(){
+        if (isMobileView()) return;
+        hideTooltip();
+      }, true);
+      window.addEventListener('resize', hideTooltip);
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') hideTooltip();
+      });
+    }
+
+    function init() {
+      upgradeVerseLinks();
+      attachAutoLinks(document.body);
+      bind();
+      loadBible();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 
 </script>
 
