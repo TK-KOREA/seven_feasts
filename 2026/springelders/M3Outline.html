@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>그리스도의 몸을 위해 생명을 공급함</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f5ede0;
+    --parchment-deep: #ebe1d0;
+    --ink: #1d1714;
+    --ink-soft: #3a322c;
+    --ink-mute: #6b5f54;
+    --gold: #a07b2c;
+    --gold-deep: #7a5b1d;
+    --gold-soft: #c9a558;
+    --sage: #6b7d5e;
+    --sage-deep: #4a5840;
+    --crimson: #8b3a2f;
+    --paper-shadow: rgba(29, 23, 20, 0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 400;
+    line-height: 1.75;
+    overflow-x: hidden;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(at 15% 20%, rgba(160, 123, 44, 0.05) 0px, transparent 50%),
+      radial-gradient(at 85% 70%, rgba(107, 125, 94, 0.04) 0px, transparent 50%);
+  }
+
+  /* Paper grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.15 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============== HERO ============== */
+  .hero {
+    padding: 80px 24px 56px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-mark {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+
+  .hero-mark .label {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+
+  .hero-mark .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+    position: relative;
+  }
+
+  .hero-mark .num::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 18px auto 0;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: clamp(28px, 7vw, 38px);
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 .accent {
+    color: var(--gold-deep);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .hero .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-mute);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  .hero-verse {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 28px;
+    border: 1px solid rgba(160, 123, 44, 0.3);
+    background: rgba(255, 252, 244, 0.5);
+  }
+
+  .hero-verse .ttl {
+    font-family: 'EB Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+
+  .hero-verse .refs {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .hero-verse .refs .v-ref { margin: 0 4px; }
+
+  /* Decorative ornament */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 48px 0;
+  }
+
+  .ornament .line {
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-soft), transparent);
+  }
+
+  .ornament .diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  /* ============== TOC ============== */
+  .toc {
+    padding: 32px 0 56px;
+  }
+
+  .toc-title {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .toc-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(160, 123, 44, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .toc-item:first-child { border-top: 1px solid rgba(160, 123, 44, 0.15); }
+
+  .toc-item:hover {
+    padding-left: 8px;
+    background: rgba(255, 252, 244, 0.4);
+  }
+
+  .toc-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold);
+    min-width: 40px;
+    text-align: center;
+    padding-top: 2px;
+  }
+
+  .toc-content { flex: 1; }
+
+  .toc-content h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+
+  .toc-content p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+
+  .toc-arrow {
+    font-size: 18px;
+    color: var(--gold);
+    align-self: center;
+    transition: transform 0.3s;
+  }
+
+  .toc-item:hover .toc-arrow { transform: translateX(4px); }
+
+  /* ============== SECTIONS ============== */
+  .section {
+    padding: 72px 0 40px;
+    position: relative;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .section-roman {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 84px;
+    font-weight: 300;
+    line-height: 0.85;
+    color: var(--gold);
+    flex-shrink: 0;
+    letter-spacing: -0.03em;
+  }
+
+  .section-meta { padding-top: 12px; }
+
+  .section-meta .kicker {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 8px;
+  }
+
+  .section-meta h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: clamp(22px, 5.5vw, 28px);
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  /* Section illustration */
+  .illustration {
+    margin: 24px 0 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 140px;
+  }
+
+  .illustration svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Key thesis box */
+  .thesis {
+    margin: 32px 0;
+    padding: 24px 24px 24px 28px;
+    background: rgba(255, 252, 244, 0.6);
+    border-left: 3px solid var(--gold);
+    position: relative;
+  }
+
+  .thesis::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .thesis p {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* Sub-points */
+  .subpoint {
+    margin: 24px 0;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .subpoint-marker {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--gold-deep);
+    margin-top: 2px;
+    background: rgba(255, 252, 244, 0.6);
+  }
+
+  .subpoint-content {
+    flex: 1;
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  .subpoint-content strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Nested list */
+  .nested {
+    margin-top: 12px;
+    padding-left: 0;
+    border-left: 1px solid rgba(160, 123, 44, 0.2);
+    padding-left: 16px;
+  }
+
+  .nested-item {
+    margin: 10px 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--ink-mute);
+    position: relative;
+    padding-left: 18px;
+  }
+
+  .nested-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .nested-item strong {
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* Verse reference (clickable) */
+  .v-ref {
+    display: inline-block;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.85em;
+    color: var(--gold-deep);
+    padding: 1px 6px;
+    margin: 0 1px;
+    background: rgba(160, 123, 44, 0.08);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-bottom: 1px dotted var(--gold);
+    text-decoration: none;
+  }
+
+  .v-ref:hover, .v-ref:active {
+    background: var(--gold);
+    color: var(--parchment);
+    border-bottom-color: transparent;
+  }
+
+  /* Highlight pull */
+  .pull {
+    display: inline;
+    background: linear-gradient(transparent 60%, rgba(160, 123, 44, 0.2) 60%);
+    padding: 0 2px;
+  }
+
+  /* Visual motif accent (small decorative) */
+  .motif {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+  }
+
+  /* Closing section */
+  .closing {
+    padding: 80px 0;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(255, 252, 244, 0.5));
+    margin-top: 40px;
+    border-top: 1px solid rgba(160, 123, 44, 0.2);
+  }
+
+  .closing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 24px;
+  }
+
+  .closing-body {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .closing-body .pull {
+    color: var(--gold-deep);
+    font-weight: 600;
+  }
+
+  footer {
+    padding: 40px 24px;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+  }
+
+  footer .dot { color: var(--gold); margin: 0 8px; }
+
+  /* ============== TOOLTIP / BOTTOM SHEET ============== */
+  .scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(29, 23, 20, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 100;
+  }
+
+  .scrim.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--parchment);
+    z-index: 101;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0.21, 1);
+    max-height: 70vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--gold);
+    box-shadow: 0 -20px 60px rgba(29, 23, 20, 0.25);
+    background-image:
+      radial-gradient(at 50% 0%, rgba(160, 123, 44, 0.08) 0px, transparent 60%);
+  }
+
+  .sheet.active { transform: translateY(0); }
+
+  .sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: var(--gold-soft);
+    border-radius: 2px;
+    margin: 12px auto 8px;
+    flex-shrink: 0;
+  }
+
+  .sheet-head {
+    padding: 12px 24px 16px;
+    border-bottom: 1px solid rgba(160, 123, 44, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .sheet-head .reflabel {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+
+  .sheet-close {
+    background: none;
+    border: 1px solid var(--ink-mute);
+    color: var(--ink-soft);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: serif;
+    transition: all 0.2s;
+  }
+
+  .sheet-close:hover {
+    background: var(--ink);
+    color: var(--parchment);
+    border-color: var(--ink);
+  }
+
+  .sheet-body {
+    padding: 20px 24px 32px;
+    overflow-y: auto;
+    flex: 1;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sheet-verse {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted rgba(160, 123, 44, 0.2);
+  }
+
+  .sheet-verse:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .sheet-verse .v-label {
+    font-family: 'EB Garamond', serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--gold-deep);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .sheet-verse .v-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15.5px;
+    line-height: 1.8;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* Body dim state */
+  body.sheet-open {
+    overflow: hidden;
+  }
+
+  /* Reveal animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Tablet+ */
+  @media (min-width: 720px) {
+    .sheet {
+      left: 50%;
+      right: auto;
+      bottom: 24px;
+      max-width: 560px;
+      width: calc(100% - 48px);
+      transform: translate(-50%, calc(100% + 24px));
+      border-radius: 4px;
+      border-top: 1px solid var(--gold);
+      max-height: 60vh;
+    }
+    .sheet.active {
+      transform: translate(-50%, 0);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== HERO ============== -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-mark">
+      <span class="label">Message · 메시지</span>
+      <span class="num">Ⅲ</span>
+    </div>
+
+    <h1>그리스도의 몸을 위해<br><span class="accent">생명을 공급함</span></h1>
+
+    <p class="lede">우리 안에 흐르는 영원한 생명은 우리를 통과하여 다른 지체들에게로 흐른다 — 이것이 몸의 비밀이다.</p>
+
+    <div class="hero-verse">
+      <span class="ttl">Scripture</span>
+      <span class="refs">
+        <span class="v-ref" data-refs="요일5:14,요일5:15,요일5:16,요일5:17">요일 5:14-17</span> ·
+        <span class="v-ref" data-refs="요15:4,요15:5">요 15:4-5, 7</span> ·
+        <span class="v-ref" data-refs="롬12:4,롬12:5">롬 12:4-5</span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="ornament">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
+</div>
+
+<!-- ============== TABLE OF CONTENTS ============== -->
+<nav class="container toc">
+  <div class="toc-title">— 다섯 흐름 —</div>
+
+  <a href="#sec1" class="toc-item">
+    <span class="toc-num">Ⅰ</span>
+    <div class="toc-content">
+      <h3>생명을 공급할 수 있다는 암시</h3>
+      <p>요일 5:16의 유일한 계시 — 형제에게 생명을 주다</p>
+    </div>
+    <span class="toc-arrow">→</span>
+  </a>
+
+  <a href="#sec2" class="toc-item">
+    <span class="toc-num">Ⅱ</span>
+    <div class="toc-content">
+      <h3>부활의 하나님을 체험함</h3>
+      <p>죽음이 우리 안에서 활동, 생명이 그들 안에서</p>
+    </div>
+    <span class="toc-arrow">→</span>
+  </a>
+
+  <a href="#sec3" class="toc-item">
+    <span class="toc-num">Ⅲ</span>
+    <div class="toc-content">
+      <h3>생명에 있어서 몸을 앎</h3>
+      <p>한 생명 안에서 모두 하나 되어 비밀한 몸이 됨</p>
+    </div>
+    <span class="toc-arrow">→</span>
+  </a>
+
+  <a href="#sec4" class="toc-item">
+    <span class="toc-num">Ⅳ</span>
+    <div class="toc-content">
+      <h3>실행에 있어서 몸을 앎</h3>
+      <p>지방 교회 — 우주적 몸의 지방적 표현</p>
+    </div>
+    <span class="toc-arrow">→</span>
+  </a>
+
+  <a href="#sec5" class="toc-item">
+    <span class="toc-num">Ⅴ</span>
+    <div class="toc-content">
+      <h3>그리스도의 몸에 대한 의식</h3>
+      <p>우주적인 생명의 감각, 우주적인 동일시</p>
+    </div>
+    <span class="toc-arrow">→</span>
+  </a>
+</nav>
+
+<!-- ============== SECTION I ============== -->
+<section class="section" id="sec1">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-roman">Ⅰ</span>
+      <div class="section-meta">
+        <div class="kicker">FIRST · 첫째</div>
+        <h2>영원한 생명은 다른 지체들에게 공급될 수 있다</h2>
+      </div>
+    </div>
+
+    <!-- Illustration: Vine with flowing life -->
+    <div class="illustration reveal">
+      <svg width="280" height="160" viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vineG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6b7d5e"/>
+            <stop offset="1" stop-color="#a07b2c"/>
+          </linearGradient>
+        </defs>
+        <!-- Main vine stem -->
+        <path d="M 30 30 Q 80 50 110 80 T 180 110 Q 220 120 250 130" stroke="url(#vineG)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Branches -->
+        <path d="M 110 80 Q 120 60 130 50" stroke="#6b7d5e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M 180 110 Q 200 90 210 75" stroke="#6b7d5e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M 70 60 Q 60 40 50 25" stroke="#6b7d5e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Leaves -->
+        <ellipse cx="130" cy="50" rx="8" ry="4" fill="#6b7d5e" transform="rotate(-30 130 50)"/>
+        <ellipse cx="210" cy="75" rx="8" ry="4" fill="#6b7d5e" transform="rotate(-30 210 75)"/>
+        <ellipse cx="50" cy="25" rx="8" ry="4" fill="#6b7d5e" transform="rotate(-30 50 25)"/>
+        <!-- Life dots flowing along vine -->
+        <circle cx="60" cy="38" r="2" fill="#a07b2c" opacity="0.9"/>
+        <circle cx="100" cy="68" r="2.5" fill="#a07b2c"/>
+        <circle cx="150" cy="92" r="2" fill="#a07b2c" opacity="0.7"/>
+        <circle cx="200" cy="115" r="3" fill="#a07b2c"/>
+        <circle cx="240" cy="128" r="2" fill="#a07b2c" opacity="0.8"/>
+        <!-- Source point -->
+        <circle cx="30" cy="30" r="5" fill="#7a5b1d"/>
+        <circle cx="30" cy="30" r="9" fill="none" stroke="#a07b2c" stroke-width="0.5" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="thesis reveal">
+      <p>요한일서 5장 16절은 성경에서 누군가에게 <span class="pull">생명을 공급하는 것을 언급한 유일한 절</span>이다. 우리 안의 영원한 생명은 우리 자신뿐 아니라 교회의 다른 지체들 안의 죽음도 이긴다.</p>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">A</span>
+      <div class="subpoint-content">
+        <strong>차고 넘치는 생명에서 흘러나옴.</strong> 우리가 차고 넘치도록 생명을 얻을 때, 공급받은 것에서 다른 이들에게 생명을 공급할 수 있다. <span class="v-ref" data-refs="요일5:16">요일 5:16</span>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">B</span>
+      <div class="subpoint-content">
+        <strong>생명의 교통 안에서 기도함.</strong> 우리의 선호가 아니라 하나님의 뜻에 따라 구하는 것 — 이는 기도하는 사람이 신성한 생명의 교통 안에 거하여 주님과 하나임을 가리킨다. <span class="v-ref" data-refs="요15:4,요15:5,요15:7">요 15:4-5, 7</span>
+        <div class="nested">
+          <div class="nested-item">‘구하는 사람’과 ‘생명을 주는 사람’은 <strong>동일한 사람</strong>이다 — 형제에 관해 구하는 그 자신.</div>
+          <div class="nested-item">주님과 <strong>한 영</strong>이 되어 구함으로 <span class="v-ref" data-refs="고전6:17">고전 6:17</span>, 생명 주시는 영의 수단과 통로가 된다.</div>
+          <div class="nested-item">형제를 위해 기도하려면 먼저 <strong>주님과 하나 되어야</strong> 한다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">C</span>
+      <div class="subpoint-content">
+        <strong>생명의 사역 = 체험한 그리스도를 공급함.</strong> 사역은 십자가의 일로 말미암아 산출되며, 십자가의 길에 의해 우리는 다른 이들에게 공급할 그리스도의 풍성을 갖는다. <span class="v-ref" data-refs="고후1:3,고후1:4,고후4:12,엡3:8">고후 1:3-4 · 4:12 · 엡 3:8</span>
+        <div class="nested">
+          <div class="nested-item">생명을 얼마나 공급할 수 있는가는 <strong>받은 계시</strong>와 <strong>받은 고난</strong>에 달려 있다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION II ============== -->
+<section class="section" id="sec2">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-roman">Ⅱ</span>
+      <div class="section-meta">
+        <div class="kicker">SECOND · 둘째</div>
+        <h2>부활의 하나님을 알고 체험하고 얻어야 한다</h2>
+      </div>
+    </div>
+
+    <!-- Illustration: Aaron's rod budded -->
+    <div class="illustration reveal">
+      <svg width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- The dead rod becoming alive -->
+        <line x1="120" y1="170" x2="120" y2="40" stroke="#7a5b1d" stroke-width="3" stroke-linecap="round"/>
+        <!-- Buds -->
+        <ellipse cx="105" cy="60" rx="6" ry="9" fill="#6b7d5e" transform="rotate(-25 105 60)"/>
+        <ellipse cx="135" cy="55" rx="6" ry="9" fill="#6b7d5e" transform="rotate(25 135 55)"/>
+        <!-- Flowers -->
+        <g transform="translate(100 35)">
+          <circle r="3" cx="0" cy="0" fill="#f5ede0" stroke="#a07b2c" stroke-width="1"/>
+          <circle r="3" cx="6" cy="-2" fill="#f5ede0" stroke="#a07b2c" stroke-width="1"/>
+          <circle r="3" cx="-4" cy="-4" fill="#f5ede0" stroke="#a07b2c" stroke-width="1"/>
+          <circle r="2" cx="2" cy="-6" fill="#a07b2c"/>
+        </g>
+        <g transform="translate(140 30)">
+          <circle r="3" cx="0" cy="0" fill="#f5ede0" stroke="#a07b2c" stroke-width="1"/>
+          <circle r="3" cx="5" cy="-3" fill="#f5ede0" stroke="#a07b2c" stroke-width="1"/>
+          <circle r="3" cx="-3" cy="-5" fill="#f5ede0" stroke="#a07b2c" stroke-width="1"/>
+        </g>
+        <!-- Almond fruit -->
+        <ellipse cx="120" cy="20" rx="8" ry="12" fill="#a07b2c"/>
+        <ellipse cx="120" cy="18" rx="3" ry="5" fill="#7a5b1d" opacity="0.5"/>
+        <!-- Cross suggestion at base -->
+        <line x1="100" y1="170" x2="140" y2="170" stroke="#3a322c" stroke-width="1" opacity="0.4"/>
+        <line x1="120" y1="165" x2="120" y2="175" stroke="#3a322c" stroke-width="1" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <div class="thesis reveal">
+      <p>하나님은 십자가를 통해 우리를 종결하고 끝내신다 — 우리가 더 이상 자신을 신뢰하지 않고 <span class="pull">부활의 하나님을 신뢰하도록</span>. <span class="v-ref" data-refs="롬4:17,고후1:9,요11:25">롬 4:17 · 고후 1:9 · 요 11:25</span></p>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">A</span>
+      <div class="subpoint-content">
+        <strong>죽임 → 부활 생명의 나타남.</strong> 십자가의 죽임은 결과적으로 부활 생명이 나타나도록 한다. 예수님을 죽게 한 것은 타고난 사람·겉사람·육체를 허물어뜨려, 속사람이 새롭게 되어 부활 생명을 살아 내게 한다. <span class="v-ref" data-refs="고후4:10,고후4:11,고후4:12,고후4:16">고후 4:10-12, 16</span>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">B</span>
+      <div class="subpoint-content">
+        <strong>신약의 가장 깊은 사상.</strong> 주님께서 우리에게 하시는 모든 일은 우리의 타고난 겉사람을 허물어뜨려, 우리 속에서부터 그리스도의 생명을 살아 내게 하기 위한 것이다. <span class="v-ref" data-refs="요12:24,요12:25,요12:26,빌1:21">요 12:24-26 · 빌 1:21상</span>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">C</span>
+      <div class="subpoint-content">
+        <strong>그리스도의 죽음 안에 머무는 것 — 그리스도인 생활의 심오한 원칙.</strong> <span class="v-ref" data-refs="롬6:4,롬6:5,빌3:10">롬 6:4-5 · 빌 3:10</span>
+        <div class="nested">
+          <div class="nested-item">그분의 죽음 안에 머물 때 <strong>부활 능력</strong>을 체험한다. <span class="v-ref" data-refs="빌3:10,빌3:11,롬8:11">빌 3:10-11 · 롬 8:11</span></div>
+          <div class="nested-item">그분과 함께 더 죽을수록, 부활 능력이 더 나타나고, 몸에게 <strong>더 많이 공급할 수 있다</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">D</span>
+      <div class="subpoint-content">
+        <strong>싹·꽃·열매 맺은 막대기.</strong> 죽었던 막대기가 부활 생명을 표상한다 — 이로써 우리는 몸에게 생명을 공급할 수 있다. <span class="v-ref" data-refs="민17:8">민 17:8</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION III ============== -->
+<section class="section" id="sec3">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-roman">Ⅲ</span>
+      <div class="section-meta">
+        <div class="kicker">THIRD · 셋째</div>
+        <h2>생명에 있어서 몸을 알아야 한다</h2>
+      </div>
+    </div>
+
+    <!-- Illustration: Roots converging -->
+    <div class="illustration reveal">
+      <svg width="260" height="160" viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Many roots converging into one body -->
+        <g stroke="#6b7d5e" stroke-width="1.3" fill="none" stroke-linecap="round">
+          <path d="M 30 30 Q 70 50 130 80"/>
+          <path d="M 70 25 Q 90 50 130 80"/>
+          <path d="M 110 20 Q 120 45 130 80"/>
+          <path d="M 150 20 Q 140 45 130 80"/>
+          <path d="M 190 25 Q 170 50 130 80"/>
+          <path d="M 230 30 Q 190 50 130 80"/>
+          <path d="M 50 50 Q 90 65 130 80"/>
+          <path d="M 210 50 Q 170 65 130 80"/>
+        </g>
+        <!-- Branch points (members) -->
+        <circle cx="30" cy="30" r="3" fill="#a07b2c"/>
+        <circle cx="70" cy="25" r="3" fill="#a07b2c"/>
+        <circle cx="110" cy="20" r="3" fill="#a07b2c"/>
+        <circle cx="150" cy="20" r="3" fill="#a07b2c"/>
+        <circle cx="190" cy="25" r="3" fill="#a07b2c"/>
+        <circle cx="230" cy="30" r="3" fill="#a07b2c"/>
+        <circle cx="50" cy="50" r="2.5" fill="#a07b2c"/>
+        <circle cx="210" cy="50" r="2.5" fill="#a07b2c"/>
+        <!-- Central body -->
+        <circle cx="130" cy="80" r="14" fill="#a07b2c" opacity="0.15"/>
+        <circle cx="130" cy="80" r="9" fill="#a07b2c" opacity="0.3"/>
+        <circle cx="130" cy="80" r="5" fill="#7a5b1d"/>
+        <!-- Trunk down -->
+        <path d="M 130 80 L 130 150" stroke="#7a5b1d" stroke-width="3" stroke-linecap="round"/>
+        <!-- Label tick -->
+        <text x="130" y="148" text-anchor="middle" font-family="EB Garamond, serif" font-style="italic" font-size="9" fill="#6b5f54">one body</text>
+      </svg>
+    </div>
+
+    <div class="thesis reveal">
+      <p>우리 안에 있는 생명은 <span class="pull">‘지체’의 생명이 아니라 ‘몸’의 생명</span>이다. 이 생명 안에서 우리는 모두 하나이며, 이렇게 하나 된 것이 그리스도의 비밀한 몸이다. <span class="v-ref" data-refs="요일5:11,요일5:12,골3:4,골2:19,엡5:30">요일 5:11-12 · 골 3:4 · 엡 5:30</span></p>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">A</span>
+      <div class="subpoint-content">
+        <strong>생명의 성장의 결과로 몸을 안다.</strong> 영적 생명의 <strong>넷째 단계</strong>에 도달한 후에야 비로소 그리스도의 몸의 비밀을 알 수 있다. <span class="v-ref" data-refs="요일2:12,요일2:13,요일2:14,엡4:12,엡4:13,엡4:15,엡4:16">요일 2:12-14 · 엡 4:12-13, 15-16</span>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">B</span>
+      <div class="subpoint-content">
+        <strong>몸을 알려면 처리되어야 할 것.</strong> 육체, 자아, 타고난 조성 — 이것들이 처리되고 파쇄될 때에만 몸의 실재를 만질 수 있다. <span class="v-ref" data-refs="갈2:20,갈5:24,마16:24,고전12:12,엡4:4,엡4:5,엡4:6">갈 2:20 · 5:24 · 마 16:24 · 엡 4:4-6</span>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">C</span>
+      <div class="subpoint-content">
+        <strong>몸을 안다는 것 = 개인주의를 처리하는 것.</strong> 몸을 알지 못하는 사람들은 모두 개인주의자들이다. <span class="v-ref" data-refs="고전12:14,고전12:15,고전12:16,고전12:17,고전12:18,고전12:19,고전12:20,고전12:21,고전12:22">고전 12:14-22</span>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">D</span>
+      <div class="subpoint-content">
+        <strong>몸을 안다는 세 가지 증거 —</strong>
+        <div class="nested">
+          <div class="nested-item">개인주의적일 수 <strong>없다</strong>.</div>
+          <div class="nested-item">몸 안에 있지 않은 사람들을 <strong>분별</strong>한다.</div>
+          <div class="nested-item">머리이신 그리스도의 <strong>권위</strong>를 인식한다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION IV ============== -->
+<section class="section" id="sec4">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-roman">Ⅳ</span>
+      <div class="section-meta">
+        <div class="kicker">FOURTH · 넷째</div>
+        <h2>실행에 있어서 몸을 알아야 한다</h2>
+      </div>
+    </div>
+
+    <!-- Illustration: Universal body with local expressions -->
+    <div class="illustration reveal">
+      <svg width="280" height="170" viewBox="0 0 280 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Large outer circle = universal body -->
+        <circle cx="140" cy="85" r="78" fill="none" stroke="#a07b2c" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.5"/>
+        <text x="140" y="20" text-anchor="middle" font-family="EB Garamond, serif" font-style="italic" font-size="9" fill="#a07b2c" letter-spacing="2">UNIVERSAL · ONE BODY</text>
+        <!-- Multiple local churches as smaller circles -->
+        <g>
+          <circle cx="85" cy="70" r="16" fill="#f5ede0" stroke="#a07b2c" stroke-width="1.2"/>
+          <circle cx="85" cy="70" r="3" fill="#7a5b1d"/>
+        </g>
+        <g>
+          <circle cx="195" cy="70" r="16" fill="#f5ede0" stroke="#a07b2c" stroke-width="1.2"/>
+          <circle cx="195" cy="70" r="3" fill="#7a5b1d"/>
+        </g>
+        <g>
+          <circle cx="140" cy="55" r="16" fill="#f5ede0" stroke="#a07b2c" stroke-width="1.2"/>
+          <circle cx="140" cy="55" r="3" fill="#7a5b1d"/>
+        </g>
+        <g>
+          <circle cx="110" cy="115" r="16" fill="#f5ede0" stroke="#a07b2c" stroke-width="1.2"/>
+          <circle cx="110" cy="115" r="3" fill="#7a5b1d"/>
+        </g>
+        <g>
+          <circle cx="170" cy="115" r="16" fill="#f5ede0" stroke="#a07b2c" stroke-width="1.2"/>
+          <circle cx="170" cy="115" r="3" fill="#7a5b1d"/>
+        </g>
+        <!-- Connecting lines -->
+        <g stroke="#6b7d5e" stroke-width="0.6" opacity="0.5">
+          <line x1="85" y1="70" x2="140" y2="55"/>
+          <line x1="140" y1="55" x2="195" y2="70"/>
+          <line x1="85" y1="70" x2="110" y2="115"/>
+          <line x1="195" y1="70" x2="170" y2="115"/>
+          <line x1="110" y1="115" x2="170" y2="115"/>
+        </g>
+        <text x="140" y="158" text-anchor="middle" font-family="EB Garamond, serif" font-style="italic" font-size="9" fill="#6b5f54" letter-spacing="2">LOCAL EXPRESSIONS</text>
+      </svg>
+    </div>
+
+    <div class="thesis reveal">
+      <p>한 지방에 있는 교회는 그리스도의 몸이 그 지방에서 <span class="pull">표현된 것</span>이다. 우주적인 한 몸은 많은 지방 교회들로 표현된다. <span class="v-ref" data-refs="고전1:2,고전10:32,고전12:12,고전12:13,고전12:20,고전12:27">고전 1:2 · 12:12-13, 20, 27</span></p>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">A</span>
+      <div class="subpoint-content">
+        <strong>우주적이면서 지방적.</strong> 그리스도의 유일한 몸은 각지 교회들로 표현된다 <span class="v-ref" data-refs="엡4:4,계1:4,계1:11">엡 4:4 · 계 1:4, 11</span>. 각 지방 교회는 우주적 몸의 <strong>일부, 곧 지방적인 한 표현</strong>이다.
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">B</span>
+      <div class="subpoint-content">
+        <strong>고려의 순서.</strong> 우리가 몸을 안다면 <strong>몸을 가장 먼저</strong> 고려하고, 각 지방의 교회는 두 번째로 고려한다. <span class="v-ref" data-refs="롬12:4,롬12:5,롬16:1,롬16:4,롬16:16">롬 12:4-5 · 16:1, 4, 16</span>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">C</span>
+      <div class="subpoint-content">
+        <strong>오직 한 일 — 몸의 일.</strong> 주님의 회복 안에는 오직 한 일 곧 몸의 일만 있다. 오늘날 우리가 하고 있는 일은 우리 개인의 일이 아니라, <strong>하나님의 경륜의 일</strong> 곧 그리스도의 몸을 건축하는 일이다. <span class="v-ref" data-refs="고전15:58,고전16:10,골2:19,엡4:4,엡4:12,엡4:16">고전 15:58 · 16:10 · 골 2:19 · 엡 4:4, 12, 16</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION V ============== -->
+<section class="section" id="sec5">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-roman">Ⅴ</span>
+      <div class="section-meta">
+        <div class="kicker">FIFTH · 다섯째</div>
+        <h2>그리스도의 몸에 대한 의식이 있다</h2>
+      </div>
+    </div>
+
+    <!-- Illustration: Heart pulse / connection -->
+    <div class="illustration reveal">
+      <svg width="280" height="120" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Pulse line connecting figures -->
+        <path d="M 10 60 L 50 60 L 60 30 L 75 90 L 90 60 L 130 60 L 140 30 L 155 90 L 170 60 L 210 60 L 220 30 L 235 90 L 250 60 L 280 60" 
+              stroke="#8b3a2f" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+        <!-- Member dots -->
+        <circle cx="30" cy="60" r="4" fill="#a07b2c"/>
+        <circle cx="110" cy="60" r="4" fill="#a07b2c"/>
+        <circle cx="190" cy="60" r="4" fill="#a07b2c"/>
+        <circle cx="265" cy="60" r="4" fill="#a07b2c"/>
+        <!-- Pulse glow circles -->
+        <circle cx="30" cy="60" r="9" fill="none" stroke="#a07b2c" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="110" cy="60" r="9" fill="none" stroke="#a07b2c" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="190" cy="60" r="9" fill="none" stroke="#a07b2c" stroke-width="0.5" opacity="0.4"/>
+        <circle cx="265" cy="60" r="9" fill="none" stroke="#a07b2c" stroke-width="0.5" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <div class="thesis reveal">
+      <p>몸에 대한 의식은 <span class="pull">우리 안에 있는 그리스도의 생명의 감각</span>이다. 한 지체가 고통을 당하면 모든 지체가 함께 고통을 당하고, 한 지체가 영광을 받으면 모든 지체가 함께 기뻐한다. <span class="v-ref" data-refs="고전12:26,고전12:27,고후11:28,고후11:29">고전 12:26-27 · 고후 11:28-29</span></p>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">A</span>
+      <div class="subpoint-content">
+        <strong>몸의 의식은 그리스도를 누리는 데서 생긴다.</strong> 우리가 누리는 분은 사실상 머리이신 그리스도시다. 그분을 누릴 때 그분은 주관적이며 체험적으로 우리의 머리가 되시고, 우리에게 <strong>몸에 대한 의식</strong>을 갖게 하신다. <span class="v-ref" data-refs="골2:16,골2:17,골2:18,골2:19,고전10:3,고전10:4,요20:22,엡3:8,엡3:17,엡4:15">골 2:16-19 · 고전 10:3-4 · 엡 3:17, 4:15</span>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">B</span>
+      <div class="subpoint-content">
+        <strong>우주적인 감각.</strong> 그리스도의 몸은 우주적이며, 우리 안의 생명도 우주적이고, 몸에 대한 감각도 우주적이다. <span class="v-ref" data-refs="롬8:2,롬8:6,롬8:10,롬8:11,롬12:4,롬12:5,롬12:15">롬 8:2, 6, 10-11 · 12:4-5, 15</span>
+        <div class="nested">
+          <div class="nested-item">이 감각은 우리 자신의 <strong>느낌과 견해</strong>로 인하여 제한받아 왔다. <span class="v-ref" data-refs="잠14:10,고후6:11,고후6:12,고후6:13">잠 14:10 · 고후 6:11-13</span></div>
+          <div class="nested-item">주님의 <strong>파쇄</strong>를 더 체험하고 자신에게서 더 구출될수록, 감각이 우주적이라는 것을 더 발견한다.</div>
+          <div class="nested-item">다른 이들이 고통이나 축복을 받을 때, 자신을 그들과 <strong>동일시</strong>하고 동일한 고통·축복을 느낀다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subpoint reveal">
+      <span class="subpoint-marker">C</span>
+      <div class="subpoint-content">
+        <strong>몸을 규칙으로 삼다.</strong> 우리가 몸에 대한 의식을 갖고 몸에 관심한다면, 우리의 <strong>생각과 행동</strong>에서 몸을 규칙으로 삼을 것이다. <span class="v-ref" data-refs="엡4:15,엡4:16">엡 4:15-16</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CLOSING ============== -->
+<section class="closing">
+  <div class="container">
+    <div class="closing-title">— 다섯 흐름이 한 길로 —</div>
+    <p class="closing-body">
+      <span class="pull">생명을 공급함</span>은 우리가 부활의 하나님을 체험하고, 생명과 실행에 있어서 몸을 알며, 우주적인 <span class="pull">몸의 의식</span> 안에서 사는 것이다. 이 한 흐름이 하나님의 경륜이다.
+    </p>
+  </div>
+</section>
+
+<footer>
+  Message Ⅲ <span class="dot">◆</span> The Body of Christ <span class="dot">◆</span> 그리스도의 몸
+</footer>
+
+<!-- ============== TOOLTIP / SHEET ============== -->
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-label">
+  <div class="sheet-handle"></div>
+  <div class="sheet-head">
+    <span class="reflabel" id="sheet-label">Scripture</span>
+    <button class="sheet-close" id="sheetClose" aria-label="닫기">✕</button>
+  </div>
+  <div class="sheet-body" id="sheetBody"></div>
+</div>
+
+<script>
+  // Verse data
+  const verses = {
+    '요일5:11': '그 증언은 바로 하나님께서 우리에게 영원한 생명을 주셨으며 이 생명이 그분의 아들 안에 있다는 것입니다.',
+    '요일5:12': '하나님의 아들이 있는 사람에게는 생명이 있고, 하나님의 아들이 없는 사람에게는 생명이 없습니다.',
+    '요일5:14': '그리고 우리가 그분 앞에서 갖는 담대함은 바로 우리가 무엇이든지 그분의 뜻에 따라 구한다면 그분께서 들으신다는 것입니다.',
+    '요일5:15': '우리가 무엇을 구하든지 그분께서 들으신다는 것을 안다면, 우리가 구하며 청한 것을 그분에게서 받은 것도 압니다.',
+    '요일5:16': '누구든지 자기 형제가 죽음에 이르지 않는 죄를 짓는 것을 보거든 그분께 구하십시오. 그러면 그가 그 형제, 곧 죽음에 이르지 않는 죄를 짓는 사람들에게 생명을 줄 것입니다. 죽음에 이르는 죄가 있는데, 나는 그것에 관하여 그분께 청해야 한다는 말은 하지 않습니다.',
+    '요일5:17': '모든 불의가 죄이지만, 죽음에 이르지 않는 죄도 있습니다.',
+    '요일2:12': '어린 자녀 여러분, 내가 여러분에게 써 보내는 것은 여러분의 죄들이 그분의 이름으로 말미암아 용서되었기 때문입니다.',
+    '요일2:13': '아버지 여러분, 내가 여러분에게 써 보내는 것은 여러분이 태초부터 계신 분을 알기 때문입니다. 청년 여러분, 내가 여러분에게 써 보내는 것은 여러분이 악한 자를 이겼기 때문입니다.',
+    '요일2:14': '아버지 여러분, 내가 여러분에게 써 보낸 것은 여러분이 태초부터 계신 분을 알기 때문입니다. 청년 여러분, 내가 여러분에게 써 보낸 것은 여러분이 강하고 하나님의 말씀이 여러분 안에 거하며 여러분이 악한 자를 이겼기 때문입니다.',
+    '요11:25': '예수님께서 마르다에게 말씀하셨다. "나는 부활이요 생명이니, 나를 믿는 사람은 죽어도 살 것이고,',
+    '요12:24': '내가 진실로 진실로 여러분에게 말합니다. 한 알의 밀이 땅에 떨어져 죽지 않으면 한 알 그대로 남아 있지만, 죽으면 많은 열매를 맺습니다.',
+    '요12:25': '자기 혼생명을 사랑하는 사람은 혼생명을 잃을 것이고, 이 세상에서 자기 혼생명을 미워하는 사람은 영원한 생명에 이르도록 혼생명을 보존할 것입니다.',
+    '요12:26': '누구든지 나를 섬기려면 나를 따르십시오. 내가 있는 그곳에 나를 섬기는 사람도 있을 것이며, 누구든지 나를 섬기면 내 아버지께서 그를 귀하게 여기실 것입니다.',
+    '요15:4': '내 안에 거하십시오. 그러면 나도 여러분 안에 거하겠습니다. 가지가 포도나무에 붙어 있지 않으면 스스로 열매를 맺을 수 없는 것처럼, 여러분도 내 안에 거하지 않으면 열매를 맺을 수 없습니다.',
+    '요15:5': '나는 포도나무요, 여러분은 가지들입니다. 그가 내 안에, 내가 그 안에 거하면, 그 사람은 열매를 많이 맺습니다. 왜냐하면 나를 떠나서는 여러분이 아무것도 할 수 없기 때문입니다.',
+    '요15:7': '여러분이 내 안에 거하고 내 말이 여러분 안에 거하면, 무엇이든지 여러분이 원하는 것을 구하십시오. 그러면 여러분에게 이루어질 것입니다.',
+    '요15:16': '여러분이 나를 선택한 것이 아니라, 내가 여러분을 선택하여 세웠습니다. 이것은 여러분이 나가서 열매를 맺고, 그 열매가 계속 남아 있도록 하려는 것이며, 여러분이 내 이름 안에서 아버지께 무엇을 구하든지, 아버지께서 여러분에게 주시도록 하려는 것입니다.',
+    '요16:23': '그날에는 여러분이 나에게 아무것도 묻지 않을 것입니다. 내가 진실로 진실로 여러분에게 말합니다. 여러분이 내 이름 안에서 아버지께 무엇을 구하든지, 아버지께서 여러분에게 주실 것입니다.',
+    '요16:24': '지금까지는 여러분이 내 이름 안에서 아무것도 구하지 않았습니다. 구하십시오. 그러면 받을 것인데, 이것은 여러분의 기쁨이 충만하도록 하려는 것입니다.',
+    '요20:22': '예수님께서 이 말씀을 하신 후, 그들 안으로 숨을 불어 넣으시며 말씀하셨다. "성령을 받으십시오.',
+    '롬4:17': '성경에 "내가 너를 많은 민족의 아버지로 세웠다."라고 기록된 것과 같습니다. 그가 믿은 하나님은 죽은 사람들에게 생명을 주시며, 없는 것도 있는 것으로 불러내시는 분이십니다.',
+    '롬6:4': '그러므로 우리가 그분의 죽음 안으로 침례를 받아 그분과 함께 장사된 것은 그리스도께서 아버지의 영광을 통해 죽은 사람들 가운데서 살아나신 것같이, 우리도 또한 생명의 새로움 안에서 행하게 하기 위한 것입니다.',
+    '롬6:5': '우리가 그분의 죽음과 같은 모양 안에서 그분과 연결되어 자랐다면, 또한 그분의 부활과 같은 모양 안에서도 그분과 연결되어 자랄 것입니다.',
+    '롬8:2': '왜냐하면 생명의 영의 법이 그리스도 예수님 안에서 나를 죄와 죽음의 법에서 해방하였기 때문입니다.',
+    '롬8:6': '육체에 둔 생각은 죽음이지만, 영에 둔 생각은 생명과 평안입니다.',
+    '롬8:10': '그러나 그리스도께서 여러분 안에 계시면, 몸은 죄 때문에 죽은 것이지만, 영은 의 때문에 생명입니다.',
+    '롬8:11': '또한 예수님을 죽은 사람들 가운데서 살리신 분의 영께서 여러분 안에 거하시면, 그리스도를 죽은 사람들 가운데서 살리신 분께서 여러분 안에 거하시는 그분의 영을 통하여 여러분의 죽을 몸에도 생명을 주실 것입니다.',
+    '롬12:4': '한 몸에 많은 지체가 있지만, 모든 지체가 같은 기능을 가진 것이 아닙니다.',
+    '롬12:5': '이와 같이 우리 많은 사람도 그리스도 안에서 한 몸이며, 각 사람이 서로 지체들입니다.',
+    '롬12:15': '기뻐하는 사람들과 함께 기뻐하고, 우는 사람들과 함께 우십시오.',
+    '롬16:1': '내가 겐그레아에 있는 교회의 여집사인 우리의 자매 뵈뵈를 여러분에게 추천합니다.',
+    '롬16:4': '그들은 나의 목숨을 위하여 자기들의 목을 내놓은 사람들입니다. 나뿐만 아니라 이방인들의 모든 교회들도 그들에게 감사하고 있습니다.',
+    '롬16:16': '거룩한 입맞춤으로 서로 문안하십시오. 그리스도의 모든 교회들이 여러분에게 문안합니다.',
+    '고전1:2': '고린도에 있는 하나님의 교회 곧 그리스도 예수님 안에서 거룩하여진 부름받은 성도들에게와, 각처에서 그들과 우리의 것이 되신 우리 주 예수 그리스도의 이름을 부르는 모든 이들에게도 함께 편지합니다.',
+    '고전3:1': '형제님들, 내가 전에 여러분에게 말할 때에 여러분을 영적인 사람들처럼 대할 수 없었고, 육체적인 사람 곧 그리스도 안에 있는 어린 아기들처럼 대하였습니다.',
+    '고전3:2': '나는 여러분에게 젖을 먹이고 단단한 음식은 먹이지 않았습니다. 왜냐하면 그때에 여러분이 먹을 수 없었기 때문입니다. 그런데 지금도 여전히 여러분은 먹을 수 없습니다.',
+    '고전6:17': '그러나 주님과 합하는 사람은 주님과 한 영입니다.',
+    '고전10:3': '모두 똑같은 영적인 음식을 먹었고,',
+    '고전10:4': '모두 똑같은 영적인 물을 마셨습니다. 그들은 자기들을 따르는 영적인 반석에서 마셨는데, 그 반석은 그리스도였습니다.',
+    '고전10:32': '여러분은 유대인에게나 헬라인에게나 하나님의 교회에게 걸림돌이 되지 말고,',
+    '고전12:12': '왜냐하면 몸은 하나인데 많은 지체가 있고, 몸의 지체는 많지만 모두가 한 몸인 것같이, 그리스도도 그와 같으시기 때문입니다.',
+    '고전12:13': '우리가 유대인이나 헬라인이나 노예나 자유인이나 모두 한 영 안에서 한 몸 안으로 침례 받았고, 또 모두 한 영을 마시게 되었습니다.',
+    '고전12:14': '몸은 한 지체만이 아니라 많은 지체입니다.',
+    '고전12:15': '발이 "나는 손이 아니기 때문에 몸에 속하지 않았다."라고 말한다 해서 발이 몸에 속하지 않은 것이 아니며,',
+    '고전12:16': '귀가 "나는 눈이 아니기 때문에 몸에 속하지 않았다."라고 말한다 해서 귀가 몸에 속하지 않은 것이 아닙니다.',
+    '고전12:17': '온몸이 눈이라면, 듣는 곳은 어디입니까? 온몸이 듣는 곳이라면, 냄새 맡는 곳은 어디입니까?',
+    '고전12:18': '그러나 이제 하나님은 그분께서 뜻하시는 대로 지체들을 각각 몸 안에 두셨습니다.',
+    '고전12:19': '모두가 한 지체라면, 몸은 어디에 있겠습니까?',
+    '고전12:20': '그러나 이제 지체는 많지만, 몸은 하나입니다.',
+    '고전12:21': '눈이 손에게 "나는 네가 필요 없다."라고 할 수가 없고, 머리가 발에게 "나는 네가 필요 없다."라고 할 수가 없습니다.',
+    '고전12:22': '그럴 뿐만 아니라 몸 가운데서 더 약하게 보이는 지체가 오히려 더 요긴합니다.',
+    '고전12:26': '한 지체가 고통을 당하면 모든 지체가 함께 고통을 당하고, 한 지체가 영광을 받으면 모든 지체가 함께 기뻐합니다.',
+    '고전12:27': '여러분이 곧 그리스도의 몸이며, 여러분 각 사람은 그 지체들입니다.',
+    '고전14:20': '형제님들, 이해를 하는 데 있어서는 아이가 되지 마십시오. 그러나 악에 대해서는 갓난아기가 되십시오. 그리고 이해를 하는 데 있어서는 충분히 성장한 사람이 되십시오.',
+    '고전15:58': '그러므로 내 사랑하는 형제님들, 여러분은 견고하여 흔들리지 말며, 항상 주님의 일을 더욱 많이 하십시오. 여러분이 아는 대로, 여러분의 수고가 주님 안에서 헛되지 않습니다.',
+    '고전16:10': '디모데가 가거든 아무 두려움 없이 여러분과 함께 지낼 수 있도록 보살펴 주십시오. 그도 나처럼 주님의 일을 하는 사람입니다.',
+    '고후1:3': '우리 주 예수 그리스도의 하나님, 곧 우리 주 예수 그리스도의 아버지께 찬양을 드립니다. 그분은 자비의 아버지이시요 모든 위로의 하나님이십니다.',
+    '고후1:4': '그분은 우리를 모든 환난 가운데서 위로해 주시어, 우리 자신이 그분께 받은 그 위로로 각종 환난 가운데 있는 사람들을 위로할 수 있도록 하십니다.',
+    '고후1:8': '형제님들, 여러분은 우리가 아시아에서 당한 환난을 몰라서는 안 됩니다. 우리가 힘에 겹도록 극심한 압박을 받아 살 소망까지 끊어져,',
+    '고후1:9': '결국은 죽게 될 것이라고 스스로 단정하였습니다. 이것은 우리가 자신을 신뢰하지 않고 죽은 사람들을 살리시는 하나님을 신뢰하도록 하려는 것이었습니다.',
+    '고후1:10': '그분은 이같이 절박한 죽음에서 우리를 구출하셨고 또 구출하실 것입니다. 우리가 그분께 소망을 두었으니, 그분은 앞으로도 우리를 구출하실 것입니다.',
+    '고후4:10': '예수님을 죽게 한 것을 우리가 항상 몸에 지니고 다니는 것은 예수님의 생명도 우리 몸에서 나타나게 하려는 것입니다.',
+    '고후4:11': '이것은 살아 있는 우리가 항상 예수님을 위하여 죽음에 넘겨짐으로써, 예수님의 생명도 우리의 죽을 육체에 나타나게 하려는 것입니다.',
+    '고후4:12': '그러므로 죽음은 우리 안에서 활동하고, 생명은 여러분 안에서 활동합니다.',
+    '고후4:14': '이것은 주 예수님을 살리신 분께서 예수님과 함께 우리도 살리시고, 우리를 여러분과 함께 그분 앞에 서게 하실 것을 알기 때문입니다.',
+    '고후4:16': '그러므로 우리는 낙심하지 않습니다. 우리의 겉사람은 썩어 가고 있지만, 우리의 속사람은 나날이 새로워지고 있습니다.',
+    '고후6:11': '고린도 사람 여러분, 우리의 입은 여러분을 향하여 열려 있고, 우리의 마음은 넓어졌습니다.',
+    '고후6:12': '여러분은 우리 안에서 좁아진 것이 아니라, 여러분의 속부분 안에서 좁아진 것입니다.',
+    '고후6:13': '내가 자녀들에게 하듯 말하는데, 이것에 대한 보답으로 여러분도 마음을 넓히십시오.',
+    '고후11:28': '이 밖에 언급하지 않은 것들은 그만두더라도, 날마다 나를 억누르는 많은 염려가 있는데, 곧 모든 교회들을 위한 염려입니다.',
+    '고후11:29': '누가 약해지면 나도 약해지지 않겠습니까? 누가 걸려 넘어지면 나 자신도 애타지 않겠습니까?',
+    '갈2:20': '나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다. 이제 내가 육체 안에서 사는 생명은 나를 사랑하시어 나를 위하여 자신을 버리신 하나님의 아들의 믿음 안에서 사는 생명입니다.',
+    '갈5:24': '그러나 그리스도 예수님께 속한 사람들은 육체를 그 정욕과 욕망과 함께 십자가에 못 박았습니다.',
+    '엡3:8': '하나님께서 모든 성도들 중에 가장 작은 이보다 더 작은 나에게 이 은혜를 주신 것은, 그리스도의 측량할 수 없는 풍성을 이방인들에게 복음으로 전하게 하시고',
+    '엡3:17': '믿음을 통하여 그리스도께서 여러분의 마음에 거처를 정하시게 하시며,',
+    '엡4:4': '몸이 하나요, 성령도 한 분이십니다. 이와 같이 여러분도 부름을 받았을 때 한 소망 안에서 부름을 받았습니다.',
+    '엡4:5': '주님도 한 분이시요, 믿음도 하나요, 침례도 하나입니다.',
+    '엡4:6': '하나님도 한 분이시며, 모든 사람의 아버지이십니다. 그분은 모든 사람 위에 계시고, 모든 사람을 통과하여 계시고, 모든 사람 안에 계십니다.',
+    '엡4:12': '이것은 성도들을 온전하게 하여 그 사역의 일을 하게 하려는 것, 곧 그리스도의 몸을 건축하게 하려는 것입니다.',
+    '엡4:13': '그리하여 우리 모두가 믿음에서의 하나와 하나님의 아들에 관한 온전한 지식에서의 하나에 이르게 하고, 충분히 성장한 사람에 이르게 하며, 그리스도의 충만의 신장의 분량에 이르게 하려는 것입니다.',
+    '엡4:15': '오직 우리는 사랑 안에서 참된 것을 붙잡고 모든 일에서 그리스도, 곧 머리이신 분 안으로 자라야 합니다.',
+    '엡4:16': '그분으로부터 온몸은 그 풍성한 공급을 해 주는 각 마디를 통하여, 그리고 각 지체가 분량에 따라 기능을 발휘하는 것을 통하여 함께 결합되고 함께 짜입니다. 그래서 몸이 자람으로써 사랑 안에서 스스로 건축되는 것입니다.',
+    '엡5:30': '왜냐하면 우리가 그분의 몸의 지체들이기 때문입니다.',
+    '빌1:21': '왜냐하면 나에게 있어서 삶은 그리스도이고, 나에게 있어서 죽음은 유익이기 때문입니다.',
+    '빌3:3': '하나님의 영으로 봉사하고, 그리스도 예수님을 자랑하며, 육체를 신뢰하지 않는 우리가 참된 할례를 받은 사람들입니다.',
+    '빌3:10': '나는 그리스도와 그분의 부활 능력과 그분의 고난의 교통을 알고, 그분의 죽음과 같은 형상을 이루어,',
+    '빌3:11': '어떻게 해서든지 죽은 사람들 가운데서 뛰어난 부활에 이르고자 합니다.',
+    '골1:18': '또한 그분은 몸인 교회의 머리이십니다. 그분은 시작이시며, 죽은 사람들 가운데 가장 먼저 나신 분이십니다. 이것은 그분 자신께서 만물 가운데서 으뜸이 되시기 위한 것이었습니다.',
+    '골2:16': '그러므로 먹는 것과 마시는 것이나 명절이나 초하룻날이나 안식일에 관하여, 아무도 여러분을 판단하지 못하게 하십시오.',
+    '골2:17': '이런 것들은 장래 일들의 그림자이며, 그 실체는 그리스도께 속한 것입니다.',
+    '골2:18': '겸허한 척하면서 천사를 숭배하는 사람들이 여러분을 합당하지 못하다고 판단하는 것으로 말미암아, 여러분의 상을 빼앗기지 않도록 하십시오.',
+    '골2:19': '머리를 붙들지 않습니다. 온몸은 마디와 힘줄을 통하여 머리로부터 풍성하게 공급을 받고 함께 짜여, 하나님께서 자라심으로 자라는 것입니다.',
+    '골3:4': '그리스도는 우리의 생명이십니다. 그분께서 나타나실 그때에 여러분도 그분과 함께 영광 가운데 나타날 것입니다.',
+    '골3:15': '그리스도의 화평이 여러분의 마음에서 판정을 내리도록 하십시오. 여러분이 한 몸 안에 부름을 받은 것도 이 화평을 위한 것입니다. 또 여러분은 감사하는 사람이 되십시오.',
+    '마16:24': '그때에 예수님께서 제자들에게 말씀하셨다. "누구든지 나를 따라오려거든, 자기를 부인하고 자기 십자가를 지고 나를 따라오십시오.',
+    '민17:8': '다음 날 모세가 증거막 안에 들어가 보니, 레위 집안을 위한 아론의 막대기에 싹이 나 있었다. 심지어 그 막대기에 싹이 나고 꽃이 피어 익은 아몬드가 달려 있었다.',
+    '잠14:10': '마음만이 그 자신의 고통을 아나니 / 다른 사람은 그 기쁨도 나누지 못한다.',
+    '계1:4': '요한은 아시아에 있는 일곱 교회에게 편지합니다. 지금도 계시고 전에도 계셨고 장차 오실 분께서, 또 그분의 보좌 앞에 계신 일곱 영께서,',
+    '계1:11': '"네가 보는 것을 두루마리에 써서 일곱 교회에게, 곧 에베소에, 서머나에, 버가모에, 두아디라에, 사데에, 빌라델비아에, 라오디게아에 보내어라."라고 말씀하셨습니다.'
+  };
+
+  // Reference label formatter
+  function formatRefLabel(ref) {
+    // Convert e.g. "요일5:14" → "요한일서 5:14" mapping
+    const map = {
+      '요일': '요한일서', '요': '요한복음', '롬': '로마서',
+      '고전': '고린도전서', '고후': '고린도후서', '갈': '갈라디아서',
+      '엡': '에베소서', '빌': '빌립보서', '골': '골로새서',
+      '마': '마태복음', '민': '민수기', '잠': '잠언', '계': '요한계시록'
+    };
+    const m = ref.match(/^([가-힣]+)(.+)$/);
+    if (!m) return ref;
+    const book = map[m[1]] || m[1];
+    return `${book} ${m[2]}`;
+  }
+
+  // Tooltip/sheet logic
+  const scrim = document.getElementById('scrim');
+  const sheet = document.getElementById('sheet');
+  const sheetBody = document.getElementById('sheetBody');
+  const sheetClose = document.getElementById('sheetClose');
+
+  function openSheet(refsAttr) {
+    const refs = refsAttr.split(',').map(r => r.trim());
+    let html = '';
+    refs.forEach(ref => {
+      const text = verses[ref];
+      if (text) {
+        html += `<div class="sheet-verse">
+          <span class="v-label">${formatRefLabel(ref)}</span>
+          <div class="v-text">${text}</div>
+        </div>`;
+      } else {
+        html += `<div class="sheet-verse">
+          <span class="v-label">${formatRefLabel(ref)}</span>
+          <div class="v-text" style="color:var(--ink-mute);font-style:italic">(본문에 포함되지 않은 절입니다.)</div>
+        </div>`;
+      }
+    });
+    sheetBody.innerHTML = html;
+    sheetBody.scrollTop = 0;
+    document.body.classList.add('sheet-open');
+    scrim.classList.add('active');
+    sheet.classList.add('active');
+  }
+
+  function closeSheet() {
+    document.body.classList.remove('sheet-open');
+    scrim.classList.remove('active');
+    sheet.classList.remove('active');
+  }
+
+  // Attach to all .v-ref elements
+  document.querySelectorAll('.v-ref').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const refs = el.getAttribute('data-refs');
+      if (refs) openSheet(refs);
+    });
+  });
+
+  scrim.addEventListener('click', closeSheet);
+  sheetClose.addEventListener('click', closeSheet);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeSheet();
+  });
+
+  // Swipe down on sheet to close (mobile)
+  let touchStartY = 0;
+  let touchDeltaY = 0;
+  sheet.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+    touchDeltaY = 0;
+  }, {passive: true});
+  sheet.addEventListener('touchmove', (e) => {
+    touchDeltaY = e.touches[0].clientY - touchStartY;
+  }, {passive: true});
+  sheet.addEventListener('touchend', () => {
+    if (touchDeltaY > 80) closeSheet();
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
