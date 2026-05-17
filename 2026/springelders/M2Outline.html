@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#f4ecd6" />
+<title>화목의 사역 — 메시지 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f4ecd6; --paper-warm:#faf3df; --paper-deep:#e6d8b3; --paper-shadow:#d5c393;
+    --wine:#7a1d2e; --wine-dark:#561420; --wine-light:#a44857;
+    --gold:#b8923a; --gold-dark:#8a6c22; --gold-light:#d9b96a;
+    --ink:#1a1410; --ink-2:#3c3025; --ink-3:#6b5a48; --ink-4:#9a8770;
+    --line:rgba(26,20,16,.18); --line-soft:rgba(26,20,16,.09); --line-strong:rgba(26,20,16,.32);
+    --serif-display:"Nanum Myeongjo", serif;
+    --serif-body:"Noto Serif KR", "Nanum Myeongjo", serif;
+    --serif-latin:"Cormorant Garamond", serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    background-image:
+      radial-gradient(900px 500px at 50% -5%, rgba(184,146,58,.20), transparent 60%),
+      radial-gradient(800px 600px at 100% 25%, rgba(122,29,46,.06), transparent 60%),
+      radial-gradient(700px 700px at 0% 75%, rgba(47,66,84,.05), transparent 60%);
+    color:var(--ink);
+    font-family:var(--serif-body); font-weight:400; line-height:1.78; letter-spacing:.005em;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden; padding-bottom:180px; min-height:100vh; position:relative;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='0.88' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0.10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:.35; mix-blend-mode:multiply;
+  }
+  body::after{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1;
+    background:radial-gradient(140% 100% at 50% 50%, transparent 55%, rgba(80,55,25,.12) 80%, rgba(50,30,10,.22) 100%);
+  }
+  main{
+    position:relative; z-index:2; max-width:720px; margin:0 auto;
+    padding:24px 22px 0; transition:filter .3s ease, opacity .3s ease;
+  }
+  body.dimmed main{ filter:blur(3px) saturate(.6) brightness(.85); }
+
+  /* HERO */
+  .hero{ text-align:center; padding:32px 0 26px; position:relative; }
+  .hero .eyebrow{ font-family:var(--serif-latin); font-style:italic; font-weight:500; font-size:13px; letter-spacing:.42em; text-transform:uppercase; color:var(--gold-dark); }
+  .hero .eyebrow .dot{ display:inline-block; width:5px;height:5px; background:var(--gold); border-radius:50%; vertical-align:middle; margin:0 8px 3px; }
+  .hero h1{ font-family:var(--serif-display); font-weight:800; font-size:clamp(40px, 11vw, 64px); letter-spacing:-.015em; line-height:1.05; margin:14px 0 12px; color:var(--wine); text-shadow:0 1px 0 rgba(255,250,232,.4); }
+  .hero .sub{ font-family:var(--serif-latin); font-style:italic; font-weight:400; color:var(--ink-3); font-size:19px; letter-spacing:.04em; margin:0; }
+  .hero .keystone{ display:flex; align-items:center; justify-content:center; gap:14px; margin:22px 0 0; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); flex-wrap:wrap; font-size:13.5px; color:var(--ink-2); }
+  .hero .keystone .label{ font-family:var(--serif-latin); font-style:italic; color:var(--gold-dark); letter-spacing:.15em; font-size:12px; text-transform:uppercase; }
+  .veils-art{ width:100%; max-width:360px; margin:30px auto 8px; display:block; }
+
+  /* SECTIONS */
+  .section{ margin:64px 0 0; position:relative; opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform .9s ease; }
+  .section.in-view{opacity:1;transform:none}
+  .section-head{ text-align:center; margin-bottom:24px; }
+  .section-roman{ font-family:var(--serif-latin); font-weight:500; font-size:clamp(56px, 14vw, 96px); line-height:.9; color:var(--wine); margin:0 0 6px; letter-spacing:-.02em; text-shadow:0 2px 0 rgba(255,250,232,.5); position:relative; display:inline-block; }
+  .section-roman::after{ content:""; position:absolute; bottom:6px;left:50%; transform:translateX(-50%); width:50px;height:1px; background:var(--gold); }
+  .section-eyebrow{ font-family:var(--serif-latin); font-style:italic; font-size:13px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-dark); margin:14px 0 8px; }
+  .section h2{ font-family:var(--serif-display); font-weight:800; font-size:clamp(22px, 5.8vw, 28px); line-height:1.4; margin:6px auto 0; color:var(--ink); max-width:560px; letter-spacing:-.005em; }
+  .section-lede{ text-align:center; color:var(--ink-2); max-width:560px; margin:18px auto 0; font-size:15.5px; line-height:1.78; }
+
+  /* I — 8 cells */
+  .grid8{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px; }
+  .cell{ background:linear-gradient(180deg, rgba(255,250,232,.85), rgba(244,236,214,.75)); border:1px solid var(--line); border-radius:3px; padding:16px 13px 14px 16px; position:relative; min-height:148px; display:flex;flex-direction:column; box-shadow:0 1px 0 rgba(0,0,0,.02), 0 8px 18px -16px rgba(60,40,15,.5); }
+  .cell .letter{ position:absolute; top:8px;right:12px; font-family:var(--serif-latin); font-weight:600; font-size:32px; line-height:1; color:var(--gold); opacity:.55; }
+  .cell h4{ font-family:var(--serif-display); font-weight:700; font-size:15px; color:var(--wine-dark); margin:0 0 4px; padding-right:28px; line-height:1.4; }
+  .cell .kw{ font-size:12.5px; color:var(--gold-dark); margin-bottom:6px; font-family:var(--serif-latin); font-style:italic; letter-spacing:.05em; }
+  .cell p{ font-size:13px; color:var(--ink-2); margin:0; line-height:1.6; flex:1; }
+  .cell .refs{ margin-top:8px; font-size:11.5px; color:var(--ink-3); display:flex;flex-wrap:wrap;gap:4px; }
+  @media (max-width:420px){ .grid8{grid-template-columns:1fr} .cell{min-height:auto} }
+
+  /* II — stages */
+  .stages{ margin:0 0 28px; position:relative; }
+  .stage{ background:rgba(255,250,232,.7); border:1px solid var(--line); border-radius:4px; padding:20px 18px 20px 64px; margin:14px 0; position:relative; box-shadow:0 8px 20px -18px rgba(60,40,15,.4); }
+  .stage-num{ position:absolute; left:14px;top:18px; width:38px;height:38px; border:1.5px solid var(--wine); border-radius:50%; display:flex;align-items:center;justify-content:center; font-family:var(--serif-latin); font-weight:600; color:var(--wine); font-size:18px; background:var(--paper-warm); }
+  .stage-eyebrow{ font-family:var(--serif-latin); font-style:italic; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-dark); margin-bottom:4px; }
+  .stage h3{ font-family:var(--serif-display); font-weight:800; font-size:17px; color:var(--wine); margin:0 0 8px; line-height:1.4; }
+  .stage .from-to{ display:flex;align-items:center; gap:6px;flex-wrap:wrap; margin:8px 0 10px; font-family:var(--serif-display); font-weight:700; font-size:12.5px; }
+  .stage .from-to .tag{ background:var(--paper-deep); color:var(--ink); padding:4px 9px; border-radius:2px; border:1px solid var(--line); }
+  .stage .from-to .tag.gold{ background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:var(--ink); border-color:var(--gold-dark); }
+  .stage .from-to .arrow{color:var(--gold-dark);font-family:var(--serif-latin);font-size:14px}
+  .stage p{ font-size:14px; color:var(--ink-2); margin:0 0 4px; line-height:1.7; }
+  .stage-connector{ width:1.5px; height:24px; background:var(--gold); margin:0 auto; opacity:.6; }
+
+  /* III — exchange */
+  .exchange{ display:grid; grid-template-columns:1fr; gap:14px; margin:6px 0 0; position:relative; }
+  @media (min-width:560px){ .exchange{grid-template-columns:1fr auto 1fr;align-items:stretch} }
+  .ex-side{ background:linear-gradient(180deg, rgba(255,250,232,.85), rgba(244,236,214,.65)); border:1px solid var(--line); border-radius:4px; padding:18px 16px; position:relative; }
+  .ex-side.left{border-top:3px solid var(--wine)}
+  .ex-side.right{border-top:3px solid var(--gold)}
+  .ex-label{ font-family:var(--serif-latin); font-style:italic; font-size:12px; letter-spacing:.22em; text-transform:uppercase; margin-bottom:6px; }
+  .ex-side.left .ex-label{color:var(--wine)}
+  .ex-side.right .ex-label{color:var(--gold-dark)}
+  .ex-side h4{ font-family:var(--serif-display); font-weight:800; font-size:17px; margin:0 0 8px; line-height:1.4; color:var(--ink); }
+  .ex-side p{ font-size:13.5px; color:var(--ink-2); margin:0; line-height:1.7; }
+  .ex-arrow{ display:flex;align-items:center;justify-content:center; padding:4px 0; }
+  .ex-arrow .cross{ width:42px;height:42px; border:1.5px solid var(--gold); border-radius:50%; display:flex;align-items:center;justify-content:center; background:var(--paper-warm); color:var(--wine); font-family:var(--serif-display); font-size:18px; font-weight:700; }
+
+  /* IV — tabernacle */
+  .tabernacle{ margin:6px auto 14px; max-width:560px; }
+  .tabernacle svg{width:100%;height:auto;display:block}
+  .tab-caption{ margin-top:10px; text-align:center; font-size:12.5px; color:var(--ink-3); font-family:var(--serif-latin); font-style:italic; letter-spacing:.06em; line-height:1.55; }
+
+  /* V — hearts */
+  .hearts{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:6px 0 18px; }
+  .heart{ text-align:center; padding:18px 12px 16px; border:1px solid var(--line); border-radius:4px; background:rgba(255,250,232,.6); position:relative; }
+  .heart.narrow{opacity:.85}
+  .heart.wide{ border-color:var(--gold); background:linear-gradient(180deg, rgba(217,185,106,.10), rgba(255,250,232,.65)); }
+  .heart svg{ width:80%; max-width:120px; height:auto; margin:0 auto 10px; display:block; }
+  .heart .h-label{ font-family:var(--serif-latin); font-style:italic; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-dark); margin-bottom:2px; }
+  .heart h4{ font-family:var(--serif-display); font-weight:800; font-size:15.5px; margin:0 0 4px; color:var(--ink); }
+  .heart.wide h4{color:var(--wine)}
+  .heart p{ font-size:12.5px; color:var(--ink-3); margin:0; line-height:1.55; }
+
+  /* VI — results */
+  .results{ display:grid; grid-template-columns:1fr; gap:12px; margin:6px 0; }
+  .result{ background:linear-gradient(135deg, rgba(255,250,232,.9), rgba(244,236,214,.75)); border:1px solid var(--line); border-radius:4px; padding:20px 20px 18px; position:relative; overflow:hidden; }
+  .result::before{ content:""; position:absolute; left:0;top:0;bottom:0; width:4px; background:linear-gradient(180deg, var(--wine), var(--gold)); }
+  .result .num{ font-family:var(--serif-latin); font-weight:600; font-style:italic; font-size:44px; color:var(--gold); line-height:1; opacity:.45; float:right; margin:-4px 0 0 12px; }
+  .result h3{ font-family:var(--serif-display); font-weight:800; font-size:19px; color:var(--wine); margin:0 0 8px; line-height:1.3; }
+  .result p{ margin:0; font-size:14px; color:var(--ink-2); line-height:1.7; }
+  .result .kw{ font-family:var(--serif-latin); font-style:italic; font-size:13px; color:var(--gold-dark); margin-bottom:2px; letter-spacing:.05em; }
+
+  /* VII — final */
+  .final{ margin:64px -22px 24px; padding:48px 22px 44px;
+    background: radial-gradient(800px 400px at 50% 30%, rgba(184,146,58,.18), transparent 70%), linear-gradient(180deg, rgba(184,146,58,.10), rgba(122,29,46,.06));
+    border-top:1px solid var(--gold); border-bottom:1px solid var(--gold); text-align:center; position:relative; }
+  .final .section-roman{ color:var(--wine); }
+  .final h2{ color:var(--wine-dark); max-width:560px; margin-left:auto;margin-right:auto; }
+  .final-text{ max-width:540px; margin:18px auto 0; font-size:15px; color:var(--ink-2); line-height:1.8; }
+  .cube-wrap{ margin:30px auto 16px; max-width:240px; }
+  .cube-wrap svg{width:100%;height:auto;display:block}
+  .final-quote{ font-family:var(--serif-display); font-style:italic; font-weight:400; color:var(--wine); font-size:16px; line-height:1.7; max-width:480px; margin:24px auto 0; padding-top:18px; border-top:1px solid var(--gold); display:inline-block; }
+
+  /* points */
+  .points{ margin:6px 0 0; counter-reset:pt; }
+  .point{ position:relative; padding:14px 0 14px 46px; border-bottom:1px solid var(--line-soft); }
+  .point:last-child{border-bottom:none}
+  .point::before{ counter-increment:pt; content:counter(pt, upper-alpha); position:absolute; left:0;top:14px; width:32px; text-align:center; font-family:var(--serif-latin); font-weight:600; font-size:16px; color:var(--gold-dark); line-height:1.7; border-right:1px solid var(--gold); padding-right:4px; }
+  .point h4{ font-family:var(--serif-display); font-weight:700; font-size:15.5px; margin:0 0 4px; color:var(--ink); line-height:1.5; }
+  .point p{ margin:0; font-size:14px; color:var(--ink-2); line-height:1.7; }
+
+  .pull{ border-left:3px solid var(--gold); padding:14px 18px; margin:22px 0; background:rgba(184,146,58,.07); font-family:var(--serif-display); font-style:italic; color:var(--wine-dark); font-size:15px; line-height:1.7; }
+
+  /* refs + panel */
+  .ref{ display:inline; border:none; background:transparent; font:inherit; color:var(--wine); padding:0 3px; margin:0 1px; cursor:pointer; font-weight:600; border-bottom:1px dotted var(--gold); border-radius:2px; transition:background .15s, color .15s; font-size:.94em; white-space:nowrap; }
+  .ref:hover,.ref:focus{ background:rgba(184,146,58,.18); color:var(--wine-dark); outline:none; }
+  .ref:active{background:rgba(184,146,58,.32)}
+
+  .dim-overlay{ position:fixed; inset:0; background:rgba(20,14,8,.30); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); z-index:90; opacity:0; pointer-events:none; transition:opacity .3s ease; }
+  .dim-overlay.show{opacity:1;pointer-events:auto}
+
+  .verse-panel{ position:fixed; left:0;right:0;bottom:0; background:var(--paper-warm); border-top:2px solid var(--gold); box-shadow:0 -16px 40px -10px rgba(0,0,0,.35); z-index:100; transform:translateY(100%); transition:transform .35s cubic-bezier(.2,.8,.2,1); max-height:72vh; display:flex; flex-direction:column; padding-bottom:env(safe-area-inset-bottom,0); }
+  .verse-panel.show{transform:translateY(0)}
+  .vp-handle{ width:42px;height:4px; background:var(--paper-shadow); border-radius:2px; margin:8px auto 0; }
+  .vp-header{ padding:10px 20px 12px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .vp-title{ font-family:var(--serif-display); font-weight:800; font-size:18px; color:var(--wine); margin:0; letter-spacing:-.005em; }
+  .vp-close{ background:none; border:1px solid var(--line); color:var(--ink-2); width:36px;height:36px; border-radius:50%; cursor:pointer; font-size:18px;line-height:1; display:flex;align-items:center;justify-content:center; transition:all .15s; flex-shrink:0; }
+  .vp-close:hover{ background:var(--wine); color:var(--paper-warm); border-color:var(--wine); }
+  .vp-body{ padding:16px 22px 24px; overflow-y:auto; flex:1; -webkit-overflow-scrolling:touch; }
+  .verse-item{ margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid var(--line-soft); }
+  .verse-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+  .verse-ref{ font-family:var(--serif-display); font-weight:700; color:var(--wine); font-size:14px; margin-bottom:4px; display:block; }
+  .verse-text{ font-size:15px; color:var(--ink); line-height:1.78; margin:0; }
+
+  footer{ text-align:center; padding:32px 22px 24px; color:var(--ink-3); font-size:13px; font-family:var(--serif-latin); font-style:italic; letter-spacing:.06em; }
+  footer .div{ width:30px;height:1px; background:var(--gold); margin:0 auto 14px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dim-overlay" id="dim"></div>
+
+<main>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Message<span class="dot"></span>Ⅱ</div>
+    <h1>화목의 사역</h1>
+    <p class="sub">The Ministry of Reconciliation</p>
+
+    <svg class="veils-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%">
+          <stop offset="0%" stop-color="#d9b96a" stop-opacity=".75"/>
+          <stop offset="60%" stop-color="#b8923a" stop-opacity=".15"/>
+          <stop offset="100%" stop-color="#b8923a" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="weave" width="6" height="6" patternUnits="userSpaceOnUse">
+          <path d="M0 0 L6 6 M-1 5 L1 7 M5 -1 L7 1" stroke="#7a1d2e" stroke-width=".4" opacity=".45"/>
+        </pattern>
+      </defs>
+      <g transform="translate(40 28)">
+        <rect x="0" y="0" width="116" height="146" fill="url(#weave)" stroke="#7a1d2e" stroke-width="1.4" rx="1"/>
+        <path d="M30 0 L24 146 M58 0 L58 146 M86 0 L92 146" stroke="#7a1d2e" stroke-width=".7" opacity=".55"/>
+        <circle cx="58" cy="50" r="6" fill="none" stroke="#b8923a" stroke-width=".8" opacity=".6"/>
+        <path d="M52 50 Q58 42 64 50 Q58 58 52 50" fill="none" stroke="#b8923a" stroke-width=".8" opacity=".6"/>
+        <text x="58" y="186" font-family="Cormorant Garamond" font-size="11" fill="#8a6c22" text-anchor="middle" font-style="italic" letter-spacing=".05em">first veil · 막</text>
+      </g>
+      <g transform="translate(204 28)">
+        <circle cx="58" cy="73" r="62" fill="url(#glow)"/>
+        <path d="M0 0 L0 146 L52 146 L56 73 L48 0 Z" fill="url(#weave)" stroke="#7a1d2e" stroke-width="1.4"/>
+        <path d="M116 0 L116 146 L64 146 L60 73 L68 0 Z" fill="url(#weave)" stroke="#7a1d2e" stroke-width="1.4"/>
+        <path d="M52 146 L56 73 L48 0" fill="none" stroke="#561420" stroke-width="1.6"/>
+        <path d="M64 146 L60 73 L68 0" fill="none" stroke="#561420" stroke-width="1.6"/>
+        <path d="M16 0 L12 146 M88 0 L96 146" stroke="#7a1d2e" stroke-width=".7" opacity=".55"/>
+        <text x="58" y="186" font-family="Cormorant Garamond" font-size="11" fill="#8a6c22" text-anchor="middle" font-style="italic" letter-spacing=".05em">second veil · 둘째 휘장</text>
+      </g>
+      <g transform="translate(168 100)">
+        <line x1="0" y1="0" x2="24" y2="0" stroke="#b8923a" stroke-width="1" stroke-dasharray="3 3"/>
+        <polygon points="24,0 18,-4 18,4" fill="#b8923a"/>
+      </g>
+    </svg>
+
+    <div class="keystone">
+      <span class="label">Key Texts</span>
+      <span><button class="ref" data-verse="롬5:10">롬 5:10</button></span>
+      <span style="color:var(--gold-dark)">·</span>
+      <span><button class="ref" data-verse="골1:20">골 1:20</button></span>
+      <span style="color:var(--gold-dark)">·</span>
+      <span><button class="ref" data-verse="고후5:18-20">고후 5:18-20</button></span>
+    </div>
+  </header>
+
+  <!-- ============ I — Foundation 8 cells ============ -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-roman">Ⅰ</div>
+      <div class="section-eyebrow">Foundation · 기초</div>
+      <h2>화목에 대한 기본적인 이해</h2>
+      <p class="section-lede">화목은 단지 “죄 용서”에 그치는 사건이 아니다. 여덟 가지 측면이 함께 모여 한 그림을 이룬다.</p>
+    </div>
+
+    <div class="grid8">
+      <div class="cell">
+        <span class="letter">A</span>
+        <h4>필요성</h4>
+        <div class="kw">Necessity</div>
+        <p>우리는 본래 하나님과 <strong>원수</strong>였다. 적대감이 화목을 요청한다.</p>
+        <div class="refs"><button class="ref" data-verse="롬5:10">롬 5:10</button><button class="ref" data-verse="골1:21">골 1:21</button></div>
+      </div>
+      <div class="cell">
+        <span class="letter">B</span>
+        <h4>의미</h4>
+        <div class="kw">Meaning</div>
+        <p>화목이란 곧 <strong>화평을 이룸</strong>이다. 적대가 끝나고 평화가 생긴 것.</p>
+        <div class="refs"><button class="ref" data-verse="골1:20">골 1:20</button><button class="ref" data-verse="고후5:18">고후 5:18</button></div>
+      </div>
+      <div class="cell">
+        <span class="letter">C</span>
+        <h4>매개체</h4>
+        <div class="kw">Medium</div>
+        <p>화목은 <strong>그리스도</strong>를 통하여 — 그분이 아니고는 닿을 수 없다.</p>
+        <div class="refs"><button class="ref" data-verse="골1:20">골 1:20</button><button class="ref" data-verse="고후5:18">고후 5:18</button></div>
+      </div>
+      <div class="cell">
+        <span class="letter">D</span>
+        <h4>수단</h4>
+        <div class="kw">Means</div>
+        <p><strong>십자가</strong>가 적대감을 소멸시키는 도구이다.</p>
+        <div class="refs"><button class="ref" data-verse="골1:20">골 1:20</button><button class="ref" data-verse="엡2:16">엡 2:16</button></div>
+      </div>
+      <div class="cell">
+        <span class="letter">E</span>
+        <h4>범위</h4>
+        <div class="kw">Scope</div>
+        <p><strong>하늘들과 땅</strong>에 있는 모든 것 — 만물이 화목의 대상이다.</p>
+        <div class="refs"><button class="ref" data-verse="골1:20">골 1:20</button></div>
+      </div>
+      <div class="cell">
+        <span class="letter">F</span>
+        <h4>영역</h4>
+        <div class="kw">Sphere</div>
+        <p>화목이 이루어지는 자리는 <strong>한 몸</strong> 안이다.</p>
+        <div class="refs"><button class="ref" data-verse="엡2:16">엡 2:16</button></div>
+      </div>
+      <div class="cell">
+        <span class="letter">G</span>
+        <h4>사실</h4>
+        <div class="kw">Fact</div>
+        <p>구속과 의롭다 함에 근거한 <strong>법리적 위치</strong> — 이미 이루어진 일.</p>
+        <div class="refs"><button class="ref" data-verse="롬5:10">롬 5:10</button></div>
+      </div>
+      <div class="cell">
+        <span class="letter">H</span>
+        <h4>체험</h4>
+        <div class="kw">Experience</div>
+        <p>한 영 안에서 <strong>아버지께 나아감</strong> — 매일의 실재가 된다.</p>
+        <div class="refs"><button class="ref" data-verse="엡2:18">엡 2:18</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ II — Two stages ============ -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-roman">Ⅱ</div>
+      <div class="section-eyebrow">Two-Stage Reconciliation · 두 단계</div>
+      <h2>그리스도의 대사들로서 화목의 사역을 수행하다</h2>
+      <p class="section-lede">사도들은 우주의 최고 권위이신 하나님을 대표하는 <em>대사</em>들이다. 사람을 죄에서 빼낼 뿐 아니라, 끝까지 하나님 <strong>안으로</strong> 이끄는 것이 그들의 일이다.<br><button class="ref" data-verse="고후5:18">고후 5:18</button> <button class="ref" data-verse="고후5:20">고후 5:20</button></p>
+    </div>
+
+    <div class="stages">
+      <div class="stage">
+        <div class="stage-num">1</div>
+        <div class="stage-eyebrow">Stage One · 첫 번째 단계</div>
+        <h3>죄인을 <em>죄에서</em> 나오게 하여 하나님과 화목하게 함</h3>
+        <div class="from-to">
+          <span class="tag">죄인</span><span class="arrow">→</span>
+          <span class="tag">첫째 휘장(막)</span><span class="arrow">→</span>
+          <span class="tag gold">성소</span>
+        </div>
+        <p>그리스도는 우리의 <strong>죄들 때문에</strong> 죽으셨다. 십자가에서 우리의 죄들을 짊어지심으로 죄들이 하나님께 심판받게 하셨다.</p>
+        <p style="font-size:12.5px;color:var(--ink-3);margin-top:6px;">
+          <button class="ref" data-verse="고후5:19">고후 5:19</button>
+          <button class="ref" data-verse="고전15:3">고전 15:3</button>
+          <button class="ref" data-verse="벧전2:24">벧전 2:24</button>
+        </p>
+      </div>
+
+      <div class="stage-connector"></div>
+
+      <div class="stage">
+        <div class="stage-num">2</div>
+        <div class="stage-eyebrow">Stage Two · 두 번째 단계</div>
+        <h3>믿는 이를 <em>육체에서</em> 나오게 하여 하나님과 화목하게 함</h3>
+        <div class="from-to">
+          <span class="tag">믿는 이(육체)</span><span class="arrow">→</span>
+          <span class="tag">둘째 휘장(찢김)</span><span class="arrow">→</span>
+          <span class="tag gold">지성소</span>
+        </div>
+        <p>그리스도는 <strong>사람인 우리들을 대신하여</strong> 죽으셨고, 우리를 위해 <strong>죄가 되심으로</strong> 죄가 심판받고 제거되게 하셨다. 이제 우리는 그분을 향하여, 부활 생명 안에서 산다.</p>
+        <p style="font-size:12.5px;color:var(--ink-3);margin-top:6px;">
+          <button class="ref" data-verse="고후5:20">고후 5:20</button>
+          <button class="ref" data-verse="고후5:14">고후 5:14</button>
+          <button class="ref" data-verse="고후5:15">고후 5:15</button>
+          <button class="ref" data-verse="고후5:21">고후 5:21</button>
+          <button class="ref" data-verse="롬8:3">롬 8:3</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="pull">
+      “우리가 화목의 사역을 수행하려면 십자가에 못 박히신 그리스도와 <strong>동일시</strong>되어야 한다.”
+      <div style="margin-top:6px;font-size:12px;color:var(--ink-3);font-style:normal;">
+        <button class="ref" data-verse="고후4:10">고후 4:10-12</button>
+        <button class="ref" data-verse="고후5:14">고후 5:14</button>
+        <button class="ref" data-verse="갈2:20">갈 2:20</button>
+        <button class="ref" data-verse="갈5:24">갈 5:24</button>
+      </div>
+    </div>
+
+    <div class="points">
+      <div class="point">
+        <h4>고린도 성도들의 문제</h4>
+        <p>그들은 여전히 <strong>육체 안에서, 혼 안에서</strong> 살았다. 타고난 사람이라는 휘장이 그들을 하나님에게서 분리했다. 바울은 그 휘장을 완전히 찢어 그들이 지성소 안에 들어가게 하려고 일했다.
+        <span style="display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="고전3:1">고전 3:1</button>
+          <button class="ref" data-verse="고전2:14">고전 2:14</button>
+          <button class="ref" data-verse="히10:19">히 10:19-20</button>
+        </span></p>
+      </div>
+      <div class="point">
+        <h4>완전한 구원의 조건</h4>
+        <p>우리가 <strong>완전히</strong> 화목하게 될 때에만 <strong>완전히</strong> 구원받는다.
+        <span style="display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="고후6:1">고후 6:1-2</button>
+          <button class="ref" data-verse="롬5:10">롬 5:10</button>
+          <button class="ref" data-verse="히7:25">히 7:25</button>
+        </span></p>
+      </div>
+      <div class="point">
+        <h4>사역자의 위치가 곧 사역의 깊이</h4>
+        <p>우리가 다른 이들을 어디까지 하나님 안으로 인도할 수 있는지는 <strong>지금 우리가 하나님 안에 어디까지 들어가 있는지</strong>로 결정된다.
+        <span style="display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="고후12:12">고후 12:12상</button>
+          <button class="ref" data-verse="고후5:20">고후 5:20</button>
+        </span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ III — Exchange ============ -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-roman">Ⅲ</div>
+      <div class="section-eyebrow">The Great Exchange · 대치와 조성</div>
+      <h2>우리가 <em>그리스도 안에서 하나님의 의</em>가 된다</h2>
+      <p class="section-lede">의롭다 <em>하심을 받는 것</em>(갈 2:16)을 넘어, 우리는 사실상 <strong>하나님의 의가 된다</strong>.</p>
+    </div>
+
+    <div class="exchange">
+      <div class="ex-side left">
+        <div class="ex-label">Substitution · 대치</div>
+        <h4>그리스도께서 우리를 위해 <em>죄</em>가 되심</h4>
+        <p>대속자로서 십자가에서, 하나님은 그분을 죄를 짊어지신 분으로뿐 아니라 <strong>죄 자체로</strong> 여기셨다.</p>
+        <p style="margin-top:8px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="롬8:3">롬 8:3</button>
+          <button class="ref" data-verse="요3:14">요 3:14</button>
+        </p>
+      </div>
+      <div class="ex-arrow"><div class="cross">✟</div></div>
+      <div class="ex-side right">
+        <div class="ex-label">Constitution · 조성</div>
+        <h4>우리는 그분 안에서 <em>하나님의 의</em>가 됨</h4>
+        <p>부활 안에서 그리스도는 생명으로 우리 안에 오시고, 이 생명이 우리를 <strong>안에서부터</strong> 하나님의 의로 조성한다.</p>
+        <p style="margin-top:8px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="고후5:21">고후 5:21</button>
+          <button class="ref" data-verse="갈2:16">갈 2:16</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="pull">
+      “그분 안에서”는 <strong>위치적</strong>일 뿐 아니라 부활 안에서 그리스도와 <strong>유기적</strong>으로 연결됨을 뜻한다. 우리의 존재가 하나님께 올바르게 되어, 내적 존재가 <em>수정같이 맑게</em> 그분의 생각과 의지 안에 있게 된다.
+    </div>
+  </section>
+
+  <!-- ============ IV — Tabernacle ============ -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-roman">Ⅳ</div>
+      <div class="section-eyebrow">The Tabernacle · 성막</div>
+      <h2>두 단계의 화목은 성막의 <em>두 휘장</em>으로 묘사된다</h2>
+      <p class="section-lede">두 휘장 모두 한 그리스도를 가리킨다 — 우리의 <strong>죄들</strong> 때문에 그리고 우리 <strong>자신</strong> 때문에 죽으신 그리스도.<br><button class="ref" data-verse="출26:31">출 26:31-37</button> <button class="ref" data-verse="히9:3">히 9:3</button></p>
+    </div>
+
+    <div class="tabernacle">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="ground" width="8" height="8" patternUnits="userSpaceOnUse">
+            <path d="M0 8 L8 0" stroke="#b8923a" stroke-width=".4" opacity=".35"/>
+          </pattern>
+          <pattern id="veil-w" width="5" height="5" patternUnits="userSpaceOnUse">
+            <path d="M0 0 L5 5 M-1 4 L1 6 M4 -1 L6 1" stroke="#7a1d2e" stroke-width=".4" opacity=".55"/>
+          </pattern>
+          <radialGradient id="hh-glow" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#d9b96a" stop-opacity=".55"/>
+            <stop offset="100%" stop-color="#d9b96a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <text x="280" y="22" font-family="Cormorant Garamond" font-size="12" fill="#8a6c22" text-anchor="middle" font-style="italic" letter-spacing=".18em">THE TABERNACLE · 성막</text>
+
+        <rect x="20" y="40" width="520" height="150" fill="url(#ground)" stroke="#8a6c22" stroke-width="1.2" stroke-dasharray="4 3" opacity=".9"/>
+        <text x="34" y="56" font-family="Cormorant Garamond" font-size="10" fill="#8a6c22" font-style="italic">outer court · 바깥뜰</text>
+
+        <!-- altar -->
+        <g transform="translate(70 130)">
+          <rect x="-14" y="-14" width="28" height="28" fill="none" stroke="#7a1d2e" stroke-width="1"/>
+          <path d="M-10 -10 L10 10 M-10 10 L10 -10" stroke="#7a1d2e" stroke-width=".8"/>
+          <text x="0" y="34" font-family="Noto Serif KR" font-size="10" fill="#6b5a48" text-anchor="middle">번제단</text>
+        </g>
+        <!-- laver -->
+        <g transform="translate(130 130)">
+          <circle r="12" fill="none" stroke="#2f4254" stroke-width="1"/>
+          <circle r="6" fill="none" stroke="#2f4254" stroke-width=".8"/>
+          <text x="0" y="34" font-family="Noto Serif KR" font-size="10" fill="#6b5a48" text-anchor="middle">물두멍</text>
+        </g>
+
+        <!-- Holy Place -->
+        <rect x="180" y="70" width="220" height="90" fill="rgba(255,250,232,.55)" stroke="#7a1d2e" stroke-width="1.4"/>
+        <text x="290" y="64" font-family="Noto Serif KR" font-size="11" fill="#7a1d2e" text-anchor="middle" font-weight="700">성소</text>
+
+        <!-- FIRST VEIL -->
+        <rect x="178" y="68" width="6" height="94" fill="url(#veil-w)" stroke="#7a1d2e" stroke-width="1"/>
+        <text x="181" y="178" font-family="Noto Serif KR" font-size="11" fill="#7a1d2e" text-anchor="middle" font-weight="700">막</text>
+
+        <!-- furnishings -->
+        <g transform="translate(215 100)">
+          <rect x="-10" y="-5" width="20" height="10" fill="none" stroke="#b8923a" stroke-width=".9"/>
+          <text x="0" y="22" font-family="Noto Serif KR" font-size="9" fill="#6b5a48" text-anchor="middle">진설병</text>
+        </g>
+        <g transform="translate(290 130)">
+          <path d="M0 -10 L0 5 M-10 -8 Q-10 0 0 0 M-5 -10 Q-5 -4 0 -4 M5 -10 Q5 -4 0 -4 M10 -8 Q10 0 0 0" fill="none" stroke="#b8923a" stroke-width=".9"/>
+          <line x1="-5" y1="5" x2="5" y2="5" stroke="#b8923a" stroke-width="1"/>
+          <text x="0" y="22" font-family="Noto Serif KR" font-size="9" fill="#6b5a48" text-anchor="middle">등잔대</text>
+        </g>
+        <g transform="translate(355 100)">
+          <rect x="-7" y="-7" width="14" height="14" fill="none" stroke="#b8923a" stroke-width=".9"/>
+          <path d="M0 -7 Q-2 -12 0 -16 Q2 -12 0 -7" fill="none" stroke="#b8923a" stroke-width=".7"/>
+          <text x="0" y="24" font-family="Noto Serif KR" font-size="9" fill="#6b5a48" text-anchor="middle">분향단</text>
+        </g>
+
+        <!-- SECOND VEIL (torn) -->
+        <g transform="translate(400 70)">
+          <circle cx="40" cy="45" r="50" fill="url(#hh-glow)"/>
+          <path d="M0 0 L0 90 L18 90 L20 45 L16 0 Z" fill="url(#veil-w)" stroke="#7a1d2e" stroke-width="1.4"/>
+          <path d="M40 0 L40 90 L22 90 L20 45 L24 0 Z" fill="url(#veil-w)" stroke="#7a1d2e" stroke-width="1.4"/>
+          <path d="M18 90 L20 45 L16 0" fill="none" stroke="#561420" stroke-width="1.2"/>
+          <path d="M22 90 L20 45 L24 0" fill="none" stroke="#561420" stroke-width="1.2"/>
+        </g>
+
+        <!-- HOLY OF HOLIES -->
+        <rect x="442" y="70" width="80" height="90" fill="rgba(217,185,106,.18)" stroke="#7a1d2e" stroke-width="1.4"/>
+        <text x="482" y="64" font-family="Noto Serif KR" font-size="11" fill="#7a1d2e" text-anchor="middle" font-weight="700">지성소</text>
+
+        <!-- ark -->
+        <g transform="translate(482 115)">
+          <rect x="-14" y="-7" width="28" height="14" fill="rgba(184,146,58,.3)" stroke="#8a6c22" stroke-width="1"/>
+          <path d="M-12 -7 Q-12 -13 -7 -13 M-7 -13 Q-7 -7 -2 -7 M2 -7 Q2 -13 7 -13 M7 -13 Q7 -7 12 -7" fill="none" stroke="#8a6c22" stroke-width=".9"/>
+          <text x="0" y="22" font-family="Noto Serif KR" font-size="9" fill="#6b5a48" text-anchor="middle">증거궤</text>
+        </g>
+
+        <!-- second veil label -->
+        <text x="420" y="178" font-family="Noto Serif KR" font-size="10" fill="#7a1d2e" text-anchor="middle" font-weight="700">둘째 휘장(찢김)</text>
+
+        <!-- Stage arrows -->
+        <g>
+          <path d="M40 205 Q110 225 178 205" fill="none" stroke="#7a1d2e" stroke-width="1.2"/>
+          <polygon points="178,205 170,203 172,210" fill="#7a1d2e"/>
+          <text x="105" y="222" font-family="Cormorant Garamond" font-size="11" fill="#7a1d2e" text-anchor="middle" font-style="italic">stage 1 → 막 통과</text>
+        </g>
+        <g>
+          <path d="M310 205 Q370 225 432 205" fill="none" stroke="#b8923a" stroke-width="1.4"/>
+          <polygon points="432,205 424,203 426,210" fill="#b8923a"/>
+          <text x="372" y="222" font-family="Cormorant Garamond" font-size="11" fill="#8a6c22" text-anchor="middle" font-style="italic">stage 2 → 둘째 휘장 찢김</text>
+        </g>
+      </svg>
+      <div class="tab-caption">출 26:31-37 · 첫째 휘장은 “막”이고, 둘째 휘장은 성소와 지성소를 가른다. 마 27:51 — 그분의 죽으심으로 둘째 휘장이 위에서부터 아래까지 찢어졌다.</div>
+    </div>
+
+    <div class="points">
+      <div class="point">
+        <h4>첫째 휘장 — “막”</h4>
+        <p>화해시키는 피로 화목하게 된 죄인은 이 막을 지나 <strong>성소</strong>로 들어갔다. <em>첫 번째 단계의 화목</em>을 예표한다.
+        <span style="display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="출26:36">출 26:36-37</button>
+        </span></p>
+      </div>
+      <div class="point">
+        <h4>둘째 휘장 — 분리</h4>
+        <p>이 휘장은 여전히 죄인을 지성소 안에 계신 하나님과 분리했다. 죄인이 그분께 이끌리려면 이 휘장이 <strong>갈라져야</strong> 했다. <em>두 번째 단계의 화목</em>을 예표한다.
+        <span style="display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="마27:51">마 27:51</button>
+          <button class="ref" data-verse="히10:19">히 10:19-20</button>
+        </span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V — Hearts ============ -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-roman">Ⅴ</div>
+      <div class="section-eyebrow">Enlarged Heart · 넓어진 마음</div>
+      <h2>완전한 화목은 우리의 <em>마음을 넓힌다</em></h2>
+      <p class="section-lede">마음의 너비는 화목의 깊이를 비추는 거울이다.<br><button class="ref" data-verse="고후6:11">고후 6:11-13</button></p>
+    </div>
+
+    <div class="hearts">
+      <div class="heart narrow">
+        <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 88 C 40 72, 30 60, 30 46 C 30 36, 38 28, 48 28 C 54 28, 58 32, 60 36 C 62 32, 66 28, 72 28 C 82 28, 90 36, 90 46 C 90 60, 80 72, 60 88 Z" fill="rgba(60,48,37,.18)" stroke="#6b5a48" stroke-width="1.4"/>
+          <path d="M48 50 L60 60 L72 50" fill="none" stroke="#6b5a48" stroke-width=".9"/>
+        </svg>
+        <div class="h-label">Sign · 표시</div>
+        <h4>좁은 마음</h4>
+        <p>부분적 화목 · 낮은 구원의 정도 · 용서하지 못하는 자리.</p>
+      </div>
+      <div class="heart wide">
+        <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="heart-glow" cx="50%" cy="55%">
+              <stop offset="0%" stop-color="#d9b96a" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#d9b96a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="60" cy="55" r="36" fill="url(#heart-glow)"/>
+          <path d="M60 92 C 30 72, 14 56, 14 38 C 14 24, 26 14, 40 14 C 50 14, 56 20, 60 26 C 64 20, 70 14, 80 14 C 94 14, 106 24, 106 38 C 106 56, 90 72, 60 92 Z" fill="rgba(184,146,58,.18)" stroke="#7a1d2e" stroke-width="1.6"/>
+          <g stroke="#b8923a" stroke-width=".7" opacity=".7">
+            <line x1="60" y1="36" x2="60" y2="28"/>
+            <line x1="48" y1="44" x2="42" y2="40"/>
+            <line x1="72" y1="44" x2="78" y2="40"/>
+          </g>
+        </svg>
+        <div class="h-label">Fruit · 열매</div>
+        <h4>넓은 마음</h4>
+        <p>상한 것을 용서하고 잊음 · 하나님 안으로 깊이 들어간 자.</p>
+      </div>
+    </div>
+
+    <div class="pull">
+      “마음을 상하게 한 것을 <strong>용서하고 잊을 수 있다면</strong>, 그것이 곧 우리가 넓어진 사람이 되었다는 표시이다.”
+      <div style="margin-top:6px;font-size:12px;color:var(--ink-3);font-style:normal;">
+        <button class="ref" data-verse="마18:21">마 18:21-35</button>
+        <button class="ref" data-verse="엡5:21">엡 5:21</button>
+        <button class="ref" data-verse="골3:13">골 3:13</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VI — Three results ============ -->
+  <section class="section">
+    <div class="section-head">
+      <div class="section-roman">Ⅵ</div>
+      <div class="section-eyebrow">Three Outcomes · 세 가지 결과</div>
+      <h2>화목의 결과</h2>
+      <p class="section-lede">화목은 추상이 아니다. 세 가지 분명한 열매로 드러난다.</p>
+    </div>
+
+    <div class="results">
+      <div class="result">
+        <div class="num">1</div>
+        <div class="kw">Peace toward God</div>
+        <h3>하나님을 향해 <em>화평</em>을 누림</h3>
+        <p>화목하게 된 첫 결과 — 화평을 향유하고 화평의 길을 걷는다.
+        <span style="display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="롬5:1">롬 5:1</button>
+        </span></p>
+      </div>
+      <div class="result">
+        <div class="num">2</div>
+        <div class="kw">Boasting in God</div>
+        <h3>하나님 안에서 <em>자랑함</em></h3>
+        <p>예수 그리스도로 말미암아 우리는 하나님 안에서 즐거워하고, 하나님의 영광에 대한 소망 안에서 자랑한다.
+        <span style="display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="롬5:11">롬 5:11</button>
+          <button class="ref" data-verse="롬5:2">롬 5:2</button>
+        </span></p>
+      </div>
+      <div class="result">
+        <div class="num">3</div>
+        <div class="kw">Saved in His life</div>
+        <h3>그분의 <em>생명</em> 안에서 구원받음</h3>
+        <p>화목하게 된 결과로, 우리는 그분의 부활 생명 안에서 점점 더 구원받아 간다.
+        <span style="display:block;margin-top:6px;font-size:12.5px;color:var(--ink-3);">
+          <button class="ref" data-verse="롬5:10">롬 5:10</button>
+        </span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VII — New Jerusalem ============ -->
+  <section class="section">
+    <div class="final">
+      <div class="section-roman">Ⅶ</div>
+      <div class="section-eyebrow">The Destination · 합병의 완성</div>
+      <h2>새 예루살렘 — 하나님과 사람의 우주적 합병체</h2>
+
+      <div class="cube-wrap">
+        <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="cube-top" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#d9b96a"/>
+              <stop offset="100%" stop-color="#b8923a"/>
+            </linearGradient>
+            <linearGradient id="cube-left" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8a6c22"/>
+              <stop offset="100%" stop-color="#5a1421"/>
+            </linearGradient>
+            <linearGradient id="cube-right" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7a1d2e"/>
+              <stop offset="100%" stop-color="#561420"/>
+            </linearGradient>
+            <radialGradient id="cube-glow" cx="50%" cy="40%">
+              <stop offset="0%" stop-color="#d9b96a" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#d9b96a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <circle cx="120" cy="110" r="100" fill="url(#cube-glow)"/>
+          <polygon points="120,30 200,70 120,110 40,70" fill="url(#cube-top)" stroke="#8a6c22" stroke-width="1.2"/>
+          <polygon points="40,70 120,110 120,210 40,170" fill="url(#cube-left)" stroke="#3c3025" stroke-width="1.2" opacity=".95"/>
+          <polygon points="200,70 120,110 120,210 200,170" fill="url(#cube-right)" stroke="#3c3025" stroke-width="1.2" opacity=".95"/>
+
+          <g opacity=".35" stroke="#5a1421" stroke-width=".5" fill="none">
+            <line x1="80" y1="50" x2="160" y2="90"/>
+            <line x1="160" y1="50" x2="80" y2="90"/>
+          </g>
+
+          <g font-family="Cormorant Garamond" font-style="italic" font-size="11" fill="#faf3df">
+            <text x="78" y="148" text-anchor="middle">length</text>
+            <text x="162" y="148" text-anchor="middle">width</text>
+          </g>
+          <g font-family="Cormorant Garamond" font-style="italic" font-size="11" fill="#8a6c22">
+            <text x="120" y="22" text-anchor="middle">height</text>
+          </g>
+
+          <g stroke="#d9b96a" stroke-width="1.2" fill="none">
+            <path d="M120 18 L120 26"/>
+            <path d="M28 76 L36 80"/>
+            <path d="M212 76 L204 80"/>
+          </g>
+
+          <circle cx="120" cy="110" r="3" fill="#faf3df" opacity=".85"/>
+        </svg>
+      </div>
+
+      <div style="font-family:var(--serif-latin);font-style:italic;color:var(--gold-dark);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:-6px;">길이 = 너비 = 높이 — 만 이천 스타디온</div>
+
+      <p class="final-text">
+        화목의 사역을 통해 우리는 과정을 거치시고 완결되신 <strong>삼일 하나님 안으로 합병되어</strong>, 그리스도 안에서 확대되고 우주적이며 신성하고도 인간적인 합병체가 된다.
+      </p>
+      <p class="final-text" style="margin-top:14px;">
+        그 결과 우리는 하나님의 성소, 그분의 거처, 그분의 지성소 — 곧 <strong style="color:var(--wine)">새 예루살렘</strong>이 된다.
+      </p>
+
+      <div style="margin-top:22px;">
+        <button class="ref" data-verse="요14:20">요 14:20</button>
+        <button class="ref" data-verse="요14:23">요 14:23</button>
+        <button class="ref" data-verse="계21:2">계 21:2</button>
+        <button class="ref" data-verse="계21:10">계 21:10</button>
+        <button class="ref" data-verse="계21:16">계 21:16</button>
+      </div>
+
+      <div class="final-quote">
+        “내가 아버지 안에 있고, 여러분이 내 안에 있으며, 내가 여러분 안에 있는 것을 …”
+        <div style="font-style:normal;font-family:var(--serif-latin);font-size:12px;color:var(--gold-dark);letter-spacing:.15em;margin-top:6px;">— 요 14:20</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="div"></div>
+    Message Ⅱ · The Ministry of Reconciliation<br>
+    <span style="color:var(--gold-dark)">화목의 사역</span>
+  </footer>
+
+</main>
+
+<!-- VERSE PANEL -->
+<aside class="verse-panel" id="vp" aria-hidden="true" role="dialog" aria-labelledby="vp-title">
+  <div class="vp-handle"></div>
+  <div class="vp-header">
+    <h3 class="vp-title" id="vp-title">성구</h3>
+    <button class="vp-close" id="vp-close" aria-label="닫기">×</button>
+  </div>
+  <div class="vp-body" id="vp-body"></div>
+</aside>
+
+<script>
+  const V = {
+    "롬5:1":[{n:"롬 5:1",t:"그러므로 우리가 믿음으로 의롭게 되었으므로, 우리 주 예수 그리스도를 통하여 하나님을 향해 화평을 누립니다."}],
+    "롬5:2":[{n:"롬 5:2",t:"우리는 또한 그분을 통하여 지금 우리가 서 있는 이 은혜 안에 믿음으로 들어왔으며, 하나님의 영광에 대한 소망 때문에 자랑을 합니다."}],
+    "롬5:10":[{n:"롬 5:10",t:"우리가 원수였을 때에 하나님의 아들의 죽음을 통해 하나님과 화목하게 되었다면, 이미 화목하게 된 우리는 더욱 그분의 생명 안에서 구원받을 것입니다."}],
+    "롬5:11":[{n:"롬 5:11",t:"그럴 뿐만 아니라 또한 우리는 우리 주 예수 그리스도로 말미암아 하나님 안에서 자랑합니다. 그분으로 말미암아 이제 우리가 하나님과 화목하게 된 것입니다."}],
+    "롬8:3":[{n:"롬 8:3",t:"율법이 육체 때문에 연약하여 할 수 없던 것을 하나님께서 하셨습니다. 곧 하나님은 죄와 관련하여 그분 자신의 아들을 죄의 육체의 모양으로 보내시어, 그 육체 안에서 죄에 대해 유죄판결 하심으로써"}],
+    "골1:20":[{n:"골 1:20",t:"그분의 십자가의 피를 통하여 화평을 이루어, 만물 곧 땅에 있는 것들이나 하늘들에 있는 것들을 그분을 통해 그분 자신과 화목하게 하는 것을 기뻐하기 때문입니다."}],
+    "골1:21":[{n:"골 1:21",t:"여러분도 전에는 하나님을 멀리 떠나 있었으며, 악한 행실 때문에 여러분의 생각 안에서 그분과 원수들이었습니다."}],
+    "골3:13":[{n:"골 3:13",t:"어떤 사람이 누군가에게 불만이 있다면, 서로 짊어지고 서로 용서해 주십시오. 주님께서 여러분을 용서해 주신 것같이, 여러분도 용서해 주어야 합니다."}],
+    "고후4:10":[
+      {n:"고후 4:10",t:"예수님을 죽게 한 것을 우리가 항상 몸에 지니고 다니는 것은 예수님의 생명도 우리 몸에서 나타나게 하려는 것입니다."},
+      {n:"고후 4:11",t:"이것은 살아 있는 우리가 항상 예수님을 위하여 죽음에 넘겨짐으로써, 예수님의 생명도 우리의 죽을 육체에 나타나게 하려는 것입니다."},
+      {n:"고후 4:12",t:"그러므로 죽음은 우리 안에서 활동하고, 생명은 여러분 안에서 활동합니다."}
+    ],
+    "고후5:14":[{n:"고후 5:14",t:"그리스도의 사랑이 우리를 강권합니다. 우리가 단정하는 것은 한 사람이 모든 사람을 대신하여 죽으셨으므로, 모든 사람이 죽었다는 것입니다."}],
+    "고후5:15":[{n:"고후 5:15",t:"그분께서 모든 사람을 대신하여 죽으신 것은 살아 있는 사람들이 더 이상 자신을 향하여 살지 않고, 자기들을 대신하여 죽으셨다가 살아나신 분을 향하여 살도록 하려는 것입니다."}],
+    "고후5:18":[{n:"고후 5:18",t:"이 모든 것은 하나님에게서 나온 것입니다. 하나님께서 그리스도를 통하여 우리를 하나님 자신과 화목하게 하시고, 우리에게 화목의 사역을 주셨습니다."}],
+    "고후5:19":[{n:"고후 5:19",t:"이것은 곧 하나님께서 그리스도 안에서 세상을 하나님 자신과 화목하게 하셨고, 그들의 허물을 그들에게 돌리지 않으셨으며, 화목의 말씀을 우리에게 맡기신 것입니다."}],
+    "고후5:20":[{n:"고후 5:20",t:"그러므로 우리가 그리스도를 대신하는 대사들이 되어, 하나님께서 우리를 통하여 여러분에게 권면하시듯이, 우리가 그리스도를 대신하여 여러분에게 간청합니다. 하나님과 화목하십시오."}],
+    "고후5:21":[{n:"고후 5:21",t:"하나님께서 죄를 알지도 못하신 분을 우리 대신 죄가 되게 하신 것은 우리가 그분 안에서 하나님의 의가 되도록 하시려는 것입니다."}],
+    "고후5:18-20":[
+      {n:"고후 5:18",t:"이 모든 것은 하나님에게서 나온 것입니다. 하나님께서 그리스도를 통하여 우리를 하나님 자신과 화목하게 하시고, 우리에게 화목의 사역을 주셨습니다."},
+      {n:"고후 5:19",t:"이것은 곧 하나님께서 그리스도 안에서 세상을 하나님 자신과 화목하게 하셨고, 그들의 허물을 그들에게 돌리지 않으셨으며, 화목의 말씀을 우리에게 맡기신 것입니다."},
+      {n:"고후 5:20",t:"그러므로 우리가 그리스도를 대신하는 대사들이 되어, 하나님께서 우리를 통하여 여러분에게 권면하시듯이, 우리가 그리스도를 대신하여 여러분에게 간청합니다. 하나님과 화목하십시오."}
+    ],
+    "고후6:1":[
+      {n:"고후 6:1",t:"그리고 하나님과 함께 일하는 우리가 또한 여러분에게 간절히 권합니다. 하나님의 은혜를 헛되이 받지 마십시오."},
+      {n:"고후 6:2",t:"왜냐하면 하나님께서 “기쁘게 받을 만한 때에 내가 너의 말을 들었고, 구원의 날에 내가 너를 도왔다.”라고 말씀하셨기 때문입니다. 보십시오, 지금이야말로 기쁘게 받아들이시기에 좋은 때이며, 지금이야말로 구원의 날입니다."}
+    ],
+    "고후6:11":[
+      {n:"고후 6:11",t:"고린도 사람 여러분, 우리의 입은 여러분을 향하여 열려 있고, 우리의 마음은 넓어졌습니다."},
+      {n:"고후 6:12",t:"여러분은 우리 안에서 좁아진 것이 아니라, 여러분의 속부분 안에서 좁아진 것입니다."},
+      {n:"고후 6:13",t:"내가 자녀들에게 하듯 말하는데, 이것에 대한 보답으로 여러분도 마음을 넓히십시오."}
+    ],
+    "고후12:12":[{n:"고후 12:12",t:"사도의 표시는 내가 모든 것을 견디는 가운데 표적들과 기이한 일들과 능력의 일들로 여러분 앞에 완전히 나타났습니다."}],
+    "엡2:16":[{n:"엡 2:16",t:"또한 적대감을 십자가로 소멸하셔서 이 십자가를 통하여 이 둘을 한 몸 안에서 하나님과 화목하게 하시려는 것입니다."}],
+    "엡2:18":[{n:"엡 2:18",t:"왜냐하면 그분을 통하여 우리 모두가 한 성령 안에서 아버지께 나아가기 때문입니다."}],
+    "엡5:21":[{n:"엡 5:21",t:"그리스도를 경외함으로 서로 복종하십시오."}],
+    "고전15:3":[{n:"고전 15:3",t:"내가 우선적으로 여러분에게 전해 준 것은 나도 전해 받았던 것인데, 그것은 그리스도께서 성경대로 우리 죄들 때문에 죽으셨다는 것과,"}],
+    "고전3:1":[{n:"고전 3:1",t:"형제님들, 내가 전에 여러분에게 말할 때에 여러분을 영적인 사람들처럼 대할 수 없었고, 육체적인 사람 곧 그리스도 안에 있는 어린 아기들처럼 대하였습니다."}],
+    "고전2:14":[{n:"고전 2:14",t:"그러나 혼적인 사람은 하나님의 영의 일들을 받아들이지 않습니다. 왜냐하면 그 일들이 그 사람에게는 어리석게 보이기 때문입니다. 또 그는 그런 일들을 알 수도 없습니다. 왜냐하면 그 일들은 영적으로만 판단할 수 있기 때문입니다."}],
+    "벧전2:24":[{n:"벧전 2:24",t:"그분은 우리의 죄들을 직접 자기의 몸에 짊어지시고 나무에 달리셨습니다. 그것은 우리가 죄들에 대하여 죽음으로써 의에 대하여 살도록 하시려는 것입니다. 그분께서 채찍에 맞으시어 상처 입으심으로써 여러분이 낫게 되었습니다."}],
+    "갈2:16":[{n:"갈 2:16",t:"사람이 의롭게 되는 것이 율법의 행위로써가 아니라 예수 그리스도를 믿음으로 말미암는다는 것을 알고, 우리도 그리스도 예수님을 믿었습니다. 그것은 우리가 율법의 행위로써가 아니라 그리스도를 믿음으로 의롭게 되기 위한 것입니다."}],
+    "갈2:20":[{n:"갈 2:20",t:"나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다. 이제 내가 육체 안에서 사는 생명은 나를 사랑하시어 나를 위하여 자신을 버리신 하나님의 아들의 믿음 안에서 사는 생명입니다."}],
+    "갈5:24":[{n:"갈 5:24",t:"그러나 그리스도 예수님께 속한 사람들은 육체를 그 정욕과 욕망과 함께 십자가에 못 박았습니다."}],
+    "히10:19":[
+      {n:"히 10:19",t:"그러므로 형제님들, 우리가 예수님의 피로 말미암아 담대하게 지성소에 들어가게 되었습니다."},
+      {n:"히 10:20",t:"예수님은 휘장, 곧 그분의 육체를 통해서 우리를 위하여 새롭고 살아 있는 길을 열어 놓으셨습니다."}
+    ],
+    "히9:3":[{n:"히 9:3",t:"둘째 휘장 뒤에는 다른 한 성막이 있었는데, 그곳을 지성소라고 불렀습니다."}],
+    "히7:25":[{n:"히 7:25",t:"그러므로 그분은 자신을 통하여 하나님께 나아오는 사람들을 철저히 구원하실 수 있으십니다. 왜냐하면 그분은 항상 살아 계셔서 그들을 위하여 중보기도를 하시기 때문입니다."}],
+    "출26:31":[
+      {n:"출 26:31",t:"너는 청색실과 자주색실과 진홍색실, 그리고 꼰 실로 짠 세마포로 휘장을 만들되, 그 휘장은 솜씨 좋은 장인의 수공으로 그룹들을 수놓아 만든 것이어야 한다."},
+      {n:"출 26:32",t:"그 휘장을 금을 입힌 시팀 나무로 만든 네 개의 기둥에 걸되, 기둥마다 금으로 갈고리를 만들어 달고 네 개의 은받침 위에 세워라."},
+      {n:"출 26:33",t:"그 휘장을 걸쇠들에 걸어서 늘어뜨리고 증거궤를 그 휘장 안에 들여놓아라. 그 휘장이 너희에게 성소와 지성소를 구분 지어 줄 것이다."},
+      {n:"출 26:34",t:"지성소에 있는 증거궤 위에 속죄 덮개를 두어라."},
+      {n:"출 26:35",t:"휘장 밖에 상을 차려 놓되, 그 상의 맞은편인 성막의 남쪽에 등잔대를 놓고, 상은 북쪽에 두어라."},
+      {n:"출 26:36",t:"너는 청색실과 자주색실과 진홍색실, 그리고 꼰 실로 짠 세마포로 성막 입구의 막을 만들되, 수놓아 짜는 기술자의 수공으로 만들어야 한다."},
+      {n:"출 26:37",t:"이 막을 걸 다섯 개의 기둥을 시팀 나무로 만들어 금을 입혀라. 그 기둥들에 금으로 갈고리들을 만들고, 기둥들을 세울 받침 다섯 개는 놋을 부어 만들어라."}
+    ],
+    "출26:36":[
+      {n:"출 26:36",t:"너는 청색실과 자주색실과 진홍색실, 그리고 꼰 실로 짠 세마포로 성막 입구의 막을 만들되, 수놓아 짜는 기술자의 수공으로 만들어야 한다."},
+      {n:"출 26:37",t:"이 막을 걸 다섯 개의 기둥을 시팀 나무로 만들어 금을 입혀라. 그 기둥들에 금으로 갈고리들을 만들고, 기둥들을 세울 받침 다섯 개는 놋을 부어 만들어라."}
+    ],
+    "마27:51":[{n:"마 27:51",t:"보아라, 성전의 휘장이 위에서부터 아래까지 둘로 찢어지고, 땅이 흔들리며, 바위들이 갈라지고,"}],
+    "마18:21":[
+      {n:"마 18:21",t:"그때에 베드로가 예수님께 나아와 “주님, 형제가 나에게 죄를 지으면 몇 번이나 용서해 주어야 합니까? 일곱 번까지 해야 합니까?”라고 하니,"},
+      {n:"마 18:22",t:"예수님께서 그에게 말씀하셨다. “일곱 번만이 아니라 일곱 번씩 일흔 번까지라도 해야 합니다."},
+      {n:"마 18:23",t:"이런 까닭에 천국은 자기 노예들과 결산하려는 어떤 왕과 같습니다."},
+      {n:"마 18:32",t:"주인이 그 노예를 불러 말하였습니다. ‘악한 노예야, 네가 애걸하기에, 내가 그 모든 빚을 다 면제하여 주었다."},
+      {n:"마 18:33",t:"내가 너를 긍휼히 여긴 것같이, 너도 동료 노예를 긍휼히 여기는 것이 마땅하지 않으냐?’"},
+      {n:"마 18:35",t:"여러분 각 사람이 여러분의 마음속에서부터 자기 형제를 용서하지 않으면, 내 하늘의 아버지도 여러분에게 이와 같이 하실 것입니다."}
+    ],
+    "요3:14":[{n:"요 3:14",t:"모세가 광야에서 뱀을 들어 올린 것같이, 사람의 아들도 반드시 들려 올려져야 합니다."}],
+    "요14:20":[{n:"요 14:20",t:"그날에는 내가 아버지 안에 있고, 여러분이 내 안에 있으며, 내가 여러분 안에 있는 것을 여러분이 알 것입니다."}],
+    "요14:23":[{n:"요 14:23",t:"예수님께서 그에게 대답하셨다. “누구든지 나를 사랑하면 나의 말을 지킬 것입니다. 그러면 나의 아버지께서 그를 사랑하실 것이고, 우리가 그에게 가서 그와 함께 서로 거처를 정할 것입니다."}],
+    "계21:2":[{n:"계 21:2",t:"또 내가 보니, 거룩한 성 새 예루살렘이 하늘에서 하나님에게서 내려오는데, 남편을 위하여 단장한 신부로 준비되어 있었습니다."}],
+    "계21:10":[{n:"계 21:10",t:"내가 영 안에 있는데, 천사가 나를 데리고 크고 높은 산으로 올라가서, 하늘에서 하나님에게서 내려오는 거룩한 성 새 예루살렘을 나에게 보여 주었습니다."}],
+    "계21:16":[{n:"계 21:16",t:"그 성은 네모반듯하고 길이와 너비가 같았습니다. 그 천사가 갈대로 그 성을 측량하니, 만 이천 스타디온이었고 길이와 너비와 높이가 모두 같았습니다."}]
+  };
+
+  const dim = document.getElementById('dim');
+  const vp = document.getElementById('vp');
+  const vpBody = document.getElementById('vp-body');
+  const vpTitle = document.getElementById('vp-title');
+  const vpClose = document.getElementById('vp-close');
+
+  function showVerse(key){
+    const verses = V[key];
+    if(!verses){ return; }
+    vpTitle.textContent = verses.length === 1 ? verses[0].n : (verses[0].n.replace(/:.+/, '') + ' 외');
+    vpBody.innerHTML = verses.map(v => `
+      <div class="verse-item">
+        <div class="verse-ref">${v.n}</div>
+        <p class="verse-text">${v.t}</p>
+      </div>
+    `).join('');
+    document.body.classList.add('dimmed');
+    dim.classList.add('show');
+    vp.classList.add('show');
+    vp.setAttribute('aria-hidden','false');
+    vpBody.scrollTop = 0;
+  }
+
+  function hideVerse(){
+    document.body.classList.remove('dimmed');
+    dim.classList.remove('show');
+    vp.classList.remove('show');
+    vp.setAttribute('aria-hidden','true');
+  }
+
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.ref');
+    if(btn){
+      e.preventDefault();
+      const key = btn.dataset.verse;
+      if(key) showVerse(key);
+    }
+  });
+
+  dim.addEventListener('click', hideVerse);
+  vpClose.addEventListener('click', hideVerse);
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') hideVerse();
+  });
+
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          en.target.classList.add('in-view');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:.10, rootMargin:'0px 0px -60px 0px'});
+    document.querySelectorAll('.section').forEach(s => io.observe(s));
+  } else {
+    document.querySelectorAll('.section').forEach(s => s.classList.add('in-view'));
+  }
+</script>
+
+</body>
+</html>
