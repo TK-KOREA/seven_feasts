@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영원한 생명, 흐르는 통로 — 요한일서 5:14-17</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cardo:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────
+   BASE & TOKENS
+───────────────────────────────────────────── */
+:root{
+  --ink: #0B1426;
+  --ink-2: #14213D;
+  --ink-3: #1E2D4F;
+  --gold: #D4A24C;
+  --gold-soft: #E6C788;
+  --gold-deep: #A8754A;
+  --ivory: #F5EFE4;
+  --ivory-warm: #EFE6D3;
+  --olive: #7B8C5A;
+  --olive-soft: #A3B485;
+  --copper: #A8754A;
+  --shadow: rgba(11, 20, 38, 0.4);
+
+  --font-kr: 'Noto Serif KR', serif;
+  --font-kr-display: 'Nanum Myeongjo', serif;
+  --font-kr-warm: 'Gowun Batang', serif;
+  --font-en-display: 'Cormorant Garamond', serif;
+  --font-en-body: 'EB Garamond', serif;
+  --font-gr: 'Cardo', serif;
+  --font-hand: 'Caveat', cursive;
+}
+
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  font-family: var(--font-kr);
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--ivory);
+  background: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background gradient that evolves through scroll */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212, 162, 76, 0.08), transparent 60%),
+    radial-gradient(ellipse 60% 80% at 100% 100%, rgba(123, 140, 90, 0.06), transparent 60%),
+    linear-gradient(180deg, #0B1426 0%, #14213D 30%, #1E2D4F 60%, #2A1F1A 80%, #3D2E20 100%);
+  background-size: 100% 100%;
+}
+
+/* Grainy texture overlay */
+body::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Scroll progress bar */
+.progress-bar{
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-soft) 100%);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* Section indicator (right side dots) */
+.section-nav{
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 100;
+}
+.section-nav a{
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(245, 239, 228, 0.18);
+  display: block;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.section-nav a:hover,
+.section-nav a.active{
+  background: var(--gold);
+  transform: scale(1.4);
+}
+.section-nav a::after{
+  content: attr(data-label);
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--gold-soft);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  font-family: var(--font-kr);
+}
+.section-nav a:hover::after{ opacity: 1; }
+@media (max-width: 768px){
+  .section-nav{ display: none; }
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────── */
+section{
+  position: relative;
+  padding: 120px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px){
+  section{ padding: 80px 20px; }
+}
+
+.section-label{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+.section-number{
+  font-family: var(--font-en-display);
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  color: var(--gold-soft);
+  opacity: 0.7;
+  margin-bottom: 24px;
+}
+.section-title{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4.2vw, 44px);
+  line-height: 1.35;
+  color: var(--ivory);
+  margin-bottom: 56px;
+  letter-spacing: -0.01em;
+}
+.section-title::after{
+  content: "";
+  display: block;
+  width: 48px; height: 1px;
+  background: var(--gold);
+  margin-top: 28px;
+}
+
+/* ─────────────────────────────────────────────
+   1. HOOK / OPENING DECLARATION
+───────────────────────────────────────────── */
+.hero{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-orb{
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 162, 76, 0.25) 0%, rgba(212, 162, 76, 0.08) 30%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(20px);
+  animation: pulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes pulse{
+  0%, 100%{ transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50%{ transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+.hero-eyebrow{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.3s forwards;
+}
+.hero-quote{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: clamp(26px, 5vw, 52px);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+  color: var(--ivory);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 1.5s 0.6s forwards;
+  position: relative;
+  z-index: 2;
+}
+.hero-quote .em{
+  color: var(--gold);
+  position: relative;
+  display: inline-block;
+}
+.hero-quote .em::after{
+  content: "";
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 100%; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineGrow 1.5s 1.8s forwards;
+}
+.hero-source{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  color: var(--gold-soft);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: fadeUp 1.2s 1.2s forwards;
+}
+.hero-source::before{
+  content: "—— ";
+  letter-spacing: 0;
+}
+.hero-scroll{
+  position: absolute;
+  bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold-soft);
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  opacity: 0;
+  animation: fadeUp 1s 2s forwards, float 2.5s ease-in-out 3s infinite;
+}
+.hero-scroll::after{
+  content: "↓";
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+}
+@keyframes fadeUp{
+  from{ opacity: 0; transform: translateY(20px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+@keyframes lineGrow{
+  to{ transform: scaleX(1); }
+}
+@keyframes float{
+  0%, 100%{ transform: translateX(-50%) translateY(0); }
+  50%{ transform: translateX(-50%) translateY(8px); }
+}
+
+/* ─────────────────────────────────────────────
+   2. TODAY'S VERSE
+───────────────────────────────────────────── */
+.verse-section{
+  max-width: 920px;
+}
+.verse-card{
+  background: linear-gradient(135deg, rgba(245, 239, 228, 0.04) 0%, rgba(212, 162, 76, 0.05) 100%);
+  border: 1px solid rgba(212, 162, 76, 0.25);
+  border-radius: 4px;
+  padding: 60px 56px;
+  position: relative;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 60px -20px var(--shadow);
+}
+.verse-card::before,
+.verse-card::after{
+  content: "";
+  position: absolute;
+  width: 24px; height: 24px;
+  border: 1px solid var(--gold);
+}
+.verse-card::before{
+  top: 12px; left: 12px;
+  border-right: none; border-bottom: none;
+}
+.verse-card::after{
+  bottom: 12px; right: 12px;
+  border-left: none; border-top: none;
+}
+@media (max-width: 600px){
+  .verse-card{ padding: 40px 28px; }
+}
+.verse-ref{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+.verse-ko{
+  font-family: var(--font-kr-display);
+  font-weight: 400;
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 1.95;
+  color: var(--ivory);
+  margin-bottom: 32px;
+}
+.verse-ko .vnum{
+  font-family: var(--font-en-display);
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.75em;
+  margin-right: 6px;
+  vertical-align: 0.3em;
+}
+.verse-divider{
+  width: 60px; height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+  margin: 28px 0;
+}
+.verse-en{
+  font-family: var(--font-en-body);
+  font-style: italic;
+  font-size: clamp(15px, 1.7vw, 17px);
+  line-height: 1.85;
+  color: var(--ivory-warm);
+  opacity: 0.85;
+}
+.verse-en .vnum{
+  font-family: var(--font-en-display);
+  font-style: normal;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.85em;
+  margin-right: 4px;
+}
+
+/* ─────────────────────────────────────────────
+   3. GREEK WORD ANALYSIS
+───────────────────────────────────────────── */
+.greek-intro{
+  font-family: var(--font-kr);
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.9;
+  color: var(--ivory-warm);
+  max-width: 720px;
+  margin-bottom: 60px;
+  opacity: 0.85;
+}
+.greek-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+@media (max-width: 768px){
+  .greek-grid{ grid-template-columns: 1fr; gap: 24px; }
+}
+.greek-block{
+  position: relative;
+  background: linear-gradient(170deg, rgba(20, 33, 61, 0.6) 0%, rgba(11, 20, 38, 0.8) 100%);
+  border: 1px solid rgba(212, 162, 76, 0.2);
+  border-radius: 6px;
+  padding: 48px 36px;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+.greek-block:hover{
+  border-color: rgba(212, 162, 76, 0.55);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(212, 162, 76, 0.3);
+}
+.greek-block::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center top, rgba(212, 162, 76, 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+.greek-block:hover::before{ opacity: 1; }
+.greek-index{
+  position: absolute;
+  top: 20px; left: 24px;
+  font-family: var(--font-en-display);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+}
+.greek-word{
+  font-family: var(--font-gr);
+  font-size: clamp(48px, 6vw, 68px);
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1.2;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 30px rgba(212, 162, 76, 0.2);
+}
+.greek-pron{
+  font-family: var(--font-kr-warm);
+  font-size: 18px;
+  color: var(--gold-soft);
+  margin-bottom: 28px;
+  letter-spacing: 0.15em;
+}
+.greek-divider{
+  width: 36px; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+  margin: 0 auto 24px;
+}
+.greek-core{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: clamp(17px, 1.9vw, 20px);
+  line-height: 1.55;
+  color: var(--gold-soft);
+  margin-bottom: 28px;
+  padding: 0 8px;
+}
+.greek-trans{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  font-family: var(--font-en-body);
+  font-size: 16px;
+  color: var(--ivory);
+}
+.greek-trans .ko{
+  font-family: var(--font-kr);
+  font-weight: 500;
+}
+.greek-trans .sep{
+  color: var(--gold);
+  opacity: 0.5;
+}
+.greek-trans .en{
+  font-style: italic;
+  opacity: 0.85;
+}
+.greek-note{
+  font-family: var(--font-kr);
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ivory-warm);
+  opacity: 0.7;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 162, 76, 0.15);
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────
+   4. SUMMARY — flow diagram
+───────────────────────────────────────────── */
+.flow-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.flow-node{
+  background: linear-gradient(135deg, rgba(212, 162, 76, 0.08) 0%, rgba(11, 20, 38, 0.5) 100%);
+  border: 1px solid rgba(212, 162, 76, 0.3);
+  border-radius: 999px;
+  padding: 22px 44px;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s ease;
+  min-width: 260px;
+}
+.flow-node:hover{
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(212, 162, 76, 0.18) 0%, rgba(11, 20, 38, 0.5) 100%);
+}
+.flow-node-title{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ivory);
+  margin-bottom: 4px;
+}
+.flow-node-sub{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--gold-soft);
+  opacity: 0.8;
+}
+.flow-arrow{
+  width: 1px; height: 40px;
+  background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+  position: relative;
+}
+.flow-arrow::after{
+  content: "↓";
+  position: absolute;
+  bottom: -4px; left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 14px;
+}
+.flow-split{
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  padding-top: 20px;
+}
+.flow-split-line{
+  position: absolute;
+  top: 0; left: 50%;
+  width: 60%; height: 20px;
+  border-left: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+  border-top: 1px solid var(--gold);
+  transform: translateX(-50%);
+  border-radius: 30px 30px 0 0;
+}
+.flow-pair{
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.flow-merge{
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 20px;
+}
+.flow-merge-line{
+  position: absolute;
+  bottom: 0; left: 50%;
+  width: 60%; height: 20px;
+  border-left: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  transform: translateX(-50%);
+  border-radius: 0 0 30px 30px;
+}
+.flow-node.accent{
+  background: linear-gradient(135deg, rgba(212, 162, 76, 0.2) 0%, rgba(168, 117, 74, 0.15) 100%);
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 40px -10px rgba(212, 162, 76, 0.3);
+}
+
+/* ─────────────────────────────────────────────
+   5. DETAILED EXPLANATION — chapters
+───────────────────────────────────────────── */
+.chapter{
+  margin-bottom: 90px;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 768px){
+  .chapter{ grid-template-columns: 1fr; gap: 16px; }
+}
+.chapter-num{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  opacity: 0.65;
+  text-align: right;
+}
+@media (max-width: 768px){
+  .chapter-num{ text-align: left; font-size: 56px; }
+}
+.chapter-body{
+  position: relative;
+}
+.chapter-title{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.8vw, 28px);
+  line-height: 1.4;
+  color: var(--ivory);
+  margin-bottom: 8px;
+}
+.chapter-subtitle{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--gold-soft);
+  margin-bottom: 28px;
+  opacity: 0.8;
+}
+.chapter-text{
+  font-family: var(--font-kr);
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 2.05;
+  color: var(--ivory-warm);
+  margin-bottom: 18px;
+}
+.chapter-text strong{
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+.chapter-pull{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.6;
+  color: var(--gold);
+  padding: 28px 0 28px 32px;
+  margin: 32px 0;
+  border-left: 2px solid var(--gold);
+  font-style: normal;
+}
+.chapter-pull .small{
+  display: block;
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--gold-soft);
+  opacity: 0.75;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────────────
+   7. DEEP Q&A
+───────────────────────────────────────────── */
+.qa-intro{
+  font-family: var(--font-kr);
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.9;
+  color: var(--ivory-warm);
+  max-width: 720px;
+  margin-bottom: 50px;
+  opacity: 0.85;
+  font-style: italic;
+}
+.qa-card{
+  background: linear-gradient(135deg, rgba(245, 239, 228, 0.04) 0%, rgba(20, 33, 61, 0.4) 100%);
+  border: 1px solid rgba(212, 162, 76, 0.18);
+  border-radius: 4px;
+  padding: 36px 36px 30px;
+  margin-bottom: 28px;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+.qa-card:hover{ border-color: rgba(212, 162, 76, 0.4); }
+.qa-card-num{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.qa-card-q{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.6;
+  color: var(--ivory);
+  margin-bottom: 22px;
+}
+.qa-textarea{
+  width: 100%;
+  background: rgba(11, 20, 38, 0.4);
+  border: 1px solid rgba(212, 162, 76, 0.2);
+  border-radius: 3px;
+  padding: 16px 18px;
+  font-family: var(--font-kr);
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--ivory);
+  resize: vertical;
+  min-height: 96px;
+  transition: border-color 0.3s ease;
+}
+.qa-textarea:focus{
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(11, 20, 38, 0.6);
+}
+.qa-textarea::placeholder{
+  color: rgba(245, 239, 228, 0.3);
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────
+   8. QUIZ
+───────────────────────────────────────────── */
+.quiz-intro{
+  font-family: var(--font-kr);
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.9;
+  color: var(--ivory-warm);
+  max-width: 720px;
+  margin-bottom: 40px;
+  opacity: 0.85;
+}
+.quiz-progress{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  font-family: var(--font-en-display);
+  color: var(--gold-soft);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+}
+.quiz-progress-bar{
+  flex: 1;
+  height: 2px;
+  background: rgba(212, 162, 76, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.quiz-progress-fill{
+  height: 100%;
+  background: var(--gold);
+  width: 10%;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.quiz-card{
+  background: linear-gradient(135deg, rgba(245, 239, 228, 0.03) 0%, rgba(20, 33, 61, 0.5) 100%);
+  border: 1px solid rgba(212, 162, 76, 0.2);
+  border-radius: 6px;
+  padding: 44px 40px;
+  min-height: 460px;
+  position: relative;
+}
+@media (max-width: 600px){
+  .quiz-card{ padding: 32px 24px; }
+}
+.quiz-num{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.quiz-question{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.6;
+  color: var(--ivory);
+  margin-bottom: 32px;
+}
+.quiz-options{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.quiz-option{
+  background: rgba(11, 20, 38, 0.4);
+  border: 1px solid rgba(212, 162, 76, 0.2);
+  border-radius: 3px;
+  padding: 16px 22px;
+  font-family: var(--font-kr);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ivory-warm);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+}
+.quiz-option:hover:not(:disabled){
+  border-color: var(--gold);
+  background: rgba(212, 162, 76, 0.08);
+  transform: translateX(4px);
+}
+.quiz-option:disabled{ cursor: default; }
+.quiz-option-letter{
+  font-family: var(--font-en-display);
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 600;
+  min-width: 18px;
+}
+.quiz-option.correct{
+  border-color: var(--olive-soft);
+  background: rgba(123, 140, 90, 0.15);
+  color: var(--ivory);
+}
+.quiz-option.correct .quiz-option-letter{ color: var(--olive-soft); }
+.quiz-option.wrong{
+  border-color: var(--copper);
+  background: rgba(168, 117, 74, 0.12);
+  opacity: 0.7;
+}
+.quiz-feedback{
+  margin-top: 24px;
+  padding: 20px 22px;
+  background: rgba(212, 162, 76, 0.08);
+  border-left: 2px solid var(--gold);
+  font-family: var(--font-kr);
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: var(--ivory-warm);
+  border-radius: 0 3px 3px 0;
+  display: none;
+}
+.quiz-feedback.show{ display: block; animation: fadeUp 0.5s ease; }
+.quiz-feedback-status{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.quiz-nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  gap: 16px;
+}
+.quiz-btn{
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 12px 28px;
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.25s ease;
+}
+.quiz-btn:hover:not(:disabled){
+  background: var(--gold);
+  color: var(--ink);
+}
+.quiz-btn:disabled{
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.quiz-result{
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+.quiz-result.show{ display: block; }
+.quiz-result-score{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 80px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.quiz-result-total{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold-soft);
+  margin-bottom: 24px;
+}
+.quiz-result-msg{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ivory);
+  margin-bottom: 14px;
+}
+.quiz-result-note{
+  font-family: var(--font-kr);
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ivory-warm);
+  opacity: 0.85;
+  max-width: 480px;
+  margin: 0 auto 28px;
+}
+
+/* ─────────────────────────────────────────────
+   9. PRAYER
+───────────────────────────────────────────── */
+.prayer-section{
+  background: linear-gradient(180deg, transparent 0%, rgba(212, 162, 76, 0.06) 50%, rgba(212, 162, 76, 0.12) 100%);
+  border-radius: 8px;
+  padding: 100px 40px;
+  max-width: 820px;
+  margin: 80px auto 120px;
+  position: relative;
+}
+.prayer-section::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(212, 162, 76, 0.15), transparent 70%);
+  pointer-events: none;
+  border-radius: 8px;
+}
+.prayer-eyebrow{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.prayer-title{
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.5vw, 36px);
+  color: var(--ivory);
+  text-align: center;
+  margin-bottom: 48px;
+}
+.prayer-name-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.prayer-name-label{
+  font-family: var(--font-kr);
+  font-size: 14px;
+  color: var(--gold-soft);
+  letter-spacing: 0.1em;
+}
+.prayer-name-input{
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-kr-display);
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  padding: 6px 12px;
+  width: 200px;
+  letter-spacing: 0.05em;
+}
+.prayer-name-input:focus{ outline: none; border-bottom-width: 2px; }
+.prayer-name-input::placeholder{ color: rgba(212, 162, 76, 0.4); }
+.prayer-body{
+  font-family: var(--font-kr-warm);
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 2.2;
+  color: var(--ivory);
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.prayer-body p{ margin-bottom: 24px; }
+.prayer-body .em{ color: var(--gold); font-weight: 500; }
+.prayer-body .bro-name{
+  display: inline-block;
+  min-width: 60px;
+  color: var(--gold);
+  font-weight: 700;
+  border-bottom: 1px dotted var(--gold);
+  padding: 0 4px;
+}
+.prayer-amen{
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-align: center;
+  margin-top: 40px;
+  text-transform: uppercase;
+}
+
+/* Footer */
+.footer{
+  text-align: center;
+  padding: 60px 24px 80px;
+  font-family: var(--font-en-display);
+  font-style: italic;
+  color: var(--gold-soft);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+
+/* Reveal on scroll */
+.reveal{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═════════════════════════════════════════════════════════
+   PORTED FROM M1D4 — Topbar, Side Panel, Bible Tooltip
+═════════════════════════════════════════════════════════ */
+:root{ --topbar-h: 44px; --font-scale: 1; }
+html{ font-size: calc(16px * var(--font-scale)); }
+body{ padding-top: var(--topbar-h); }
+
+.topbar{
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--topbar-h);
+  background: rgba(11, 20, 38, 0.85);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid rgba(212, 162, 76, 0.25);
+  display: flex; align-items: center;
+  padding: 0 10px; z-index: 1000; gap: 4px;
+}
+.topbar-btn{
+  flex-shrink: 0; width: 34px; height: 34px;
+  border: none; background: none; border-radius: 4px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--ivory); opacity: 0.85;
+  transition: background .15s, opacity .15s;
+}
+.topbar-btn:hover{ background: rgba(212, 162, 76, 0.12); opacity: 1; color: var(--gold-soft); }
+.topbar-title{
+  flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap;
+  font-family: var(--font-en-display); font-style: italic;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+  color: var(--gold); scrollbar-width: none; -ms-overflow-style: none;
+  padding: 0 6px; text-transform: uppercase;
+}
+.topbar-title::-webkit-scrollbar{ display: none; }
+.font-controls{
+  display: flex; align-items: center; gap: 2px;
+  border: 1px solid rgba(212, 162, 76, 0.25);
+  border-radius: 4px; padding: 2px; margin-left: 4px;
+}
+.font-ctrl-btn{
+  width: 26px; height: 26px; border: none; background: transparent;
+  color: var(--ivory); font-size: 14px; cursor: pointer; border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+}
+.font-ctrl-btn:hover{ background: rgba(212, 162, 76, 0.18); color: var(--gold-soft); }
+
+.overlay{
+  position: fixed; inset: 0;
+  background: rgba(11, 20, 38, 0.6);
+  backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+  z-index: 1001; opacity: 0; pointer-events: none;
+  transition: opacity .25s;
+}
+.overlay.open{ opacity: 1; pointer-events: auto; }
+
+.sidepanel{
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 300px; max-width: 82vw;
+  background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
+  z-index: 1002; transform: translateX(-100%);
+  transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+  overflow-y: auto; padding: 20px 0;
+  box-shadow: 4px 0 32px rgba(0, 0, 0, .5);
+  font-family: var(--font-kr);
+  border-right: 1px solid rgba(212, 162, 76, 0.2);
+}
+.sidepanel.open{ transform: translateX(0); }
+.sidepanel-header{
+  padding: 0 22px 16px;
+  border-bottom: 1px solid rgba(212, 162, 76, 0.18);
+  margin-bottom: 12px;
+  font-family: var(--font-en-display); font-style: italic;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 8px;
+}
+.sidepanel-close{
+  margin-left: auto; width: 28px; height: 28px;
+  border: none; background: transparent; border-radius: 3px;
+  cursor: pointer; font-size: 14px; color: var(--ivory);
+  opacity: 0.7; display: flex; align-items: center; justify-content: center;
+}
+.sidepanel-close:hover{ background: rgba(212, 162, 76, 0.15); color: var(--gold-soft); opacity: 1; }
+.nav-item{
+  display: block; padding: 10px 22px; font-size: 13px;
+  color: var(--ivory); text-decoration: none; cursor: pointer;
+  transition: background .15s, color .15s;
+  font-weight: 400; letter-spacing: -0.005em; opacity: 0.85;
+}
+.nav-item:hover{ background: rgba(212, 162, 76, 0.08); color: var(--gold-soft); opacity: 1; }
+.nav-item.sub{ padding-left: 38px; font-size: 12.5px; font-weight: 300; color: var(--ivory); opacity: 0.65; }
+.nav-divider{ height: 1px; background: rgba(212, 162, 76, 0.15); margin: 10px 22px; }
+.nav-home{ display: flex; align-items: center; gap: 8px; color: var(--gold); opacity: 0.95; }
+.nav-home-icon{ flex-shrink: 0; color: var(--gold); }
+
+@media (max-width: 540px){
+  .topbar{ padding: 0 6px; gap: 2px; }
+  .topbar-title{ font-size: 12px; letter-spacing: 0.08em; padding: 0 4px; }
+  .topbar-btn{ width: 32px; height: 32px; }
+  .font-ctrl-btn{ width: 24px; height: 24px; font-size: 13px; }
+  .font-controls{ padding: 1px; }
+}
+@media (max-width: 380px){
+  .topbar-title{ font-size: 11px; }
+}
+
+/* Bible verse tooltip (XML-loaded) */
+.verse-link, .vref-link{
+  display: inline; padding: 0 2px;
+  background: transparent; border: none;
+  font: inherit; color: var(--gold);
+  cursor: pointer; border-bottom: 1px dotted var(--gold);
+  font-weight: 500;
+  transition: background .2s ease, color .2s ease;
+}
+.verse-link:hover, .vref-link:hover{ color: var(--gold-soft); background: rgba(212, 162, 76, 0.13); }
+.verse-link:active, .vref-link:active{ color: var(--gold-soft); background: rgba(212, 162, 76, 0.20); }
+.verse-link:focus, .vref-link:focus{ outline: none; }
+.verse-link:focus-visible, .vref-link:focus-visible{ outline: 1px dashed var(--gold); outline-offset: 2px; }
+
+#vref-tt-backdrop{
+  position: fixed; inset: 0; z-index: 9998;
+  background: rgba(11, 20, 38, 0.62);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .25s ease; display: none;
+}
+#vref-tt-backdrop[data-show="1"]{ opacity: 1; visibility: visible; pointer-events: auto; }
+#vref-tooltip{
+  position: absolute; top: 0; left: 0;
+  z-index: 9999; zoom: var(--font-scale);
+  max-width: 460px; min-width: 300px;
+  padding: 24px 28px 22px;
+  background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
+  border-top: 1px solid rgba(212, 162, 76, 0.55);
+  box-shadow:
+    0 22px 48px -10px rgba(0,0,0,0.7),
+    0 8px 18px -6px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(212,162,76,0.08);
+  color: var(--ivory);
+  pointer-events: none; opacity: 0; visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+#vref-tooltip[data-show="1"]{ opacity: 1; visibility: visible; transform: translateY(0); }
+#vref-tooltip::before{
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--gold-soft) 0%, var(--gold) 50%, var(--gold-deep) 100%);
+  box-shadow: 0 0 12px rgba(212, 162, 76, 0.3);
+}
+.vref-tt-handle{ display: none; }
+.vref-tt-close{ display: none; }
+.vref-tt-book{
+  position: relative;
+  font-family: var(--font-en-display); font-style: italic; font-weight: 600;
+  font-size: 0.82rem; letter-spacing: 0.18em;
+  color: var(--gold-soft); text-transform: uppercase;
+  margin-bottom: 14px; padding-bottom: 12px;
+  border-bottom: 1px solid rgba(212, 162, 76, 0.28);
+}
+.vref-tt-body{
+  position: relative; font-family: var(--font-kr);
+  font-size: 1rem; line-height: 1.85; color: var(--ivory); font-weight: 400;
+  word-break: keep-all; overflow-wrap: break-word;
+}
+.vref-tt-verse{ margin-bottom: 8px; }
+.vref-tt-verse:last-child{ margin-bottom: 0; }
+.vref-tt-vnum{
+  display: inline-block;
+  font-family: var(--font-en-display); font-style: italic; font-weight: 600;
+  font-size: 0.85em; color: var(--gold-soft);
+  margin-right: 8px; vertical-align: 0.05em;
+}
+.vref-tt-empty{
+  color: var(--ivory); font-style: italic;
+  font-size: 0.92rem; letter-spacing: 0.02em; opacity: 0.55;
+}
+@media (hover: none){
+  .verse-link, .vref-link{ cursor: pointer; }
+}
+@media (max-width: 768px){
+  #vref-tt-backdrop{ display: block; }
+  #vref-tooltip{
+    position: fixed !important;
+    top: auto !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    width: 100%; max-width: 100%; min-width: 0;
+    padding: 14px 22px calc(28px + env(safe-area-inset-bottom, 0px));
+    border-top: none; border-radius: 18px 18px 0 0;
+    box-shadow:
+      0 -2px 0 rgba(212, 162, 76, 0.40),
+      0 -16px 44px rgba(0, 0, 0, 0.55);
+    max-height: 75vh; overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateY(100%);
+    pointer-events: auto;
+    transition: transform .28s cubic-bezier(0.32, 0.72, 0, 1), opacity .2s ease;
+  }
+  #vref-tooltip[data-show="1"]{ transform: translateY(0); }
+  .vref-tt-handle{
+    display: block; width: 44px; height: 4px;
+    border-radius: 2px; background: rgba(245, 239, 228, 0.30);
+    margin: 0 auto 18px;
+  }
+  .vref-tt-close{
+    display: flex; position: absolute;
+    top: 14px; right: 16px;
+    width: 36px; height: 36px;
+    align-items: center; justify-content: center;
+    background: rgba(245, 239, 228, 0.06);
+    border: 1px solid rgba(212, 162, 76, 0.25);
+    border-radius: 50%; color: var(--gold-soft);
+    font-family: var(--font-en-display); font-size: 1.4rem; line-height: 1;
+    padding: 0 0 2px; cursor: pointer; z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color .15s ease;
+  }
+  .vref-tt-close:active{ background: rgba(212, 162, 76, 0.20); }
+  .vref-tt-book{ font-size: 0.82rem; padding-right: 48px; }
+  .vref-tt-body{ font-size: 1.05rem; line-height: 1.9; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR (ported from M1D4) -->
+<div class="topbar" id="topbar">
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="topbar-title">영원한 생명, 흐르는 통로</div>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- SIDE PANEL -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="nav-item nav-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener"><svg class="nav-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>홈페이지 (Spring Elders 2026)</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('sec-hero')" style="color:var(--gold-soft);font-weight:500;">✦ 시작 — A Life That Swallows Death</a>
+  <a class="nav-item" onclick="goTo('sec-verse')">오늘의 구절 — 요일 5:16-17</a>
+  <a class="nav-item" onclick="goTo('sec-greek')">말씀의 해부 · 헬라어</a>
+  <a class="nav-item" onclick="goTo('sec-flow')">한눈에 보는 흐름</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" style="font-weight:600;color:var(--gold);">본문 깊이 보기 — Four Chapters</a>
+  <a class="nav-item sub" onclick="goTo('sec-detail')">전체 보기</a>
+  <a class="nav-item sub" onclick="goToChapter(0)">Ⅰ. 죽음을 이기는 생명</a>
+  <a class="nav-item sub" onclick="goToChapter(1)">Ⅱ. 신성한 생명의 교통 안에서</a>
+  <a class="nav-item sub" onclick="goToChapter(2)">Ⅲ. 생명의 공급 — 수단과 통로</a>
+  <a class="nav-item sub" onclick="goToChapter(3)">Ⅳ. 십자가와 사역 — 풍성의 조성</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('sec-qa')">심화 묵상</a>
+  <a class="nav-item" onclick="goTo('sec-quiz')">자기 점검 · 퀴즈</a>
+  <a class="nav-item" onclick="goTo('sec-prayer')">오늘의 기도</a>
+</div>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="section-nav" id="sectionNav">
+  <a href="#sec-hero" data-label="시작" class="active"></a>
+  <a href="#sec-verse" data-label="오늘의 구절"></a>
+  <a href="#sec-greek" data-label="헬라어 분석"></a>
+  <a href="#sec-flow" data-label="요약"></a>
+  <a href="#sec-detail" data-label="상세 설명"></a>
+  <a href="#sec-qa" data-label="심화 묵상"></a>
+  <a href="#sec-quiz" data-label="퀴즈"></a>
+  <a href="#sec-prayer" data-label="기도"></a>
+</nav>
+
+<!-- ═════════════════════════════════════════
+     1. HOOK
+═══════════════════════════════════════════ -->
+<section id="sec-hero" class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-eyebrow">A Life That Swallows Death</div>
+  <h1 class="hero-quote">
+    영원한 생명은 우리 자신 안에 있는 죽음과<br>
+    다른 지체들 안에 있는 죽음을 <span class="em">삼킨다</span>.
+  </h1>
+  <div class="hero-source">요한일서 라이프 스타디, 메시지 37</div>
+  <div class="hero-scroll">scroll</div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     2. TODAY'S VERSE
+═══════════════════════════════════════════ -->
+<section id="sec-verse" class="verse-section">
+  <div class="section-number reveal">SECTION I · THE WORD</div>
+  <h2 class="section-title reveal">오늘의 구절</h2>
+
+  <div class="verse-card reveal">
+    <div class="verse-ref">1 John 5:16–17</div>
+    <p class="verse-ko">
+      <span class="vnum">16</span>누구든지 자기 형제가 죽음에 이르지 않는 죄를 짓는 것을 보거든 그분께 구하십시오. 그러면 그가 그 형제, 곧 죽음에 이르지 않는 죄를 짓는 사람들에게 생명을 줄 것입니다. 죽음에 이르는 죄가 있는데, 나는 그것에 관하여 그분께 청해야 한다는 말은 하지 않습니다.
+      <br><br>
+      <span class="vnum">17</span>모든 불의가 죄이지만, 죽음에 이르지 않는 죄도 있습니다.
+    </p>
+    <div class="verse-divider"></div>
+    <p class="verse-en">
+      <span class="vnum">16</span>If anyone sees his brother sinning a sin not unto death, he shall ask and he will give life to him, to those sinning not unto death. There is a sin unto death; I do not say that he should make request concerning that.
+      <br><br>
+      <span class="vnum">17</span>All unrighteousness is sin, and there is sin not unto death.
+    </p>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     3. GREEK WORD ANALYSIS
+═══════════════════════════════════════════ -->
+<section id="sec-greek" class="greek-section">
+  <div class="section-number reveal">SECTION II · ETYMOLOGY</div>
+  <h2 class="section-title reveal">말씀의 해부 — 헬라어 원문 분석</h2>
+  <p class="greek-intro reveal">
+    요한일서 5장 16절을 떠받치는 네 개의 헬라어 단어. 각 단어의 어원적 핵심 의미가 본문의 신비를 열어 준다. 단어 위에서 빛나는 황금빛 의미는, 우리말 번역만으로는 닿을 수 없는 깊이를 드러낸다.
+  </p>
+
+  <div class="greek-grid">
+    <div class="greek-block reveal">
+      <div class="greek-index">i.</div>
+      <div class="greek-word">ζωή</div>
+      <div class="greek-pron">조에 · zōē</div>
+      <div class="greek-divider"></div>
+      <div class="greek-core">신적인, 영원한 생명</div>
+      <div class="greek-trans">
+        <span class="ko">생명</span>
+        <span class="sep">·</span>
+        <span class="en">life</span>
+      </div>
+      <div class="greek-note">
+        육체적 생명을 가리키는 '비오스(bios)'와 구별되는, 하나님 자신의 생명. 신성한 본성을 가진 영원한 생명이며, 다른 생명에는 없는 능력 — 죽음을 삼키는 능력 — 을 가진다.
+      </div>
+    </div>
+
+    <div class="greek-block reveal">
+      <div class="greek-index">ii.</div>
+      <div class="greek-word">αἰτέω</div>
+      <div class="greek-pron">아이테오 · aiteō</div>
+      <div class="greek-divider"></div>
+      <div class="greek-core">친밀한 교통 안에서 구하다</div>
+      <div class="greek-trans">
+        <span class="ko">구하다</span>
+        <span class="sep">·</span>
+        <span class="en">ask</span>
+      </div>
+      <div class="greek-note">
+        단순한 요청이 아니라 관계 안에서의 간구. 본문에서는 신성한 생명의 교통 안에 거하는 사람이 드리는, 하나님의 뜻에 따른 친밀한 부르짖음을 가리킨다.
+      </div>
+    </div>
+
+    <div class="greek-block reveal">
+      <div class="greek-index">iii.</div>
+      <div class="greek-word">δίδωμι</div>
+      <div class="greek-pron">디도미 · didōmi</div>
+      <div class="greek-divider"></div>
+      <div class="greek-core">한 사람에게서 다른 사람에게로 흐르게 하다</div>
+      <div class="greek-trans">
+        <span class="ko">주다</span>
+        <span class="sep">·</span>
+        <span class="en">give</span>
+      </div>
+      <div class="greek-note">
+        한 손에서 다른 손으로 건네는 행위. 자기 안에서 만드는 것이 아니라, 받은 것을 통과시키는 것이다. 그래서 '주는 자'는 '통로'이지 '근원'이 아니다.
+      </div>
+    </div>
+
+    <div class="greek-block reveal">
+      <div class="greek-index">iv.</div>
+      <div class="greek-word">ἀδελφός</div>
+      <div class="greek-pron">아델포스 · adelphos</div>
+      <div class="greek-divider"></div>
+      <div class="greek-core">같은 자궁에서 난 자</div>
+      <div class="greek-trans">
+        <span class="ko">형제</span>
+        <span class="sep">·</span>
+        <span class="en">brother</span>
+      </div>
+      <div class="greek-note">
+        문자적으로 "같은 태에서 난" 사람. 우리는 같은 신성한 생명에서 거듭난 동료 지체이므로, 한 몸의 일부로서 다른 지체의 죽음을 외면할 수 없다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     4. SUMMARY — FLOW DIAGRAM
+═══════════════════════════════════════════ -->
+<section id="sec-flow" class="flow-section">
+  <div class="section-number reveal">SECTION III · THE FLOW</div>
+  <h2 class="section-title reveal">한눈에 보는 흐름</h2>
+
+  <div class="flow-wrap reveal">
+    <div class="flow-node">
+      <div class="flow-node-title">영원한 생명의 누림</div>
+      <div class="flow-node-sub">Possessing zōē</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-node">
+      <div class="flow-node-title">주님과 하나 되어 기도</div>
+      <div class="flow-node-sub">One Spirit with the Lord</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-node accent">
+      <div class="flow-node-title">신성한 생명의 교통</div>
+      <div class="flow-node-sub">Fellowship of Divine Life</div>
+    </div>
+
+    <div class="flow-split">
+      <div class="flow-split-line"></div>
+      <div class="flow-pair">
+        <div class="flow-node">
+          <div class="flow-node-title">생명의 공급</div>
+          <div class="flow-node-sub">Imparting Life</div>
+        </div>
+        <div class="flow-node">
+          <div class="flow-node-title">생명의 통로</div>
+          <div class="flow-node-sub">A Channel</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-merge">
+      <div class="flow-merge-line"></div>
+    </div>
+
+    <div class="flow-node accent">
+      <div class="flow-node-title">형제 안의 죽음을 삼킴</div>
+      <div class="flow-node-sub">Swallowing Death in the Brother</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     5. DETAILED EXPLANATION
+═══════════════════════════════════════════ -->
+<section id="sec-detail" class="detail-section">
+  <div class="section-number reveal">SECTION IV · UNFOLDING</div>
+  <h2 class="section-title reveal">상세 설명</h2>
+
+  <!-- Chapter 1 -->
+  <div class="chapter reveal">
+    <div class="chapter-num">01</div>
+    <div class="chapter-body">
+      <div class="chapter-subtitle">CHAPTER ONE</div>
+      <h3 class="chapter-title">죽음을 이기는 생명</h3>
+      <p class="chapter-text">
+        우리는 홀로 살지 않는다. 교회는 몸이며 우리는 몸의 동료 지체들과 함께 산다. 우리가 받은 영원한 생명은 <strong>자신의 필요만 돌보는 생명이 아니라</strong> 주위의 동료 지체들의 필요까지 돌보는 생명이다.
+      </p>
+      <p class="chapter-text">
+        이 생명은 우리 안에 있는 죽음을 이길 뿐 아니라, 우리 형제들 안에 있는 죽음도 이긴다. 특히 <strong>연약하거나 어려움이 있는 지체</strong> 안에 있는 죽음을 이긴다. 이것이 바로 <span class="verse-link" data-verse="요일 5:4-5" tabindex="0" role="button">요한일서 5:4-5</span>에서 시작해 16절에 이르는 단락 전체가 우리에게 보여 주는 큰 그림이다.
+      </p>
+      <div class="chapter-pull">
+        영원한 생명은 죽음을 삼킨다 — 내 안에서도, 형제 안에서도.
+        <span class="small">SWALLOWS, NOT AVOIDS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chapter 2 -->
+  <div class="chapter reveal">
+    <div class="chapter-num">02</div>
+    <div class="chapter-body">
+      <div class="chapter-subtitle">CHAPTER TWO</div>
+      <h3 class="chapter-title">신성한 생명의 교통 안에서 드리는 기도</h3>
+      <p class="chapter-text">
+        요한일서 5:14은 우리의 방식이나 갈망이나 선호에 따라서가 아니라 <strong>하나님의 뜻에 따라</strong> 구하는 것을 말한다. 어떤 사람이 하나님의 뜻에 따라 구한다면, 그는 거듭났고 신성한 생명을 가졌으며 신성한 생명의 교통 안에 있는 사람이다.
+      </p>
+      <p class="chapter-text">
+        하나님의 뜻에 따라 기도하는 것은, 기도하는 사람이 <strong>신성한 생명의 교통 안에 거할 뿐 아니라 주님 자신 안에 거한다</strong>는 것을 가리킨다 — <span class="verse-link" data-verse="요 15:4-5" tabindex="0" role="button">요 15:4-5</span>. 우리는 하나님과 하나 되고, 그분 안에 거하며, 신성한 생명의 교통 안에 머물러야 한다. 이렇게 할 때에만 우리는 하나님의 뜻을 알게 된다.
+      </p>
+      <p class="chapter-text">
+        이때 우리는 <strong>두 가지 담대함</strong>을 갖는다. 양심에 거리낌이 없을 때 갖는 하나님과의 화평, 그리고 우리의 느낌이 아니라 하나님의 뜻에 따라 기도한다는 담대함. 우리가 그분의 뜻에 따라 기도하기 때문에 그분은 우리의 기도를 들으신다 — <span class="verse-link" data-verse="요 15:7" tabindex="0" role="button">요 15:7</span>, <span class="verse-link" data-verse="요 16:23-24" tabindex="0" role="button">요 16:23-24</span>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Chapter 3 -->
+  <div class="chapter reveal">
+    <div class="chapter-num">03</div>
+    <div class="chapter-body">
+      <div class="chapter-subtitle">CHAPTER THREE</div>
+      <h3 class="chapter-title">생명의 공급 — 수단과 통로가 되는 신비</h3>
+      <p class="chapter-text">
+        요한일서 5:16의 가장 놀라운 통찰은 이것이다. <strong>'구하는 사람'과 '생명을 주는 사람'은 동일한 사람이다.</strong> 그러나 이것은 구하는 사람 자신이 생명이 있어서 다른 사람에게 생명을 줄 수 있다는 뜻이 결코 아니다.
+      </p>
+      <p class="chapter-text">
+        이 말은, 이렇게 구하는 사람이 주님 안에 거하고, 주님과 하나 되며, <span class="verse-link" data-verse="고전 6:17" tabindex="0" role="button">주님과 한 영 안에서</span> 구함으로써, <strong>하나님의 생명 주시는 영께서 중보기도 대상자들에게 생명을 주실 수 있도록 하는 수단</strong>이 된다는 의미이다.
+      </p>
+      <div class="chapter-pull">
+        나는 발전소가 아니라 전선이다.<br>생명은 내 안에서 만들어지지 않고, 나를 통과한다.
+        <span class="small">A CHANNEL, NOT A SOURCE</span>
+      </div>
+      <p class="chapter-text">
+        <span class="verse-link" data-verse="약 5:14-16" tabindex="0" role="button">야고보서 5:14-16</span>의 기도는 <strong>병을 낫게 하기 위한 것</strong>이고, 요한일서 5:16의 기도는 <strong>생명을 공급하기 위한 것</strong>이다. 다른 사람들에게 생명을 줄 수 있는 사람이 되려면, 신성한 생명 안에 거하고, 신성한 생명 안에서 행하고 살고 처신해야 한다.
+      </p>
+    </div>
+  </div>
+
+  <!-- Chapter 4 -->
+  <div class="chapter reveal">
+    <div class="chapter-num">04</div>
+    <div class="chapter-body">
+      <div class="chapter-subtitle">CHAPTER FOUR</div>
+      <h3 class="chapter-title">십자가와 사역 — 풍성의 조성</h3>
+      <p class="chapter-text">
+        생명의 사역은 우리가 <strong>체험한 그리스도를 생명으로 공급하는 것</strong>이다 — <span class="verse-link" data-verse="고후 1:3-4" tabindex="0" role="button">고후 1:3-4</span>. 사역은 <strong>십자가의 일로 말미암아 산출된다.</strong> 십자가의 길에 의해 우리는 다른 이들에게 생명으로 공급할 수 있는 그리스도의 풍성을 갖는다.
+      </p>
+      <p class="chapter-text">
+        그러므로 <span class="verse-link" data-verse="고후 4:12" tabindex="0" role="button">고후 4:12</span>이 말한다: "죽음은 우리 안에서 활동하고, 생명은 여러분 안에서 활동합니다." 우리가 얼마나 생명을 공급하고 그리스도의 풍성의 실재를 공급할 수 있는지는, <strong>우리가 얼마나 많은 계시를 받고 그것으로 인해 얼마나 많은 고난을 받았는지에 달려 있다</strong> — <span class="verse-link" data-verse="엡 3:8" tabindex="0" role="button">엡 3:8</span>.
+      </p>
+      <div class="chapter-pull">
+        부서진 그릇만이 빛을 흘려보낸다.<br>
+        내가 받은 고난의 깊이가 곧 내가 공급할 수 있는 생명의 폭이다.
+        <span class="small">SUFFERING SHAPES CAPACITY</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     7. DEEP Q&A
+═══════════════════════════════════════════ -->
+<section id="sec-qa" class="qa-section">
+  <div class="section-number reveal">SECTION V · INWARD</div>
+  <h2 class="section-title reveal">심화 묵상 — 마음으로 들어가는 질문</h2>
+  <p class="qa-intro reveal">
+    아래 질문은 정답을 묻지 않는다. 잠시 멈춰 자신을 살피고, 떠오르는 응답을 적어 보라. 적는 일 자체가 묵상의 한 방식이다.
+  </p>
+
+  <div class="qa-card reveal">
+    <div class="qa-card-num">QUESTION 01</div>
+    <h3 class="qa-card-q">최근 내가 '하나님의 뜻'보다 '내 갈망'에 따라 구한 기도는 무엇이었습니까?</h3>
+    <textarea class="qa-textarea" placeholder="기도의 내용과, 그것이 갈망에서 나왔다는 것을 어떻게 알아차렸는지 적어 보세요…"></textarea>
+  </div>
+
+  <div class="qa-card reveal">
+    <div class="qa-card-num">QUESTION 02</div>
+    <h3 class="qa-card-q">내 주위에 영적으로 연약하여 죽음의 그림자 아래 있는 형제 자매가 있다면 누구입니까? 나는 그를 위해 어떻게 구해 왔습니까?</h3>
+    <textarea class="qa-textarea" placeholder="이름을 떠올려 보고, 지금까지의 기도와 앞으로의 기도를 적어 보세요…"></textarea>
+  </div>
+
+  <div class="qa-card reveal">
+    <div class="qa-card-num">QUESTION 03</div>
+    <h3 class="qa-card-q">내가 다른 이에게 생명을 공급할 수 있는 통로가 되기에는 무엇이 부족합니까 — 주님 안에 거함입니까, 아니면 십자가의 체험입니까?</h3>
+    <textarea class="qa-textarea" placeholder="둘 중 어느 쪽이 더 절실한지, 그것이 어떤 모습으로 드러나는지 적어 보세요…"></textarea>
+  </div>
+
+  <div class="qa-card reveal">
+    <div class="qa-card-num">QUESTION 04</div>
+    <h3 class="qa-card-q">최근 받은 어떤 고난이 내 안에 그리스도의 풍성을 조성하고 있다고 느낍니까?</h3>
+    <textarea class="qa-textarea" placeholder="그 고난을 지나가면서 새롭게 알게 된 그리스도의 면을 적어 보세요…"></textarea>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     8. QUIZ
+═══════════════════════════════════════════ -->
+<section id="sec-quiz" class="quiz-section">
+  <div class="section-number reveal">SECTION VI · TESTED</div>
+  <h2 class="section-title reveal">묵상을 점검하는 열 개의 질문</h2>
+  <p class="quiz-intro reveal">
+    점수를 위한 시험이 아니다. 메시지를 다시 짚어 보는 도구로 사용하라. 각 문항은 본문의 어떤 단락에서 비롯되었는지 정답 해설에서 확인할 수 있다.
+  </p>
+
+  <div class="quiz-progress reveal">
+    <span id="quizProgressText">01 / 10</span>
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-fill" id="quizProgressFill"></div>
+    </div>
+    <span id="quizScoreText">SCORE 0</span>
+  </div>
+
+  <div class="quiz-card reveal" id="quizCard">
+    <!-- Dynamic content -->
+  </div>
+
+  <div class="quiz-result" id="quizResult">
+    <!-- Dynamic content -->
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     9. PRAYER
+═══════════════════════════════════════════ -->
+<section id="sec-prayer">
+  <div class="section-number reveal" style="text-align:center;">SECTION VII · RESPONSE</div>
+  <div class="prayer-section reveal">
+    <div class="prayer-eyebrow">A Prayer for Today</div>
+    <h2 class="prayer-title">오늘의 기도</h2>
+
+    <div class="prayer-name-row">
+      <span class="prayer-name-label">함께 기도할 형제·자매의 이름</span>
+      <input type="text" class="prayer-name-input" id="broName" placeholder="○○○" maxlength="12">
+    </div>
+
+    <div class="prayer-body">
+      <p>주님,</p>
+      <p>저는 <span class="em">발전소가 아니라 전선임을</span> 고백합니다.</p>
+      <p>제가 사랑하는 형제 <span class="bro-name" id="broNameDisplay">○○○</span> 안에 있는 죽음 앞에서<br>저는 무력하지만, 당신은 생명이십니다.</p>
+      <p>저를 주님 안에 거하게 하시고,<br>주님과 <span class="em">한 영</span>이 되게 하셔서<br>생명 주시는 당신의 영께서 그에게로 흘러가시도록<br>제가 비어 있는 통로가 되게 하옵소서.</p>
+      <p>제가 받은 고난과 계시가<br>제 안에 그리스도의 풍성을 조성하여<br>다른 이에게 흘려보낼 수 있는 <span class="em">한 잔</span>이 되게 하옵소서.</p>
+      <div class="prayer-amen">Amen</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  ✦ &nbsp; 요한일서 라이프 스타디 메시지 37에 근거한 묵상 인포그래픽 &nbsp; ✦
+</footer>
+
+<script>
+/* ─────────────────────────────────────────────
+   SCROLL PROGRESS
+───────────────────────────────────────────── */
+const progressBar = document.getElementById('progressBar');
+const navLinks = document.querySelectorAll('.section-nav a');
+const sections = document.querySelectorAll('section');
+
+function updateProgress(){
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+  progressBar.style.width = (scrolled * 100) + '%';
+
+  // active nav dot
+  let current = 'sec-hero';
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if(rect.top <= window.innerHeight * 0.4){
+      current = sec.id;
+    }
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+
+/* ─────────────────────────────────────────────
+   REVEAL ON SCROLL
+───────────────────────────────────────────── */
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+reveals.forEach(el => io.observe(el));
+
+/* ─────────────────────────────────────────────
+   TOPBAR + SIDE PANEL + FONT SCALE (ported from M1D4)
+───────────────────────────────────────────── */
+let fontScale = 1;
+function adjustFont(dir){
+  if(dir === 0) fontScale = 1;
+  else if(dir === 1 && fontScale < 1.4) fontScale += 0.05;
+  else if(dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+}
+function togglePanel(){
+  document.getElementById('sidepanel').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function goTo(id){
+  togglePanel();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 300);
+}
+function goToChapter(idx){
+  togglePanel();
+  setTimeout(() => {
+    const chapters = document.querySelectorAll('#sec-detail .chapter');
+    if(chapters[idx]) chapters[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 300);
+}
+
+/* ─────────────────────────────────────────────
+   PRAYER NAME BINDING
+───────────────────────────────────────────── */
+const broInput = document.getElementById('broName');
+const broDisplay = document.getElementById('broNameDisplay');
+broInput.addEventListener('input', () => {
+  const v = broInput.value.trim();
+  broDisplay.textContent = v.length > 0 ? v : '○○○';
+});
+
+/* ─────────────────────────────────────────────
+   QUIZ
+───────────────────────────────────────────── */
+const QUIZ = [
+  {
+    q: "요한일서 5장 14절에서 17절에 따르면, 우리 안에 있는 영원한 생명은 어떤 능력을 가지고 있습니까?",
+    options: [
+      "개인적인 모든 소망을 하나님의 뜻과 관계없이 성취하는 능력",
+      "육체적인 모든 질병을 치유하여 영원히 살게 하는 능력",
+      "우리 자신과 교회 지체들 안에 있는 죽음을 이기고 삼키는 능력",
+      "세상의 모든 도덕적 결함을 즉각적으로 제거하는 능력"
+    ],
+    answer: 2,
+    explain: "메시지의 핵심 통찰입니다. 영원한 생명은 우리 자신 안의 죽음뿐 아니라 다른 지체들 안의 죽음까지 삼키고 이겨냅니다. (Chapter 1)"
+  },
+  {
+    q: "요한일서 5장 16절에서 '생명을 주는 사람'은 실제적으로 누구를 가리킵니까?",
+    options: [
+      "어떠한 수단 없이 직접 생명을 나누어 주는 성령",
+      "교회의 행정적인 권위를 가진 장로들",
+      "하나님과의 교통 안에서 형제를 위해 구하는 사람",
+      "죄를 지어 죽음에 이르게 된 형제 자신"
+    ],
+    answer: 2,
+    explain: "본문에서 '구하는 사람'과 '생명을 주는 사람'은 동일한 사람입니다. 그러나 그 사람은 근원이 아니라 통로일 뿐입니다. (Chapter 3)"
+  },
+  {
+    q: "하나님의 뜻에 따라 기도하기 위해 기도하는 사람이 머물러야 할 곳은 어디입니까?",
+    options: [
+      "신성한 생명의 교통 안과 주님 자신 안",
+      "도덕적으로 완벽하게 무결한 자신의 행위 안",
+      "교회의 공식적인 기도 모임 장소",
+      "철저한 금식과 고행의 장소"
+    ],
+    answer: 0,
+    explain: "기도는 장소나 행위의 문제가 아니라 '거함'의 문제입니다. 요 15:4-5의 포도나무와 가지처럼 주님 안에 거할 때 비로소 그분의 뜻을 알게 됩니다. (Chapter 2)"
+  },
+  {
+    q: "요한일서 5장 16절의 기도와 야고보서 5장 14-16절의 기도의 주요한 차이점은 무엇입니까?",
+    options: [
+      "요한일서는 정죄를 위한 것이고, 야고보서는 용서를 위한 것이다.",
+      "요한일서는 생명 공급을 위한 것이고, 야고보서는 병 낫기를 위한 것이다.",
+      "요한일서는 개인 기도이고, 야고보서는 단체 기도이다.",
+      "요한일서는 불신자를 위한 것이고, 야고보서는 믿는 이를 위한 것이다."
+    ],
+    answer: 1,
+    explain: "두 본문은 모두 형제를 위한 기도이지만 그 목적과 차원이 다릅니다. 요한일서는 영적 생명의 공급을, 야고보서는 육체적 치유를 다룹니다. (Chapter 3)"
+  },
+  {
+    q: "어떻게 사람이 다른 지체에게 생명을 줄 수 있는 '수단'과 '통로'가 될 수 있습니까?",
+    options: [
+      "주님과 한 영이 되어 생명 주시는 영의 통로가 됨으로써",
+      "자신의 생명 에너지를 타인에게 직접 전이시킴으로써",
+      "자신이 가진 천연적인 지혜와 위로의 말을 전달함으로써",
+      "상대방의 잘못을 논리적으로 지적하여 회개하게 함으로써"
+    ],
+    answer: 0,
+    explain: "고전 6:17 — '주님과 합하는 사람은 주님과 한 영'입니다. 통로는 자기 안의 것을 주는 것이 아니라, 주님과의 연합을 통해 흐르는 영을 통과시킵니다. (Chapter 3)"
+  },
+  {
+    q: "생명의 사역이 산출되기 위해 필수적으로 거쳐야 하는 과정은 무엇입니까?",
+    options: [
+      "체계적인 신학 교육과 학위 취득",
+      "어떠한 고난도 겪지 않는 평탄한 삶의 유지",
+      "십자가의 일로 말미암은 고난과 체험",
+      "많은 사람 앞에서 연설하는 웅변술 훈련"
+    ],
+    answer: 2,
+    explain: "고후 4:12 — '죽음은 우리 안에서 활동하고, 생명은 여러분 안에서 활동합니다.' 사역의 풍성은 십자가의 길을 통과한 자에게서 흘러나옵니다. (Chapter 4)"
+  },
+  {
+    q: "요한일서 5장 16절에서 기도를 '청해야 한다는 말을 하지 않는' 대상은 무엇입니까?",
+    options: [
+      "불의가 아닌 사소한 실수",
+      "육체적인 질병",
+      "죽음에 이르는 죄",
+      "형제의 연약함"
+    ],
+    answer: 2,
+    explain: "본문에는 '죽음에 이르는 죄'와 '죽음에 이르지 않는 죄'가 구분되어 있고, 후자에 관해 형제를 위해 구하라고 권면합니다."
+  },
+  {
+    q: "우리가 다른 이들에게 공급할 수 있는 그리스도의 풍성의 양은 무엇에 비례합니까?",
+    options: [
+      "성경 전체를 암기한 분량",
+      "다른 사람들에게 인정받는 도덕적 명성",
+      "우리가 받은 계시와 그 계시로 인해 겪은 고난의 정도",
+      "교회 안에서 봉사한 기간과 경력"
+    ],
+    answer: 2,
+    explain: "엡 3:8 — '측량할 수 없는 풍성'을 전하는 자는 그 풍성을 받기 위해 고난을 통과한 자입니다. 계시의 깊이와 고난의 깊이가 곧 공급할 풍성의 폭입니다. (Chapter 4)"
+  },
+  {
+    q: "교회생활이 '몸의 생활'이라는 점은 생명 공급과 어떤 관계가 있습니까?",
+    options: [
+      "우리는 홀로 살지 않으므로 서로의 죽음을 삼키고 생명을 돌보아야 한다.",
+      "개인적인 생명 성숙에만 집중하면 지체들은 저절로 건강해진다.",
+      "서로의 잘못을 감시하여 죄를 짓지 못하게 방어해야 한다.",
+      "지체들 간의 모든 문제는 행정적인 규칙으로 해결해야 한다."
+    ],
+    answer: 0,
+    explain: "교회는 몸이므로 한 지체의 죽음은 다른 지체의 일입니다. 생명의 공급은 몸 안의 자연스러운 흐름입니다. (Chapter 1)"
+  },
+  {
+    q: "요한일서 5장 15절에서 우리가 구한 것을 받은 줄로 확신하는 근거는 무엇입니까?",
+    options: [
+      "모든 성도가 합심하여 동일한 제목으로 기도하기 때문",
+      "주님 안에 거하고 주님의 이름 안에서 하나님과 하나 되어 기도하기 때문",
+      "우리가 과거에 지은 죄가 전혀 없기 때문",
+      "우리의 기도가 매우 간절하고 정성이 지극하기 때문"
+    ],
+    answer: 1,
+    explain: "요 15:7, 요 16:23-24 — 주님 안에 거하며 그분의 이름 안에서 구하는 자에게 주어진 약속입니다. 확신은 도덕적 성취가 아니라 연합에서 옵니다. (Chapter 2)"
+  }
+];
+
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = new Array(QUIZ.length).fill(false);
+
+const quizCard = document.getElementById('quizCard');
+const quizResult = document.getElementById('quizResult');
+const progressText = document.getElementById('quizProgressText');
+const progressFill = document.getElementById('quizProgressFill');
+const scoreText = document.getElementById('quizScoreText');
+
+function renderQuiz(){
+  if(quizIndex >= QUIZ.length){
+    renderResult();
+    return;
+  }
+  const item = QUIZ[quizIndex];
+  const letters = ['A','B','C','D'];
+  quizCard.innerHTML = `
+    <div class="quiz-num">QUESTION ${String(quizIndex+1).padStart(2,'0')} / ${String(QUIZ.length).padStart(2,'0')}</div>
+    <h3 class="quiz-question">${item.q}</h3>
+    <div class="quiz-options">
+      ${item.options.map((opt, i) => `
+        <button class="quiz-option" data-index="${i}">
+          <span class="quiz-option-letter">${letters[i]}.</span>
+          <span>${opt}</span>
+        </button>
+      `).join('')}
+    </div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <div class="quiz-nav">
+      <button class="quiz-btn" id="quizPrev" ${quizIndex === 0 ? 'disabled' : ''}>← Prev</button>
+      <button class="quiz-btn" id="quizNext" disabled>Next →</button>
+    </div>
+  `;
+  progressText.textContent = `${String(quizIndex+1).padStart(2,'0')} / ${String(QUIZ.length).padStart(2,'0')}`;
+  progressFill.style.width = ((quizIndex+1)/QUIZ.length*100) + '%';
+  scoreText.textContent = `SCORE ${quizScore}`;
+
+  document.querySelectorAll('.quiz-option').forEach(btn => {
+    btn.addEventListener('click', () => handleAnswer(parseInt(btn.dataset.index)));
+  });
+  document.getElementById('quizPrev').addEventListener('click', () => {
+    if(quizIndex > 0){ quizIndex--; renderQuiz(); }
+  });
+  document.getElementById('quizNext').addEventListener('click', () => {
+    quizIndex++; renderQuiz();
+  });
+}
+
+function handleAnswer(idx){
+  const item = QUIZ[quizIndex];
+  const buttons = document.querySelectorAll('.quiz-option');
+  buttons.forEach((b, i) => {
+    b.disabled = true;
+    if(i === item.answer) b.classList.add('correct');
+    else if(i === idx) b.classList.add('wrong');
+  });
+  const isCorrect = idx === item.answer;
+  if(!quizAnswered[quizIndex]){
+    quizAnswered[quizIndex] = true;
+    if(isCorrect) quizScore++;
+    scoreText.textContent = `SCORE ${quizScore}`;
+  }
+  const fb = document.getElementById('quizFeedback');
+  fb.innerHTML = `
+    <div class="quiz-feedback-status">${isCorrect ? '✦ 정답입니다' : '✦ 한 번 더 살펴봅시다'}</div>
+    ${item.explain}
+  `;
+  fb.classList.add('show');
+  document.getElementById('quizNext').disabled = false;
+}
+
+function renderResult(){
+  quizCard.style.display = 'none';
+  document.querySelector('.quiz-progress').style.display = 'none';
+  quizResult.classList.add('show');
+
+  let msg, note;
+  const pct = quizScore / QUIZ.length;
+  if(pct >= 0.9){
+    msg = '메시지의 깊이를 잘 붙들었습니다';
+    note = '이제 이해한 것이 체험이 되도록, 한 형제의 이름을 떠올리며 오늘의 기도로 나아가 보세요.';
+  } else if(pct >= 0.6){
+    msg = '메시지의 큰 흐름이 잡혔습니다';
+    note = '놓친 부분이 있다면 본문 해당 단락으로 돌아가 다시 묵상해 보세요. 깨달음은 반복 안에서 깊어집니다.';
+  } else {
+    msg = '천천히, 한 번 더';
+    note = '점수는 중요하지 않습니다. 본문의 흐름을 다시 읽고, 흐릿했던 단어 하나를 붙들어 보세요.';
+  }
+  quizResult.innerHTML = `
+    <div class="quiz-result-score">${quizScore}</div>
+    <div class="quiz-result-total">of ${QUIZ.length}</div>
+    <div class="quiz-result-msg">${msg}</div>
+    <p class="quiz-result-note">${note}</p>
+    <button class="quiz-btn" id="quizRestart">↻ Restart</button>
+  `;
+  document.getElementById('quizRestart').addEventListener('click', () => {
+    quizIndex = 0; quizScore = 0;
+    quizAnswered = new Array(QUIZ.length).fill(false);
+    quizCard.style.display = 'block';
+    document.querySelector('.quiz-progress').style.display = 'flex';
+    quizResult.classList.remove('show');
+    renderQuiz();
+  });
+}
+
+renderQuiz();
+
+/* ─────────────────────────────────────────────
+   BIBLE VERSE TOOLTIP — ported from M1D4
+   XML loader + hover (PC) / tap-to-open bottom-sheet (mobile)
+───────────────────────────────────────────── */
+(function(){
+  'use strict';
+
+  var XML_URL = '../../recovery_bible_ko.xml';
+
+  var BOOKS = [
+    {n:'창세기',a:'창'},{n:'출애굽기',a:'출'},{n:'레위기',a:'레'},{n:'민수기',a:'민'},
+    {n:'신명기',a:'신'},{n:'여호수아',a:'수'},{n:'사사기',a:'삿'},{n:'룻기',a:'룻'},
+    {n:'사무엘상',a:'삼상'},{n:'사무엘하',a:'삼하'},{n:'열왕기상',a:'왕상'},{n:'열왕기하',a:'왕하'},
+    {n:'역대상',a:'대상'},{n:'역대하',a:'대하'},{n:'에스라',a:'스'},{n:'느헤미야',a:'느'},
+    {n:'에스더',a:'에'},{n:'욥기',a:'욥'},{n:'시편',a:'시'},{n:'잠언',a:'잠'},
+    {n:'전도서',a:'전'},{n:'아가',a:'아'},{n:'이사야',a:'사'},{n:'예레미야',a:'렘'},
+    {n:'예레미야애가',a:'애'},{n:'에스겔',a:'겔'},{n:'다니엘',a:'단'},{n:'호세아',a:'호'},
+    {n:'요엘',a:'욜'},{n:'아모스',a:'암'},{n:'오바댜',a:'옵'},{n:'요나',a:'욘'},
+    {n:'미가',a:'미'},{n:'나훔',a:'나'},{n:'하박국',a:'합'},{n:'스바냐',a:'습'},
+    {n:'학개',a:'학'},{n:'스가랴',a:'슥'},{n:'말라기',a:'말'},{n:'마태복음',a:'마'},
+    {n:'마가복음',a:'막'},{n:'누가복음',a:'눅'},{n:'요한복음',a:'요'},{n:'사도행전',a:'행'},
+    {n:'로마서',a:'롬'},{n:'고린도전서',a:'고전'},{n:'고린도후서',a:'고후'},{n:'갈라디아서',a:'갈'},
+    {n:'에베소서',a:'엡'},{n:'빌립보서',a:'빌'},{n:'골로새서',a:'골'},{n:'데살로니가전서',a:'살전'},
+    {n:'데살로니가후서',a:'살후'},{n:'디모데전서',a:'딤전'},{n:'디모데후서',a:'딤후'},{n:'디도서',a:'딛'},
+    {n:'빌레몬서',a:'몬'},{n:'히브리서',a:'히'},{n:'야고보서',a:'약'},{n:'베드로전서',a:'벧전'},
+    {n:'베드로후서',a:'벧후'},{n:'요한일서',a:'요일'},{n:'요한이서',a:'요이'},{n:'요한삼서',a:'요삼'},
+    {n:'유다서',a:'유'},{n:'요한계시록',a:'계'}
+  ];
+
+  var BOOK_META = {};
+  for (var i = 0; i < BOOKS.length; i++) {
+    BOOK_META[BOOKS[i].a] = BOOKS[i];
+    BOOK_META[BOOKS[i].n] = BOOKS[i];
+  }
+
+  function parseVerseSpec(spec) {
+    var parts = String(spec).split(/\s*,\s*/);
+    var out = [];
+    for (var i = 0; i < parts.length; i++) {
+      var m = parts[i].match(/^(\d+)(?:\s*[\-–]\s*(\d+))?(상|하)?$/);
+      if (!m) continue;
+      out.push({
+        start: parseInt(m[1], 10),
+        end: m[2] ? parseInt(m[2], 10) : parseInt(m[1], 10),
+        suffix: m[3] || ''
+      });
+    }
+    return out;
+  }
+
+  function parseBibleXml(xml) {
+    var doc = new DOMParser().parseFromString(xml, 'text/xml');
+    var data = {};
+    var books = doc.getElementsByTagName('Book');
+    for (var i = 0; i < books.length; i++) {
+      var b = books[i];
+      var abbrev = b.getAttribute('abbrevKo');
+      var nameKo = b.getAttribute('nameKo');
+      var chapters = {};
+      var chs = b.getElementsByTagName('Chapter');
+      for (var j = 0; j < chs.length; j++) {
+        var ch = chs[j];
+        var num = ch.getAttribute('num');
+        var verses = {};
+        var vs = ch.getElementsByTagName('Verse');
+        for (var k = 0; k < vs.length; k++) {
+          verses[vs[k].getAttribute('num')] = vs[k].textContent;
+        }
+        chapters[num] = verses;
+      }
+      var entry = { abbrevKo: abbrev, nameKo: nameKo, chapters: chapters };
+      data[abbrev] = entry;
+      if (nameKo) data[nameKo] = entry;
+    }
+    return data;
+  }
+
+  var bibleData = null;
+  var biblePromise = null;
+  function loadBible() {
+    if (bibleData) return Promise.resolve(bibleData);
+    if (biblePromise) return biblePromise;
+    biblePromise = fetch(XML_URL).then(function(r){
+      if (!r.ok) throw new Error('XML fetch ' + r.status);
+      return r.text();
+    }).then(function(xml){
+      var data = parseBibleXml(xml);
+      bibleData = data;
+      window.VrefBible = { data: data, meta: BOOK_META };
+      document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+      return data;
+    }).catch(function(e){
+      console.warn('[vref] Bible XML 로드 실패:', e);
+      bibleData = {};
+      window.VrefBible = { data: {}, meta: BOOK_META };
+      document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+      return bibleData;
+    });
+    return biblePromise;
+  }
+
+  var tooltipEl = null;
+  var backdropEl = null;
+  var activeLink = null;
+  var hideTimer = null;
+
+  function isMobileView() {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
+  function ensureTooltip() {
+    if (tooltipEl) return tooltipEl;
+    tooltipEl = document.createElement('div');
+    tooltipEl.id = 'vref-tooltip';
+    document.body.appendChild(tooltipEl);
+    return tooltipEl;
+  }
+
+  function ensureBackdrop() {
+    if (backdropEl) return backdropEl;
+    backdropEl = document.createElement('div');
+    backdropEl.id = 'vref-tt-backdrop';
+    backdropEl.addEventListener('click', hideTooltip);
+    document.body.appendChild(backdropEl);
+    return backdropEl;
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, function(c){
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+    });
+  }
+
+  function buildVerseLines(dataset, bookKey, chapter, versesStr) {
+    if (!dataset || !Object.keys(dataset).length) {
+      return { html: '<span class="vref-tt-empty">— 불러오는 중… —</span>', empty: true };
+    }
+    var entry = dataset[bookKey];
+    if (!entry) return { html: '<span class="vref-tt-empty">— 책을 찾을 수 없음 —</span>', empty: true };
+    var ch = entry.chapters[String(chapter)];
+    if (!ch) return { html: '<span class="vref-tt-empty">— ' + chapter + '장을 찾을 수 없음 —</span>', empty: true };
+    var groups = parseVerseSpec(versesStr);
+    var pieces = [];
+    for (var gi = 0; gi < groups.length; gi++) {
+      var g = groups[gi];
+      for (var v = g.start; v <= g.end; v++) {
+        var t = ch[String(v)];
+        if (typeof t === 'undefined') continue;
+        pieces.push('<div class="vref-tt-verse"><span class="vref-tt-vnum">[' + v + ']</span>' + escHtml(t) + '</div>');
+      }
+    }
+    if (!pieces.length) return { html: '<span class="vref-tt-empty">— 해당 절을 찾을 수 없음 —</span>', empty: true };
+    return { html: pieces.join(''), empty: false };
+  }
+
+  function buildContent(bookKey, chapter, versesStr) {
+    var meta = BOOK_META[bookKey];
+    var koLabel = (meta ? meta.n : bookKey) + ' ' + chapter + '장 ' + versesStr + '절';
+    var ko = buildVerseLines(bibleData, bookKey, chapter, versesStr);
+    return (
+      '<div class="vref-tt-book">' + escHtml(koLabel) + '</div>' +
+      '<div class="vref-tt-body">' + ko.html + '</div>'
+    );
+  }
+
+  function positionTooltip(linkEl) {
+    var rect = linkEl.getBoundingClientRect();
+    var ttRect = tooltipEl.getBoundingClientRect();
+    var docY = window.scrollY || window.pageYOffset;
+    var docX = window.scrollX || window.pageXOffset;
+    var margin = 12;
+    var top = rect.bottom + docY + 10;
+    var left = rect.left + docX + (rect.width / 2) - (ttRect.width / 2);
+    if (left < docX + margin) left = docX + margin;
+    if (left + ttRect.width > docX + window.innerWidth - margin) {
+      left = docX + window.innerWidth - margin - ttRect.width;
+    }
+    if (rect.bottom + ttRect.height + 10 > window.innerHeight && rect.top - ttRect.height - 10 > 0) {
+      top = rect.top + docY - ttRect.height - 10;
+    }
+    tooltipEl.style.top = top + 'px';
+    tooltipEl.style.left = left + 'px';
+  }
+
+  function renderTooltipInner(html, mobile) {
+    if (mobile) {
+      tooltipEl.innerHTML =
+        '<div class="vref-tt-handle"></div>' +
+        '<button class="vref-tt-close" type="button" aria-label="닫기">&times;</button>' +
+        html;
+      var btn = tooltipEl.querySelector('.vref-tt-close');
+      if (btn) btn.addEventListener('click', function(e){ e.stopPropagation(); hideTooltip(); });
+    } else {
+      tooltipEl.innerHTML = html;
+    }
+  }
+
+  function showTooltip(linkEl) {
+    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+    activeLink = linkEl;
+    ensureTooltip();
+    var mobile = isMobileView();
+    if (mobile) ensureBackdrop();
+    var b = linkEl.dataset.book;
+    var c = linkEl.dataset.chapter;
+    var v = linkEl.dataset.verses;
+    if (!b || !c || !v) return;
+    function render() {
+      renderTooltipInner(buildContent(b, parseInt(c, 10), v), mobile);
+      if (mobile) {
+        tooltipEl.style.top = '';
+        tooltipEl.style.left = '';
+        tooltipEl.scrollTop = 0;
+        backdropEl.dataset.show = '1';
+      } else {
+        positionTooltip(linkEl);
+      }
+      tooltipEl.dataset.show = '1';
+    }
+    render();
+    if (!bibleData) {
+      loadBible().then(function(){
+        if (activeLink !== linkEl) return;
+        render();
+      });
+    }
+  }
+
+  function hideTooltip() {
+    activeLink = null;
+    if (tooltipEl) tooltipEl.dataset.show = '0';
+    if (backdropEl) backdropEl.dataset.show = '0';
+  }
+
+  // ----- Bridge: <span class="verse-link" data-verse="마 17:20"> → vref-link -----
+  function upgradeVerseLinks() {
+    document.querySelectorAll('.verse-link[data-verse]').forEach(function(el){
+      if (el.dataset.bound) return;
+      var m = el.dataset.verse.match(/^(\S+)\s+(\d+):(.+)$/);
+      if (!m) return;
+      el.classList.add('vref-link');
+      el.dataset.book = m[1];
+      el.dataset.chapter = m[2];
+      el.dataset.verses = m[3];
+      el.dataset.bound = '1';
+      if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+    });
+  }
+
+  function bind() {
+    document.addEventListener('mouseover', function(e){
+      if (isMobileView()) return;
+      var link = e.target && e.target.closest && e.target.closest('.vref-link');
+      if (link) showTooltip(link);
+    });
+    document.addEventListener('mouseout', function(e){
+      if (isMobileView()) return;
+      var link = e.target && e.target.closest && e.target.closest('.vref-link');
+      if (!link) return;
+      var to = e.relatedTarget;
+      if (to && to.closest && to.closest('.vref-link') === link) return;
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(hideTooltip, 100);
+    });
+    document.addEventListener('click', function(e){
+      if (!isMobileView()) return;
+      var link = e.target && e.target.closest && e.target.closest('.vref-link');
+      if (link) {
+        e.preventDefault();
+        if (activeLink === link) hideTooltip();
+        else showTooltip(link);
+      }
+    });
+    document.addEventListener('focusin', function(e){
+      if (isMobileView()) return;
+      var link = e.target && e.target.closest && e.target.closest('.vref-link');
+      if (link) showTooltip(link);
+    });
+    document.addEventListener('focusout', function(e){
+      if (isMobileView()) return;
+      var link = e.target && e.target.closest && e.target.closest('.vref-link');
+      if (link) hideTooltip();
+    });
+    window.addEventListener('scroll', function(){
+      if (isMobileView()) return;
+      hideTooltip();
+    }, true);
+    window.addEventListener('resize', hideTooltip);
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') hideTooltip();
+    });
+  }
+
+  function init() {
+    upgradeVerseLinks();
+    bind();
+    loadBible();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
