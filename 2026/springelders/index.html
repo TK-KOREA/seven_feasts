@@ -1220,7 +1220,7 @@
             const num = String(m.id).padStart(2,'0');
             const base = `https://tk-korea.github.io/seven_feasts/2026/springelders`;
             // Resource buttons (popup or external HTML)
-            const overviewBtn = `<button type="button" class="day-btn day-active" onclick="openOutline(${m.id})"><i class="fas fa-list-ul mr-1 text-[10px]"></i>개요</button>`;
+            const overviewBtn = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Outline.html">개요</span>`;
             const hymnBtn    = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Hymn.html">찬송</span>`;
             const prayerBtn  = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Prayer.html">기도문</span>`;
             const truthBtn   = `<span class="day-btn day-disabled checking" data-url="${base}/M${m.id}Truth.html">진리</span>`;
