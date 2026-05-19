@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>부활 안에서 생명을 공급함</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+<style>
+  :root {
+    --cream:        #F5EFE4;
+    --cream-soft:   #FAF5EC;
+    --cream-deep:   #EDE4D2;
+    --ink:          #2D2620;
+    --ink-soft:     #4A4036;
+    --ink-mute:     #8A7F70;
+    --bark:         #8B6F47;
+    --bark-deep:    #6B5435;
+    --moss:         #7A9466;
+    --moss-deep:    #5C7C4F;
+    --amber:        #C9A467;
+    --amber-deep:   #B08A4A;
+    --night:        #2A3447;
+    --night-soft:   #3A4558;
+    --line:         #D8CDB8;
+    --line-soft:    #E8DFCC;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .serif { font-family: 'Noto Serif KR', serif; }
+
+  /* ───────── Layout container ───────── */
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    background: var(--cream);
+  }
+
+  section {
+    padding: 96px 28px;
+    position: relative;
+  }
+
+  /* ───────── Progress bar (growing stick) ───────── */
+  .progress-rail {
+    position: fixed;
+    top: 0;
+    right: 18px;
+    height: 100vh;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 50;
+  }
+  .progress-track {
+    width: 1px;
+    height: 60vh;
+    background: var(--line);
+    position: relative;
+  }
+  .progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 0%;
+    background: var(--moss-deep);
+    transition: height 0.15s ease-out;
+  }
+  .progress-leaf {
+    position: absolute;
+    left: -7px;
+    top: 0%;
+    transform: translateY(-50%);
+    transition: top 0.15s ease-out;
+  }
+
+  /* ───────── Chapter label ───────── */
+  .chapter-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .chapter-label .num {
+    font-family: 'Noto Serif KR', serif;
+    color: var(--bark-deep);
+    font-style: italic;
+  }
+  .chapter-label .line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  h1.hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  h2.chap-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  h2.chap-title em {
+    font-style: italic;
+    color: var(--bark-deep);
+    font-weight: 400;
+  }
+
+  .lead {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  .pullquote {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink);
+    padding: 24px 0 24px 20px;
+    border-left: 2px solid var(--amber);
+    margin: 28px 0;
+    letter-spacing: -0.015em;
+  }
+
+  /* ───────── Hero (chapter 0) ───────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 28px 60px;
+    position: relative;
+  }
+  .hero-stick {
+    margin: 0 auto 56px;
+    width: 60px;
+    height: 200px;
+    opacity: 0;
+    animation: rise 1.4s 0.2s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero-eyebrow {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeup 1s 1.0s ease-out forwards;
+  }
+  .hero-title {
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeup 1s 1.2s ease-out forwards;
+  }
+  .hero-sub {
+    text-align: center;
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-mute);
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeup 1s 1.5s ease-out forwards;
+  }
+  .scroll-hint {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--ink-mute);
+    opacity: 0;
+    animation: fadeup 1s 1.8s ease-out forwards, blink 2.6s 2.6s ease-in-out infinite;
+  }
+  .scroll-hint .dot {
+    display: block;
+    width: 1px;
+    height: 28px;
+    background: var(--ink-mute);
+    margin: 14px auto 0;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeup {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 0.9; }
+  }
+
+  /* ───────── Reveal on scroll ───────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ───────── Compare two cards (vs) ───────── */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 28px 0;
+  }
+  .compare-card {
+    background: var(--cream-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .compare-card.bad { background: var(--cream-soft); }
+  .compare-card.good { background: #F0EBDA; border-color: var(--moss); }
+  .compare-icon {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .compare-label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .compare-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .compare-card.good .compare-text { color: var(--moss-deep); font-weight: 500; }
+  .compare-card.bad .compare-text { color: var(--ink-mute); text-decoration: line-through; text-decoration-color: var(--bark); text-decoration-thickness: 1px; }
+
+  /* ───────── Two sisters story cards ───────── */
+  .story-card {
+    background: var(--cream-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .story-card .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .story-card.alive .tag { background: rgba(122, 148, 102, 0.15); color: var(--moss-deep); }
+  .story-card.dead .tag  { background: rgba(139, 111, 71, 0.12); color: var(--bark-deep); }
+  .story-card h4 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .story-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* ───────── Steps (chapter 7) ───────── */
+  .steps {
+    margin: 28px 0;
+    position: relative;
+  }
+  .step {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 22px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--moss);
+    color: var(--moss-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 17px;
+    background: var(--cream-soft);
+  }
+  .step-body h4 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .step-body p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ───────── Detail button (leaf icon) ───────── */
+  .detail-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    background: none;
+    border: 1px solid var(--ink-mute);
+    color: var(--ink-soft);
+    padding: 9px 18px;
+    border-radius: 100px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    letter-spacing: 0.02em;
+  }
+  .detail-btn:hover, .detail-btn:active {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+  .detail-btn svg { transition: transform 0.3s ease; }
+  .detail-btn:hover svg { transform: rotate(15deg); }
+
+  /* ───────── Chapter 5: Night scene ───────── */
+  section.night-scene {
+    background: var(--night);
+    color: var(--cream);
+    padding: 110px 28px 110px;
+    position: relative;
+    overflow: hidden;
+  }
+  section.night-scene::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #E8DFC8 0%, #C9A467 60%, transparent 100%);
+    opacity: 0.5;
+    filter: blur(2px);
+  }
+  section.night-scene .chapter-label { color: rgba(245, 239, 228, 0.5); }
+  section.night-scene .chapter-label .num { color: var(--amber); }
+  section.night-scene .chapter-label .line { background: rgba(245, 239, 228, 0.15); }
+  section.night-scene h2.chap-title { color: var(--cream); }
+  section.night-scene h2.chap-title em { color: var(--amber); }
+  section.night-scene .lead { color: rgba(245, 239, 228, 0.8); }
+  section.night-scene .pullquote {
+    color: var(--cream);
+    border-left-color: var(--amber);
+  }
+  section.night-scene .detail-btn {
+    color: var(--cream);
+    border-color: rgba(245, 239, 228, 0.4);
+  }
+  section.night-scene .detail-btn:hover {
+    background: var(--cream);
+    color: var(--night);
+    border-color: var(--cream);
+  }
+
+  /* twelve sticks scene */
+  .sticks-scene {
+    margin: 32px 0;
+    padding: 24px 0;
+    border-top: 1px solid rgba(245, 239, 228, 0.15);
+    border-bottom: 1px solid rgba(245, 239, 228, 0.15);
+  }
+  .sticks-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+  .sticks-row svg { display: block; }
+  .sticks-caption {
+    text-align: center;
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--amber);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  /* timeline mini */
+  .timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 24px 0 4px;
+  }
+  .timeline-step {
+    text-align: center;
+    padding: 14px 8px;
+    border: 1px solid rgba(245, 239, 228, 0.18);
+    border-radius: 10px;
+    background: rgba(245, 239, 228, 0.03);
+  }
+  .timeline-step svg { display: block; margin: 0 auto 8px; }
+  .timeline-step .label {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 12px;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+  }
+  .timeline-step .label em { color: var(--amber); font-style: italic; }
+
+  /* ───────── Chapter 6: contrast list ───────── */
+  .contrast {
+    margin: 28px 0;
+  }
+  .contrast-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .contrast-row:last-child { border-bottom: none; }
+  .contrast-mark {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+  }
+  .contrast-mark.no { border: 1px solid var(--bark); color: var(--bark-deep); }
+  .contrast-mark.yes { background: var(--moss); color: var(--cream); }
+  .contrast-row.no .contrast-text { color: var(--ink-mute); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .contrast-row.yes .contrast-text {
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .contrast-text { font-size: 15px; }
+
+  /* ───────── Closing (chapter 8) ───────── */
+  .closing {
+    text-align: center;
+    background: var(--cream-soft);
+  }
+  .closing h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 28px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 36px 0;
+    letter-spacing: -0.02em;
+  }
+  .closing .two-sticks {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin: 48px 0 32px;
+  }
+  .closing .stick-with-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .closing .stick-with-label .lbl {
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+  .closing .stick-with-label.dry .lbl { color: var(--bark-deep); }
+  .closing .stick-with-label.alive .lbl { color: var(--moss-deep); }
+  .closing .final-quote {
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-top: 36px;
+    line-height: 1.7;
+    padding: 0 20px;
+  }
+
+  /* ───────── Footer / source ───────── */
+  footer {
+    padding: 60px 28px 80px;
+    background: var(--cream-deep);
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  footer .ornament {
+    width: 28px;
+    height: 1px;
+    background: var(--ink-mute);
+    margin: 0 auto 24px;
+  }
+  footer .source-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  footer .source-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ───────── Modal ───────── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(45, 38, 32, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+  .modal {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+    width: 100%;
+    max-width: 480px;
+    max-height: 88vh;
+    background: var(--cream-soft);
+    border-radius: 22px 22px 0 0;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal.open { transform: translate(-50%, 0); }
+
+  .modal-handle {
+    padding: 12px 0 8px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .modal-handle::before {
+    content: '';
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--line);
+  }
+  .modal-header {
+    padding: 8px 24px 14px;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .modal-header h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .modal-header .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .modal-body {
+    padding: 22px 24px 36px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+  }
+  .modal-body p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .modal-body .highlight {
+    background: linear-gradient(transparent 62%, rgba(201, 164, 103, 0.35) 62%);
+    color: var(--ink);
+    padding: 0 2px;
+  }
+  .modal-body .ref {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--bark-deep);
+    background: rgba(139, 111, 71, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 0 2px;
+    font-weight: 500;
+  }
+
+  body.modal-open { overflow: hidden; }
+
+  /* ───────── Responsive (slightly bigger screens) ───────── */
+  @media (min-width: 481px) {
+    .page { box-shadow: 0 0 60px rgba(45, 38, 32, 0.08); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- progress rail -->
+<div class="progress-rail">
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+    <div class="progress-leaf" id="progressLeaf">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1 C 3 4, 3 8, 7 13 C 11 8, 11 4, 7 1 Z" fill="#7A9466" stroke="#5C7C4F" stroke-width="0.8"/>
+        <path d="M7 3 L 7 12" stroke="#5C7C4F" stroke-width="0.6"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ═══════════ ⓪ HERO ═══════════ -->
+<section class="hero">
+
+  <!-- dry stick svg -->
+  <svg class="hero-stick" viewBox="0 0 60 200" fill="none" stroke="#6B5435" stroke-width="1.8" stroke-linecap="round">
+    <path d="M30 10 C 28 50, 33 90, 29 130 C 31 160, 28 185, 30 195" />
+    <path d="M30 30 C 26 35, 25 38, 22 40" stroke-width="1.2"/>
+    <path d="M30 75 C 34 78, 36 80, 39 81" stroke-width="1.2"/>
+    <path d="M30 130 C 27 135, 26 138, 23 140" stroke-width="1.2"/>
+    <path d="M30 165 C 33 168, 35 169, 38 170" stroke-width="1.2"/>
+    <!-- subtle splits at top -->
+    <path d="M30 10 L 27 4" stroke-width="1.2"/>
+    <path d="M30 10 L 33 5" stroke-width="1.2"/>
+  </svg>
+
+  <div class="hero-eyebrow">진리 · 셋</div>
+  <h1 class="hero-title">부활 안에서<br/>생명을 공급함</h1>
+  <div class="hero-sub">— 마른 막대기 하나에서<br/>시작된 이야기 —</div>
+
+  <div class="scroll-hint">
+    SCROLL
+    <span class="dot"></span>
+  </div>
+</section>
+
+<!-- ═══════════ ① 문제 ═══════════ -->
+<section class="reveal">
+  <div class="chapter-label"><span class="num">i.</span> <span>문제</span> <span class="line"></span></div>
+  <h2 class="chap-title">우리는 왜 <em>약합니까?</em></h2>
+  <p class="lead">많은 믿는 이들에게 생명이 부족합니다. 그래서 약하고 죄를 짓습니다.</p>
+  <p class="lead">교회 안에 선하고 열심 있는 사람은 많지만, 다른 사람들에게 생명을 공급하기 위해 죽음과 부활을 기꺼이 체험하려는 사람은 드뭅니다.</p>
+  <div class="pullquote">부활은 생명을 공급하는 통로입니다.</div>
+  <button class="detail-btn" data-modal="m1">
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1 C 3 4, 3 8, 7 13 C 11 8, 11 4, 7 1 Z" fill="currentColor"/></svg>
+    자세히 보기
+  </button>
+</section>
+
+<!-- ═══════════ ② 교회는 유기체 ═══════════ -->
+<section class="reveal">
+  <div class="chapter-label"><span class="num">ii.</span> <span>진리의 발견</span> <span class="line"></span></div>
+  <h2 class="chap-title">교회는 <em>조직이 아니라</em><br/>그리스도의 유기체입니다</h2>
+  <p class="lead">외면적으로 사람의 몸은 여러 지체로 구성되어 조직처럼 보이지만, 실제 중요한 것은 그 안에 흐르는 생명입니다.</p>
+
+  <div class="compare">
+    <div class="compare-card bad">
+      <div class="compare-icon">
+        <!-- table icon -->
+        <svg width="48" height="44" viewBox="0 0 48 44" fill="none" stroke="#8B6F47" stroke-width="1.5" stroke-linecap="round">
+          <line x1="6" y1="16" x2="42" y2="16"/>
+          <line x1="6" y1="20" x2="42" y2="20"/>
+          <line x1="10" y1="20" x2="10" y2="40"/>
+          <line x1="38" y1="20" x2="38" y2="40"/>
+        </svg>
+      </div>
+      <div class="compare-label">조직</div>
+      <div class="compare-text">결합된 목재</div>
+    </div>
+    <div class="compare-card good">
+      <div class="compare-icon">
+        <!-- heart/organic icon -->
+        <svg width="48" height="44" viewBox="0 0 48 44" fill="none" stroke="#5C7C4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 38 C 10 28, 6 18, 12 12 C 18 7, 22 12, 24 16 C 26 12, 30 7, 36 12 C 42 18, 38 28, 24 38 Z"/>
+          <path d="M16 22 L 20 22 L 22 18 L 25 26 L 27 22 L 32 22" stroke-width="1.1"/>
+        </svg>
+      </div>
+      <div class="compare-label">유기체</div>
+      <div class="compare-text">살아 있는 몸</div>
+    </div>
+  </div>
+
+  <div class="pullquote">그리스도께서 몸의 생명이 되십니다.</div>
+  <button class="detail-btn" data-modal="m2">
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1 C 3 4, 3 8, 7 13 C 11 8, 11 4, 7 1 Z" fill="currentColor"/></svg>
+    자세히 보기
+  </button>
+</section>
+
+<!-- ═══════════ ③ 살아있는 봉사 ═══════════ -->
+<section class="reveal">
+  <div class="chapter-label"><span class="num">iii.</span> <span>살아있는 봉사</span> <span class="line"></span></div>
+  <h2 class="chap-title">두 자매의 <em>이야기</em></h2>
+  <p class="lead">우리의 봉사는 안에 있는 생명이 자라난 결과일까요, 아니면 외적인 안배일 뿐일까요?</p>
+
+  <div class="story-card alive">
+    <span class="tag">생명에서</span>
+    <h4>첫째 자매</h4>
+    <p>주님을 매우 사랑하고 가까이하며 기꺼이 주님의 다루심을 받습니다. 영적 공과를 배우고 깊은 생명의 체험을 하며, 자연스럽게 성도들을 섬기게 됩니다. 그녀의 봉사는 자신에게서 나온 것이 아니라 하나님의 생명이 자란 결과입니다.</p>
+  </div>
+  <div class="story-card dead">
+    <span class="tag">조직에서</span>
+    <h4>둘째 자매</h4>
+    <p>매우 총명하고 유능하며 일처리도 깔끔합니다. 그러나 영적 생명의 상태를 전혀 고려하지 않고 봉사하도록 안배된다면, 그것은 조직적인 안배일 뿐 생명이 자라난 결과가 아닙니다.</p>
+  </div>
+
+  <button class="detail-btn" data-modal="m3">
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1 C 3 4, 3 8, 7 13 C 11 8, 11 4, 7 1 Z" fill="currentColor"/></svg>
+    자세히 보기
+  </button>
+</section>
+
+<!-- ═══════════ ④ 장로/집사 ═══════════ -->
+<section class="reveal">
+  <div class="chapter-label"><span class="num">iv.</span> <span>인도자를 세움</span> <span class="line"></span></div>
+  <h2 class="chap-title">누가 <em>장로와 집사를</em><br/>세우는가</h2>
+  <p class="lead">사람이 투표로 뽑는 것이 아니라, 성령께서 생명의 분량을 따라 나타내십니다.</p>
+
+  <div class="compare">
+    <div class="compare-card bad">
+      <div class="compare-icon">
+        <svg width="48" height="44" viewBox="0 0 48 44" fill="none" stroke="#8B6F47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="10" y="14" width="28" height="22" rx="2"/>
+          <line x1="10" y1="22" x2="38" y2="22"/>
+          <path d="M22 8 L 24 14 L 26 8" />
+        </svg>
+      </div>
+      <div class="compare-label">기독교의 방식</div>
+      <div class="compare-text">투표와 선거</div>
+    </div>
+    <div class="compare-card good">
+      <div class="compare-icon">
+        <!-- dove / spirit icon -->
+        <svg width="48" height="44" viewBox="0 0 48 44" fill="none" stroke="#5C7C4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 26 C 18 18, 26 16, 34 20 C 36 22, 38 24, 38 24 C 36 28, 30 32, 22 32 C 18 32, 14 30, 14 26 Z"/>
+          <path d="M30 20 L 36 14 L 34 22"/>
+          <circle cx="32" cy="22" r="0.8" fill="#5C7C4F"/>
+        </svg>
+      </div>
+      <div class="compare-label">성경의 방식</div>
+      <div class="compare-text">성령의 나타냄</div>
+    </div>
+  </div>
+
+  <div class="pullquote">사람의 뜻이 아니라 성령에게서 나옵니다.</div>
+  <button class="detail-btn" data-modal="m4">
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1 C 3 4, 3 8, 7 13 C 11 8, 11 4, 7 1 Z" fill="currentColor"/></svg>
+    자세히 보기
+  </button>
+</section>
+
+<!-- ═══════════ ⑤ 클라이맥스 - 아론의 막대기 (밤 배경) ═══════════ -->
+<section class="night-scene reveal">
+  <div class="chapter-label"><span class="num">v.</span> <span>결정적 장면</span> <span class="line"></span></div>
+  <h2 class="chap-title">열두 막대기와<br/><em>어두운 밤</em></h2>
+  <p class="lead">반역이 있었습니다. 누가 참된 권위인지 아무도 알지 못했습니다. 모세는 열두 인도자의 막대기를 가져다가 회막 안 여호와 앞에 두었습니다.</p>
+
+  <div class="sticks-scene">
+    <div class="sticks-row">
+      <!-- 11 dry sticks + 1 alive in center -->
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <!-- the alive one (aaron's rod) -->
+      <svg width="18" height="62" viewBox="0 0 18 62" fill="none" stroke="#C9A467" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: -2px;">
+        <path d="M9 12 L 9 60" stroke-width="1.4"/>
+        <!-- bud -->
+        <path d="M9 12 C 5 9, 4 6, 6 4 C 8 5, 9 8, 9 12 Z" fill="rgba(201,164,103,0.15)"/>
+        <!-- flower -->
+        <circle cx="13" cy="14" r="2" fill="rgba(201,164,103,0.15)"/>
+        <path d="M11 14 L 15 14 M 13 12 L 13 16" stroke-width="0.8"/>
+        <!-- almond -->
+        <ellipse cx="6" cy="20" rx="2" ry="3" fill="rgba(201,164,103,0.2)"/>
+        <ellipse cx="12" cy="24" rx="1.8" ry="2.8" fill="rgba(201,164,103,0.2)"/>
+        <!-- small leaf -->
+        <path d="M9 30 C 5 31, 4 33, 5 35 C 7 35, 9 33, 9 30 Z" fill="rgba(201,164,103,0.1)" stroke-width="0.8"/>
+      </svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+      <svg width="9" height="56" viewBox="0 0 9 56" fill="none" stroke="#6B5E50" stroke-width="1.2" stroke-linecap="round"><path d="M4.5 4 L 4.5 54"/></svg>
+    </div>
+    <div class="sticks-caption">— 다음 날 아침, 한 막대기에서 —</div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-step">
+      <svg width="22" height="30" viewBox="0 0 22 30" fill="none" stroke="#C9A467" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 6 L 11 28"/>
+        <path d="M11 6 C 7 4, 6 2, 8 1 C 10 2, 11 4, 11 6 Z" fill="rgba(201,164,103,0.2)"/>
+      </svg>
+      <div class="label"><em>싹</em>이 나고</div>
+    </div>
+    <div class="timeline-step">
+      <svg width="22" height="30" viewBox="0 0 22 30" fill="none" stroke="#C9A467" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 8 L 11 28"/>
+        <circle cx="11" cy="6" r="2.5" fill="rgba(201,164,103,0.2)"/>
+        <path d="M11 6 L 7 4 M 11 6 L 15 4 M 11 6 L 9 2 M 11 6 L 13 2"/>
+      </svg>
+      <div class="label"><em>꽃</em>이 피며</div>
+    </div>
+    <div class="timeline-step">
+      <svg width="22" height="30" viewBox="0 0 22 30" fill="none" stroke="#C9A467" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 12 L 11 28"/>
+        <ellipse cx="8" cy="8" rx="2" ry="3" fill="rgba(201,164,103,0.3)"/>
+        <ellipse cx="14" cy="6" rx="2" ry="3" fill="rgba(201,164,103,0.3)"/>
+      </svg>
+      <div class="label"><em>아몬드</em>가 맺힘</div>
+    </div>
+  </div>
+
+  <div class="pullquote">생명이 없는 곳에는 권위가 없습니다.</div>
+
+  <button class="detail-btn" data-modal="m5">
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1 C 3 4, 3 8, 7 13 C 11 8, 11 4, 7 1 Z" fill="currentColor"/></svg>
+    자세히 보기
+  </button>
+</section>
+
+<!-- ═══════════ ⑥ 참된 권위 ═══════════ -->
+<section class="reveal">
+  <div class="chapter-label"><span class="num">vi.</span> <span>참된 권위</span> <span class="line"></span></div>
+  <h2 class="chap-title">권위는 <em>어디에서</em><br/>나옵니까?</h2>
+  <p class="lead">주님의 회복 안에서 필요한 것은 영향력도 유창함도 지식도 재능도 아닙니다.</p>
+
+  <div class="contrast">
+    <div class="contrast-row no">
+      <div class="contrast-mark no">×</div>
+      <div class="contrast-text">영향력</div>
+    </div>
+    <div class="contrast-row no">
+      <div class="contrast-mark no">×</div>
+      <div class="contrast-text">유창함</div>
+    </div>
+    <div class="contrast-row no">
+      <div class="contrast-mark no">×</div>
+      <div class="contrast-text">지식</div>
+    </div>
+    <div class="contrast-row no">
+      <div class="contrast-mark no">×</div>
+      <div class="contrast-text">재능</div>
+    </div>
+    <div class="contrast-row yes">
+      <div class="contrast-mark yes">✓</div>
+      <div class="contrast-text">사람들을 먹이기 위해 싹이 나고 꽃이 피고 열매를 맺는 생명</div>
+    </div>
+  </div>
+
+  <div class="pullquote">생명이 권위입니다.</div>
+  <button class="detail-btn" data-modal="m6">
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1 C 3 4, 3 8, 7 13 C 11 8, 11 4, 7 1 Z" fill="currentColor"/></svg>
+    자세히 보기
+  </button>
+</section>
+
+<!-- ═══════════ ⑦ 우리가 취할 길 ═══════════ -->
+<section class="reveal">
+  <div class="chapter-label"><span class="num">vii.</span> <span>우리가 취할 길</span> <span class="line"></span></div>
+  <h2 class="chap-title">십자가에 못 박힌<br/><em>생활</em></h2>
+  <p class="lead">교회의 상태가 어떠하든, 가장 합당한 길은 부정적 상황을 만지지 않고 부활 안에서 십자가에 못 박힌 생활을 하는 것입니다.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">i</div>
+      <div class="step-body">
+        <h4>부정적 상황을 만지지 않기</h4>
+        <p>조직적 요소를 다투지 말고, 주기적으로 우리 자신에게서 조직을 제거합니다.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">ii</div>
+      <div class="step-body">
+        <h4>부활 안에서 십자가에 못 박힌 생활</h4>
+        <p>죽음을 통과하여 부활 안에 사는 자만이 생명을 공급할 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">iii</div>
+      <div class="step-body">
+        <h4>같은 길의 지체들과 하나 됨</h4>
+        <p>그러한 생활을 하는 이는 외롭지 않습니다. 영 안에서 함께 그리스도의 몸을 건축합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="detail-btn" data-modal="m7">
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1 C 3 4, 3 8, 7 13 C 11 8, 11 4, 7 1 Z" fill="currentColor"/></svg>
+    자세히 보기
+  </button>
+</section>
+
+<!-- ═══════════ ⑧ 마무리 ═══════════ -->
+<section class="closing reveal">
+  <div class="chapter-label" style="justify-content:center;"><span class="line"></span> <span>맺음</span> <span class="line"></span></div>
+  <h2>당신의 막대기는<br/>어떻습니까?</h2>
+
+  <div class="two-sticks">
+    <div class="stick-with-label dry">
+      <svg width="22" height="100" viewBox="0 0 22 100" fill="none" stroke="#8B6F47" stroke-width="1.5" stroke-linecap="round">
+        <path d="M11 4 C 9 30, 13 60, 10 88 C 12 94, 10 98, 11 98"/>
+        <path d="M11 4 L 8 1 M 11 4 L 14 2"/>
+      </svg>
+      <div class="lbl">마른 막대기</div>
+    </div>
+    <div class="stick-with-label alive">
+      <svg width="40" height="100" viewBox="0 0 40 100" fill="none" stroke="#5C7C4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 22 L 20 98" stroke-width="1.6"/>
+        <!-- bud / leaf -->
+        <path d="M20 22 C 14 18, 12 14, 15 12 C 18 14, 20 17, 20 22 Z" fill="rgba(122,148,102,0.18)"/>
+        <path d="M20 30 C 26 28, 28 24, 26 21 C 23 23, 21 26, 20 30 Z" fill="rgba(122,148,102,0.18)"/>
+        <!-- flower -->
+        <circle cx="14" cy="36" r="3" fill="rgba(201,164,103,0.25)" stroke="#C9A467"/>
+        <path d="M11 36 L 17 36 M 14 33 L 14 39" stroke="#C9A467" stroke-width="0.8"/>
+        <!-- almonds -->
+        <ellipse cx="26" cy="48" rx="3" ry="4.5" fill="rgba(201,164,103,0.3)" stroke="#C9A467"/>
+        <ellipse cx="15" cy="58" rx="2.6" ry="4" fill="rgba(201,164,103,0.3)" stroke="#C9A467"/>
+        <!-- another leaf -->
+        <path d="M20 70 C 26 70, 28 73, 26 76 C 23 75, 21 73, 20 70 Z" fill="rgba(122,148,102,0.18)"/>
+      </svg>
+      <div class="lbl">싹 난 막대기</div>
+    </div>
+  </div>
+
+  <div class="final-quote">
+    오직 싹이 나는 생명만이<br/>교회를 건축합니다.
+  </div>
+</section>
+
+<!-- footer / source -->
+<footer>
+  <div class="ornament"></div>
+  <div class="source-label">출처</div>
+  <div class="source-text">
+    위트니스 리 전집, 1977년, 3권<br/>
+    『주님의 회복에서의 현재의 필요와 방향에 대한 교통』<br/>
+    23–24쪽
+  </div>
+</footer>
+
+</div><!-- /.page -->
+
+<!-- ═══════════ MODAL ═══════════ -->
+<div class="modal-overlay" id="overlay"></div>
+<div class="modal" id="modal">
+  <div class="modal-handle"></div>
+  <div class="modal-header">
+    <div>
+      <div class="eyebrow" id="modalEyebrow">자세히</div>
+      <h3 id="modalTitle"></h3>
+    </div>
+    <button class="modal-close" id="modalClose" aria-label="닫기">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#2D2620" stroke-width="1.5" stroke-linecap="round">
+        <path d="M3 3 L 11 11 M 11 3 L 3 11"/>
+      </svg>
+    </button>
+  </div>
+  <div class="modal-body" id="modalBody"></div>
+</div>
+
+<!-- modal contents (hidden) -->
+<div style="display:none">
+  <template id="t-m1">
+    <p><strong>요한일서 5장 14–17절</strong>은 우리가 영원한 생명을 누릴 수 있을 뿐 아니라, 이 생명을 그리스도의 몸의 다른 지체들에게 공급할 수 있음을 보여 줍니다.</p>
+    <p>교회는 그리스도의 유기적인 몸으로서 <span class="highlight">생명 공급을 필요로 합니다</span>. 많은 믿는 이들에게 생명이 부족하기 때문에 약하고 죄를 짓습니다. 그들에게는 생명의 넘치는 공급이 필요합니다.</p>
+    <p>그러나 교회 안에는 선하고 열심이 있는 사람들이 많지만, 다른 사람들에게 생명을 공급하기 위해 <span class="highlight">죽음과 부활을 기꺼이 체험하려는 사람은 드뭅니다</span>.</p>
+    <p>부활은 생명을 공급하는 통로입니다. 우리가 생명을 공급하고자 한다면, 그리스도의 부활 생명을 얻는 것이 필요합니다.</p>
+  </template>
+
+  <template id="t-m2">
+    <p>교회는 그리스도를 머리로 삼는 그분의 몸입니다 <span class="ref">골 1:18</span>.</p>
+    <p><span class="ref">엡 1:22-23</span> "하나님은 만물을 그리스도의 발아래 복종시키시고, 그리스도를 만물 위의 머리가 되게 하시어 교회에게 주셨습니다. 교회는 그리스도의 몸이요, 만물 안에서 만물을 충만하게 하시는 분의 충만입니다."</p>
+    <p><span class="ref">엡 2:21-22</span> "그분 안에서 건축물 전체가 함께 연결되어 주님 안에 있는 성전으로 자라 가고 있으며…" 여기서 <span class="highlight">'자라 가고'</span>라는 단어는 하나님의 거처인 교회가 살아 있고 자라고 있다는 것을 가리킵니다.</p>
+    <p>외면적으로 사람의 몸은 많은 지체들로 구성되어 조직처럼 보이지만, 실제로는 그 안에 있는 생명과 유기적 방면에 중요성이 있습니다. 마치 여러 개의 목재가 결합된 탁자가 바닥에 서 있지만 그 안에 생명이 없는 것과 같습니다.</p>
+    <p>그러나 우리 몸의 지체들은 단지 결합된 것만이 아니라, <span class="highlight">그 안에 있는 생명과 혈액 순환이 그것들을 함께 연결</span>해 줍니다. 교회는 죽은 조직이 아니라 유기적인 그리스도의 몸이며, 그리스도께서 몸의 생명이 되십니다.</p>
+  </template>
+
+  <template id="t-m3">
+    <p>교회 안의 어떤 자매가 주님을 매우 사랑하고 주님을 가까이하며 기꺼이 주님의 다루심을 받는다면, 많은 영적 공과를 배우고 더 깊은 생명의 체험을 하게 됩니다. 더 나아가 성도들을 기꺼이 섬기게 됩니다.</p>
+    <p>이 자매의 봉사는 <span class="highlight">그녀 자신에게서 나온 것이 아니라 하나님의 생명이 그녀 안에서 자란 결과</span>입니다.</p>
+    <p>반대로 어떤 자매는 매우 총명하고 유능하고 일처리도 깔끔하다는 이유로 그 자매의 영적 생명의 상태를 전혀 고려하지 않고 교회에서 봉사하도록 안배한다면, 그것은 <span class="highlight">조직적인 안배일 뿐 생명이 자라 나온 결과가 아닙니다</span>.</p>
+    <p>우리가 어떤 사람의 외모를 보고 정확한 치수와 형태에 따라 그 사람의 모형을 만들 수 있지만, 그 사람의 실재는 가질 수 없습니다. 실제 사람은 출생과 생명의 성장과 성숙을 통해 얻어집니다. 마찬가지로, 살아 있는 지체들로 이루어진 살아 있는 몸도 결코 모형으로 만들 수 없습니다.</p>
+    <p>몸의 지체가 생명을 잃어버리면, 그의 기능과 용도도 잃어버립니다. 그리스도의 몸의 지체들인 우리는 외적인 방법, 조직, 의식, 규례를 의지해서는 안 되며, <span class="highlight">살아 계신 그리스도를 의지하여 생명 안에서 영을 따름으로 마땅히 있어야 할 기능이 나타나도록 자라야</span> 합니다.</p>
+  </template>
+
+  <template id="t-m4">
+    <p>교회 안에서 장로나 집사를 세우는 일이나 봉사의 책임자를 지정하는 일에서 가장 중요한 근거는 <span class="highlight">성도들의 생명의 표현과 생명의 진보</span>입니다.</p>
+    <p>성경에 따르면, 장로들은 사도가 세우는데, 사도가 직접 세우거나 <span class="ref">행 14:23</span> 혹은 사도의 지시를 받은 사람이 세웁니다 <span class="ref">딛 1:5-6</span>.</p>
+    <p>교회 안에서 어떤 형제들은 다른 형제들보다 영적으로 더 진보하고 영적 분량도 더 큽니다. 영적 생명이 성장하고 성숙한 것은 밖으로 드러나기 때문에, 그들은 영적인 일에서 앞장서 인도하게 됩니다.</p>
+    <p>이후에 사도나 사도의 지시를 받은 이들이 성령의 인도에 따라 그들을 그 지방에 있는 교회의 장로로 세웁니다. 그러므로 장로는 사람의 뜻에서 나온 것이 아니라 <span class="highlight">성령에게서 나온 것이며, 성령께서 세우신 것</span>입니다 <span class="ref">행 20:28</span>.</p>
+    <p>집사를 세우는 것도 마찬가지입니다 <span class="ref">딤전 3:8-13</span>. 이것은 오늘날 기독교에서 투표와 선거로 장로와 집사를 선출하는 방법과는 완전히 다릅니다. <span class="highlight">투표와 선거에 의한 안배는 단지 외적인 죽은 조직과 형식</span>일 뿐이며, 그 안에는 영적 생명과 실재와 기능이 없습니다.</p>
+  </template>
+
+  <template id="t-m5">
+    <p><span class="ref">민 16장</span> 이스라엘 자손 가운데 심각한 반역이 일어났습니다. 고라와 다단과 아비람과 이백오십 명의 인도자들과 이스라엘 온 회중이 일어나 모세와 아론을 대적했습니다. 하나님은 죽음으로 반역을 심판하셨습니다.</p>
+    <p>이 반역과 죽음 이후, <span class="ref">민 17장</span>에는 부활 안에서의 새로운 시작이 있습니다. 하나님은 모세에게 열두 지파의 인도자들에게서 막대기를 하나씩 거두어 회막 안 증거판 앞에 두라고 명령하셨습니다. 레위의 막대기에는 아론의 이름을 썼습니다.</p>
+    <p>"내가 선택하는 바로 그 사람의 막대기에 싹이 날 것이니" — <span class="highlight">다음 날 모세가 증거막 안에 들어가 보니, 아론의 막대기에 싹이 나고 꽃이 피어 익은 아몬드가 달려 있었습니다</span>.</p>
+    <p>성경에서 <span class="highlight">아몬드는 부활을 상징</span>합니다. 이것은 하나님께서 아론을 생명 안의 참된 권위를 가진 사람으로 선택하셨다는 표시였습니다.</p>
+    <p>여기서 주목할 것은 싹이 난 것이 나무가 아니라 막대기였다는 것입니다. 막대기는 잘렸을 뿐 아니라 오래전에 말라 버린 죽은 나무토막이었습니다. 뿌리도 가지도 없고 생명 즙도 없습니다. 그러나 그렇게 죽고 말라빠진 나무토막에 싹이 났습니다.</p>
+    <p>아론의 싹 난 막대기는 <span class="highlight">부활하신 그리스도, 곧 싹이 나신 그리스도의 예표</span>입니다. 그분은 싹을 내실 뿐 아니라 꽃을 피우고 열매를 맺으십니다 <span class="ref">요 12:24</span> <span class="ref">벧전 1:3</span>.</p>
+    <p>'마른 막대기'는 다른 사람들에게 권위를 행사할 수 없습니다. 오직 싹이 나고 열매를 맺는 막대기, 즉 사람들에게 생명을 공급하는 성도들만이 참된 영적 권위를 행사할 수 있습니다.</p>
+  </template>
+
+  <template id="t-m6">
+    <p>우리는 교회 안에서 <span class="highlight">부활 생명 외에는 권위가 없다</span>는 것을 반드시 깨달아야 합니다. 만일 장로들에게 부활 생명이 있고, 그들이 싹이 나고 꽃이 피고 아몬드를 맺어 다른 사람들을 보양한다면, 모든 성도들의 영 안에 계시는 성령께서 그들의 어떠함에 도장을 찍으실 것입니다.</p>
+    <p>장로 직분 안에서 기능을 발휘하는 것은 외적으로 규제하는 문제가 아니라 <span class="highlight">내적으로 싹이 나고 꽃이 피고 열매를 맺어 다른 사람들을 보양하는 문제</span>입니다.</p>
+    <p>하나님의 경륜 안에서는 부활 생명 외에 어떤 권위도 없습니다. 생명이 왕으로서 다스립니다. <span class="highlight">생명이 권위입니다</span> <span class="ref">롬 5:17</span>.</p>
+    <p>오직 한 가지만이 주님의 증거를 세울 수 있는데, 그것은 바로 부활 생명입니다. 또한 오직 한 가지만이 주님의 회복을 더 빨리 전진하도록 할 수 있는데, 그것 역시 부활 생명입니다.</p>
+    <p>우리는 주님의 회복 안에서 필요한 것이 영향력이나 유창함이나 지식이나 재능이 아니라는 것을 깨달아야 합니다. 필요한 것은 <span class="highlight">사람들을 먹이기 위해 싹이 나고 꽃이 피고 열매를 맺는 생명</span>입니다. 이것이 교회를 건축하는 길입니다.</p>
+    <p>우리 가운데서 가장 많은 싹을 내고 가장 많은 열매를 맺는 사람이 바로 성도들에게 가장 많은 자양분을 주는 사람입니다.</p>
+  </template>
+
+  <template id="t-m7">
+    <p>만일 누군가가 교회생활에서 신실하게 전진하며, 기꺼이 십자가에 못 박히고 부활 안에 있는 생활을 한다면, 이러한 성도들은 교회 안에서 <span class="highlight">이기는 이들이 될 것이고, 생명을 공급하는 사람들이 될 것</span>입니다.</p>
+    <p>그 누구도 그리스도의 몸을 조직하거나 결합시킬 수 없습니다. 오직 하나님만이 몸을 함께 섞으실 수 있습니다 <span class="ref">고전 12:24-25</span>. 우리가 부활 생명을 산다면, 자연스럽게 부활 생명을 사는 다른 모든 사람과 연합되어 교회에게 생명을 공급하게 될 것입니다. 이 연합은 <span class="highlight">조직의 문제가 아니라 생명의 문제</span>입니다.</p>
+    <p>교회가 전진하는 동안, 조직적 요소와 부정적 요인이 점차 기어들어 와서 축적되면 교회 안에 조직을 형성하기가 쉽습니다. 그러므로 우리는 주기적으로 우리 자신에게서 조직을 제거해야 합니다.</p>
+    <p>교회의 상태가 어떠하든 <span class="highlight">가장 합당한 길은 부정적 상황을 만지지 않고 부활 안에서 십자가에 못 박힌 생활을 하는 것</span>입니다. 그러한 생활을 하는 이들은 외롭지 않을 것입니다. 같은 길을 취하는 다른 사람들이 있을 것입니다.</p>
+    <p>우리는 그러한 지체들과 영 안에서 하나 되어 함께 생명을 공급함으로써 그리스도의 몸을 건축할 것입니다.</p>
+    <p>성도들을 인도할 때 결코 통제하는 방식으로 말해서는 안 되며, 교통의 방식으로 말하여 생명을 공급해야 합니다. 만일 누군가가 생명 없이 권위를 행사하려고 한다면, 성도들 안에 있는 영은 반응하지 않을 것입니다. <span class="highlight">생명의 싹틈은 의견을 달리하는 입을 다물게 합니다</span>. 부활 생명은 죽음을 삼키고 교회가 건축되게 합니다.</p>
+  </template>
+</div>
+
+<script>
+  // ===== Modal handling =====
+  const modalData = {
+    m1: { title: '우리는 왜 약합니까?', tpl: 't-m1' },
+    m2: { title: '교회는 조직이 아니라 유기체', tpl: 't-m2' },
+    m3: { title: '안에 있는 생명이 자라 기능이 됨', tpl: 't-m3' },
+    m4: { title: '장로와 집사 — 성령의 주권', tpl: 't-m4' },
+    m5: { title: '아론의 막대기와 부활', tpl: 't-m5' },
+    m6: { title: '참된 권위는 생명에서', tpl: 't-m6' },
+    m7: { title: '부활 안에서 생명을 공급함', tpl: 't-m7' },
+  };
+
+  const overlay = document.getElementById('overlay');
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+
+  function openModal(key) {
+    const data = modalData[key];
+    if (!data) return;
+    const tpl = document.getElementById(data.tpl);
+    modalTitle.textContent = data.title;
+    modalBody.innerHTML = '';
+    modalBody.appendChild(tpl.content.cloneNode(true));
+    modalBody.scrollTop = 0;
+    overlay.classList.add('open');
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+  function closeModal() {
+    overlay.classList.remove('open');
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.detail-btn').forEach(btn => {
+    btn.addEventListener('click', () => openModal(btn.dataset.modal));
+  });
+  overlay.addEventListener('click', closeModal);
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // swipe-down on handle to close
+  let touchStartY = null;
+  modal.addEventListener('touchstart', e => {
+    touchStartY = e.touches[0].clientY;
+  });
+  modal.addEventListener('touchmove', e => {
+    if (touchStartY === null) return;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (dy > 80) {
+      closeModal();
+      touchStartY = null;
+    }
+  });
+  modal.addEventListener('touchend', () => { touchStartY = null; });
+
+  // ===== Scroll reveal =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('in');
+        observer.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ===== Progress bar =====
+  const progressFill = document.getElementById('progressFill');
+  const progressLeaf = document.getElementById('progressLeaf');
+  function updateProgress() {
+    const doc = document.documentElement;
+    const scrolled = (window.scrollY) / (doc.scrollHeight - window.innerHeight);
+    const pct = Math.max(0, Math.min(1, scrolled)) * 100;
+    progressFill.style.height = pct + '%';
+    progressLeaf.style.top = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+</script>
+
+</body>
+</html>
