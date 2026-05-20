@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>몸을 알아야 한다 — 그리스도의 몸과 영적 전쟁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=GFS+Didot&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --indigo: #1B2A4E;
+    --indigo-deep: #121C36;
+    --indigo-soft: #2A3B62;
+    --gold: #C9A86A;
+    --gold-bright: #E0BE7A;
+    --crimson: #A23B47;
+    --ivory: #F5F1E8;
+    --ivory-soft: #EDE7D8;
+    --olive: #6B7B5E;
+    --grey: #8A8474;
+    --line: rgba(245, 241, 232, 0.14);
+
+    --serif-ko: 'Noto Serif KR', 'Gowun Batang', serif;
+    --serif-display: 'Gowun Batang', 'Noto Serif KR', serif;
+    --serif-greek: 'GFS Didot', 'Cormorant Garamond', 'Noto Serif KR', serif;
+    --serif-latin: 'Cormorant Garamond', serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--indigo);
+    color: var(--ivory);
+    font-family: var(--serif-ko);
+    font-weight: 300;
+    line-height: 1.85;
+    letter-spacing: -0.005em;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Subtle grain overlay across the whole page */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  /* Reading progress bar */
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+    z-index: 10000;
+    transition: width 0.15s ease-out;
+  }
+
+  /* Reusable */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+  .narrow { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  .section-label {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+
+  .section-label::before {
+    content: '— ';
+    color: var(--gold);
+    margin-right: 4px;
+  }
+
+  h2.section-title {
+    font-family: var(--serif-display);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--ivory);
+    margin-bottom: 24px;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    padding: 80px 28px 60px;
+    overflow: hidden;
+  }
+
+  /* Glowing "one bread" circle */
+  .bread-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 168, 106, 0.18) 0%, rgba(201, 168, 106, 0.05) 40%, transparent 70%);
+    z-index: 0;
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.85; }
+  }
+
+  .hero-eyebrow {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 15px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.2s forwards;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5.5vw, 64px);
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+    color: var(--ivory);
+    max-width: 920px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 1.4s ease-out 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 48px auto 36px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.2s forwards;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-verses {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-verse {
+    font-family: var(--serif-ko);
+    font-weight: 300;
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: 1.8;
+    color: rgba(245, 241, 232, 0.78);
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+  }
+  .hero-verse:nth-child(1) { animation-delay: 1.5s; }
+  .hero-verse:nth-child(2) { animation-delay: 1.85s; }
+  .hero-verse:nth-child(3) { animation-delay: 2.2s; }
+
+  .hero-verse .ref {
+    color: var(--gold);
+    font-family: var(--serif-latin);
+    font-style: italic;
+    letter-spacing: 0.08em;
+    margin-right: 10px;
+    font-size: 0.92em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.45);
+    opacity: 0;
+    animation: fadeIn 1s ease-out 2.8s forwards;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 12px auto 0;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(0.6); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ============ GREEK SECTION ============ */
+  .greek-section {
+    padding: 140px 0 120px;
+    position: relative;
+    border-top: 1px solid var(--line);
+  }
+
+  .greek-intro {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .greek-intro .verse-quote {
+    font-family: var(--serif-greek);
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: var(--ivory);
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 760px;
+    margin: 24px auto 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .greek-intro .verse-trans {
+    font-family: var(--serif-ko);
+    font-size: 16px;
+    color: rgba(245, 241, 232, 0.7);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.85;
+  }
+
+  .greek-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 60px;
+  }
+
+  .greek-card {
+    background: linear-gradient(180deg, rgba(245, 241, 232, 0.03) 0%, rgba(245, 241, 232, 0.01) 100%);
+    border: 1px solid var(--line);
+    padding: 40px 28px 32px;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+
+  .greek-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .greek-card:hover {
+    background: linear-gradient(180deg, rgba(201, 168, 106, 0.06) 0%, rgba(245, 241, 232, 0.01) 100%);
+    transform: translateY(-4px);
+  }
+
+  .greek-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .greek-card .num {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 16px;
+  }
+
+  .greek-word {
+    font-family: var(--serif-greek);
+    font-size: clamp(48px, 5vw, 64px);
+    color: var(--ivory);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .greek-pronounce {
+    font-family: var(--serif-ko);
+    font-size: 16px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .greek-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--line);
+    margin: 20px 0;
+  }
+
+  .greek-translations {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .greek-trans-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .greek-trans-row .lang {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    min-width: 50px;
+  }
+
+  .greek-trans-row .val {
+    color: var(--ivory);
+    font-weight: 400;
+  }
+
+  .etymology {
+    background: rgba(201, 168, 106, 0.08);
+    border-left: 2px solid var(--gold);
+    padding: 16px 18px;
+    margin-top: 20px;
+  }
+
+  .etymology .label {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .etymology .root {
+    font-family: var(--serif-ko);
+    font-size: 14px;
+    color: var(--ivory);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* ============ SUMMARY / JOURNEY MAP ============ */
+  .summary-section {
+    padding: 140px 0 120px;
+    border-top: 1px solid var(--line);
+    background: var(--indigo-deep);
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  /* The journey diagram */
+  .journey {
+    position: relative;
+    padding: 30px 0;
+  }
+
+  .journey-stage {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 0;
+    position: relative;
+    opacity: 0.45;
+    transition: opacity 0.4s ease;
+  }
+
+  .journey-stage.crossing {
+    opacity: 1;
+  }
+  .journey-stage.crossing + .journey-stage,
+  .journey-stage.crossing ~ .journey-stage {
+    opacity: 1;
+  }
+
+  .journey-marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--ivory);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .journey-stage.muted .journey-marker {
+    background: var(--grey);
+    opacity: 0.5;
+  }
+
+  .journey-stage.crossing .journey-marker {
+    background: var(--gold);
+    box-shadow: 0 0 24px rgba(201, 168, 106, 0.6);
+    width: 18px;
+    height: 18px;
+  }
+
+  .journey-line {
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line) 10%, var(--line) 90%, transparent);
+    z-index: 1;
+  }
+
+  .journey-text {
+    font-family: var(--serif-ko);
+  }
+
+  .journey-text .stage-num {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .journey-text .stage-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ivory);
+    line-height: 1.5;
+  }
+
+  .journey-text .stage-desc {
+    font-size: 13px;
+    color: rgba(245, 241, 232, 0.6);
+    margin-top: 4px;
+  }
+
+  /* Jordan river divider */
+  .jordan-divider {
+    padding: 20px 0 20px 38px;
+    position: relative;
+    margin: 8px 0;
+  }
+
+  .jordan-wave {
+    width: 100%;
+    height: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .jordan-wave svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .jordan-label {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .jordan-label-ko {
+    font-family: var(--serif-display);
+    font-size: 14px;
+    color: var(--gold);
+    margin-top: 2px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  /* Summary points */
+  .summary-points {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .summary-point {
+    border-left: 2px solid var(--gold);
+    padding: 18px 0 18px 28px;
+    position: relative;
+  }
+
+  .summary-point .pt-num {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .summary-point .pt-title {
+    font-family: var(--serif-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ivory);
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+
+  .summary-point .pt-body {
+    font-size: 15px;
+    color: rgba(245, 241, 232, 0.75);
+    line-height: 1.8;
+  }
+
+  .summary-point .pt-body em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  /* ============ DETAILED EXPLANATION ============ */
+  .detail-section {
+    padding: 140px 0 120px;
+    border-top: 1px solid var(--line);
+  }
+
+  .detail-intro {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .detail-intro .lede {
+    font-family: var(--serif-ko);
+    font-size: 18px;
+    line-height: 1.9;
+    color: rgba(245, 241, 232, 0.82);
+    max-width: 720px;
+    margin: 24px auto 0;
+  }
+
+  .pull-quote {
+    margin: 80px auto;
+    max-width: 820px;
+    text-align: center;
+    position: relative;
+    padding: 40px 60px;
+  }
+
+  .pull-quote::before, .pull-quote::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .pull-quote::before { top: 0; }
+  .pull-quote::after { bottom: 0; }
+
+  .pull-quote .text {
+    font-family: var(--serif-display);
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--ivory);
+    letter-spacing: -0.01em;
+    font-style: italic;
+  }
+
+  .pull-quote .text .gold-word {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .pull-quote .attribution {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--grey);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+
+  .body-text {
+    font-family: var(--serif-ko);
+    font-size: 17px;
+    line-height: 2.0;
+    color: rgba(245, 241, 232, 0.88);
+    margin-bottom: 28px;
+  }
+
+  .body-text strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ═════════════════════════════════════════════════
+     Verse reference link (PORTED from M1D4 — XML tooltip)
+     ═════════════════════════════════════════════════ */
+  .verse-ref, .vref-link {
+    color: var(--gold);
+    border-bottom: 1px dotted var(--gold);
+    cursor: help;
+    font-family: var(--serif-latin);
+    font-style: italic;
+    padding: 0 2px;
+    background: transparent;
+    border-radius: 2px;
+    transition: background 0.18s ease, color 0.18s ease;
+    position: relative;
+    display: inline;
+  }
+  .verse-ref:hover, .vref-link:hover {
+    background: rgba(201, 168, 106, 0.14);
+    color: var(--gold-bright);
+  }
+  .verse-ref:active, .vref-link:active {
+    background: rgba(201, 168, 106, 0.22);
+  }
+  .verse-ref:focus, .vref-link:focus { outline: none; }
+  .verse-ref:focus-visible, .vref-link:focus-visible {
+    outline: 1px dashed var(--gold);
+    outline-offset: 2px;
+  }
+
+  #vref-tt-backdrop {
+    position: fixed; inset: 0;
+    z-index: 9998;
+    background: rgba(18, 28, 54, 0.62);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    display: none;
+  }
+  #vref-tt-backdrop[data-show="1"] {
+    opacity: 1; visibility: visible; pointer-events: auto;
+  }
+  #vref-tooltip {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 9999;
+    zoom: var(--font-scale, 1);
+    max-width: 460px;
+    min-width: 300px;
+    padding: 22px 26px 20px;
+    background: linear-gradient(180deg, var(--indigo-deep) 0%, #0B1428 100%);
+    border-top: 1px solid rgba(201, 168, 106, 0.55);
+    box-shadow:
+      0 22px 48px -10px rgba(0, 0, 0, 0.7),
+      0 8px 18px -6px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(201, 168, 106, 0.08);
+    color: var(--ivory);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  #vref-tooltip[data-show="1"] {
+    opacity: 1; visibility: visible; transform: translateY(0);
+  }
+  #vref-tooltip::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 50%, #8B7240 100%);
+    box-shadow: 0 0 12px rgba(201, 168, 106, 0.3);
+  }
+  .vref-tt-handle { display: none; }
+  .vref-tt-close { display: none; }
+  .vref-tt-book {
+    position: relative;
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201, 168, 106, 0.28);
+  }
+  .vref-tt-body {
+    position: relative;
+    font-family: var(--serif-ko);
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ivory);
+    font-weight: 400;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .vref-tt-verse { margin-bottom: 8px; }
+  .vref-tt-verse:last-child { margin-bottom: 0; }
+  .vref-tt-vnum {
+    display: inline-block;
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.85em;
+    color: var(--gold-bright);
+    margin-right: 8px;
+    vertical-align: 0.05em;
+  }
+  .vref-tt-empty {
+    color: var(--ivory);
+    font-style: italic;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    opacity: 0.55;
+  }
+  @media (hover: none) {
+    .verse-ref, .vref-link { cursor: pointer; }
+  }
+  @media (max-width: 768px) {
+    #vref-tt-backdrop { display: block; }
+    #vref-tooltip {
+      position: fixed !important;
+      top: auto !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      padding: 14px 22px calc(28px + env(safe-area-inset-bottom, 0px));
+      border-top: none;
+      border-radius: 18px 18px 0 0;
+      box-shadow:
+        0 -2px 0 rgba(201, 168, 106, 0.40),
+        0 -16px 44px rgba(0, 0, 0, 0.55);
+      max-height: 75vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateY(100%);
+      pointer-events: auto;
+      transition: transform .28s cubic-bezier(0.32, 0.72, 0, 1), opacity .2s ease;
+    }
+    #vref-tooltip[data-show="1"] { transform: translateY(0); }
+    .vref-tt-handle {
+      display: block;
+      width: 44px; height: 4px;
+      border-radius: 2px;
+      background: rgba(245, 241, 232, 0.30);
+      margin: 0 auto 18px;
+    }
+    .vref-tt-close {
+      display: flex;
+      position: absolute;
+      top: 14px; right: 16px;
+      width: 36px; height: 36px;
+      align-items: center; justify-content: center;
+      background: rgba(245, 241, 232, 0.06);
+      border: 1px solid rgba(201, 168, 106, 0.25);
+      border-radius: 50%;
+      color: var(--gold-bright);
+      font-family: var(--serif-latin);
+      font-size: 1.4rem;
+      line-height: 1;
+      padding: 0 0 2px;
+      cursor: pointer;
+      z-index: 2;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color .15s ease;
+    }
+    .vref-tt-close:active { background: rgba(201, 168, 106, 0.20); }
+    .vref-tt-book { font-size: 0.82rem; padding-right: 48px; }
+    .vref-tt-body { font-size: 1.05rem; line-height: 1.9; }
+  }
+
+  /* ═════════════════════════════════════════════════
+     Topbar + Side panel (PORTED from M1D4)
+     — themed to indigo/gold, panel slides from RIGHT
+     ═════════════════════════════════════════════════ */
+  :root { --topbar-h: 44px; --font-scale: 1; }
+  html { font-size: calc(16px * var(--font-scale)); }
+  body { padding-top: var(--topbar-h); }
+
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--topbar-h);
+    background: rgba(18, 28, 54, 0.85);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid rgba(201, 168, 106, 0.25);
+    display: flex; align-items: center;
+    padding: 0 10px;
+    z-index: 1000;
+    gap: 4px;
+  }
+  .topbar-btn {
+    flex-shrink: 0;
+    width: 34px; height: 34px;
+    border: none; background: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ivory);
+    opacity: 0.85;
+    transition: background .15s, opacity .15s, color .15s;
+  }
+  .topbar-btn:hover {
+    background: rgba(201, 168, 106, 0.12);
+    opacity: 1;
+    color: var(--gold-bright);
+  }
+  .topbar-title {
+    flex: 1; min-width: 0;
+    overflow-x: auto; white-space: nowrap;
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 6px;
+    text-transform: uppercase;
+  }
+  .topbar-title::-webkit-scrollbar { display: none; }
+  .font-controls {
+    display: flex; align-items: center; gap: 2px;
+    border: 1px solid rgba(201, 168, 106, 0.25);
+    border-radius: 4px;
+    padding: 2px;
+    margin-left: 4px;
+  }
+  .font-ctrl-btn {
+    width: 26px; height: 26px;
+    border: none; background: transparent;
+    color: var(--ivory);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .font-ctrl-btn:hover {
+    background: rgba(201, 168, 106, 0.18);
+    color: var(--gold-bright);
+  }
+
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(18, 28, 54, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 1001;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+  }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+
+  /* Right-side panel: slides in from the right */
+  .sidepanel {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: 300px; max-width: 82vw;
+    background: linear-gradient(180deg, var(--indigo-deep) 0%, #0B1428 100%);
+    z-index: 1002;
+    transform: translateX(100%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+    overflow-y: auto;
+    padding: 20px 0;
+    box-shadow: -4px 0 32px rgba(0, 0, 0, .5);
+    font-family: var(--serif-ko);
+    border-left: 1px solid rgba(201, 168, 106, 0.2);
+  }
+  .sidepanel.open { transform: translateX(0); }
+  .sidepanel-header {
+    padding: 0 22px 16px;
+    border-bottom: 1px solid rgba(201, 168, 106, 0.18);
+    margin-bottom: 12px;
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sidepanel-close {
+    margin-left: auto;
+    width: 28px; height: 28px;
+    border: none; background: transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--ivory);
+    opacity: 0.7;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sidepanel-close:hover {
+    background: rgba(201, 168, 106, 0.15);
+    color: var(--gold-bright);
+    opacity: 1;
+  }
+  .nav-item {
+    display: block;
+    padding: 10px 22px;
+    font-size: 13px;
+    color: var(--ivory);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    opacity: 0.85;
+  }
+  .nav-item:hover {
+    background: rgba(201, 168, 106, 0.08);
+    color: var(--gold-bright);
+    opacity: 1;
+  }
+  .nav-item.sub {
+    padding-left: 38px;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--ivory);
+    opacity: 0.65;
+  }
+  .nav-divider {
+    height: 1px;
+    background: rgba(201, 168, 106, 0.15);
+    margin: 10px 22px;
+  }
+  .nav-home {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--gold);
+    opacity: 0.95;
+  }
+  .nav-home-icon { flex-shrink: 0; color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .topbar { padding: 0 6px; gap: 2px; }
+    .topbar-title { font-size: 12px; letter-spacing: 0.08em; padding: 0 4px; }
+    .topbar-btn { width: 32px; height: 32px; }
+    .font-ctrl-btn { width: 24px; height: 24px; font-size: 13px; }
+    .font-controls { padding: 1px; }
+  }
+  @media (max-width: 380px) {
+    .topbar-title { font-size: 11px; }
+  }
+
+  /* Four stages cards */
+  .stages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin: 60px 0;
+  }
+
+  .stage-card {
+    padding: 30px 22px;
+    border: 1px solid var(--line);
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .stage-card.dim {
+    opacity: 0.5;
+  }
+
+  .stage-card.highlight {
+    background: linear-gradient(180deg, rgba(201, 168, 106, 0.1), rgba(201, 168, 106, 0.02));
+    border-color: var(--gold);
+    box-shadow: 0 0 32px rgba(201, 168, 106, 0.15);
+  }
+
+  .stage-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+  }
+
+  .stage-icon {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .stage-card .s-num {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .stage-card .s-name {
+    font-family: var(--serif-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ivory);
+    margin-bottom: 8px;
+  }
+
+  .stage-card .s-state {
+    font-size: 13px;
+    color: rgba(245, 241, 232, 0.65);
+    line-height: 1.6;
+  }
+
+  /* ============ Q&A SECTION ============ */
+  .qa-section {
+    padding: 140px 0 120px;
+    border-top: 1px solid var(--line);
+    background: var(--indigo-deep);
+  }
+
+  .qa-list {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .qa-item {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: -1px;
+  }
+
+  .qa-question {
+    padding: 28px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    transition: color 0.3s ease;
+  }
+
+  .qa-question:hover { color: var(--gold); }
+  .qa-question:hover .qa-q-text { color: var(--gold); }
+
+  .qa-num {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    min-width: 30px;
+    padding-top: 4px;
+  }
+
+  .qa-q-text {
+    font-family: var(--serif-display);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ivory);
+    flex: 1;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+  }
+
+  .qa-toggle {
+    font-family: var(--serif-latin);
+    color: var(--gold);
+    font-size: 24px;
+    line-height: 1;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+
+  .qa-item.open .qa-toggle { transform: rotate(45deg); }
+
+  .qa-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .qa-answer-inner {
+    padding: 0 0 32px 54px;
+    font-family: var(--serif-ko);
+    font-size: 16px;
+    line-height: 1.9;
+    color: rgba(245, 241, 232, 0.82);
+  }
+
+  .qa-answer-inner em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* ============ QUIZ SECTION ============ */
+  .quiz-section {
+    padding: 140px 0 120px;
+    border-top: 1px solid var(--line);
+  }
+
+  .quiz-container {
+    max-width: 760px;
+    margin: 60px auto 0;
+    background: linear-gradient(180deg, rgba(245, 241, 232, 0.04), rgba(245, 241, 232, 0.01));
+    border: 1px solid var(--line);
+    padding: 48px 44px;
+    position: relative;
+    min-height: 520px;
+  }
+
+  .quiz-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+
+  .quiz-progress-text {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .quiz-progress-bar {
+    flex: 1;
+    margin-left: 24px;
+    height: 1px;
+    background: var(--line);
+    position: relative;
+  }
+
+  .quiz-progress-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: var(--gold);
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .quiz-question-num {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .quiz-question {
+    font-family: var(--serif-display);
+    font-size: clamp(20px, 2.5vw, 24px);
+    font-weight: 500;
+    color: var(--ivory);
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .quiz-option {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ivory);
+    font-family: var(--serif-ko);
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 16px 22px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .quiz-option:hover:not(:disabled) {
+    background: rgba(201, 168, 106, 0.08);
+    border-color: var(--gold);
+    transform: translateX(4px);
+  }
+
+  .quiz-option .opt-letter {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    min-width: 18px;
+    padding-top: 2px;
+  }
+
+  .quiz-option.correct {
+    background: rgba(107, 123, 94, 0.18);
+    border-color: var(--olive);
+    color: var(--ivory);
+  }
+  .quiz-option.correct .opt-letter { color: var(--olive); }
+
+  .quiz-option.wrong {
+    background: rgba(162, 59, 71, 0.15);
+    border-color: var(--crimson);
+    color: rgba(245, 241, 232, 0.7);
+  }
+  .quiz-option.wrong .opt-letter { color: var(--crimson); }
+
+  .quiz-option:disabled { cursor: not-allowed; }
+
+  .quiz-feedback {
+    background: rgba(201, 168, 106, 0.06);
+    border-left: 2px solid var(--gold);
+    padding: 16px 20px;
+    font-family: var(--serif-ko);
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(245, 241, 232, 0.85);
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  .quiz-feedback.show { display: block; animation: fadeUp 0.5s ease forwards; }
+
+  .quiz-feedback .fb-label {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quiz-next-btn {
+    background: var(--gold);
+    color: var(--indigo-deep);
+    border: none;
+    font-family: var(--serif-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: none;
+  }
+
+  .quiz-next-btn.show { display: inline-block; }
+  .quiz-next-btn:hover { background: var(--gold-bright); transform: translateY(-2px); }
+
+  /* Quiz result */
+  .quiz-result {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .quiz-result .result-label {
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .quiz-result .result-score {
+    font-family: var(--serif-display);
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--ivory);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .quiz-result .result-score .total { color: var(--grey); font-size: 32px; }
+  .quiz-result .result-stage {
+    font-family: var(--serif-display);
+    font-size: 22px;
+    color: var(--gold);
+    margin: 24px 0 12px;
+    font-weight: 500;
+  }
+  .quiz-result .result-msg {
+    font-family: var(--serif-ko);
+    font-size: 15px;
+    line-height: 1.85;
+    color: rgba(245, 241, 232, 0.78);
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+  .quiz-result .result-restart {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 12px 26px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .quiz-result .result-restart:hover { background: var(--gold); color: var(--indigo-deep); }
+
+  /* ============ PRAYER SECTION ============ */
+  .prayer-section {
+    padding: 160px 0 140px;
+    border-top: 1px solid var(--line);
+    background: var(--ivory);
+    color: var(--indigo);
+    position: relative;
+    text-align: center;
+  }
+
+  .prayer-section .section-label {
+    color: var(--crimson);
+  }
+  .prayer-section .section-label::before { color: var(--crimson); }
+
+  .prayer-section h2.section-title {
+    color: var(--indigo);
+    font-family: var(--serif-display);
+  }
+
+  .prayer-body {
+    font-family: var(--serif-display);
+    font-size: clamp(19px, 2vw, 22px);
+    line-height: 2.1;
+    color: var(--indigo);
+    max-width: 640px;
+    margin: 60px auto;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+
+  .prayer-body .line {
+    display: block;
+    margin: 8px 0;
+  }
+
+  .prayer-body .amen {
+    display: block;
+    margin-top: 28px;
+    font-family: var(--serif-latin);
+    font-style: italic;
+    color: var(--crimson);
+    font-size: 18px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .prayer-coda {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(27, 42, 78, 0.15);
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .prayer-coda .coda-text {
+    font-family: var(--serif-display);
+    font-size: 17px;
+    color: var(--indigo);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .prayer-coda .coda-ref {
+    display: block;
+    font-family: var(--serif-latin);
+    font-style: italic;
+    color: var(--crimson);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--indigo-deep);
+    padding: 50px 28px;
+    text-align: center;
+    font-family: var(--serif-latin);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--grey);
+    letter-spacing: 0.15em;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ===== Animations on scroll ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .greek-cards { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: 1fr; gap: 60px; }
+    .stages-grid { grid-template-columns: repeat(2, 1fr); }
+    .bread-glow { width: 380px; height: 380px; }
+    .pull-quote { padding: 40px 24px; }
+    .quiz-container { padding: 32px 24px; }
+    .qa-answer-inner { padding-left: 38px; }
+  }
+
+  @media (max-width: 540px) {
+    .stages-grid { grid-template-columns: 1fr; }
+    .greek-word { font-size: 44px; }
+    .hero-title { font-size: 28px; }
+    .pull-quote .text { font-size: 19px; }
+    body { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ===== TOP BAR (ported from M1D4) ===== -->
+<div class="topbar" id="topbar">
+  <div class="topbar-title">몸을 알아야 한다 — 그리스도의 몸과 영적 전쟁</div>
+  <div class="font-controls">
+    <button class="font-ctrl-btn" onclick="adjustFont(-1)">−</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(0)" style="font-size:12px;">가</button>
+    <button class="font-ctrl-btn" onclick="adjustFont(1)">+</button>
+  </div>
+  <button class="topbar-btn" onclick="togglePanel()" aria-label="목차">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+</div>
+
+<div class="overlay" id="overlay" onclick="togglePanel()"></div>
+
+<!-- ===== SIDE PANEL (right-side nav) ===== -->
+<div class="sidepanel" id="sidepanel">
+  <div class="sidepanel-header">목차<button class="sidepanel-close" onclick="togglePanel()">✕</button></div>
+  <a class="nav-item nav-home" href="https://tk-korea.github.io/seven_feasts/2026/springelders/" target="_blank" rel="noopener">
+    <svg class="nav-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    홈페이지 (Spring Elders 2026)
+  </a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('scene-hero')" style="color:var(--gold-bright);font-weight:500;">✦ 도입 — 그리스도의 몸</a>
+  <a class="nav-item" onclick="goTo('scene-greek')">엡 1:23 — 세 단어의 비밀</a>
+  <a class="nav-item" onclick="goTo('scene-summary')">한눈에 보는 메시지</a>
+  <a class="nav-item" onclick="goTo('scene-detail')">상세 설명 — 몸의 생명</a>
+  <a class="nav-item" onclick="goTo('scene-qa')">심화 Q&amp;A</a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" onclick="goTo('scene-quiz')">자가 점검 · 10문항</a>
+  <a class="nav-item" onclick="goTo('scene-prayer')">오늘의 기도</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="scene-hero">
+  <div class="bread-glow"></div>
+  <div class="hero-eyebrow">Body of Christ &middot; 그리스도의 비밀한 몸</div>
+  <h1 class="hero-title">
+    영적 전쟁에 참여하기를 원하는 사람은<br />
+    누구든지, 먼저 <em>몸을 알아야</em> 한다.
+  </h1>
+  <div class="hero-divider"></div>
+  <div class="hero-verses">
+    <div class="hero-verse">
+      <span class="ref">Eph 1:23</span>
+      교회는 그리스도의 몸이요, 만물 안에서 만물을 충만하게 하시는 분의 충만입니다.
+    </div>
+    <div class="hero-verse">
+      <span class="ref">1 Cor 12:27</span>
+      여러분이 곧 그리스도의 몸이며, 여러분 각 사람은 그 지체들입니다.
+    </div>
+    <div class="hero-verse">
+      <span class="ref">1 Cor 10:17</span>
+      떡이 하나이요, 우리 많은 사람이 한 몸입니다. 우리 모두가 한 떡에 참여하기 때문입니다.
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll to begin the journey</div>
+</section>
+
+<!-- ============ GREEK SECTION ============ -->
+<section class="greek-section" id="scene-greek">
+  <div class="wrap">
+    <div class="greek-intro reveal">
+      <span class="section-label">오늘의 헬라어 &middot; Today's Greek</span>
+      <h2 class="section-title">엡 1:23 — 세 단어로 읽는 비밀</h2>
+      <p class="verse-quote">
+        ἥτις ἐστὶν τὸ <strong style="color:var(--gold)">σῶμα</strong> αὐτοῦ,<br />
+        τὸ <strong style="color:var(--gold)">πλήρωμα</strong> τοῦ τὰ πάντα ἐν πᾶσιν <strong style="color:var(--gold)">πληρουμένου</strong>.
+      </p>
+      <p class="verse-trans">
+        "이 교회는 그분의 <em style="color:var(--gold)">몸</em>이요, 만물 안에서 만물을 <em style="color:var(--gold)">충만하게 하시는</em> 분의 <em style="color:var(--gold)">충만</em>입니다."
+      </p>
+    </div>
+
+    <div class="greek-cards">
+      <!-- Card 1: σῶμα -->
+      <div class="greek-card reveal">
+        <div class="num">Word 01</div>
+        <div class="greek-word">σῶμα</div>
+        <div class="greek-pronounce">[소마]</div>
+        <div class="greek-divider"></div>
+        <div class="greek-translations">
+          <div class="greek-trans-row"><span class="lang">KO</span><span class="val">몸</span></div>
+          <div class="greek-trans-row"><span class="lang">EN</span><span class="val">Body</span></div>
+        </div>
+        <div class="etymology">
+          <span class="label">어원적 핵심</span>
+          <div class="root">단순한 신체가 아니라, <strong style="color:var(--gold)">한 생명이 순환하는 살아있는 유기체</strong>. 분리될 수 없는 통일된 전체.</div>
+        </div>
+      </div>
+
+      <!-- Card 2: πλήρωμα -->
+      <div class="greek-card reveal">
+        <div class="num">Word 02</div>
+        <div class="greek-word">πλήρωμα</div>
+        <div class="greek-pronounce">[플레로마]</div>
+        <div class="greek-divider"></div>
+        <div class="greek-translations">
+          <div class="greek-trans-row"><span class="lang">KO</span><span class="val">충만</span></div>
+          <div class="greek-trans-row"><span class="lang">EN</span><span class="val">Fullness</span></div>
+        </div>
+        <div class="etymology">
+          <span class="label">어원적 핵심</span>
+          <div class="root">"가득 채워진 것" — 비어 있던 그릇이 <strong style="color:var(--gold)">넘쳐흐를 때까지 채워진 상태</strong>. 몸은 그분 자신의 충만함이다.</div>
+        </div>
+      </div>
+
+      <!-- Card 3: πληρουμένου -->
+      <div class="greek-card reveal">
+        <div class="num">Word 03</div>
+        <div class="greek-word">πληρουμένου</div>
+        <div class="greek-pronounce">[플레루메누]</div>
+        <div class="greek-divider"></div>
+        <div class="greek-translations">
+          <div class="greek-trans-row"><span class="lang">KO</span><span class="val">충만하게 하시는</span></div>
+          <div class="greek-trans-row"><span class="lang">EN</span><span class="val">Filling</span></div>
+        </div>
+        <div class="etymology">
+          <span class="label">어원적 핵심</span>
+          <div class="root">중간태 현재분사. <strong style="color:var(--gold)">"지금도 자신을 채우시는 중"</strong> — 완료된 사건이 아닌, 만물 안에서 진행 중인 행위.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUMMARY / JOURNEY MAP ============ -->
+<section class="summary-section" id="scene-summary">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">한눈에 보는 메시지 &middot; The Arc</span>
+      <h2 class="section-title">개인의 처리에서 몸의 인식으로</h2>
+    </div>
+
+    <div class="summary-grid">
+      <!-- Journey diagram (left) -->
+      <div class="journey reveal">
+        <div class="journey-line"></div>
+
+        <div class="journey-stage muted">
+          <div class="journey-marker"></div>
+          <div class="journey-text">
+            <div class="stage-num">Stage 01</div>
+            <div class="stage-name">개인의 생명 안에서</div>
+            <div class="stage-desc">육체에 따라 살아감</div>
+          </div>
+        </div>
+
+        <div class="journey-stage muted">
+          <div class="journey-marker"></div>
+          <div class="journey-text">
+            <div class="stage-num">Stage 02</div>
+            <div class="stage-name">자아의 의견 안에서</div>
+            <div class="stage-desc">교회의 부축이 필요하지 않게 느낌</div>
+          </div>
+        </div>
+
+        <div class="journey-stage muted">
+          <div class="journey-marker"></div>
+          <div class="journey-text">
+            <div class="stage-num">Stage 03</div>
+            <div class="stage-name">타고난 능력으로 봉사</div>
+            <div class="stage-desc">지체들의 협력을 필요로 하지 않음</div>
+          </div>
+        </div>
+
+        <!-- Jordan River divider -->
+        <div class="jordan-divider">
+          <div class="jordan-wave">
+            <svg viewBox="0 0 400 24" preserveAspectRatio="none">
+              <path d="M0,12 Q25,2 50,12 T100,12 T150,12 T200,12 T250,12 T300,12 T350,12 T400,12" stroke="#C9A86A" stroke-width="1" fill="none" opacity="0.8"/>
+              <path d="M0,16 Q25,6 50,16 T100,16 T150,16 T200,16 T250,16 T300,16 T350,16 T400,16" stroke="#C9A86A" stroke-width="0.6" fill="none" opacity="0.5"/>
+              <path d="M0,20 Q25,10 50,20 T100,20 T150,20 T200,20 T250,20 T300,20 T350,20 T400,20" stroke="#C9A86A" stroke-width="0.4" fill="none" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="jordan-label">Crossing the Jordan</div>
+          <div class="jordan-label-ko">요단강을 건넘 &middot; 넷째 단계로의 전환</div>
+        </div>
+
+        <div class="journey-stage crossing">
+          <div class="journey-marker"></div>
+          <div class="journey-text">
+            <div class="stage-num">Stage 04</div>
+            <div class="stage-name" style="color:var(--gold)">몸의 생명을 인식함</div>
+            <div class="stage-desc">분리될 수 없는 한 생명에 연결됨</div>
+          </div>
+        </div>
+
+        <div class="journey-stage crossing">
+          <div class="journey-marker"></div>
+          <div class="journey-text">
+            <div class="stage-num">Result</div>
+            <div class="stage-name" style="color:var(--gold)">단체적인 영적 전쟁에 참여</div>
+            <div class="stage-desc">홀로 싸우지 않고, 몸 전체로 싸움</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key points (right) -->
+      <div class="summary-points">
+        <div class="summary-point reveal">
+          <div class="pt-num">Point 01</div>
+          <div class="pt-title">몸의 생명</div>
+          <div class="pt-body">
+            우리 각 사람 안의 생명은 독립적인 <em>'지체'의 생명</em>이 아니라, 모든 지체와 연결되어 분리될 수 없는 <em>'몸'의 생명</em>이다.
+          </div>
+        </div>
+        <div class="summary-point reveal">
+          <div class="pt-num">Point 02</div>
+          <div class="pt-title">생명 성장의 결과</div>
+          <div class="pt-body">
+            몸을 아는 것은 생명 체험의 <em>넷째 단계</em>에 도달한 성숙의 결과이며, 영적으로 충분히 성장해야 그 실재를 만질 수 있다.
+          </div>
+        </div>
+        <div class="summary-point reveal">
+          <div class="pt-num">Point 03</div>
+          <div class="pt-title">자아와 육체의 처리</div>
+          <div class="pt-body">
+            타고난 능력과 자아의 의견이 십자가에서 <em>철저히 파쇄</em>될 때에만 비로소 몸의 생명이 나타나고 몸의 부축을 필요로 하게 된다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DETAILED EXPLANATION ============ -->
+<section class="detail-section" id="scene-detail">
+  <div class="narrow">
+    <div class="detail-intro reveal">
+      <span class="section-label">상세 설명 &middot; The Body Within</span>
+      <h2 class="section-title">우리 안에 있는 생명은,<br />지체의 생명이 아니라 몸의 생명이다.</h2>
+    </div>
+
+    <p class="body-text reveal">
+      구원받은 모든 이들은 그리스도의 몸의 지체이다. 그렇다면 우리 각 사람 안에 있는 생명은 '지체들'에게 속한 생명인가, 아니면 '몸'에 속한 생명인가? 비록 우리 각 사람은 그리스도의 지체이지만, 우리 각 사람 안에 있는 생명은 <strong>'지체'의 생명이 아니라 '몸'의 생명이다</strong>. 성경과 우리의 체험이 이것을 입증한다.
+    </p>
+
+    <p class="body-text reveal">
+      우리 몸의 모든 지체는 한 생명을 공유하고 있다. 마찬가지로 그리스도의 몸 안에서도 한 지체가 몸에 연결되거나 몸과 교통을 갖게 되면, 그의 생명은 몸의 생명이 되고 몸의 생명은 그 지체의 생명이 된다. 그 지체는 다른 지체들과 분리될 수 없고, 다른 지체들도 그 지체와 분리될 수 없다 — <span class="verse-ref" data-ref="고전 12:12" data-text="왜냐하면 몸은 하나인데 많은 지체가 있고, 몸의 지체는 많지만 모두가 한 몸인 것같이, 그리스도도 그와 같으시기 때문입니다.">(고전 12:12)</span>. 그 몸 안에 있는 생명은 구분되거나 분리될 수 없다. 바로 이 생명을 통해 우리는 연합되어 그리스도의 몸이 된다.
+    </p>
+
+    <!-- Pull quote 1 -->
+    <div class="pull-quote reveal">
+      <div class="text">
+        "우리 안에 있는 생명은<br /><span class="gold-word">'지체'의 생명이 아니라<br />'몸'의 생명이다.</span>"
+      </div>
+      <div class="attribution">생명의 체험 &middot; 15장</div>
+    </div>
+
+    <p class="body-text reveal">
+      그러나 이러한 체험을 하려면, 우선 자아에서 오는 어려움들이 완전히 처리되어야 한다. 우리가 여전히 육체에 따라 우리 자신 안에서 살며 우리의 타고난 능력으로 봉사한다면, 우리 안에 계신 그리스도 자신인 몸의 생명은 나타날 수 없고 <strong>우리는 몸을 알 수 없다</strong> — <span class="verse-ref" data-ref="갈 2:20" data-text="나는 그리스도와 함께 십자가에 못 박혔습니다. 그러므로 이제는 더 이상 내가 사는 것이 아니라, 그리스도께서 내 안에 사십니다.">(갈 2:20)</span>.
+    </p>
+
+    <p class="body-text reveal">
+      우리가 육체에 의해 살수록, 몸의 부축을 받아야 할 필요성에 대한 우리의 느낌이 줄어든다. 우리가 자신의 의견에 따라 산다면, 우리는 교회가 우리를 지탱해 주는 것에 대한 필요를 느끼지 못하게 될 것이다. 우리의 타고난 능력으로 봉사한다면 우리는 지체들의 협력에 대한 필요를 느끼지 못하게 될 것이다 — <span class="verse-ref" data-ref="엡 4:16" data-text="그분으로부터 온몸은 그 풍성한 공급을 해 주는 각 마디를 통하여, 그리고 각 지체가 분량에 따라 기능을 발휘하는 것을 통하여 함께 결합되고 함께 짜입니다.">(엡 4:16)</span>.
+    </p>
+
+    <!-- The four stages visual -->
+    <div class="stages-grid reveal">
+      <div class="stage-card dim">
+        <div class="stage-icon">i</div>
+        <div class="s-num">Stage 01</div>
+        <div class="s-name">씨앗</div>
+        <div class="s-state">구원의 시작<br />자아 안에 거함</div>
+      </div>
+      <div class="stage-card dim">
+        <div class="stage-icon">ii</div>
+        <div class="s-num">Stage 02</div>
+        <div class="s-name">새싹</div>
+        <div class="s-state">생명의 시작<br />여전히 개인의 생명</div>
+      </div>
+      <div class="stage-card dim">
+        <div class="stage-icon">iii</div>
+        <div class="s-num">Stage 03</div>
+        <div class="s-name">가지</div>
+        <div class="s-state">개인적 성장<br />여전히 자아 안에서</div>
+      </div>
+      <div class="stage-card highlight">
+        <div class="stage-icon">iv</div>
+        <div class="s-num">Stage 04</div>
+        <div class="s-name" style="color:var(--gold)">한 나무로 짜임</div>
+        <div class="s-state">몸의 실재를 만짐<br /><strong style="color:var(--gold)">— 영적 전쟁의 자격</strong></div>
+      </div>
+    </div>
+
+    <p class="body-text reveal">
+      오직 우리의 육체가 처리되고, 자아의 의견이 파쇄되며, 타고난 생명이 산산이 부서질 때에만, 비로소 우리 안에 있는 생명에 의해 우리는 자신이 단지 몸의 지체라는 것과 우리 안에 있는 생명이 독립적일 수 없다는 것을 깨닫게 된다 — <span class="verse-ref" data-ref="갈 5:24" data-text="그리스도 예수님께 속한 사람들은 육체를 그 정욕과 욕망과 함께 십자가에 못 박았습니다.">(갈 5:24)</span>, <span class="verse-ref" data-ref="마 16:24" data-text="누구든지 나를 따라오려거든, 자기를 부인하고 자기 십자가를 지고 나를 따라오십시오.">(마 16:24)</span>.
+    </p>
+
+    <!-- Pull quote 2 -->
+    <div class="pull-quote reveal">
+      <div class="text">
+        "우리가 육체에 의해 살수록,<br /><span class="gold-word">몸의 부축을 받아야 할 필요성에 대한<br />우리의 느낌이 줄어든다.</span>"
+      </div>
+      <div class="attribution">생명의 체험 &middot; 15장</div>
+    </div>
+
+    <p class="body-text reveal">
+      따라서 우리가 전쟁을 하는 관점에서 말하든 몸을 인식하는 관점에서 말하든, 우리 모두는 먼저 앞의 세 단계를 통과해야 한다 — 즉 <strong>육체에서, 자아에서, 혼생명에서 나와야 한다</strong>. 그럴 때 우리는 생명의 체험의 넷째 단계에 이르게 되고, 비로소 단체적인 영적 전쟁에 참여할 자격을 갖추게 된다 — <span class="verse-ref" data-ref="골 2:19" data-text="머리를 붙들지 않습니다. 온몸은 마디와 힘줄을 통하여 머리로부터 풍성하게 공급을 받고 함께 짜여, 하나님께서 자라심으로 자라는 것입니다.">(골 2:19)</span>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ Q&A ============ -->
+<section class="qa-section" id="scene-qa">
+  <div class="narrow">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">더 깊이 묻기 &middot; Deeper Questions</span>
+      <h2 class="section-title">심화 Q&amp;A</h2>
+    </div>
+
+    <div class="qa-list">
+      <div class="qa-item reveal">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">Q1</span>
+          <span class="qa-q-text">개인 기도와 묵상도 영적 전쟁 아닌가요?</span>
+          <span class="qa-toggle">+</span>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-inner">
+            개인의 영적 활동과 본문이 말하는 '영적 전쟁'은 차원이 다릅니다. 본문은 분명히 말합니다 — <em>"그 어떤 믿는 이라도 개인적으로는 원수와 싸울 수 없다. 원수와 싸우려 한다면 몸 전체가 필요하다."</em> 개인 기도는 자기 자신의 어려움을 처리하는 출발점이지만, 영적 전쟁은 본질적으로 단체적입니다. 머리이신 그리스도와 그분의 몸이 함께 수행하는 우주적인 전투이기 때문입니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item reveal">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">Q2</span>
+          <span class="qa-q-text">몸을 안다는 것이 단순히 교회 모임에 출석한다는 뜻인가요?</span>
+          <span class="qa-toggle">+</span>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-inner">
+            아닙니다. 본문이 말하는 "몸을 앎"은 출석이나 회원권의 문제가 아니라 <em>생명의 인식</em>입니다. "오직 우리의 자아 생명이 철저히 처리되고, 우리에게 요단강을 건너 넷째 단계에 들어가는 체험이 있을 때에만, 비로소 우리는 몸을 이루는 이 생명의 실재를 만지고 몸을 알 수 있게 됩니다." 즉 외형적 참여가 아니라 내적 생명에서 일어나는 일입니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item reveal">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">Q3</span>
+          <span class="qa-q-text">제 자아가 처리되었는지 어떻게 알 수 있나요?</span>
+          <span class="qa-toggle">+</span>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-inner">
+            본문은 분명한 진단 기준을 줍니다 — <em>"지체들의 협력에 대한 필요를 느끼는가?"</em> 자아가 살아 있을 때 우리는 교회의 부축이 절실하지 않습니다. 그러나 자아가 처리되기 시작하면, 이 생명은 우리에게 <em>"다른 모든 지체들과 교통하고 그들과 연결되기를 요구할 뿐 아니라, 우리를 그러한 교통 안으로 그리고 함께 연결되는 체험 안으로 이끌어 줍니다."</em> 그 필요감이 점점 절실해지는 것 — 그것이 가장 정직한 신호입니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item reveal">
+        <div class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">Q4</span>
+          <span class="qa-q-text">왜 하필 '넷째 단계'인가요? 단계가 그렇게 중요한가요?</span>
+          <span class="qa-toggle">+</span>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-inner">
+            본문에 따르면 1–3단계는 여전히 <em>자기 자신의 생명 안에서 사는 단계</em>입니다. 구원을 받고, 생명이 시작되고, 어느 정도 성장하더라도 여전히 "자아 안"에 거할 수 있습니다. 넷째 단계는 자아가 파쇄되고 몸의 생명이 비로소 만져지는 질적 도약입니다 — 요단강을 건너는 사건입니다. 그래서 본문은 <em>"비로소 우리는 몸의 실재를 만지고 영적 전쟁에 참여할 자격을 갖추게 된다"</em>고 말합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="quiz-section" id="scene-quiz">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">내가 만진 진리 &middot; Quiz</span>
+      <h2 class="section-title">10문항 자가 점검</h2>
+    </div>
+
+    <div class="quiz-container reveal" id="quizContainer">
+      <!-- Quiz JS will populate this -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRAYER ============ -->
+<section class="prayer-section" id="scene-prayer">
+  <div class="narrow reveal">
+    <span class="section-label">오늘의 기도 &middot; Today's Prayer</span>
+    <h2 class="section-title">기도</h2>
+
+    <div class="prayer-body">
+      <span class="line">주님, 저는 너무 오래 제 자신 안에 살았습니다.</span>
+      <span class="line">제 육체를, 제 자아의 의견을,</span>
+      <span class="line">타고난 능력을 십자가에 못 박아 주십시오.</span>
+      <span class="line">요단강을 건너게 하시고,</span>
+      <span class="line">몸을 위해 생명이 자라게 하십시오.</span>
+      <span class="line">지체들의 부축이 절실합니다.</span>
+      <span class="line">더는 홀로 싸우지 않고 몸을 의지하며 몸과 함께 싸우는 이가 되게 해주십시오.</span>
+      <span class="amen">Amen &middot; 아멘</span>
+    </div>
+
+    <div class="prayer-coda">
+      <div class="coda-text">
+        "교회는 그분의 몸이요,<br />만물 안에서 만물을 충만하게 하시는 분의 충만입니다."
+      </div>
+      <span class="coda-ref">Ephesians 1:23</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Designed as a contemplative reading &middot; 생명의 체험(하), 15장
+</footer>
+
+<script>
+  // ========== Scroll progress bar ==========
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (window.scrollY / docHeight) * 100;
+    progress.style.width = scrolled + '%';
+  });
+
+  // ========== Reveal on scroll ==========
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ============================================================
+  // PORTED FROM M1D4 — Font scale + Side panel toggle
+  // ============================================================
+  let fontScale = 1;
+  function adjustFont(dir) {
+    if (dir === 0) fontScale = 1;
+    else if (dir === 1 && fontScale < 1.4) fontScale += 0.05;
+    else if (dir === -1 && fontScale > 0.7) fontScale -= 0.05;
+    document.documentElement.style.setProperty('--font-scale', fontScale);
+  }
+  function togglePanel() {
+    document.getElementById('sidepanel').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('open');
+  }
+  function goTo(id) {
+    togglePanel();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  }
+
+  // ============================================================
+  // BIBLE VERSE TOOLTIP — ported from M1D4 (Korean only)
+  // Loads ../../recovery_bible_ko.xml on demand.
+  // Bridges M3D3 .verse-ref[data-ref="고전 12:12"] to the XML loader.
+  // ============================================================
+  (function(){
+    'use strict';
+
+    var XML_URL = '../../recovery_bible_ko.xml';
+
+    var BOOKS = [
+      {n:'창세기',a:'창'},{n:'출애굽기',a:'출'},{n:'레위기',a:'레'},{n:'민수기',a:'민'},
+      {n:'신명기',a:'신'},{n:'여호수아',a:'수'},{n:'사사기',a:'삿'},{n:'룻기',a:'룻'},
+      {n:'사무엘상',a:'삼상'},{n:'사무엘하',a:'삼하'},{n:'열왕기상',a:'왕상'},{n:'열왕기하',a:'왕하'},
+      {n:'역대상',a:'대상'},{n:'역대하',a:'대하'},{n:'에스라',a:'스'},{n:'느헤미야',a:'느'},
+      {n:'에스더',a:'에'},{n:'욥기',a:'욥'},{n:'시편',a:'시'},{n:'잠언',a:'잠'},
+      {n:'전도서',a:'전'},{n:'아가',a:'아'},{n:'이사야',a:'사'},{n:'예레미야',a:'렘'},
+      {n:'예레미야애가',a:'애'},{n:'에스겔',a:'겔'},{n:'다니엘',a:'단'},{n:'호세아',a:'호'},
+      {n:'요엘',a:'욜'},{n:'아모스',a:'암'},{n:'오바댜',a:'옵'},{n:'요나',a:'욘'},
+      {n:'미가',a:'미'},{n:'나훔',a:'나'},{n:'하박국',a:'합'},{n:'스바냐',a:'습'},
+      {n:'학개',a:'학'},{n:'스가랴',a:'슥'},{n:'말라기',a:'말'},{n:'마태복음',a:'마'},
+      {n:'마가복음',a:'막'},{n:'누가복음',a:'눅'},{n:'요한복음',a:'요'},{n:'사도행전',a:'행'},
+      {n:'로마서',a:'롬'},{n:'고린도전서',a:'고전'},{n:'고린도후서',a:'고후'},{n:'갈라디아서',a:'갈'},
+      {n:'에베소서',a:'엡'},{n:'빌립보서',a:'빌'},{n:'골로새서',a:'골'},{n:'데살로니가전서',a:'살전'},
+      {n:'데살로니가후서',a:'살후'},{n:'디모데전서',a:'딤전'},{n:'디모데후서',a:'딤후'},{n:'디도서',a:'딛'},
+      {n:'빌레몬서',a:'몬'},{n:'히브리서',a:'히'},{n:'야고보서',a:'약'},{n:'베드로전서',a:'벧전'},
+      {n:'베드로후서',a:'벧후'},{n:'요한일서',a:'요일'},{n:'요한이서',a:'요이'},{n:'요한삼서',a:'요삼'},
+      {n:'유다서',a:'유'},{n:'요한계시록',a:'계'}
+    ];
+
+    var BOOK_META = {};
+    for (var i = 0; i < BOOKS.length; i++) {
+      BOOK_META[BOOKS[i].a] = BOOKS[i];
+      BOOK_META[BOOKS[i].n] = BOOKS[i];
+    }
+
+    function parseVerseSpec(spec) {
+      var parts = String(spec).split(/\s*,\s*/);
+      var out = [];
+      for (var i = 0; i < parts.length; i++) {
+        var m = parts[i].match(/^(\d+)(?:\s*[\-–]\s*(\d+))?(상|하)?$/);
+        if (!m) continue;
+        out.push({
+          start: parseInt(m[1], 10),
+          end: m[2] ? parseInt(m[2], 10) : parseInt(m[1], 10),
+          suffix: m[3] || ''
+        });
+      }
+      return out;
+    }
+
+    function parseBibleXml(xml) {
+      var doc = new DOMParser().parseFromString(xml, 'text/xml');
+      var data = {};
+      var books = doc.getElementsByTagName('Book');
+      for (var i = 0; i < books.length; i++) {
+        var b = books[i];
+        var abbrev = b.getAttribute('abbrevKo');
+        var nameKo = b.getAttribute('nameKo');
+        var chapters = {};
+        var chs = b.getElementsByTagName('Chapter');
+        for (var j = 0; j < chs.length; j++) {
+          var ch = chs[j];
+          var num = ch.getAttribute('num');
+          var verses = {};
+          var vs = ch.getElementsByTagName('Verse');
+          for (var k = 0; k < vs.length; k++) {
+            verses[vs[k].getAttribute('num')] = vs[k].textContent;
+          }
+          chapters[num] = verses;
+        }
+        var entry = { abbrevKo: abbrev, nameKo: nameKo, chapters: chapters };
+        data[abbrev] = entry;
+        if (nameKo) data[nameKo] = entry;
+      }
+      return data;
+    }
+
+    var bibleData = null;
+    var biblePromise = null;
+    function loadBible() {
+      if (bibleData) return Promise.resolve(bibleData);
+      if (biblePromise) return biblePromise;
+      biblePromise = fetch(XML_URL).then(function(r){
+        if (!r.ok) throw new Error('XML fetch ' + r.status);
+        return r.text();
+      }).then(function(xml){
+        var data = parseBibleXml(xml);
+        bibleData = data;
+        window.VrefBible = { data: data, meta: BOOK_META };
+        document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+        return data;
+      }).catch(function(e){
+        console.warn('[vref] Bible XML 로드 실패:', e);
+        bibleData = {};
+        window.VrefBible = { data: {}, meta: BOOK_META };
+        document.dispatchEvent(new CustomEvent('vref-bible-ready'));
+        return bibleData;
+      });
+      return biblePromise;
+    }
+
+    var tooltipEl = null;
+    var backdropEl = null;
+    var activeLink = null;
+    var hideTimer = null;
+
+    function isMobileView() {
+      return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function ensureTooltip() {
+      if (tooltipEl) return tooltipEl;
+      tooltipEl = document.createElement('div');
+      tooltipEl.id = 'vref-tooltip';
+      document.body.appendChild(tooltipEl);
+      return tooltipEl;
+    }
+
+    function ensureBackdrop() {
+      if (backdropEl) return backdropEl;
+      backdropEl = document.createElement('div');
+      backdropEl.id = 'vref-tt-backdrop';
+      backdropEl.addEventListener('click', hideTooltip);
+      document.body.appendChild(backdropEl);
+      return backdropEl;
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/[&<>"']/g, function(c){
+        return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+      });
+    }
+
+    function buildVerseLines(dataset, bookKey, chapter, versesStr) {
+      if (!dataset || !Object.keys(dataset).length) {
+        return { html: '<span class="vref-tt-empty">— 불러오는 중… —</span>', empty: true };
+      }
+      var entry = dataset[bookKey];
+      if (!entry) return { html: '<span class="vref-tt-empty">— 책을 찾을 수 없음 —</span>', empty: true };
+      var ch = entry.chapters[String(chapter)];
+      if (!ch) return { html: '<span class="vref-tt-empty">— ' + chapter + '장을 찾을 수 없음 —</span>', empty: true };
+      var groups = parseVerseSpec(versesStr);
+      var pieces = [];
+      for (var gi = 0; gi < groups.length; gi++) {
+        var g = groups[gi];
+        for (var v = g.start; v <= g.end; v++) {
+          var t = ch[String(v)];
+          if (typeof t === 'undefined') continue;
+          pieces.push('<div class="vref-tt-verse"><span class="vref-tt-vnum">[' + v + ']</span>' + escHtml(t) + '</div>');
+        }
+      }
+      if (!pieces.length) return { html: '<span class="vref-tt-empty">— 해당 절을 찾을 수 없음 —</span>', empty: true };
+      return { html: pieces.join(''), empty: false };
+    }
+
+    function buildContent(bookKey, chapter, versesStr, fallbackText) {
+      var meta = BOOK_META[bookKey];
+      var koLabel = (meta ? meta.n : bookKey) + ' ' + chapter + '장 ' + versesStr + '절';
+      var ko = buildVerseLines(bibleData, bookKey, chapter, versesStr);
+      // If XML lookup failed but the element has an inline fallback (M3D3 legacy data-text), use it
+      var bodyHtml = ko.html;
+      if (ko.empty && fallbackText) {
+        bodyHtml = '<div class="vref-tt-verse">' + escHtml(fallbackText) + '</div>';
+      }
+      return (
+        '<div class="vref-tt-book">' + escHtml(koLabel) + '</div>' +
+        '<div class="vref-tt-body">' + bodyHtml + '</div>'
+      );
+    }
+
+    function positionTooltip(linkEl) {
+      var rect = linkEl.getBoundingClientRect();
+      var ttRect = tooltipEl.getBoundingClientRect();
+      var docY = window.scrollY || window.pageYOffset;
+      var docX = window.scrollX || window.pageXOffset;
+      var margin = 12;
+      var top = rect.bottom + docY + 10;
+      var left = rect.left + docX + (rect.width / 2) - (ttRect.width / 2);
+      if (left < docX + margin) left = docX + margin;
+      if (left + ttRect.width > docX + window.innerWidth - margin) {
+        left = docX + window.innerWidth - margin - ttRect.width;
+      }
+      if (rect.bottom + ttRect.height + 10 > window.innerHeight && rect.top - ttRect.height - 10 > 0) {
+        top = rect.top + docY - ttRect.height - 10;
+      }
+      tooltipEl.style.top = top + 'px';
+      tooltipEl.style.left = left + 'px';
+    }
+
+    function renderTooltipInner(html, mobile) {
+      if (mobile) {
+        tooltipEl.innerHTML =
+          '<div class="vref-tt-handle"></div>' +
+          '<button class="vref-tt-close" type="button" aria-label="닫기">&times;</button>' +
+          html;
+        var btn = tooltipEl.querySelector('.vref-tt-close');
+        if (btn) btn.addEventListener('click', function(e){ e.stopPropagation(); hideTooltip(); });
+      } else {
+        tooltipEl.innerHTML = html;
+      }
+    }
+
+    function showTooltip(linkEl) {
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      activeLink = linkEl;
+      ensureTooltip();
+      var mobile = isMobileView();
+      if (mobile) ensureBackdrop();
+      var b = linkEl.dataset.book;
+      var c = linkEl.dataset.chapter;
+      var v = linkEl.dataset.verses;
+      var fallback = linkEl.dataset.text || '';
+      if (!b || !c || !v) return;
+      function render() {
+        renderTooltipInner(buildContent(b, parseInt(c, 10), v, fallback), mobile);
+        if (mobile) {
+          tooltipEl.style.top = '';
+          tooltipEl.style.left = '';
+          tooltipEl.scrollTop = 0;
+          backdropEl.dataset.show = '1';
+        } else {
+          positionTooltip(linkEl);
+        }
+        tooltipEl.dataset.show = '1';
+      }
+      render();
+      if (!bibleData) {
+        loadBible().then(function(){
+          if (activeLink !== linkEl) return;
+          render();
+        });
+      }
+    }
+
+    function hideTooltip() {
+      activeLink = null;
+      if (tooltipEl) tooltipEl.dataset.show = '0';
+      if (backdropEl) backdropEl.dataset.show = '0';
+    }
+
+    // ----- Bridge: existing markup variants -----
+    //  • <button class="verse-link" data-verse="마 17:20"> (M1D4 style)
+    //  • <span class="verse-ref" data-ref="고전 12:12"> (M3D3 style)
+    function upgradeVerseLinks() {
+      document.querySelectorAll('.verse-link[data-verse]').forEach(function(el){
+        if (el.dataset.bound) return;
+        var m = el.dataset.verse.match(/^(\S+)\s+(\d+):(.+)$/);
+        if (!m) return;
+        el.classList.add('vref-link');
+        el.dataset.book = m[1];
+        el.dataset.chapter = m[2];
+        el.dataset.verses = m[3];
+        el.dataset.bound = '1';
+        if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+      });
+      document.querySelectorAll('.verse-ref[data-ref]').forEach(function(el){
+        if (el.dataset.bound) return;
+        var m = el.dataset.ref.match(/^(\S+)\s+(\d+):(.+)$/);
+        if (!m) return;
+        el.classList.add('vref-link');
+        el.dataset.book = m[1];
+        el.dataset.chapter = m[2];
+        el.dataset.verses = m[3];
+        el.dataset.bound = '1';
+        if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+      });
+    }
+
+    function bind() {
+      // Desktop hover
+      document.addEventListener('mouseover', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) showTooltip(link);
+      });
+      document.addEventListener('mouseout', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (!link) return;
+        var to = e.relatedTarget;
+        if (to && to.closest && to.closest('.vref-link') === link) return;
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(hideTooltip, 100);
+      });
+      // Mobile tap-to-toggle
+      document.addEventListener('click', function(e){
+        if (!isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) {
+          e.preventDefault();
+          if (activeLink === link) hideTooltip();
+          else showTooltip(link);
+        }
+      });
+      // Keyboard (PC only)
+      document.addEventListener('focusin', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) showTooltip(link);
+      });
+      document.addEventListener('focusout', function(e){
+        if (isMobileView()) return;
+        var link = e.target && e.target.closest && e.target.closest('.vref-link');
+        if (link) hideTooltip();
+      });
+      // Auto-close on page scroll — PC only
+      window.addEventListener('scroll', function(){
+        if (isMobileView()) return;
+        hideTooltip();
+      }, true);
+      window.addEventListener('resize', hideTooltip);
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') hideTooltip();
+      });
+    }
+
+    function init() {
+      upgradeVerseLinks();
+      bind();
+      loadBible();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+
+  // ========== Q&A toggle ==========
+  function toggleQA(elem) {
+    const item = elem.parentElement;
+    const answer = item.querySelector('.qa-answer');
+    const inner = item.querySelector('.qa-answer-inner');
+    
+    if (item.classList.contains('open')) {
+      answer.style.maxHeight = '0px';
+      item.classList.remove('open');
+    } else {
+      // Close others
+      document.querySelectorAll('.qa-item.open').forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.qa-answer').style.maxHeight = '0px';
+      });
+      item.classList.add('open');
+      answer.style.maxHeight = inner.scrollHeight + 'px';
+    }
+  }
+
+  // ========== QUIZ ==========
+  const quizData = [
+    {
+      q: "에베소서 1장 23절에 따르면, 교회는 그리스도의 몸인 동시에 무엇이라고 설명되어 있습니까?",
+      options: [
+        "만물 안에서 만물을 충만하게 하시는 분의 충만",
+        "세상의 도덕적 기준을 세우는 거룩한 기관",
+        "죄인들이 모여서 회개하는 기도의 집",
+        "하나님의 법을 가르치는 영적인 학교"
+      ],
+      correct: 0,
+      explain: "엡 1:23은 교회를 그리스도의 몸이자 '만물 안에서 만물을 충만하게 하시는 분의 충만(πλήρωμα)'이라고 선언합니다."
+    },
+    {
+      q: "영적 전쟁에 참여하기를 원하는 사람이 반드시 먼저 알아야 하는 것은 무엇입니까?",
+      options: [
+        "성경 전체에 대한 지식",
+        "사탄의 전략과 전술",
+        "그리스도의 몸",
+        "개인적인 기도의 능력"
+      ],
+      correct: 2,
+      explain: "본문은 분명히 말합니다 — '영적 전쟁만큼 간절하게 몸을 아는 것이 요구되는 것은 없다.' 영적 전쟁은 개인의 문제가 아니라 몸의 문제이기 때문입니다."
+    },
+    {
+      q: "생명의 체험 중 어느 단계에 이르러야 비로소 몸을 이루는 생명의 실재를 만지고 알 수 있습니까?",
+      options: [
+        "셋째 단계",
+        "둘째 단계",
+        "넷째 단계",
+        "첫째 단계"
+      ],
+      correct: 2,
+      explain: "넷째 단계입니다. 1–3단계는 여전히 자신의 생명 안에서 사는 단계이며, 요단강을 건너 넷째 단계에 들어갈 때에만 몸의 실재를 만질 수 있습니다."
+    },
+    {
+      q: "우리 각 사람 안에 있는 생명의 성격에 대한 설명으로 옳은 것은 무엇입니까?",
+      options: [
+        "봉사의 직분에 따라 차등적으로 주어지는 생명이다.",
+        "영적 성숙도에 따라 지체마다 다른 종류의 생명을 가진다.",
+        "각 지체가 독립적으로 소유한 개인적 생명이다.",
+        "지체의 생명이 아니라 몸의 생명이다."
+      ],
+      correct: 3,
+      explain: "우리 각 사람은 그리스도의 지체이지만, 우리 안에 있는 생명은 '지체'의 생명이 아니라 '몸'의 생명입니다. 이 생명은 구분되거나 분리될 수 없습니다."
+    },
+    {
+      q: "우리가 자신의 '타고난 능력'으로 봉사할 때 발생하는 현상은 무엇입니까?",
+      options: [
+        "몸의 부축을 받아야 할 필요를 더 절실히 느낀다.",
+        "그리스도의 몸의 생명이 더욱 강하게 나타난다.",
+        "교회 안에서 권위 있는 리더십을 갖게 된다.",
+        "지체들의 협력에 대한 필요성을 느끼지 못하게 된다."
+      ],
+      correct: 3,
+      explain: "본문은 정확히 이렇게 진단합니다 — '우리의 타고난 능력으로 봉사한다면 우리는 지체들의 협력에 대한 필요를 느끼지 못하게 됩니다.'"
+    },
+    {
+      q: "몸의 실재를 만지기 위해 반드시 처리되어야 할 '세 가지' 요소는 무엇입니까?",
+      options: [
+        "물질적 탐욕, 게으름, 불신",
+        "육체, 자아, 혼생명(타고난 조성)",
+        "죄, 세상, 마귀",
+        "율법, 종교, 전통"
+      ],
+      correct: 1,
+      explain: "본문은 명확합니다 — '육체에서, 자아에서, 혼생명에서 나와야 합니다.' 이 세 가지가 처리될 때에만 넷째 단계에 들어갑니다."
+    },
+    {
+      q: "고린도전서 10장 17절에서 우리가 '한 몸'인 근거로 제시한 것은 무엇입니까?",
+      options: [
+        "우리 모두가 한 떡에 참여하기 때문",
+        "우리 모두가 같은 교리에 동의하기 때문",
+        "우리 모두가 같은 지도자를 따르기 때문",
+        "우리 모두가 같은 장소에 모여 예배하기 때문"
+      ],
+      correct: 0,
+      explain: "'떡이 하나이요, 우리 많은 사람이 한 몸입니다. 왜냐하면 우리 모두가 한 떡에 참여하기 때문입니다.' (고전 10:17) 한 떡 — 한 생명에 함께 참여함이 한 몸의 근거입니다."
+    },
+    {
+      q: "에베소서 4장 16절에 따르면, 몸이 스스로 건축되기 위해 필요한 과정이 아닌 것은?",
+      options: [
+        "중앙 집권적인 조직의 통제",
+        "머리이신 그리스도로부터의 풍성한 공급",
+        "각 지체가 분량에 따라 기능을 발휘함",
+        "사랑 안에서 함께 결합되고 짜임"
+      ],
+      correct: 0,
+      explain: "엡 4:16에서 몸의 건축은 머리로부터의 공급, 각 지체의 기능, 사랑 안에서의 결합을 통해 이뤄집니다. 중앙 집권적 통제는 성경적 원리가 아닙니다."
+    },
+    {
+      q: "우리가 '자신의 의견'에 따라 살 때 어떤 영적 감각이 무뎌집니까?",
+      options: [
+        "교회가 나를 지탱해 주는 것에 대한 필요성",
+        "성경을 해석하는 지적인 능력",
+        "미래에 대한 두려움과 불안",
+        "죄에 대한 죄책감과 회개의 마음"
+      ],
+      correct: 0,
+      explain: "'우리가 자신의 의견에 따라 산다면, 우리는 교회가 우리를 지탱해 주는 것에 대한 필요를 느끼지 못하게 됩니다.' 자아의 의견은 가장 먼저 이 감각을 무디게 합니다."
+    },
+    {
+      q: "골로새서 2장 19절에서 몸이 '하나님께서 자라심으로 자라기' 위해 반드시 해야 할 일은 무엇입니까?",
+      options: [
+        "천사 숭배와 같은 신비 체험",
+        "세상의 초등 학문을 공부함",
+        "머리를 붙드는 것",
+        "개인적인 금욕 생활"
+      ],
+      correct: 2,
+      explain: "골 2:19은 분명히 말합니다 — '머리를 붙들지 않습니다. 온몸은 마디와 힘줄을 통하여 머리로부터 풍성하게 공급을 받고 함께 짜여, 하나님께서 자라심으로 자라는 것입니다.'"
+    }
+  ];
+
+  let currentQ = 0;
+  let score = 0;
+  let answered = false;
+
+  function renderQuestion() {
+    answered = false;
+    const data = quizData[currentQ];
+    const container = document.getElementById('quizContainer');
+    const progressPct = ((currentQ) / quizData.length) * 100;
+    
+    container.innerHTML = `
+      <div class="quiz-progress">
+        <div class="quiz-progress-text">Question ${String(currentQ + 1).padStart(2, '0')} / ${String(quizData.length).padStart(2, '0')}</div>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" style="width:${progressPct}%"></div>
+        </div>
+      </div>
+      <div class="quiz-question-num">문항 ${currentQ + 1}</div>
+      <div class="quiz-question">${data.q}</div>
+      <div class="quiz-options">
+        ${data.options.map((opt, i) => `
+          <button class="quiz-option" data-idx="${i}" onclick="selectAnswer(${i})">
+            <span class="opt-letter">${String.fromCharCode(65 + i)}</span>
+            <span>${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="quiz-feedback" id="feedback">
+        <span class="fb-label">해설</span>
+        <span id="fbText"></span>
+      </div>
+      <button class="quiz-next-btn" id="nextBtn" onclick="nextQuestion()">
+        ${currentQ === quizData.length - 1 ? '결과 보기 →' : '다음 문항 →'}
+      </button>
+    `;
+
+    // Animate progress fill
+    setTimeout(() => {
+      const fill = container.querySelector('.quiz-progress-fill');
+      const newPct = ((currentQ + 1) / quizData.length) * 100;
+      // Show the fill at currentQ % first, then animate to currentQ+1
+    }, 50);
+  }
+
+  function selectAnswer(idx) {
+    if (answered) return;
+    answered = true;
+    const data = quizData[currentQ];
+    const options = document.querySelectorAll('.quiz-option');
+    
+    options.forEach((opt, i) => {
+      opt.disabled = true;
+      if (i === data.correct) opt.classList.add('correct');
+      else if (i === idx) opt.classList.add('wrong');
+    });
+
+    if (idx === data.correct) score++;
+
+    const feedback = document.getElementById('feedback');
+    document.getElementById('fbText').textContent = data.explain;
+    feedback.classList.add('show');
+
+    setTimeout(() => {
+      document.getElementById('nextBtn').classList.add('show');
+    }, 300);
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    if (currentQ >= quizData.length) {
+      showResult();
+    } else {
+      renderQuestion();
+      // Scroll quiz into view
+      document.getElementById('quizContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function showResult() {
+    const container = document.getElementById('quizContainer');
+    let stage, msg;
+    
+    if (score <= 4) {
+      stage = "1–3 단계의 강가에서";
+      msg = "당신은 아직 요단강 이쪽 편에 머물러 있는지도 모릅니다. 본문을 다시 한 번 천천히 묵상하시고, 오늘의 기도로 자신의 자아 처리부터 구해 보세요. 모든 여정은 거기서 시작됩니다.";
+    } else if (score <= 7) {
+      stage = "요단강을 건너는 중에";
+      msg = "당신은 강을 건너고 있습니다. 핵심 진리들을 만지고 계시지만, 몇 가지 지점에서 자아의 의견과 몸의 생명을 구별할 더 깊은 빛이 필요합니다. 다시 본문으로 돌아가 보세요.";
+    } else {
+      stage = "넷째 단계에 거주하며";
+      msg = "당신은 몸의 실재를 만지고 있습니다. 이제 이 진리가 단지 '아는 것'에서 멈추지 않고, 매일의 교통과 단체적인 영적 전쟁의 자리로 당신을 이끌어 가기를. 지체들의 부축을 절실히 구하세요.";
+    }
+
+    container.innerHTML = `
+      <div class="quiz-result">
+        <div class="result-label">Your Result</div>
+        <div class="result-score">${score}<span class="total"> / ${quizData.length}</span></div>
+        <div class="result-stage">${stage}</div>
+        <div class="result-msg">${msg}</div>
+        <button class="result-restart" onclick="restartQuiz()">다시 풀기</button>
+      </div>
+    `;
+  }
+
+  function restartQuiz() {
+    currentQ = 0;
+    score = 0;
+    renderQuestion();
+  }
+
+  // Initialize quiz
+  renderQuestion();
+</script>
+
+</body>
+</html>
